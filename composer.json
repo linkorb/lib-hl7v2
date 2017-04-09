@@ -17,12 +17,16 @@
         "issues": "https://github.com/linkorb/hl7v2/issues"
     },
     "require": {
-        "symfony/console": "~2.4"
+        "symfony/console": "^3.2"
     },
     "bin": ["bin/hl7v2"],
     "autoload": {
         "psr-4": {
-            "Hl7v2\\": "src/"
+            "Hl7v2\\": ["lib/", "src/"]
         }
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^4.8",
+        "symfony/var-dumper": "^3.2"
     }
 }
