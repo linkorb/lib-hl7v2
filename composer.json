@@ -25,6 +25,11 @@
             "Hl7v2\\": ["lib/", "src/"]
         }
     },
+    "autoload-dev": {
+        "psr-4": {
+            "Hl7v2\\Test\\": "test/"
+        }
+    },
     "require-dev": {
         "phpunit/phpunit": "^4.8",
         "symfony/var-dumper": "^3.2"
