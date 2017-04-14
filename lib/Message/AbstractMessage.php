@@ -42,6 +42,9 @@ abstract class AbstractMessage
         $this->messageHeader = $messageHeader;
     }
 
+    /**
+     * @return \Hl7v2\Segment\SegmentInterface[]
+     */
     public function getSegments()
     {
         return $this->segments;

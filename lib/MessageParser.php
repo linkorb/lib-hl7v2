@@ -2,84 +2,107 @@
 
 namespace Hl7v2;
 
-use Hl7v2\Message;
-use Hl7v2\Segment\GenericSegment;
-use RuntimeException;
+use Hl7v2\Encoding\Codec;
+use Hl7v2\Encoding\Datagram;
+use Hl7v2\Exception\CapabilityError;
+use Hl7v2\Exception\CodecError;
+use Hl7v2\Exception\MessageError;
+use Hl7v2\Exception\ParseError;
+use Hl7v2\Exception\SegmentError;
+use Hl7v2\Factory\MessageFactory;
+use Hl7v2\Factory\SegmentFactory;
+use Hl7v2\Encoding\EncodingParametersBuilder;
 
 class MessageParser
 {
-    // Control characters and other HL7 properties
-    private $segmentSeparator = "\015";
-    private $fieldSeparator = "|";
-    private $componentSeperator = "^";
-    private $subcomponentSeperator = "&";
-    private $repetitionSeparator = "~";
-    private $escapeChar = "\\";
-    private $hl7Version = "2.2";
-    
-    public function parse($msgStr)
+    const SEGID_MSH = 'MSH';
+
+    private $codec;
+    private $encParamBuilder;
+    private $messageFactory;
+    private $segmentFactory;
+
+    public function __construct(
+        Codec $codec,
+        EncodingParametersBuilder $encParamBuilder,
+        MessageFactory $messageFactory,
+        SegmentFactory $segmentFactory
+    ) {
+        $this->codec = $codec;
+        $this->encParamBuilder = $encParamBuilder;
+        $this->messageFactory = $messageFactory;
+        $this->segmentFactory = $segmentFactory;
+    }
+
+    public function parse(Datagram $messageData)
     {
-        $message = new Message();
-        
-        $segments = preg_split("/[\n\\" . $this->segmentSeparator . "]/", $msgStr, -1, PREG_SPLIT_NO_EMPTY);
-        
-        // The first segment should be the control segment
-        preg_match("/^([A-Z0-9]{3})(.)(.)(.)(.)(.)(.)/", $segments[0], $matches);
-        $hdr = $matches[1];
-        $fldSep = $matches[2];
-        $compSep = $matches[3];
-        $repSep = $matches[4];
-        $esc = $matches[5];
-        $subCompSep = $matches[6];
-        $fldSepCtrl = $matches[7];
-        
-        // Check whether field separator is repeated after 4 control characters
-        //
-        if ($fldSep != $fldSepCtrl) {
-            throw new RuntimeException("Not a valid message: field separator invalid");
-        }
-        // Set field separator based on control segment
-        $this->fieldSeparator        = $fldSep;
-        // Set other separators
-        $this->componentSeparator    = $compSep;
-        $this->subcomponentSeparator = $subCompSep;
-        $this->escapeChar            = $esc;
-        $this->repetitionSeparator   = $repSep;
-        
-        // Do all segments
-        for ($i = 0; $i < count($segments); $i++) {
-            $fields = preg_split("/\\" . $this->fieldSeparator . "/", $segments[$i]);
-            $name = array_shift($fields);
-            // Now decompose fields if necessary, into arrays
-            for ($j = 0; $j < count($fields); $j++) {
-                // Skip control field
-                if ($i == 0 && $j == 0) {
-                    continue;
-                }
-                $comps = preg_split("/\\" . $this->componentSeparator ."/", $fields[$j], -1, PREG_SPLIT_NO_EMPTY);
-                for ($k = 0; $k < count($comps); $k++) {
-                    $subComps = preg_split("/\\" . $this->subcomponentSeparator . "/", $comps[$k]);
-                    // Make it a ref or just the value
-                    (count($subComps) == 1) ? ($comps[$k] = $subComps[0]) : ($comps[$k] = $subComps);
-                }
-                (count($comps) == 1) ? ($fields[$j] = $comps[0]) : ($fields[$j] = $comps);
-            }
-            $seg = null;
-            
-            /*
-            $segClass = "HL7v2\\Segments\\$name";
-            // Let's see whether it's the a special segment
-            if (class_exists('HL7v2\\Segments\\' . $name)) {
-                array_unshift($fields, $this->fieldSeparator);
-                $seg = new $segClass($fields);
+        // Fail if the message does not begin with an MSH Segment
+        $pos = $messageData->getPositionalState();
+        if (self::SEGID_MSH !== substr($messageData->value, $pos->ptr, 3)) {
+            $looksValid = preg_match('/^[A-Z]{3,3}$/', substr($messageData->value, $pos->ptr, 3));
+            if ($looksValid) {
+                throw new CapabilityError(
+                    "Unable to parse a Datagram which does not begin with \"{self::SEGID_MSH}\"."
+                );
             } else {
+                throw new ParseError(
+                    "Expected the Datagram to begin with \"{self::SEGID_MSH}\"."
+                );
             }
-            */
-            $segment = new GenericSegment($name, $fields);
-            $message->addSegment($segment);
         }
-        
-        
+
+        // Get the EncodingParameters from the MSH
+        try {
+            $this->codec->bootstrap($messageData, $this->encParamBuilder);
+        } catch (CodecError $e) {
+            throw new ParseError(
+                'Unable to detect message Encoding Parameters.',
+                null,
+                $e
+            );
+        }
+
+        // Decode MSH
+        try {
+            $messageHeader = $this
+                ->segmentFactory
+                ->create(
+                    self::SEGID_MSH,
+                    $messageData->getEncodingParameters()->getCharacterEncoding()
+                )
+            ;
+            $messageHeader->fromDatagram($messageData, $this->codec);
+        } catch (SegmentError $e) {
+            throw new ParseError(
+                'Unable to decode Message Header (MSH) Segment.',
+                null,
+                $e
+            );
+        }
+
+        // Create the appropriate type of message
+        try {
+            $message = $this->messageFactory->create($messageHeader);
+            $message->setMessageHeader($messageHeader);
+        } catch (MessageError $e) {
+            throw new ParseError(
+                'Unable to create a Message of the appropriate type.',
+                null,
+                $e
+            );
+        }
+
+        // Decode message
+        try {
+            $message->fromDatagram($messageData, $this->codec);
+        } catch (MessageError $e) {
+            throw new ParseError(
+                'Unable to decode Message.',
+                null,
+                $e
+            );
+        }
+
         return $message;
     }
 }

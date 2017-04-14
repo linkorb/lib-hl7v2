@@ -2,15 +2,15 @@
 
 namespace Hl7v2\Segment;
 
-use Hl7v2\Encoding\Datagram;
 use Hl7v2\Encoding\Codec;
+use Hl7v2\Encoding\Datagram;
 use Hl7v2\Factory\DataTypeFactory;
 use Hl7v2\Validation\StringLengthTrait;
 
 /**
  * Base class of all Segments.
  */
-abstract class AbstractSegment
+abstract class AbstractSegment implements SegmentInterface
 {
     use StringLengthTrait;
 
@@ -119,50 +119,5 @@ abstract class AbstractSegment
             array_push($extracted, null);
         }
         return $extracted;
-    }
-
-
-    /**
-     * @deprecated
-     */
-    public function setField($index, $value = "")
-    {
-        if (!$index) {
-            throw new \InvalidArgumentException("No index or value");
-        }
-
-        // Fill in the blanks...
-        for ($i = count($this->fields); $i < $index; $i++) {
-            $this->fields[$i] = "";
-        }
-        $this->fields[$index] = $value;
-        return $this;
-    }
-    /**
-     * @deprecated
-     */
-    public function getField($index)
-    {
-        if (!isset($this->fields[$index])) {
-            return null;
-        }
-        return $this->fields[$index];
-    }
-    /**
-     * @deprecated
-     */
-    public function getName()
-    {
-        return $this->fields[0];
-    }
-    /**
-     * @deprecated
-     */
-    public function setName($name)
-    {
-        if ((strlen($name) != 3) || (strtoupper($name) != $name)) {
-            throw new \InvalidArgumentException("Name should be 3 characters, uppercase");
-        }
-        $this->fields[0] = $name;
     }
 }

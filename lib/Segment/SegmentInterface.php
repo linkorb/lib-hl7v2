@@ -2,18 +2,10 @@
 
 namespace Hl7v2\Segment;
 
+use Hl7v2\Encoding\Codec;
+use Hl7v2\Encoding\Datagram;
+
 interface SegmentInterface
 {
-    /**
-     * @deprecated
-     */
-    public function getName();
-    /**
-     * @deprecated
-     */
-    public function setField($index, $value = "");
-    /**
-     * @deprecated
-     */
-    public function getField($index);
+    public function fromDatagram(Datagram $data, Codec $codec);
 }
