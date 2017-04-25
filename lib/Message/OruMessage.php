@@ -4,8 +4,12 @@ namespace Hl7v2\Message;
 
 use Hl7v2\Encoding\Codec;
 use Hl7v2\Encoding\Datagram;
-use Hl7v2\Exception\SegmentError;
 use Hl7v2\Exception\MessageError;
+use Hl7v2\Exception\SegmentError;
+use Hl7v2\Segment\ObrSegment;
+use Hl7v2\Segment\ObxSegment;
+use Hl7v2\Segment\PidSegment;
+use Hl7v2\Segment\Pv1Segment;
 
 /**
  * Unsolicited Observation Message (ORU).
@@ -28,6 +32,9 @@ class OruMessage extends AbstractMessage
     {
         $characterEncoding = $data->getEncodingParameters()->getCharacterEncoding();
 
+        $patientGroup = null;
+        $obrGroup = null;
+
         while (false !== $codec->advanceToSegment($data)
             && false !== ($segmentId = $codec->extractSegmentId($data))
         ) {
@@ -37,7 +44,24 @@ class OruMessage extends AbstractMessage
             } catch (SegmentError $e) {
                 throw new MessageError('Unable to decode ORU message.', null, $e);
             }
+
             $this->segments[] = $segment;
+
+            if ($segment instanceof PidSegment) {
+                $patientGroup = $this->segmentGroupFactory->create();
+                $this->segmentGroups[] = $patientGroup;
+                $patientGroup->push($segment);
+            } elseif ($segment instanceof Pv1Segment
+                || $segment instanceof Pv2Segment
+            ) {
+                $patientGroup->push($segment);
+            } elseif ($segment instanceof ObrSegment) {
+                $obrGroup = $this->segmentGroupFactory->create();
+                $patientGroup->push($obrGroup);
+                $obrGroup->push($segment);
+            } elseif ($segment instanceof ObxSegment) {
+                $obrGroup->push($segment);
+            }
         }
     }
 }

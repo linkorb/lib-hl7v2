@@ -9,6 +9,7 @@ use Hl7v2\Encoding\Codec;
 use Hl7v2\Encoding\Datagram;
 use Hl7v2\Factory\MessageFactory;
 use Hl7v2\Factory\SegmentFactory;
+use Hl7v2\Factory\SegmentGroupFactory;
 use Hl7v2\Factory\DataTypeFactory;
 use Hl7v2\MessageParser;
 
@@ -27,6 +28,7 @@ class MessageParserTest extends PHPUnit_Framework_TestCase
     private $messageFac;
     private $messageParser;
     private $segmentFac;
+    private $segmentGroupFac;
 
     protected function setUp()
     {
@@ -37,7 +39,11 @@ class MessageParserTest extends PHPUnit_Framework_TestCase
         $this->codec = new Codec($this->charEncNames);
         $this->dataTypeFac = new DataTypeFactory;
         $this->segmentFac = new SegmentFactory($this->dataTypeFac);
-        $this->messageFac = new MessageFactory($this->segmentFac);
+        $this->segmentGroupFac = new SegmentGroupFactory();
+        $this->messageFac = new MessageFactory(
+            $this->segmentFac,
+            $this->segmentGroupFac
+        );
         $this->messageParser = new MessageParser(
             $this->codec,
             $this->encParamBuilder,
