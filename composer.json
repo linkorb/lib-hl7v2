@@ -1,5 +1,5 @@
 {
-    "name": "linkorb/hl7v2",
+    "name": "linkorb/lib-hl7v2",
     "description": "HL7v2 Parsing and Generation library",
     "keywords": ["hl7", "hl7v2", "v2", "adt", "pipehat", "linkorb"],
     "license": "MIT",
@@ -10,6 +10,11 @@
             "email": "j.faassen@linkorb.com",
             "homepage": "http://www.linkorb.com",
             "role": "Developer"
+        },
+        {
+            "name": "LinkORB",
+            "email": "engineering@linkorb.com",
+            "role": "Development"
         }
     ],
     "support": {
