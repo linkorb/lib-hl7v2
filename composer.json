@@ -1,5 +1,5 @@
 {
-    "name": "linkorb/hl7v2",
+    "name": "linkorb/lib-hl7v2",
     "description": "HL7v2 Parsing and Generation library",
     "keywords": ["hl7", "hl7v2", "v2", "adt", "pipehat", "linkorb"],
     "license": "MIT",
@@ -10,6 +10,11 @@
             "email": "j.faassen@linkorb.com",
             "homepage": "http://www.linkorb.com",
             "role": "Developer"
+        },
+        {
+            "name": "LinkORB",
+            "email": "engineering@linkorb.com",
+            "role": "Development"
         }
     ],
     "support": {
@@ -17,12 +22,25 @@
         "issues": "https://github.com/linkorb/hl7v2/issues"
     },
     "require": {
-        "symfony/console": "~2.4"
+        "symfony/console": "^3.2"
     },
     "bin": ["bin/hl7v2"],
     "autoload": {
         "psr-4": {
-            "Hl7v2\\": "src/"
+            "Hl7v2\\Meta\\": "meta/",
+            "Hl7v2\\": ["lib/", "src/"]
         }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Hl7v2\\Test\\": "test/"
+        }
+    },
+    "require-dev": {
+        "digilist/dependency-graph": "^0.3.0",
+        "memio/memio": "^1.0",
+        "phpunit/phpunit": "^4.8",
+        "symfony/var-dumper": "^3.2",
+        "symfony/yaml": "^3.2"
     }
 }

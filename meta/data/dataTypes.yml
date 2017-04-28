@@ -1,0 +1,1044 @@
+CE:
+    name: Coded Element
+    len: 483
+    components:
+        -
+          name: Identifier
+          type: ST
+          len: 20
+        -
+          name: Text
+          type: ST
+          len: 199
+        -
+          name: NameOfCodingSystem
+          type: ID
+          len: 20
+        -
+          name: AltIdentifier
+          type: ST
+          len: 20
+        -
+          name: AltText
+          type: ST
+          len: 199
+        -
+          name: NameOfAltCodingSystem
+          type: ID
+          len: 20
+
+CNN:
+    name: Composite ID Number and Name Simplified
+    len: 406
+    components:
+        -
+          name: IdNumber
+          type: ST
+          len: 15
+        -
+          name: FamilyName
+          type: ST
+          len: 50
+        -
+          name: GivenName
+          type: ST
+          len: 30
+        -
+          name: SecondNames
+          type: ST
+          len: 30
+        -
+          name: Suffix    # e.g. Jnr, III
+          type: ST
+          len: 20
+        -
+          name: Prefix    # e.g. Dr
+          type: ST
+          len: 20
+        -
+          name: Degree
+          type: IS
+          len: 5
+        -
+          name: SourceTable
+          type: IS
+          len: 4
+        -
+          name: AssigningAuthorityNamespaceId
+          type: IS
+          len: 20
+        -
+          name: AssigningAuthorityUniversalId
+          type: ST
+          len: 199
+        -
+          name: AssigningAuthorityUniversalIdType
+          type: ID
+          len: 6
+
+
+CQ:
+    name: Composite Quantity with Units
+    len: 500
+    components:
+        -
+          name: Quantity
+          type: NM
+          len: 16
+        -
+          name: Units
+          type: CE
+          len: 483
+
+CWE:
+    name: Coded with Exceptions
+    len: 705
+    components:
+        -
+          name: Identifier
+          type: ST
+          len: 20
+        -
+          name: Text
+          type: ST
+          len: 199
+        -
+          name: NameOfCodingSystem
+          type: ID
+          len: 20
+        -
+          name: AltIdentifier
+          type: ST
+          len: 20
+        -
+          name: AltText
+          type: ST
+          len: 199
+        -
+          name: NameOfAltCodingSystem
+          type: ID
+          len: 20
+        -
+          name: CodingSystemVersionId
+          type: ST
+          len: 10
+        -
+          name: AltCodingSystemVersionId
+          type: ST
+          len: 10
+        -
+          name: OriginalText
+          type: ST
+          len: 199
+
+CX:
+    name: Extended Composite ID with Check Digit
+    len: 1913
+    components:
+        -
+          name: IdNumber
+          required: true
+          type: ST
+          len: 15
+        -
+          name: CheckDigit
+          type: ST
+          len: 1
+        -
+          name: CheckDigitScheme
+          type: ID
+          len: 3
+        -
+          name: AssigningAuthority
+          type: HD
+          len: 227
+        -
+          name: IdentifierTypeCode
+          type: ID
+          len: 5
+        -
+          name: AssigningFacility
+          type: HD
+          len: 227
+        -
+          name: EffectiveDate
+          type: DT
+          len: 8
+        -
+          name: ExpirationDate
+          type: DT
+          len: 8
+        -
+          name: AssigningJurisdiction
+          type: CWE
+          len: 705
+        -
+          name: AssigningAgency
+          type: CWE
+          len: 705
+
+DLD:
+    name: Discharge to Location and Date
+    len: 47
+    components:
+        -
+          name: DischargeLocation
+          required: true
+          type: IS
+          len: 20
+        -
+          name: EffectiveDate
+          type: TS
+          len: 26
+
+DLN:
+    name: Driver's License Number
+    len: 66
+    components:
+        -
+          name: LicenseNumber
+          required: true
+          type: ST
+          len: 20
+        -
+          name: IssuingStateProvinceCountry
+          type: IS
+          len: 20
+        -
+          name: ExpirationDate
+          type: DT
+          len: 24
+
+DR:
+    name: Date Time Range
+    len: 53
+    components:
+        -
+          name: RangeStartDateTime
+          type: TS
+          len: 26
+        -
+          name: RangeEndDateTime
+          type: TS
+          len: 26
+
+DT:
+    name: Date
+    len: 8
+
+DTM:
+    name: Date/Time
+    len: 24
+
+EI:
+    name: Entity Identifier
+    len: 427
+    components:
+        -
+          name: EntityIdentifier
+          type: ST
+          len: 199
+        -
+          name: NamespaceId
+          type: IS
+          len: 20
+        -
+          name: UniversalId
+          type: ST
+          len: 199
+        -
+          name: UniversalIdType
+          type: ID
+          len: 6
+
+EIP:
+    name: Entity Identifier Pair
+    len: 855
+    components:
+        -
+          name: PlacerAssignedIdentifier
+          type: EI
+          len: 427
+        -
+          name: FillerAssignedIdentifier
+          type: EI
+          len: 427
+
+FC:
+    name: Financial Class
+    len: 47
+    components:
+        -
+          name: FinancialClassCode
+          required: true
+          type: IS
+          len: 20
+        -
+          name: EffectiveDate
+          type: TS
+          len: 26
+
+FN:
+    name: Family Name
+    len: 194
+    components:
+        -
+          name: Surname
+          required: true
+          type: ST
+          len: 50
+        -
+          name: OwnSurnamePrefix
+          type: ST
+          len: 20
+        -
+          name: OwnSurname
+          type: ST
+          len: 50
+        -
+          name: SurnamePrefixFromPartner
+          type: ST
+          len: 20
+        -
+          name: SurnameFromPartner
+          type: ST
+          len: 50
+
+HD:
+    name: Heirarchical Designator
+    skip_generation: true
+    len: 227
+    components:
+        -
+          name: NamespaceId
+          type: IS
+          len: 20
+        -
+          name: UniversalId
+          type: ST
+          len: 199
+        -
+          name: UniversalIdType
+          type: ID
+          len: 6
+
+ID:
+    name: Coded value for HL7 tables
+    extends: ST
+
+IS:
+    name: Coded value for user-defined tables
+    extends: ST
+    len: 20
+
+MO:
+    name: Money
+    len: 20
+    components:
+        -
+          name: Quantity
+          type: NM
+          len: 16
+        -
+          name: Denomination
+          type: ID
+          len: 3
+
+MOC:
+    name: Money and Charge Code
+    len: 504
+    components:
+        -
+          name: MonetaryAmount
+          type: MO
+          len: 20
+        -
+          name: ChargeCode
+          type: CE
+          len: 483
+
+MSG:
+    name: Message Type
+    len: 15
+    components:
+        -
+          name: MessageCode
+          required: true
+          type: ID
+          len: 3
+        -
+          name: TriggerEvent
+          required: true
+          type: ID
+          len: 3
+        -
+          name: MessageStructure
+          required: true
+          type: ID
+          len: 7
+
+NDL:
+    name: Name with Date and Location
+    len: 835
+    components:
+        -
+          name: Name
+          type: CNN
+          len: 406
+        -
+          name: StartDateTime
+          type: TS
+          len: 26
+        -
+          name: EndDateTime
+          type: TS
+          len: 26
+        -
+          name: PointOfCare
+          type: IS
+          len: 20
+        -
+          name: Room
+          type: IS
+          len: 20
+        -
+          name: Bed
+          type: IS
+          len: 20
+        -
+          name: Facility
+          type: HD
+          len: 227
+        -
+          name: LocationStatus
+          type: IS
+          len: 20
+        -
+          name: PatientLocationType
+          type: IS
+          len: 20
+        -
+          name: Building
+          type: IS
+          len: 20
+        -
+          name: Floor
+          type: IS
+          len: 20
+
+NM:
+    name: Numeric
+    len: 16
+
+OSD:
+    name: Order Sequence Definition
+    len: 110
+    components:
+        -
+          name: SequenceResultsFlag
+          required: true
+          type: ID
+          len: 1
+        -
+          name: PlacerOrderNumberEntityIdentifier
+          required: true
+          type: ST
+          len: 15
+        -
+          name: PlacerOrderNumberNamespaceId
+          type: IS
+          len: 6
+        -
+          name: FillerOrderNumberEntityIdentifier
+          required: true
+          type: ST
+          len: 15
+        -
+          name: FillerOrderNumberNamespaceId
+          type: IS
+          len: 6
+        -
+          name: SequenceConditionValue
+          type: ST
+          len: 12
+        -
+          name: MaximumNumberOfRepeats
+          type: NM
+          len: 3
+        -
+          name: PlacerOrderNumberUniversalId
+          required: true
+          type: ST
+          len: 15
+        -
+          name: PlacerOrderNumberUniversalIdType
+          type: ID
+          len: 6
+        -
+          name: FillerOrderNumberUniversalId
+          required: true
+          type: ST
+          len: 15
+        -
+          name: FillerOrderNumberUniversalIdType
+          type: ID
+          len: 6
+
+PL:
+    name: Person Location
+    len: 1230
+    components:
+        -
+          name: PointOfCare
+          type: IS
+          len: 20
+        -
+          name: Room
+          type: IS
+          len: 20
+        -
+          name: Bed
+          type: IS
+          len: 20
+        -
+          name: Facility
+          type: HD
+          len: 227
+        -
+          name: LocationStatus
+          type: IS
+          len: 20
+        -
+          name: PersonLocationType
+          type: IS
+          len: 20
+        -
+          name: Building
+          type: IS
+          len: 20
+        -
+          name: Floor
+          type: IS
+          len: 20
+        -
+          name: LocationDescription
+          type: ST
+          len: 199
+        -
+          name: ComprehensiveLocationIdentifier
+          type: EI
+          len: 427
+        -
+          name: AssigningAuthorityForLocation
+          type: HD
+          len: 227
+
+PRL:
+    name: Parent Result Link
+    len: 755
+    components:
+        -
+          name: ParentObservationIdentifier
+          required: true
+          type: CE
+          len: 483
+        -
+          name: ParentObservationSubIdentifier
+          type: ST
+          len: 20
+        -
+          name: ParentObservationValueDescriptor
+          type: TX
+          len: 250
+
+PT:
+    name: Processing Type
+    len: 3
+    components:
+        -
+          name: ProcessingId
+          type: ID
+          len: 1
+        -
+          name: ProcessingMode
+          type: ID
+          len: 1
+
+RI:
+    name: Repeat Interval
+    len: 206
+    components:
+        -
+          name: RepeatPattern
+          type: IS
+          len: 6
+        -
+          name: ExplicitTimeInterval
+          type: ST
+          len: 199
+
+SAD:
+    name: Street Address
+    len: 184
+    components:
+        -
+          name: StreetOrMailingAddress
+          type: ST
+          len: 120
+        -
+          name: StreetName
+          type: ST
+          len: 50
+        -
+          name: DwellingNumber
+          type: ST
+          len: 12
+
+SI:
+    name: Sequence ID
+    len: 4
+    extends: NM
+
+SPS:
+    name: Specimen Source
+    len: 4436
+    components:
+        -
+          name: SpecimenSourceNameOrCode
+          type: CWE
+          len: 705
+        -
+          name: Additives
+          type: CWE
+          len: 705
+        -
+          name: SpecimenCollectionMethod
+          type: TX
+          len: 200
+        -
+          name: BodySite
+          type: CWE
+          len: 705
+        -
+          name: SiteModifier
+          type: CWE
+          len: 705
+        -
+          name: CollectionMethodModifierCode
+          type: CWE
+          len: 705
+        -
+          name: SpecimenRole
+          type: CWE
+          len: 705
+
+ST:
+    name: String
+    len: 199
+
+TQ:
+    name: Timing Quantity
+    len: 1545
+    components:
+        -
+          name: Quantity
+          type: CQ
+          len: 267
+        -
+          name: Interval
+          type: RI
+          len: 206
+        -
+          name: Duration
+          type: ST
+          len: 6
+        -
+          name: StartDateTime
+          type: TS
+          len: 26
+        -
+          name: EndDateTime
+          type: TS
+          len: 26
+        -
+          name: Priority
+          type: ST
+          len: 6
+        -
+          name: Condition
+          type: ST
+          len: 199
+        -
+          name: Text
+          type: TX
+          len: 200
+        -
+          name: Conjunction
+          type: ID
+          len: 1
+        -
+          name: OrderSequencing
+          type: OSD
+          len: 110
+        -
+          name: OccurrenceDuration
+          type: CE
+          len: 483
+        -
+          name: TotalOccurrences
+          type: NM
+          len: 4
+
+TS:
+    name: Time Stamp
+    len: 26
+    components:
+        -
+          name: Time
+          required: true
+          type: DTM
+          len: 24
+        -
+          name: DegreeOfPrecision
+          type: ID
+          len: 1
+
+TX:
+    name: Text Data
+
+VID:
+    name: Version Identifier
+    len: 60
+    components:
+        -
+          name: VersionId
+          type: ID
+          len: 5
+        -
+          name: InternationalisationCode
+          type: CE
+          len: 483
+        -
+          name: InternationalisationVersionId
+          type: CE
+          len: 483
+
+XAD:
+    name: Extended Address
+    len: 631
+    components:
+        -
+          name: StreetAddress
+          type: SAD
+          len: 184
+        -
+          name: OtherDesignation
+          type: ST
+          len: 120
+        -
+          name: City
+          type: ST
+          len: 50
+        -
+          name: StateOrProvince
+          type: ST
+          len: 50
+        -
+          name: ZipOrPostalCode
+          type: ST
+          len: 12
+        -
+          name: Country
+          type: ID
+          len: 3
+        -
+          name: AddressType
+          type: ID
+          len: 3
+        -
+          name: OtherGeographicDesignation
+          type: ST
+          len: 50
+        -
+          name: CountyParishCode
+          type: IS
+          len: 20
+        -
+          name: CensusTract
+          type: IS
+          len: 20
+        -
+          name: AddressRepresentationCode
+          type: ID
+          len: 1
+        -
+          name: AddressValidityRange
+          deprecated: true
+          type: DR
+          len: 53
+        -
+          name: EffectiveDate
+          type: TS
+          len: 26
+        -
+          name: ExpirationDate
+          type: TS
+          len: 26
+
+XCN:
+    name: Extended Composite ID Number and Name for Persons
+    len: 3002
+    components:
+        -
+          name: IdNumber
+          type: ST
+          len: 15
+        -
+          name: FamilyName
+          type: FN
+          len: 194
+        -
+          name: GivenName
+          type: ST
+          len: 30
+        -
+          name: SecondNames
+          type: ST
+          len: 30
+        -
+          name: Suffix    # e.g. Jnr, III
+          type: ST
+          len: 20
+        -
+          name: Prefix    # e.g. Dr
+          type: ST
+          len: 20
+        -
+          name: Degree
+          deprecated: true
+          type: IS
+          len: 5          # deprecated
+        -
+          name: SourceTable
+          type: IS
+          len: 4
+        -
+          name: AssigningAuthority
+          type: HD
+          len: 227
+        -
+          name: NameTypeCode
+          type: ID
+          len: 1
+        -
+          name: IdentifierCheckDigit
+          type: ST
+          len: 1
+        -
+          name: CheckDigitScheme
+          type: ID
+          len: 3
+        -
+          name: IdentifierTypeCode
+          type: ID
+          len: 5
+        -
+          name: AssigningFacility
+          type: HD
+          len: 227
+        -
+          name: NameRepresentationCode
+          type: ID
+          len: 1
+        -
+          name: NameContext
+          type: CE
+          len: 483
+        -
+          name: NameValidityRange
+          type: DR
+          len: 53
+        -
+          name: NameAssemblyOrder
+          type: ID
+          len: 1
+        -
+          name: EffectiveDate
+          type: TS
+          len: 26
+        -
+          name: ExpirationDate
+          type: TS
+          len: 26
+        -
+          name: ProfessionalSuffix
+          type: ST
+          len: 199
+        -
+          name: AssigningJurisdiction
+          type: CWE
+          len: 705
+        -
+          name: AssigningAgency
+          type: CWE
+          len: 705
+
+XPN:
+    name: Extended Person Name
+    len: 1103
+    components:
+        -
+          name: FamilyName
+          type: FN
+          len: 194
+        -
+          name: GivenName
+          type: ST
+          len: 30
+        -
+          name: SecondNames
+          type: ST
+          len: 30
+        -
+          name: Suffix    # e.g. Jnr, III
+          type: ST
+          len: 20
+        -
+          name: Prefix    # e.g. Dr
+          type: ST
+          len: 20
+        -
+          name: Degree
+          type: IS
+          len: 6
+        -
+          name: NameTypeCode
+          type: ID
+          len: 1
+        -
+          name: NameRepresentationCode
+          type: ID
+          len: 1
+        -
+          name: NameContext
+          type: CE
+          len: 483
+        -
+          name: NameValidityRange
+          type: DR
+          len: 53
+        -
+          name: NameAssemblyOrder
+          type: ID
+          len: 1
+        -
+          name: EffectiveDate
+          type: TS
+          len: 26
+        -
+          name: ExpirationDate
+          type: TS
+          len: 26
+        -
+          name: ProfessionalSuffix
+          type: ST
+          len: 199
+
+XON:
+    name: Extended Composite Name and Identification Number for Organizations
+    len: 567
+    components:
+        -
+          name: OrganisationName
+          type: ST
+          len: 50
+        -
+          name: OrganisationNameTypeCode
+          type: IS
+          len: 20
+        -
+          name: IdNumber
+          type: NM
+          len: 4
+        -
+          name: CheckDigit
+          type: NM
+          len: 1
+        -
+          name: CheckDigitScheme
+          type: ID
+          len: 3
+        -
+          name: AssigningAuthority
+          type: HD
+          len: 227
+        -
+          name: IdentifierTypeCode
+          type: ID
+          len: 5
+        -
+          name: AssigningFacility
+          type: HD
+          len: 227
+        -
+          name: NameRepresentationCode
+          type: ID
+          len: 1
+        -
+          name: OrganisationIdentifier
+          type: ST
+          len: 20
+
+XTN:
+    name: Extended Telecommunication Number
+    len: 850
+    components:
+        -
+          name: TelephoneNumber
+          deprecated: true
+          type: ST
+          len: 199
+        -
+          name: TelecommunicationUseCode
+          type: ID
+          len: 3
+        -
+          name: TelepcommunicationEquipmentType
+          type: ID
+          len: 8
+        -
+          name: EmailAddress
+          type: ST
+          len: 199
+        -
+          name: CountryCode
+          type: NM
+          len: 3
+        -
+          name: AreaCityCode
+          type: NM
+          len: 5
+        -
+          name: LocalNumber
+          type: NM
+          len: 9
+        -
+          name: Extension
+          type: NM
+          len: 5
+        -
+          name: AnyText
+          type: ST
+          len: 199
+        -
+          name: ExtensionPrefix
+          type: ST
+          len: 4
+        -
+          name: SpeedDialCode
+          type: ST
+          len: 6
+        -
+          name: UnformattedTelephoneNumber
+          type: ST
+          len: 199
