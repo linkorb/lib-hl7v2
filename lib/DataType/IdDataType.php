@@ -7,4 +7,5 @@ namespace Hl7v2\DataType;
  */
 class IdDataType extends StDataType
 {
+    const MAX_LEN = null;
 }

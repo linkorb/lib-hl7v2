@@ -325,6 +325,7 @@ HD:
 ID:
     name: Coded value for HL7 tables
     extends: ST
+    len: ~
 
 IS:
     name: Coded value for user-defined tables
