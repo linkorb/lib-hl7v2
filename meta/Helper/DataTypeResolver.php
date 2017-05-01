@@ -47,7 +47,16 @@ class DataTypeResolver
             }
         }
 
-        return $graph->resolve();
+        $path = $graph->resolve();
+
+        foreach (array_keys($nodes) as $element) {
+            if (in_array($element, $path)) {
+                continue;
+            }
+            array_push($path, $element);
+        }
+
+        return $path;
     }
 
     public function isComponentType($typeId)
