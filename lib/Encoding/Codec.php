@@ -460,9 +460,6 @@ class Codec
             $length = $pos->eoc - $pos->soc;
         }
 
-        $pos->ptr = $pos->eoc;
-        $pos->state = PositionalState::END_COMPONENT;
-
         return mb_substr($data->value, $pos->soc, $length, $param->getCharacterEncoding());
     }
 
@@ -524,9 +521,6 @@ class Codec
         if (false !== $pos->eosc) {
             $length = $pos->eosc - $pos->sosc;
         }
-
-        $pos->ptr = $pos->eosc;
-        $pos->state = PositionalState::END_SUBCOMPONENT;
 
         return mb_substr($data->value, $pos->sosc, $length, $param->getCharacterEncoding());
     }
