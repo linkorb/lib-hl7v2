@@ -230,6 +230,32 @@ DTM:
     name: Date/Time
     len: 24
 
+ED:
+    name: Encapsulated Data
+    components:
+        -
+          name: SourceApplication
+          type: HD
+          len: 227
+        -
+          name: TypeOfData
+          required: true
+          type: ID
+          len: 9
+        -
+          name: DataSubtype
+          type: ID
+          len: 18
+        -
+          name: Encoding
+          required: true
+          type: ID
+          len: 6
+        -
+          name: Data
+          required: true
+          type: TX
+
 EI:
     name: Entity Identifier
     len: 427
@@ -303,6 +329,11 @@ FN:
           name: SurnameFromPartner
           type: ST
           len: 50
+
+FT:
+    name: Formatted Text
+    extends: ST
+    len: ~
 
 HD:
     name: Heirarchical Designator
