@@ -4,13 +4,23 @@ namespace Hl7v2\Meta\Generator\Segment;
 
 use Hl7v2\Meta\Helper\DataTypeContext;
 use Hl7v2\Meta\Helper\SegmentContext;
+use Hl7v2\Meta\Helper\SegmentField;
 use Hl7v2\Meta\Helper\Util;
 
 class SegmentGenerator
 {
     protected $constants = [];
+    /**
+     * @var \Hl7v2\Meta\Helper\DataTypeContext
+     */
     protected $dataTypeContext;
+    /**
+     * @var \Hl7v2\Meta\Helper\SegmentContext
+     */
     protected $segmentContext;
+    /**
+     * @var \Hl7v2\Meta\Helper\SegmentField[]
+     */
     protected $fields;
     protected $lastRequiredFieldnum;
     protected $segmentId;
@@ -238,7 +248,7 @@ class SegmentGenerator
         return array_slice($b, 0, -1);
     }
 
-    private function mshDatagramBody(&$b, $f)
+    private function mshDatagramBody(&$b, SegmentField $f)
     {
         if ($f->num === 1) {
             $b[] = '$encodingParams = $data->getEncodingParameters();';
@@ -288,7 +298,7 @@ class SegmentGenerator
         return lcfirst($fieldName);
     }
 
-    private function adderForRepeatedComponentType($f)
+    private function adderForRepeatedComponentType(SegmentField $f)
     {
         $args = [];
         $methodName =  "addField{$f->name}";
@@ -331,7 +341,7 @@ class SegmentGenerator
         return [$methodName, $args, $body];
     }
 
-    private function setterForComponentType($f)
+    private function setterForComponentType(SegmentField $f)
     {
         $args = [];
         $methodName =  "setField{$f->name}";
@@ -363,7 +373,7 @@ class SegmentGenerator
         return [$methodName, $args, $body];
     }
 
-    private function adderForRepeatedSimpleType($f)
+    private function adderForRepeatedSimpleType(SegmentField $f)
     {
         $methodName =  "addField{$f->name}";
         $propertyName = $this->fieldNameToPropertyName($f->name);
@@ -390,7 +400,7 @@ class SegmentGenerator
         return [$methodName, [['string', 'value', true]], $body];
     }
 
-    private function setterForSimpleType($f)
+    private function setterForSimpleType(SegmentField $f)
     {
         $methodName =  "setField{$f->name}";
         $propertyName = $this->fieldNameToPropertyName($f->name);

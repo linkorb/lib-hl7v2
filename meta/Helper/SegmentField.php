@@ -4,15 +4,54 @@ namespace Hl7v2\Meta\Helper;
 
 class SegmentField
 {
+    /**
+     * Textual Field ID (e.g. MSH.18)
+     * @var string
+     */
     public $id;
+    /**
+     * Permitted length of Field.
+     * @var null|int
+     */
     public $len;
+    /**
+     * Name of Field (e.g. CharacterEncoding).
+     * @var string
+     */
     public $name;
+    /**
+     * Numerical index of Field (beginning with one).
+     * @var int
+     */
     public $num;
+    /**
+     * True when the value of the Field may repeat.
+     * @var bool
+     */
     public $repeated = false;
+    /**
+     * Maximum number of value repetitions.
+     * @var null|int
+     */
     public $repeatedCount;
+    /**
+     * True when a value of the Field is mandatory.
+     * @var bool
+     */
     public $required = false;
+    /**
+     * True when the Field is reserved for future use.
+     * @var bool
+     */
     public $reserved = false;
+    /**
+     * DataType type name (e.g. ID).
+     * @var null|string
+     */
     public $type;
+    /**
+     * @var \Hl7v2\Meta\Helper\DataTypeResolver
+     */
     public $typeResolver;
 
     public function __construct($id, $num, DataTypeResolver $typeResolver, $fieldInfo)
