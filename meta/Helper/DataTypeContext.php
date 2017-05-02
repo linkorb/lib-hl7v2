@@ -5,6 +5,7 @@ namespace Hl7v2\Meta\Helper;
 class DataTypeContext
 {
     const CLASS_SUFFIX = 'DataType';
+    const INTERFACE_NAME = 'DataTypeInterface';
 
     protected $namespace;
 
@@ -16,6 +17,11 @@ class DataTypeContext
     public function getNamespace()
     {
         return $this->namespace;
+    }
+
+    public function interfaceClass()
+    {
+        return "{$this->namespace}\\" . self::INTERFACE_NAME;
     }
 
     /**

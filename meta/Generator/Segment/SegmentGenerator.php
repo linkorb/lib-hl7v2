@@ -81,7 +81,12 @@ class SegmentGenerator
                 $properties[] = $p;
                 continue;
             }
-            $type = '\\' . $this->dataTypeContext->dataTypeIdToClass($f->type);
+            $type = '\\';
+            if ($f->variable) {
+                $type .= $this->dataTypeContext->interfaceClass();
+            } else {
+                $type .= $this->dataTypeContext->dataTypeIdToClass($f->type);
+            }
             if ($f->repeated) {
                 $type .= '[]';
             }
@@ -107,18 +112,32 @@ class SegmentGenerator
             if ($f->reserved) {
                 continue;
             }
-            if ($f->isComponentType() && $f->repeated) {
-                $mutators[] = $this->adderForRepeatedComponentType($f);
-            } elseif ($f->isComponentType()) {
-                $mutators[] = $this->setterForComponentType($f);
-            } elseif ($f->repeated) {
-                $mutators[] = $this->adderForRepeatedSimpleType($f);
+            if (!$f->variable) {
+                $mutators[] = $this->doMutator($f);
             } else {
-                $mutators[] = $this->setterForSimpleType($f);
+                $f->rewindVariableTypes();
+                for ($i=0; $i<sizeof($f->variableTypes); $i++) {
+                    $f->currentVariableType();
+                    $mutators[] = $this->doMutator($f);
+                    $f->advanceVariableTypes();
+                }
             }
         }
 
         return $mutators;
+    }
+
+    private function doMutator(SegmentField $f)
+    {
+        if ($f->isComponentType() && $f->repeated) {
+            return $this->adderForRepeatedComponentType($f);
+        } elseif ($f->isComponentType()) {
+            return $this->setterForComponentType($f);
+        } elseif ($f->repeated) {
+            return $this->adderForRepeatedSimpleType($f);
+        } else {
+            return $this->setterForSimpleType($f);
+        }
     }
 
     public function getAccessors()
@@ -130,7 +149,12 @@ class SegmentGenerator
                 continue;
             }
             $propertyName = $f->nameForProperty;
-            $returnType = $this->dataTypeContext->dataTypeIdToClass($f->type);
+            $returnType = null;
+            if ($f->variable) {
+                $returnType = $this->dataTypeContext->interfaceClass();
+            } else {
+                $returnType = $this->dataTypeContext->dataTypeIdToClass($f->type);
+            }
             if ($f->repeated) {
                 $returnType .= '[]';
             }
@@ -171,81 +195,107 @@ class SegmentGenerator
                 $b[]= '';
                 continue;
             }
-            $properties = [];
-            $subcompSequence = null;
-            $subcompSequenceAsString = '';
-            if ($f->isComponentType()) {
-                $subcompSequence = $f->getSubcomponentInfo();
-                $subcompSequenceAsString = $this->sequenceToString($subcompSequence);
-                foreach ($f->getComponentInfo() as $componentMethod => $componentProperties) {
-                    foreach ($componentProperties as $componentName => $_) {
-                        $properties[] = "\$$componentName";
-                    }
-                }
-            }
-            if ($f->isComponentType() && $f->repeated) {
-                $pCount = sizeof($properties);
-                $b[] = "\$sequence = {$subcompSequenceAsString};";
-                $b[] = "\$repetitions = [];";
-                $b[] = "\$first = true;";
-                $b[] = "while (\$first || false !== \$codec->advanceToRepetition(\$data)) {";
-                if ($f->len) {
-                    $b[] = "    \$this->checkRepetitionLength('{$f->name}', {$f->len}, \$data->getPositionalState());";
-                }
-                $b[] = "    \$repetitions[] = \$this->extractComponents(\$data, \$codec, \$sequence);";
-                $b[] = "    \$first = false;";
-                $b[] = "}";
-                $b[] = "foreach (\$repetitions as \$components) {";
-                $i = 0;
-                $this->sequencedListUnpack($subcompSequence, $b, $i, 4, $properties);
-                $b = array_slice($b, 0, -1);
-                $b[] = "    ) = \$components;";
-                $b[] = "    \$this->addField{$f->name}(";
-                for ($i = 0; $i+1 < $pCount; $i++) {
-                    $b[] = "        {$properties[$i]},";
-                }
-                $b[] = "        {$properties[$pCount-1]}";
-                $b[] = "    );";
-                $b[] = "}";
-            } elseif ($f->isComponentType()) {
-                if ($f->len) {
-                    $b[] = "\$this->checkFieldLength('{$f->name}', {$f->len}, \$data->getPositionalState());";
-                }
-                $pCount = sizeof($properties);
-                $b[] = "\$sequence = {$subcompSequenceAsString};";
-                $i = 0;
-                $this->sequencedListUnpack($subcompSequence, $b, $i, 0, $properties);
-                $b = array_slice($b, 0, -1);
-                $b[] = ") = \$this->extractComponents(\$data, \$codec, \$sequence);";
-                $b[] = "\$this->setField{$f->name}(";
-                for ($i = 0; $i+1 < $pCount; $i++) {
-                    $b[] = "    {$properties[$i]},";
-                }
-                $b[] = "    {$properties[$pCount-1]}";
-                $b[] = ");";
-            } elseif ($f->repeated) {
-                $b[] = "\$repetitions = [];";
-                $b[] = "\$first = true;";
-                $b[] = "while (\$first || false !== \$codec->advanceToRepetition(\$data)) {";
-                if ($f->len) {
-                    $b[] = "    \$this->checkRepetitionLength('{$f->name}', {$f->len}, \$data->getPositionalState());";
-                }
-                $b[] = "    \$repetitions[] = \$this->extractComponents(\$data, \$codec, [1]);";
-                $b[] = "    \$first = false;";
-                $b[] = "}";
-                $b[] = "foreach (\$repetitions as list(\$value,)) {";
-                $b[] = "    \$this->addField{$f->name}(\$value);";
-                $b[] = '}';
+            if (!$f->variable) {
+                $this->doDatagramExtraction($b, $f);
             } else {
-                if ($f->len) {
-                    $b[] = "\$this->checkFieldLength('{$f->name}', {$f->len}, \$data->getPositionalState());";
+                $f->rewindVariableTypes();
+                $typeField = $this->fields[$f->variableTypesIndicatorFieldnum - 1]->name;
+                for ($i=0; $i<sizeof($f->variableTypes); $i++) {
+                    $f->currentVariableType();
+                    $openCond = "if ('{$f->type}' === \$this->getField{$typeField}()->getValue()) {";
+                    if ($i) {
+                        $openCond = "} else{$openCond}";
+                    }
+                    $b[] = $openCond;
+                    $this->doDatagramExtraction($b, $f, 4);
+                    $f->advanceVariableTypes();
                 }
-                $b[] = "\$this->setField{$f->name}(\$codec->extractComponent(\$data));";
+                if (sizeof($f->variableTypes)) {
+                    $b[] = '}';
+                }
             }
             $b[] = '';
         }
 
         return array_slice($b, 0, -1);
+    }
+
+    private function doDatagramExtraction(&$b, SegmentField $f, $indentLen = 0)
+    {
+        $properties = [];
+        $subcompSequence = null;
+        $subcompSequenceAsString = '';
+        if ($f->isComponentType()) {
+            $subcompSequence = $f->getSubcomponentInfo();
+            $subcompSequenceAsString = $this->sequenceToString($subcompSequence);
+            foreach ($f->getComponentInfo() as $componentMethod => $componentProperties) {
+                foreach ($componentProperties as $componentName => $_) {
+                    $properties[] = "\$$componentName";
+                }
+            }
+        }
+        $in1 = str_repeat(' ', $indentLen);
+        $in2 = str_repeat(' ', $indentLen+4);
+        $in3 = str_repeat(' ', $indentLen+8);
+        if ($f->isComponentType() && $f->repeated) {
+            $pCount = sizeof($properties);
+            $b[] = "{$in1}\$sequence = {$subcompSequenceAsString};";
+            $b[] = "{$in1}\$repetitions = [];";
+            $b[] = "{$in1}\$first = true;";
+            $b[] = "{$in1}while (\$first || false !== \$codec->advanceToRepetition(\$data)) {";
+            if ($f->len) {
+                $b[] = "{$in2}\$this->checkRepetitionLength('{$f->name}', {$f->len}, \$data->getPositionalState());";
+            }
+            $b[] = "{$in2}\$repetitions[] = \$this->extractComponents(\$data, \$codec, \$sequence);";
+            $b[] = "{$in2}\$first = false;";
+            $b[] = "{$in1}}";
+            $b[] = "{$in1}foreach (\$repetitions as \$components) {";
+            $i = 0;
+            $this->sequencedListUnpack($subcompSequence, $b, $i, $indentLen+4, $properties);
+            $b = array_slice($b, 0, -1);
+            $b[] = "{$in2}) = \$components;";
+            $b[] = "{$in2}\$this->addField{$f->name}{$f->suffixForMutator}(";
+            for ($i = 0; $i+1 < $pCount; $i++) {
+                $b[] = "{$in3}{$properties[$i]},";
+            }
+            $b[] = "{$in3}{$properties[$pCount-1]}";
+            $b[] = "{$in2});";
+            $b[] = "{$in1}}";
+        } elseif ($f->isComponentType()) {
+            if ($f->len) {
+                $b[] = "{$in1}\$this->checkFieldLength('{$f->name}', {$f->len}, \$data->getPositionalState());";
+            }
+            $pCount = sizeof($properties);
+            $b[] = "{$in1}\$sequence = {$subcompSequenceAsString};";
+            $i = 0;
+            $this->sequencedListUnpack($subcompSequence, $b, $i, $indentLen+0, $properties);
+            $b = array_slice($b, 0, -1);
+            $b[] = "{$in1}) = \$this->extractComponents(\$data, \$codec, \$sequence);";
+            $b[] = "{$in1}\$this->setField{$f->name}{$f->suffixForMutator}(";
+            for ($i = 0; $i+1 < $pCount; $i++) {
+                $b[] = "{$in2}{$properties[$i]},";
+            }
+            $b[] = "{$in2}{$properties[$pCount-1]}";
+            $b[] = "{$in1});";
+        } elseif ($f->repeated) {
+            $b[] = "{$in1}\$repetitions = [];";
+            $b[] = "{$in1}\$first = true;";
+            $b[] = "{$in1}while (\$first || false !== \$codec->advanceToRepetition(\$data)) {";
+            if ($f->len) {
+                $b[] = "{$in2}\$this->checkRepetitionLength('{$f->name}', {$f->len}, \$data->getPositionalState());";
+            }
+            $b[] = "{$in2}\$repetitions[] = \$this->extractComponents(\$data, \$codec, [1]);";
+            $b[] = "{$in2}\$first = false;";
+            $b[] = "{$in1}}";
+            $b[] = "{$in1}foreach (\$repetitions as list(\$value,)) {";
+            $b[] = "{$in2}\$this->addField{$f->name}{$f->suffixForMutator}(\$value);";
+            $b[] = "{$in1}}";
+        } else {
+            if ($f->len) {
+                $b[] = "{$in1}\$this->checkFieldLength('{$f->name}', {$f->len}, \$data->getPositionalState());";
+            }
+            $b[] = "{$in1}\$this->setField{$f->name}{$f->suffixForMutator}(\$codec->extractComponent(\$data));";
+        }
     }
 
     private function mshDatagramBody(&$b, SegmentField $f)
@@ -296,7 +346,7 @@ class SegmentGenerator
     private function adderForRepeatedComponentType(SegmentField $f)
     {
         $args = [];
-        $methodName =  "addField{$f->name}";
+        $methodName =  "addField{$f->name}{$f->suffixForMutator}";
         $propertyName = $f->nameForProperty;
         $body = [
             "\${$propertyName} = \$this",
@@ -339,7 +389,7 @@ class SegmentGenerator
     private function setterForComponentType(SegmentField $f)
     {
         $args = [];
-        $methodName =  "setField{$f->name}";
+        $methodName =  "setField{$f->name}{$f->suffixForMutator}";
         $propertyName = $f->nameForProperty;
         $body = [
             "\$this->{$propertyName} = \$this",
@@ -370,7 +420,7 @@ class SegmentGenerator
 
     private function adderForRepeatedSimpleType(SegmentField $f)
     {
-        $methodName =  "addField{$f->name}";
+        $methodName =  "addField{$f->name}{$f->suffixForMutator}";
         $propertyName = $f->nameForProperty;
         $body = [
             "\${$propertyName} = \$this",
@@ -397,7 +447,7 @@ class SegmentGenerator
 
     private function setterForSimpleType(SegmentField $f)
     {
-        $methodName =  "setField{$f->name}";
+        $methodName =  "setField{$f->name}{$f->suffixForMutator}";
         $propertyName = $f->nameForProperty;
         $body = [
             "\$this->{$propertyName} = \$this",
