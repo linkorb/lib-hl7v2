@@ -73,7 +73,7 @@ class SegmentGenerator
 
         foreach ($this->fields as $f) {
             $p = [
-                $this->fieldNameToPropertyName($f->name),
+                $f->nameForProperty,
             ];
             if ($f->reserved) {
                 $p[] = false;
@@ -129,7 +129,7 @@ class SegmentGenerator
             if ($f->reserved) {
                 continue;
             }
-            $propertyName = $this->fieldNameToPropertyName($f->name);
+            $propertyName = $f->nameForProperty;
             $returnType = $this->dataTypeContext->dataTypeIdToClass($f->type);
             if ($f->repeated) {
                 $returnType .= '[]';
@@ -293,16 +293,11 @@ class SegmentGenerator
         return substr($s, 0, -1) . ']';
     }
 
-    private function fieldNameToPropertyName($fieldName)
-    {
-        return lcfirst($fieldName);
-    }
-
     private function adderForRepeatedComponentType(SegmentField $f)
     {
         $args = [];
         $methodName =  "addField{$f->name}";
-        $propertyName = $this->fieldNameToPropertyName($f->name);
+        $propertyName = $f->nameForProperty;
         $body = [
             "\${$propertyName} = \$this",
             "    ->dataTypeFactory",
@@ -345,7 +340,7 @@ class SegmentGenerator
     {
         $args = [];
         $methodName =  "setField{$f->name}";
-        $propertyName = $this->fieldNameToPropertyName($f->name);
+        $propertyName = $f->nameForProperty;
         $body = [
             "\$this->{$propertyName} = \$this",
             "    ->dataTypeFactory",
@@ -376,7 +371,7 @@ class SegmentGenerator
     private function adderForRepeatedSimpleType(SegmentField $f)
     {
         $methodName =  "addField{$f->name}";
-        $propertyName = $this->fieldNameToPropertyName($f->name);
+        $propertyName = $f->nameForProperty;
         $body = [
             "\${$propertyName} = \$this",
             "    ->dataTypeFactory",
@@ -403,7 +398,7 @@ class SegmentGenerator
     private function setterForSimpleType(SegmentField $f)
     {
         $methodName =  "setField{$f->name}";
-        $propertyName = $this->fieldNameToPropertyName($f->name);
+        $propertyName = $f->nameForProperty;
         $body = [
             "\$this->{$propertyName} = \$this",
             "    ->dataTypeFactory",

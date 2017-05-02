@@ -20,6 +20,11 @@ class SegmentField
      */
     public $name;
     /**
+     * Name of Segment object property (e.g. $characterEncoding).
+     * @var string
+     */
+    public $nameForProperty;
+    /**
      * Numerical index of Field (beginning with one).
      * @var int
      */
@@ -59,6 +64,8 @@ class SegmentField
         $this->id = $id;
         $this->num = $num;
         $this->name = $this->prepareName($fieldInfo['name']);
+        $this->nameForProperty = lcfirst($this->name);
+
         if (array_key_exists('reserved', $fieldInfo)
             && true === $fieldInfo['reserved']
         ) {
