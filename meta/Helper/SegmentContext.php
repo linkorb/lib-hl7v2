@@ -18,12 +18,24 @@ class SegmentContext
         return $this->namespace;
     }
 
-    public function segmentIdToFQClassName($segmentId)
+    /**
+     * Fully qualified class name of the Segment with the specified $segmentId.
+     *
+     * @param string $typeId
+     * @return string
+     */
+    public function segmentIdToClass($segmentId)
     {
         $className = $this->segmentIdToClassName($segmentId);
         return "{$this->namespace}\\{$className}";
     }
 
+    /**
+     * Class name of the Segment with the specified $segmentId.
+     *
+     * @param string $typeId
+     * @return string
+     */
     public function segmentIdToClassName($segmentId)
     {
         return ucfirst(strtolower($segmentId)) . self::CLASS_SUFFIX;

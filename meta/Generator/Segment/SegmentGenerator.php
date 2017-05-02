@@ -43,7 +43,7 @@ class SegmentGenerator
 
     public function getClass()
     {
-        return $this->segmentContext->segmentIdToFQClassName($this->segmentId);
+        return $this->segmentContext->segmentIdToClass($this->segmentId);
     }
 
     public function getDescription()
@@ -71,7 +71,7 @@ class SegmentGenerator
                 $properties[] = $p;
                 continue;
             }
-            $type = '\\' . $this->dataTypeContext->dataTypeIdToFQClassName($f->type);
+            $type = '\\' . $this->dataTypeContext->dataTypeIdToClass($f->type);
             if ($f->repeated) {
                 $type .= '[]';
             }
@@ -120,7 +120,7 @@ class SegmentGenerator
                 continue;
             }
             $propertyName = $this->fieldNameToPropertyName($f->name);
-            $returnType = $this->dataTypeContext->dataTypeIdToFQClassName($f->type);
+            $returnType = $this->dataTypeContext->dataTypeIdToClass($f->type);
             if ($f->repeated) {
                 $returnType .= '[]';
             }

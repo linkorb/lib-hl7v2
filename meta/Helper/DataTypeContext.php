@@ -18,12 +18,24 @@ class DataTypeContext
         return $this->namespace;
     }
 
-    public function dataTypeIdToFQClassName($typeId)
+    /**
+     * Fully qualified class name of the DataType with the specified typeId.
+     *
+     * @param string $typeId
+     * @return string
+     */
+    public function dataTypeIdToClass($typeId)
     {
         $className = $this->dataTypeIdToClassName($typeId);
         return "{$this->namespace}\\{$className}";
     }
 
+    /**
+     * Class name of the DataType with the specified typeId.
+     *
+     * @param string $typeId
+     * @return string
+     */
     public function dataTypeIdToClassName($dataTypeId)
     {
         return ucfirst(strtolower($dataTypeId)) . self::CLASS_SUFFIX;

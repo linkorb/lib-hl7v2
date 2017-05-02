@@ -34,7 +34,7 @@ abstract class AbstractDataTypeGenerator implements DataTypeGeneratorInterface
 
     public function getClass()
     {
-        return $this->context->dataTypeIdToFQClassName($this->typeId);
+        return $this->context->dataTypeIdToClass($this->typeId);
     }
 
     public function getDescription()

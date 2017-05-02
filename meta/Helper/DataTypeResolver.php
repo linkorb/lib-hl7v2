@@ -76,7 +76,7 @@ class DataTypeResolver
     public function getReflectionClass($typeId)
     {
         if (! array_key_exists($typeId, $this->types)) {
-            $class = $this->context->dataTypeIdToFQClassName($typeId);
+            $class = $this->context->dataTypeIdToClass($typeId);
             if (!class_exists($class)) {
                 throw new RuntimeException("Cannot perform Reflection of DataType {$typeId}; class cannot be loaded.");
             }

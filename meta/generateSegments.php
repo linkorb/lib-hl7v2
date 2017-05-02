@@ -56,7 +56,7 @@ foreach ($segments as $name => $attr) {
 }
 $missingTypes = [];
 foreach (array_keys($t) as $id) {
-    if (!class_exists($dataTypeContext->dataTypeIdToFQClassName($id))) {
+    if (!class_exists($dataTypeContext->dataTypeIdToClass($id))) {
         $missingTypes[] = $id;
         continue;
     }
