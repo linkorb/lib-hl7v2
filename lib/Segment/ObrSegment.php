@@ -2600,7 +2600,7 @@ class ObrSegment extends AbstractSegment
         // OBR.1
         if (false === $codec->advanceToField($data)) {
             throw new SegmentError(
-                'MSH Segment data contains too few required fields.'
+                'OBR Segment data contains too few required fields.'
             );
         }
         $this->checkFieldLength('SetId', 4, $data->getPositionalState());
@@ -2609,7 +2609,7 @@ class ObrSegment extends AbstractSegment
         // OBR.2
         if (false === $codec->advanceToField($data)) {
             throw new SegmentError(
-                'MSH Segment data contains too few required fields.'
+                'OBR Segment data contains too few required fields.'
             );
         }
         $this->checkFieldLength('PlacerOrderNumber', 22, $data->getPositionalState());
@@ -2630,7 +2630,7 @@ class ObrSegment extends AbstractSegment
         // OBR.3
         if (false === $codec->advanceToField($data)) {
             throw new SegmentError(
-                'MSH Segment data contains too few required fields.'
+                'OBR Segment data contains too few required fields.'
             );
         }
         $this->checkFieldLength('FillerOrderNumber', 22, $data->getPositionalState());
@@ -2651,7 +2651,7 @@ class ObrSegment extends AbstractSegment
         // OBR.4
         if (false === $codec->advanceToField($data)) {
             throw new SegmentError(
-                'MSH Segment data contains too few required fields.'
+                'OBR Segment data contains too few required fields.'
             );
         }
         $this->checkFieldLength('UniversalServiceIdentifier', 250, $data->getPositionalState());

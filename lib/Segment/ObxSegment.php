@@ -1126,7 +1126,7 @@ class ObxSegment extends AbstractSegment
         // OBX.1
         if (false === $codec->advanceToField($data)) {
             throw new SegmentError(
-                'MSH Segment data contains too few required fields.'
+                'OBX Segment data contains too few required fields.'
             );
         }
         $this->checkFieldLength('SetId', 4, $data->getPositionalState());
@@ -1135,7 +1135,7 @@ class ObxSegment extends AbstractSegment
         // OBX.2
         if (false === $codec->advanceToField($data)) {
             throw new SegmentError(
-                'MSH Segment data contains too few required fields.'
+                'OBX Segment data contains too few required fields.'
             );
         }
         $this->checkFieldLength('ValueType', 2, $data->getPositionalState());
@@ -1144,7 +1144,7 @@ class ObxSegment extends AbstractSegment
         // OBX.3
         if (false === $codec->advanceToField($data)) {
             throw new SegmentError(
-                'MSH Segment data contains too few required fields.'
+                'OBX Segment data contains too few required fields.'
             );
         }
         $this->checkFieldLength('ObservationIdentifier', 250, $data->getPositionalState());
@@ -1169,7 +1169,7 @@ class ObxSegment extends AbstractSegment
         // OBX.4
         if (false === $codec->advanceToField($data)) {
             throw new SegmentError(
-                'MSH Segment data contains too few required fields.'
+                'OBX Segment data contains too few required fields.'
             );
         }
         $this->checkFieldLength('ObservationSubid', 20, $data->getPositionalState());
@@ -1178,7 +1178,7 @@ class ObxSegment extends AbstractSegment
         // OBX.5
         if (false === $codec->advanceToField($data)) {
             throw new SegmentError(
-                'MSH Segment data contains too few required fields.'
+                'OBX Segment data contains too few required fields.'
             );
         }
         $repetitions = [];
@@ -1194,7 +1194,7 @@ class ObxSegment extends AbstractSegment
         // OBX.6
         if (false === $codec->advanceToField($data)) {
             throw new SegmentError(
-                'MSH Segment data contains too few required fields.'
+                'OBX Segment data contains too few required fields.'
             );
         }
         $this->checkFieldLength('Units', 250, $data->getPositionalState());
@@ -1219,7 +1219,7 @@ class ObxSegment extends AbstractSegment
         // OBX.7
         if (false === $codec->advanceToField($data)) {
             throw new SegmentError(
-                'MSH Segment data contains too few required fields.'
+                'OBX Segment data contains too few required fields.'
             );
         }
         $this->checkFieldLength('ReferencesRange', 60, $data->getPositionalState());
@@ -1228,7 +1228,7 @@ class ObxSegment extends AbstractSegment
         // OBX.8
         if (false === $codec->advanceToField($data)) {
             throw new SegmentError(
-                'MSH Segment data contains too few required fields.'
+                'OBX Segment data contains too few required fields.'
             );
         }
         $repetitions = [];
@@ -1245,7 +1245,7 @@ class ObxSegment extends AbstractSegment
         // OBX.9
         if (false === $codec->advanceToField($data)) {
             throw new SegmentError(
-                'MSH Segment data contains too few required fields.'
+                'OBX Segment data contains too few required fields.'
             );
         }
         $this->checkFieldLength('Probability', 5, $data->getPositionalState());
@@ -1254,7 +1254,7 @@ class ObxSegment extends AbstractSegment
         // OBX.10
         if (false === $codec->advanceToField($data)) {
             throw new SegmentError(
-                'MSH Segment data contains too few required fields.'
+                'OBX Segment data contains too few required fields.'
             );
         }
         $repetitions = [];
@@ -1271,7 +1271,7 @@ class ObxSegment extends AbstractSegment
         // OBX.11
         if (false === $codec->advanceToField($data)) {
             throw new SegmentError(
-                'MSH Segment data contains too few required fields.'
+                'OBX Segment data contains too few required fields.'
             );
         }
         $this->checkFieldLength('ObservationResultStatus', 1, $data->getPositionalState());

@@ -2801,7 +2801,7 @@ class Pv1Segment extends AbstractSegment
         // PV1.1
         if (false === $codec->advanceToField($data)) {
             throw new SegmentError(
-                'MSH Segment data contains too few required fields.'
+                'PV1 Segment data contains too few required fields.'
             );
         }
         $this->checkFieldLength('SetId', 4, $data->getPositionalState());
@@ -2810,7 +2810,7 @@ class Pv1Segment extends AbstractSegment
         // PV1.2
         if (false === $codec->advanceToField($data)) {
             throw new SegmentError(
-                'MSH Segment data contains too few required fields.'
+                'PV1 Segment data contains too few required fields.'
             );
         }
         $this->checkFieldLength('PatientClass', 1, $data->getPositionalState());

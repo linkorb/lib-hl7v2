@@ -161,7 +161,7 @@ class SegmentGenerator
             $b[] = 'if (false === $codec->advanceToField($data)) {';
             if ($this->lastRequiredFieldnum >= $f->num) {
                 $b[] = '    throw new SegmentError(';
-                $b[] = '        \'MSH Segment data contains too few required fields.\'';
+                $b[] = "        '{$this->segmentId} Segment data contains too few required fields.'";
                 $b[] = '    );';
             } else {
                 $b[] = '    return false;';

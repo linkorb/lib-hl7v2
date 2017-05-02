@@ -2064,7 +2064,7 @@ class PidSegment extends AbstractSegment
         // PID.1
         if (false === $codec->advanceToField($data)) {
             throw new SegmentError(
-                'MSH Segment data contains too few required fields.'
+                'PID Segment data contains too few required fields.'
             );
         }
         $this->checkFieldLength('SetId', 4, $data->getPositionalState());
@@ -2073,7 +2073,7 @@ class PidSegment extends AbstractSegment
         // PID.2
         if (false === $codec->advanceToField($data)) {
             throw new SegmentError(
-                'MSH Segment data contains too few required fields.'
+                'PID Segment data contains too few required fields.'
             );
         }
         $this->checkFieldLength('PatientId', 20, $data->getPositionalState());
@@ -2154,7 +2154,7 @@ class PidSegment extends AbstractSegment
         // PID.3
         if (false === $codec->advanceToField($data)) {
             throw new SegmentError(
-                'MSH Segment data contains too few required fields.'
+                'PID Segment data contains too few required fields.'
             );
         }
         $sequence = [1,1,1,[1,1,1],1,[1,1,1],1,1,[1,1,1,1,1,1,1,1,1],[1,1,1,1,1,1,1,1,1]];
@@ -2243,7 +2243,7 @@ class PidSegment extends AbstractSegment
         // PID.4
         if (false === $codec->advanceToField($data)) {
             throw new SegmentError(
-                'MSH Segment data contains too few required fields.'
+                'PID Segment data contains too few required fields.'
             );
         }
         $sequence = [1,1,1,[1,1,1],1,[1,1,1],1,1,[1,1,1,1,1,1,1,1,1],[1,1,1,1,1,1,1,1,1]];
@@ -2332,7 +2332,7 @@ class PidSegment extends AbstractSegment
         // PID.5
         if (false === $codec->advanceToField($data)) {
             throw new SegmentError(
-                'MSH Segment data contains too few required fields.'
+                'PID Segment data contains too few required fields.'
             );
         }
         $sequence = [[1,1,1,1,1],1,1,1,1,1,1,1,[1,1,1,1,1,1],[[1,1],[1,1]],1,[1,1],[1,1],1];
