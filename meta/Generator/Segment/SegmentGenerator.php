@@ -182,7 +182,7 @@ class SegmentGenerator
                 $this->mshDatagramBody($b, $f);
                 continue;
             }
-            $b[] = 'if (false === $codec->advanceToField($data)) {';
+            $b[] = 'if (false === $codec->advanceToField($datagram)) {';
             if ($this->lastRequiredFieldnum >= $f->num) {
                 $b[] = '    throw new SegmentError(';
                 $b[] = "        '{$this->segmentId} Segment data contains too few required fields.'";
@@ -242,11 +242,11 @@ class SegmentGenerator
             $b[] = "{$in1}\$sequence = {$subcompSequenceAsString};";
             $b[] = "{$in1}\$repetitions = [];";
             $b[] = "{$in1}\$first = true;";
-            $b[] = "{$in1}while (\$first || false !== \$codec->advanceToRepetition(\$data)) {";
+            $b[] = "{$in1}while (\$first || false !== \$codec->advanceToRepetition(\$datagram)) {";
             if ($f->len) {
-                $b[] = "{$in2}\$this->checkRepetitionLength('{$f->name}', {$f->len}, \$data->getPositionalState());";
+                $b[] = "{$in2}\$this->checkRepetitionLength('{$f->name}', {$f->len}, \$datagram->getPositionalState());";
             }
-            $b[] = "{$in2}\$repetitions[] = \$this->extractComponents(\$data, \$codec, \$sequence);";
+            $b[] = "{$in2}\$repetitions[] = \$this->extractComponents(\$datagram, \$codec, \$sequence);";
             $b[] = "{$in2}\$first = false;";
             $b[] = "{$in1}}";
             $b[] = "{$in1}foreach (\$repetitions as \$components) {";
@@ -263,14 +263,14 @@ class SegmentGenerator
             $b[] = "{$in1}}";
         } elseif ($f->isComponentType()) {
             if ($f->len) {
-                $b[] = "{$in1}\$this->checkFieldLength('{$f->name}', {$f->len}, \$data->getPositionalState());";
+                $b[] = "{$in1}\$this->checkFieldLength('{$f->name}', {$f->len}, \$datagram->getPositionalState());";
             }
             $pCount = sizeof($properties);
             $b[] = "{$in1}\$sequence = {$subcompSequenceAsString};";
             $i = 0;
             $this->sequencedListUnpack($subcompSequence, $b, $i, $indentLen+0, $properties);
             $b = array_slice($b, 0, -1);
-            $b[] = "{$in1}) = \$this->extractComponents(\$data, \$codec, \$sequence);";
+            $b[] = "{$in1}) = \$this->extractComponents(\$datagram, \$codec, \$sequence);";
             $b[] = "{$in1}\$this->setField{$f->name}{$f->suffixForMutator}(";
             for ($i = 0; $i+1 < $pCount; $i++) {
                 $b[] = "{$in2}{$properties[$i]},";
@@ -280,11 +280,11 @@ class SegmentGenerator
         } elseif ($f->repeated) {
             $b[] = "{$in1}\$repetitions = [];";
             $b[] = "{$in1}\$first = true;";
-            $b[] = "{$in1}while (\$first || false !== \$codec->advanceToRepetition(\$data)) {";
+            $b[] = "{$in1}while (\$first || false !== \$codec->advanceToRepetition(\$datagram)) {";
             if ($f->len) {
-                $b[] = "{$in2}\$this->checkRepetitionLength('{$f->name}', {$f->len}, \$data->getPositionalState());";
+                $b[] = "{$in2}\$this->checkRepetitionLength('{$f->name}', {$f->len}, \$datagram->getPositionalState());";
             }
-            $b[] = "{$in2}\$repetitions[] = \$this->extractComponents(\$data, \$codec, [1]);";
+            $b[] = "{$in2}\$repetitions[] = \$this->extractComponents(\$datagram, \$codec, [1]);";
             $b[] = "{$in2}\$first = false;";
             $b[] = "{$in1}}";
             $b[] = "{$in1}foreach (\$repetitions as list(\$value,)) {";
@@ -292,20 +292,20 @@ class SegmentGenerator
             $b[] = "{$in1}}";
         } else {
             if ($f->len) {
-                $b[] = "{$in1}\$this->checkFieldLength('{$f->name}', {$f->len}, \$data->getPositionalState());";
+                $b[] = "{$in1}\$this->checkFieldLength('{$f->name}', {$f->len}, \$datagram->getPositionalState());";
             }
-            $b[] = "{$in1}\$this->setField{$f->name}{$f->suffixForMutator}(\$codec->extractComponent(\$data));";
+            $b[] = "{$in1}\$this->setField{$f->name}{$f->suffixForMutator}(\$codec->extractComponent(\$datagram));";
         }
     }
 
     private function mshDatagramBody(&$b, SegmentField $f)
     {
         if ($f->num === 1) {
-            $b[] = '$encodingParams = $data->getEncodingParameters();';
+            $b[] = '$encodingParams = $datagram->getEncodingParameters();';
             $b[] = '$this->setFieldFieldSeparator($encodingParams->getFieldSep());';
             $b[] = '';
         } elseif ($f->num === 2) {
-            $b[] = '$codec->advanceToField($data);';
+            $b[] = '$codec->advanceToField($datagram);';
             $b[] = '$this->setFieldEncodingCharacters(';
             $b[] = '    $encodingParams->getComponentSep()';
             $b[] = '    . $encodingParams->getRepetitionSep()';

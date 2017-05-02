@@ -32,14 +32,7 @@ abstract class AbstractSegment implements SegmentInterface
         $this->dataTypeFactory = $dataTypeFactory;
     }
 
-    /**
-     * Decode the Segment, from the supplied Datagram, using the Codec.
-     *
-     * @param \Hl7v2\Encoding\Datagram $data
-     * @param \Hl7v2\Encoding\Codec $codec
-     * @throws \Hl7v2\Exception\SegmentError
-     */
-    abstract public function fromDatagram(Datagram $data, Codec $codec);
+    abstract public function fromDatagram(Datagram $datagram, Codec $codec);
 
     /**
      * Having advanced in to a Field, this helper extracts the content of

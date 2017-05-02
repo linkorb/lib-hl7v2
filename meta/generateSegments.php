@@ -145,7 +145,7 @@ foreach ($segments as $segmentId => $segmentAttr) {
     }
 
     $fdgMethod = Method::make('fromDatagram')
-        ->addArgument(new Argument('\\Hl7v2\\Encoding\\Datagram', 'data'))
+        ->addArgument(new Argument('\\Hl7v2\\Encoding\\Datagram', 'datagram'))
         ->addArgument(new Argument('\\Hl7v2\\Encoding\\Codec', 'codec'))
         ->setBody(implode("\n", Util::indentBodyParts($g->getFromDatagramBody())))
     ;

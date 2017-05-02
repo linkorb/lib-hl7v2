@@ -2595,31 +2595,31 @@ class ObrSegment extends AbstractSegment
         return $this->parentUniversalServiceIdentifier;
     }
 
-    public function fromDatagram(Datagram $data, Codec $codec)
+    public function fromDatagram(Datagram $datagram, Codec $codec)
     {
         // OBR.1
-        if (false === $codec->advanceToField($data)) {
+        if (false === $codec->advanceToField($datagram)) {
             throw new SegmentError(
                 'OBR Segment data contains too few required fields.'
             );
         }
-        $this->checkFieldLength('SetId', 4, $data->getPositionalState());
-        $this->setFieldSetId($codec->extractComponent($data));
+        $this->checkFieldLength('SetId', 4, $datagram->getPositionalState());
+        $this->setFieldSetId($codec->extractComponent($datagram));
 
         // OBR.2
-        if (false === $codec->advanceToField($data)) {
+        if (false === $codec->advanceToField($datagram)) {
             throw new SegmentError(
                 'OBR Segment data contains too few required fields.'
             );
         }
-        $this->checkFieldLength('PlacerOrderNumber', 22, $data->getPositionalState());
+        $this->checkFieldLength('PlacerOrderNumber', 22, $datagram->getPositionalState());
         $sequence = [1,1,1,1];
         list(
             $entityIdentifier,
             $namespaceId,
             $universalId,
             $universalIdType,
-        ) = $this->extractComponents($data, $codec, $sequence);
+        ) = $this->extractComponents($datagram, $codec, $sequence);
         $this->setFieldPlacerOrderNumber(
             $entityIdentifier,
             $namespaceId,
@@ -2628,19 +2628,19 @@ class ObrSegment extends AbstractSegment
         );
 
         // OBR.3
-        if (false === $codec->advanceToField($data)) {
+        if (false === $codec->advanceToField($datagram)) {
             throw new SegmentError(
                 'OBR Segment data contains too few required fields.'
             );
         }
-        $this->checkFieldLength('FillerOrderNumber', 22, $data->getPositionalState());
+        $this->checkFieldLength('FillerOrderNumber', 22, $datagram->getPositionalState());
         $sequence = [1,1,1,1];
         list(
             $entityIdentifier,
             $namespaceId,
             $universalId,
             $universalIdType,
-        ) = $this->extractComponents($data, $codec, $sequence);
+        ) = $this->extractComponents($datagram, $codec, $sequence);
         $this->setFieldFillerOrderNumber(
             $entityIdentifier,
             $namespaceId,
@@ -2649,12 +2649,12 @@ class ObrSegment extends AbstractSegment
         );
 
         // OBR.4
-        if (false === $codec->advanceToField($data)) {
+        if (false === $codec->advanceToField($datagram)) {
             throw new SegmentError(
                 'OBR Segment data contains too few required fields.'
             );
         }
-        $this->checkFieldLength('UniversalServiceIdentifier', 250, $data->getPositionalState());
+        $this->checkFieldLength('UniversalServiceIdentifier', 250, $datagram->getPositionalState());
         $sequence = [1,1,1,1,1,1];
         list(
             $identifier,
@@ -2663,7 +2663,7 @@ class ObrSegment extends AbstractSegment
             $altIdentifier,
             $altText,
             $nameOfAltCodingSystem,
-        ) = $this->extractComponents($data, $codec, $sequence);
+        ) = $this->extractComponents($datagram, $codec, $sequence);
         $this->setFieldUniversalServiceIdentifier(
             $identifier,
             $text,
@@ -2674,62 +2674,62 @@ class ObrSegment extends AbstractSegment
         );
 
         // OBR.5
-        if (false === $codec->advanceToField($data)) {
+        if (false === $codec->advanceToField($datagram)) {
             return false;
         }
-        $this->checkFieldLength('Priority', 2, $data->getPositionalState());
-        $this->setFieldPriority($codec->extractComponent($data));
+        $this->checkFieldLength('Priority', 2, $datagram->getPositionalState());
+        $this->setFieldPriority($codec->extractComponent($datagram));
 
         // OBR.6
-        if (false === $codec->advanceToField($data)) {
+        if (false === $codec->advanceToField($datagram)) {
             return false;
         }
-        $this->checkFieldLength('RequestedDatetime', 26, $data->getPositionalState());
+        $this->checkFieldLength('RequestedDatetime', 26, $datagram->getPositionalState());
         $sequence = [1,1];
         list(
             $time,
             $degreeOfPrecision,
-        ) = $this->extractComponents($data, $codec, $sequence);
+        ) = $this->extractComponents($datagram, $codec, $sequence);
         $this->setFieldRequestedDatetime(
             $time,
             $degreeOfPrecision
         );
 
         // OBR.7
-        if (false === $codec->advanceToField($data)) {
+        if (false === $codec->advanceToField($datagram)) {
             return false;
         }
-        $this->checkFieldLength('ObservationDatetime', 26, $data->getPositionalState());
+        $this->checkFieldLength('ObservationDatetime', 26, $datagram->getPositionalState());
         $sequence = [1,1];
         list(
             $time,
             $degreeOfPrecision,
-        ) = $this->extractComponents($data, $codec, $sequence);
+        ) = $this->extractComponents($datagram, $codec, $sequence);
         $this->setFieldObservationDatetime(
             $time,
             $degreeOfPrecision
         );
 
         // OBR.8
-        if (false === $codec->advanceToField($data)) {
+        if (false === $codec->advanceToField($datagram)) {
             return false;
         }
-        $this->checkFieldLength('ObservationEndDatetime', 26, $data->getPositionalState());
+        $this->checkFieldLength('ObservationEndDatetime', 26, $datagram->getPositionalState());
         $sequence = [1,1];
         list(
             $time,
             $degreeOfPrecision,
-        ) = $this->extractComponents($data, $codec, $sequence);
+        ) = $this->extractComponents($datagram, $codec, $sequence);
         $this->setFieldObservationEndDatetime(
             $time,
             $degreeOfPrecision
         );
 
         // OBR.9
-        if (false === $codec->advanceToField($data)) {
+        if (false === $codec->advanceToField($datagram)) {
             return false;
         }
-        $this->checkFieldLength('CollectionVolume', 20, $data->getPositionalState());
+        $this->checkFieldLength('CollectionVolume', 20, $datagram->getPositionalState());
         $sequence = [1,[1,1,1,1,1,1]];
         list(
             $quantity,
@@ -2741,7 +2741,7 @@ class ObrSegment extends AbstractSegment
                 $unitsAltText,
                 $unitsNameOfAltCodingSystem,
             ),
-        ) = $this->extractComponents($data, $codec, $sequence);
+        ) = $this->extractComponents($datagram, $codec, $sequence);
         $this->setFieldCollectionVolume(
             $quantity,
             $unitsIdentifier,
@@ -2753,15 +2753,15 @@ class ObrSegment extends AbstractSegment
         );
 
         // OBR.10
-        if (false === $codec->advanceToField($data)) {
+        if (false === $codec->advanceToField($datagram)) {
             return false;
         }
         $sequence = [1,[1,1,1,1,1],1,1,1,1,1,1,[1,1,1],1,1,1,1,[1,1,1],1,[1,1,1,1,1,1],[[1,1],[1,1]],1,[1,1],[1,1],1,[1,1,1,1,1,1,1,1,1],[1,1,1,1,1,1,1,1,1]];
         $repetitions = [];
         $first = true;
-        while ($first || false !== $codec->advanceToRepetition($data)) {
-            $this->checkRepetitionLength('CollectorIdentifier', 250, $data->getPositionalState());
-            $repetitions[] = $this->extractComponents($data, $codec, $sequence);
+        while ($first || false !== $codec->advanceToRepetition($datagram)) {
+            $this->checkRepetitionLength('CollectorIdentifier', 250, $datagram->getPositionalState());
+            $repetitions[] = $this->extractComponents($datagram, $codec, $sequence);
             $first = false;
         }
         foreach ($repetitions as $components) {
@@ -2908,17 +2908,17 @@ class ObrSegment extends AbstractSegment
         }
 
         // OBR.11
-        if (false === $codec->advanceToField($data)) {
+        if (false === $codec->advanceToField($datagram)) {
             return false;
         }
-        $this->checkFieldLength('SpecimenActionCode', 1, $data->getPositionalState());
-        $this->setFieldSpecimenActionCode($codec->extractComponent($data));
+        $this->checkFieldLength('SpecimenActionCode', 1, $datagram->getPositionalState());
+        $this->setFieldSpecimenActionCode($codec->extractComponent($datagram));
 
         // OBR.12
-        if (false === $codec->advanceToField($data)) {
+        if (false === $codec->advanceToField($datagram)) {
             return false;
         }
-        $this->checkFieldLength('DangerCode', 250, $data->getPositionalState());
+        $this->checkFieldLength('DangerCode', 250, $datagram->getPositionalState());
         $sequence = [1,1,1,1,1,1];
         list(
             $identifier,
@@ -2927,7 +2927,7 @@ class ObrSegment extends AbstractSegment
             $altIdentifier,
             $altText,
             $nameOfAltCodingSystem,
-        ) = $this->extractComponents($data, $codec, $sequence);
+        ) = $this->extractComponents($datagram, $codec, $sequence);
         $this->setFieldDangerCode(
             $identifier,
             $text,
@@ -2938,44 +2938,44 @@ class ObrSegment extends AbstractSegment
         );
 
         // OBR.13
-        if (false === $codec->advanceToField($data)) {
+        if (false === $codec->advanceToField($datagram)) {
             return false;
         }
-        $this->checkFieldLength('RelevantClinicalInformation', 300, $data->getPositionalState());
-        $this->setFieldRelevantClinicalInformation($codec->extractComponent($data));
+        $this->checkFieldLength('RelevantClinicalInformation', 300, $datagram->getPositionalState());
+        $this->setFieldRelevantClinicalInformation($codec->extractComponent($datagram));
 
         // OBR.14
-        if (false === $codec->advanceToField($data)) {
+        if (false === $codec->advanceToField($datagram)) {
             return false;
         }
-        $this->checkFieldLength('SpecimenReceivedDatetime', 26, $data->getPositionalState());
+        $this->checkFieldLength('SpecimenReceivedDatetime', 26, $datagram->getPositionalState());
         $sequence = [1,1];
         list(
             $time,
             $degreeOfPrecision,
-        ) = $this->extractComponents($data, $codec, $sequence);
+        ) = $this->extractComponents($datagram, $codec, $sequence);
         $this->setFieldSpecimenReceivedDatetime(
             $time,
             $degreeOfPrecision
         );
 
         // OBR.15
-        if (false === $codec->advanceToField($data)) {
+        if (false === $codec->advanceToField($datagram)) {
             return false;
         }
-        $this->checkFieldLength('SpecimenSource', 300, $data->getPositionalState());
-        $this->setFieldSpecimenSource($codec->extractComponent($data));
+        $this->checkFieldLength('SpecimenSource', 300, $datagram->getPositionalState());
+        $this->setFieldSpecimenSource($codec->extractComponent($datagram));
 
         // OBR.16
-        if (false === $codec->advanceToField($data)) {
+        if (false === $codec->advanceToField($datagram)) {
             return false;
         }
         $sequence = [1,[1,1,1,1,1],1,1,1,1,1,1,[1,1,1],1,1,1,1,[1,1,1],1,[1,1,1,1,1,1],[[1,1],[1,1]],1,[1,1],[1,1],1,[1,1,1,1,1,1,1,1,1],[1,1,1,1,1,1,1,1,1]];
         $repetitions = [];
         $first = true;
-        while ($first || false !== $codec->advanceToRepetition($data)) {
-            $this->checkRepetitionLength('OrderingProvider', 250, $data->getPositionalState());
-            $repetitions[] = $this->extractComponents($data, $codec, $sequence);
+        while ($first || false !== $codec->advanceToRepetition($datagram)) {
+            $this->checkRepetitionLength('OrderingProvider', 250, $datagram->getPositionalState());
+            $repetitions[] = $this->extractComponents($datagram, $codec, $sequence);
             $first = false;
         }
         foreach ($repetitions as $components) {
@@ -3122,15 +3122,15 @@ class ObrSegment extends AbstractSegment
         }
 
         // OBR.17
-        if (false === $codec->advanceToField($data)) {
+        if (false === $codec->advanceToField($datagram)) {
             return false;
         }
         $sequence = [1,1,1,1,1,1,1,1,1,1,1,1];
         $repetitions = [];
         $first = true;
-        while ($first || false !== $codec->advanceToRepetition($data)) {
-            $this->checkRepetitionLength('OrderCallbackPhoneNumber', 250, $data->getPositionalState());
-            $repetitions[] = $this->extractComponents($data, $codec, $sequence);
+        while ($first || false !== $codec->advanceToRepetition($datagram)) {
+            $this->checkRepetitionLength('OrderCallbackPhoneNumber', 250, $datagram->getPositionalState());
+            $repetitions[] = $this->extractComponents($datagram, $codec, $sequence);
             $first = false;
         }
         foreach ($repetitions as $components) {
@@ -3165,53 +3165,53 @@ class ObrSegment extends AbstractSegment
         }
 
         // OBR.18
-        if (false === $codec->advanceToField($data)) {
+        if (false === $codec->advanceToField($datagram)) {
             return false;
         }
-        $this->checkFieldLength('PlacerField1', 60, $data->getPositionalState());
-        $this->setFieldPlacerField1($codec->extractComponent($data));
+        $this->checkFieldLength('PlacerField1', 60, $datagram->getPositionalState());
+        $this->setFieldPlacerField1($codec->extractComponent($datagram));
 
         // OBR.19
-        if (false === $codec->advanceToField($data)) {
+        if (false === $codec->advanceToField($datagram)) {
             return false;
         }
-        $this->checkFieldLength('PlacerField2', 60, $data->getPositionalState());
-        $this->setFieldPlacerField2($codec->extractComponent($data));
+        $this->checkFieldLength('PlacerField2', 60, $datagram->getPositionalState());
+        $this->setFieldPlacerField2($codec->extractComponent($datagram));
 
         // OBR.20
-        if (false === $codec->advanceToField($data)) {
+        if (false === $codec->advanceToField($datagram)) {
             return false;
         }
-        $this->checkFieldLength('FillerField1', 60, $data->getPositionalState());
-        $this->setFieldFillerField1($codec->extractComponent($data));
+        $this->checkFieldLength('FillerField1', 60, $datagram->getPositionalState());
+        $this->setFieldFillerField1($codec->extractComponent($datagram));
 
         // OBR.21
-        if (false === $codec->advanceToField($data)) {
+        if (false === $codec->advanceToField($datagram)) {
             return false;
         }
-        $this->checkFieldLength('FillerField2', 60, $data->getPositionalState());
-        $this->setFieldFillerField2($codec->extractComponent($data));
+        $this->checkFieldLength('FillerField2', 60, $datagram->getPositionalState());
+        $this->setFieldFillerField2($codec->extractComponent($datagram));
 
         // OBR.22
-        if (false === $codec->advanceToField($data)) {
+        if (false === $codec->advanceToField($datagram)) {
             return false;
         }
-        $this->checkFieldLength('ResultsRptstatusChngDatetime', 26, $data->getPositionalState());
+        $this->checkFieldLength('ResultsRptstatusChngDatetime', 26, $datagram->getPositionalState());
         $sequence = [1,1];
         list(
             $time,
             $degreeOfPrecision,
-        ) = $this->extractComponents($data, $codec, $sequence);
+        ) = $this->extractComponents($datagram, $codec, $sequence);
         $this->setFieldResultsRptstatusChngDatetime(
             $time,
             $degreeOfPrecision
         );
 
         // OBR.23
-        if (false === $codec->advanceToField($data)) {
+        if (false === $codec->advanceToField($datagram)) {
             return false;
         }
-        $this->checkFieldLength('ChargeToPractice', 40, $data->getPositionalState());
+        $this->checkFieldLength('ChargeToPractice', 40, $datagram->getPositionalState());
         $sequence = [[1,1],[1,1,1,1,1,1]];
         list(
             list(
@@ -3226,7 +3226,7 @@ class ObrSegment extends AbstractSegment
                 $chargeCodeAltText,
                 $chargeCodeNameOfAltCodingSystem,
             ),
-        ) = $this->extractComponents($data, $codec, $sequence);
+        ) = $this->extractComponents($datagram, $codec, $sequence);
         $this->setFieldChargeToPractice(
             $monetaryAmountQuantity,
             $monetaryAmountDenomination,
@@ -3239,24 +3239,24 @@ class ObrSegment extends AbstractSegment
         );
 
         // OBR.24
-        if (false === $codec->advanceToField($data)) {
+        if (false === $codec->advanceToField($datagram)) {
             return false;
         }
-        $this->checkFieldLength('DiagnosticServSectId', 10, $data->getPositionalState());
-        $this->setFieldDiagnosticServSectId($codec->extractComponent($data));
+        $this->checkFieldLength('DiagnosticServSectId', 10, $datagram->getPositionalState());
+        $this->setFieldDiagnosticServSectId($codec->extractComponent($datagram));
 
         // OBR.25
-        if (false === $codec->advanceToField($data)) {
+        if (false === $codec->advanceToField($datagram)) {
             return false;
         }
-        $this->checkFieldLength('ResultStatus', 1, $data->getPositionalState());
-        $this->setFieldResultStatus($codec->extractComponent($data));
+        $this->checkFieldLength('ResultStatus', 1, $datagram->getPositionalState());
+        $this->setFieldResultStatus($codec->extractComponent($datagram));
 
         // OBR.26
-        if (false === $codec->advanceToField($data)) {
+        if (false === $codec->advanceToField($datagram)) {
             return false;
         }
-        $this->checkFieldLength('ParentResult', 400, $data->getPositionalState());
+        $this->checkFieldLength('ParentResult', 400, $datagram->getPositionalState());
         $sequence = [[1,1,1,1,1,1],1,1];
         list(
             list(
@@ -3269,7 +3269,7 @@ class ObrSegment extends AbstractSegment
             ),
             $parentObservationSubIdentifier,
             $parentObservationValueDescriptor,
-        ) = $this->extractComponents($data, $codec, $sequence);
+        ) = $this->extractComponents($datagram, $codec, $sequence);
         $this->setFieldParentResult(
             $parentObservationIdentifierIdentifier,
             $parentObservationIdentifierText,
@@ -3282,15 +3282,15 @@ class ObrSegment extends AbstractSegment
         );
 
         // OBR.27
-        if (false === $codec->advanceToField($data)) {
+        if (false === $codec->advanceToField($datagram)) {
             return false;
         }
         $sequence = [[1,[1,1,1,1,1,1]],[1,1],1,[1,1],[1,1],1,1,1,1,[1,1,1,1,1,1,1,1,1,1,1],[1,1,1,1,1,1],1];
         $repetitions = [];
         $first = true;
-        while ($first || false !== $codec->advanceToRepetition($data)) {
-            $this->checkRepetitionLength('Quantitytiming', 200, $data->getPositionalState());
-            $repetitions[] = $this->extractComponents($data, $codec, $sequence);
+        while ($first || false !== $codec->advanceToRepetition($datagram)) {
+            $this->checkRepetitionLength('Quantitytiming', 200, $datagram->getPositionalState());
+            $repetitions[] = $this->extractComponents($datagram, $codec, $sequence);
             $first = false;
         }
         foreach ($repetitions as $components) {
@@ -3387,15 +3387,15 @@ class ObrSegment extends AbstractSegment
         }
 
         // OBR.28
-        if (false === $codec->advanceToField($data)) {
+        if (false === $codec->advanceToField($datagram)) {
             return false;
         }
         $sequence = [1,[1,1,1,1,1],1,1,1,1,1,1,[1,1,1],1,1,1,1,[1,1,1],1,[1,1,1,1,1,1],[[1,1],[1,1]],1,[1,1],[1,1],1,[1,1,1,1,1,1,1,1,1],[1,1,1,1,1,1,1,1,1]];
         $repetitions = [];
         $first = true;
-        while ($first || false !== $codec->advanceToRepetition($data)) {
-            $this->checkRepetitionLength('ResultCopiesTo', 250, $data->getPositionalState());
-            $repetitions[] = $this->extractComponents($data, $codec, $sequence);
+        while ($first || false !== $codec->advanceToRepetition($datagram)) {
+            $this->checkRepetitionLength('ResultCopiesTo', 250, $datagram->getPositionalState());
+            $repetitions[] = $this->extractComponents($datagram, $codec, $sequence);
             $first = false;
         }
         foreach ($repetitions as $components) {
@@ -3542,10 +3542,10 @@ class ObrSegment extends AbstractSegment
         }
 
         // OBR.29
-        if (false === $codec->advanceToField($data)) {
+        if (false === $codec->advanceToField($datagram)) {
             return false;
         }
-        $this->checkFieldLength('Parent', 200, $data->getPositionalState());
+        $this->checkFieldLength('Parent', 200, $datagram->getPositionalState());
         $sequence = [[1,1,1,1],[1,1,1,1]];
         list(
             list(
@@ -3560,7 +3560,7 @@ class ObrSegment extends AbstractSegment
                 $fillerAssignedIdentifierUniversalId,
                 $fillerAssignedIdentifierUniversalIdType,
             ),
-        ) = $this->extractComponents($data, $codec, $sequence);
+        ) = $this->extractComponents($datagram, $codec, $sequence);
         $this->setFieldParent(
             $placerAssignedIdentifierEntityIdentifier,
             $placerAssignedIdentifierNamespaceId,
@@ -3573,22 +3573,22 @@ class ObrSegment extends AbstractSegment
         );
 
         // OBR.30
-        if (false === $codec->advanceToField($data)) {
+        if (false === $codec->advanceToField($datagram)) {
             return false;
         }
-        $this->checkFieldLength('TransportationMode', 20, $data->getPositionalState());
-        $this->setFieldTransportationMode($codec->extractComponent($data));
+        $this->checkFieldLength('TransportationMode', 20, $datagram->getPositionalState());
+        $this->setFieldTransportationMode($codec->extractComponent($datagram));
 
         // OBR.31
-        if (false === $codec->advanceToField($data)) {
+        if (false === $codec->advanceToField($datagram)) {
             return false;
         }
         $sequence = [1,1,1,1,1,1];
         $repetitions = [];
         $first = true;
-        while ($first || false !== $codec->advanceToRepetition($data)) {
-            $this->checkRepetitionLength('ReasonForStudy', 250, $data->getPositionalState());
-            $repetitions[] = $this->extractComponents($data, $codec, $sequence);
+        while ($first || false !== $codec->advanceToRepetition($datagram)) {
+            $this->checkRepetitionLength('ReasonForStudy', 250, $datagram->getPositionalState());
+            $repetitions[] = $this->extractComponents($datagram, $codec, $sequence);
             $first = false;
         }
         foreach ($repetitions as $components) {
@@ -3611,10 +3611,10 @@ class ObrSegment extends AbstractSegment
         }
 
         // OBR.32
-        if (false === $codec->advanceToField($data)) {
+        if (false === $codec->advanceToField($datagram)) {
             return false;
         }
-        $this->checkFieldLength('PrincipalResultInterpreter', 200, $data->getPositionalState());
+        $this->checkFieldLength('PrincipalResultInterpreter', 200, $datagram->getPositionalState());
         $sequence = [[1,1,1,1,1,1,1,1,1,1,1],[1,1],[1,1],1,1,1,[1,1,1],1,1,1,1];
         list(
             list(
@@ -3650,7 +3650,7 @@ class ObrSegment extends AbstractSegment
             $patientLocationType,
             $building,
             $floor,
-        ) = $this->extractComponents($data, $codec, $sequence);
+        ) = $this->extractComponents($datagram, $codec, $sequence);
         $this->setFieldPrincipalResultInterpreter(
             $nameIdNumber,
             $nameFamilyName,
@@ -3680,15 +3680,15 @@ class ObrSegment extends AbstractSegment
         );
 
         // OBR.33
-        if (false === $codec->advanceToField($data)) {
+        if (false === $codec->advanceToField($datagram)) {
             return false;
         }
         $sequence = [[1,1,1,1,1,1,1,1,1,1,1],[1,1],[1,1],1,1,1,[1,1,1],1,1,1,1];
         $repetitions = [];
         $first = true;
-        while ($first || false !== $codec->advanceToRepetition($data)) {
-            $this->checkRepetitionLength('AssistantResultInterpreter', 200, $data->getPositionalState());
-            $repetitions[] = $this->extractComponents($data, $codec, $sequence);
+        while ($first || false !== $codec->advanceToRepetition($datagram)) {
+            $this->checkRepetitionLength('AssistantResultInterpreter', 200, $datagram->getPositionalState());
+            $repetitions[] = $this->extractComponents($datagram, $codec, $sequence);
             $first = false;
         }
         foreach ($repetitions as $components) {
@@ -3757,15 +3757,15 @@ class ObrSegment extends AbstractSegment
         }
 
         // OBR.34
-        if (false === $codec->advanceToField($data)) {
+        if (false === $codec->advanceToField($datagram)) {
             return false;
         }
         $sequence = [[1,1,1,1,1,1,1,1,1,1,1],[1,1],[1,1],1,1,1,[1,1,1],1,1,1,1];
         $repetitions = [];
         $first = true;
-        while ($first || false !== $codec->advanceToRepetition($data)) {
-            $this->checkRepetitionLength('Technician', 200, $data->getPositionalState());
-            $repetitions[] = $this->extractComponents($data, $codec, $sequence);
+        while ($first || false !== $codec->advanceToRepetition($datagram)) {
+            $this->checkRepetitionLength('Technician', 200, $datagram->getPositionalState());
+            $repetitions[] = $this->extractComponents($datagram, $codec, $sequence);
             $first = false;
         }
         foreach ($repetitions as $components) {
@@ -3834,15 +3834,15 @@ class ObrSegment extends AbstractSegment
         }
 
         // OBR.35
-        if (false === $codec->advanceToField($data)) {
+        if (false === $codec->advanceToField($datagram)) {
             return false;
         }
         $sequence = [[1,1,1,1,1,1,1,1,1,1,1],[1,1],[1,1],1,1,1,[1,1,1],1,1,1,1];
         $repetitions = [];
         $first = true;
-        while ($first || false !== $codec->advanceToRepetition($data)) {
-            $this->checkRepetitionLength('Transcriptionist', 200, $data->getPositionalState());
-            $repetitions[] = $this->extractComponents($data, $codec, $sequence);
+        while ($first || false !== $codec->advanceToRepetition($datagram)) {
+            $this->checkRepetitionLength('Transcriptionist', 200, $datagram->getPositionalState());
+            $repetitions[] = $this->extractComponents($datagram, $codec, $sequence);
             $first = false;
         }
         foreach ($repetitions as $components) {
@@ -3911,37 +3911,37 @@ class ObrSegment extends AbstractSegment
         }
 
         // OBR.36
-        if (false === $codec->advanceToField($data)) {
+        if (false === $codec->advanceToField($datagram)) {
             return false;
         }
-        $this->checkFieldLength('ScheduledDatetime', 26, $data->getPositionalState());
+        $this->checkFieldLength('ScheduledDatetime', 26, $datagram->getPositionalState());
         $sequence = [1,1];
         list(
             $time,
             $degreeOfPrecision,
-        ) = $this->extractComponents($data, $codec, $sequence);
+        ) = $this->extractComponents($datagram, $codec, $sequence);
         $this->setFieldScheduledDatetime(
             $time,
             $degreeOfPrecision
         );
 
         // OBR.37
-        if (false === $codec->advanceToField($data)) {
+        if (false === $codec->advanceToField($datagram)) {
             return false;
         }
-        $this->checkFieldLength('NumberOfSampleContainers', 4, $data->getPositionalState());
-        $this->setFieldNumberOfSampleContainers($codec->extractComponent($data));
+        $this->checkFieldLength('NumberOfSampleContainers', 4, $datagram->getPositionalState());
+        $this->setFieldNumberOfSampleContainers($codec->extractComponent($datagram));
 
         // OBR.38
-        if (false === $codec->advanceToField($data)) {
+        if (false === $codec->advanceToField($datagram)) {
             return false;
         }
         $sequence = [1,1,1,1,1,1];
         $repetitions = [];
         $first = true;
-        while ($first || false !== $codec->advanceToRepetition($data)) {
-            $this->checkRepetitionLength('TransportLogisticsOfCollectedSample', 250, $data->getPositionalState());
-            $repetitions[] = $this->extractComponents($data, $codec, $sequence);
+        while ($first || false !== $codec->advanceToRepetition($datagram)) {
+            $this->checkRepetitionLength('TransportLogisticsOfCollectedSample', 250, $datagram->getPositionalState());
+            $repetitions[] = $this->extractComponents($datagram, $codec, $sequence);
             $first = false;
         }
         foreach ($repetitions as $components) {
@@ -3964,15 +3964,15 @@ class ObrSegment extends AbstractSegment
         }
 
         // OBR.39
-        if (false === $codec->advanceToField($data)) {
+        if (false === $codec->advanceToField($datagram)) {
             return false;
         }
         $sequence = [1,1,1,1,1,1];
         $repetitions = [];
         $first = true;
-        while ($first || false !== $codec->advanceToRepetition($data)) {
-            $this->checkRepetitionLength('CollectorsComment', 250, $data->getPositionalState());
-            $repetitions[] = $this->extractComponents($data, $codec, $sequence);
+        while ($first || false !== $codec->advanceToRepetition($datagram)) {
+            $this->checkRepetitionLength('CollectorsComment', 250, $datagram->getPositionalState());
+            $repetitions[] = $this->extractComponents($datagram, $codec, $sequence);
             $first = false;
         }
         foreach ($repetitions as $components) {
@@ -3995,10 +3995,10 @@ class ObrSegment extends AbstractSegment
         }
 
         // OBR.40
-        if (false === $codec->advanceToField($data)) {
+        if (false === $codec->advanceToField($datagram)) {
             return false;
         }
-        $this->checkFieldLength('TransportArrangementResponsibility', 250, $data->getPositionalState());
+        $this->checkFieldLength('TransportArrangementResponsibility', 250, $datagram->getPositionalState());
         $sequence = [1,1,1,1,1,1];
         list(
             $identifier,
@@ -4007,7 +4007,7 @@ class ObrSegment extends AbstractSegment
             $altIdentifier,
             $altText,
             $nameOfAltCodingSystem,
-        ) = $this->extractComponents($data, $codec, $sequence);
+        ) = $this->extractComponents($datagram, $codec, $sequence);
         $this->setFieldTransportArrangementResponsibility(
             $identifier,
             $text,
@@ -4018,29 +4018,29 @@ class ObrSegment extends AbstractSegment
         );
 
         // OBR.41
-        if (false === $codec->advanceToField($data)) {
+        if (false === $codec->advanceToField($datagram)) {
             return false;
         }
-        $this->checkFieldLength('TransportArranged', 30, $data->getPositionalState());
-        $this->setFieldTransportArranged($codec->extractComponent($data));
+        $this->checkFieldLength('TransportArranged', 30, $datagram->getPositionalState());
+        $this->setFieldTransportArranged($codec->extractComponent($datagram));
 
         // OBR.42
-        if (false === $codec->advanceToField($data)) {
+        if (false === $codec->advanceToField($datagram)) {
             return false;
         }
-        $this->checkFieldLength('EscortRequired', 1, $data->getPositionalState());
-        $this->setFieldEscortRequired($codec->extractComponent($data));
+        $this->checkFieldLength('EscortRequired', 1, $datagram->getPositionalState());
+        $this->setFieldEscortRequired($codec->extractComponent($datagram));
 
         // OBR.43
-        if (false === $codec->advanceToField($data)) {
+        if (false === $codec->advanceToField($datagram)) {
             return false;
         }
         $sequence = [1,1,1,1,1,1];
         $repetitions = [];
         $first = true;
-        while ($first || false !== $codec->advanceToRepetition($data)) {
-            $this->checkRepetitionLength('PlannedPatientTransportComment', 250, $data->getPositionalState());
-            $repetitions[] = $this->extractComponents($data, $codec, $sequence);
+        while ($first || false !== $codec->advanceToRepetition($datagram)) {
+            $this->checkRepetitionLength('PlannedPatientTransportComment', 250, $datagram->getPositionalState());
+            $repetitions[] = $this->extractComponents($datagram, $codec, $sequence);
             $first = false;
         }
         foreach ($repetitions as $components) {
@@ -4063,10 +4063,10 @@ class ObrSegment extends AbstractSegment
         }
 
         // OBR.44
-        if (false === $codec->advanceToField($data)) {
+        if (false === $codec->advanceToField($datagram)) {
             return false;
         }
-        $this->checkFieldLength('ProcedureCode', 250, $data->getPositionalState());
+        $this->checkFieldLength('ProcedureCode', 250, $datagram->getPositionalState());
         $sequence = [1,1,1,1,1,1];
         list(
             $identifier,
@@ -4075,7 +4075,7 @@ class ObrSegment extends AbstractSegment
             $altIdentifier,
             $altText,
             $nameOfAltCodingSystem,
-        ) = $this->extractComponents($data, $codec, $sequence);
+        ) = $this->extractComponents($datagram, $codec, $sequence);
         $this->setFieldProcedureCode(
             $identifier,
             $text,
@@ -4086,15 +4086,15 @@ class ObrSegment extends AbstractSegment
         );
 
         // OBR.45
-        if (false === $codec->advanceToField($data)) {
+        if (false === $codec->advanceToField($datagram)) {
             return false;
         }
         $sequence = [1,1,1,1,1,1];
         $repetitions = [];
         $first = true;
-        while ($first || false !== $codec->advanceToRepetition($data)) {
-            $this->checkRepetitionLength('ProcedureCodeModifier', 250, $data->getPositionalState());
-            $repetitions[] = $this->extractComponents($data, $codec, $sequence);
+        while ($first || false !== $codec->advanceToRepetition($datagram)) {
+            $this->checkRepetitionLength('ProcedureCodeModifier', 250, $datagram->getPositionalState());
+            $repetitions[] = $this->extractComponents($datagram, $codec, $sequence);
             $first = false;
         }
         foreach ($repetitions as $components) {
@@ -4117,15 +4117,15 @@ class ObrSegment extends AbstractSegment
         }
 
         // OBR.46
-        if (false === $codec->advanceToField($data)) {
+        if (false === $codec->advanceToField($datagram)) {
             return false;
         }
         $sequence = [1,1,1,1,1,1];
         $repetitions = [];
         $first = true;
-        while ($first || false !== $codec->advanceToRepetition($data)) {
-            $this->checkRepetitionLength('PlacerSupplementalServiceInformation', 250, $data->getPositionalState());
-            $repetitions[] = $this->extractComponents($data, $codec, $sequence);
+        while ($first || false !== $codec->advanceToRepetition($datagram)) {
+            $this->checkRepetitionLength('PlacerSupplementalServiceInformation', 250, $datagram->getPositionalState());
+            $repetitions[] = $this->extractComponents($datagram, $codec, $sequence);
             $first = false;
         }
         foreach ($repetitions as $components) {
@@ -4148,15 +4148,15 @@ class ObrSegment extends AbstractSegment
         }
 
         // OBR.47
-        if (false === $codec->advanceToField($data)) {
+        if (false === $codec->advanceToField($datagram)) {
             return false;
         }
         $sequence = [1,1,1,1,1,1];
         $repetitions = [];
         $first = true;
-        while ($first || false !== $codec->advanceToRepetition($data)) {
-            $this->checkRepetitionLength('FillerSupplementalServiceInformation', 250, $data->getPositionalState());
-            $repetitions[] = $this->extractComponents($data, $codec, $sequence);
+        while ($first || false !== $codec->advanceToRepetition($datagram)) {
+            $this->checkRepetitionLength('FillerSupplementalServiceInformation', 250, $datagram->getPositionalState());
+            $repetitions[] = $this->extractComponents($datagram, $codec, $sequence);
             $first = false;
         }
         foreach ($repetitions as $components) {
@@ -4179,10 +4179,10 @@ class ObrSegment extends AbstractSegment
         }
 
         // OBR.48
-        if (false === $codec->advanceToField($data)) {
+        if (false === $codec->advanceToField($datagram)) {
             return false;
         }
-        $this->checkFieldLength('MedicallyNecessaryDuplicateProcedureReason', 250, $data->getPositionalState());
+        $this->checkFieldLength('MedicallyNecessaryDuplicateProcedureReason', 250, $datagram->getPositionalState());
         $sequence = [1,1,1,1,1,1,1,1,1];
         list(
             $identifier,
@@ -4194,7 +4194,7 @@ class ObrSegment extends AbstractSegment
             $codingSystemVersionId,
             $altCodingSystemVersionId,
             $originalText,
-        ) = $this->extractComponents($data, $codec, $sequence);
+        ) = $this->extractComponents($datagram, $codec, $sequence);
         $this->setFieldMedicallyNecessaryDuplicateProcedureReason(
             $identifier,
             $text,
@@ -4208,17 +4208,17 @@ class ObrSegment extends AbstractSegment
         );
 
         // OBR.49
-        if (false === $codec->advanceToField($data)) {
+        if (false === $codec->advanceToField($datagram)) {
             return false;
         }
-        $this->checkFieldLength('ResultHandling', 2, $data->getPositionalState());
-        $this->setFieldResultHandling($codec->extractComponent($data));
+        $this->checkFieldLength('ResultHandling', 2, $datagram->getPositionalState());
+        $this->setFieldResultHandling($codec->extractComponent($datagram));
 
         // OBR.50
-        if (false === $codec->advanceToField($data)) {
+        if (false === $codec->advanceToField($datagram)) {
             return false;
         }
-        $this->checkFieldLength('ParentUniversalServiceIdentifier', 250, $data->getPositionalState());
+        $this->checkFieldLength('ParentUniversalServiceIdentifier', 250, $datagram->getPositionalState());
         $sequence = [1,1,1,1,1,1,1,1,1];
         list(
             $identifier,
@@ -4230,7 +4230,7 @@ class ObrSegment extends AbstractSegment
             $codingSystemVersionId,
             $altCodingSystemVersionId,
             $originalText,
-        ) = $this->extractComponents($data, $codec, $sequence);
+        ) = $this->extractComponents($datagram, $codec, $sequence);
         $this->setFieldParentUniversalServiceIdentifier(
             $identifier,
             $text,
