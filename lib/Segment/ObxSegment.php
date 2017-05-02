@@ -28,7 +28,7 @@ class ObxSegment extends AbstractSegment
      */
     private $observationSubid = null;
     /**
-     * @var \Hl7v2\DataType\TxDataType[]
+     * @var \Hl7v2\DataType\DataTypeInterface[]
      */
     private $observationValue = [];
     /**
@@ -168,9 +168,97 @@ class ObxSegment extends AbstractSegment
     }
 
     /**
+     * @param string $sourceApplicationNamespaceId
+     * @param string $sourceApplicationUniversalId
+     * @param string $sourceApplicationUniversalIdType
+     * @param string $typeOfData
+     * @param string $dataSubtype
+     * @param string $encoding
+     * @param string $data
+     */
+    public function addFieldObservationValueAsED(
+        $sourceApplicationNamespaceId,
+        $sourceApplicationUniversalId,
+        $sourceApplicationUniversalIdType,
+        $typeOfData,
+        $dataSubtype = null,
+        $encoding,
+        $data
+    ) {
+        $observationValue = $this
+            ->dataTypeFactory
+            ->create('ED', $this->characterEncoding)
+        ;
+        $this->observationValue[] = $observationValue;
+        $observationValue->setSourceApplication(
+            $sourceApplicationNamespaceId,
+            $sourceApplicationUniversalId,
+            $sourceApplicationUniversalIdType
+        );
+        $observationValue->setTypeOfData($typeOfData);
+        $observationValue->setDataSubtype($dataSubtype);
+        $observationValue->setEncoding($encoding);
+        $observationValue->setData($data);
+    }
+
+    /**
      * @param string $value
      */
-    public function addFieldObservationValue($value)
+    public function addFieldObservationValueAsFT($value)
+    {
+        $observationValue = $this
+            ->dataTypeFactory
+            ->create('FT', $this->characterEncoding)
+        ;
+        $observationValue->setValue($value);
+        $this->observationValue[] = $observationValue;
+    }
+
+    /**
+     * @param string $value
+     */
+    public function addFieldObservationValueAsNM($value)
+    {
+        $observationValue = $this
+            ->dataTypeFactory
+            ->create('NM', $this->characterEncoding)
+        ;
+        $observationValue->setValue($value);
+        $this->observationValue[] = $observationValue;
+    }
+
+    /**
+     * @param string $value
+     */
+    public function addFieldObservationValueAsST($value)
+    {
+        $observationValue = $this
+            ->dataTypeFactory
+            ->create('ST', $this->characterEncoding)
+        ;
+        $observationValue->setValue($value);
+        $this->observationValue[] = $observationValue;
+    }
+
+    /**
+     * @param string $time
+     * @param string $degreeOfPrecision
+     */
+    public function addFieldObservationValueAsTS($time, $degreeOfPrecision = null)
+    {
+        $observationValue = $this
+            ->dataTypeFactory
+            ->create('TS', $this->characterEncoding)
+        ;
+        $this->observationValue[] = $observationValue;
+        $observationValue->setTime($time);
+        $observationValue->setDegreeOfPrecision($degreeOfPrecision);
+    }
+
+    /**
+     * @param string $value
+     */
+    public function addFieldObservationValueAsTX($value)
     {
         $observationValue = $this
             ->dataTypeFactory
@@ -978,7 +1066,7 @@ class ObxSegment extends AbstractSegment
     }
 
     /**
-     * @return \Hl7v2\DataType\TxDataType[]
+     * @return \Hl7v2\DataType\DataTypeInterface[]
      */
     public function getFieldObservationValue()
     {
@@ -1181,14 +1269,97 @@ class ObxSegment extends AbstractSegment
                 'OBX Segment data contains too few required fields.'
             );
         }
-        $repetitions = [];
-        $first = true;
-        while ($first || false !== $codec->advanceToRepetition($datagram)) {
-            $repetitions[] = $this->extractComponents($datagram, $codec, [1]);
-            $first = false;
-        }
-        foreach ($repetitions as list($value,)) {
-            $this->addFieldObservationValue($value);
+        if ('ED' === $this->getFieldValueType()->getValue()) {
+            $sequence = [[1,1,1],1,1,1,1];
+            $repetitions = [];
+            $first = true;
+            while ($first || false !== $codec->advanceToRepetition($datagram)) {
+                $repetitions[] = $this->extractComponents($datagram, $codec, $sequence);
+                $first = false;
+            }
+            foreach ($repetitions as $components) {
+                list(
+                    list(
+                        $sourceApplicationNamespaceId,
+                        $sourceApplicationUniversalId,
+                        $sourceApplicationUniversalIdType,
+                    ),
+                    $typeOfData,
+                    $dataSubtype,
+                    $encoding,
+                    $data,
+                ) = $components;
+                $this->addFieldObservationValueAsED(
+                    $sourceApplicationNamespaceId,
+                    $sourceApplicationUniversalId,
+                    $sourceApplicationUniversalIdType,
+                    $typeOfData,
+                    $dataSubtype,
+                    $encoding,
+                    $data
+                );
+            }
+        } elseif ('FT' === $this->getFieldValueType()->getValue()) {
+            $repetitions = [];
+            $first = true;
+            while ($first || false !== $codec->advanceToRepetition($datagram)) {
+                $repetitions[] = $this->extractComponents($datagram, $codec, [1]);
+                $first = false;
+            }
+            foreach ($repetitions as list($value,)) {
+                $this->addFieldObservationValueAsFT($value);
+            }
+        } elseif ('NM' === $this->getFieldValueType()->getValue()) {
+            $repetitions = [];
+            $first = true;
+            while ($first || false !== $codec->advanceToRepetition($datagram)) {
+                $this->checkRepetitionLength('ObservationValue', 16, $datagram->getPositionalState());
+                $repetitions[] = $this->extractComponents($datagram, $codec, [1]);
+                $first = false;
+            }
+            foreach ($repetitions as list($value,)) {
+                $this->addFieldObservationValueAsNM($value);
+            }
+        } elseif ('ST' === $this->getFieldValueType()->getValue()) {
+            $repetitions = [];
+            $first = true;
+            while ($first || false !== $codec->advanceToRepetition($datagram)) {
+                $this->checkRepetitionLength('ObservationValue', 199, $datagram->getPositionalState());
+                $repetitions[] = $this->extractComponents($datagram, $codec, [1]);
+                $first = false;
+            }
+            foreach ($repetitions as list($value,)) {
+                $this->addFieldObservationValueAsST($value);
+            }
+        } elseif ('TS' === $this->getFieldValueType()->getValue()) {
+            $sequence = [1,1];
+            $repetitions = [];
+            $first = true;
+            while ($first || false !== $codec->advanceToRepetition($datagram)) {
+                $this->checkRepetitionLength('ObservationValue', 26, $datagram->getPositionalState());
+                $repetitions[] = $this->extractComponents($datagram, $codec, $sequence);
+                $first = false;
+            }
+            foreach ($repetitions as $components) {
+                list(
+                    $time,
+                    $degreeOfPrecision,
+                ) = $components;
+                $this->addFieldObservationValueAsTS(
+                    $time,
+                    $degreeOfPrecision
+                );
+            }
+        } elseif ('TX' === $this->getFieldValueType()->getValue()) {
+            $repetitions = [];
+            $first = true;
+            while ($first || false !== $codec->advanceToRepetition($datagram)) {
+                $repetitions[] = $this->extractComponents($datagram, $codec, [1]);
+                $first = false;
+            }
+            foreach ($repetitions as list($value,)) {
+                $this->addFieldObservationValueAsTX($value);
+            }
         }
 
         // OBX.6

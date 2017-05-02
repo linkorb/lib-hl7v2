@@ -744,8 +744,24 @@ OBX:
           len: 20
         -
           name: Observation Value
-          type: TX    # Varies by OBX.2
-          len: ~      # ditto
+          type: variable
+          fieldIdentifiesType: 2
+          types:
+              -
+                type: ED
+              -
+                type: FT
+              -
+                type: NM
+                len: 16
+              -
+                type: ST
+                len: 199
+              -
+                type: TS
+                len: 26
+              -
+                type: TX
           repeat: true
         -
           name: Units
