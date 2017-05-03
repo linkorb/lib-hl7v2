@@ -47,7 +47,16 @@ class DataTypeResolver
             }
         }
 
-        return $graph->resolve();
+        $path = $graph->resolve();
+
+        foreach (array_keys($nodes) as $element) {
+            if (in_array($element, $path)) {
+                continue;
+            }
+            array_push($path, $element);
+        }
+
+        return $path;
     }
 
     public function isComponentType($typeId)
@@ -67,7 +76,7 @@ class DataTypeResolver
     public function getReflectionClass($typeId)
     {
         if (! array_key_exists($typeId, $this->types)) {
-            $class = $this->context->dataTypeIdToFQClassName($typeId);
+            $class = $this->context->dataTypeIdToClass($typeId);
             if (!class_exists($class)) {
                 throw new RuntimeException("Cannot perform Reflection of DataType {$typeId}; class cannot be loaded.");
             }

@@ -3,9 +3,9 @@
 namespace Hl7v2\DataType;
 
 /**
- * Coded value for HL7 tables (ID).
+ * Formatted Text (FT).
  */
-class IdDataType extends StDataType
+class FtDataType extends StDataType
 {
     const MAX_LEN = null;
 }

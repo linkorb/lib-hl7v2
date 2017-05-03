@@ -2796,31 +2796,31 @@ class Pv1Segment extends AbstractSegment
         return $this->otherHealthcareProvider;
     }
 
-    public function fromDatagram(Datagram $data, Codec $codec)
+    public function fromDatagram(Datagram $datagram, Codec $codec)
     {
         // PV1.1
-        if (false === $codec->advanceToField($data)) {
+        if (false === $codec->advanceToField($datagram)) {
             throw new SegmentError(
-                'MSH Segment data contains too few required fields.'
+                'PV1 Segment data contains too few required fields.'
             );
         }
-        $this->checkFieldLength('SetId', 4, $data->getPositionalState());
-        $this->setFieldSetId($codec->extractComponent($data));
+        $this->checkFieldLength('SetId', 4, $datagram->getPositionalState());
+        $this->setFieldSetId($codec->extractComponent($datagram));
 
         // PV1.2
-        if (false === $codec->advanceToField($data)) {
+        if (false === $codec->advanceToField($datagram)) {
             throw new SegmentError(
-                'MSH Segment data contains too few required fields.'
+                'PV1 Segment data contains too few required fields.'
             );
         }
-        $this->checkFieldLength('PatientClass', 1, $data->getPositionalState());
-        $this->setFieldPatientClass($codec->extractComponent($data));
+        $this->checkFieldLength('PatientClass', 1, $datagram->getPositionalState());
+        $this->setFieldPatientClass($codec->extractComponent($datagram));
 
         // PV1.3
-        if (false === $codec->advanceToField($data)) {
+        if (false === $codec->advanceToField($datagram)) {
             return false;
         }
-        $this->checkFieldLength('AssignedPatientLocation', 80, $data->getPositionalState());
+        $this->checkFieldLength('AssignedPatientLocation', 80, $datagram->getPositionalState());
         $sequence = [1,1,1,[1,1,1],1,1,1,1,1,[1,1,1,1],[1,1,1]];
         list(
             $pointOfCare,
@@ -2847,7 +2847,7 @@ class Pv1Segment extends AbstractSegment
                 $assigningAuthorityForLocationUniversalId,
                 $assigningAuthorityForLocationUniversalIdType,
             ),
-        ) = $this->extractComponents($data, $codec, $sequence);
+        ) = $this->extractComponents($datagram, $codec, $sequence);
         $this->setFieldAssignedPatientLocation(
             $pointOfCare,
             $room,
@@ -2870,17 +2870,17 @@ class Pv1Segment extends AbstractSegment
         );
 
         // PV1.4
-        if (false === $codec->advanceToField($data)) {
+        if (false === $codec->advanceToField($datagram)) {
             return false;
         }
-        $this->checkFieldLength('AdmissionType', 2, $data->getPositionalState());
-        $this->setFieldAdmissionType($codec->extractComponent($data));
+        $this->checkFieldLength('AdmissionType', 2, $datagram->getPositionalState());
+        $this->setFieldAdmissionType($codec->extractComponent($datagram));
 
         // PV1.5
-        if (false === $codec->advanceToField($data)) {
+        if (false === $codec->advanceToField($datagram)) {
             return false;
         }
-        $this->checkFieldLength('PreadmitNumber', 250, $data->getPositionalState());
+        $this->checkFieldLength('PreadmitNumber', 250, $datagram->getPositionalState());
         $sequence = [1,1,1,[1,1,1],1,[1,1,1],1,1,[1,1,1,1,1,1,1,1,1],[1,1,1,1,1,1,1,1,1]];
         list(
             $idNumber,
@@ -2921,7 +2921,7 @@ class Pv1Segment extends AbstractSegment
                 $assigningAgencyAltCodingSystemVersionId,
                 $assigningAgencyOriginalText,
             ),
-        ) = $this->extractComponents($data, $codec, $sequence);
+        ) = $this->extractComponents($datagram, $codec, $sequence);
         $this->setFieldPreadmitNumber(
             $idNumber,
             $checkDigit,
@@ -2956,10 +2956,10 @@ class Pv1Segment extends AbstractSegment
         );
 
         // PV1.6
-        if (false === $codec->advanceToField($data)) {
+        if (false === $codec->advanceToField($datagram)) {
             return false;
         }
-        $this->checkFieldLength('PriorPatientLocation', 80, $data->getPositionalState());
+        $this->checkFieldLength('PriorPatientLocation', 80, $datagram->getPositionalState());
         $sequence = [1,1,1,[1,1,1],1,1,1,1,1,[1,1,1,1],[1,1,1]];
         list(
             $pointOfCare,
@@ -2986,7 +2986,7 @@ class Pv1Segment extends AbstractSegment
                 $assigningAuthorityForLocationUniversalId,
                 $assigningAuthorityForLocationUniversalIdType,
             ),
-        ) = $this->extractComponents($data, $codec, $sequence);
+        ) = $this->extractComponents($datagram, $codec, $sequence);
         $this->setFieldPriorPatientLocation(
             $pointOfCare,
             $room,
@@ -3009,15 +3009,15 @@ class Pv1Segment extends AbstractSegment
         );
 
         // PV1.7
-        if (false === $codec->advanceToField($data)) {
+        if (false === $codec->advanceToField($datagram)) {
             return false;
         }
         $sequence = [1,[1,1,1,1,1],1,1,1,1,1,1,[1,1,1],1,1,1,1,[1,1,1],1,[1,1,1,1,1,1],[[1,1],[1,1]],1,[1,1],[1,1],1,[1,1,1,1,1,1,1,1,1],[1,1,1,1,1,1,1,1,1]];
         $repetitions = [];
         $first = true;
-        while ($first || false !== $codec->advanceToRepetition($data)) {
-            $this->checkRepetitionLength('AttendingDoctor', 250, $data->getPositionalState());
-            $repetitions[] = $this->extractComponents($data, $codec, $sequence);
+        while ($first || false !== $codec->advanceToRepetition($datagram)) {
+            $this->checkRepetitionLength('AttendingDoctor', 250, $datagram->getPositionalState());
+            $repetitions[] = $this->extractComponents($datagram, $codec, $sequence);
             $first = false;
         }
         foreach ($repetitions as $components) {
@@ -3164,15 +3164,15 @@ class Pv1Segment extends AbstractSegment
         }
 
         // PV1.8
-        if (false === $codec->advanceToField($data)) {
+        if (false === $codec->advanceToField($datagram)) {
             return false;
         }
         $sequence = [1,[1,1,1,1,1],1,1,1,1,1,1,[1,1,1],1,1,1,1,[1,1,1],1,[1,1,1,1,1,1],[[1,1],[1,1]],1,[1,1],[1,1],1,[1,1,1,1,1,1,1,1,1],[1,1,1,1,1,1,1,1,1]];
         $repetitions = [];
         $first = true;
-        while ($first || false !== $codec->advanceToRepetition($data)) {
-            $this->checkRepetitionLength('ReferringDoctor', 250, $data->getPositionalState());
-            $repetitions[] = $this->extractComponents($data, $codec, $sequence);
+        while ($first || false !== $codec->advanceToRepetition($datagram)) {
+            $this->checkRepetitionLength('ReferringDoctor', 250, $datagram->getPositionalState());
+            $repetitions[] = $this->extractComponents($datagram, $codec, $sequence);
             $first = false;
         }
         foreach ($repetitions as $components) {
@@ -3319,15 +3319,15 @@ class Pv1Segment extends AbstractSegment
         }
 
         // PV1.9
-        if (false === $codec->advanceToField($data)) {
+        if (false === $codec->advanceToField($datagram)) {
             return false;
         }
         $sequence = [1,[1,1,1,1,1],1,1,1,1,1,1,[1,1,1],1,1,1,1,[1,1,1],1,[1,1,1,1,1,1],[[1,1],[1,1]],1,[1,1],[1,1],1,[1,1,1,1,1,1,1,1,1],[1,1,1,1,1,1,1,1,1]];
         $repetitions = [];
         $first = true;
-        while ($first || false !== $codec->advanceToRepetition($data)) {
-            $this->checkRepetitionLength('ConsultingDoctor', 250, $data->getPositionalState());
-            $repetitions[] = $this->extractComponents($data, $codec, $sequence);
+        while ($first || false !== $codec->advanceToRepetition($datagram)) {
+            $this->checkRepetitionLength('ConsultingDoctor', 250, $datagram->getPositionalState());
+            $repetitions[] = $this->extractComponents($datagram, $codec, $sequence);
             $first = false;
         }
         foreach ($repetitions as $components) {
@@ -3474,17 +3474,17 @@ class Pv1Segment extends AbstractSegment
         }
 
         // PV1.10
-        if (false === $codec->advanceToField($data)) {
+        if (false === $codec->advanceToField($datagram)) {
             return false;
         }
-        $this->checkFieldLength('HospitalService', 3, $data->getPositionalState());
-        $this->setFieldHospitalService($codec->extractComponent($data));
+        $this->checkFieldLength('HospitalService', 3, $datagram->getPositionalState());
+        $this->setFieldHospitalService($codec->extractComponent($datagram));
 
         // PV1.11
-        if (false === $codec->advanceToField($data)) {
+        if (false === $codec->advanceToField($datagram)) {
             return false;
         }
-        $this->checkFieldLength('TemporaryLocation', 80, $data->getPositionalState());
+        $this->checkFieldLength('TemporaryLocation', 80, $datagram->getPositionalState());
         $sequence = [1,1,1,[1,1,1],1,1,1,1,1,[1,1,1,1],[1,1,1]];
         list(
             $pointOfCare,
@@ -3511,7 +3511,7 @@ class Pv1Segment extends AbstractSegment
                 $assigningAuthorityForLocationUniversalId,
                 $assigningAuthorityForLocationUniversalIdType,
             ),
-        ) = $this->extractComponents($data, $codec, $sequence);
+        ) = $this->extractComponents($datagram, $codec, $sequence);
         $this->setFieldTemporaryLocation(
             $pointOfCare,
             $room,
@@ -3534,35 +3534,35 @@ class Pv1Segment extends AbstractSegment
         );
 
         // PV1.12
-        if (false === $codec->advanceToField($data)) {
+        if (false === $codec->advanceToField($datagram)) {
             return false;
         }
-        $this->checkFieldLength('PreadmitTestIndicator', 2, $data->getPositionalState());
-        $this->setFieldPreadmitTestIndicator($codec->extractComponent($data));
+        $this->checkFieldLength('PreadmitTestIndicator', 2, $datagram->getPositionalState());
+        $this->setFieldPreadmitTestIndicator($codec->extractComponent($datagram));
 
         // PV1.13
-        if (false === $codec->advanceToField($data)) {
+        if (false === $codec->advanceToField($datagram)) {
             return false;
         }
-        $this->checkFieldLength('ReadmissionIndicator', 2, $data->getPositionalState());
-        $this->setFieldReadmissionIndicator($codec->extractComponent($data));
+        $this->checkFieldLength('ReadmissionIndicator', 2, $datagram->getPositionalState());
+        $this->setFieldReadmissionIndicator($codec->extractComponent($datagram));
 
         // PV1.14
-        if (false === $codec->advanceToField($data)) {
+        if (false === $codec->advanceToField($datagram)) {
             return false;
         }
-        $this->checkFieldLength('AdmitSource', 6, $data->getPositionalState());
-        $this->setFieldAdmitSource($codec->extractComponent($data));
+        $this->checkFieldLength('AdmitSource', 6, $datagram->getPositionalState());
+        $this->setFieldAdmitSource($codec->extractComponent($datagram));
 
         // PV1.15
-        if (false === $codec->advanceToField($data)) {
+        if (false === $codec->advanceToField($datagram)) {
             return false;
         }
         $repetitions = [];
         $first = true;
-        while ($first || false !== $codec->advanceToRepetition($data)) {
-            $this->checkRepetitionLength('AmbulatoryStatus', 2, $data->getPositionalState());
-            $repetitions[] = $this->extractComponents($data, $codec, [1]);
+        while ($first || false !== $codec->advanceToRepetition($datagram)) {
+            $this->checkRepetitionLength('AmbulatoryStatus', 2, $datagram->getPositionalState());
+            $repetitions[] = $this->extractComponents($datagram, $codec, [1]);
             $first = false;
         }
         foreach ($repetitions as list($value,)) {
@@ -3570,22 +3570,22 @@ class Pv1Segment extends AbstractSegment
         }
 
         // PV1.16
-        if (false === $codec->advanceToField($data)) {
+        if (false === $codec->advanceToField($datagram)) {
             return false;
         }
-        $this->checkFieldLength('VipIndicator', 2, $data->getPositionalState());
-        $this->setFieldVipIndicator($codec->extractComponent($data));
+        $this->checkFieldLength('VipIndicator', 2, $datagram->getPositionalState());
+        $this->setFieldVipIndicator($codec->extractComponent($datagram));
 
         // PV1.17
-        if (false === $codec->advanceToField($data)) {
+        if (false === $codec->advanceToField($datagram)) {
             return false;
         }
         $sequence = [1,[1,1,1,1,1],1,1,1,1,1,1,[1,1,1],1,1,1,1,[1,1,1],1,[1,1,1,1,1,1],[[1,1],[1,1]],1,[1,1],[1,1],1,[1,1,1,1,1,1,1,1,1],[1,1,1,1,1,1,1,1,1]];
         $repetitions = [];
         $first = true;
-        while ($first || false !== $codec->advanceToRepetition($data)) {
-            $this->checkRepetitionLength('AdmittingDoctor', 250, $data->getPositionalState());
-            $repetitions[] = $this->extractComponents($data, $codec, $sequence);
+        while ($first || false !== $codec->advanceToRepetition($datagram)) {
+            $this->checkRepetitionLength('AdmittingDoctor', 250, $datagram->getPositionalState());
+            $repetitions[] = $this->extractComponents($datagram, $codec, $sequence);
             $first = false;
         }
         foreach ($repetitions as $components) {
@@ -3732,17 +3732,17 @@ class Pv1Segment extends AbstractSegment
         }
 
         // PV1.18
-        if (false === $codec->advanceToField($data)) {
+        if (false === $codec->advanceToField($datagram)) {
             return false;
         }
-        $this->checkFieldLength('PatientType', 2, $data->getPositionalState());
-        $this->setFieldPatientType($codec->extractComponent($data));
+        $this->checkFieldLength('PatientType', 2, $datagram->getPositionalState());
+        $this->setFieldPatientType($codec->extractComponent($datagram));
 
         // PV1.19
-        if (false === $codec->advanceToField($data)) {
+        if (false === $codec->advanceToField($datagram)) {
             return false;
         }
-        $this->checkFieldLength('VisitNumber', 250, $data->getPositionalState());
+        $this->checkFieldLength('VisitNumber', 250, $datagram->getPositionalState());
         $sequence = [1,1,1,[1,1,1],1,[1,1,1],1,1,[1,1,1,1,1,1,1,1,1],[1,1,1,1,1,1,1,1,1]];
         list(
             $idNumber,
@@ -3783,7 +3783,7 @@ class Pv1Segment extends AbstractSegment
                 $assigningAgencyAltCodingSystemVersionId,
                 $assigningAgencyOriginalText,
             ),
-        ) = $this->extractComponents($data, $codec, $sequence);
+        ) = $this->extractComponents($datagram, $codec, $sequence);
         $this->setFieldVisitNumber(
             $idNumber,
             $checkDigit,
@@ -3818,15 +3818,15 @@ class Pv1Segment extends AbstractSegment
         );
 
         // PV1.20
-        if (false === $codec->advanceToField($data)) {
+        if (false === $codec->advanceToField($datagram)) {
             return false;
         }
         $sequence = [1,[1,1]];
         $repetitions = [];
         $first = true;
-        while ($first || false !== $codec->advanceToRepetition($data)) {
-            $this->checkRepetitionLength('FinancialClass', 50, $data->getPositionalState());
-            $repetitions[] = $this->extractComponents($data, $codec, $sequence);
+        while ($first || false !== $codec->advanceToRepetition($datagram)) {
+            $this->checkRepetitionLength('FinancialClass', 50, $datagram->getPositionalState());
+            $repetitions[] = $this->extractComponents($datagram, $codec, $sequence);
             $first = false;
         }
         foreach ($repetitions as $components) {
@@ -3845,35 +3845,35 @@ class Pv1Segment extends AbstractSegment
         }
 
         // PV1.21
-        if (false === $codec->advanceToField($data)) {
+        if (false === $codec->advanceToField($datagram)) {
             return false;
         }
-        $this->checkFieldLength('ChargePriceIndicator', 2, $data->getPositionalState());
-        $this->setFieldChargePriceIndicator($codec->extractComponent($data));
+        $this->checkFieldLength('ChargePriceIndicator', 2, $datagram->getPositionalState());
+        $this->setFieldChargePriceIndicator($codec->extractComponent($datagram));
 
         // PV1.22
-        if (false === $codec->advanceToField($data)) {
+        if (false === $codec->advanceToField($datagram)) {
             return false;
         }
-        $this->checkFieldLength('CourtesyCode', 2, $data->getPositionalState());
-        $this->setFieldCourtesyCode($codec->extractComponent($data));
+        $this->checkFieldLength('CourtesyCode', 2, $datagram->getPositionalState());
+        $this->setFieldCourtesyCode($codec->extractComponent($datagram));
 
         // PV1.23
-        if (false === $codec->advanceToField($data)) {
+        if (false === $codec->advanceToField($datagram)) {
             return false;
         }
-        $this->checkFieldLength('CreditRating', 2, $data->getPositionalState());
-        $this->setFieldCreditRating($codec->extractComponent($data));
+        $this->checkFieldLength('CreditRating', 2, $datagram->getPositionalState());
+        $this->setFieldCreditRating($codec->extractComponent($datagram));
 
         // PV1.24
-        if (false === $codec->advanceToField($data)) {
+        if (false === $codec->advanceToField($datagram)) {
             return false;
         }
         $repetitions = [];
         $first = true;
-        while ($first || false !== $codec->advanceToRepetition($data)) {
-            $this->checkRepetitionLength('ContractCode', 2, $data->getPositionalState());
-            $repetitions[] = $this->extractComponents($data, $codec, [1]);
+        while ($first || false !== $codec->advanceToRepetition($datagram)) {
+            $this->checkRepetitionLength('ContractCode', 2, $datagram->getPositionalState());
+            $repetitions[] = $this->extractComponents($datagram, $codec, [1]);
             $first = false;
         }
         foreach ($repetitions as list($value,)) {
@@ -3881,14 +3881,14 @@ class Pv1Segment extends AbstractSegment
         }
 
         // PV1.25
-        if (false === $codec->advanceToField($data)) {
+        if (false === $codec->advanceToField($datagram)) {
             return false;
         }
         $repetitions = [];
         $first = true;
-        while ($first || false !== $codec->advanceToRepetition($data)) {
-            $this->checkRepetitionLength('ContractEffectiveDate', 8, $data->getPositionalState());
-            $repetitions[] = $this->extractComponents($data, $codec, [1]);
+        while ($first || false !== $codec->advanceToRepetition($datagram)) {
+            $this->checkRepetitionLength('ContractEffectiveDate', 8, $datagram->getPositionalState());
+            $repetitions[] = $this->extractComponents($datagram, $codec, [1]);
             $first = false;
         }
         foreach ($repetitions as list($value,)) {
@@ -3896,14 +3896,14 @@ class Pv1Segment extends AbstractSegment
         }
 
         // PV1.26
-        if (false === $codec->advanceToField($data)) {
+        if (false === $codec->advanceToField($datagram)) {
             return false;
         }
         $repetitions = [];
         $first = true;
-        while ($first || false !== $codec->advanceToRepetition($data)) {
-            $this->checkRepetitionLength('ContractAmount', 12, $data->getPositionalState());
-            $repetitions[] = $this->extractComponents($data, $codec, [1]);
+        while ($first || false !== $codec->advanceToRepetition($datagram)) {
+            $this->checkRepetitionLength('ContractAmount', 12, $datagram->getPositionalState());
+            $repetitions[] = $this->extractComponents($datagram, $codec, [1]);
             $first = false;
         }
         foreach ($repetitions as list($value,)) {
@@ -3911,14 +3911,14 @@ class Pv1Segment extends AbstractSegment
         }
 
         // PV1.27
-        if (false === $codec->advanceToField($data)) {
+        if (false === $codec->advanceToField($datagram)) {
             return false;
         }
         $repetitions = [];
         $first = true;
-        while ($first || false !== $codec->advanceToRepetition($data)) {
-            $this->checkRepetitionLength('ContractPeriod', 3, $data->getPositionalState());
-            $repetitions[] = $this->extractComponents($data, $codec, [1]);
+        while ($first || false !== $codec->advanceToRepetition($datagram)) {
+            $this->checkRepetitionLength('ContractPeriod', 3, $datagram->getPositionalState());
+            $repetitions[] = $this->extractComponents($datagram, $codec, [1]);
             $first = false;
         }
         foreach ($repetitions as list($value,)) {
@@ -3926,73 +3926,73 @@ class Pv1Segment extends AbstractSegment
         }
 
         // PV1.28
-        if (false === $codec->advanceToField($data)) {
+        if (false === $codec->advanceToField($datagram)) {
             return false;
         }
-        $this->checkFieldLength('InterestCode', 2, $data->getPositionalState());
-        $this->setFieldInterestCode($codec->extractComponent($data));
+        $this->checkFieldLength('InterestCode', 2, $datagram->getPositionalState());
+        $this->setFieldInterestCode($codec->extractComponent($datagram));
 
         // PV1.29
-        if (false === $codec->advanceToField($data)) {
+        if (false === $codec->advanceToField($datagram)) {
             return false;
         }
-        $this->checkFieldLength('TransferToBadDebtCode', 4, $data->getPositionalState());
-        $this->setFieldTransferToBadDebtCode($codec->extractComponent($data));
+        $this->checkFieldLength('TransferToBadDebtCode', 4, $datagram->getPositionalState());
+        $this->setFieldTransferToBadDebtCode($codec->extractComponent($datagram));
 
         // PV1.30
-        if (false === $codec->advanceToField($data)) {
+        if (false === $codec->advanceToField($datagram)) {
             return false;
         }
-        $this->checkFieldLength('TransferToBadDebtDate', 8, $data->getPositionalState());
-        $this->setFieldTransferToBadDebtDate($codec->extractComponent($data));
+        $this->checkFieldLength('TransferToBadDebtDate', 8, $datagram->getPositionalState());
+        $this->setFieldTransferToBadDebtDate($codec->extractComponent($datagram));
 
         // PV1.31
-        if (false === $codec->advanceToField($data)) {
+        if (false === $codec->advanceToField($datagram)) {
             return false;
         }
-        $this->checkFieldLength('BadDebtAgencyCode', 10, $data->getPositionalState());
-        $this->setFieldBadDebtAgencyCode($codec->extractComponent($data));
+        $this->checkFieldLength('BadDebtAgencyCode', 10, $datagram->getPositionalState());
+        $this->setFieldBadDebtAgencyCode($codec->extractComponent($datagram));
 
         // PV1.32
-        if (false === $codec->advanceToField($data)) {
+        if (false === $codec->advanceToField($datagram)) {
             return false;
         }
-        $this->checkFieldLength('BadDebtTransferAmount', 12, $data->getPositionalState());
-        $this->setFieldBadDebtTransferAmount($codec->extractComponent($data));
+        $this->checkFieldLength('BadDebtTransferAmount', 12, $datagram->getPositionalState());
+        $this->setFieldBadDebtTransferAmount($codec->extractComponent($datagram));
 
         // PV1.33
-        if (false === $codec->advanceToField($data)) {
+        if (false === $codec->advanceToField($datagram)) {
             return false;
         }
-        $this->checkFieldLength('BadDebtRecoveryAmount', 12, $data->getPositionalState());
-        $this->setFieldBadDebtRecoveryAmount($codec->extractComponent($data));
+        $this->checkFieldLength('BadDebtRecoveryAmount', 12, $datagram->getPositionalState());
+        $this->setFieldBadDebtRecoveryAmount($codec->extractComponent($datagram));
 
         // PV1.34
-        if (false === $codec->advanceToField($data)) {
+        if (false === $codec->advanceToField($datagram)) {
             return false;
         }
-        $this->checkFieldLength('DeleteAccountIndicator', 1, $data->getPositionalState());
-        $this->setFieldDeleteAccountIndicator($codec->extractComponent($data));
+        $this->checkFieldLength('DeleteAccountIndicator', 1, $datagram->getPositionalState());
+        $this->setFieldDeleteAccountIndicator($codec->extractComponent($datagram));
 
         // PV1.35
-        if (false === $codec->advanceToField($data)) {
+        if (false === $codec->advanceToField($datagram)) {
             return false;
         }
-        $this->checkFieldLength('DeleteAccountDate', 8, $data->getPositionalState());
-        $this->setFieldDeleteAccountDate($codec->extractComponent($data));
+        $this->checkFieldLength('DeleteAccountDate', 8, $datagram->getPositionalState());
+        $this->setFieldDeleteAccountDate($codec->extractComponent($datagram));
 
         // PV1.36
-        if (false === $codec->advanceToField($data)) {
+        if (false === $codec->advanceToField($datagram)) {
             return false;
         }
-        $this->checkFieldLength('DischargeDisposition', 3, $data->getPositionalState());
-        $this->setFieldDischargeDisposition($codec->extractComponent($data));
+        $this->checkFieldLength('DischargeDisposition', 3, $datagram->getPositionalState());
+        $this->setFieldDischargeDisposition($codec->extractComponent($datagram));
 
         // PV1.37
-        if (false === $codec->advanceToField($data)) {
+        if (false === $codec->advanceToField($datagram)) {
             return false;
         }
-        $this->checkFieldLength('DischargedToLocation', 47, $data->getPositionalState());
+        $this->checkFieldLength('DischargedToLocation', 47, $datagram->getPositionalState());
         $sequence = [1,[1,1]];
         list(
             $dischargeLocation,
@@ -4000,7 +4000,7 @@ class Pv1Segment extends AbstractSegment
                 $effectiveDateTime,
                 $effectiveDateDegreeOfPrecision,
             ),
-        ) = $this->extractComponents($data, $codec, $sequence);
+        ) = $this->extractComponents($datagram, $codec, $sequence);
         $this->setFieldDischargedToLocation(
             $dischargeLocation,
             $effectiveDateTime,
@@ -4008,10 +4008,10 @@ class Pv1Segment extends AbstractSegment
         );
 
         // PV1.38
-        if (false === $codec->advanceToField($data)) {
+        if (false === $codec->advanceToField($datagram)) {
             return false;
         }
-        $this->checkFieldLength('DietType', 250, $data->getPositionalState());
+        $this->checkFieldLength('DietType', 250, $datagram->getPositionalState());
         $sequence = [1,1,1,1,1,1];
         list(
             $identifier,
@@ -4020,7 +4020,7 @@ class Pv1Segment extends AbstractSegment
             $altIdentifier,
             $altText,
             $nameOfAltCodingSystem,
-        ) = $this->extractComponents($data, $codec, $sequence);
+        ) = $this->extractComponents($datagram, $codec, $sequence);
         $this->setFieldDietType(
             $identifier,
             $text,
@@ -4031,31 +4031,31 @@ class Pv1Segment extends AbstractSegment
         );
 
         // PV1.39
-        if (false === $codec->advanceToField($data)) {
+        if (false === $codec->advanceToField($datagram)) {
             return false;
         }
-        $this->checkFieldLength('ServicingFacility', 2, $data->getPositionalState());
-        $this->setFieldServicingFacility($codec->extractComponent($data));
+        $this->checkFieldLength('ServicingFacility', 2, $datagram->getPositionalState());
+        $this->setFieldServicingFacility($codec->extractComponent($datagram));
 
         // PV1.40
-        if (false === $codec->advanceToField($data)) {
+        if (false === $codec->advanceToField($datagram)) {
             return false;
         }
-        $this->checkFieldLength('BedStatus', 1, $data->getPositionalState());
-        $this->setFieldBedStatus($codec->extractComponent($data));
+        $this->checkFieldLength('BedStatus', 1, $datagram->getPositionalState());
+        $this->setFieldBedStatus($codec->extractComponent($datagram));
 
         // PV1.41
-        if (false === $codec->advanceToField($data)) {
+        if (false === $codec->advanceToField($datagram)) {
             return false;
         }
-        $this->checkFieldLength('AccountStatus', 2, $data->getPositionalState());
-        $this->setFieldAccountStatus($codec->extractComponent($data));
+        $this->checkFieldLength('AccountStatus', 2, $datagram->getPositionalState());
+        $this->setFieldAccountStatus($codec->extractComponent($datagram));
 
         // PV1.42
-        if (false === $codec->advanceToField($data)) {
+        if (false === $codec->advanceToField($datagram)) {
             return false;
         }
-        $this->checkFieldLength('PendingLocation', 80, $data->getPositionalState());
+        $this->checkFieldLength('PendingLocation', 80, $datagram->getPositionalState());
         $sequence = [1,1,1,[1,1,1],1,1,1,1,1,[1,1,1,1],[1,1,1]];
         list(
             $pointOfCare,
@@ -4082,7 +4082,7 @@ class Pv1Segment extends AbstractSegment
                 $assigningAuthorityForLocationUniversalId,
                 $assigningAuthorityForLocationUniversalIdType,
             ),
-        ) = $this->extractComponents($data, $codec, $sequence);
+        ) = $this->extractComponents($datagram, $codec, $sequence);
         $this->setFieldPendingLocation(
             $pointOfCare,
             $room,
@@ -4105,10 +4105,10 @@ class Pv1Segment extends AbstractSegment
         );
 
         // PV1.43
-        if (false === $codec->advanceToField($data)) {
+        if (false === $codec->advanceToField($datagram)) {
             return false;
         }
-        $this->checkFieldLength('PriorTemporaryLocation', 80, $data->getPositionalState());
+        $this->checkFieldLength('PriorTemporaryLocation', 80, $datagram->getPositionalState());
         $sequence = [1,1,1,[1,1,1],1,1,1,1,1,[1,1,1,1],[1,1,1]];
         list(
             $pointOfCare,
@@ -4135,7 +4135,7 @@ class Pv1Segment extends AbstractSegment
                 $assigningAuthorityForLocationUniversalId,
                 $assigningAuthorityForLocationUniversalIdType,
             ),
-        ) = $this->extractComponents($data, $codec, $sequence);
+        ) = $this->extractComponents($datagram, $codec, $sequence);
         $this->setFieldPriorTemporaryLocation(
             $pointOfCare,
             $room,
@@ -4158,30 +4158,30 @@ class Pv1Segment extends AbstractSegment
         );
 
         // PV1.44
-        if (false === $codec->advanceToField($data)) {
+        if (false === $codec->advanceToField($datagram)) {
             return false;
         }
-        $this->checkFieldLength('AdmitDatetime', 26, $data->getPositionalState());
+        $this->checkFieldLength('AdmitDatetime', 26, $datagram->getPositionalState());
         $sequence = [1,1];
         list(
             $time,
             $degreeOfPrecision,
-        ) = $this->extractComponents($data, $codec, $sequence);
+        ) = $this->extractComponents($datagram, $codec, $sequence);
         $this->setFieldAdmitDatetime(
             $time,
             $degreeOfPrecision
         );
 
         // PV1.45
-        if (false === $codec->advanceToField($data)) {
+        if (false === $codec->advanceToField($datagram)) {
             return false;
         }
         $sequence = [1,1];
         $repetitions = [];
         $first = true;
-        while ($first || false !== $codec->advanceToRepetition($data)) {
-            $this->checkRepetitionLength('DischargeDatetime', 26, $data->getPositionalState());
-            $repetitions[] = $this->extractComponents($data, $codec, $sequence);
+        while ($first || false !== $codec->advanceToRepetition($datagram)) {
+            $this->checkRepetitionLength('DischargeDatetime', 26, $datagram->getPositionalState());
+            $repetitions[] = $this->extractComponents($datagram, $codec, $sequence);
             $first = false;
         }
         foreach ($repetitions as $components) {
@@ -4196,38 +4196,38 @@ class Pv1Segment extends AbstractSegment
         }
 
         // PV1.46
-        if (false === $codec->advanceToField($data)) {
+        if (false === $codec->advanceToField($datagram)) {
             return false;
         }
-        $this->checkFieldLength('CurrentPatientBalance', 12, $data->getPositionalState());
-        $this->setFieldCurrentPatientBalance($codec->extractComponent($data));
+        $this->checkFieldLength('CurrentPatientBalance', 12, $datagram->getPositionalState());
+        $this->setFieldCurrentPatientBalance($codec->extractComponent($datagram));
 
         // PV1.47
-        if (false === $codec->advanceToField($data)) {
+        if (false === $codec->advanceToField($datagram)) {
             return false;
         }
-        $this->checkFieldLength('TotalCharges', 12, $data->getPositionalState());
-        $this->setFieldTotalCharges($codec->extractComponent($data));
+        $this->checkFieldLength('TotalCharges', 12, $datagram->getPositionalState());
+        $this->setFieldTotalCharges($codec->extractComponent($datagram));
 
         // PV1.48
-        if (false === $codec->advanceToField($data)) {
+        if (false === $codec->advanceToField($datagram)) {
             return false;
         }
-        $this->checkFieldLength('TotalAdjustments', 12, $data->getPositionalState());
-        $this->setFieldTotalAdjustments($codec->extractComponent($data));
+        $this->checkFieldLength('TotalAdjustments', 12, $datagram->getPositionalState());
+        $this->setFieldTotalAdjustments($codec->extractComponent($datagram));
 
         // PV1.49
-        if (false === $codec->advanceToField($data)) {
+        if (false === $codec->advanceToField($datagram)) {
             return false;
         }
-        $this->checkFieldLength('TotalPayments', 12, $data->getPositionalState());
-        $this->setFieldTotalPayments($codec->extractComponent($data));
+        $this->checkFieldLength('TotalPayments', 12, $datagram->getPositionalState());
+        $this->setFieldTotalPayments($codec->extractComponent($datagram));
 
         // PV1.50
-        if (false === $codec->advanceToField($data)) {
+        if (false === $codec->advanceToField($datagram)) {
             return false;
         }
-        $this->checkFieldLength('AltVisitId', 250, $data->getPositionalState());
+        $this->checkFieldLength('AltVisitId', 250, $datagram->getPositionalState());
         $sequence = [1,1,1,[1,1,1],1,[1,1,1],1,1,[1,1,1,1,1,1,1,1,1],[1,1,1,1,1,1,1,1,1]];
         list(
             $idNumber,
@@ -4268,7 +4268,7 @@ class Pv1Segment extends AbstractSegment
                 $assigningAgencyAltCodingSystemVersionId,
                 $assigningAgencyOriginalText,
             ),
-        ) = $this->extractComponents($data, $codec, $sequence);
+        ) = $this->extractComponents($datagram, $codec, $sequence);
         $this->setFieldAltVisitId(
             $idNumber,
             $checkDigit,
@@ -4303,22 +4303,22 @@ class Pv1Segment extends AbstractSegment
         );
 
         // PV1.51
-        if (false === $codec->advanceToField($data)) {
+        if (false === $codec->advanceToField($datagram)) {
             return false;
         }
-        $this->checkFieldLength('VisitIndicator', 1, $data->getPositionalState());
-        $this->setFieldVisitIndicator($codec->extractComponent($data));
+        $this->checkFieldLength('VisitIndicator', 1, $datagram->getPositionalState());
+        $this->setFieldVisitIndicator($codec->extractComponent($datagram));
 
         // PV1.52
-        if (false === $codec->advanceToField($data)) {
+        if (false === $codec->advanceToField($datagram)) {
             return false;
         }
         $sequence = [1,[1,1,1,1,1],1,1,1,1,1,1,[1,1,1],1,1,1,1,[1,1,1],1,[1,1,1,1,1,1],[[1,1],[1,1]],1,[1,1],[1,1],1,[1,1,1,1,1,1,1,1,1],[1,1,1,1,1,1,1,1,1]];
         $repetitions = [];
         $first = true;
-        while ($first || false !== $codec->advanceToRepetition($data)) {
-            $this->checkRepetitionLength('OtherHealthcareProvider', 250, $data->getPositionalState());
-            $repetitions[] = $this->extractComponents($data, $codec, $sequence);
+        while ($first || false !== $codec->advanceToRepetition($datagram)) {
+            $this->checkRepetitionLength('OtherHealthcareProvider', 250, $datagram->getPositionalState());
+            $repetitions[] = $this->extractComponents($datagram, $codec, $sequence);
             $first = false;
         }
         foreach ($repetitions as $components) {

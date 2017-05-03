@@ -47,7 +47,7 @@ class ComponentDataTypeGenerator extends AbstractDataTypeGenerator
         foreach ($this->components as $component) {
             $properties[] = [
                 $this->componentNameToPropertyName($component['name']),
-                $this->context->dataTypeIdToFQClassName($component['type'])
+                $this->context->dataTypeIdToClass($component['type'])
             ];
         }
 
@@ -65,7 +65,7 @@ class ComponentDataTypeGenerator extends AbstractDataTypeGenerator
             $propertyName = $this->componentNameToPropertyName($component['name']);
             $accessors[] = [
                 $this->componentNameToAccessorName($component['name']),
-                $this->context->dataTypeIdToFQClassName($component['type']),
+                $this->context->dataTypeIdToClass($component['type']),
                 "        return \$this->{$propertyName};",
             ];
         }

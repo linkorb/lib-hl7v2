@@ -605,14 +605,14 @@ class MshSegment extends AbstractSegment
         return $this->messageProfileIdentifier;
     }
 
-    public function fromDatagram(Datagram $data, Codec $codec)
+    public function fromDatagram(Datagram $datagram, Codec $codec)
     {
         // MSH.1
-        $encodingParams = $data->getEncodingParameters();
+        $encodingParams = $datagram->getEncodingParameters();
         $this->setFieldFieldSeparator($encodingParams->getFieldSep());
 
         // MSH.2
-        $codec->advanceToField($data);
+        $codec->advanceToField($datagram);
         $this->setFieldEncodingCharacters(
             $encodingParams->getComponentSep()
             . $encodingParams->getRepetitionSep()
@@ -621,18 +621,18 @@ class MshSegment extends AbstractSegment
         );
 
         // MSH.3
-        if (false === $codec->advanceToField($data)) {
+        if (false === $codec->advanceToField($datagram)) {
             throw new SegmentError(
                 'MSH Segment data contains too few required fields.'
             );
         }
-        $this->checkFieldLength('SendingApplication', 227, $data->getPositionalState());
+        $this->checkFieldLength('SendingApplication', 227, $datagram->getPositionalState());
         $sequence = [1,1,1];
         list(
             $namespaceId,
             $universalId,
             $universalIdType,
-        ) = $this->extractComponents($data, $codec, $sequence);
+        ) = $this->extractComponents($datagram, $codec, $sequence);
         $this->setFieldSendingApplication(
             $namespaceId,
             $universalId,
@@ -640,18 +640,18 @@ class MshSegment extends AbstractSegment
         );
 
         // MSH.4
-        if (false === $codec->advanceToField($data)) {
+        if (false === $codec->advanceToField($datagram)) {
             throw new SegmentError(
                 'MSH Segment data contains too few required fields.'
             );
         }
-        $this->checkFieldLength('SendingFacility', 227, $data->getPositionalState());
+        $this->checkFieldLength('SendingFacility', 227, $datagram->getPositionalState());
         $sequence = [1,1,1];
         list(
             $namespaceId,
             $universalId,
             $universalIdType,
-        ) = $this->extractComponents($data, $codec, $sequence);
+        ) = $this->extractComponents($datagram, $codec, $sequence);
         $this->setFieldSendingFacility(
             $namespaceId,
             $universalId,
@@ -659,18 +659,18 @@ class MshSegment extends AbstractSegment
         );
 
         // MSH.5
-        if (false === $codec->advanceToField($data)) {
+        if (false === $codec->advanceToField($datagram)) {
             throw new SegmentError(
                 'MSH Segment data contains too few required fields.'
             );
         }
-        $this->checkFieldLength('ReceivingApplication', 227, $data->getPositionalState());
+        $this->checkFieldLength('ReceivingApplication', 227, $datagram->getPositionalState());
         $sequence = [1,1,1];
         list(
             $namespaceId,
             $universalId,
             $universalIdType,
-        ) = $this->extractComponents($data, $codec, $sequence);
+        ) = $this->extractComponents($datagram, $codec, $sequence);
         $this->setFieldReceivingApplication(
             $namespaceId,
             $universalId,
@@ -678,18 +678,18 @@ class MshSegment extends AbstractSegment
         );
 
         // MSH.6
-        if (false === $codec->advanceToField($data)) {
+        if (false === $codec->advanceToField($datagram)) {
             throw new SegmentError(
                 'MSH Segment data contains too few required fields.'
             );
         }
-        $this->checkFieldLength('ReceivingFacility', 227, $data->getPositionalState());
+        $this->checkFieldLength('ReceivingFacility', 227, $datagram->getPositionalState());
         $sequence = [1,1,1];
         list(
             $namespaceId,
             $universalId,
             $universalIdType,
-        ) = $this->extractComponents($data, $codec, $sequence);
+        ) = $this->extractComponents($datagram, $codec, $sequence);
         $this->setFieldReceivingFacility(
             $namespaceId,
             $universalId,
@@ -697,44 +697,44 @@ class MshSegment extends AbstractSegment
         );
 
         // MSH.7
-        if (false === $codec->advanceToField($data)) {
+        if (false === $codec->advanceToField($datagram)) {
             throw new SegmentError(
                 'MSH Segment data contains too few required fields.'
             );
         }
-        $this->checkFieldLength('DateTimeOfMessage', 26, $data->getPositionalState());
+        $this->checkFieldLength('DateTimeOfMessage', 26, $datagram->getPositionalState());
         $sequence = [1,1];
         list(
             $time,
             $degreeOfPrecision,
-        ) = $this->extractComponents($data, $codec, $sequence);
+        ) = $this->extractComponents($datagram, $codec, $sequence);
         $this->setFieldDateTimeOfMessage(
             $time,
             $degreeOfPrecision
         );
 
         // MSH.8
-        if (false === $codec->advanceToField($data)) {
+        if (false === $codec->advanceToField($datagram)) {
             throw new SegmentError(
                 'MSH Segment data contains too few required fields.'
             );
         }
-        $this->checkFieldLength('Security', 40, $data->getPositionalState());
-        $this->setFieldSecurity($codec->extractComponent($data));
+        $this->checkFieldLength('Security', 40, $datagram->getPositionalState());
+        $this->setFieldSecurity($codec->extractComponent($datagram));
 
         // MSH.9
-        if (false === $codec->advanceToField($data)) {
+        if (false === $codec->advanceToField($datagram)) {
             throw new SegmentError(
                 'MSH Segment data contains too few required fields.'
             );
         }
-        $this->checkFieldLength('MessageType', 15, $data->getPositionalState());
+        $this->checkFieldLength('MessageType', 15, $datagram->getPositionalState());
         $sequence = [1,1,1];
         list(
             $messageCode,
             $triggerEvent,
             $messageStructure,
-        ) = $this->extractComponents($data, $codec, $sequence);
+        ) = $this->extractComponents($datagram, $codec, $sequence);
         $this->setFieldMessageType(
             $messageCode,
             $triggerEvent,
@@ -742,38 +742,38 @@ class MshSegment extends AbstractSegment
         );
 
         // MSH.10
-        if (false === $codec->advanceToField($data)) {
+        if (false === $codec->advanceToField($datagram)) {
             throw new SegmentError(
                 'MSH Segment data contains too few required fields.'
             );
         }
-        $this->checkFieldLength('MessageControlId', 20, $data->getPositionalState());
-        $this->setFieldMessageControlId($codec->extractComponent($data));
+        $this->checkFieldLength('MessageControlId', 20, $datagram->getPositionalState());
+        $this->setFieldMessageControlId($codec->extractComponent($datagram));
 
         // MSH.11
-        if (false === $codec->advanceToField($data)) {
+        if (false === $codec->advanceToField($datagram)) {
             throw new SegmentError(
                 'MSH Segment data contains too few required fields.'
             );
         }
-        $this->checkFieldLength('ProcessingId', 3, $data->getPositionalState());
+        $this->checkFieldLength('ProcessingId', 3, $datagram->getPositionalState());
         $sequence = [1,1];
         list(
             $processingId,
             $processingMode,
-        ) = $this->extractComponents($data, $codec, $sequence);
+        ) = $this->extractComponents($datagram, $codec, $sequence);
         $this->setFieldProcessingId(
             $processingId,
             $processingMode
         );
 
         // MSH.12
-        if (false === $codec->advanceToField($data)) {
+        if (false === $codec->advanceToField($datagram)) {
             throw new SegmentError(
                 'MSH Segment data contains too few required fields.'
             );
         }
-        $this->checkFieldLength('VersionId', 60, $data->getPositionalState());
+        $this->checkFieldLength('VersionId', 60, $datagram->getPositionalState());
         $sequence = [1,[1,1,1,1,1,1],[1,1,1,1,1,1]];
         list(
             $versionId,
@@ -793,7 +793,7 @@ class MshSegment extends AbstractSegment
                 $internationalisationVersionIdAltText,
                 $internationalisationVersionIdNameOfAltCodingSystem,
             ),
-        ) = $this->extractComponents($data, $codec, $sequence);
+        ) = $this->extractComponents($datagram, $codec, $sequence);
         $this->setFieldVersionId(
             $versionId,
             $internationalisationCodeIdentifier,
@@ -811,49 +811,49 @@ class MshSegment extends AbstractSegment
         );
 
         // MSH.13
-        if (false === $codec->advanceToField($data)) {
+        if (false === $codec->advanceToField($datagram)) {
             return false;
         }
-        $this->checkFieldLength('SequenceNumber', 15, $data->getPositionalState());
-        $this->setFieldSequenceNumber($codec->extractComponent($data));
+        $this->checkFieldLength('SequenceNumber', 15, $datagram->getPositionalState());
+        $this->setFieldSequenceNumber($codec->extractComponent($datagram));
 
         // MSH.14
-        if (false === $codec->advanceToField($data)) {
+        if (false === $codec->advanceToField($datagram)) {
             return false;
         }
-        $this->checkFieldLength('ContinuationPointer', 180, $data->getPositionalState());
-        $this->setFieldContinuationPointer($codec->extractComponent($data));
+        $this->checkFieldLength('ContinuationPointer', 180, $datagram->getPositionalState());
+        $this->setFieldContinuationPointer($codec->extractComponent($datagram));
 
         // MSH.15
-        if (false === $codec->advanceToField($data)) {
+        if (false === $codec->advanceToField($datagram)) {
             return false;
         }
-        $this->checkFieldLength('AcceptAcknowledgmentType', 2, $data->getPositionalState());
-        $this->setFieldAcceptAcknowledgmentType($codec->extractComponent($data));
+        $this->checkFieldLength('AcceptAcknowledgmentType', 2, $datagram->getPositionalState());
+        $this->setFieldAcceptAcknowledgmentType($codec->extractComponent($datagram));
 
         // MSH.16
-        if (false === $codec->advanceToField($data)) {
+        if (false === $codec->advanceToField($datagram)) {
             return false;
         }
-        $this->checkFieldLength('ApplicationAcknowledgmentType', 2, $data->getPositionalState());
-        $this->setFieldApplicationAcknowledgmentType($codec->extractComponent($data));
+        $this->checkFieldLength('ApplicationAcknowledgmentType', 2, $datagram->getPositionalState());
+        $this->setFieldApplicationAcknowledgmentType($codec->extractComponent($datagram));
 
         // MSH.17
-        if (false === $codec->advanceToField($data)) {
+        if (false === $codec->advanceToField($datagram)) {
             return false;
         }
-        $this->checkFieldLength('CountryCode', 3, $data->getPositionalState());
-        $this->setFieldCountryCode($codec->extractComponent($data));
+        $this->checkFieldLength('CountryCode', 3, $datagram->getPositionalState());
+        $this->setFieldCountryCode($codec->extractComponent($datagram));
 
         // MSH.18
-        if (false === $codec->advanceToField($data)) {
+        if (false === $codec->advanceToField($datagram)) {
             return false;
         }
         $repetitions = [];
         $first = true;
-        while ($first || false !== $codec->advanceToRepetition($data)) {
-            $this->checkRepetitionLength('CharacterSet', 16, $data->getPositionalState());
-            $repetitions[] = $this->extractComponents($data, $codec, [1]);
+        while ($first || false !== $codec->advanceToRepetition($datagram)) {
+            $this->checkRepetitionLength('CharacterSet', 16, $datagram->getPositionalState());
+            $repetitions[] = $this->extractComponents($datagram, $codec, [1]);
             $first = false;
         }
         foreach ($repetitions as list($value,)) {
@@ -861,10 +861,10 @@ class MshSegment extends AbstractSegment
         }
 
         // MSH.19
-        if (false === $codec->advanceToField($data)) {
+        if (false === $codec->advanceToField($datagram)) {
             return false;
         }
-        $this->checkFieldLength('PrincipalLanguageOfMessage', 250, $data->getPositionalState());
+        $this->checkFieldLength('PrincipalLanguageOfMessage', 250, $datagram->getPositionalState());
         $sequence = [1,1,1,1,1,1];
         list(
             $identifier,
@@ -873,7 +873,7 @@ class MshSegment extends AbstractSegment
             $altIdentifier,
             $altText,
             $nameOfAltCodingSystem,
-        ) = $this->extractComponents($data, $codec, $sequence);
+        ) = $this->extractComponents($datagram, $codec, $sequence);
         $this->setFieldPrincipalLanguageOfMessage(
             $identifier,
             $text,
@@ -884,22 +884,22 @@ class MshSegment extends AbstractSegment
         );
 
         // MSH.20
-        if (false === $codec->advanceToField($data)) {
+        if (false === $codec->advanceToField($datagram)) {
             return false;
         }
-        $this->checkFieldLength('AltCharacterSetHandlingScheme', 20, $data->getPositionalState());
-        $this->setFieldAltCharacterSetHandlingScheme($codec->extractComponent($data));
+        $this->checkFieldLength('AltCharacterSetHandlingScheme', 20, $datagram->getPositionalState());
+        $this->setFieldAltCharacterSetHandlingScheme($codec->extractComponent($datagram));
 
         // MSH.21
-        if (false === $codec->advanceToField($data)) {
+        if (false === $codec->advanceToField($datagram)) {
             return false;
         }
         $sequence = [1,1,1,1];
         $repetitions = [];
         $first = true;
-        while ($first || false !== $codec->advanceToRepetition($data)) {
-            $this->checkRepetitionLength('MessageProfileIdentifier', 427, $data->getPositionalState());
-            $repetitions[] = $this->extractComponents($data, $codec, $sequence);
+        while ($first || false !== $codec->advanceToRepetition($datagram)) {
+            $this->checkRepetitionLength('MessageProfileIdentifier', 427, $datagram->getPositionalState());
+            $repetitions[] = $this->extractComponents($datagram, $codec, $sequence);
             $first = false;
         }
         foreach ($repetitions as $components) {

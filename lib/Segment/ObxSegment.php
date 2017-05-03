@@ -28,7 +28,7 @@ class ObxSegment extends AbstractSegment
      */
     private $observationSubid = null;
     /**
-     * @var \Hl7v2\DataType\TxDataType[]
+     * @var \Hl7v2\DataType\DataTypeInterface[]
      */
     private $observationValue = [];
     /**
@@ -168,9 +168,97 @@ class ObxSegment extends AbstractSegment
     }
 
     /**
+     * @param string $sourceApplicationNamespaceId
+     * @param string $sourceApplicationUniversalId
+     * @param string $sourceApplicationUniversalIdType
+     * @param string $typeOfData
+     * @param string $dataSubtype
+     * @param string $encoding
+     * @param string $data
+     */
+    public function addFieldObservationValueAsED(
+        $sourceApplicationNamespaceId,
+        $sourceApplicationUniversalId,
+        $sourceApplicationUniversalIdType,
+        $typeOfData,
+        $dataSubtype = null,
+        $encoding,
+        $data
+    ) {
+        $observationValue = $this
+            ->dataTypeFactory
+            ->create('ED', $this->characterEncoding)
+        ;
+        $this->observationValue[] = $observationValue;
+        $observationValue->setSourceApplication(
+            $sourceApplicationNamespaceId,
+            $sourceApplicationUniversalId,
+            $sourceApplicationUniversalIdType
+        );
+        $observationValue->setTypeOfData($typeOfData);
+        $observationValue->setDataSubtype($dataSubtype);
+        $observationValue->setEncoding($encoding);
+        $observationValue->setData($data);
+    }
+
+    /**
      * @param string $value
      */
-    public function addFieldObservationValue($value)
+    public function addFieldObservationValueAsFT($value)
+    {
+        $observationValue = $this
+            ->dataTypeFactory
+            ->create('FT', $this->characterEncoding)
+        ;
+        $observationValue->setValue($value);
+        $this->observationValue[] = $observationValue;
+    }
+
+    /**
+     * @param string $value
+     */
+    public function addFieldObservationValueAsNM($value)
+    {
+        $observationValue = $this
+            ->dataTypeFactory
+            ->create('NM', $this->characterEncoding)
+        ;
+        $observationValue->setValue($value);
+        $this->observationValue[] = $observationValue;
+    }
+
+    /**
+     * @param string $value
+     */
+    public function addFieldObservationValueAsST($value)
+    {
+        $observationValue = $this
+            ->dataTypeFactory
+            ->create('ST', $this->characterEncoding)
+        ;
+        $observationValue->setValue($value);
+        $this->observationValue[] = $observationValue;
+    }
+
+    /**
+     * @param string $time
+     * @param string $degreeOfPrecision
+     */
+    public function addFieldObservationValueAsTS($time, $degreeOfPrecision = null)
+    {
+        $observationValue = $this
+            ->dataTypeFactory
+            ->create('TS', $this->characterEncoding)
+        ;
+        $this->observationValue[] = $observationValue;
+        $observationValue->setTime($time);
+        $observationValue->setDegreeOfPrecision($degreeOfPrecision);
+    }
+
+    /**
+     * @param string $value
+     */
+    public function addFieldObservationValueAsTX($value)
     {
         $observationValue = $this
             ->dataTypeFactory
@@ -978,7 +1066,7 @@ class ObxSegment extends AbstractSegment
     }
 
     /**
-     * @return \Hl7v2\DataType\TxDataType[]
+     * @return \Hl7v2\DataType\DataTypeInterface[]
      */
     public function getFieldObservationValue()
     {
@@ -1121,33 +1209,33 @@ class ObxSegment extends AbstractSegment
         return $this->performingOrganizationMedicalDirector;
     }
 
-    public function fromDatagram(Datagram $data, Codec $codec)
+    public function fromDatagram(Datagram $datagram, Codec $codec)
     {
         // OBX.1
-        if (false === $codec->advanceToField($data)) {
+        if (false === $codec->advanceToField($datagram)) {
             throw new SegmentError(
-                'MSH Segment data contains too few required fields.'
+                'OBX Segment data contains too few required fields.'
             );
         }
-        $this->checkFieldLength('SetId', 4, $data->getPositionalState());
-        $this->setFieldSetId($codec->extractComponent($data));
+        $this->checkFieldLength('SetId', 4, $datagram->getPositionalState());
+        $this->setFieldSetId($codec->extractComponent($datagram));
 
         // OBX.2
-        if (false === $codec->advanceToField($data)) {
+        if (false === $codec->advanceToField($datagram)) {
             throw new SegmentError(
-                'MSH Segment data contains too few required fields.'
+                'OBX Segment data contains too few required fields.'
             );
         }
-        $this->checkFieldLength('ValueType', 2, $data->getPositionalState());
-        $this->setFieldValueType($codec->extractComponent($data));
+        $this->checkFieldLength('ValueType', 2, $datagram->getPositionalState());
+        $this->setFieldValueType($codec->extractComponent($datagram));
 
         // OBX.3
-        if (false === $codec->advanceToField($data)) {
+        if (false === $codec->advanceToField($datagram)) {
             throw new SegmentError(
-                'MSH Segment data contains too few required fields.'
+                'OBX Segment data contains too few required fields.'
             );
         }
-        $this->checkFieldLength('ObservationIdentifier', 250, $data->getPositionalState());
+        $this->checkFieldLength('ObservationIdentifier', 250, $datagram->getPositionalState());
         $sequence = [1,1,1,1,1,1];
         list(
             $identifier,
@@ -1156,7 +1244,7 @@ class ObxSegment extends AbstractSegment
             $altIdentifier,
             $altText,
             $nameOfAltCodingSystem,
-        ) = $this->extractComponents($data, $codec, $sequence);
+        ) = $this->extractComponents($datagram, $codec, $sequence);
         $this->setFieldObservationIdentifier(
             $identifier,
             $text,
@@ -1167,37 +1255,120 @@ class ObxSegment extends AbstractSegment
         );
 
         // OBX.4
-        if (false === $codec->advanceToField($data)) {
+        if (false === $codec->advanceToField($datagram)) {
             throw new SegmentError(
-                'MSH Segment data contains too few required fields.'
+                'OBX Segment data contains too few required fields.'
             );
         }
-        $this->checkFieldLength('ObservationSubid', 20, $data->getPositionalState());
-        $this->setFieldObservationSubid($codec->extractComponent($data));
+        $this->checkFieldLength('ObservationSubid', 20, $datagram->getPositionalState());
+        $this->setFieldObservationSubid($codec->extractComponent($datagram));
 
         // OBX.5
-        if (false === $codec->advanceToField($data)) {
+        if (false === $codec->advanceToField($datagram)) {
             throw new SegmentError(
-                'MSH Segment data contains too few required fields.'
+                'OBX Segment data contains too few required fields.'
             );
         }
-        $repetitions = [];
-        $first = true;
-        while ($first || false !== $codec->advanceToRepetition($data)) {
-            $repetitions[] = $this->extractComponents($data, $codec, [1]);
-            $first = false;
-        }
-        foreach ($repetitions as list($value,)) {
-            $this->addFieldObservationValue($value);
+        if ('ED' === $this->getFieldValueType()->getValue()) {
+            $sequence = [[1,1,1],1,1,1,1];
+            $repetitions = [];
+            $first = true;
+            while ($first || false !== $codec->advanceToRepetition($datagram)) {
+                $repetitions[] = $this->extractComponents($datagram, $codec, $sequence);
+                $first = false;
+            }
+            foreach ($repetitions as $components) {
+                list(
+                    list(
+                        $sourceApplicationNamespaceId,
+                        $sourceApplicationUniversalId,
+                        $sourceApplicationUniversalIdType,
+                    ),
+                    $typeOfData,
+                    $dataSubtype,
+                    $encoding,
+                    $data,
+                ) = $components;
+                $this->addFieldObservationValueAsED(
+                    $sourceApplicationNamespaceId,
+                    $sourceApplicationUniversalId,
+                    $sourceApplicationUniversalIdType,
+                    $typeOfData,
+                    $dataSubtype,
+                    $encoding,
+                    $data
+                );
+            }
+        } elseif ('FT' === $this->getFieldValueType()->getValue()) {
+            $repetitions = [];
+            $first = true;
+            while ($first || false !== $codec->advanceToRepetition($datagram)) {
+                $repetitions[] = $this->extractComponents($datagram, $codec, [1]);
+                $first = false;
+            }
+            foreach ($repetitions as list($value,)) {
+                $this->addFieldObservationValueAsFT($value);
+            }
+        } elseif ('NM' === $this->getFieldValueType()->getValue()) {
+            $repetitions = [];
+            $first = true;
+            while ($first || false !== $codec->advanceToRepetition($datagram)) {
+                $this->checkRepetitionLength('ObservationValue', 16, $datagram->getPositionalState());
+                $repetitions[] = $this->extractComponents($datagram, $codec, [1]);
+                $first = false;
+            }
+            foreach ($repetitions as list($value,)) {
+                $this->addFieldObservationValueAsNM($value);
+            }
+        } elseif ('ST' === $this->getFieldValueType()->getValue()) {
+            $repetitions = [];
+            $first = true;
+            while ($first || false !== $codec->advanceToRepetition($datagram)) {
+                $this->checkRepetitionLength('ObservationValue', 199, $datagram->getPositionalState());
+                $repetitions[] = $this->extractComponents($datagram, $codec, [1]);
+                $first = false;
+            }
+            foreach ($repetitions as list($value,)) {
+                $this->addFieldObservationValueAsST($value);
+            }
+        } elseif ('TS' === $this->getFieldValueType()->getValue()) {
+            $sequence = [1,1];
+            $repetitions = [];
+            $first = true;
+            while ($first || false !== $codec->advanceToRepetition($datagram)) {
+                $this->checkRepetitionLength('ObservationValue', 26, $datagram->getPositionalState());
+                $repetitions[] = $this->extractComponents($datagram, $codec, $sequence);
+                $first = false;
+            }
+            foreach ($repetitions as $components) {
+                list(
+                    $time,
+                    $degreeOfPrecision,
+                ) = $components;
+                $this->addFieldObservationValueAsTS(
+                    $time,
+                    $degreeOfPrecision
+                );
+            }
+        } elseif ('TX' === $this->getFieldValueType()->getValue()) {
+            $repetitions = [];
+            $first = true;
+            while ($first || false !== $codec->advanceToRepetition($datagram)) {
+                $repetitions[] = $this->extractComponents($datagram, $codec, [1]);
+                $first = false;
+            }
+            foreach ($repetitions as list($value,)) {
+                $this->addFieldObservationValueAsTX($value);
+            }
         }
 
         // OBX.6
-        if (false === $codec->advanceToField($data)) {
+        if (false === $codec->advanceToField($datagram)) {
             throw new SegmentError(
-                'MSH Segment data contains too few required fields.'
+                'OBX Segment data contains too few required fields.'
             );
         }
-        $this->checkFieldLength('Units', 250, $data->getPositionalState());
+        $this->checkFieldLength('Units', 250, $datagram->getPositionalState());
         $sequence = [1,1,1,1,1,1];
         list(
             $identifier,
@@ -1206,7 +1377,7 @@ class ObxSegment extends AbstractSegment
             $altIdentifier,
             $altText,
             $nameOfAltCodingSystem,
-        ) = $this->extractComponents($data, $codec, $sequence);
+        ) = $this->extractComponents($datagram, $codec, $sequence);
         $this->setFieldUnits(
             $identifier,
             $text,
@@ -1217,25 +1388,25 @@ class ObxSegment extends AbstractSegment
         );
 
         // OBX.7
-        if (false === $codec->advanceToField($data)) {
+        if (false === $codec->advanceToField($datagram)) {
             throw new SegmentError(
-                'MSH Segment data contains too few required fields.'
+                'OBX Segment data contains too few required fields.'
             );
         }
-        $this->checkFieldLength('ReferencesRange', 60, $data->getPositionalState());
-        $this->setFieldReferencesRange($codec->extractComponent($data));
+        $this->checkFieldLength('ReferencesRange', 60, $datagram->getPositionalState());
+        $this->setFieldReferencesRange($codec->extractComponent($datagram));
 
         // OBX.8
-        if (false === $codec->advanceToField($data)) {
+        if (false === $codec->advanceToField($datagram)) {
             throw new SegmentError(
-                'MSH Segment data contains too few required fields.'
+                'OBX Segment data contains too few required fields.'
             );
         }
         $repetitions = [];
         $first = true;
-        while ($first || false !== $codec->advanceToRepetition($data)) {
-            $this->checkRepetitionLength('AbnormalFlags', 5, $data->getPositionalState());
-            $repetitions[] = $this->extractComponents($data, $codec, [1]);
+        while ($first || false !== $codec->advanceToRepetition($datagram)) {
+            $this->checkRepetitionLength('AbnormalFlags', 5, $datagram->getPositionalState());
+            $repetitions[] = $this->extractComponents($datagram, $codec, [1]);
             $first = false;
         }
         foreach ($repetitions as list($value,)) {
@@ -1243,25 +1414,25 @@ class ObxSegment extends AbstractSegment
         }
 
         // OBX.9
-        if (false === $codec->advanceToField($data)) {
+        if (false === $codec->advanceToField($datagram)) {
             throw new SegmentError(
-                'MSH Segment data contains too few required fields.'
+                'OBX Segment data contains too few required fields.'
             );
         }
-        $this->checkFieldLength('Probability', 5, $data->getPositionalState());
-        $this->setFieldProbability($codec->extractComponent($data));
+        $this->checkFieldLength('Probability', 5, $datagram->getPositionalState());
+        $this->setFieldProbability($codec->extractComponent($datagram));
 
         // OBX.10
-        if (false === $codec->advanceToField($data)) {
+        if (false === $codec->advanceToField($datagram)) {
             throw new SegmentError(
-                'MSH Segment data contains too few required fields.'
+                'OBX Segment data contains too few required fields.'
             );
         }
         $repetitions = [];
         $first = true;
-        while ($first || false !== $codec->advanceToRepetition($data)) {
-            $this->checkRepetitionLength('NatureOfAbnormalTest', 2, $data->getPositionalState());
-            $repetitions[] = $this->extractComponents($data, $codec, [1]);
+        while ($first || false !== $codec->advanceToRepetition($datagram)) {
+            $this->checkRepetitionLength('NatureOfAbnormalTest', 2, $datagram->getPositionalState());
+            $repetitions[] = $this->extractComponents($datagram, $codec, [1]);
             $first = false;
         }
         foreach ($repetitions as list($value,)) {
@@ -1269,56 +1440,56 @@ class ObxSegment extends AbstractSegment
         }
 
         // OBX.11
-        if (false === $codec->advanceToField($data)) {
+        if (false === $codec->advanceToField($datagram)) {
             throw new SegmentError(
-                'MSH Segment data contains too few required fields.'
+                'OBX Segment data contains too few required fields.'
             );
         }
-        $this->checkFieldLength('ObservationResultStatus', 1, $data->getPositionalState());
-        $this->setFieldObservationResultStatus($codec->extractComponent($data));
+        $this->checkFieldLength('ObservationResultStatus', 1, $datagram->getPositionalState());
+        $this->setFieldObservationResultStatus($codec->extractComponent($datagram));
 
         // OBX.12
-        if (false === $codec->advanceToField($data)) {
+        if (false === $codec->advanceToField($datagram)) {
             return false;
         }
-        $this->checkFieldLength('EffectiveDateOfReferenceRangeValues', 26, $data->getPositionalState());
+        $this->checkFieldLength('EffectiveDateOfReferenceRangeValues', 26, $datagram->getPositionalState());
         $sequence = [1,1];
         list(
             $time,
             $degreeOfPrecision,
-        ) = $this->extractComponents($data, $codec, $sequence);
+        ) = $this->extractComponents($datagram, $codec, $sequence);
         $this->setFieldEffectiveDateOfReferenceRangeValues(
             $time,
             $degreeOfPrecision
         );
 
         // OBX.13
-        if (false === $codec->advanceToField($data)) {
+        if (false === $codec->advanceToField($datagram)) {
             return false;
         }
-        $this->checkFieldLength('UserDefinedAccessChecks', 20, $data->getPositionalState());
-        $this->setFieldUserDefinedAccessChecks($codec->extractComponent($data));
+        $this->checkFieldLength('UserDefinedAccessChecks', 20, $datagram->getPositionalState());
+        $this->setFieldUserDefinedAccessChecks($codec->extractComponent($datagram));
 
         // OBX.14
-        if (false === $codec->advanceToField($data)) {
+        if (false === $codec->advanceToField($datagram)) {
             return false;
         }
-        $this->checkFieldLength('DatetimeOfTheObservation', 26, $data->getPositionalState());
+        $this->checkFieldLength('DatetimeOfTheObservation', 26, $datagram->getPositionalState());
         $sequence = [1,1];
         list(
             $time,
             $degreeOfPrecision,
-        ) = $this->extractComponents($data, $codec, $sequence);
+        ) = $this->extractComponents($datagram, $codec, $sequence);
         $this->setFieldDatetimeOfTheObservation(
             $time,
             $degreeOfPrecision
         );
 
         // OBX.15
-        if (false === $codec->advanceToField($data)) {
+        if (false === $codec->advanceToField($datagram)) {
             return false;
         }
-        $this->checkFieldLength('ProducersReference', 250, $data->getPositionalState());
+        $this->checkFieldLength('ProducersReference', 250, $datagram->getPositionalState());
         $sequence = [1,1,1,1,1,1];
         list(
             $identifier,
@@ -1327,7 +1498,7 @@ class ObxSegment extends AbstractSegment
             $altIdentifier,
             $altText,
             $nameOfAltCodingSystem,
-        ) = $this->extractComponents($data, $codec, $sequence);
+        ) = $this->extractComponents($datagram, $codec, $sequence);
         $this->setFieldProducersReference(
             $identifier,
             $text,
@@ -1338,15 +1509,15 @@ class ObxSegment extends AbstractSegment
         );
 
         // OBX.16
-        if (false === $codec->advanceToField($data)) {
+        if (false === $codec->advanceToField($datagram)) {
             return false;
         }
         $sequence = [1,[1,1,1,1,1],1,1,1,1,1,1,[1,1,1],1,1,1,1,[1,1,1],1,[1,1,1,1,1,1],[[1,1],[1,1]],1,[1,1],[1,1],1,[1,1,1,1,1,1,1,1,1],[1,1,1,1,1,1,1,1,1]];
         $repetitions = [];
         $first = true;
-        while ($first || false !== $codec->advanceToRepetition($data)) {
-            $this->checkRepetitionLength('ResponsibleObserver', 250, $data->getPositionalState());
-            $repetitions[] = $this->extractComponents($data, $codec, $sequence);
+        while ($first || false !== $codec->advanceToRepetition($datagram)) {
+            $this->checkRepetitionLength('ResponsibleObserver', 250, $datagram->getPositionalState());
+            $repetitions[] = $this->extractComponents($datagram, $codec, $sequence);
             $first = false;
         }
         foreach ($repetitions as $components) {
@@ -1493,15 +1664,15 @@ class ObxSegment extends AbstractSegment
         }
 
         // OBX.17
-        if (false === $codec->advanceToField($data)) {
+        if (false === $codec->advanceToField($datagram)) {
             return false;
         }
         $sequence = [1,1,1,1,1,1];
         $repetitions = [];
         $first = true;
-        while ($first || false !== $codec->advanceToRepetition($data)) {
-            $this->checkRepetitionLength('ObservationMethod', 250, $data->getPositionalState());
-            $repetitions[] = $this->extractComponents($data, $codec, $sequence);
+        while ($first || false !== $codec->advanceToRepetition($datagram)) {
+            $this->checkRepetitionLength('ObservationMethod', 250, $datagram->getPositionalState());
+            $repetitions[] = $this->extractComponents($datagram, $codec, $sequence);
             $first = false;
         }
         foreach ($repetitions as $components) {
@@ -1524,15 +1695,15 @@ class ObxSegment extends AbstractSegment
         }
 
         // OBX.18
-        if (false === $codec->advanceToField($data)) {
+        if (false === $codec->advanceToField($datagram)) {
             return false;
         }
         $sequence = [1,1,1,1];
         $repetitions = [];
         $first = true;
-        while ($first || false !== $codec->advanceToRepetition($data)) {
-            $this->checkRepetitionLength('EquipmentInstanceIdentifier', 22, $data->getPositionalState());
-            $repetitions[] = $this->extractComponents($data, $codec, $sequence);
+        while ($first || false !== $codec->advanceToRepetition($datagram)) {
+            $this->checkRepetitionLength('EquipmentInstanceIdentifier', 22, $datagram->getPositionalState());
+            $repetitions[] = $this->extractComponents($datagram, $codec, $sequence);
             $first = false;
         }
         foreach ($repetitions as $components) {
@@ -1551,40 +1722,40 @@ class ObxSegment extends AbstractSegment
         }
 
         // OBX.19
-        if (false === $codec->advanceToField($data)) {
+        if (false === $codec->advanceToField($datagram)) {
             return false;
         }
-        $this->checkFieldLength('DatetimeOfTheAnalysis', 26, $data->getPositionalState());
+        $this->checkFieldLength('DatetimeOfTheAnalysis', 26, $datagram->getPositionalState());
         $sequence = [1,1];
         list(
             $time,
             $degreeOfPrecision,
-        ) = $this->extractComponents($data, $codec, $sequence);
+        ) = $this->extractComponents($datagram, $codec, $sequence);
         $this->setFieldDatetimeOfTheAnalysis(
             $time,
             $degreeOfPrecision
         );
 
         // OBX.20 (Skipped)
-        if (false === $codec->advanceToField($data)) {
+        if (false === $codec->advanceToField($datagram)) {
             return false;
         }
 
         // OBX.21 (Skipped)
-        if (false === $codec->advanceToField($data)) {
+        if (false === $codec->advanceToField($datagram)) {
             return false;
         }
 
         // OBX.22 (Skipped)
-        if (false === $codec->advanceToField($data)) {
+        if (false === $codec->advanceToField($datagram)) {
             return false;
         }
 
         // OBX.23
-        if (false === $codec->advanceToField($data)) {
+        if (false === $codec->advanceToField($datagram)) {
             return false;
         }
-        $this->checkFieldLength('PerformingOrganizationName', 567, $data->getPositionalState());
+        $this->checkFieldLength('PerformingOrganizationName', 567, $datagram->getPositionalState());
         $sequence = [1,1,1,1,1,[1,1,1],1,[1,1,1],1,1];
         list(
             $organisationName,
@@ -1605,7 +1776,7 @@ class ObxSegment extends AbstractSegment
             ),
             $nameRepresentationCode,
             $organisationIdentifier,
-        ) = $this->extractComponents($data, $codec, $sequence);
+        ) = $this->extractComponents($datagram, $codec, $sequence);
         $this->setFieldPerformingOrganizationName(
             $organisationName,
             $organisationNameTypeCode,
@@ -1624,10 +1795,10 @@ class ObxSegment extends AbstractSegment
         );
 
         // OBX.24
-        if (false === $codec->advanceToField($data)) {
+        if (false === $codec->advanceToField($datagram)) {
             return false;
         }
-        $this->checkFieldLength('PerformingOrganizationAddress', 631, $data->getPositionalState());
+        $this->checkFieldLength('PerformingOrganizationAddress', 631, $datagram->getPositionalState());
         $sequence = [[1,1,1],1,1,1,1,1,1,1,1,1,1,[[1,1],[1,1]],[1,1],[1,1]];
         list(
             list(
@@ -1663,7 +1834,7 @@ class ObxSegment extends AbstractSegment
                 $expirationDateTime,
                 $expirationDateDegreeOfPrecision,
             ),
-        ) = $this->extractComponents($data, $codec, $sequence);
+        ) = $this->extractComponents($datagram, $codec, $sequence);
         $this->setFieldPerformingOrganizationAddress(
             $streetAddressStreetOrMailingAddress,
             $streetAddressStreetName,
@@ -1689,10 +1860,10 @@ class ObxSegment extends AbstractSegment
         );
 
         // OBX.25
-        if (false === $codec->advanceToField($data)) {
+        if (false === $codec->advanceToField($datagram)) {
             return false;
         }
-        $this->checkFieldLength('PerformingOrganizationMedicalDirector', 3002, $data->getPositionalState());
+        $this->checkFieldLength('PerformingOrganizationMedicalDirector', 3002, $datagram->getPositionalState());
         $sequence = [1,[1,1,1,1,1],1,1,1,1,1,1,[1,1,1],1,1,1,1,[1,1,1],1,[1,1,1,1,1,1],[[1,1],[1,1]],1,[1,1],[1,1],1,[1,1,1,1,1,1,1,1,1],[1,1,1,1,1,1,1,1,1]];
         list(
             $idNumber,
@@ -1774,7 +1945,7 @@ class ObxSegment extends AbstractSegment
                 $assigningAgencyAltCodingSystemVersionId,
                 $assigningAgencyOriginalText,
             ),
-        ) = $this->extractComponents($data, $codec, $sequence);
+        ) = $this->extractComponents($datagram, $codec, $sequence);
         $this->setFieldPerformingOrganizationMedicalDirector(
             $idNumber,
             $familyNameSurname,

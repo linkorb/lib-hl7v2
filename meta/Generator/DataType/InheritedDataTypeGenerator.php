@@ -13,6 +13,6 @@ class InheritedDataTypeGenerator extends AbstractDataTypeGenerator
 
     public function getInheritanceClass()
     {
-        return $this->context->dataTypeIdToFQClassName($this->parentDataTypeId);
+        return $this->context->dataTypeIdToClass($this->parentDataTypeId);
     }
 }

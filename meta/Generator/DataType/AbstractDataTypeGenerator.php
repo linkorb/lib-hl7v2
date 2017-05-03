@@ -17,9 +17,13 @@ abstract class AbstractDataTypeGenerator implements DataTypeGeneratorInterface
         $this->context = $context;
         $this->typeId = $typeId;
         $this->typeName = $typeInfo['name'];
-        if (isset($typeInfo['len']) && is_numeric($typeInfo['len'])) {
-            $this->maxLen = (int) $typeInfo['len'];
-            $this->constants[] = ['MAX_LEN', $this->maxLen];
+        if (array_key_exists('len', $typeInfo)) {
+            if (is_numeric($typeInfo['len'])) {
+                $this->maxLen = (int) $typeInfo['len'];
+                $this->constants[] = ['MAX_LEN', (string) $this->maxLen];
+            } elseif (is_null($typeInfo['len'])) {
+                $this->constants[] = ['MAX_LEN', 'null'];
+            }
         }
     }
 
@@ -30,7 +34,7 @@ abstract class AbstractDataTypeGenerator implements DataTypeGeneratorInterface
 
     public function getClass()
     {
-        return $this->context->dataTypeIdToFQClassName($this->typeId);
+        return $this->context->dataTypeIdToClass($this->typeId);
     }
 
     public function getDescription()

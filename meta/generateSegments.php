@@ -41,8 +41,6 @@ $outDir = __DIR__ . '/../lib/Segment';
 $dataTypeContext = new DataTypeContext('Hl7v2\\DataType');
 $segmentContext = new SegmentContext('Hl7v2\\Segment');
 $typeResolver = new DataTypeResolver($dataTypeContext, $dataTypes);
-#dump($typeResolver->getSubcomponentInfo('XPN')); die();
-
 
 # Report missing DataType
 $t = [];
@@ -51,12 +49,21 @@ foreach ($segments as $name => $attr) {
         if (!isset($field['type']) || empty($field['type'])) {
             continue;
         }
-        $t[$field['type']] = true;
+        if ($field['type'] === 'variable') {
+            if (!isset($field['types']) || !is_array($field['types'])) {
+                continue;
+            }
+            foreach ($field['types'] as $typ) {
+                $t[$typ['type']] = true;
+            }
+        } else {
+            $t[$field['type']] = true;
+        }
     }
 }
 $missingTypes = [];
 foreach (array_keys($t) as $id) {
-    if (!class_exists($dataTypeContext->dataTypeIdToFQClassName($id))) {
+    if (!class_exists($dataTypeContext->dataTypeIdToClass($id))) {
         $missingTypes[] = $id;
         continue;
     }
@@ -138,7 +145,7 @@ foreach ($segments as $segmentId => $segmentAttr) {
     }
 
     $fdgMethod = Method::make('fromDatagram')
-        ->addArgument(new Argument('\\Hl7v2\\Encoding\\Datagram', 'data'))
+        ->addArgument(new Argument('\\Hl7v2\\Encoding\\Datagram', 'datagram'))
         ->addArgument(new Argument('\\Hl7v2\\Encoding\\Codec', 'codec'))
         ->setBody(implode("\n", Util::indentBodyParts($g->getFromDatagramBody())))
     ;

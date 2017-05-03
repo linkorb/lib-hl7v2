@@ -7,5 +7,12 @@ use Hl7v2\Encoding\Datagram;
 
 interface SegmentInterface
 {
-    public function fromDatagram(Datagram $data, Codec $codec);
+    /**
+     * Decode the Segment, from the supplied Datagram, using the Codec.
+     *
+     * @param \Hl7v2\Encoding\Datagram $datagram
+     * @param \Hl7v2\Encoding\Codec $codec
+     * @throws \Hl7v2\Exception\SegmentError
+     */
+    public function fromDatagram(Datagram $datagram, Codec $codec);
 }
