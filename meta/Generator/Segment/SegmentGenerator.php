@@ -75,7 +75,7 @@ class SegmentGenerator
             $p = [
                 $f->nameForProperty,
             ];
-            if ($f->reserved) {
+            if ($f->skipped) {
                 $p[] = false;
                 $p[] = false;
                 $properties[] = $p;
@@ -109,7 +109,7 @@ class SegmentGenerator
         $mutators = [];
 
         foreach ($this->fields as $f) {
-            if ($f->reserved) {
+            if ($f->skipped) {
                 continue;
             }
             if (!$f->variable) {
@@ -145,7 +145,7 @@ class SegmentGenerator
         $accessors = [];
 
         foreach ($this->fields as $f) {
-            if ($f->reserved) {
+            if ($f->skipped) {
                 continue;
             }
             $propertyName = $f->nameForProperty;
@@ -173,7 +173,7 @@ class SegmentGenerator
         $b = [];
 
         foreach ($this->fields as $f) {
-            if ($f->reserved) {
+            if ($f->skipped) {
                 $b[] = "// {$f->id} (Skipped)";
             } else {
                 $b[] = "// {$f->id}";
@@ -191,7 +191,7 @@ class SegmentGenerator
                 $b[] = '    return false;';
             }
             $b[] = '}';
-            if ($f->reserved) {
+            if ($f->skipped) {
                 $b[]= '';
                 continue;
             }

@@ -45,10 +45,10 @@ class SegmentField
      */
     public $required = false;
     /**
-     * True when the Field is reserved for future use.
+     * True when the Field should be inaccessible.
      * @var bool
      */
-    public $reserved = false;
+    public $skipped = false;
     /**
      * Suffix for Field mutator method name (used for variable DataType Fields).
      * @var string
@@ -88,10 +88,10 @@ class SegmentField
         $this->name = $this->prepareName($fieldInfo['name']);
         $this->nameForProperty = lcfirst($this->name);
 
-        if (array_key_exists('reserved', $fieldInfo)
-            && true === $fieldInfo['reserved']
+        if ((!array_key_exists('type', $fieldInfo) || empty($fieldInfo['type']))
+            || (array_key_exists('reserved', $fieldInfo) && true === $fieldInfo['reserved'])
         ) {
-            $this->reserved = true;
+            $this->skipped = true;
             return;
         }
 
