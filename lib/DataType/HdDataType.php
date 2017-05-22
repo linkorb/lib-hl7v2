@@ -25,9 +25,8 @@ class HdDataType extends ComponentDataType
     /**
      * @param string $namespaceId
      */
-    public function setNamespaceId($namespaceId)
+    public function setNamespaceId($namespaceId = null)
     {
-        $this->checkLength(20, $namespaceId);
         $this->namespaceId = $this
             ->dataTypeFactory
             ->create('IS', $this->characterEncoding)
@@ -36,31 +35,35 @@ class HdDataType extends ComponentDataType
     }
 
     /**
+     * @param string $universalId
+     */
+    public function setUniversalId($universalId = null)
+    {
+        $this->universalId = $this
+            ->dataTypeFactory
+            ->create('ST', $this->characterEncoding)
+        ;
+        $this->universalId->setValue($universalId);
+    }
+
+    /**
+     * @param string $universalIdType
+     */
+    public function setUniversalIdType($universalIdType = null)
+    {
+        $this->universalIdType = $this
+            ->dataTypeFactory
+            ->create('ID', $this->characterEncoding)
+        ;
+        $this->universalIdType->setValue($universalIdType);
+    }
+
+    /**
      * @return \Hl7v2\DataType\IsDataType
      */
     public function getNamespaceId()
     {
         return $this->namespaceId;
-    }
-
-    /**
-     * @param string $universalId
-     * @param string $universalIdType
-     */
-    public function setUniversalId($universalId, $universalIdType)
-    {
-        $this->checkLength(199, $universalId);
-        $this->checkLength(6, $universalIdType);
-        $this->universalId = $this
-            ->dataTypeFactory
-            ->create('ST', $this->characterEncoding)
-        ;
-        $this->universalIdType = $this
-            ->dataTypeFactory
-            ->create('ID', $this->characterEncoding)
-        ;
-        $this->universalId->setValue($universalId);
-        $this->universalIdType->setValue($universalIdType);
     }
 
     /**

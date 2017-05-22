@@ -166,14 +166,18 @@ class NdlDataType extends ComponentDataType
      * @param string $facilityUniversalId
      * @param string $facilityUniversalIdType
      */
-    public function setFacility($facilityNamespaceId, $facilityUniversalId, $facilityUniversalIdType)
-    {
+    public function setFacility(
+        $facilityNamespaceId = null,
+        $facilityUniversalId = null,
+        $facilityUniversalIdType = null
+    ) {
         $this->facility = $this
             ->dataTypeFactory
             ->create('HD', $this->characterEncoding)
         ;
         $this->facility->setNamespaceId($facilityNamespaceId);
-        $this->facility->setUniversalId($facilityUniversalId, $facilityUniversalIdType);
+        $this->facility->setUniversalId($facilityUniversalId);
+        $this->facility->setUniversalIdType($facilityUniversalIdType);
     }
 
     /**

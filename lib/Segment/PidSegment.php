@@ -216,13 +216,13 @@ class PidSegment extends AbstractSegment
         $idNumber,
         $checkDigit = null,
         $checkDigitScheme = null,
-        $assigningAuthorityNamespaceId,
-        $assigningAuthorityUniversalId,
-        $assigningAuthorityUniversalIdType,
+        $assigningAuthorityNamespaceId = null,
+        $assigningAuthorityUniversalId = null,
+        $assigningAuthorityUniversalIdType = null,
         $identifierTypeCode = null,
-        $assigningFacilityNamespaceId,
-        $assigningFacilityUniversalId,
-        $assigningFacilityUniversalIdType,
+        $assigningFacilityNamespaceId = null,
+        $assigningFacilityUniversalId = null,
+        $assigningFacilityUniversalIdType = null,
         $effectiveDate = null,
         $expirationDate = null,
         $assigningJurisdictionIdentifier = null,
@@ -324,13 +324,13 @@ class PidSegment extends AbstractSegment
         $idNumber,
         $checkDigit = null,
         $checkDigitScheme = null,
-        $assigningAuthorityNamespaceId,
-        $assigningAuthorityUniversalId,
-        $assigningAuthorityUniversalIdType,
+        $assigningAuthorityNamespaceId = null,
+        $assigningAuthorityUniversalId = null,
+        $assigningAuthorityUniversalIdType = null,
         $identifierTypeCode = null,
-        $assigningFacilityNamespaceId,
-        $assigningFacilityUniversalId,
-        $assigningFacilityUniversalIdType,
+        $assigningFacilityNamespaceId = null,
+        $assigningFacilityUniversalId = null,
+        $assigningFacilityUniversalIdType = null,
         $effectiveDate = null,
         $expirationDate = null,
         $assigningJurisdictionIdentifier = null,
@@ -433,13 +433,13 @@ class PidSegment extends AbstractSegment
         $idNumber,
         $checkDigit = null,
         $checkDigitScheme = null,
-        $assigningAuthorityNamespaceId,
-        $assigningAuthorityUniversalId,
-        $assigningAuthorityUniversalIdType,
+        $assigningAuthorityNamespaceId = null,
+        $assigningAuthorityUniversalId = null,
+        $assigningAuthorityUniversalIdType = null,
         $identifierTypeCode = null,
-        $assigningFacilityNamespaceId,
-        $assigningFacilityUniversalId,
-        $assigningFacilityUniversalIdType,
+        $assigningFacilityNamespaceId = null,
+        $assigningFacilityUniversalId = null,
+        $assigningFacilityUniversalIdType = null,
         $effectiveDate = null,
         $expirationDate = null,
         $assigningJurisdictionIdentifier = null,
@@ -1163,13 +1163,13 @@ class PidSegment extends AbstractSegment
         $idNumber,
         $checkDigit = null,
         $checkDigitScheme = null,
-        $assigningAuthorityNamespaceId,
-        $assigningAuthorityUniversalId,
-        $assigningAuthorityUniversalIdType,
+        $assigningAuthorityNamespaceId = null,
+        $assigningAuthorityUniversalId = null,
+        $assigningAuthorityUniversalIdType = null,
         $identifierTypeCode = null,
-        $assigningFacilityNamespaceId,
-        $assigningFacilityUniversalId,
-        $assigningFacilityUniversalIdType,
+        $assigningFacilityNamespaceId = null,
+        $assigningFacilityUniversalId = null,
+        $assigningFacilityUniversalIdType = null,
         $effectiveDate = null,
         $expirationDate = null,
         $assigningJurisdictionIdentifier = null,
@@ -1304,13 +1304,13 @@ class PidSegment extends AbstractSegment
         $idNumber,
         $checkDigit = null,
         $checkDigitScheme = null,
-        $assigningAuthorityNamespaceId,
-        $assigningAuthorityUniversalId,
-        $assigningAuthorityUniversalIdType,
+        $assigningAuthorityNamespaceId = null,
+        $assigningAuthorityUniversalId = null,
+        $assigningAuthorityUniversalIdType = null,
         $identifierTypeCode = null,
-        $assigningFacilityNamespaceId,
-        $assigningFacilityUniversalId,
-        $assigningFacilityUniversalIdType,
+        $assigningFacilityNamespaceId = null,
+        $assigningFacilityUniversalId = null,
+        $assigningFacilityUniversalIdType = null,
         $effectiveDate = null,
         $expirationDate = null,
         $assigningJurisdictionIdentifier = null,
@@ -1597,14 +1597,15 @@ class PidSegment extends AbstractSegment
      * @param string $universalId
      * @param string $universalIdType
      */
-    public function setFieldLastUpdateFacility($namespaceId, $universalId, $universalIdType)
+    public function setFieldLastUpdateFacility($namespaceId = null, $universalId = null, $universalIdType = null)
     {
         $this->lastUpdateFacility = $this
             ->dataTypeFactory
             ->create('HD', $this->characterEncoding)
         ;
         $this->lastUpdateFacility->setNamespaceId($namespaceId);
-        $this->lastUpdateFacility->setUniversalId($universalId, $universalIdType);
+        $this->lastUpdateFacility->setUniversalId($universalId);
+        $this->lastUpdateFacility->setUniversalIdType($universalIdType);
     }
 
     /**

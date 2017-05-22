@@ -125,14 +125,15 @@ class MshSegment extends AbstractSegment
      * @param string $universalId
      * @param string $universalIdType
      */
-    public function setFieldSendingApplication($namespaceId, $universalId, $universalIdType)
+    public function setFieldSendingApplication($namespaceId = null, $universalId = null, $universalIdType = null)
     {
         $this->sendingApplication = $this
             ->dataTypeFactory
             ->create('HD', $this->characterEncoding)
         ;
         $this->sendingApplication->setNamespaceId($namespaceId);
-        $this->sendingApplication->setUniversalId($universalId, $universalIdType);
+        $this->sendingApplication->setUniversalId($universalId);
+        $this->sendingApplication->setUniversalIdType($universalIdType);
     }
 
     /**
@@ -140,14 +141,15 @@ class MshSegment extends AbstractSegment
      * @param string $universalId
      * @param string $universalIdType
      */
-    public function setFieldSendingFacility($namespaceId, $universalId, $universalIdType)
+    public function setFieldSendingFacility($namespaceId = null, $universalId = null, $universalIdType = null)
     {
         $this->sendingFacility = $this
             ->dataTypeFactory
             ->create('HD', $this->characterEncoding)
         ;
         $this->sendingFacility->setNamespaceId($namespaceId);
-        $this->sendingFacility->setUniversalId($universalId, $universalIdType);
+        $this->sendingFacility->setUniversalId($universalId);
+        $this->sendingFacility->setUniversalIdType($universalIdType);
     }
 
     /**
@@ -155,14 +157,15 @@ class MshSegment extends AbstractSegment
      * @param string $universalId
      * @param string $universalIdType
      */
-    public function setFieldReceivingApplication($namespaceId, $universalId, $universalIdType)
+    public function setFieldReceivingApplication($namespaceId = null, $universalId = null, $universalIdType = null)
     {
         $this->receivingApplication = $this
             ->dataTypeFactory
             ->create('HD', $this->characterEncoding)
         ;
         $this->receivingApplication->setNamespaceId($namespaceId);
-        $this->receivingApplication->setUniversalId($universalId, $universalIdType);
+        $this->receivingApplication->setUniversalId($universalId);
+        $this->receivingApplication->setUniversalIdType($universalIdType);
     }
 
     /**
@@ -170,14 +173,15 @@ class MshSegment extends AbstractSegment
      * @param string $universalId
      * @param string $universalIdType
      */
-    public function setFieldReceivingFacility($namespaceId, $universalId, $universalIdType)
+    public function setFieldReceivingFacility($namespaceId = null, $universalId = null, $universalIdType = null)
     {
         $this->receivingFacility = $this
             ->dataTypeFactory
             ->create('HD', $this->characterEncoding)
         ;
         $this->receivingFacility->setNamespaceId($namespaceId);
-        $this->receivingFacility->setUniversalId($universalId, $universalIdType);
+        $this->receivingFacility->setUniversalId($universalId);
+        $this->receivingFacility->setUniversalIdType($universalIdType);
     }
 
     /**

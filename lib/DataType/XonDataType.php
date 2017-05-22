@@ -116,19 +116,17 @@ class XonDataType extends ComponentDataType
      * @param string $assigningAuthorityUniversalIdType
      */
     public function setAssigningAuthority(
-        $assigningAuthorityNamespaceId,
-        $assigningAuthorityUniversalId,
-        $assigningAuthorityUniversalIdType
+        $assigningAuthorityNamespaceId = null,
+        $assigningAuthorityUniversalId = null,
+        $assigningAuthorityUniversalIdType = null
     ) {
         $this->assigningAuthority = $this
             ->dataTypeFactory
             ->create('HD', $this->characterEncoding)
         ;
         $this->assigningAuthority->setNamespaceId($assigningAuthorityNamespaceId);
-        $this->assigningAuthority->setUniversalId(
-            $assigningAuthorityUniversalId,
-            $assigningAuthorityUniversalIdType
-        );
+        $this->assigningAuthority->setUniversalId($assigningAuthorityUniversalId);
+        $this->assigningAuthority->setUniversalIdType($assigningAuthorityUniversalIdType);
     }
 
     /**
@@ -149,19 +147,17 @@ class XonDataType extends ComponentDataType
      * @param string $assigningFacilityUniversalIdType
      */
     public function setAssigningFacility(
-        $assigningFacilityNamespaceId,
-        $assigningFacilityUniversalId,
-        $assigningFacilityUniversalIdType
+        $assigningFacilityNamespaceId = null,
+        $assigningFacilityUniversalId = null,
+        $assigningFacilityUniversalIdType = null
     ) {
         $this->assigningFacility = $this
             ->dataTypeFactory
             ->create('HD', $this->characterEncoding)
         ;
         $this->assigningFacility->setNamespaceId($assigningFacilityNamespaceId);
-        $this->assigningFacility->setUniversalId(
-            $assigningFacilityUniversalId,
-            $assigningFacilityUniversalIdType
-        );
+        $this->assigningFacility->setUniversalId($assigningFacilityUniversalId);
+        $this->assigningFacility->setUniversalIdType($assigningFacilityUniversalIdType);
     }
 
     /**

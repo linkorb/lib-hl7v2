@@ -34,19 +34,17 @@ class EdDataType extends ComponentDataType
      * @param string $sourceApplicationUniversalIdType
      */
     public function setSourceApplication(
-        $sourceApplicationNamespaceId,
-        $sourceApplicationUniversalId,
-        $sourceApplicationUniversalIdType
+        $sourceApplicationNamespaceId = null,
+        $sourceApplicationUniversalId = null,
+        $sourceApplicationUniversalIdType = null
     ) {
         $this->sourceApplication = $this
             ->dataTypeFactory
             ->create('HD', $this->characterEncoding)
         ;
         $this->sourceApplication->setNamespaceId($sourceApplicationNamespaceId);
-        $this->sourceApplication->setUniversalId(
-            $sourceApplicationUniversalId,
-            $sourceApplicationUniversalIdType
-        );
+        $this->sourceApplication->setUniversalId($sourceApplicationUniversalId);
+        $this->sourceApplication->setUniversalIdType($sourceApplicationUniversalIdType);
     }
 
     /**

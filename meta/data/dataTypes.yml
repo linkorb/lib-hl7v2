@@ -337,7 +337,6 @@ FT:
 
 HD:
     name: Heirarchical Designator
-    skip_generation: true
     len: 227
     components:
         -
