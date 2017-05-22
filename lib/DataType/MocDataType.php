@@ -26,7 +26,7 @@ class MocDataType extends ComponentDataType
     {
         $this->monetaryAmount = $this
             ->dataTypeFactory
-            ->create('MO', $this->encodingParameters)
+            ->create('MO', $this->encodingParameters, true)
         ;
         $this->monetaryAmount->setQuantity($monetaryAmountQuantity);
         $this->monetaryAmount->setDenomination($monetaryAmountDenomination);
@@ -50,7 +50,7 @@ class MocDataType extends ComponentDataType
     ) {
         $this->chargeCode = $this
             ->dataTypeFactory
-            ->create('CE', $this->encodingParameters)
+            ->create('CE', $this->encodingParameters, true)
         ;
         $this->chargeCode->setIdentifier($chargeCodeIdentifier);
         $this->chargeCode->setText($chargeCodeText);
@@ -74,5 +74,40 @@ class MocDataType extends ComponentDataType
     public function getChargeCode()
     {
         return $this->chargeCode;
+    }
+
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+        $s = '';
+
+        $sep = $this->isSubcomponent
+            ? $this->encodingParameters->getSubcomponentSep()
+            : $this->encodingParameters->getComponentSep()
+        ;
+
+        if ($this->getMonetaryAmount()) {
+            $s .= (string) $this->getMonetaryAmount();
+        }
+
+        $emptyComponentsSinceLastComponent = 0;
+
+        if (!$this->getChargeCode()) {
+            ++$emptyComponentsSinceLastComponent;
+        } else {
+            $value = (string) $this->getChargeCode();
+            if ($value === '') {
+                ++$emptyComponentsSinceLastComponent;
+            } else {
+                $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
+                    . $value
+                ;
+                $emptyComponentsSinceLastComponent = 0;
+            }
+        }
+
+        return $s;
     }
 }

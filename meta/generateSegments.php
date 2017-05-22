@@ -2,8 +2,6 @@
 
 namespace Hl7v2\Meta;
 
-# TODO OBX.5 variable type and length field
-
 require __DIR__.'/../vendor/autoload.php';
 
 use Memio\Memio\Config\Build;
@@ -21,6 +19,8 @@ use Memio\Model\Phpdoc\StructurePhpdoc;
 use Memio\Model\Phpdoc\VariableTag;
 use Memio\Model\Property;
 use Symfony\Component\Yaml\Yaml;
+use Twig_Environment;
+use Twig_Loader_Filesystem;
 
 use Hl7v2\Meta\Generator\Segment\SegmentGenerator;
 use Hl7v2\Meta\Helper\DataTypeContext;
@@ -32,6 +32,7 @@ use Hl7v2\Meta\Helper\Util;
 $prettyPrinter = Build::prettyPrinter()
     ->addTemplatePath(__DIR__.'/template')
 ;
+$twig = new Twig_Environment(new Twig_Loader_Filesystem(__DIR__.'/template'));
 
 $segments = Yaml::parse(file_get_contents(__DIR__ . '/data/segments.yml'));
 $dataTypes = Yaml::parse(file_get_contents(__DIR__ . '/data/dataTypes.yml'));
@@ -97,6 +98,7 @@ foreach ($segments as $segmentId => $segmentAttr) {
             $segmentAttr['fields']
         )
     );
+    $g->setTemplating($twig);
 
     $classDoc = new StructurePhpdoc();
     $classDoc->setDescription(Description::make($g->getDescription()));
@@ -150,6 +152,14 @@ foreach ($segments as $segmentId => $segmentAttr) {
         ->setBody(implode("\n", Util::indentBodyParts($g->getFromDatagramBody())))
     ;
     $structure->addMethod($fdgMethod);
+
+    $structure->addMethod(
+        $g->getMethodToString(
+            Method::make('__toString'),
+            MethodPhpdoc::make(),
+            $segmentId
+        )
+    );
 
     $file = File::make($outDir . DIRECTORY_SEPARATOR . $segmentContext->segmentIdToClassName($segmentId) . '.php')
         ->setStructure($structure)

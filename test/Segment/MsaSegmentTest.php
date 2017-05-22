@@ -12,7 +12,7 @@ use Hl7v2\Factory\DataTypeFactory;
 
 use Hl7v2\Test\DatagramBuilder;
 
-class MshSegmentTest extends PHPUnit_Framework_TestCase
+class MsaSegmentTest extends PHPUnit_Framework_TestCase
 {
     private $charEncNames;
     private $codec;
@@ -20,7 +20,15 @@ class MshSegmentTest extends PHPUnit_Framework_TestCase
 
     protected function setUp()
     {
-        $this->paramBuilder = new EncodingParametersBuilder;
+        $this->paramBuilder = (new EncodingParametersBuilder)
+            ->withCharacterEncoding('7bit')
+            ->withComponentSep('^')
+            ->withEscapeChar('\\')
+            ->withFieldSep('|')
+            ->withRepetitionSep('~')
+            ->withSegmentSep("\r")
+            ->withSubcomponentSep('&')
+        ;
         $this->datagramBuilder = new DatagramBuilder($this->paramBuilder);
         $this->charEncNames = $this
             ->getMockBuilder(CharacterEncodingNames::class)
@@ -35,46 +43,24 @@ class MshSegmentTest extends PHPUnit_Framework_TestCase
         $this->segmentFactory = new SegmentFactory(new DataTypeFactory());
     }
 
-    public function testFromDatagram()
-    {
-        $data = $this
-            ->datagramBuilder
-            ->withMessage(
-                "MSH|^~\&|ACME|ACME|TEST|TEST|20160719132745||ORU^R01|001|P|2.5.1|||AL|AL||ASCII~8859/1~8859/2\r"
-            )
-            ->build()
-        ;
-        $this->codec->bootstrap($data, $this->paramBuilder);
-        /**
-         * @var \Hl7v2\Segment\MshSegment
-         */
-        $messageHeader = $this
-            ->segmentFactory
-            ->create('MSH', $data->getEncodingParameters())
-        ;
-        $messageHeader->fromDatagram($data, $this->codec);
-
-        $this->assertSame(
-            '8859/2',
-            $messageHeader->getFieldCharacterSet()[2]->getValue()
-        );
-    }
-
     public function testToString()
     {
-        $segmentData = 'MSH|^~\&|ACME|ACME|TEST|TEST|20160719132745||ORU^R01|001|P|2.5.1|||AL|AL||ASCII~8859/1~8859/2';
+        $segmentData = 'MSA|||207|E';
+
+        $encodingParams = $this->paramBuilder->build();
         $datagram = $this
             ->datagramBuilder
             ->withMessage($segmentData . "\r")
             ->build()
         ;
-        $this->codec->bootstrap($datagram, $this->paramBuilder);
+        $datagram->setEncodingParameters($encodingParams);
+
         /**
-         * @var \Hl7v2\Segment\MshSegment
+         * @var \Hl7v2\Segment\MsaSegment
          */
         $segment = $this
             ->segmentFactory
-            ->create('MSH', $datagram->getEncodingParameters())
+            ->create('MSA', $encodingParams)
         ;
         $segment->fromDatagram($datagram, $this->codec);
 

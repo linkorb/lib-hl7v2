@@ -1,0 +1,87 @@
+        $s = '{{ segment_id }}' . (string) $this->getFieldFieldSeparator()->getValue();
+        $emptyFieldsSinceLastField = -1;
+{%- for field in fields -%}
+    {% if field.skipped %}
+
+
+            ++$emptyFieldsSinceLastField; // skip {{ segment_id }}.{{ loop.index+1 }}
+    {% elseif field.repeated %}
+
+
+        if (empty($this->getField{{ field.name }}())) {
+            ++$emptyFieldsSinceLastField;
+        } else {
+            $nonEmptyReps = 0;
+            foreach ($this->getField{{ field.name }}() as $repetition) {
+        {%- if field.simple %}
+
+                if (!$repetition->hasValue()) {
+                    continue;
+                }
+                if ($nonEmptyReps == 0) {
+                    $s .= str_repeat(
+                        $this->encodingParameters->getFieldSep(),
+                        1 + $emptyFieldsSinceLastField
+                    ) . (string) $repetition->getValue();
+                    $emptyFieldsSinceLastField = 0;
+                } else {
+                    $s .= $this->encodingParameters->getRepetitionSep()
+                        . (string) $repetition->getValue()
+                    ;
+                }
+                ++$nonEmptyReps;
+        {%- else %}
+
+                $value = (string) $repetition;
+                if ($value === '') {
+                    continue;
+                }
+                if ($nonEmptyReps == 0) {
+                    $s .= str_repeat(
+                        $this->encodingParameters->getFieldSep(),
+                        1 + $emptyFieldsSinceLastField
+                    ) . $value;
+                    $emptyFieldsSinceLastField = 0;
+                } else {
+                    $s .= $this->encodingParameters->getRepetitionSep()
+                       . (string) $value
+                    ;
+                }
+                ++$nonEmptyReps;
+        {%- endif %}
+
+            }
+        }
+    {%- else %}
+
+
+        if (!$this->getField{{ field.name }}(){% if field.simple %} || !$this->getField{{ field.name }}()->hasValue(){% endif %}) {
+            ++$emptyFieldsSinceLastField;
+        } else {
+        {%- if field.simple %}
+
+            $s .= str_repeat(
+                $this->encodingParameters->getFieldSep(),
+                1 + $emptyFieldsSinceLastField
+            ) . (string) $this->getField{{ field.name }}()->getValue();
+            $emptyFieldsSinceLastField = 0;
+        {%- else %}
+
+            $value = (string) $this->getField{{ field.name }}();
+            if ($value === '') {
+                ++$emptyFieldsSinceLastField;
+            } else {
+                $s .= str_repeat(
+                    $this->encodingParameters->getFieldSep(),
+                    1 + $emptyFieldsSinceLastField
+                ) . $value;
+                $emptyFieldsSinceLastField = 0;
+            }
+        {%- endif %}
+
+        }
+    {%- endif %}
+{% endfor %}
+
+
+        return $s;

@@ -81,4 +81,43 @@ class SadDataType extends ComponentDataType
     {
         return $this->dwellingNumber;
     }
+
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+        $s = '';
+
+        $sep = $this->isSubcomponent
+            ? $this->encodingParameters->getSubcomponentSep()
+            : $this->encodingParameters->getComponentSep()
+        ;
+
+        if ($this->getStreetOrMailingAddress() && $this->getStreetOrMailingAddress()->hasValue()) {
+            $s .= (string) $this->getStreetOrMailingAddress()->getValue();
+        }
+
+        $emptyComponentsSinceLastComponent = 0;
+
+        if (!$this->getStreetName() || !$this->getStreetName()->hasValue()) {
+            ++$emptyComponentsSinceLastComponent;
+        } else {
+            $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
+                . (string) $this->getStreetName()->getValue();
+            ;
+            $emptyComponentsSinceLastComponent = 0;
+        }
+
+        if (!$this->getDwellingNumber() || !$this->getDwellingNumber()->hasValue()) {
+            ++$emptyComponentsSinceLastComponent;
+        } else {
+            $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
+                . (string) $this->getDwellingNumber()->getValue();
+            ;
+            $emptyComponentsSinceLastComponent = 0;
+        }
+
+        return $s;
+    }
 }

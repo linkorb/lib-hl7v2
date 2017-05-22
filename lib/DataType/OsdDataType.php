@@ -273,4 +273,115 @@ class OsdDataType extends ComponentDataType
     {
         return $this->fillerOrderNumberUniversalIdType;
     }
+
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+        $s = '';
+
+        $sep = $this->isSubcomponent
+            ? $this->encodingParameters->getSubcomponentSep()
+            : $this->encodingParameters->getComponentSep()
+        ;
+
+        if ($this->getSequenceResultsFlag() && $this->getSequenceResultsFlag()->hasValue()) {
+            $s .= (string) $this->getSequenceResultsFlag()->getValue();
+        }
+
+        $emptyComponentsSinceLastComponent = 0;
+
+        if (!$this->getPlacerOrderNumberEntityIdentifier() || !$this->getPlacerOrderNumberEntityIdentifier()->hasValue()) {
+            ++$emptyComponentsSinceLastComponent;
+        } else {
+            $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
+                . (string) $this->getPlacerOrderNumberEntityIdentifier()->getValue();
+            ;
+            $emptyComponentsSinceLastComponent = 0;
+        }
+
+        if (!$this->getPlacerOrderNumberNamespaceId() || !$this->getPlacerOrderNumberNamespaceId()->hasValue()) {
+            ++$emptyComponentsSinceLastComponent;
+        } else {
+            $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
+                . (string) $this->getPlacerOrderNumberNamespaceId()->getValue();
+            ;
+            $emptyComponentsSinceLastComponent = 0;
+        }
+
+        if (!$this->getFillerOrderNumberEntityIdentifier() || !$this->getFillerOrderNumberEntityIdentifier()->hasValue()) {
+            ++$emptyComponentsSinceLastComponent;
+        } else {
+            $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
+                . (string) $this->getFillerOrderNumberEntityIdentifier()->getValue();
+            ;
+            $emptyComponentsSinceLastComponent = 0;
+        }
+
+        if (!$this->getFillerOrderNumberNamespaceId() || !$this->getFillerOrderNumberNamespaceId()->hasValue()) {
+            ++$emptyComponentsSinceLastComponent;
+        } else {
+            $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
+                . (string) $this->getFillerOrderNumberNamespaceId()->getValue();
+            ;
+            $emptyComponentsSinceLastComponent = 0;
+        }
+
+        if (!$this->getSequenceConditionValue() || !$this->getSequenceConditionValue()->hasValue()) {
+            ++$emptyComponentsSinceLastComponent;
+        } else {
+            $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
+                . (string) $this->getSequenceConditionValue()->getValue();
+            ;
+            $emptyComponentsSinceLastComponent = 0;
+        }
+
+        if (!$this->getMaximumNumberOfRepeats() || !$this->getMaximumNumberOfRepeats()->hasValue()) {
+            ++$emptyComponentsSinceLastComponent;
+        } else {
+            $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
+                . (string) $this->getMaximumNumberOfRepeats()->getValue();
+            ;
+            $emptyComponentsSinceLastComponent = 0;
+        }
+
+        if (!$this->getPlacerOrderNumberUniversalId() || !$this->getPlacerOrderNumberUniversalId()->hasValue()) {
+            ++$emptyComponentsSinceLastComponent;
+        } else {
+            $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
+                . (string) $this->getPlacerOrderNumberUniversalId()->getValue();
+            ;
+            $emptyComponentsSinceLastComponent = 0;
+        }
+
+        if (!$this->getPlacerOrderNumberUniversalIdType() || !$this->getPlacerOrderNumberUniversalIdType()->hasValue()) {
+            ++$emptyComponentsSinceLastComponent;
+        } else {
+            $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
+                . (string) $this->getPlacerOrderNumberUniversalIdType()->getValue();
+            ;
+            $emptyComponentsSinceLastComponent = 0;
+        }
+
+        if (!$this->getFillerOrderNumberUniversalId() || !$this->getFillerOrderNumberUniversalId()->hasValue()) {
+            ++$emptyComponentsSinceLastComponent;
+        } else {
+            $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
+                . (string) $this->getFillerOrderNumberUniversalId()->getValue();
+            ;
+            $emptyComponentsSinceLastComponent = 0;
+        }
+
+        if (!$this->getFillerOrderNumberUniversalIdType() || !$this->getFillerOrderNumberUniversalIdType()->hasValue()) {
+            ++$emptyComponentsSinceLastComponent;
+        } else {
+            $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
+                . (string) $this->getFillerOrderNumberUniversalIdType()->getValue();
+            ;
+            $emptyComponentsSinceLastComponent = 0;
+        }
+
+        return $s;
+    }
 }

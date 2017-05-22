@@ -2006,4 +2006,367 @@ class ObxSegment extends AbstractSegment
             $assigningAgencyOriginalText
         );
     }
+
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+        $s = 'OBX';
+        $emptyFieldsSinceLastField = 0;
+
+        if (!$this->getFieldSetId() || !$this->getFieldSetId()->hasValue()) {
+            ++$emptyFieldsSinceLastField;
+        } else {
+            $s .= str_repeat(
+                $this->encodingParameters->getFieldSep(),
+                1 + $emptyFieldsSinceLastField
+            ) . (string) $this->getFieldSetId()->getValue();
+            $emptyFieldsSinceLastField = 0;
+        }
+
+        if (!$this->getFieldValueType() || !$this->getFieldValueType()->hasValue()) {
+            ++$emptyFieldsSinceLastField;
+        } else {
+            $s .= str_repeat(
+                $this->encodingParameters->getFieldSep(),
+                1 + $emptyFieldsSinceLastField
+            ) . (string) $this->getFieldValueType()->getValue();
+            $emptyFieldsSinceLastField = 0;
+        }
+
+        if (!$this->getFieldObservationIdentifier()) {
+            ++$emptyFieldsSinceLastField;
+        } else {
+            $value = (string) $this->getFieldObservationIdentifier();
+            if ($value === '') {
+                ++$emptyFieldsSinceLastField;
+            } else {
+                $s .= str_repeat(
+                    $this->encodingParameters->getFieldSep(),
+                    1 + $emptyFieldsSinceLastField
+                ) . $value;
+                $emptyFieldsSinceLastField = 0;
+            }
+        }
+
+        if (!$this->getFieldObservationSubid() || !$this->getFieldObservationSubid()->hasValue()) {
+            ++$emptyFieldsSinceLastField;
+        } else {
+            $s .= str_repeat(
+                $this->encodingParameters->getFieldSep(),
+                1 + $emptyFieldsSinceLastField
+            ) . (string) $this->getFieldObservationSubid()->getValue();
+            $emptyFieldsSinceLastField = 0;
+        }
+
+        if (empty($this->getFieldObservationValue())) {
+            ++$emptyFieldsSinceLastField;
+        } else {
+            $nonEmptyReps = 0;
+            foreach ($this->getFieldObservationValue() as $repetition) {
+                if (!$repetition->hasValue()) {
+                    continue;
+                }
+                if ($nonEmptyReps == 0) {
+                    $s .= str_repeat(
+                        $this->encodingParameters->getFieldSep(),
+                        1 + $emptyFieldsSinceLastField
+                    ) . (string) $repetition->getValue();
+                    $emptyFieldsSinceLastField = 0;
+                } else {
+                    $s .= $this->encodingParameters->getRepetitionSep()
+                        . (string) $repetition->getValue()
+                    ;
+                }
+                ++$nonEmptyReps;
+            }
+        }
+
+        if (!$this->getFieldUnits()) {
+            ++$emptyFieldsSinceLastField;
+        } else {
+            $value = (string) $this->getFieldUnits();
+            if ($value === '') {
+                ++$emptyFieldsSinceLastField;
+            } else {
+                $s .= str_repeat(
+                    $this->encodingParameters->getFieldSep(),
+                    1 + $emptyFieldsSinceLastField
+                ) . $value;
+                $emptyFieldsSinceLastField = 0;
+            }
+        }
+
+        if (!$this->getFieldReferencesRange() || !$this->getFieldReferencesRange()->hasValue()) {
+            ++$emptyFieldsSinceLastField;
+        } else {
+            $s .= str_repeat(
+                $this->encodingParameters->getFieldSep(),
+                1 + $emptyFieldsSinceLastField
+            ) . (string) $this->getFieldReferencesRange()->getValue();
+            $emptyFieldsSinceLastField = 0;
+        }
+
+        if (empty($this->getFieldAbnormalFlags())) {
+            ++$emptyFieldsSinceLastField;
+        } else {
+            $nonEmptyReps = 0;
+            foreach ($this->getFieldAbnormalFlags() as $repetition) {
+                if (!$repetition->hasValue()) {
+                    continue;
+                }
+                if ($nonEmptyReps == 0) {
+                    $s .= str_repeat(
+                        $this->encodingParameters->getFieldSep(),
+                        1 + $emptyFieldsSinceLastField
+                    ) . (string) $repetition->getValue();
+                    $emptyFieldsSinceLastField = 0;
+                } else {
+                    $s .= $this->encodingParameters->getRepetitionSep()
+                        . (string) $repetition->getValue()
+                    ;
+                }
+                ++$nonEmptyReps;
+            }
+        }
+
+        if (!$this->getFieldProbability() || !$this->getFieldProbability()->hasValue()) {
+            ++$emptyFieldsSinceLastField;
+        } else {
+            $s .= str_repeat(
+                $this->encodingParameters->getFieldSep(),
+                1 + $emptyFieldsSinceLastField
+            ) . (string) $this->getFieldProbability()->getValue();
+            $emptyFieldsSinceLastField = 0;
+        }
+
+        if (empty($this->getFieldNatureOfAbnormalTest())) {
+            ++$emptyFieldsSinceLastField;
+        } else {
+            $nonEmptyReps = 0;
+            foreach ($this->getFieldNatureOfAbnormalTest() as $repetition) {
+                if (!$repetition->hasValue()) {
+                    continue;
+                }
+                if ($nonEmptyReps == 0) {
+                    $s .= str_repeat(
+                        $this->encodingParameters->getFieldSep(),
+                        1 + $emptyFieldsSinceLastField
+                    ) . (string) $repetition->getValue();
+                    $emptyFieldsSinceLastField = 0;
+                } else {
+                    $s .= $this->encodingParameters->getRepetitionSep()
+                        . (string) $repetition->getValue()
+                    ;
+                }
+                ++$nonEmptyReps;
+            }
+        }
+
+        if (!$this->getFieldObservationResultStatus() || !$this->getFieldObservationResultStatus()->hasValue()) {
+            ++$emptyFieldsSinceLastField;
+        } else {
+            $s .= str_repeat(
+                $this->encodingParameters->getFieldSep(),
+                1 + $emptyFieldsSinceLastField
+            ) . (string) $this->getFieldObservationResultStatus()->getValue();
+            $emptyFieldsSinceLastField = 0;
+        }
+
+        if (!$this->getFieldEffectiveDateOfReferenceRangeValues()) {
+            ++$emptyFieldsSinceLastField;
+        } else {
+            $value = (string) $this->getFieldEffectiveDateOfReferenceRangeValues();
+            if ($value === '') {
+                ++$emptyFieldsSinceLastField;
+            } else {
+                $s .= str_repeat(
+                    $this->encodingParameters->getFieldSep(),
+                    1 + $emptyFieldsSinceLastField
+                ) . $value;
+                $emptyFieldsSinceLastField = 0;
+            }
+        }
+
+        if (!$this->getFieldUserDefinedAccessChecks() || !$this->getFieldUserDefinedAccessChecks()->hasValue()) {
+            ++$emptyFieldsSinceLastField;
+        } else {
+            $s .= str_repeat(
+                $this->encodingParameters->getFieldSep(),
+                1 + $emptyFieldsSinceLastField
+            ) . (string) $this->getFieldUserDefinedAccessChecks()->getValue();
+            $emptyFieldsSinceLastField = 0;
+        }
+
+        if (!$this->getFieldDatetimeOfTheObservation()) {
+            ++$emptyFieldsSinceLastField;
+        } else {
+            $value = (string) $this->getFieldDatetimeOfTheObservation();
+            if ($value === '') {
+                ++$emptyFieldsSinceLastField;
+            } else {
+                $s .= str_repeat(
+                    $this->encodingParameters->getFieldSep(),
+                    1 + $emptyFieldsSinceLastField
+                ) . $value;
+                $emptyFieldsSinceLastField = 0;
+            }
+        }
+
+        if (!$this->getFieldProducersReference()) {
+            ++$emptyFieldsSinceLastField;
+        } else {
+            $value = (string) $this->getFieldProducersReference();
+            if ($value === '') {
+                ++$emptyFieldsSinceLastField;
+            } else {
+                $s .= str_repeat(
+                    $this->encodingParameters->getFieldSep(),
+                    1 + $emptyFieldsSinceLastField
+                ) . $value;
+                $emptyFieldsSinceLastField = 0;
+            }
+        }
+
+        if (empty($this->getFieldResponsibleObserver())) {
+            ++$emptyFieldsSinceLastField;
+        } else {
+            $nonEmptyReps = 0;
+            foreach ($this->getFieldResponsibleObserver() as $repetition) {
+                $value = (string) $repetition;
+                if ($value === '') {
+                    continue;
+                }
+                if ($nonEmptyReps == 0) {
+                    $s .= str_repeat(
+                        $this->encodingParameters->getFieldSep(),
+                        1 + $emptyFieldsSinceLastField
+                    ) . $value;
+                    $emptyFieldsSinceLastField = 0;
+                } else {
+                    $s .= $this->encodingParameters->getRepetitionSep()
+                       . (string) $value
+                    ;
+                }
+                ++$nonEmptyReps;
+            }
+        }
+
+        if (empty($this->getFieldObservationMethod())) {
+            ++$emptyFieldsSinceLastField;
+        } else {
+            $nonEmptyReps = 0;
+            foreach ($this->getFieldObservationMethod() as $repetition) {
+                $value = (string) $repetition;
+                if ($value === '') {
+                    continue;
+                }
+                if ($nonEmptyReps == 0) {
+                    $s .= str_repeat(
+                        $this->encodingParameters->getFieldSep(),
+                        1 + $emptyFieldsSinceLastField
+                    ) . $value;
+                    $emptyFieldsSinceLastField = 0;
+                } else {
+                    $s .= $this->encodingParameters->getRepetitionSep()
+                       . (string) $value
+                    ;
+                }
+                ++$nonEmptyReps;
+            }
+        }
+
+        if (empty($this->getFieldEquipmentInstanceIdentifier())) {
+            ++$emptyFieldsSinceLastField;
+        } else {
+            $nonEmptyReps = 0;
+            foreach ($this->getFieldEquipmentInstanceIdentifier() as $repetition) {
+                $value = (string) $repetition;
+                if ($value === '') {
+                    continue;
+                }
+                if ($nonEmptyReps == 0) {
+                    $s .= str_repeat(
+                        $this->encodingParameters->getFieldSep(),
+                        1 + $emptyFieldsSinceLastField
+                    ) . $value;
+                    $emptyFieldsSinceLastField = 0;
+                } else {
+                    $s .= $this->encodingParameters->getRepetitionSep()
+                       . (string) $value
+                    ;
+                }
+                ++$nonEmptyReps;
+            }
+        }
+
+        if (!$this->getFieldDatetimeOfTheAnalysis()) {
+            ++$emptyFieldsSinceLastField;
+        } else {
+            $value = (string) $this->getFieldDatetimeOfTheAnalysis();
+            if ($value === '') {
+                ++$emptyFieldsSinceLastField;
+            } else {
+                $s .= str_repeat(
+                    $this->encodingParameters->getFieldSep(),
+                    1 + $emptyFieldsSinceLastField
+                ) . $value;
+                $emptyFieldsSinceLastField = 0;
+            }
+        }
+
+        ++$emptyFieldsSinceLastField; // skip OBX.20
+
+        ++$emptyFieldsSinceLastField; // skip OBX.21
+
+        ++$emptyFieldsSinceLastField; // skip OBX.22
+
+        if (!$this->getFieldPerformingOrganizationName()) {
+            ++$emptyFieldsSinceLastField;
+        } else {
+            $value = (string) $this->getFieldPerformingOrganizationName();
+            if ($value === '') {
+                ++$emptyFieldsSinceLastField;
+            } else {
+                $s .= str_repeat(
+                    $this->encodingParameters->getFieldSep(),
+                    1 + $emptyFieldsSinceLastField
+                ) . $value;
+                $emptyFieldsSinceLastField = 0;
+            }
+        }
+
+        if (!$this->getFieldPerformingOrganizationAddress()) {
+            ++$emptyFieldsSinceLastField;
+        } else {
+            $value = (string) $this->getFieldPerformingOrganizationAddress();
+            if ($value === '') {
+                ++$emptyFieldsSinceLastField;
+            } else {
+                $s .= str_repeat(
+                    $this->encodingParameters->getFieldSep(),
+                    1 + $emptyFieldsSinceLastField
+                ) . $value;
+                $emptyFieldsSinceLastField = 0;
+            }
+        }
+
+        if (!$this->getFieldPerformingOrganizationMedicalDirector()) {
+            ++$emptyFieldsSinceLastField;
+        } else {
+            $value = (string) $this->getFieldPerformingOrganizationMedicalDirector();
+            if ($value === '') {
+                ++$emptyFieldsSinceLastField;
+            } else {
+                $s .= str_repeat(
+                    $this->encodingParameters->getFieldSep(),
+                    1 + $emptyFieldsSinceLastField
+                ) . $value;
+                $emptyFieldsSinceLastField = 0;
+            }
+        }
+
+        return $s;
+    }
 }

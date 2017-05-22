@@ -82,7 +82,7 @@ class NdlDataType extends ComponentDataType
     ) {
         $this->name = $this
             ->dataTypeFactory
-            ->create('CNN', $this->encodingParameters)
+            ->create('CNN', $this->encodingParameters, true)
         ;
         $this->name->setIdNumber($nameIdNumber);
         $this->name->setFamilyName($nameFamilyName);
@@ -105,7 +105,7 @@ class NdlDataType extends ComponentDataType
     {
         $this->startDateTime = $this
             ->dataTypeFactory
-            ->create('TS', $this->encodingParameters)
+            ->create('TS', $this->encodingParameters, true)
         ;
         $this->startDateTime->setTime($startDateTimeTime);
         $this->startDateTime->setDegreeOfPrecision($startDateTimeDegreeOfPrecision);
@@ -119,7 +119,7 @@ class NdlDataType extends ComponentDataType
     {
         $this->endDateTime = $this
             ->dataTypeFactory
-            ->create('TS', $this->encodingParameters)
+            ->create('TS', $this->encodingParameters, true)
         ;
         $this->endDateTime->setTime($endDateTimeTime);
         $this->endDateTime->setDegreeOfPrecision($endDateTimeDegreeOfPrecision);
@@ -173,7 +173,7 @@ class NdlDataType extends ComponentDataType
     ) {
         $this->facility = $this
             ->dataTypeFactory
-            ->create('HD', $this->encodingParameters)
+            ->create('HD', $this->encodingParameters, true)
         ;
         $this->facility->setNamespaceId($facilityNamespaceId);
         $this->facility->setUniversalId($facilityUniversalId);
@@ -314,5 +314,131 @@ class NdlDataType extends ComponentDataType
     public function getFloor()
     {
         return $this->floor;
+    }
+
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+        $s = '';
+
+        $sep = $this->isSubcomponent
+            ? $this->encodingParameters->getSubcomponentSep()
+            : $this->encodingParameters->getComponentSep()
+        ;
+
+        if ($this->getName()) {
+            $s .= (string) $this->getName();
+        }
+
+        $emptyComponentsSinceLastComponent = 0;
+
+        if (!$this->getStartDateTime()) {
+            ++$emptyComponentsSinceLastComponent;
+        } else {
+            $value = (string) $this->getStartDateTime();
+            if ($value === '') {
+                ++$emptyComponentsSinceLastComponent;
+            } else {
+                $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
+                    . $value
+                ;
+                $emptyComponentsSinceLastComponent = 0;
+            }
+        }
+
+        if (!$this->getEndDateTime()) {
+            ++$emptyComponentsSinceLastComponent;
+        } else {
+            $value = (string) $this->getEndDateTime();
+            if ($value === '') {
+                ++$emptyComponentsSinceLastComponent;
+            } else {
+                $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
+                    . $value
+                ;
+                $emptyComponentsSinceLastComponent = 0;
+            }
+        }
+
+        if (!$this->getPointOfCare() || !$this->getPointOfCare()->hasValue()) {
+            ++$emptyComponentsSinceLastComponent;
+        } else {
+            $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
+                . (string) $this->getPointOfCare()->getValue();
+            ;
+            $emptyComponentsSinceLastComponent = 0;
+        }
+
+        if (!$this->getRoom() || !$this->getRoom()->hasValue()) {
+            ++$emptyComponentsSinceLastComponent;
+        } else {
+            $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
+                . (string) $this->getRoom()->getValue();
+            ;
+            $emptyComponentsSinceLastComponent = 0;
+        }
+
+        if (!$this->getBed() || !$this->getBed()->hasValue()) {
+            ++$emptyComponentsSinceLastComponent;
+        } else {
+            $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
+                . (string) $this->getBed()->getValue();
+            ;
+            $emptyComponentsSinceLastComponent = 0;
+        }
+
+        if (!$this->getFacility()) {
+            ++$emptyComponentsSinceLastComponent;
+        } else {
+            $value = (string) $this->getFacility();
+            if ($value === '') {
+                ++$emptyComponentsSinceLastComponent;
+            } else {
+                $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
+                    . $value
+                ;
+                $emptyComponentsSinceLastComponent = 0;
+            }
+        }
+
+        if (!$this->getLocationStatus() || !$this->getLocationStatus()->hasValue()) {
+            ++$emptyComponentsSinceLastComponent;
+        } else {
+            $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
+                . (string) $this->getLocationStatus()->getValue();
+            ;
+            $emptyComponentsSinceLastComponent = 0;
+        }
+
+        if (!$this->getPatientLocationType() || !$this->getPatientLocationType()->hasValue()) {
+            ++$emptyComponentsSinceLastComponent;
+        } else {
+            $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
+                . (string) $this->getPatientLocationType()->getValue();
+            ;
+            $emptyComponentsSinceLastComponent = 0;
+        }
+
+        if (!$this->getBuilding() || !$this->getBuilding()->hasValue()) {
+            ++$emptyComponentsSinceLastComponent;
+        } else {
+            $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
+                . (string) $this->getBuilding()->getValue();
+            ;
+            $emptyComponentsSinceLastComponent = 0;
+        }
+
+        if (!$this->getFloor() || !$this->getFloor()->hasValue()) {
+            ++$emptyComponentsSinceLastComponent;
+        } else {
+            $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
+                . (string) $this->getFloor()->getValue();
+            ;
+            $emptyComponentsSinceLastComponent = 0;
+        }
+
+        return $s;
     }
 }

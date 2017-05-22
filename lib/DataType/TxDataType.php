@@ -7,4 +7,11 @@ namespace Hl7v2\DataType;
  */
 class TxDataType extends AbstractDataType
 {
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+        return (string) $this->value;
+    }
 }

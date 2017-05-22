@@ -13,12 +13,14 @@ class DataTypeFactory
      *
      * @param string $typeName
      * @param \Hl7v2\Encoding\EncodingParameters $encodingParameters
+     * @param bool $isSubcomponent
      * @return \Hl7v2\DataType\DataTypeInterface
      * @throws \Hl7v2\Exception\DataTypeError
      */
     public function create(
         $typeName,
-        EncodingParameters $encodingParameters
+        EncodingParameters $encodingParameters,
+        $isSubcomponent = false
     ) {
         $class = $this->determineClassname($typeName);
         $type = new $class;
@@ -26,6 +28,9 @@ class DataTypeFactory
         if ($type instanceof ComponentInterface) {
             $type->setDataTypeFactory($this);
             $type->setEncodingParameters($encodingParameters);
+            if ($isSubcomponent) {
+                $type->beSubcomponent();
+            }
         }
 
         $type->setCharacterEncoding($encodingParameters->getCharacterEncoding());

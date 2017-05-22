@@ -61,4 +61,39 @@ class DrDataType extends ComponentDataType
     {
         return $this->rangeEndDateTime;
     }
+
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+        $s = '';
+
+        $sep = $this->isSubcomponent
+            ? $this->encodingParameters->getSubcomponentSep()
+            : $this->encodingParameters->getComponentSep()
+        ;
+
+        if ($this->getRangeStartDateTime()) {
+            $s .= (string) $this->getRangeStartDateTime();
+        }
+
+        $emptyComponentsSinceLastComponent = 0;
+
+        if (!$this->getRangeEndDateTime()) {
+            ++$emptyComponentsSinceLastComponent;
+        } else {
+            $value = (string) $this->getRangeEndDateTime();
+            if ($value === '') {
+                ++$emptyComponentsSinceLastComponent;
+            } else {
+                $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
+                    . $value
+                ;
+                $emptyComponentsSinceLastComponent = 0;
+            }
+        }
+
+        return $s;
+    }
 }

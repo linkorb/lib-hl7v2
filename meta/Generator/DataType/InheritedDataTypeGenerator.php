@@ -2,7 +2,7 @@
 
 namespace Hl7v2\Meta\Generator\DataType;
 
-class InheritedDataTypeGenerator extends AbstractDataTypeGenerator
+class InheritedDataTypeGenerator extends SimpleDataTypeGenerator
 {
     private $parentDataTypeId;
 

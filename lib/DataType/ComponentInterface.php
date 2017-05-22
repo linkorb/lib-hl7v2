@@ -12,4 +12,6 @@ interface ComponentInterface
     public function getDataTypeFactory();
 
     public function setEncodingParameters(EncodingParameters $encodingParameters);
+
+    public function beSubcomponent();
 }

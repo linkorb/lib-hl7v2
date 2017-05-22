@@ -297,4 +297,124 @@ class XtnDataType extends ComponentDataType
     {
         return $this->unformattedTelephoneNumber;
     }
+
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+        $s = '';
+
+        $sep = $this->isSubcomponent
+            ? $this->encodingParameters->getSubcomponentSep()
+            : $this->encodingParameters->getComponentSep()
+        ;
+
+        if ($this->getTelephoneNumber() && $this->getTelephoneNumber()->hasValue()) {
+            $s .= (string) $this->getTelephoneNumber()->getValue();
+        }
+
+        $emptyComponentsSinceLastComponent = 0;
+
+        if (!$this->getTelecommunicationUseCode() || !$this->getTelecommunicationUseCode()->hasValue()) {
+            ++$emptyComponentsSinceLastComponent;
+        } else {
+            $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
+                . (string) $this->getTelecommunicationUseCode()->getValue();
+            ;
+            $emptyComponentsSinceLastComponent = 0;
+        }
+
+        if (!$this->getTelepcommunicationEquipmentType() || !$this->getTelepcommunicationEquipmentType()->hasValue()) {
+            ++$emptyComponentsSinceLastComponent;
+        } else {
+            $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
+                . (string) $this->getTelepcommunicationEquipmentType()->getValue();
+            ;
+            $emptyComponentsSinceLastComponent = 0;
+        }
+
+        if (!$this->getEmailAddress() || !$this->getEmailAddress()->hasValue()) {
+            ++$emptyComponentsSinceLastComponent;
+        } else {
+            $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
+                . (string) $this->getEmailAddress()->getValue();
+            ;
+            $emptyComponentsSinceLastComponent = 0;
+        }
+
+        if (!$this->getCountryCode() || !$this->getCountryCode()->hasValue()) {
+            ++$emptyComponentsSinceLastComponent;
+        } else {
+            $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
+                . (string) $this->getCountryCode()->getValue();
+            ;
+            $emptyComponentsSinceLastComponent = 0;
+        }
+
+        if (!$this->getAreaCityCode() || !$this->getAreaCityCode()->hasValue()) {
+            ++$emptyComponentsSinceLastComponent;
+        } else {
+            $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
+                . (string) $this->getAreaCityCode()->getValue();
+            ;
+            $emptyComponentsSinceLastComponent = 0;
+        }
+
+        if (!$this->getLocalNumber() || !$this->getLocalNumber()->hasValue()) {
+            ++$emptyComponentsSinceLastComponent;
+        } else {
+            $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
+                . (string) $this->getLocalNumber()->getValue();
+            ;
+            $emptyComponentsSinceLastComponent = 0;
+        }
+
+        if (!$this->getExtension() || !$this->getExtension()->hasValue()) {
+            ++$emptyComponentsSinceLastComponent;
+        } else {
+            $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
+                . (string) $this->getExtension()->getValue();
+            ;
+            $emptyComponentsSinceLastComponent = 0;
+        }
+
+        if (!$this->getAnyText() || !$this->getAnyText()->hasValue()) {
+            ++$emptyComponentsSinceLastComponent;
+        } else {
+            $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
+                . (string) $this->getAnyText()->getValue();
+            ;
+            $emptyComponentsSinceLastComponent = 0;
+        }
+
+        if (!$this->getExtensionPrefix() || !$this->getExtensionPrefix()->hasValue()) {
+            ++$emptyComponentsSinceLastComponent;
+        } else {
+            $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
+                . (string) $this->getExtensionPrefix()->getValue();
+            ;
+            $emptyComponentsSinceLastComponent = 0;
+        }
+
+        if (!$this->getSpeedDialCode() || !$this->getSpeedDialCode()->hasValue()) {
+            ++$emptyComponentsSinceLastComponent;
+        } else {
+            $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
+                . (string) $this->getSpeedDialCode()->getValue();
+            ;
+            $emptyComponentsSinceLastComponent = 0;
+        }
+
+        if (!$this->getUnformattedTelephoneNumber() || !$this->getUnformattedTelephoneNumber()->hasValue()) {
+            ++$emptyComponentsSinceLastComponent;
+        } else {
+            $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
+                . (string) $this->getUnformattedTelephoneNumber()->getValue();
+            ;
+            $emptyComponentsSinceLastComponent = 0;
+        }
+
+        return $s;
+    }
 }

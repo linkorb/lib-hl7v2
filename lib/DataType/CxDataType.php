@@ -323,4 +323,126 @@ class CxDataType extends ComponentDataType
     {
         return $this->assigningAgency;
     }
+
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+        $s = '';
+
+        $sep = $this->isSubcomponent
+            ? $this->encodingParameters->getSubcomponentSep()
+            : $this->encodingParameters->getComponentSep()
+        ;
+
+        if ($this->getIdNumber() && $this->getIdNumber()->hasValue()) {
+            $s .= (string) $this->getIdNumber()->getValue();
+        }
+
+        $emptyComponentsSinceLastComponent = 0;
+
+        if (!$this->getCheckDigit() || !$this->getCheckDigit()->hasValue()) {
+            ++$emptyComponentsSinceLastComponent;
+        } else {
+            $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
+                . (string) $this->getCheckDigit()->getValue();
+            ;
+            $emptyComponentsSinceLastComponent = 0;
+        }
+
+        if (!$this->getCheckDigitScheme() || !$this->getCheckDigitScheme()->hasValue()) {
+            ++$emptyComponentsSinceLastComponent;
+        } else {
+            $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
+                . (string) $this->getCheckDigitScheme()->getValue();
+            ;
+            $emptyComponentsSinceLastComponent = 0;
+        }
+
+        if (!$this->getAssigningAuthority()) {
+            ++$emptyComponentsSinceLastComponent;
+        } else {
+            $value = (string) $this->getAssigningAuthority();
+            if ($value === '') {
+                ++$emptyComponentsSinceLastComponent;
+            } else {
+                $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
+                    . $value
+                ;
+                $emptyComponentsSinceLastComponent = 0;
+            }
+        }
+
+        if (!$this->getIdentifierTypeCode() || !$this->getIdentifierTypeCode()->hasValue()) {
+            ++$emptyComponentsSinceLastComponent;
+        } else {
+            $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
+                . (string) $this->getIdentifierTypeCode()->getValue();
+            ;
+            $emptyComponentsSinceLastComponent = 0;
+        }
+
+        if (!$this->getAssigningFacility()) {
+            ++$emptyComponentsSinceLastComponent;
+        } else {
+            $value = (string) $this->getAssigningFacility();
+            if ($value === '') {
+                ++$emptyComponentsSinceLastComponent;
+            } else {
+                $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
+                    . $value
+                ;
+                $emptyComponentsSinceLastComponent = 0;
+            }
+        }
+
+        if (!$this->getEffectiveDate() || !$this->getEffectiveDate()->hasValue()) {
+            ++$emptyComponentsSinceLastComponent;
+        } else {
+            $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
+                . (string) $this->getEffectiveDate()->getValue();
+            ;
+            $emptyComponentsSinceLastComponent = 0;
+        }
+
+        if (!$this->getExpirationDate() || !$this->getExpirationDate()->hasValue()) {
+            ++$emptyComponentsSinceLastComponent;
+        } else {
+            $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
+                . (string) $this->getExpirationDate()->getValue();
+            ;
+            $emptyComponentsSinceLastComponent = 0;
+        }
+
+        if (!$this->getAssigningJurisdiction()) {
+            ++$emptyComponentsSinceLastComponent;
+        } else {
+            $value = (string) $this->getAssigningJurisdiction();
+            if ($value === '') {
+                ++$emptyComponentsSinceLastComponent;
+            } else {
+                $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
+                    . $value
+                ;
+                $emptyComponentsSinceLastComponent = 0;
+            }
+        }
+
+        if (!$this->getAssigningAgency()) {
+            ++$emptyComponentsSinceLastComponent;
+        } else {
+            $value = (string) $this->getAssigningAgency();
+            if ($value === '') {
+                ++$emptyComponentsSinceLastComponent;
+            } else {
+                $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
+                    . $value
+                ;
+                $emptyComponentsSinceLastComponent = 0;
+            }
+        }
+
+        return $s;
+    }
 }

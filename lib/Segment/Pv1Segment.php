@@ -4464,4 +4464,753 @@ class Pv1Segment extends AbstractSegment
             );
         }
     }
+
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+        $s = 'PV1';
+        $emptyFieldsSinceLastField = 0;
+
+        if (!$this->getFieldSetId() || !$this->getFieldSetId()->hasValue()) {
+            ++$emptyFieldsSinceLastField;
+        } else {
+            $s .= str_repeat(
+                $this->encodingParameters->getFieldSep(),
+                1 + $emptyFieldsSinceLastField
+            ) . (string) $this->getFieldSetId()->getValue();
+            $emptyFieldsSinceLastField = 0;
+        }
+
+        if (!$this->getFieldPatientClass() || !$this->getFieldPatientClass()->hasValue()) {
+            ++$emptyFieldsSinceLastField;
+        } else {
+            $s .= str_repeat(
+                $this->encodingParameters->getFieldSep(),
+                1 + $emptyFieldsSinceLastField
+            ) . (string) $this->getFieldPatientClass()->getValue();
+            $emptyFieldsSinceLastField = 0;
+        }
+
+        if (!$this->getFieldAssignedPatientLocation()) {
+            ++$emptyFieldsSinceLastField;
+        } else {
+            $value = (string) $this->getFieldAssignedPatientLocation();
+            if ($value === '') {
+                ++$emptyFieldsSinceLastField;
+            } else {
+                $s .= str_repeat(
+                    $this->encodingParameters->getFieldSep(),
+                    1 + $emptyFieldsSinceLastField
+                ) . $value;
+                $emptyFieldsSinceLastField = 0;
+            }
+        }
+
+        if (!$this->getFieldAdmissionType() || !$this->getFieldAdmissionType()->hasValue()) {
+            ++$emptyFieldsSinceLastField;
+        } else {
+            $s .= str_repeat(
+                $this->encodingParameters->getFieldSep(),
+                1 + $emptyFieldsSinceLastField
+            ) . (string) $this->getFieldAdmissionType()->getValue();
+            $emptyFieldsSinceLastField = 0;
+        }
+
+        if (!$this->getFieldPreadmitNumber()) {
+            ++$emptyFieldsSinceLastField;
+        } else {
+            $value = (string) $this->getFieldPreadmitNumber();
+            if ($value === '') {
+                ++$emptyFieldsSinceLastField;
+            } else {
+                $s .= str_repeat(
+                    $this->encodingParameters->getFieldSep(),
+                    1 + $emptyFieldsSinceLastField
+                ) . $value;
+                $emptyFieldsSinceLastField = 0;
+            }
+        }
+
+        if (!$this->getFieldPriorPatientLocation()) {
+            ++$emptyFieldsSinceLastField;
+        } else {
+            $value = (string) $this->getFieldPriorPatientLocation();
+            if ($value === '') {
+                ++$emptyFieldsSinceLastField;
+            } else {
+                $s .= str_repeat(
+                    $this->encodingParameters->getFieldSep(),
+                    1 + $emptyFieldsSinceLastField
+                ) . $value;
+                $emptyFieldsSinceLastField = 0;
+            }
+        }
+
+        if (empty($this->getFieldAttendingDoctor())) {
+            ++$emptyFieldsSinceLastField;
+        } else {
+            $nonEmptyReps = 0;
+            foreach ($this->getFieldAttendingDoctor() as $repetition) {
+                $value = (string) $repetition;
+                if ($value === '') {
+                    continue;
+                }
+                if ($nonEmptyReps == 0) {
+                    $s .= str_repeat(
+                        $this->encodingParameters->getFieldSep(),
+                        1 + $emptyFieldsSinceLastField
+                    ) . $value;
+                    $emptyFieldsSinceLastField = 0;
+                } else {
+                    $s .= $this->encodingParameters->getRepetitionSep()
+                       . (string) $value
+                    ;
+                }
+                ++$nonEmptyReps;
+            }
+        }
+
+        if (empty($this->getFieldReferringDoctor())) {
+            ++$emptyFieldsSinceLastField;
+        } else {
+            $nonEmptyReps = 0;
+            foreach ($this->getFieldReferringDoctor() as $repetition) {
+                $value = (string) $repetition;
+                if ($value === '') {
+                    continue;
+                }
+                if ($nonEmptyReps == 0) {
+                    $s .= str_repeat(
+                        $this->encodingParameters->getFieldSep(),
+                        1 + $emptyFieldsSinceLastField
+                    ) . $value;
+                    $emptyFieldsSinceLastField = 0;
+                } else {
+                    $s .= $this->encodingParameters->getRepetitionSep()
+                       . (string) $value
+                    ;
+                }
+                ++$nonEmptyReps;
+            }
+        }
+
+        if (empty($this->getFieldConsultingDoctor())) {
+            ++$emptyFieldsSinceLastField;
+        } else {
+            $nonEmptyReps = 0;
+            foreach ($this->getFieldConsultingDoctor() as $repetition) {
+                $value = (string) $repetition;
+                if ($value === '') {
+                    continue;
+                }
+                if ($nonEmptyReps == 0) {
+                    $s .= str_repeat(
+                        $this->encodingParameters->getFieldSep(),
+                        1 + $emptyFieldsSinceLastField
+                    ) . $value;
+                    $emptyFieldsSinceLastField = 0;
+                } else {
+                    $s .= $this->encodingParameters->getRepetitionSep()
+                       . (string) $value
+                    ;
+                }
+                ++$nonEmptyReps;
+            }
+        }
+
+        if (!$this->getFieldHospitalService() || !$this->getFieldHospitalService()->hasValue()) {
+            ++$emptyFieldsSinceLastField;
+        } else {
+            $s .= str_repeat(
+                $this->encodingParameters->getFieldSep(),
+                1 + $emptyFieldsSinceLastField
+            ) . (string) $this->getFieldHospitalService()->getValue();
+            $emptyFieldsSinceLastField = 0;
+        }
+
+        if (!$this->getFieldTemporaryLocation()) {
+            ++$emptyFieldsSinceLastField;
+        } else {
+            $value = (string) $this->getFieldTemporaryLocation();
+            if ($value === '') {
+                ++$emptyFieldsSinceLastField;
+            } else {
+                $s .= str_repeat(
+                    $this->encodingParameters->getFieldSep(),
+                    1 + $emptyFieldsSinceLastField
+                ) . $value;
+                $emptyFieldsSinceLastField = 0;
+            }
+        }
+
+        if (!$this->getFieldPreadmitTestIndicator() || !$this->getFieldPreadmitTestIndicator()->hasValue()) {
+            ++$emptyFieldsSinceLastField;
+        } else {
+            $s .= str_repeat(
+                $this->encodingParameters->getFieldSep(),
+                1 + $emptyFieldsSinceLastField
+            ) . (string) $this->getFieldPreadmitTestIndicator()->getValue();
+            $emptyFieldsSinceLastField = 0;
+        }
+
+        if (!$this->getFieldReadmissionIndicator() || !$this->getFieldReadmissionIndicator()->hasValue()) {
+            ++$emptyFieldsSinceLastField;
+        } else {
+            $s .= str_repeat(
+                $this->encodingParameters->getFieldSep(),
+                1 + $emptyFieldsSinceLastField
+            ) . (string) $this->getFieldReadmissionIndicator()->getValue();
+            $emptyFieldsSinceLastField = 0;
+        }
+
+        if (!$this->getFieldAdmitSource() || !$this->getFieldAdmitSource()->hasValue()) {
+            ++$emptyFieldsSinceLastField;
+        } else {
+            $s .= str_repeat(
+                $this->encodingParameters->getFieldSep(),
+                1 + $emptyFieldsSinceLastField
+            ) . (string) $this->getFieldAdmitSource()->getValue();
+            $emptyFieldsSinceLastField = 0;
+        }
+
+        if (empty($this->getFieldAmbulatoryStatus())) {
+            ++$emptyFieldsSinceLastField;
+        } else {
+            $nonEmptyReps = 0;
+            foreach ($this->getFieldAmbulatoryStatus() as $repetition) {
+                if (!$repetition->hasValue()) {
+                    continue;
+                }
+                if ($nonEmptyReps == 0) {
+                    $s .= str_repeat(
+                        $this->encodingParameters->getFieldSep(),
+                        1 + $emptyFieldsSinceLastField
+                    ) . (string) $repetition->getValue();
+                    $emptyFieldsSinceLastField = 0;
+                } else {
+                    $s .= $this->encodingParameters->getRepetitionSep()
+                        . (string) $repetition->getValue()
+                    ;
+                }
+                ++$nonEmptyReps;
+            }
+        }
+
+        if (!$this->getFieldVipIndicator() || !$this->getFieldVipIndicator()->hasValue()) {
+            ++$emptyFieldsSinceLastField;
+        } else {
+            $s .= str_repeat(
+                $this->encodingParameters->getFieldSep(),
+                1 + $emptyFieldsSinceLastField
+            ) . (string) $this->getFieldVipIndicator()->getValue();
+            $emptyFieldsSinceLastField = 0;
+        }
+
+        if (empty($this->getFieldAdmittingDoctor())) {
+            ++$emptyFieldsSinceLastField;
+        } else {
+            $nonEmptyReps = 0;
+            foreach ($this->getFieldAdmittingDoctor() as $repetition) {
+                $value = (string) $repetition;
+                if ($value === '') {
+                    continue;
+                }
+                if ($nonEmptyReps == 0) {
+                    $s .= str_repeat(
+                        $this->encodingParameters->getFieldSep(),
+                        1 + $emptyFieldsSinceLastField
+                    ) . $value;
+                    $emptyFieldsSinceLastField = 0;
+                } else {
+                    $s .= $this->encodingParameters->getRepetitionSep()
+                       . (string) $value
+                    ;
+                }
+                ++$nonEmptyReps;
+            }
+        }
+
+        if (!$this->getFieldPatientType() || !$this->getFieldPatientType()->hasValue()) {
+            ++$emptyFieldsSinceLastField;
+        } else {
+            $s .= str_repeat(
+                $this->encodingParameters->getFieldSep(),
+                1 + $emptyFieldsSinceLastField
+            ) . (string) $this->getFieldPatientType()->getValue();
+            $emptyFieldsSinceLastField = 0;
+        }
+
+        if (!$this->getFieldVisitNumber()) {
+            ++$emptyFieldsSinceLastField;
+        } else {
+            $value = (string) $this->getFieldVisitNumber();
+            if ($value === '') {
+                ++$emptyFieldsSinceLastField;
+            } else {
+                $s .= str_repeat(
+                    $this->encodingParameters->getFieldSep(),
+                    1 + $emptyFieldsSinceLastField
+                ) . $value;
+                $emptyFieldsSinceLastField = 0;
+            }
+        }
+
+        if (empty($this->getFieldFinancialClass())) {
+            ++$emptyFieldsSinceLastField;
+        } else {
+            $nonEmptyReps = 0;
+            foreach ($this->getFieldFinancialClass() as $repetition) {
+                $value = (string) $repetition;
+                if ($value === '') {
+                    continue;
+                }
+                if ($nonEmptyReps == 0) {
+                    $s .= str_repeat(
+                        $this->encodingParameters->getFieldSep(),
+                        1 + $emptyFieldsSinceLastField
+                    ) . $value;
+                    $emptyFieldsSinceLastField = 0;
+                } else {
+                    $s .= $this->encodingParameters->getRepetitionSep()
+                       . (string) $value
+                    ;
+                }
+                ++$nonEmptyReps;
+            }
+        }
+
+        if (!$this->getFieldChargePriceIndicator() || !$this->getFieldChargePriceIndicator()->hasValue()) {
+            ++$emptyFieldsSinceLastField;
+        } else {
+            $s .= str_repeat(
+                $this->encodingParameters->getFieldSep(),
+                1 + $emptyFieldsSinceLastField
+            ) . (string) $this->getFieldChargePriceIndicator()->getValue();
+            $emptyFieldsSinceLastField = 0;
+        }
+
+        if (!$this->getFieldCourtesyCode() || !$this->getFieldCourtesyCode()->hasValue()) {
+            ++$emptyFieldsSinceLastField;
+        } else {
+            $s .= str_repeat(
+                $this->encodingParameters->getFieldSep(),
+                1 + $emptyFieldsSinceLastField
+            ) . (string) $this->getFieldCourtesyCode()->getValue();
+            $emptyFieldsSinceLastField = 0;
+        }
+
+        if (!$this->getFieldCreditRating() || !$this->getFieldCreditRating()->hasValue()) {
+            ++$emptyFieldsSinceLastField;
+        } else {
+            $s .= str_repeat(
+                $this->encodingParameters->getFieldSep(),
+                1 + $emptyFieldsSinceLastField
+            ) . (string) $this->getFieldCreditRating()->getValue();
+            $emptyFieldsSinceLastField = 0;
+        }
+
+        if (empty($this->getFieldContractCode())) {
+            ++$emptyFieldsSinceLastField;
+        } else {
+            $nonEmptyReps = 0;
+            foreach ($this->getFieldContractCode() as $repetition) {
+                if (!$repetition->hasValue()) {
+                    continue;
+                }
+                if ($nonEmptyReps == 0) {
+                    $s .= str_repeat(
+                        $this->encodingParameters->getFieldSep(),
+                        1 + $emptyFieldsSinceLastField
+                    ) . (string) $repetition->getValue();
+                    $emptyFieldsSinceLastField = 0;
+                } else {
+                    $s .= $this->encodingParameters->getRepetitionSep()
+                        . (string) $repetition->getValue()
+                    ;
+                }
+                ++$nonEmptyReps;
+            }
+        }
+
+        if (empty($this->getFieldContractEffectiveDate())) {
+            ++$emptyFieldsSinceLastField;
+        } else {
+            $nonEmptyReps = 0;
+            foreach ($this->getFieldContractEffectiveDate() as $repetition) {
+                if (!$repetition->hasValue()) {
+                    continue;
+                }
+                if ($nonEmptyReps == 0) {
+                    $s .= str_repeat(
+                        $this->encodingParameters->getFieldSep(),
+                        1 + $emptyFieldsSinceLastField
+                    ) . (string) $repetition->getValue();
+                    $emptyFieldsSinceLastField = 0;
+                } else {
+                    $s .= $this->encodingParameters->getRepetitionSep()
+                        . (string) $repetition->getValue()
+                    ;
+                }
+                ++$nonEmptyReps;
+            }
+        }
+
+        if (empty($this->getFieldContractAmount())) {
+            ++$emptyFieldsSinceLastField;
+        } else {
+            $nonEmptyReps = 0;
+            foreach ($this->getFieldContractAmount() as $repetition) {
+                if (!$repetition->hasValue()) {
+                    continue;
+                }
+                if ($nonEmptyReps == 0) {
+                    $s .= str_repeat(
+                        $this->encodingParameters->getFieldSep(),
+                        1 + $emptyFieldsSinceLastField
+                    ) . (string) $repetition->getValue();
+                    $emptyFieldsSinceLastField = 0;
+                } else {
+                    $s .= $this->encodingParameters->getRepetitionSep()
+                        . (string) $repetition->getValue()
+                    ;
+                }
+                ++$nonEmptyReps;
+            }
+        }
+
+        if (empty($this->getFieldContractPeriod())) {
+            ++$emptyFieldsSinceLastField;
+        } else {
+            $nonEmptyReps = 0;
+            foreach ($this->getFieldContractPeriod() as $repetition) {
+                if (!$repetition->hasValue()) {
+                    continue;
+                }
+                if ($nonEmptyReps == 0) {
+                    $s .= str_repeat(
+                        $this->encodingParameters->getFieldSep(),
+                        1 + $emptyFieldsSinceLastField
+                    ) . (string) $repetition->getValue();
+                    $emptyFieldsSinceLastField = 0;
+                } else {
+                    $s .= $this->encodingParameters->getRepetitionSep()
+                        . (string) $repetition->getValue()
+                    ;
+                }
+                ++$nonEmptyReps;
+            }
+        }
+
+        if (!$this->getFieldInterestCode() || !$this->getFieldInterestCode()->hasValue()) {
+            ++$emptyFieldsSinceLastField;
+        } else {
+            $s .= str_repeat(
+                $this->encodingParameters->getFieldSep(),
+                1 + $emptyFieldsSinceLastField
+            ) . (string) $this->getFieldInterestCode()->getValue();
+            $emptyFieldsSinceLastField = 0;
+        }
+
+        if (!$this->getFieldTransferToBadDebtCode() || !$this->getFieldTransferToBadDebtCode()->hasValue()) {
+            ++$emptyFieldsSinceLastField;
+        } else {
+            $s .= str_repeat(
+                $this->encodingParameters->getFieldSep(),
+                1 + $emptyFieldsSinceLastField
+            ) . (string) $this->getFieldTransferToBadDebtCode()->getValue();
+            $emptyFieldsSinceLastField = 0;
+        }
+
+        if (!$this->getFieldTransferToBadDebtDate() || !$this->getFieldTransferToBadDebtDate()->hasValue()) {
+            ++$emptyFieldsSinceLastField;
+        } else {
+            $s .= str_repeat(
+                $this->encodingParameters->getFieldSep(),
+                1 + $emptyFieldsSinceLastField
+            ) . (string) $this->getFieldTransferToBadDebtDate()->getValue();
+            $emptyFieldsSinceLastField = 0;
+        }
+
+        if (!$this->getFieldBadDebtAgencyCode() || !$this->getFieldBadDebtAgencyCode()->hasValue()) {
+            ++$emptyFieldsSinceLastField;
+        } else {
+            $s .= str_repeat(
+                $this->encodingParameters->getFieldSep(),
+                1 + $emptyFieldsSinceLastField
+            ) . (string) $this->getFieldBadDebtAgencyCode()->getValue();
+            $emptyFieldsSinceLastField = 0;
+        }
+
+        if (!$this->getFieldBadDebtTransferAmount() || !$this->getFieldBadDebtTransferAmount()->hasValue()) {
+            ++$emptyFieldsSinceLastField;
+        } else {
+            $s .= str_repeat(
+                $this->encodingParameters->getFieldSep(),
+                1 + $emptyFieldsSinceLastField
+            ) . (string) $this->getFieldBadDebtTransferAmount()->getValue();
+            $emptyFieldsSinceLastField = 0;
+        }
+
+        if (!$this->getFieldBadDebtRecoveryAmount() || !$this->getFieldBadDebtRecoveryAmount()->hasValue()) {
+            ++$emptyFieldsSinceLastField;
+        } else {
+            $s .= str_repeat(
+                $this->encodingParameters->getFieldSep(),
+                1 + $emptyFieldsSinceLastField
+            ) . (string) $this->getFieldBadDebtRecoveryAmount()->getValue();
+            $emptyFieldsSinceLastField = 0;
+        }
+
+        if (!$this->getFieldDeleteAccountIndicator() || !$this->getFieldDeleteAccountIndicator()->hasValue()) {
+            ++$emptyFieldsSinceLastField;
+        } else {
+            $s .= str_repeat(
+                $this->encodingParameters->getFieldSep(),
+                1 + $emptyFieldsSinceLastField
+            ) . (string) $this->getFieldDeleteAccountIndicator()->getValue();
+            $emptyFieldsSinceLastField = 0;
+        }
+
+        if (!$this->getFieldDeleteAccountDate() || !$this->getFieldDeleteAccountDate()->hasValue()) {
+            ++$emptyFieldsSinceLastField;
+        } else {
+            $s .= str_repeat(
+                $this->encodingParameters->getFieldSep(),
+                1 + $emptyFieldsSinceLastField
+            ) . (string) $this->getFieldDeleteAccountDate()->getValue();
+            $emptyFieldsSinceLastField = 0;
+        }
+
+        if (!$this->getFieldDischargeDisposition() || !$this->getFieldDischargeDisposition()->hasValue()) {
+            ++$emptyFieldsSinceLastField;
+        } else {
+            $s .= str_repeat(
+                $this->encodingParameters->getFieldSep(),
+                1 + $emptyFieldsSinceLastField
+            ) . (string) $this->getFieldDischargeDisposition()->getValue();
+            $emptyFieldsSinceLastField = 0;
+        }
+
+        if (!$this->getFieldDischargedToLocation()) {
+            ++$emptyFieldsSinceLastField;
+        } else {
+            $value = (string) $this->getFieldDischargedToLocation();
+            if ($value === '') {
+                ++$emptyFieldsSinceLastField;
+            } else {
+                $s .= str_repeat(
+                    $this->encodingParameters->getFieldSep(),
+                    1 + $emptyFieldsSinceLastField
+                ) . $value;
+                $emptyFieldsSinceLastField = 0;
+            }
+        }
+
+        if (!$this->getFieldDietType()) {
+            ++$emptyFieldsSinceLastField;
+        } else {
+            $value = (string) $this->getFieldDietType();
+            if ($value === '') {
+                ++$emptyFieldsSinceLastField;
+            } else {
+                $s .= str_repeat(
+                    $this->encodingParameters->getFieldSep(),
+                    1 + $emptyFieldsSinceLastField
+                ) . $value;
+                $emptyFieldsSinceLastField = 0;
+            }
+        }
+
+        if (!$this->getFieldServicingFacility() || !$this->getFieldServicingFacility()->hasValue()) {
+            ++$emptyFieldsSinceLastField;
+        } else {
+            $s .= str_repeat(
+                $this->encodingParameters->getFieldSep(),
+                1 + $emptyFieldsSinceLastField
+            ) . (string) $this->getFieldServicingFacility()->getValue();
+            $emptyFieldsSinceLastField = 0;
+        }
+
+        if (!$this->getFieldBedStatus() || !$this->getFieldBedStatus()->hasValue()) {
+            ++$emptyFieldsSinceLastField;
+        } else {
+            $s .= str_repeat(
+                $this->encodingParameters->getFieldSep(),
+                1 + $emptyFieldsSinceLastField
+            ) . (string) $this->getFieldBedStatus()->getValue();
+            $emptyFieldsSinceLastField = 0;
+        }
+
+        if (!$this->getFieldAccountStatus() || !$this->getFieldAccountStatus()->hasValue()) {
+            ++$emptyFieldsSinceLastField;
+        } else {
+            $s .= str_repeat(
+                $this->encodingParameters->getFieldSep(),
+                1 + $emptyFieldsSinceLastField
+            ) . (string) $this->getFieldAccountStatus()->getValue();
+            $emptyFieldsSinceLastField = 0;
+        }
+
+        if (!$this->getFieldPendingLocation()) {
+            ++$emptyFieldsSinceLastField;
+        } else {
+            $value = (string) $this->getFieldPendingLocation();
+            if ($value === '') {
+                ++$emptyFieldsSinceLastField;
+            } else {
+                $s .= str_repeat(
+                    $this->encodingParameters->getFieldSep(),
+                    1 + $emptyFieldsSinceLastField
+                ) . $value;
+                $emptyFieldsSinceLastField = 0;
+            }
+        }
+
+        if (!$this->getFieldPriorTemporaryLocation()) {
+            ++$emptyFieldsSinceLastField;
+        } else {
+            $value = (string) $this->getFieldPriorTemporaryLocation();
+            if ($value === '') {
+                ++$emptyFieldsSinceLastField;
+            } else {
+                $s .= str_repeat(
+                    $this->encodingParameters->getFieldSep(),
+                    1 + $emptyFieldsSinceLastField
+                ) . $value;
+                $emptyFieldsSinceLastField = 0;
+            }
+        }
+
+        if (!$this->getFieldAdmitDatetime()) {
+            ++$emptyFieldsSinceLastField;
+        } else {
+            $value = (string) $this->getFieldAdmitDatetime();
+            if ($value === '') {
+                ++$emptyFieldsSinceLastField;
+            } else {
+                $s .= str_repeat(
+                    $this->encodingParameters->getFieldSep(),
+                    1 + $emptyFieldsSinceLastField
+                ) . $value;
+                $emptyFieldsSinceLastField = 0;
+            }
+        }
+
+        if (empty($this->getFieldDischargeDatetime())) {
+            ++$emptyFieldsSinceLastField;
+        } else {
+            $nonEmptyReps = 0;
+            foreach ($this->getFieldDischargeDatetime() as $repetition) {
+                $value = (string) $repetition;
+                if ($value === '') {
+                    continue;
+                }
+                if ($nonEmptyReps == 0) {
+                    $s .= str_repeat(
+                        $this->encodingParameters->getFieldSep(),
+                        1 + $emptyFieldsSinceLastField
+                    ) . $value;
+                    $emptyFieldsSinceLastField = 0;
+                } else {
+                    $s .= $this->encodingParameters->getRepetitionSep()
+                       . (string) $value
+                    ;
+                }
+                ++$nonEmptyReps;
+            }
+        }
+
+        if (!$this->getFieldCurrentPatientBalance() || !$this->getFieldCurrentPatientBalance()->hasValue()) {
+            ++$emptyFieldsSinceLastField;
+        } else {
+            $s .= str_repeat(
+                $this->encodingParameters->getFieldSep(),
+                1 + $emptyFieldsSinceLastField
+            ) . (string) $this->getFieldCurrentPatientBalance()->getValue();
+            $emptyFieldsSinceLastField = 0;
+        }
+
+        if (!$this->getFieldTotalCharges() || !$this->getFieldTotalCharges()->hasValue()) {
+            ++$emptyFieldsSinceLastField;
+        } else {
+            $s .= str_repeat(
+                $this->encodingParameters->getFieldSep(),
+                1 + $emptyFieldsSinceLastField
+            ) . (string) $this->getFieldTotalCharges()->getValue();
+            $emptyFieldsSinceLastField = 0;
+        }
+
+        if (!$this->getFieldTotalAdjustments() || !$this->getFieldTotalAdjustments()->hasValue()) {
+            ++$emptyFieldsSinceLastField;
+        } else {
+            $s .= str_repeat(
+                $this->encodingParameters->getFieldSep(),
+                1 + $emptyFieldsSinceLastField
+            ) . (string) $this->getFieldTotalAdjustments()->getValue();
+            $emptyFieldsSinceLastField = 0;
+        }
+
+        if (!$this->getFieldTotalPayments() || !$this->getFieldTotalPayments()->hasValue()) {
+            ++$emptyFieldsSinceLastField;
+        } else {
+            $s .= str_repeat(
+                $this->encodingParameters->getFieldSep(),
+                1 + $emptyFieldsSinceLastField
+            ) . (string) $this->getFieldTotalPayments()->getValue();
+            $emptyFieldsSinceLastField = 0;
+        }
+
+        if (!$this->getFieldAltVisitId()) {
+            ++$emptyFieldsSinceLastField;
+        } else {
+            $value = (string) $this->getFieldAltVisitId();
+            if ($value === '') {
+                ++$emptyFieldsSinceLastField;
+            } else {
+                $s .= str_repeat(
+                    $this->encodingParameters->getFieldSep(),
+                    1 + $emptyFieldsSinceLastField
+                ) . $value;
+                $emptyFieldsSinceLastField = 0;
+            }
+        }
+
+        if (!$this->getFieldVisitIndicator() || !$this->getFieldVisitIndicator()->hasValue()) {
+            ++$emptyFieldsSinceLastField;
+        } else {
+            $s .= str_repeat(
+                $this->encodingParameters->getFieldSep(),
+                1 + $emptyFieldsSinceLastField
+            ) . (string) $this->getFieldVisitIndicator()->getValue();
+            $emptyFieldsSinceLastField = 0;
+        }
+
+        if (empty($this->getFieldOtherHealthcareProvider())) {
+            ++$emptyFieldsSinceLastField;
+        } else {
+            $nonEmptyReps = 0;
+            foreach ($this->getFieldOtherHealthcareProvider() as $repetition) {
+                $value = (string) $repetition;
+                if ($value === '') {
+                    continue;
+                }
+                if ($nonEmptyReps == 0) {
+                    $s .= str_repeat(
+                        $this->encodingParameters->getFieldSep(),
+                        1 + $emptyFieldsSinceLastField
+                    ) . $value;
+                    $emptyFieldsSinceLastField = 0;
+                } else {
+                    $s .= $this->encodingParameters->getRepetitionSep()
+                       . (string) $value
+                    ;
+                }
+                ++$nonEmptyReps;
+            }
+        }
+
+        return $s;
+    }
 }

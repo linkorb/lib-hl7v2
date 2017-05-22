@@ -8,4 +8,12 @@ namespace Hl7v2\DataType;
 class DtmDataType extends AbstractDataType
 {
     const MAX_LEN = 24;
+
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+        return (string) $this->value;
+    }
 }

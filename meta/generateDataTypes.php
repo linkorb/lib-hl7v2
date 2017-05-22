@@ -1,5 +1,7 @@
 <?php
 
+namespace Hl7v2\Meta;
+
 require __DIR__.'/../vendor/autoload.php';
 
 use Memio\Memio\Config\Build;
@@ -17,6 +19,8 @@ use Memio\Model\Phpdoc\StructurePhpdoc;
 use Memio\Model\Phpdoc\VariableTag;
 use Memio\Model\Property;
 use Symfony\Component\Yaml\Yaml;
+use Twig_Environment;
+use Twig_Loader_Filesystem;
 
 use Hl7v2\Meta\Generator\DataType\ComponentDataTypeGenerator;
 use Hl7v2\Meta\Generator\DataType\InheritedDataTypeGenerator;
@@ -28,6 +32,7 @@ use Hl7v2\Meta\Helper\Util;
 $prettyPrinter = Build::prettyPrinter()
     ->addTemplatePath(__DIR__.'/template')
 ;
+$twig = new Twig_Environment(new Twig_Loader_Filesystem(__DIR__.'/template'));
 
 $types = Yaml::parse(file_get_contents(__DIR__ . '/data/dataTypes.yml'));
 
@@ -56,6 +61,8 @@ foreach ($typeResolver->reseolveTypeDependencyGraph() as $typeId) {
     } else {
         $g = new SimpleDataTypeGenerator($context, $typeId, $typeInfo);
     }
+
+    $g->setTemplating($twig);
 
     $classDoc = new StructurePhpdoc();
     $classDoc->setDescription(Description::make($g->getDescription()));
@@ -105,6 +112,10 @@ foreach ($typeResolver->reseolveTypeDependencyGraph() as $typeId) {
             $structure->addMethod($accessor);
         }
     }
+
+    $structure->addMethod(
+        $g->getMethodToString(Method::make('__toString'), MethodPhpdoc::make())
+    );
 
     $file = File::make($outDir . DIRECTORY_SEPARATOR . $context->dataTypeIdToClassName($typeId) . '.php')
         ->setStructure($structure)

@@ -2,6 +2,11 @@
 
 namespace Hl7v2\Meta\Generator\Segment;
 
+use Memio\Model\Method;
+use Memio\Model\Phpdoc\MethodPhpdoc;
+use Memio\Model\Phpdoc\ReturnTag;
+use Twig_Environment;
+
 use Hl7v2\Meta\Helper\DataTypeContext;
 use Hl7v2\Meta\Helper\SegmentContext;
 use Hl7v2\Meta\Helper\SegmentField;
@@ -25,6 +30,7 @@ class SegmentGenerator
     protected $lastRequiredFieldnum;
     protected $segmentId;
     protected $segmentName;
+    protected $templating;
 
     public function __construct(
         SegmentContext $segmentContext,
@@ -44,6 +50,11 @@ class SegmentGenerator
                 $this->lastRequiredFieldnum = $f->num;
             }
         }
+    }
+
+    public function setTemplating(Twig_Environment $templating)
+    {
+        $this->templating = $templating;
     }
 
     public function getConstants()
@@ -458,5 +469,36 @@ class SegmentGenerator
         ];
 
         return [$methodName, [['string', 'value', true]], $body];
+    }
+
+    public function getMethodToString(Method $method, MethodPhpdoc $doc, $segmentId)
+    {
+        $template = 'tostring_segment.twig';
+        $context = ['segment_id' => $segmentId];
+
+        $fields = [];
+        foreach ($this->fields as $c) {
+            $f = [
+                'name' => $c->name,
+                'skipped' => $c->skipped,
+                'repeated' => $c->repeated,
+            ];
+            if (!$c->skipped) {
+                $f['simple'] = !$c->isComponentType();
+            }
+            $fields[] = $f;
+        }
+
+        // handle MSH specially because MSH.1 is the field separator
+        if ($segmentId == 'MSH') {
+            $template = 'tostring_segment_msh.twig';
+            $fields = array_slice($fields, 1);
+        }
+
+        $context['fields'] = $fields;
+        return $method
+            ->setPhpdoc($doc->setReturnTag(ReturnTag::make('string')))
+            ->setBody($this->templating->render($template, $context))
+        ;
     }
 }

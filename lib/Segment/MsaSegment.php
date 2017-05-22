@@ -211,4 +211,72 @@ class MsaSegment extends AbstractSegment
             $nameOfAltCodingSystem
         );
     }
+
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+        $s = 'MSA';
+        $emptyFieldsSinceLastField = 0;
+
+        if (!$this->getFieldAcknowledgmentCode() || !$this->getFieldAcknowledgmentCode()->hasValue()) {
+            ++$emptyFieldsSinceLastField;
+        } else {
+            $s .= str_repeat(
+                $this->encodingParameters->getFieldSep(),
+                1 + $emptyFieldsSinceLastField
+            ) . (string) $this->getFieldAcknowledgmentCode()->getValue();
+            $emptyFieldsSinceLastField = 0;
+        }
+
+        if (!$this->getFieldMessageControlId() || !$this->getFieldMessageControlId()->hasValue()) {
+            ++$emptyFieldsSinceLastField;
+        } else {
+            $s .= str_repeat(
+                $this->encodingParameters->getFieldSep(),
+                1 + $emptyFieldsSinceLastField
+            ) . (string) $this->getFieldMessageControlId()->getValue();
+            $emptyFieldsSinceLastField = 0;
+        }
+
+        if (!$this->getFieldTextMessage() || !$this->getFieldTextMessage()->hasValue()) {
+            ++$emptyFieldsSinceLastField;
+        } else {
+            $s .= str_repeat(
+                $this->encodingParameters->getFieldSep(),
+                1 + $emptyFieldsSinceLastField
+            ) . (string) $this->getFieldTextMessage()->getValue();
+            $emptyFieldsSinceLastField = 0;
+        }
+
+        if (!$this->getFieldExpectedSequenceNumber() || !$this->getFieldExpectedSequenceNumber()->hasValue()) {
+            ++$emptyFieldsSinceLastField;
+        } else {
+            $s .= str_repeat(
+                $this->encodingParameters->getFieldSep(),
+                1 + $emptyFieldsSinceLastField
+            ) . (string) $this->getFieldExpectedSequenceNumber()->getValue();
+            $emptyFieldsSinceLastField = 0;
+        }
+
+        ++$emptyFieldsSinceLastField; // skip MSA.5
+
+        if (!$this->getFieldErrorCondition()) {
+            ++$emptyFieldsSinceLastField;
+        } else {
+            $value = (string) $this->getFieldErrorCondition();
+            if ($value === '') {
+                ++$emptyFieldsSinceLastField;
+            } else {
+                $s .= str_repeat(
+                    $this->encodingParameters->getFieldSep(),
+                    1 + $emptyFieldsSinceLastField
+                ) . $value;
+                $emptyFieldsSinceLastField = 0;
+            }
+        }
+
+        return $s;
+    }
 }

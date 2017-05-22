@@ -57,4 +57,34 @@ class RiDataType extends ComponentDataType
     {
         return $this->explicitTimeInterval;
     }
+
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+        $s = '';
+
+        $sep = $this->isSubcomponent
+            ? $this->encodingParameters->getSubcomponentSep()
+            : $this->encodingParameters->getComponentSep()
+        ;
+
+        if ($this->getRepeatPattern() && $this->getRepeatPattern()->hasValue()) {
+            $s .= (string) $this->getRepeatPattern()->getValue();
+        }
+
+        $emptyComponentsSinceLastComponent = 0;
+
+        if (!$this->getExplicitTimeInterval() || !$this->getExplicitTimeInterval()->hasValue()) {
+            ++$emptyComponentsSinceLastComponent;
+        } else {
+            $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
+                . (string) $this->getExplicitTimeInterval()->getValue();
+            ;
+            $emptyComponentsSinceLastComponent = 0;
+        }
+
+        return $s;
+    }
 }

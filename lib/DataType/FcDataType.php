@@ -38,7 +38,7 @@ class FcDataType extends ComponentDataType
     {
         $this->effectiveDate = $this
             ->dataTypeFactory
-            ->create('TS', $this->encodingParameters)
+            ->create('TS', $this->encodingParameters, true)
         ;
         $this->effectiveDate->setTime($effectiveDateTime);
         $this->effectiveDate->setDegreeOfPrecision($effectiveDateDegreeOfPrecision);
@@ -58,5 +58,40 @@ class FcDataType extends ComponentDataType
     public function getEffectiveDate()
     {
         return $this->effectiveDate;
+    }
+
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+        $s = '';
+
+        $sep = $this->isSubcomponent
+            ? $this->encodingParameters->getSubcomponentSep()
+            : $this->encodingParameters->getComponentSep()
+        ;
+
+        if ($this->getFinancialClassCode() && $this->getFinancialClassCode()->hasValue()) {
+            $s .= (string) $this->getFinancialClassCode()->getValue();
+        }
+
+        $emptyComponentsSinceLastComponent = 0;
+
+        if (!$this->getEffectiveDate()) {
+            ++$emptyComponentsSinceLastComponent;
+        } else {
+            $value = (string) $this->getEffectiveDate();
+            if ($value === '') {
+                ++$emptyComponentsSinceLastComponent;
+            } else {
+                $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
+                    . $value
+                ;
+                $emptyComponentsSinceLastComponent = 0;
+            }
+        }
+
+        return $s;
     }
 }

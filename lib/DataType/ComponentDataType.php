@@ -18,6 +18,10 @@ abstract class ComponentDataType implements DataTypeInterface, ComponentInterfac
      * @var \Hl7v2\Encoding\EncodingParameters
      */
     protected $encodingParameters;
+    /**
+     * @var bool
+     */
+    protected $isSubcomponent = false;
 
     public function setDataTypeFactory(DataTypeFactory $dataTypeFactory)
     {
@@ -32,5 +36,10 @@ abstract class ComponentDataType implements DataTypeInterface, ComponentInterfac
     public function setEncodingParameters(EncodingParameters $encodingParameters)
     {
         $this->encodingParameters = $encodingParameters;
+    }
+
+    public function beSubcomponent()
+    {
+        $this->isSubcomponent = true;
     }
 }

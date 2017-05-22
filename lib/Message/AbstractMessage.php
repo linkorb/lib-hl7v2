@@ -7,8 +7,9 @@ use Hl7v2\Encoding\Datagram;
 use Hl7v2\Factory\SegmentFactory;
 use Hl7v2\Factory\SegmentGroupFactory;
 use Hl7v2\Segment\MshSegment;
+use Hl7v2\Segment\SegmentInterface;
 
-abstract class AbstractMessage
+abstract class AbstractMessage implements MessageInterface
 {
     /**
      * @var \Hl7v2\Segment\MshSegment
@@ -30,13 +31,19 @@ abstract class AbstractMessage
      * @var \Hl7v2\Segment\SegmentInterface[]
      */
     protected $segments = [];
+    /**
+     * @var string
+     */
+    protected $segmentSeparator;
 
     public function __construct(
         SegmentFactory $segmentFactory,
-        SegmentGroupFactory $segmentGroupFactory
+        SegmentGroupFactory $segmentGroupFactory,
+        $segmentSeparator = "\r"
     ) {
         $this->segmentFactory = $segmentFactory;
         $this->segmentGroupFactory = $segmentGroupFactory;
+        $this->segmentSeparator = $segmentSeparator;
     }
 
     /**
@@ -57,6 +64,22 @@ abstract class AbstractMessage
     }
 
     /**
+     * $return \Hl7v2\Segment\MshSegment
+     */
+    public function getMessageHeader()
+    {
+        return $this->messageHeader;
+    }
+
+    /**
+     * @param \Hl7v2\Segment\SegmentInterface $segment
+     */
+    public function addSegment(SegmentInterface $segment)
+    {
+        $this->segments[] = $segment;
+    }
+
+    /**
      * @return \Hl7v2\Segment\SegmentInterface[]
      */
     public function getSegments()
@@ -70,5 +93,14 @@ abstract class AbstractMessage
     public function getSegmentGroups()
     {
         return $this->segmentGroups;
+    }
+
+    public function __toString()
+    {
+        $s = (string) $this->messageHeader;
+        foreach ($this->segments as $segment) {
+            $s .= "\r" . (string) $segment;
+        }
+        return $s;
     }
 }

@@ -130,7 +130,7 @@ class XcnDataType extends ComponentDataType
     ) {
         $this->familyName = $this
             ->dataTypeFactory
-            ->create('FN', $this->encodingParameters)
+            ->create('FN', $this->encodingParameters, true)
         ;
         $this->familyName->setSurname($familyNameSurname);
         $this->familyName->setOwnSurnamePrefix($familyNameOwnSurnamePrefix);
@@ -223,7 +223,7 @@ class XcnDataType extends ComponentDataType
     ) {
         $this->assigningAuthority = $this
             ->dataTypeFactory
-            ->create('HD', $this->encodingParameters)
+            ->create('HD', $this->encodingParameters, true)
         ;
         $this->assigningAuthority->setNamespaceId($assigningAuthorityNamespaceId);
         $this->assigningAuthority->setUniversalId($assigningAuthorityUniversalId);
@@ -290,7 +290,7 @@ class XcnDataType extends ComponentDataType
     ) {
         $this->assigningFacility = $this
             ->dataTypeFactory
-            ->create('HD', $this->encodingParameters)
+            ->create('HD', $this->encodingParameters, true)
         ;
         $this->assigningFacility->setNamespaceId($assigningFacilityNamespaceId);
         $this->assigningFacility->setUniversalId($assigningFacilityUniversalId);
@@ -327,7 +327,7 @@ class XcnDataType extends ComponentDataType
     ) {
         $this->nameContext = $this
             ->dataTypeFactory
-            ->create('CE', $this->encodingParameters)
+            ->create('CE', $this->encodingParameters, true)
         ;
         $this->nameContext->setIdentifier($nameContextIdentifier);
         $this->nameContext->setText($nameContextText);
@@ -351,7 +351,7 @@ class XcnDataType extends ComponentDataType
     ) {
         $this->nameValidityRange = $this
             ->dataTypeFactory
-            ->create('DR', $this->encodingParameters)
+            ->create('DR', $this->encodingParameters, true)
         ;
         $this->nameValidityRange->setRangeStartDateTime(
             $nameValidityRangeRangeStartDateTimeTime,
@@ -383,7 +383,7 @@ class XcnDataType extends ComponentDataType
     {
         $this->effectiveDate = $this
             ->dataTypeFactory
-            ->create('TS', $this->encodingParameters)
+            ->create('TS', $this->encodingParameters, true)
         ;
         $this->effectiveDate->setTime($effectiveDateTime);
         $this->effectiveDate->setDegreeOfPrecision($effectiveDateDegreeOfPrecision);
@@ -397,7 +397,7 @@ class XcnDataType extends ComponentDataType
     {
         $this->expirationDate = $this
             ->dataTypeFactory
-            ->create('TS', $this->encodingParameters)
+            ->create('TS', $this->encodingParameters, true)
         ;
         $this->expirationDate->setTime($expirationDateTime);
         $this->expirationDate->setDegreeOfPrecision($expirationDateDegreeOfPrecision);
@@ -439,7 +439,7 @@ class XcnDataType extends ComponentDataType
     ) {
         $this->assigningJurisdiction = $this
             ->dataTypeFactory
-            ->create('CWE', $this->encodingParameters)
+            ->create('CWE', $this->encodingParameters, true)
         ;
         $this->assigningJurisdiction->setIdentifier($assigningJurisdictionIdentifier);
         $this->assigningJurisdiction->setText($assigningJurisdictionText);
@@ -484,7 +484,7 @@ class XcnDataType extends ComponentDataType
     ) {
         $this->assigningAgency = $this
             ->dataTypeFactory
-            ->create('CWE', $this->encodingParameters)
+            ->create('CWE', $this->encodingParameters, true)
         ;
         $this->assigningAgency->setIdentifier($assigningAgencyIdentifier);
         $this->assigningAgency->setText($assigningAgencyText);
@@ -681,5 +681,269 @@ class XcnDataType extends ComponentDataType
     public function getAssigningAgency()
     {
         return $this->assigningAgency;
+    }
+
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+        $s = '';
+
+        $sep = $this->isSubcomponent
+            ? $this->encodingParameters->getSubcomponentSep()
+            : $this->encodingParameters->getComponentSep()
+        ;
+
+        if ($this->getIdNumber() && $this->getIdNumber()->hasValue()) {
+            $s .= (string) $this->getIdNumber()->getValue();
+        }
+
+        $emptyComponentsSinceLastComponent = 0;
+
+        if (!$this->getFamilyName()) {
+            ++$emptyComponentsSinceLastComponent;
+        } else {
+            $value = (string) $this->getFamilyName();
+            if ($value === '') {
+                ++$emptyComponentsSinceLastComponent;
+            } else {
+                $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
+                    . $value
+                ;
+                $emptyComponentsSinceLastComponent = 0;
+            }
+        }
+
+        if (!$this->getGivenName() || !$this->getGivenName()->hasValue()) {
+            ++$emptyComponentsSinceLastComponent;
+        } else {
+            $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
+                . (string) $this->getGivenName()->getValue();
+            ;
+            $emptyComponentsSinceLastComponent = 0;
+        }
+
+        if (!$this->getSecondNames() || !$this->getSecondNames()->hasValue()) {
+            ++$emptyComponentsSinceLastComponent;
+        } else {
+            $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
+                . (string) $this->getSecondNames()->getValue();
+            ;
+            $emptyComponentsSinceLastComponent = 0;
+        }
+
+        if (!$this->getSuffix() || !$this->getSuffix()->hasValue()) {
+            ++$emptyComponentsSinceLastComponent;
+        } else {
+            $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
+                . (string) $this->getSuffix()->getValue();
+            ;
+            $emptyComponentsSinceLastComponent = 0;
+        }
+
+        if (!$this->getPrefix() || !$this->getPrefix()->hasValue()) {
+            ++$emptyComponentsSinceLastComponent;
+        } else {
+            $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
+                . (string) $this->getPrefix()->getValue();
+            ;
+            $emptyComponentsSinceLastComponent = 0;
+        }
+
+        if (!$this->getDegree() || !$this->getDegree()->hasValue()) {
+            ++$emptyComponentsSinceLastComponent;
+        } else {
+            $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
+                . (string) $this->getDegree()->getValue();
+            ;
+            $emptyComponentsSinceLastComponent = 0;
+        }
+
+        if (!$this->getSourceTable() || !$this->getSourceTable()->hasValue()) {
+            ++$emptyComponentsSinceLastComponent;
+        } else {
+            $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
+                . (string) $this->getSourceTable()->getValue();
+            ;
+            $emptyComponentsSinceLastComponent = 0;
+        }
+
+        if (!$this->getAssigningAuthority()) {
+            ++$emptyComponentsSinceLastComponent;
+        } else {
+            $value = (string) $this->getAssigningAuthority();
+            if ($value === '') {
+                ++$emptyComponentsSinceLastComponent;
+            } else {
+                $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
+                    . $value
+                ;
+                $emptyComponentsSinceLastComponent = 0;
+            }
+        }
+
+        if (!$this->getNameTypeCode() || !$this->getNameTypeCode()->hasValue()) {
+            ++$emptyComponentsSinceLastComponent;
+        } else {
+            $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
+                . (string) $this->getNameTypeCode()->getValue();
+            ;
+            $emptyComponentsSinceLastComponent = 0;
+        }
+
+        if (!$this->getIdentifierCheckDigit() || !$this->getIdentifierCheckDigit()->hasValue()) {
+            ++$emptyComponentsSinceLastComponent;
+        } else {
+            $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
+                . (string) $this->getIdentifierCheckDigit()->getValue();
+            ;
+            $emptyComponentsSinceLastComponent = 0;
+        }
+
+        if (!$this->getCheckDigitScheme() || !$this->getCheckDigitScheme()->hasValue()) {
+            ++$emptyComponentsSinceLastComponent;
+        } else {
+            $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
+                . (string) $this->getCheckDigitScheme()->getValue();
+            ;
+            $emptyComponentsSinceLastComponent = 0;
+        }
+
+        if (!$this->getIdentifierTypeCode() || !$this->getIdentifierTypeCode()->hasValue()) {
+            ++$emptyComponentsSinceLastComponent;
+        } else {
+            $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
+                . (string) $this->getIdentifierTypeCode()->getValue();
+            ;
+            $emptyComponentsSinceLastComponent = 0;
+        }
+
+        if (!$this->getAssigningFacility()) {
+            ++$emptyComponentsSinceLastComponent;
+        } else {
+            $value = (string) $this->getAssigningFacility();
+            if ($value === '') {
+                ++$emptyComponentsSinceLastComponent;
+            } else {
+                $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
+                    . $value
+                ;
+                $emptyComponentsSinceLastComponent = 0;
+            }
+        }
+
+        if (!$this->getNameRepresentationCode() || !$this->getNameRepresentationCode()->hasValue()) {
+            ++$emptyComponentsSinceLastComponent;
+        } else {
+            $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
+                . (string) $this->getNameRepresentationCode()->getValue();
+            ;
+            $emptyComponentsSinceLastComponent = 0;
+        }
+
+        if (!$this->getNameContext()) {
+            ++$emptyComponentsSinceLastComponent;
+        } else {
+            $value = (string) $this->getNameContext();
+            if ($value === '') {
+                ++$emptyComponentsSinceLastComponent;
+            } else {
+                $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
+                    . $value
+                ;
+                $emptyComponentsSinceLastComponent = 0;
+            }
+        }
+
+        if (!$this->getNameValidityRange()) {
+            ++$emptyComponentsSinceLastComponent;
+        } else {
+            $value = (string) $this->getNameValidityRange();
+            if ($value === '') {
+                ++$emptyComponentsSinceLastComponent;
+            } else {
+                $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
+                    . $value
+                ;
+                $emptyComponentsSinceLastComponent = 0;
+            }
+        }
+
+        if (!$this->getNameAssemblyOrder() || !$this->getNameAssemblyOrder()->hasValue()) {
+            ++$emptyComponentsSinceLastComponent;
+        } else {
+            $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
+                . (string) $this->getNameAssemblyOrder()->getValue();
+            ;
+            $emptyComponentsSinceLastComponent = 0;
+        }
+
+        if (!$this->getEffectiveDate()) {
+            ++$emptyComponentsSinceLastComponent;
+        } else {
+            $value = (string) $this->getEffectiveDate();
+            if ($value === '') {
+                ++$emptyComponentsSinceLastComponent;
+            } else {
+                $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
+                    . $value
+                ;
+                $emptyComponentsSinceLastComponent = 0;
+            }
+        }
+
+        if (!$this->getExpirationDate()) {
+            ++$emptyComponentsSinceLastComponent;
+        } else {
+            $value = (string) $this->getExpirationDate();
+            if ($value === '') {
+                ++$emptyComponentsSinceLastComponent;
+            } else {
+                $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
+                    . $value
+                ;
+                $emptyComponentsSinceLastComponent = 0;
+            }
+        }
+
+        if (!$this->getProfessionalSuffix() || !$this->getProfessionalSuffix()->hasValue()) {
+            ++$emptyComponentsSinceLastComponent;
+        } else {
+            $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
+                . (string) $this->getProfessionalSuffix()->getValue();
+            ;
+            $emptyComponentsSinceLastComponent = 0;
+        }
+
+        if (!$this->getAssigningJurisdiction()) {
+            ++$emptyComponentsSinceLastComponent;
+        } else {
+            $value = (string) $this->getAssigningJurisdiction();
+            if ($value === '') {
+                ++$emptyComponentsSinceLastComponent;
+            } else {
+                $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
+                    . $value
+                ;
+                $emptyComponentsSinceLastComponent = 0;
+            }
+        }
+
+        if (!$this->getAssigningAgency()) {
+            ++$emptyComponentsSinceLastComponent;
+        } else {
+            $value = (string) $this->getAssigningAgency();
+            if ($value === '') {
+                ++$emptyComponentsSinceLastComponent;
+            } else {
+                $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
+                    . $value
+                ;
+                $emptyComponentsSinceLastComponent = 0;
+            }
+        }
+
+        return $s;
     }
 }
