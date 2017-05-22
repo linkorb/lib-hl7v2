@@ -37,7 +37,7 @@ class FnDataType extends ComponentDataType
     {
         $this->surname = $this
             ->dataTypeFactory
-            ->create('ST', $this->characterEncoding)
+            ->create('ST', $this->encodingParameters)
         ;
         $this->surname->setValue($surname);
     }
@@ -49,7 +49,7 @@ class FnDataType extends ComponentDataType
     {
         $this->ownSurnamePrefix = $this
             ->dataTypeFactory
-            ->create('ST', $this->characterEncoding)
+            ->create('ST', $this->encodingParameters)
         ;
         $this->ownSurnamePrefix->setValue($ownSurnamePrefix);
     }
@@ -61,7 +61,7 @@ class FnDataType extends ComponentDataType
     {
         $this->ownSurname = $this
             ->dataTypeFactory
-            ->create('ST', $this->characterEncoding)
+            ->create('ST', $this->encodingParameters)
         ;
         $this->ownSurname->setValue($ownSurname);
     }
@@ -73,7 +73,7 @@ class FnDataType extends ComponentDataType
     {
         $this->surnamePrefixFromPartner = $this
             ->dataTypeFactory
-            ->create('ST', $this->characterEncoding)
+            ->create('ST', $this->encodingParameters)
         ;
         $this->surnamePrefixFromPartner->setValue($surnamePrefixFromPartner);
     }
@@ -85,7 +85,7 @@ class FnDataType extends ComponentDataType
     {
         $this->surnameFromPartner = $this
             ->dataTypeFactory
-            ->create('ST', $this->characterEncoding)
+            ->create('ST', $this->encodingParameters)
         ;
         $this->surnameFromPartner->setValue($surnameFromPartner);
     }

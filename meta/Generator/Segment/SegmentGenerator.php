@@ -351,7 +351,7 @@ class SegmentGenerator
         $body = [
             "\${$propertyName} = \$this",
             "    ->dataTypeFactory",
-            "    ->create('{$f->type}', \$this->characterEncoding)",
+            "    ->create('{$f->type}', \$this->encodingParameters)",
             ";",
             "\$this->{$propertyName}[] = \${$propertyName};",
         ];
@@ -394,7 +394,7 @@ class SegmentGenerator
         $body = [
             "\$this->{$propertyName} = \$this",
             "    ->dataTypeFactory",
-            "    ->create('{$f->type}', \$this->characterEncoding)",
+            "    ->create('{$f->type}', \$this->encodingParameters)",
             ";",
         ];
 
@@ -425,7 +425,7 @@ class SegmentGenerator
         $body = [
             "\${$propertyName} = \$this",
             "    ->dataTypeFactory",
-            "    ->create('{$f->type}', \$this->characterEncoding)",
+            "    ->create('{$f->type}', \$this->encodingParameters)",
             ";",
             "\${$propertyName}->setValue(\$value);",
             "\$this->{$propertyName}[] = \${$propertyName};",
@@ -452,7 +452,7 @@ class SegmentGenerator
         $body = [
             "\$this->{$propertyName} = \$this",
             "    ->dataTypeFactory",
-            "    ->create('{$f->type}', \$this->characterEncoding)",
+            "    ->create('{$f->type}', \$this->encodingParameters)",
             ";",
             "\$this->{$propertyName}->setValue(\$value);",
         ];

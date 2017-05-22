@@ -26,7 +26,7 @@ class MocDataType extends ComponentDataType
     {
         $this->monetaryAmount = $this
             ->dataTypeFactory
-            ->create('MO', $this->characterEncoding)
+            ->create('MO', $this->encodingParameters)
         ;
         $this->monetaryAmount->setQuantity($monetaryAmountQuantity);
         $this->monetaryAmount->setDenomination($monetaryAmountDenomination);
@@ -50,7 +50,7 @@ class MocDataType extends ComponentDataType
     ) {
         $this->chargeCode = $this
             ->dataTypeFactory
-            ->create('CE', $this->characterEncoding)
+            ->create('CE', $this->encodingParameters)
         ;
         $this->chargeCode->setIdentifier($chargeCodeIdentifier);
         $this->chargeCode->setText($chargeCodeText);

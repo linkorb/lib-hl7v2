@@ -68,7 +68,7 @@ class MessageParser
                 ->segmentFactory
                 ->create(
                     self::SEGID_MSH,
-                    $messageData->getEncodingParameters()->getCharacterEncoding()
+                    $messageData->getEncodingParameters()
                 )
             ;
             $messageHeader->fromDatagram($messageData, $this->codec);

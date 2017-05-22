@@ -29,7 +29,7 @@ class SadDataType extends ComponentDataType
     {
         $this->streetOrMailingAddress = $this
             ->dataTypeFactory
-            ->create('ST', $this->characterEncoding)
+            ->create('ST', $this->encodingParameters)
         ;
         $this->streetOrMailingAddress->setValue($streetOrMailingAddress);
     }
@@ -41,7 +41,7 @@ class SadDataType extends ComponentDataType
     {
         $this->streetName = $this
             ->dataTypeFactory
-            ->create('ST', $this->characterEncoding)
+            ->create('ST', $this->encodingParameters)
         ;
         $this->streetName->setValue($streetName);
     }
@@ -53,7 +53,7 @@ class SadDataType extends ComponentDataType
     {
         $this->dwellingNumber = $this
             ->dataTypeFactory
-            ->create('ST', $this->characterEncoding)
+            ->create('ST', $this->encodingParameters)
         ;
         $this->dwellingNumber->setValue($dwellingNumber);
     }

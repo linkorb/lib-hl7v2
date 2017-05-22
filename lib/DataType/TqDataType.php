@@ -78,7 +78,7 @@ class TqDataType extends ComponentDataType
     ) {
         $this->quantity = $this
             ->dataTypeFactory
-            ->create('CQ', $this->characterEncoding)
+            ->create('CQ', $this->encodingParameters)
         ;
         $this->quantity->setQuantity($quantityQuantity);
         $this->quantity->setUnits(
@@ -99,7 +99,7 @@ class TqDataType extends ComponentDataType
     {
         $this->interval = $this
             ->dataTypeFactory
-            ->create('RI', $this->characterEncoding)
+            ->create('RI', $this->encodingParameters)
         ;
         $this->interval->setRepeatPattern($intervalRepeatPattern);
         $this->interval->setExplicitTimeInterval($intervalExplicitTimeInterval);
@@ -112,7 +112,7 @@ class TqDataType extends ComponentDataType
     {
         $this->duration = $this
             ->dataTypeFactory
-            ->create('ST', $this->characterEncoding)
+            ->create('ST', $this->encodingParameters)
         ;
         $this->duration->setValue($duration);
     }
@@ -125,7 +125,7 @@ class TqDataType extends ComponentDataType
     {
         $this->startDateTime = $this
             ->dataTypeFactory
-            ->create('TS', $this->characterEncoding)
+            ->create('TS', $this->encodingParameters)
         ;
         $this->startDateTime->setTime($startDateTimeTime);
         $this->startDateTime->setDegreeOfPrecision($startDateTimeDegreeOfPrecision);
@@ -139,7 +139,7 @@ class TqDataType extends ComponentDataType
     {
         $this->endDateTime = $this
             ->dataTypeFactory
-            ->create('TS', $this->characterEncoding)
+            ->create('TS', $this->encodingParameters)
         ;
         $this->endDateTime->setTime($endDateTimeTime);
         $this->endDateTime->setDegreeOfPrecision($endDateTimeDegreeOfPrecision);
@@ -152,7 +152,7 @@ class TqDataType extends ComponentDataType
     {
         $this->priority = $this
             ->dataTypeFactory
-            ->create('ST', $this->characterEncoding)
+            ->create('ST', $this->encodingParameters)
         ;
         $this->priority->setValue($priority);
     }
@@ -164,7 +164,7 @@ class TqDataType extends ComponentDataType
     {
         $this->condition = $this
             ->dataTypeFactory
-            ->create('ST', $this->characterEncoding)
+            ->create('ST', $this->encodingParameters)
         ;
         $this->condition->setValue($condition);
     }
@@ -176,7 +176,7 @@ class TqDataType extends ComponentDataType
     {
         $this->text = $this
             ->dataTypeFactory
-            ->create('TX', $this->characterEncoding)
+            ->create('TX', $this->encodingParameters)
         ;
         $this->text->setValue($text);
     }
@@ -188,7 +188,7 @@ class TqDataType extends ComponentDataType
     {
         $this->conjunction = $this
             ->dataTypeFactory
-            ->create('ID', $this->characterEncoding)
+            ->create('ID', $this->encodingParameters)
         ;
         $this->conjunction->setValue($conjunction);
     }
@@ -221,7 +221,7 @@ class TqDataType extends ComponentDataType
     ) {
         $this->orderSequencing = $this
             ->dataTypeFactory
-            ->create('OSD', $this->characterEncoding)
+            ->create('OSD', $this->encodingParameters)
         ;
         $this->orderSequencing->setSequenceResultsFlag($orderSequencingSequenceResultsFlag);
         $this->orderSequencing->setPlacerOrderNumberEntityIdentifier(
@@ -270,7 +270,7 @@ class TqDataType extends ComponentDataType
     ) {
         $this->occurrenceDuration = $this
             ->dataTypeFactory
-            ->create('CE', $this->characterEncoding)
+            ->create('CE', $this->encodingParameters)
         ;
         $this->occurrenceDuration->setIdentifier($occurrenceDurationIdentifier);
         $this->occurrenceDuration->setText($occurrenceDurationText);
@@ -289,7 +289,7 @@ class TqDataType extends ComponentDataType
     {
         $this->totalOccurrences = $this
             ->dataTypeFactory
-            ->create('NM', $this->characterEncoding)
+            ->create('NM', $this->encodingParameters)
         ;
         $this->totalOccurrences->setValue($totalOccurrences);
     }

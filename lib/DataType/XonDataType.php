@@ -57,7 +57,7 @@ class XonDataType extends ComponentDataType
     {
         $this->organisationName = $this
             ->dataTypeFactory
-            ->create('ST', $this->characterEncoding)
+            ->create('ST', $this->encodingParameters)
         ;
         $this->organisationName->setValue($organisationName);
     }
@@ -69,7 +69,7 @@ class XonDataType extends ComponentDataType
     {
         $this->organisationNameTypeCode = $this
             ->dataTypeFactory
-            ->create('IS', $this->characterEncoding)
+            ->create('IS', $this->encodingParameters)
         ;
         $this->organisationNameTypeCode->setValue($organisationNameTypeCode);
     }
@@ -81,7 +81,7 @@ class XonDataType extends ComponentDataType
     {
         $this->idNumber = $this
             ->dataTypeFactory
-            ->create('NM', $this->characterEncoding)
+            ->create('NM', $this->encodingParameters)
         ;
         $this->idNumber->setValue($idNumber);
     }
@@ -93,7 +93,7 @@ class XonDataType extends ComponentDataType
     {
         $this->checkDigit = $this
             ->dataTypeFactory
-            ->create('NM', $this->characterEncoding)
+            ->create('NM', $this->encodingParameters)
         ;
         $this->checkDigit->setValue($checkDigit);
     }
@@ -105,7 +105,7 @@ class XonDataType extends ComponentDataType
     {
         $this->checkDigitScheme = $this
             ->dataTypeFactory
-            ->create('ID', $this->characterEncoding)
+            ->create('ID', $this->encodingParameters)
         ;
         $this->checkDigitScheme->setValue($checkDigitScheme);
     }
@@ -122,7 +122,7 @@ class XonDataType extends ComponentDataType
     ) {
         $this->assigningAuthority = $this
             ->dataTypeFactory
-            ->create('HD', $this->characterEncoding)
+            ->create('HD', $this->encodingParameters)
         ;
         $this->assigningAuthority->setNamespaceId($assigningAuthorityNamespaceId);
         $this->assigningAuthority->setUniversalId($assigningAuthorityUniversalId);
@@ -136,7 +136,7 @@ class XonDataType extends ComponentDataType
     {
         $this->identifierTypeCode = $this
             ->dataTypeFactory
-            ->create('ID', $this->characterEncoding)
+            ->create('ID', $this->encodingParameters)
         ;
         $this->identifierTypeCode->setValue($identifierTypeCode);
     }
@@ -153,7 +153,7 @@ class XonDataType extends ComponentDataType
     ) {
         $this->assigningFacility = $this
             ->dataTypeFactory
-            ->create('HD', $this->characterEncoding)
+            ->create('HD', $this->encodingParameters)
         ;
         $this->assigningFacility->setNamespaceId($assigningFacilityNamespaceId);
         $this->assigningFacility->setUniversalId($assigningFacilityUniversalId);
@@ -167,7 +167,7 @@ class XonDataType extends ComponentDataType
     {
         $this->nameRepresentationCode = $this
             ->dataTypeFactory
-            ->create('ID', $this->characterEncoding)
+            ->create('ID', $this->encodingParameters)
         ;
         $this->nameRepresentationCode->setValue($nameRepresentationCode);
     }
@@ -179,7 +179,7 @@ class XonDataType extends ComponentDataType
     {
         $this->organisationIdentifier = $this
             ->dataTypeFactory
-            ->create('ST', $this->characterEncoding)
+            ->create('ST', $this->encodingParameters)
         ;
         $this->organisationIdentifier->setValue($organisationIdentifier);
     }

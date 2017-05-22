@@ -41,7 +41,7 @@ class CeDataType extends ComponentDataType
     {
         $this->identifier = $this
             ->dataTypeFactory
-            ->create('ST', $this->characterEncoding)
+            ->create('ST', $this->encodingParameters)
         ;
         $this->identifier->setValue($identifier);
     }
@@ -53,7 +53,7 @@ class CeDataType extends ComponentDataType
     {
         $this->text = $this
             ->dataTypeFactory
-            ->create('ST', $this->characterEncoding)
+            ->create('ST', $this->encodingParameters)
         ;
         $this->text->setValue($text);
     }
@@ -65,7 +65,7 @@ class CeDataType extends ComponentDataType
     {
         $this->nameOfCodingSystem = $this
             ->dataTypeFactory
-            ->create('ID', $this->characterEncoding)
+            ->create('ID', $this->encodingParameters)
         ;
         $this->nameOfCodingSystem->setValue($nameOfCodingSystem);
     }
@@ -77,7 +77,7 @@ class CeDataType extends ComponentDataType
     {
         $this->altIdentifier = $this
             ->dataTypeFactory
-            ->create('ST', $this->characterEncoding)
+            ->create('ST', $this->encodingParameters)
         ;
         $this->altIdentifier->setValue($altIdentifier);
     }
@@ -89,7 +89,7 @@ class CeDataType extends ComponentDataType
     {
         $this->altText = $this
             ->dataTypeFactory
-            ->create('ST', $this->characterEncoding)
+            ->create('ST', $this->encodingParameters)
         ;
         $this->altText->setValue($altText);
     }
@@ -101,7 +101,7 @@ class CeDataType extends ComponentDataType
     {
         $this->nameOfAltCodingSystem = $this
             ->dataTypeFactory
-            ->create('ID', $this->characterEncoding)
+            ->create('ID', $this->encodingParameters)
         ;
         $this->nameOfAltCodingSystem->setValue($nameOfAltCodingSystem);
     }

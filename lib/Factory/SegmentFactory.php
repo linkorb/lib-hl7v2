@@ -3,6 +3,7 @@
 namespace Hl7v2\Factory;
 
 use Hl7v2\Exception\SegmentError;
+use Hl7v2\Encoding\EncodingParameters;
 
 class SegmentFactory
 {
@@ -13,12 +14,21 @@ class SegmentFactory
         $this->dataTypeFactory = $dataTypeFactory;
     }
 
-    public function create($segmentId, $characterEncoding)
-    {
+    /**
+     * @param string $segmentId
+     * @param \Hl7v2\Encoding\EncodingParameters $encodingParameters
+     *
+     * @return \Hl7v2\Segment\SegmentInterface
+     */
+    public function create(
+        $segmentId,
+        EncodingParameters $encodingParameters
+    ) {
         $segmentClass = $this->determineClassname($segmentId);
 
         $segment = new $segmentClass($this->dataTypeFactory);
-        $segment->setCharacterEncoding($characterEncoding);
+        $segment->setCharacterEncoding($encodingParameters->getCharacterEncoding());
+        $segment->setEncodingParameters($encodingParameters);
 
         return $segment;
     }

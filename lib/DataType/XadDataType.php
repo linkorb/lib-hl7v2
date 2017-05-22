@@ -78,7 +78,7 @@ class XadDataType extends ComponentDataType
     ) {
         $this->streetAddress = $this
             ->dataTypeFactory
-            ->create('SAD', $this->characterEncoding)
+            ->create('SAD', $this->encodingParameters)
         ;
         $this->streetAddress->setStreetOrMailingAddress($streetAddressStreetOrMailingAddress);
         $this->streetAddress->setStreetName($streetAddressStreetName);
@@ -92,7 +92,7 @@ class XadDataType extends ComponentDataType
     {
         $this->otherDesignation = $this
             ->dataTypeFactory
-            ->create('ST', $this->characterEncoding)
+            ->create('ST', $this->encodingParameters)
         ;
         $this->otherDesignation->setValue($otherDesignation);
     }
@@ -104,7 +104,7 @@ class XadDataType extends ComponentDataType
     {
         $this->city = $this
             ->dataTypeFactory
-            ->create('ST', $this->characterEncoding)
+            ->create('ST', $this->encodingParameters)
         ;
         $this->city->setValue($city);
     }
@@ -116,7 +116,7 @@ class XadDataType extends ComponentDataType
     {
         $this->stateOrProvince = $this
             ->dataTypeFactory
-            ->create('ST', $this->characterEncoding)
+            ->create('ST', $this->encodingParameters)
         ;
         $this->stateOrProvince->setValue($stateOrProvince);
     }
@@ -128,7 +128,7 @@ class XadDataType extends ComponentDataType
     {
         $this->zipOrPostalCode = $this
             ->dataTypeFactory
-            ->create('ST', $this->characterEncoding)
+            ->create('ST', $this->encodingParameters)
         ;
         $this->zipOrPostalCode->setValue($zipOrPostalCode);
     }
@@ -140,7 +140,7 @@ class XadDataType extends ComponentDataType
     {
         $this->country = $this
             ->dataTypeFactory
-            ->create('ID', $this->characterEncoding)
+            ->create('ID', $this->encodingParameters)
         ;
         $this->country->setValue($country);
     }
@@ -152,7 +152,7 @@ class XadDataType extends ComponentDataType
     {
         $this->addressType = $this
             ->dataTypeFactory
-            ->create('ID', $this->characterEncoding)
+            ->create('ID', $this->encodingParameters)
         ;
         $this->addressType->setValue($addressType);
     }
@@ -164,7 +164,7 @@ class XadDataType extends ComponentDataType
     {
         $this->otherGeographicDesignation = $this
             ->dataTypeFactory
-            ->create('ST', $this->characterEncoding)
+            ->create('ST', $this->encodingParameters)
         ;
         $this->otherGeographicDesignation->setValue($otherGeographicDesignation);
     }
@@ -176,7 +176,7 @@ class XadDataType extends ComponentDataType
     {
         $this->countyParishCode = $this
             ->dataTypeFactory
-            ->create('IS', $this->characterEncoding)
+            ->create('IS', $this->encodingParameters)
         ;
         $this->countyParishCode->setValue($countyParishCode);
     }
@@ -188,7 +188,7 @@ class XadDataType extends ComponentDataType
     {
         $this->censusTract = $this
             ->dataTypeFactory
-            ->create('IS', $this->characterEncoding)
+            ->create('IS', $this->encodingParameters)
         ;
         $this->censusTract->setValue($censusTract);
     }
@@ -200,7 +200,7 @@ class XadDataType extends ComponentDataType
     {
         $this->addressRepresentationCode = $this
             ->dataTypeFactory
-            ->create('ID', $this->characterEncoding)
+            ->create('ID', $this->encodingParameters)
         ;
         $this->addressRepresentationCode->setValue($addressRepresentationCode);
     }
@@ -219,7 +219,7 @@ class XadDataType extends ComponentDataType
     ) {
         $this->addressValidityRange = $this
             ->dataTypeFactory
-            ->create('DR', $this->characterEncoding)
+            ->create('DR', $this->encodingParameters)
         ;
         $this->addressValidityRange->setRangeStartDateTime(
             $addressValidityRangeRangeStartDateTimeTime,
@@ -239,7 +239,7 @@ class XadDataType extends ComponentDataType
     {
         $this->effectiveDate = $this
             ->dataTypeFactory
-            ->create('TS', $this->characterEncoding)
+            ->create('TS', $this->encodingParameters)
         ;
         $this->effectiveDate->setTime($effectiveDateTime);
         $this->effectiveDate->setDegreeOfPrecision($effectiveDateDegreeOfPrecision);
@@ -253,7 +253,7 @@ class XadDataType extends ComponentDataType
     {
         $this->expirationDate = $this
             ->dataTypeFactory
-            ->create('TS', $this->characterEncoding)
+            ->create('TS', $this->encodingParameters)
         ;
         $this->expirationDate->setTime($expirationDateTime);
         $this->expirationDate->setDegreeOfPrecision($expirationDateDegreeOfPrecision);

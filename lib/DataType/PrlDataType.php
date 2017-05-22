@@ -40,7 +40,7 @@ class PrlDataType extends ComponentDataType
     ) {
         $this->parentObservationIdentifier = $this
             ->dataTypeFactory
-            ->create('CE', $this->characterEncoding)
+            ->create('CE', $this->encodingParameters)
         ;
         $this->parentObservationIdentifier->setIdentifier($parentObservationIdentifierIdentifier);
         $this->parentObservationIdentifier->setText($parentObservationIdentifierText);
@@ -63,7 +63,7 @@ class PrlDataType extends ComponentDataType
     {
         $this->parentObservationSubIdentifier = $this
             ->dataTypeFactory
-            ->create('ST', $this->characterEncoding)
+            ->create('ST', $this->encodingParameters)
         ;
         $this->parentObservationSubIdentifier->setValue($parentObservationSubIdentifier);
     }
@@ -75,7 +75,7 @@ class PrlDataType extends ComponentDataType
     {
         $this->parentObservationValueDescriptor = $this
             ->dataTypeFactory
-            ->create('TX', $this->characterEncoding)
+            ->create('TX', $this->encodingParameters)
         ;
         $this->parentObservationValueDescriptor->setValue($parentObservationValueDescriptor);
     }

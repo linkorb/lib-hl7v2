@@ -40,7 +40,7 @@ class MsaSegment extends AbstractSegment
     {
         $this->acknowledgmentCode = $this
             ->dataTypeFactory
-            ->create('ID', $this->characterEncoding)
+            ->create('ID', $this->encodingParameters)
         ;
         $this->acknowledgmentCode->setValue($value);
     }
@@ -52,7 +52,7 @@ class MsaSegment extends AbstractSegment
     {
         $this->messageControlId = $this
             ->dataTypeFactory
-            ->create('ST', $this->characterEncoding)
+            ->create('ST', $this->encodingParameters)
         ;
         $this->messageControlId->setValue($value);
     }
@@ -64,7 +64,7 @@ class MsaSegment extends AbstractSegment
     {
         $this->textMessage = $this
             ->dataTypeFactory
-            ->create('ST', $this->characterEncoding)
+            ->create('ST', $this->encodingParameters)
         ;
         $this->textMessage->setValue($value);
     }
@@ -76,7 +76,7 @@ class MsaSegment extends AbstractSegment
     {
         $this->expectedSequenceNumber = $this
             ->dataTypeFactory
-            ->create('NM', $this->characterEncoding)
+            ->create('NM', $this->encodingParameters)
         ;
         $this->expectedSequenceNumber->setValue($value);
     }
@@ -99,7 +99,7 @@ class MsaSegment extends AbstractSegment
     ) {
         $this->errorCondition = $this
             ->dataTypeFactory
-            ->create('CE', $this->characterEncoding)
+            ->create('CE', $this->encodingParameters)
         ;
         $this->errorCondition->setIdentifier($identifier);
         $this->errorCondition->setText($text);

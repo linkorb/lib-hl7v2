@@ -103,7 +103,7 @@ class MshSegment extends AbstractSegment
     {
         $this->fieldSeparator = $this
             ->dataTypeFactory
-            ->create('ST', $this->characterEncoding)
+            ->create('ST', $this->encodingParameters)
         ;
         $this->fieldSeparator->setValue($value);
     }
@@ -115,7 +115,7 @@ class MshSegment extends AbstractSegment
     {
         $this->encodingCharacters = $this
             ->dataTypeFactory
-            ->create('ST', $this->characterEncoding)
+            ->create('ST', $this->encodingParameters)
         ;
         $this->encodingCharacters->setValue($value);
     }
@@ -129,7 +129,7 @@ class MshSegment extends AbstractSegment
     {
         $this->sendingApplication = $this
             ->dataTypeFactory
-            ->create('HD', $this->characterEncoding)
+            ->create('HD', $this->encodingParameters)
         ;
         $this->sendingApplication->setNamespaceId($namespaceId);
         $this->sendingApplication->setUniversalId($universalId);
@@ -145,7 +145,7 @@ class MshSegment extends AbstractSegment
     {
         $this->sendingFacility = $this
             ->dataTypeFactory
-            ->create('HD', $this->characterEncoding)
+            ->create('HD', $this->encodingParameters)
         ;
         $this->sendingFacility->setNamespaceId($namespaceId);
         $this->sendingFacility->setUniversalId($universalId);
@@ -161,7 +161,7 @@ class MshSegment extends AbstractSegment
     {
         $this->receivingApplication = $this
             ->dataTypeFactory
-            ->create('HD', $this->characterEncoding)
+            ->create('HD', $this->encodingParameters)
         ;
         $this->receivingApplication->setNamespaceId($namespaceId);
         $this->receivingApplication->setUniversalId($universalId);
@@ -177,7 +177,7 @@ class MshSegment extends AbstractSegment
     {
         $this->receivingFacility = $this
             ->dataTypeFactory
-            ->create('HD', $this->characterEncoding)
+            ->create('HD', $this->encodingParameters)
         ;
         $this->receivingFacility->setNamespaceId($namespaceId);
         $this->receivingFacility->setUniversalId($universalId);
@@ -192,7 +192,7 @@ class MshSegment extends AbstractSegment
     {
         $this->dateTimeOfMessage = $this
             ->dataTypeFactory
-            ->create('TS', $this->characterEncoding)
+            ->create('TS', $this->encodingParameters)
         ;
         $this->dateTimeOfMessage->setTime($time);
         $this->dateTimeOfMessage->setDegreeOfPrecision($degreeOfPrecision);
@@ -205,7 +205,7 @@ class MshSegment extends AbstractSegment
     {
         $this->security = $this
             ->dataTypeFactory
-            ->create('ST', $this->characterEncoding)
+            ->create('ST', $this->encodingParameters)
         ;
         $this->security->setValue($value);
     }
@@ -219,7 +219,7 @@ class MshSegment extends AbstractSegment
     {
         $this->messageType = $this
             ->dataTypeFactory
-            ->create('MSG', $this->characterEncoding)
+            ->create('MSG', $this->encodingParameters)
         ;
         $this->messageType->setMessageCode($messageCode);
         $this->messageType->setTriggerEvent($triggerEvent);
@@ -233,7 +233,7 @@ class MshSegment extends AbstractSegment
     {
         $this->messageControlId = $this
             ->dataTypeFactory
-            ->create('ST', $this->characterEncoding)
+            ->create('ST', $this->encodingParameters)
         ;
         $this->messageControlId->setValue($value);
     }
@@ -246,7 +246,7 @@ class MshSegment extends AbstractSegment
     {
         $this->processingId = $this
             ->dataTypeFactory
-            ->create('PT', $this->characterEncoding)
+            ->create('PT', $this->encodingParameters)
         ;
         $this->processingId->setProcessingId($processingId);
         $this->processingId->setProcessingMode($processingMode);
@@ -284,7 +284,7 @@ class MshSegment extends AbstractSegment
     ) {
         $this->versionId = $this
             ->dataTypeFactory
-            ->create('VID', $this->characterEncoding)
+            ->create('VID', $this->encodingParameters)
         ;
         $this->versionId->setVersionId($versionId);
         $this->versionId->setInternationalisationCode(
@@ -312,7 +312,7 @@ class MshSegment extends AbstractSegment
     {
         $this->sequenceNumber = $this
             ->dataTypeFactory
-            ->create('NM', $this->characterEncoding)
+            ->create('NM', $this->encodingParameters)
         ;
         $this->sequenceNumber->setValue($value);
     }
@@ -324,7 +324,7 @@ class MshSegment extends AbstractSegment
     {
         $this->continuationPointer = $this
             ->dataTypeFactory
-            ->create('ST', $this->characterEncoding)
+            ->create('ST', $this->encodingParameters)
         ;
         $this->continuationPointer->setValue($value);
     }
@@ -336,7 +336,7 @@ class MshSegment extends AbstractSegment
     {
         $this->acceptAcknowledgmentType = $this
             ->dataTypeFactory
-            ->create('ID', $this->characterEncoding)
+            ->create('ID', $this->encodingParameters)
         ;
         $this->acceptAcknowledgmentType->setValue($value);
     }
@@ -348,7 +348,7 @@ class MshSegment extends AbstractSegment
     {
         $this->applicationAcknowledgmentType = $this
             ->dataTypeFactory
-            ->create('ID', $this->characterEncoding)
+            ->create('ID', $this->encodingParameters)
         ;
         $this->applicationAcknowledgmentType->setValue($value);
     }
@@ -360,7 +360,7 @@ class MshSegment extends AbstractSegment
     {
         $this->countryCode = $this
             ->dataTypeFactory
-            ->create('ID', $this->characterEncoding)
+            ->create('ID', $this->encodingParameters)
         ;
         $this->countryCode->setValue($value);
     }
@@ -372,7 +372,7 @@ class MshSegment extends AbstractSegment
     {
         $characterSet = $this
             ->dataTypeFactory
-            ->create('ID', $this->characterEncoding)
+            ->create('ID', $this->encodingParameters)
         ;
         $characterSet->setValue($value);
         $this->characterSet[] = $characterSet;
@@ -396,7 +396,7 @@ class MshSegment extends AbstractSegment
     ) {
         $this->principalLanguageOfMessage = $this
             ->dataTypeFactory
-            ->create('CE', $this->characterEncoding)
+            ->create('CE', $this->encodingParameters)
         ;
         $this->principalLanguageOfMessage->setIdentifier($identifier);
         $this->principalLanguageOfMessage->setText($text);
@@ -413,7 +413,7 @@ class MshSegment extends AbstractSegment
     {
         $this->altCharacterSetHandlingScheme = $this
             ->dataTypeFactory
-            ->create('ID', $this->characterEncoding)
+            ->create('ID', $this->encodingParameters)
         ;
         $this->altCharacterSetHandlingScheme->setValue($value);
     }
@@ -432,7 +432,7 @@ class MshSegment extends AbstractSegment
     ) {
         $messageProfileIdentifier = $this
             ->dataTypeFactory
-            ->create('EI', $this->characterEncoding)
+            ->create('EI', $this->encodingParameters)
         ;
         $this->messageProfileIdentifier[] = $messageProfileIdentifier;
         $messageProfileIdentifier->setEntityIdentifier($entityIdentifier);

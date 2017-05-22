@@ -30,8 +30,6 @@ class OruMessage extends AbstractMessage
 {
     public function fromDatagram(Datagram $data, Codec $codec)
     {
-        $characterEncoding = $data->getEncodingParameters()->getCharacterEncoding();
-
         $patientGroup = null;
         $obrGroup = null;
 
@@ -39,7 +37,10 @@ class OruMessage extends AbstractMessage
             && false !== ($segmentId = $codec->extractSegmentId($data))
         ) {
             try {
-                $segment = $this->segmentFactory->create($segmentId, $characterEncoding);
+                $segment = $this
+                    ->segmentFactory
+                    ->create($segmentId, $data->getEncodingParameters())
+                ;
                 $segment->fromDatagram($data, $codec);
             } catch (SegmentError $e) {
                 throw new MessageError('Unable to decode ORU message.', null, $e);

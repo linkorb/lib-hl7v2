@@ -29,7 +29,7 @@ class DlnDataType extends ComponentDataType
     {
         $this->licenseNumber = $this
             ->dataTypeFactory
-            ->create('ST', $this->characterEncoding)
+            ->create('ST', $this->encodingParameters)
         ;
         $this->licenseNumber->setValue($licenseNumber);
     }
@@ -41,7 +41,7 @@ class DlnDataType extends ComponentDataType
     {
         $this->issuingStateProvinceCountry = $this
             ->dataTypeFactory
-            ->create('IS', $this->characterEncoding)
+            ->create('IS', $this->encodingParameters)
         ;
         $this->issuingStateProvinceCountry->setValue($issuingStateProvinceCountry);
     }
@@ -53,7 +53,7 @@ class DlnDataType extends ComponentDataType
     {
         $this->expirationDate = $this
             ->dataTypeFactory
-            ->create('DT', $this->characterEncoding)
+            ->create('DT', $this->encodingParameters)
         ;
         $this->expirationDate->setValue($expirationDate);
     }

@@ -25,7 +25,7 @@ class CqDataType extends ComponentDataType
     {
         $this->quantity = $this
             ->dataTypeFactory
-            ->create('NM', $this->characterEncoding)
+            ->create('NM', $this->encodingParameters)
         ;
         $this->quantity->setValue($quantity);
     }
@@ -48,7 +48,7 @@ class CqDataType extends ComponentDataType
     ) {
         $this->units = $this
             ->dataTypeFactory
-            ->create('CE', $this->characterEncoding)
+            ->create('CE', $this->encodingParameters, true)
         ;
         $this->units->setIdentifier($unitsIdentifier);
         $this->units->setText($unitsText);

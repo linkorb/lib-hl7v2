@@ -40,7 +40,7 @@ class EdDataType extends ComponentDataType
     ) {
         $this->sourceApplication = $this
             ->dataTypeFactory
-            ->create('HD', $this->characterEncoding)
+            ->create('HD', $this->encodingParameters, true)
         ;
         $this->sourceApplication->setNamespaceId($sourceApplicationNamespaceId);
         $this->sourceApplication->setUniversalId($sourceApplicationUniversalId);
@@ -54,7 +54,7 @@ class EdDataType extends ComponentDataType
     {
         $this->typeOfData = $this
             ->dataTypeFactory
-            ->create('ID', $this->characterEncoding)
+            ->create('ID', $this->encodingParameters)
         ;
         $this->typeOfData->setValue($typeOfData);
     }
@@ -66,7 +66,7 @@ class EdDataType extends ComponentDataType
     {
         $this->dataSubtype = $this
             ->dataTypeFactory
-            ->create('ID', $this->characterEncoding)
+            ->create('ID', $this->encodingParameters)
         ;
         $this->dataSubtype->setValue($dataSubtype);
     }
@@ -78,7 +78,7 @@ class EdDataType extends ComponentDataType
     {
         $this->encoding = $this
             ->dataTypeFactory
-            ->create('ID', $this->characterEncoding)
+            ->create('ID', $this->encodingParameters)
         ;
         $this->encoding->setValue($encoding);
     }
@@ -90,7 +90,7 @@ class EdDataType extends ComponentDataType
     {
         $this->data = $this
             ->dataTypeFactory
-            ->create('TX', $this->characterEncoding)
+            ->create('TX', $this->encodingParameters)
         ;
         $this->data->setValue($data);
     }

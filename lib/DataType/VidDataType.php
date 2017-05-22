@@ -29,7 +29,7 @@ class VidDataType extends ComponentDataType
     {
         $this->versionId = $this
             ->dataTypeFactory
-            ->create('ID', $this->characterEncoding)
+            ->create('ID', $this->encodingParameters)
         ;
         $this->versionId->setValue($versionId);
     }
@@ -52,7 +52,7 @@ class VidDataType extends ComponentDataType
     ) {
         $this->internationalisationCode = $this
             ->dataTypeFactory
-            ->create('CE', $this->characterEncoding)
+            ->create('CE', $this->encodingParameters)
         ;
         $this->internationalisationCode->setIdentifier($internationalisationCodeIdentifier);
         $this->internationalisationCode->setText($internationalisationCodeText);
@@ -84,7 +84,7 @@ class VidDataType extends ComponentDataType
     ) {
         $this->internationalisationVersionId = $this
             ->dataTypeFactory
-            ->create('CE', $this->characterEncoding)
+            ->create('CE', $this->encodingParameters)
         ;
         $this->internationalisationVersionId->setIdentifier(
             $internationalisationVersionIdIdentifier

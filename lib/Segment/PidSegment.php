@@ -175,7 +175,7 @@ class PidSegment extends AbstractSegment
     {
         $this->setId = $this
             ->dataTypeFactory
-            ->create('SI', $this->characterEncoding)
+            ->create('SI', $this->encodingParameters)
         ;
         $this->setId->setValue($value);
     }
@@ -246,7 +246,7 @@ class PidSegment extends AbstractSegment
     ) {
         $this->patientId = $this
             ->dataTypeFactory
-            ->create('CX', $this->characterEncoding)
+            ->create('CX', $this->encodingParameters)
         ;
         $this->patientId->setIdNumber($idNumber);
         $this->patientId->setCheckDigit($checkDigit);
@@ -354,7 +354,7 @@ class PidSegment extends AbstractSegment
     ) {
         $patientIdentifierList = $this
             ->dataTypeFactory
-            ->create('CX', $this->characterEncoding)
+            ->create('CX', $this->encodingParameters)
         ;
         $this->patientIdentifierList[] = $patientIdentifierList;
         $patientIdentifierList->setIdNumber($idNumber);
@@ -463,7 +463,7 @@ class PidSegment extends AbstractSegment
     ) {
         $altPatientId = $this
             ->dataTypeFactory
-            ->create('CX', $this->characterEncoding)
+            ->create('CX', $this->encodingParameters)
         ;
         $this->altPatientId[] = $altPatientId;
         $altPatientId->setIdNumber($idNumber);
@@ -568,7 +568,7 @@ class PidSegment extends AbstractSegment
     ) {
         $patientName = $this
             ->dataTypeFactory
-            ->create('XPN', $this->characterEncoding)
+            ->create('XPN', $this->encodingParameters)
         ;
         $this->patientName[] = $patientName;
         $patientName->setFamilyName(
@@ -667,7 +667,7 @@ class PidSegment extends AbstractSegment
     ) {
         $mothersMaidenName = $this
             ->dataTypeFactory
-            ->create('XPN', $this->characterEncoding)
+            ->create('XPN', $this->encodingParameters)
         ;
         $this->mothersMaidenName[] = $mothersMaidenName;
         $mothersMaidenName->setFamilyName(
@@ -715,7 +715,7 @@ class PidSegment extends AbstractSegment
     {
         $this->datetimeOfBirth = $this
             ->dataTypeFactory
-            ->create('TS', $this->characterEncoding)
+            ->create('TS', $this->encodingParameters)
         ;
         $this->datetimeOfBirth->setTime($time);
         $this->datetimeOfBirth->setDegreeOfPrecision($degreeOfPrecision);
@@ -728,7 +728,7 @@ class PidSegment extends AbstractSegment
     {
         $this->administrativeSex = $this
             ->dataTypeFactory
-            ->create('IS', $this->characterEncoding)
+            ->create('IS', $this->encodingParameters)
         ;
         $this->administrativeSex->setValue($value);
     }
@@ -795,7 +795,7 @@ class PidSegment extends AbstractSegment
     ) {
         $patientAlias = $this
             ->dataTypeFactory
-            ->create('XPN', $this->characterEncoding)
+            ->create('XPN', $this->encodingParameters)
         ;
         $this->patientAlias[] = $patientAlias;
         $patientAlias->setFamilyName(
@@ -850,7 +850,7 @@ class PidSegment extends AbstractSegment
     ) {
         $race = $this
             ->dataTypeFactory
-            ->create('CE', $this->characterEncoding)
+            ->create('CE', $this->encodingParameters)
         ;
         $this->race[] = $race;
         $race->setIdentifier($identifier);
@@ -909,7 +909,7 @@ class PidSegment extends AbstractSegment
     ) {
         $patientAddress = $this
             ->dataTypeFactory
-            ->create('XAD', $this->characterEncoding)
+            ->create('XAD', $this->encodingParameters)
         ;
         $this->patientAddress[] = $patientAddress;
         $patientAddress->setStreetAddress(
@@ -944,7 +944,7 @@ class PidSegment extends AbstractSegment
     {
         $this->countyCode = $this
             ->dataTypeFactory
-            ->create('IS', $this->characterEncoding)
+            ->create('IS', $this->encodingParameters)
         ;
         $this->countyCode->setValue($value);
     }
@@ -979,7 +979,7 @@ class PidSegment extends AbstractSegment
     ) {
         $phoneNumberHome = $this
             ->dataTypeFactory
-            ->create('XTN', $this->characterEncoding)
+            ->create('XTN', $this->encodingParameters)
         ;
         $this->phoneNumberHome[] = $phoneNumberHome;
         $phoneNumberHome->setTelephoneNumber($telephoneNumber);
@@ -1026,7 +1026,7 @@ class PidSegment extends AbstractSegment
     ) {
         $phoneNumberBusiness = $this
             ->dataTypeFactory
-            ->create('XTN', $this->characterEncoding)
+            ->create('XTN', $this->encodingParameters)
         ;
         $this->phoneNumberBusiness[] = $phoneNumberBusiness;
         $phoneNumberBusiness->setTelephoneNumber($telephoneNumber);
@@ -1061,7 +1061,7 @@ class PidSegment extends AbstractSegment
     ) {
         $this->primaryLanguage = $this
             ->dataTypeFactory
-            ->create('CE', $this->characterEncoding)
+            ->create('CE', $this->encodingParameters)
         ;
         $this->primaryLanguage->setIdentifier($identifier);
         $this->primaryLanguage->setText($text);
@@ -1089,7 +1089,7 @@ class PidSegment extends AbstractSegment
     ) {
         $this->maritalStatus = $this
             ->dataTypeFactory
-            ->create('CE', $this->characterEncoding)
+            ->create('CE', $this->encodingParameters)
         ;
         $this->maritalStatus->setIdentifier($identifier);
         $this->maritalStatus->setText($text);
@@ -1117,7 +1117,7 @@ class PidSegment extends AbstractSegment
     ) {
         $this->religion = $this
             ->dataTypeFactory
-            ->create('CE', $this->characterEncoding)
+            ->create('CE', $this->encodingParameters)
         ;
         $this->religion->setIdentifier($identifier);
         $this->religion->setText($text);
@@ -1193,7 +1193,7 @@ class PidSegment extends AbstractSegment
     ) {
         $this->patientAccountNumber = $this
             ->dataTypeFactory
-            ->create('CX', $this->characterEncoding)
+            ->create('CX', $this->encodingParameters)
         ;
         $this->patientAccountNumber->setIdNumber($idNumber);
         $this->patientAccountNumber->setCheckDigit($checkDigit);
@@ -1242,7 +1242,7 @@ class PidSegment extends AbstractSegment
     {
         $this->ssnNumberPatient = $this
             ->dataTypeFactory
-            ->create('ST', $this->characterEncoding)
+            ->create('ST', $this->encodingParameters)
         ;
         $this->ssnNumberPatient->setValue($value);
     }
@@ -1259,7 +1259,7 @@ class PidSegment extends AbstractSegment
     ) {
         $this->driversLicenseNumberPatient = $this
             ->dataTypeFactory
-            ->create('DLN', $this->characterEncoding)
+            ->create('DLN', $this->encodingParameters)
         ;
         $this->driversLicenseNumberPatient->setLicenseNumber($licenseNumber);
         $this->driversLicenseNumberPatient->setIssuingStateProvinceCountry(
@@ -1334,7 +1334,7 @@ class PidSegment extends AbstractSegment
     ) {
         $mothersIdentifier = $this
             ->dataTypeFactory
-            ->create('CX', $this->characterEncoding)
+            ->create('CX', $this->encodingParameters)
         ;
         $this->mothersIdentifier[] = $mothersIdentifier;
         $mothersIdentifier->setIdNumber($idNumber);
@@ -1395,7 +1395,7 @@ class PidSegment extends AbstractSegment
     ) {
         $ethnicGroup = $this
             ->dataTypeFactory
-            ->create('CE', $this->characterEncoding)
+            ->create('CE', $this->encodingParameters)
         ;
         $this->ethnicGroup[] = $ethnicGroup;
         $ethnicGroup->setIdentifier($identifier);
@@ -1413,7 +1413,7 @@ class PidSegment extends AbstractSegment
     {
         $this->birthPlace = $this
             ->dataTypeFactory
-            ->create('ST', $this->characterEncoding)
+            ->create('ST', $this->encodingParameters)
         ;
         $this->birthPlace->setValue($value);
     }
@@ -1425,7 +1425,7 @@ class PidSegment extends AbstractSegment
     {
         $this->multipleBirthIndicator = $this
             ->dataTypeFactory
-            ->create('ID', $this->characterEncoding)
+            ->create('ID', $this->encodingParameters)
         ;
         $this->multipleBirthIndicator->setValue($value);
     }
@@ -1437,7 +1437,7 @@ class PidSegment extends AbstractSegment
     {
         $this->birthOrder = $this
             ->dataTypeFactory
-            ->create('NM', $this->characterEncoding)
+            ->create('NM', $this->encodingParameters)
         ;
         $this->birthOrder->setValue($value);
     }
@@ -1460,7 +1460,7 @@ class PidSegment extends AbstractSegment
     ) {
         $citizenship = $this
             ->dataTypeFactory
-            ->create('CE', $this->characterEncoding)
+            ->create('CE', $this->encodingParameters)
         ;
         $this->citizenship[] = $citizenship;
         $citizenship->setIdentifier($identifier);
@@ -1489,7 +1489,7 @@ class PidSegment extends AbstractSegment
     ) {
         $this->veteransMilitaryStatus = $this
             ->dataTypeFactory
-            ->create('CE', $this->characterEncoding)
+            ->create('CE', $this->encodingParameters)
         ;
         $this->veteransMilitaryStatus->setIdentifier($identifier);
         $this->veteransMilitaryStatus->setText($text);
@@ -1517,7 +1517,7 @@ class PidSegment extends AbstractSegment
     ) {
         $this->nationality = $this
             ->dataTypeFactory
-            ->create('CE', $this->characterEncoding)
+            ->create('CE', $this->encodingParameters)
         ;
         $this->nationality->setIdentifier($identifier);
         $this->nationality->setText($text);
@@ -1535,7 +1535,7 @@ class PidSegment extends AbstractSegment
     {
         $this->patientDeathDateAndTime = $this
             ->dataTypeFactory
-            ->create('TS', $this->characterEncoding)
+            ->create('TS', $this->encodingParameters)
         ;
         $this->patientDeathDateAndTime->setTime($time);
         $this->patientDeathDateAndTime->setDegreeOfPrecision($degreeOfPrecision);
@@ -1548,7 +1548,7 @@ class PidSegment extends AbstractSegment
     {
         $this->patientDeathIndicator = $this
             ->dataTypeFactory
-            ->create('ID', $this->characterEncoding)
+            ->create('ID', $this->encodingParameters)
         ;
         $this->patientDeathIndicator->setValue($value);
     }
@@ -1560,7 +1560,7 @@ class PidSegment extends AbstractSegment
     {
         $this->identityUnknownIndicator = $this
             ->dataTypeFactory
-            ->create('ID', $this->characterEncoding)
+            ->create('ID', $this->encodingParameters)
         ;
         $this->identityUnknownIndicator->setValue($value);
     }
@@ -1572,7 +1572,7 @@ class PidSegment extends AbstractSegment
     {
         $identityReliabilityCode = $this
             ->dataTypeFactory
-            ->create('IS', $this->characterEncoding)
+            ->create('IS', $this->encodingParameters)
         ;
         $identityReliabilityCode->setValue($value);
         $this->identityReliabilityCode[] = $identityReliabilityCode;
@@ -1586,7 +1586,7 @@ class PidSegment extends AbstractSegment
     {
         $this->lastUpdateDatetime = $this
             ->dataTypeFactory
-            ->create('TS', $this->characterEncoding)
+            ->create('TS', $this->encodingParameters)
         ;
         $this->lastUpdateDatetime->setTime($time);
         $this->lastUpdateDatetime->setDegreeOfPrecision($degreeOfPrecision);
@@ -1601,7 +1601,7 @@ class PidSegment extends AbstractSegment
     {
         $this->lastUpdateFacility = $this
             ->dataTypeFactory
-            ->create('HD', $this->characterEncoding)
+            ->create('HD', $this->encodingParameters)
         ;
         $this->lastUpdateFacility->setNamespaceId($namespaceId);
         $this->lastUpdateFacility->setUniversalId($universalId);
@@ -1626,7 +1626,7 @@ class PidSegment extends AbstractSegment
     ) {
         $this->speciesCode = $this
             ->dataTypeFactory
-            ->create('CE', $this->characterEncoding)
+            ->create('CE', $this->encodingParameters)
         ;
         $this->speciesCode->setIdentifier($identifier);
         $this->speciesCode->setText($text);
@@ -1654,7 +1654,7 @@ class PidSegment extends AbstractSegment
     ) {
         $this->breedCode = $this
             ->dataTypeFactory
-            ->create('CE', $this->characterEncoding)
+            ->create('CE', $this->encodingParameters)
         ;
         $this->breedCode->setIdentifier($identifier);
         $this->breedCode->setText($text);
@@ -1671,7 +1671,7 @@ class PidSegment extends AbstractSegment
     {
         $this->strain = $this
             ->dataTypeFactory
-            ->create('ST', $this->characterEncoding)
+            ->create('ST', $this->encodingParameters)
         ;
         $this->strain->setValue($value);
     }
@@ -1699,7 +1699,7 @@ class PidSegment extends AbstractSegment
         }
         $productionClassCode = $this
             ->dataTypeFactory
-            ->create('CE', $this->characterEncoding)
+            ->create('CE', $this->encodingParameters)
         ;
         $this->productionClassCode[] = $productionClassCode;
         $productionClassCode->setIdentifier($identifier);
@@ -1734,7 +1734,7 @@ class PidSegment extends AbstractSegment
     ) {
         $tribalCitizenship = $this
             ->dataTypeFactory
-            ->create('CWE', $this->characterEncoding)
+            ->create('CWE', $this->encodingParameters)
         ;
         $this->tribalCitizenship[] = $tribalCitizenship;
         $tribalCitizenship->setIdentifier($identifier);

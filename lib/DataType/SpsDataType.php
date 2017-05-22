@@ -62,7 +62,7 @@ class SpsDataType extends ComponentDataType
     ) {
         $this->specimenSourceNameOrCode = $this
             ->dataTypeFactory
-            ->create('CWE', $this->characterEncoding)
+            ->create('CWE', $this->encodingParameters)
         ;
         $this->specimenSourceNameOrCode->setIdentifier($specimenSourceNameOrCodeIdentifier);
         $this->specimenSourceNameOrCode->setText($specimenSourceNameOrCodeText);
@@ -107,7 +107,7 @@ class SpsDataType extends ComponentDataType
     ) {
         $this->additives = $this
             ->dataTypeFactory
-            ->create('CWE', $this->characterEncoding)
+            ->create('CWE', $this->encodingParameters)
         ;
         $this->additives->setIdentifier($additivesIdentifier);
         $this->additives->setText($additivesText);
@@ -127,7 +127,7 @@ class SpsDataType extends ComponentDataType
     {
         $this->specimenCollectionMethod = $this
             ->dataTypeFactory
-            ->create('TX', $this->characterEncoding)
+            ->create('TX', $this->encodingParameters)
         ;
         $this->specimenCollectionMethod->setValue($specimenCollectionMethod);
     }
@@ -156,7 +156,7 @@ class SpsDataType extends ComponentDataType
     ) {
         $this->bodySite = $this
             ->dataTypeFactory
-            ->create('CWE', $this->characterEncoding)
+            ->create('CWE', $this->encodingParameters)
         ;
         $this->bodySite->setIdentifier($bodySiteIdentifier);
         $this->bodySite->setText($bodySiteText);
@@ -193,7 +193,7 @@ class SpsDataType extends ComponentDataType
     ) {
         $this->siteModifier = $this
             ->dataTypeFactory
-            ->create('CWE', $this->characterEncoding)
+            ->create('CWE', $this->encodingParameters)
         ;
         $this->siteModifier->setIdentifier($siteModifierIdentifier);
         $this->siteModifier->setText($siteModifierText);
@@ -230,7 +230,7 @@ class SpsDataType extends ComponentDataType
     ) {
         $this->collectionMethodModifierCode = $this
             ->dataTypeFactory
-            ->create('CWE', $this->characterEncoding)
+            ->create('CWE', $this->encodingParameters)
         ;
         $this->collectionMethodModifierCode->setIdentifier($collectionMethodModifierCodeIdentifier);
         $this->collectionMethodModifierCode->setText($collectionMethodModifierCodeText);
@@ -279,7 +279,7 @@ class SpsDataType extends ComponentDataType
     ) {
         $this->specimenRole = $this
             ->dataTypeFactory
-            ->create('CWE', $this->characterEncoding)
+            ->create('CWE', $this->encodingParameters)
         ;
         $this->specimenRole->setIdentifier($specimenRoleIdentifier);
         $this->specimenRole->setText($specimenRoleText);

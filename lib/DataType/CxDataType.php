@@ -57,7 +57,7 @@ class CxDataType extends ComponentDataType
     {
         $this->idNumber = $this
             ->dataTypeFactory
-            ->create('ST', $this->characterEncoding)
+            ->create('ST', $this->encodingParameters)
         ;
         $this->idNumber->setValue($idNumber);
     }
@@ -69,7 +69,7 @@ class CxDataType extends ComponentDataType
     {
         $this->checkDigit = $this
             ->dataTypeFactory
-            ->create('ST', $this->characterEncoding)
+            ->create('ST', $this->encodingParameters)
         ;
         $this->checkDigit->setValue($checkDigit);
     }
@@ -81,7 +81,7 @@ class CxDataType extends ComponentDataType
     {
         $this->checkDigitScheme = $this
             ->dataTypeFactory
-            ->create('ID', $this->characterEncoding)
+            ->create('ID', $this->encodingParameters)
         ;
         $this->checkDigitScheme->setValue($checkDigitScheme);
     }
@@ -98,7 +98,7 @@ class CxDataType extends ComponentDataType
     ) {
         $this->assigningAuthority = $this
             ->dataTypeFactory
-            ->create('HD', $this->characterEncoding)
+            ->create('HD', $this->encodingParameters, true)
         ;
         $this->assigningAuthority->setNamespaceId($assigningAuthorityNamespaceId);
         $this->assigningAuthority->setUniversalId($assigningAuthorityUniversalId);
@@ -112,7 +112,7 @@ class CxDataType extends ComponentDataType
     {
         $this->identifierTypeCode = $this
             ->dataTypeFactory
-            ->create('ID', $this->characterEncoding)
+            ->create('ID', $this->encodingParameters)
         ;
         $this->identifierTypeCode->setValue($identifierTypeCode);
     }
@@ -129,7 +129,7 @@ class CxDataType extends ComponentDataType
     ) {
         $this->assigningFacility = $this
             ->dataTypeFactory
-            ->create('HD', $this->characterEncoding)
+            ->create('HD', $this->encodingParameters, true)
         ;
         $this->assigningFacility->setNamespaceId($assigningFacilityNamespaceId);
         $this->assigningFacility->setUniversalId($assigningFacilityUniversalId);
@@ -143,7 +143,7 @@ class CxDataType extends ComponentDataType
     {
         $this->effectiveDate = $this
             ->dataTypeFactory
-            ->create('DT', $this->characterEncoding)
+            ->create('DT', $this->encodingParameters)
         ;
         $this->effectiveDate->setValue($effectiveDate);
     }
@@ -155,7 +155,7 @@ class CxDataType extends ComponentDataType
     {
         $this->expirationDate = $this
             ->dataTypeFactory
-            ->create('DT', $this->characterEncoding)
+            ->create('DT', $this->encodingParameters)
         ;
         $this->expirationDate->setValue($expirationDate);
     }
@@ -184,7 +184,7 @@ class CxDataType extends ComponentDataType
     ) {
         $this->assigningJurisdiction = $this
             ->dataTypeFactory
-            ->create('CWE', $this->characterEncoding)
+            ->create('CWE', $this->encodingParameters, true)
         ;
         $this->assigningJurisdiction->setIdentifier($assigningJurisdictionIdentifier);
         $this->assigningJurisdiction->setText($assigningJurisdictionText);
@@ -229,7 +229,7 @@ class CxDataType extends ComponentDataType
     ) {
         $this->assigningAgency = $this
             ->dataTypeFactory
-            ->create('CWE', $this->characterEncoding)
+            ->create('CWE', $this->encodingParameters, true)
         ;
         $this->assigningAgency->setIdentifier($assigningAgencyIdentifier);
         $this->assigningAgency->setText($assigningAgencyText);

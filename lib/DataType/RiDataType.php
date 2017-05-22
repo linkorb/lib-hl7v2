@@ -25,7 +25,7 @@ class RiDataType extends ComponentDataType
     {
         $this->repeatPattern = $this
             ->dataTypeFactory
-            ->create('IS', $this->characterEncoding)
+            ->create('IS', $this->encodingParameters)
         ;
         $this->repeatPattern->setValue($repeatPattern);
     }
@@ -37,7 +37,7 @@ class RiDataType extends ComponentDataType
     {
         $this->explicitTimeInterval = $this
             ->dataTypeFactory
-            ->create('ST', $this->characterEncoding)
+            ->create('ST', $this->encodingParameters)
         ;
         $this->explicitTimeInterval->setValue($explicitTimeInterval);
     }

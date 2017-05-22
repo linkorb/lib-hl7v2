@@ -61,7 +61,7 @@ class PlDataType extends ComponentDataType
     {
         $this->pointOfCare = $this
             ->dataTypeFactory
-            ->create('IS', $this->characterEncoding)
+            ->create('IS', $this->encodingParameters)
         ;
         $this->pointOfCare->setValue($pointOfCare);
     }
@@ -73,7 +73,7 @@ class PlDataType extends ComponentDataType
     {
         $this->room = $this
             ->dataTypeFactory
-            ->create('IS', $this->characterEncoding)
+            ->create('IS', $this->encodingParameters)
         ;
         $this->room->setValue($room);
     }
@@ -85,7 +85,7 @@ class PlDataType extends ComponentDataType
     {
         $this->bed = $this
             ->dataTypeFactory
-            ->create('IS', $this->characterEncoding)
+            ->create('IS', $this->encodingParameters)
         ;
         $this->bed->setValue($bed);
     }
@@ -102,7 +102,7 @@ class PlDataType extends ComponentDataType
     ) {
         $this->facility = $this
             ->dataTypeFactory
-            ->create('HD', $this->characterEncoding)
+            ->create('HD', $this->encodingParameters)
         ;
         $this->facility->setNamespaceId($facilityNamespaceId);
         $this->facility->setUniversalId($facilityUniversalId);
@@ -116,7 +116,7 @@ class PlDataType extends ComponentDataType
     {
         $this->locationStatus = $this
             ->dataTypeFactory
-            ->create('IS', $this->characterEncoding)
+            ->create('IS', $this->encodingParameters)
         ;
         $this->locationStatus->setValue($locationStatus);
     }
@@ -128,7 +128,7 @@ class PlDataType extends ComponentDataType
     {
         $this->personLocationType = $this
             ->dataTypeFactory
-            ->create('IS', $this->characterEncoding)
+            ->create('IS', $this->encodingParameters)
         ;
         $this->personLocationType->setValue($personLocationType);
     }
@@ -140,7 +140,7 @@ class PlDataType extends ComponentDataType
     {
         $this->building = $this
             ->dataTypeFactory
-            ->create('IS', $this->characterEncoding)
+            ->create('IS', $this->encodingParameters)
         ;
         $this->building->setValue($building);
     }
@@ -152,7 +152,7 @@ class PlDataType extends ComponentDataType
     {
         $this->floor = $this
             ->dataTypeFactory
-            ->create('IS', $this->characterEncoding)
+            ->create('IS', $this->encodingParameters)
         ;
         $this->floor->setValue($floor);
     }
@@ -164,7 +164,7 @@ class PlDataType extends ComponentDataType
     {
         $this->locationDescription = $this
             ->dataTypeFactory
-            ->create('ST', $this->characterEncoding)
+            ->create('ST', $this->encodingParameters)
         ;
         $this->locationDescription->setValue($locationDescription);
     }
@@ -183,7 +183,7 @@ class PlDataType extends ComponentDataType
     ) {
         $this->comprehensiveLocationIdentifier = $this
             ->dataTypeFactory
-            ->create('EI', $this->characterEncoding)
+            ->create('EI', $this->encodingParameters)
         ;
         $this->comprehensiveLocationIdentifier->setEntityIdentifier(
             $comprehensiveLocationIdentifierEntityIdentifier
@@ -211,7 +211,7 @@ class PlDataType extends ComponentDataType
     ) {
         $this->assigningAuthorityForLocation = $this
             ->dataTypeFactory
-            ->create('HD', $this->characterEncoding)
+            ->create('HD', $this->encodingParameters)
         ;
         $this->assigningAuthorityForLocation->setNamespaceId(
             $assigningAuthorityForLocationNamespaceId

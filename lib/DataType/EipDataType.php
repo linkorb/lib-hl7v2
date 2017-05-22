@@ -32,7 +32,7 @@ class EipDataType extends ComponentDataType
     ) {
         $this->placerAssignedIdentifier = $this
             ->dataTypeFactory
-            ->create('EI', $this->characterEncoding)
+            ->create('EI', $this->encodingParameters)
         ;
         $this->placerAssignedIdentifier->setEntityIdentifier(
             $placerAssignedIdentifierEntityIdentifier
@@ -58,7 +58,7 @@ class EipDataType extends ComponentDataType
     ) {
         $this->fillerAssignedIdentifier = $this
             ->dataTypeFactory
-            ->create('EI', $this->characterEncoding)
+            ->create('EI', $this->encodingParameters)
         ;
         $this->fillerAssignedIdentifier->setEntityIdentifier(
             $fillerAssignedIdentifierEntityIdentifier

@@ -109,7 +109,7 @@ class XcnDataType extends ComponentDataType
     {
         $this->idNumber = $this
             ->dataTypeFactory
-            ->create('ST', $this->characterEncoding)
+            ->create('ST', $this->encodingParameters)
         ;
         $this->idNumber->setValue($idNumber);
     }
@@ -130,7 +130,7 @@ class XcnDataType extends ComponentDataType
     ) {
         $this->familyName = $this
             ->dataTypeFactory
-            ->create('FN', $this->characterEncoding)
+            ->create('FN', $this->encodingParameters)
         ;
         $this->familyName->setSurname($familyNameSurname);
         $this->familyName->setOwnSurnamePrefix($familyNameOwnSurnamePrefix);
@@ -146,7 +146,7 @@ class XcnDataType extends ComponentDataType
     {
         $this->givenName = $this
             ->dataTypeFactory
-            ->create('ST', $this->characterEncoding)
+            ->create('ST', $this->encodingParameters)
         ;
         $this->givenName->setValue($givenName);
     }
@@ -158,7 +158,7 @@ class XcnDataType extends ComponentDataType
     {
         $this->secondNames = $this
             ->dataTypeFactory
-            ->create('ST', $this->characterEncoding)
+            ->create('ST', $this->encodingParameters)
         ;
         $this->secondNames->setValue($secondNames);
     }
@@ -170,7 +170,7 @@ class XcnDataType extends ComponentDataType
     {
         $this->suffix = $this
             ->dataTypeFactory
-            ->create('ST', $this->characterEncoding)
+            ->create('ST', $this->encodingParameters)
         ;
         $this->suffix->setValue($suffix);
     }
@@ -182,7 +182,7 @@ class XcnDataType extends ComponentDataType
     {
         $this->prefix = $this
             ->dataTypeFactory
-            ->create('ST', $this->characterEncoding)
+            ->create('ST', $this->encodingParameters)
         ;
         $this->prefix->setValue($prefix);
     }
@@ -194,7 +194,7 @@ class XcnDataType extends ComponentDataType
     {
         $this->degree = $this
             ->dataTypeFactory
-            ->create('IS', $this->characterEncoding)
+            ->create('IS', $this->encodingParameters)
         ;
         $this->degree->setValue($degree);
     }
@@ -206,7 +206,7 @@ class XcnDataType extends ComponentDataType
     {
         $this->sourceTable = $this
             ->dataTypeFactory
-            ->create('IS', $this->characterEncoding)
+            ->create('IS', $this->encodingParameters)
         ;
         $this->sourceTable->setValue($sourceTable);
     }
@@ -223,7 +223,7 @@ class XcnDataType extends ComponentDataType
     ) {
         $this->assigningAuthority = $this
             ->dataTypeFactory
-            ->create('HD', $this->characterEncoding)
+            ->create('HD', $this->encodingParameters)
         ;
         $this->assigningAuthority->setNamespaceId($assigningAuthorityNamespaceId);
         $this->assigningAuthority->setUniversalId($assigningAuthorityUniversalId);
@@ -237,7 +237,7 @@ class XcnDataType extends ComponentDataType
     {
         $this->nameTypeCode = $this
             ->dataTypeFactory
-            ->create('ID', $this->characterEncoding)
+            ->create('ID', $this->encodingParameters)
         ;
         $this->nameTypeCode->setValue($nameTypeCode);
     }
@@ -249,7 +249,7 @@ class XcnDataType extends ComponentDataType
     {
         $this->identifierCheckDigit = $this
             ->dataTypeFactory
-            ->create('ST', $this->characterEncoding)
+            ->create('ST', $this->encodingParameters)
         ;
         $this->identifierCheckDigit->setValue($identifierCheckDigit);
     }
@@ -261,7 +261,7 @@ class XcnDataType extends ComponentDataType
     {
         $this->checkDigitScheme = $this
             ->dataTypeFactory
-            ->create('ID', $this->characterEncoding)
+            ->create('ID', $this->encodingParameters)
         ;
         $this->checkDigitScheme->setValue($checkDigitScheme);
     }
@@ -273,7 +273,7 @@ class XcnDataType extends ComponentDataType
     {
         $this->identifierTypeCode = $this
             ->dataTypeFactory
-            ->create('ID', $this->characterEncoding)
+            ->create('ID', $this->encodingParameters)
         ;
         $this->identifierTypeCode->setValue($identifierTypeCode);
     }
@@ -290,7 +290,7 @@ class XcnDataType extends ComponentDataType
     ) {
         $this->assigningFacility = $this
             ->dataTypeFactory
-            ->create('HD', $this->characterEncoding)
+            ->create('HD', $this->encodingParameters)
         ;
         $this->assigningFacility->setNamespaceId($assigningFacilityNamespaceId);
         $this->assigningFacility->setUniversalId($assigningFacilityUniversalId);
@@ -304,7 +304,7 @@ class XcnDataType extends ComponentDataType
     {
         $this->nameRepresentationCode = $this
             ->dataTypeFactory
-            ->create('ID', $this->characterEncoding)
+            ->create('ID', $this->encodingParameters)
         ;
         $this->nameRepresentationCode->setValue($nameRepresentationCode);
     }
@@ -327,7 +327,7 @@ class XcnDataType extends ComponentDataType
     ) {
         $this->nameContext = $this
             ->dataTypeFactory
-            ->create('CE', $this->characterEncoding)
+            ->create('CE', $this->encodingParameters)
         ;
         $this->nameContext->setIdentifier($nameContextIdentifier);
         $this->nameContext->setText($nameContextText);
@@ -351,7 +351,7 @@ class XcnDataType extends ComponentDataType
     ) {
         $this->nameValidityRange = $this
             ->dataTypeFactory
-            ->create('DR', $this->characterEncoding)
+            ->create('DR', $this->encodingParameters)
         ;
         $this->nameValidityRange->setRangeStartDateTime(
             $nameValidityRangeRangeStartDateTimeTime,
@@ -370,7 +370,7 @@ class XcnDataType extends ComponentDataType
     {
         $this->nameAssemblyOrder = $this
             ->dataTypeFactory
-            ->create('ID', $this->characterEncoding)
+            ->create('ID', $this->encodingParameters)
         ;
         $this->nameAssemblyOrder->setValue($nameAssemblyOrder);
     }
@@ -383,7 +383,7 @@ class XcnDataType extends ComponentDataType
     {
         $this->effectiveDate = $this
             ->dataTypeFactory
-            ->create('TS', $this->characterEncoding)
+            ->create('TS', $this->encodingParameters)
         ;
         $this->effectiveDate->setTime($effectiveDateTime);
         $this->effectiveDate->setDegreeOfPrecision($effectiveDateDegreeOfPrecision);
@@ -397,7 +397,7 @@ class XcnDataType extends ComponentDataType
     {
         $this->expirationDate = $this
             ->dataTypeFactory
-            ->create('TS', $this->characterEncoding)
+            ->create('TS', $this->encodingParameters)
         ;
         $this->expirationDate->setTime($expirationDateTime);
         $this->expirationDate->setDegreeOfPrecision($expirationDateDegreeOfPrecision);
@@ -410,7 +410,7 @@ class XcnDataType extends ComponentDataType
     {
         $this->professionalSuffix = $this
             ->dataTypeFactory
-            ->create('ST', $this->characterEncoding)
+            ->create('ST', $this->encodingParameters)
         ;
         $this->professionalSuffix->setValue($professionalSuffix);
     }
@@ -439,7 +439,7 @@ class XcnDataType extends ComponentDataType
     ) {
         $this->assigningJurisdiction = $this
             ->dataTypeFactory
-            ->create('CWE', $this->characterEncoding)
+            ->create('CWE', $this->encodingParameters)
         ;
         $this->assigningJurisdiction->setIdentifier($assigningJurisdictionIdentifier);
         $this->assigningJurisdiction->setText($assigningJurisdictionText);
@@ -484,7 +484,7 @@ class XcnDataType extends ComponentDataType
     ) {
         $this->assigningAgency = $this
             ->dataTypeFactory
-            ->create('CWE', $this->characterEncoding)
+            ->create('CWE', $this->encodingParameters)
         ;
         $this->assigningAgency->setIdentifier($assigningAgencyIdentifier);
         $this->assigningAgency->setText($assigningAgencyText);

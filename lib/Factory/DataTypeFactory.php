@@ -3,6 +3,7 @@
 namespace Hl7v2\Factory;
 
 use Hl7v2\DataType\ComponentInterface;
+use Hl7v2\Encoding\EncodingParameters;
 use Hl7v2\Exception\DataTypeError;
 
 class DataTypeFactory
@@ -11,20 +12,23 @@ class DataTypeFactory
      * Create a Data Type.
      *
      * @param string $typeName
-     * @param string $characterEncoding
+     * @param \Hl7v2\Encoding\EncodingParameters $encodingParameters
      * @return \Hl7v2\DataType\DataTypeInterface
      * @throws \Hl7v2\Exception\DataTypeError
      */
-    public function create($typeName, $characterEncoding)
-    {
+    public function create(
+        $typeName,
+        EncodingParameters $encodingParameters
+    ) {
         $class = $this->determineClassname($typeName);
         $type = new $class;
 
         if ($type instanceof ComponentInterface) {
             $type->setDataTypeFactory($this);
+            $type->setEncodingParameters($encodingParameters);
         }
 
-        $type->setCharacterEncoding($characterEncoding);
+        $type->setCharacterEncoding($encodingParameters->getCharacterEncoding());
 
         return $type;
     }

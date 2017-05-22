@@ -93,7 +93,7 @@ class ComponentDataTypeGenerator extends AbstractDataTypeGenerator
                 $methodBody = [
                     "\$this->{$propertyName} = \$this",
                     "    ->dataTypeFactory",
-                    "    ->create('{$component['type']}', \$this->characterEncoding)",
+                    "    ->create('{$component['type']}', \$this->encodingParameters)",
                     ";",
                 ];
                 $componentMutators = $this->resolver->getMutatorsForCalling($component['type']);
@@ -122,7 +122,7 @@ class ComponentDataTypeGenerator extends AbstractDataTypeGenerator
                 $methodBody = [
                     "\$this->{$propertyName} = \$this",
                     "    ->dataTypeFactory",
-                    "    ->create('{$component['type']}', \$this->characterEncoding)",
+                    "    ->create('{$component['type']}', \$this->encodingParameters)",
                     ";",
                     "\$this->{$propertyName}->setValue(\${$propertyName});",
                 ];

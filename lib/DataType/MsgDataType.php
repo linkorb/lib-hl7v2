@@ -29,7 +29,7 @@ class MsgDataType extends ComponentDataType
     {
         $this->messageCode = $this
             ->dataTypeFactory
-            ->create('ID', $this->characterEncoding)
+            ->create('ID', $this->encodingParameters)
         ;
         $this->messageCode->setValue($messageCode);
     }
@@ -41,7 +41,7 @@ class MsgDataType extends ComponentDataType
     {
         $this->triggerEvent = $this
             ->dataTypeFactory
-            ->create('ID', $this->characterEncoding)
+            ->create('ID', $this->encodingParameters)
         ;
         $this->triggerEvent->setValue($triggerEvent);
     }
@@ -53,7 +53,7 @@ class MsgDataType extends ComponentDataType
     {
         $this->messageStructure = $this
             ->dataTypeFactory
-            ->create('ID', $this->characterEncoding)
+            ->create('ID', $this->encodingParameters)
         ;
         $this->messageStructure->setValue($messageStructure);
     }

@@ -25,7 +25,7 @@ class MoDataType extends ComponentDataType
     {
         $this->quantity = $this
             ->dataTypeFactory
-            ->create('NM', $this->characterEncoding)
+            ->create('NM', $this->encodingParameters)
         ;
         $this->quantity->setValue($quantity);
     }
@@ -37,7 +37,7 @@ class MoDataType extends ComponentDataType
     {
         $this->denomination = $this
             ->dataTypeFactory
-            ->create('ID', $this->characterEncoding)
+            ->create('ID', $this->encodingParameters)
         ;
         $this->denomination->setValue($denomination);
     }

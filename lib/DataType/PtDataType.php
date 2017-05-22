@@ -25,7 +25,7 @@ class PtDataType extends ComponentDataType
     {
         $this->processingId = $this
             ->dataTypeFactory
-            ->create('ID', $this->characterEncoding)
+            ->create('ID', $this->encodingParameters)
         ;
         $this->processingId->setValue($processingId);
     }
@@ -37,7 +37,7 @@ class PtDataType extends ComponentDataType
     {
         $this->processingMode = $this
             ->dataTypeFactory
-            ->create('ID', $this->characterEncoding)
+            ->create('ID', $this->encodingParameters)
         ;
         $this->processingMode->setValue($processingMode);
     }

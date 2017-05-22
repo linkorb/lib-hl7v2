@@ -61,7 +61,7 @@ class CnnDataType extends ComponentDataType
     {
         $this->idNumber = $this
             ->dataTypeFactory
-            ->create('ST', $this->characterEncoding)
+            ->create('ST', $this->encodingParameters)
         ;
         $this->idNumber->setValue($idNumber);
     }
@@ -73,7 +73,7 @@ class CnnDataType extends ComponentDataType
     {
         $this->familyName = $this
             ->dataTypeFactory
-            ->create('ST', $this->characterEncoding)
+            ->create('ST', $this->encodingParameters)
         ;
         $this->familyName->setValue($familyName);
     }
@@ -85,7 +85,7 @@ class CnnDataType extends ComponentDataType
     {
         $this->givenName = $this
             ->dataTypeFactory
-            ->create('ST', $this->characterEncoding)
+            ->create('ST', $this->encodingParameters)
         ;
         $this->givenName->setValue($givenName);
     }
@@ -97,7 +97,7 @@ class CnnDataType extends ComponentDataType
     {
         $this->secondNames = $this
             ->dataTypeFactory
-            ->create('ST', $this->characterEncoding)
+            ->create('ST', $this->encodingParameters)
         ;
         $this->secondNames->setValue($secondNames);
     }
@@ -109,7 +109,7 @@ class CnnDataType extends ComponentDataType
     {
         $this->suffix = $this
             ->dataTypeFactory
-            ->create('ST', $this->characterEncoding)
+            ->create('ST', $this->encodingParameters)
         ;
         $this->suffix->setValue($suffix);
     }
@@ -121,7 +121,7 @@ class CnnDataType extends ComponentDataType
     {
         $this->prefix = $this
             ->dataTypeFactory
-            ->create('ST', $this->characterEncoding)
+            ->create('ST', $this->encodingParameters)
         ;
         $this->prefix->setValue($prefix);
     }
@@ -133,7 +133,7 @@ class CnnDataType extends ComponentDataType
     {
         $this->degree = $this
             ->dataTypeFactory
-            ->create('IS', $this->characterEncoding)
+            ->create('IS', $this->encodingParameters)
         ;
         $this->degree->setValue($degree);
     }
@@ -145,7 +145,7 @@ class CnnDataType extends ComponentDataType
     {
         $this->sourceTable = $this
             ->dataTypeFactory
-            ->create('IS', $this->characterEncoding)
+            ->create('IS', $this->encodingParameters)
         ;
         $this->sourceTable->setValue($sourceTable);
     }
@@ -157,7 +157,7 @@ class CnnDataType extends ComponentDataType
     {
         $this->assigningAuthorityNamespaceId = $this
             ->dataTypeFactory
-            ->create('IS', $this->characterEncoding)
+            ->create('IS', $this->encodingParameters)
         ;
         $this->assigningAuthorityNamespaceId->setValue($assigningAuthorityNamespaceId);
     }
@@ -169,7 +169,7 @@ class CnnDataType extends ComponentDataType
     {
         $this->assigningAuthorityUniversalId = $this
             ->dataTypeFactory
-            ->create('ST', $this->characterEncoding)
+            ->create('ST', $this->encodingParameters)
         ;
         $this->assigningAuthorityUniversalId->setValue($assigningAuthorityUniversalId);
     }
@@ -181,7 +181,7 @@ class CnnDataType extends ComponentDataType
     {
         $this->assigningAuthorityUniversalIdType = $this
             ->dataTypeFactory
-            ->create('ID', $this->characterEncoding)
+            ->create('ID', $this->encodingParameters)
         ;
         $this->assigningAuthorityUniversalIdType->setValue($assigningAuthorityUniversalIdType);
     }

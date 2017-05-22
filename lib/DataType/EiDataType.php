@@ -33,7 +33,7 @@ class EiDataType extends ComponentDataType
     {
         $this->entityIdentifier = $this
             ->dataTypeFactory
-            ->create('ST', $this->characterEncoding)
+            ->create('ST', $this->encodingParameters)
         ;
         $this->entityIdentifier->setValue($entityIdentifier);
     }
@@ -45,7 +45,7 @@ class EiDataType extends ComponentDataType
     {
         $this->namespaceId = $this
             ->dataTypeFactory
-            ->create('IS', $this->characterEncoding)
+            ->create('IS', $this->encodingParameters)
         ;
         $this->namespaceId->setValue($namespaceId);
     }
@@ -57,7 +57,7 @@ class EiDataType extends ComponentDataType
     {
         $this->universalId = $this
             ->dataTypeFactory
-            ->create('ST', $this->characterEncoding)
+            ->create('ST', $this->encodingParameters)
         ;
         $this->universalId->setValue($universalId);
     }
@@ -69,7 +69,7 @@ class EiDataType extends ComponentDataType
     {
         $this->universalIdType = $this
             ->dataTypeFactory
-            ->create('ID', $this->characterEncoding)
+            ->create('ID', $this->encodingParameters)
         ;
         $this->universalIdType->setValue($universalIdType);
     }

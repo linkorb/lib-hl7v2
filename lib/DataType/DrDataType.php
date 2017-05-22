@@ -26,7 +26,7 @@ class DrDataType extends ComponentDataType
     {
         $this->rangeStartDateTime = $this
             ->dataTypeFactory
-            ->create('TS', $this->characterEncoding)
+            ->create('TS', $this->encodingParameters, true)
         ;
         $this->rangeStartDateTime->setTime($rangeStartDateTimeTime);
         $this->rangeStartDateTime->setDegreeOfPrecision($rangeStartDateTimeDegreeOfPrecision);
@@ -40,7 +40,7 @@ class DrDataType extends ComponentDataType
     {
         $this->rangeEndDateTime = $this
             ->dataTypeFactory
-            ->create('TS', $this->characterEncoding)
+            ->create('TS', $this->encodingParameters, true)
         ;
         $this->rangeEndDateTime->setTime($rangeEndDateTimeTime);
         $this->rangeEndDateTime->setDegreeOfPrecision($rangeEndDateTimeDegreeOfPrecision);

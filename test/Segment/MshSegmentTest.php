@@ -50,7 +50,7 @@ class MshSegmentTest extends PHPUnit_Framework_TestCase
          */
         $messageHeader = $this
             ->segmentFactory
-            ->create('MSH', $data->getEncodingParameters()->getCharacterEncoding())
+            ->create('MSH', $data->getEncodingParameters())
         ;
         $messageHeader->fromDatagram($data, $this->codec);
 

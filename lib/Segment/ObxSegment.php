@@ -110,7 +110,7 @@ class ObxSegment extends AbstractSegment
     {
         $this->setId = $this
             ->dataTypeFactory
-            ->create('SI', $this->characterEncoding)
+            ->create('SI', $this->encodingParameters)
         ;
         $this->setId->setValue($value);
     }
@@ -122,7 +122,7 @@ class ObxSegment extends AbstractSegment
     {
         $this->valueType = $this
             ->dataTypeFactory
-            ->create('ID', $this->characterEncoding)
+            ->create('ID', $this->encodingParameters)
         ;
         $this->valueType->setValue($value);
     }
@@ -145,7 +145,7 @@ class ObxSegment extends AbstractSegment
     ) {
         $this->observationIdentifier = $this
             ->dataTypeFactory
-            ->create('CE', $this->characterEncoding)
+            ->create('CE', $this->encodingParameters)
         ;
         $this->observationIdentifier->setIdentifier($identifier);
         $this->observationIdentifier->setText($text);
@@ -162,7 +162,7 @@ class ObxSegment extends AbstractSegment
     {
         $this->observationSubid = $this
             ->dataTypeFactory
-            ->create('ST', $this->characterEncoding)
+            ->create('ST', $this->encodingParameters)
         ;
         $this->observationSubid->setValue($value);
     }
@@ -187,7 +187,7 @@ class ObxSegment extends AbstractSegment
     ) {
         $observationValue = $this
             ->dataTypeFactory
-            ->create('ED', $this->characterEncoding)
+            ->create('ED', $this->encodingParameters)
         ;
         $this->observationValue[] = $observationValue;
         $observationValue->setSourceApplication(
@@ -208,7 +208,7 @@ class ObxSegment extends AbstractSegment
     {
         $observationValue = $this
             ->dataTypeFactory
-            ->create('FT', $this->characterEncoding)
+            ->create('FT', $this->encodingParameters)
         ;
         $observationValue->setValue($value);
         $this->observationValue[] = $observationValue;
@@ -221,7 +221,7 @@ class ObxSegment extends AbstractSegment
     {
         $observationValue = $this
             ->dataTypeFactory
-            ->create('NM', $this->characterEncoding)
+            ->create('NM', $this->encodingParameters)
         ;
         $observationValue->setValue($value);
         $this->observationValue[] = $observationValue;
@@ -234,7 +234,7 @@ class ObxSegment extends AbstractSegment
     {
         $observationValue = $this
             ->dataTypeFactory
-            ->create('ST', $this->characterEncoding)
+            ->create('ST', $this->encodingParameters)
         ;
         $observationValue->setValue($value);
         $this->observationValue[] = $observationValue;
@@ -248,7 +248,7 @@ class ObxSegment extends AbstractSegment
     {
         $observationValue = $this
             ->dataTypeFactory
-            ->create('TS', $this->characterEncoding)
+            ->create('TS', $this->encodingParameters)
         ;
         $this->observationValue[] = $observationValue;
         $observationValue->setTime($time);
@@ -262,7 +262,7 @@ class ObxSegment extends AbstractSegment
     {
         $observationValue = $this
             ->dataTypeFactory
-            ->create('TX', $this->characterEncoding)
+            ->create('TX', $this->encodingParameters)
         ;
         $observationValue->setValue($value);
         $this->observationValue[] = $observationValue;
@@ -286,7 +286,7 @@ class ObxSegment extends AbstractSegment
     ) {
         $this->units = $this
             ->dataTypeFactory
-            ->create('CE', $this->characterEncoding)
+            ->create('CE', $this->encodingParameters)
         ;
         $this->units->setIdentifier($identifier);
         $this->units->setText($text);
@@ -303,7 +303,7 @@ class ObxSegment extends AbstractSegment
     {
         $this->referencesRange = $this
             ->dataTypeFactory
-            ->create('ST', $this->characterEncoding)
+            ->create('ST', $this->encodingParameters)
         ;
         $this->referencesRange->setValue($value);
     }
@@ -315,7 +315,7 @@ class ObxSegment extends AbstractSegment
     {
         $abnormalFlags = $this
             ->dataTypeFactory
-            ->create('IS', $this->characterEncoding)
+            ->create('IS', $this->encodingParameters)
         ;
         $abnormalFlags->setValue($value);
         $this->abnormalFlags[] = $abnormalFlags;
@@ -328,7 +328,7 @@ class ObxSegment extends AbstractSegment
     {
         $this->probability = $this
             ->dataTypeFactory
-            ->create('NM', $this->characterEncoding)
+            ->create('NM', $this->encodingParameters)
         ;
         $this->probability->setValue($value);
     }
@@ -340,7 +340,7 @@ class ObxSegment extends AbstractSegment
     {
         $natureOfAbnormalTest = $this
             ->dataTypeFactory
-            ->create('ID', $this->characterEncoding)
+            ->create('ID', $this->encodingParameters)
         ;
         $natureOfAbnormalTest->setValue($value);
         $this->natureOfAbnormalTest[] = $natureOfAbnormalTest;
@@ -353,7 +353,7 @@ class ObxSegment extends AbstractSegment
     {
         $this->observationResultStatus = $this
             ->dataTypeFactory
-            ->create('ID', $this->characterEncoding)
+            ->create('ID', $this->encodingParameters)
         ;
         $this->observationResultStatus->setValue($value);
     }
@@ -366,7 +366,7 @@ class ObxSegment extends AbstractSegment
     {
         $this->effectiveDateOfReferenceRangeValues = $this
             ->dataTypeFactory
-            ->create('TS', $this->characterEncoding)
+            ->create('TS', $this->encodingParameters)
         ;
         $this->effectiveDateOfReferenceRangeValues->setTime($time);
         $this->effectiveDateOfReferenceRangeValues->setDegreeOfPrecision($degreeOfPrecision);
@@ -379,7 +379,7 @@ class ObxSegment extends AbstractSegment
     {
         $this->userDefinedAccessChecks = $this
             ->dataTypeFactory
-            ->create('ST', $this->characterEncoding)
+            ->create('ST', $this->encodingParameters)
         ;
         $this->userDefinedAccessChecks->setValue($value);
     }
@@ -392,7 +392,7 @@ class ObxSegment extends AbstractSegment
     {
         $this->datetimeOfTheObservation = $this
             ->dataTypeFactory
-            ->create('TS', $this->characterEncoding)
+            ->create('TS', $this->encodingParameters)
         ;
         $this->datetimeOfTheObservation->setTime($time);
         $this->datetimeOfTheObservation->setDegreeOfPrecision($degreeOfPrecision);
@@ -416,7 +416,7 @@ class ObxSegment extends AbstractSegment
     ) {
         $this->producersReference = $this
             ->dataTypeFactory
-            ->create('CE', $this->characterEncoding)
+            ->create('CE', $this->encodingParameters)
         ;
         $this->producersReference->setIdentifier($identifier);
         $this->producersReference->setText($text);
@@ -546,7 +546,7 @@ class ObxSegment extends AbstractSegment
     ) {
         $responsibleObserver = $this
             ->dataTypeFactory
-            ->create('XCN', $this->characterEncoding)
+            ->create('XCN', $this->encodingParameters)
         ;
         $this->responsibleObserver[] = $responsibleObserver;
         $responsibleObserver->setIdNumber($idNumber);
@@ -641,7 +641,7 @@ class ObxSegment extends AbstractSegment
     ) {
         $observationMethod = $this
             ->dataTypeFactory
-            ->create('CE', $this->characterEncoding)
+            ->create('CE', $this->encodingParameters)
         ;
         $this->observationMethod[] = $observationMethod;
         $observationMethod->setIdentifier($identifier);
@@ -666,7 +666,7 @@ class ObxSegment extends AbstractSegment
     ) {
         $equipmentInstanceIdentifier = $this
             ->dataTypeFactory
-            ->create('EI', $this->characterEncoding)
+            ->create('EI', $this->encodingParameters)
         ;
         $this->equipmentInstanceIdentifier[] = $equipmentInstanceIdentifier;
         $equipmentInstanceIdentifier->setEntityIdentifier($entityIdentifier);
@@ -683,7 +683,7 @@ class ObxSegment extends AbstractSegment
     {
         $this->datetimeOfTheAnalysis = $this
             ->dataTypeFactory
-            ->create('TS', $this->characterEncoding)
+            ->create('TS', $this->encodingParameters)
         ;
         $this->datetimeOfTheAnalysis->setTime($time);
         $this->datetimeOfTheAnalysis->setDegreeOfPrecision($degreeOfPrecision);
@@ -723,7 +723,7 @@ class ObxSegment extends AbstractSegment
     ) {
         $this->performingOrganizationName = $this
             ->dataTypeFactory
-            ->create('XON', $this->characterEncoding)
+            ->create('XON', $this->encodingParameters)
         ;
         $this->performingOrganizationName->setOrganisationName($organisationName);
         $this->performingOrganizationName->setOrganisationNameTypeCode($organisationNameTypeCode);
@@ -793,7 +793,7 @@ class ObxSegment extends AbstractSegment
     ) {
         $this->performingOrganizationAddress = $this
             ->dataTypeFactory
-            ->create('XAD', $this->characterEncoding)
+            ->create('XAD', $this->encodingParameters)
         ;
         $this->performingOrganizationAddress->setStreetAddress(
             $streetAddressStreetOrMailingAddress,
@@ -950,7 +950,7 @@ class ObxSegment extends AbstractSegment
     ) {
         $this->performingOrganizationMedicalDirector = $this
             ->dataTypeFactory
-            ->create('XCN', $this->characterEncoding)
+            ->create('XCN', $this->encodingParameters)
         ;
         $this->performingOrganizationMedicalDirector->setIdNumber($idNumber);
         $this->performingOrganizationMedicalDirector->setFamilyName(

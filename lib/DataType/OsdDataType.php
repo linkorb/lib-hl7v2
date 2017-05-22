@@ -61,7 +61,7 @@ class OsdDataType extends ComponentDataType
     {
         $this->sequenceResultsFlag = $this
             ->dataTypeFactory
-            ->create('ID', $this->characterEncoding)
+            ->create('ID', $this->encodingParameters)
         ;
         $this->sequenceResultsFlag->setValue($sequenceResultsFlag);
     }
@@ -73,7 +73,7 @@ class OsdDataType extends ComponentDataType
     {
         $this->placerOrderNumberEntityIdentifier = $this
             ->dataTypeFactory
-            ->create('ST', $this->characterEncoding)
+            ->create('ST', $this->encodingParameters)
         ;
         $this->placerOrderNumberEntityIdentifier->setValue($placerOrderNumberEntityIdentifier);
     }
@@ -85,7 +85,7 @@ class OsdDataType extends ComponentDataType
     {
         $this->placerOrderNumberNamespaceId = $this
             ->dataTypeFactory
-            ->create('IS', $this->characterEncoding)
+            ->create('IS', $this->encodingParameters)
         ;
         $this->placerOrderNumberNamespaceId->setValue($placerOrderNumberNamespaceId);
     }
@@ -97,7 +97,7 @@ class OsdDataType extends ComponentDataType
     {
         $this->fillerOrderNumberEntityIdentifier = $this
             ->dataTypeFactory
-            ->create('ST', $this->characterEncoding)
+            ->create('ST', $this->encodingParameters)
         ;
         $this->fillerOrderNumberEntityIdentifier->setValue($fillerOrderNumberEntityIdentifier);
     }
@@ -109,7 +109,7 @@ class OsdDataType extends ComponentDataType
     {
         $this->fillerOrderNumberNamespaceId = $this
             ->dataTypeFactory
-            ->create('IS', $this->characterEncoding)
+            ->create('IS', $this->encodingParameters)
         ;
         $this->fillerOrderNumberNamespaceId->setValue($fillerOrderNumberNamespaceId);
     }
@@ -121,7 +121,7 @@ class OsdDataType extends ComponentDataType
     {
         $this->sequenceConditionValue = $this
             ->dataTypeFactory
-            ->create('ST', $this->characterEncoding)
+            ->create('ST', $this->encodingParameters)
         ;
         $this->sequenceConditionValue->setValue($sequenceConditionValue);
     }
@@ -133,7 +133,7 @@ class OsdDataType extends ComponentDataType
     {
         $this->maximumNumberOfRepeats = $this
             ->dataTypeFactory
-            ->create('NM', $this->characterEncoding)
+            ->create('NM', $this->encodingParameters)
         ;
         $this->maximumNumberOfRepeats->setValue($maximumNumberOfRepeats);
     }
@@ -145,7 +145,7 @@ class OsdDataType extends ComponentDataType
     {
         $this->placerOrderNumberUniversalId = $this
             ->dataTypeFactory
-            ->create('ST', $this->characterEncoding)
+            ->create('ST', $this->encodingParameters)
         ;
         $this->placerOrderNumberUniversalId->setValue($placerOrderNumberUniversalId);
     }
@@ -157,7 +157,7 @@ class OsdDataType extends ComponentDataType
     {
         $this->placerOrderNumberUniversalIdType = $this
             ->dataTypeFactory
-            ->create('ID', $this->characterEncoding)
+            ->create('ID', $this->encodingParameters)
         ;
         $this->placerOrderNumberUniversalIdType->setValue($placerOrderNumberUniversalIdType);
     }
@@ -169,7 +169,7 @@ class OsdDataType extends ComponentDataType
     {
         $this->fillerOrderNumberUniversalId = $this
             ->dataTypeFactory
-            ->create('ST', $this->characterEncoding)
+            ->create('ST', $this->encodingParameters)
         ;
         $this->fillerOrderNumberUniversalId->setValue($fillerOrderNumberUniversalId);
     }
@@ -181,7 +181,7 @@ class OsdDataType extends ComponentDataType
     {
         $this->fillerOrderNumberUniversalIdType = $this
             ->dataTypeFactory
-            ->create('ID', $this->characterEncoding)
+            ->create('ID', $this->encodingParameters)
         ;
         $this->fillerOrderNumberUniversalIdType->setValue($fillerOrderNumberUniversalIdType);
     }

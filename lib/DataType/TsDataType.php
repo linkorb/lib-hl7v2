@@ -25,7 +25,7 @@ class TsDataType extends ComponentDataType
     {
         $this->time = $this
             ->dataTypeFactory
-            ->create('DTM', $this->characterEncoding)
+            ->create('DTM', $this->encodingParameters)
         ;
         $this->time->setValue($time);
     }
@@ -37,7 +37,7 @@ class TsDataType extends ComponentDataType
     {
         $this->degreeOfPrecision = $this
             ->dataTypeFactory
-            ->create('ID', $this->characterEncoding)
+            ->create('ID', $this->encodingParameters)
         ;
         $this->degreeOfPrecision->setValue($degreeOfPrecision);
     }
