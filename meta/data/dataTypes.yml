@@ -290,6 +290,57 @@ EIP:
           type: EI
           len: 427
 
+ELD:
+    name: Error Location And Description
+    len: 493
+    components:
+        -
+          name: SegmentId
+          type: ST
+          len: 3
+        -
+          name: SegmentSequence
+          type: NM
+          len: 2
+        -
+          name: FieldPosition
+          type: NM
+          len: 2
+        -
+          name: CodeIdentifyingError
+          type: CE
+          len: 483
+
+ERL:
+    name: Error Location
+    len: 18
+    components:
+        -
+          name: SegmentId
+          required: true
+          type: ST
+          len: 3
+        -
+          name: SegmentSequence
+          required: true
+          type: NM
+          len: 2
+        -
+          name: FieldPosition
+          type: NM
+          len: 2
+        -
+          name: FieldRepetition
+          type: NM
+          len: 2
+        -
+          name: ComponentNumber
+          type: NM
+          len: 2
+        -
+          name: SubcomponentNumber
+          type: NM
+          len: 2
 FC:
     name: Financial Class
     len: 47

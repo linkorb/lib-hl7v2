@@ -2,9 +2,9 @@
 
 namespace Hl7v2\Factory;
 
+use Hl7v2\Exception\MessageError;
 use Hl7v2\Factory\SegmentGroupFactory;
 use Hl7v2\Segment\MshSegment;
-use Hl7v2\Exception\MessageError;
 
 class MessageFactory
 {
@@ -19,12 +19,18 @@ class MessageFactory
         $this->segmentGroupFactory = $segmentGroupFactory;
     }
 
+    /**
+     * @param \Hl7v2\Segment\MshSegment $messageHeader
+     * @return \Hl7v2\Message\MessageInterface
+     */
     public function create(MshSegment $messageHeader)
     {
         $messageClass = $this->determineClassname(
             $messageHeader->getFieldMessageType()->getMessageCode()->getValue()
         );
-        return new $messageClass($this->segmentFactory, $this->segmentGroupFactory);
+        $message = new $messageClass($this->segmentFactory, $this->segmentGroupFactory);
+        $message->setMessageHeader($messageHeader);
+        return $message;
     }
 
     private function determineClassname($typeName)
