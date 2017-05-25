@@ -2,7 +2,7 @@
 
 namespace Hl7v2\Factory;
 
-use Hl7v2\Exception\MessageError;
+use Hl7v2\Exception\CapabilityError;
 use Hl7v2\Factory\SegmentGroupFactory;
 use Hl7v2\Segment\MshSegment;
 
@@ -22,6 +22,8 @@ class MessageFactory
     /**
      * @param \Hl7v2\Segment\MshSegment $messageHeader
      * @return \Hl7v2\Message\MessageInterface
+     *
+     * @throws \Hl7v2\Exception\CapabilityError;
      */
     public function create(MshSegment $messageHeader)
     {
@@ -38,7 +40,7 @@ class MessageFactory
         $name = ucfirst(strtolower($typeName));
         $class = "\\Hl7v2\\Message\\{$name}Message";
         if (!class_exists($class)) {
-            throw new MessageError("Unknown Message Type \"{$typeName}\".");
+            throw new CapabilityError("Unable to create a message of type \"{$typeName}\".");
         }
         return $class;
     }
