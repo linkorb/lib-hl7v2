@@ -25,7 +25,7 @@ class MoDataType extends ComponentDataType
     {
         $this->quantity = $this
             ->dataTypeFactory
-            ->create('NM', $this->characterEncoding)
+            ->create('NM', $this->encodingParameters)
         ;
         $this->quantity->setValue($quantity);
     }
@@ -37,7 +37,7 @@ class MoDataType extends ComponentDataType
     {
         $this->denomination = $this
             ->dataTypeFactory
-            ->create('ID', $this->characterEncoding)
+            ->create('ID', $this->encodingParameters)
         ;
         $this->denomination->setValue($denomination);
     }
@@ -56,5 +56,35 @@ class MoDataType extends ComponentDataType
     public function getDenomination()
     {
         return $this->denomination;
+    }
+
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+        $s = '';
+
+        $sep = $this->isSubcomponent
+            ? $this->encodingParameters->getSubcomponentSep()
+            : $this->encodingParameters->getComponentSep()
+        ;
+
+        if ($this->getQuantity() && $this->getQuantity()->hasValue()) {
+            $s .= (string) $this->getQuantity()->getValue();
+        }
+
+        $emptyComponentsSinceLastComponent = 0;
+
+        if (!$this->getDenomination() || !$this->getDenomination()->hasValue()) {
+            ++$emptyComponentsSinceLastComponent;
+        } else {
+            $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
+                . (string) $this->getDenomination()->getValue();
+            ;
+            $emptyComponentsSinceLastComponent = 0;
+        }
+
+        return $s;
     }
 }

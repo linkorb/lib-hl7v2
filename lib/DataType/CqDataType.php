@@ -25,7 +25,7 @@ class CqDataType extends ComponentDataType
     {
         $this->quantity = $this
             ->dataTypeFactory
-            ->create('NM', $this->characterEncoding)
+            ->create('NM', $this->encodingParameters)
         ;
         $this->quantity->setValue($quantity);
     }
@@ -48,7 +48,7 @@ class CqDataType extends ComponentDataType
     ) {
         $this->units = $this
             ->dataTypeFactory
-            ->create('CE', $this->characterEncoding)
+            ->create('CE', $this->encodingParameters, true)
         ;
         $this->units->setIdentifier($unitsIdentifier);
         $this->units->setText($unitsText);
@@ -72,5 +72,40 @@ class CqDataType extends ComponentDataType
     public function getUnits()
     {
         return $this->units;
+    }
+
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+        $s = '';
+
+        $sep = $this->isSubcomponent
+            ? $this->encodingParameters->getSubcomponentSep()
+            : $this->encodingParameters->getComponentSep()
+        ;
+
+        if ($this->getQuantity() && $this->getQuantity()->hasValue()) {
+            $s .= (string) $this->getQuantity()->getValue();
+        }
+
+        $emptyComponentsSinceLastComponent = 0;
+
+        if (!$this->getUnits()) {
+            ++$emptyComponentsSinceLastComponent;
+        } else {
+            $value = (string) $this->getUnits();
+            if ($value === '') {
+                ++$emptyComponentsSinceLastComponent;
+            } else {
+                $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
+                    . $value
+                ;
+                $emptyComponentsSinceLastComponent = 0;
+            }
+        }
+
+        return $s;
     }
 }

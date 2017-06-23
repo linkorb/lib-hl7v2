@@ -110,7 +110,7 @@ class ObxSegment extends AbstractSegment
     {
         $this->setId = $this
             ->dataTypeFactory
-            ->create('SI', $this->characterEncoding)
+            ->create('SI', $this->encodingParameters)
         ;
         $this->setId->setValue($value);
     }
@@ -122,7 +122,7 @@ class ObxSegment extends AbstractSegment
     {
         $this->valueType = $this
             ->dataTypeFactory
-            ->create('ID', $this->characterEncoding)
+            ->create('ID', $this->encodingParameters)
         ;
         $this->valueType->setValue($value);
     }
@@ -145,7 +145,7 @@ class ObxSegment extends AbstractSegment
     ) {
         $this->observationIdentifier = $this
             ->dataTypeFactory
-            ->create('CE', $this->characterEncoding)
+            ->create('CE', $this->encodingParameters)
         ;
         $this->observationIdentifier->setIdentifier($identifier);
         $this->observationIdentifier->setText($text);
@@ -162,7 +162,7 @@ class ObxSegment extends AbstractSegment
     {
         $this->observationSubid = $this
             ->dataTypeFactory
-            ->create('ST', $this->characterEncoding)
+            ->create('ST', $this->encodingParameters)
         ;
         $this->observationSubid->setValue($value);
     }
@@ -177,9 +177,9 @@ class ObxSegment extends AbstractSegment
      * @param string $data
      */
     public function addFieldObservationValueAsED(
-        $sourceApplicationNamespaceId,
-        $sourceApplicationUniversalId,
-        $sourceApplicationUniversalIdType,
+        $sourceApplicationNamespaceId = null,
+        $sourceApplicationUniversalId = null,
+        $sourceApplicationUniversalIdType = null,
         $typeOfData,
         $dataSubtype = null,
         $encoding,
@@ -187,7 +187,7 @@ class ObxSegment extends AbstractSegment
     ) {
         $observationValue = $this
             ->dataTypeFactory
-            ->create('ED', $this->characterEncoding)
+            ->create('ED', $this->encodingParameters)
         ;
         $this->observationValue[] = $observationValue;
         $observationValue->setSourceApplication(
@@ -208,7 +208,7 @@ class ObxSegment extends AbstractSegment
     {
         $observationValue = $this
             ->dataTypeFactory
-            ->create('FT', $this->characterEncoding)
+            ->create('FT', $this->encodingParameters)
         ;
         $observationValue->setValue($value);
         $this->observationValue[] = $observationValue;
@@ -221,7 +221,7 @@ class ObxSegment extends AbstractSegment
     {
         $observationValue = $this
             ->dataTypeFactory
-            ->create('NM', $this->characterEncoding)
+            ->create('NM', $this->encodingParameters)
         ;
         $observationValue->setValue($value);
         $this->observationValue[] = $observationValue;
@@ -234,7 +234,7 @@ class ObxSegment extends AbstractSegment
     {
         $observationValue = $this
             ->dataTypeFactory
-            ->create('ST', $this->characterEncoding)
+            ->create('ST', $this->encodingParameters)
         ;
         $observationValue->setValue($value);
         $this->observationValue[] = $observationValue;
@@ -248,7 +248,7 @@ class ObxSegment extends AbstractSegment
     {
         $observationValue = $this
             ->dataTypeFactory
-            ->create('TS', $this->characterEncoding)
+            ->create('TS', $this->encodingParameters)
         ;
         $this->observationValue[] = $observationValue;
         $observationValue->setTime($time);
@@ -262,7 +262,7 @@ class ObxSegment extends AbstractSegment
     {
         $observationValue = $this
             ->dataTypeFactory
-            ->create('TX', $this->characterEncoding)
+            ->create('TX', $this->encodingParameters)
         ;
         $observationValue->setValue($value);
         $this->observationValue[] = $observationValue;
@@ -286,7 +286,7 @@ class ObxSegment extends AbstractSegment
     ) {
         $this->units = $this
             ->dataTypeFactory
-            ->create('CE', $this->characterEncoding)
+            ->create('CE', $this->encodingParameters)
         ;
         $this->units->setIdentifier($identifier);
         $this->units->setText($text);
@@ -303,7 +303,7 @@ class ObxSegment extends AbstractSegment
     {
         $this->referencesRange = $this
             ->dataTypeFactory
-            ->create('ST', $this->characterEncoding)
+            ->create('ST', $this->encodingParameters)
         ;
         $this->referencesRange->setValue($value);
     }
@@ -315,7 +315,7 @@ class ObxSegment extends AbstractSegment
     {
         $abnormalFlags = $this
             ->dataTypeFactory
-            ->create('IS', $this->characterEncoding)
+            ->create('IS', $this->encodingParameters)
         ;
         $abnormalFlags->setValue($value);
         $this->abnormalFlags[] = $abnormalFlags;
@@ -328,7 +328,7 @@ class ObxSegment extends AbstractSegment
     {
         $this->probability = $this
             ->dataTypeFactory
-            ->create('NM', $this->characterEncoding)
+            ->create('NM', $this->encodingParameters)
         ;
         $this->probability->setValue($value);
     }
@@ -340,7 +340,7 @@ class ObxSegment extends AbstractSegment
     {
         $natureOfAbnormalTest = $this
             ->dataTypeFactory
-            ->create('ID', $this->characterEncoding)
+            ->create('ID', $this->encodingParameters)
         ;
         $natureOfAbnormalTest->setValue($value);
         $this->natureOfAbnormalTest[] = $natureOfAbnormalTest;
@@ -353,7 +353,7 @@ class ObxSegment extends AbstractSegment
     {
         $this->observationResultStatus = $this
             ->dataTypeFactory
-            ->create('ID', $this->characterEncoding)
+            ->create('ID', $this->encodingParameters)
         ;
         $this->observationResultStatus->setValue($value);
     }
@@ -366,7 +366,7 @@ class ObxSegment extends AbstractSegment
     {
         $this->effectiveDateOfReferenceRangeValues = $this
             ->dataTypeFactory
-            ->create('TS', $this->characterEncoding)
+            ->create('TS', $this->encodingParameters)
         ;
         $this->effectiveDateOfReferenceRangeValues->setTime($time);
         $this->effectiveDateOfReferenceRangeValues->setDegreeOfPrecision($degreeOfPrecision);
@@ -379,7 +379,7 @@ class ObxSegment extends AbstractSegment
     {
         $this->userDefinedAccessChecks = $this
             ->dataTypeFactory
-            ->create('ST', $this->characterEncoding)
+            ->create('ST', $this->encodingParameters)
         ;
         $this->userDefinedAccessChecks->setValue($value);
     }
@@ -392,7 +392,7 @@ class ObxSegment extends AbstractSegment
     {
         $this->datetimeOfTheObservation = $this
             ->dataTypeFactory
-            ->create('TS', $this->characterEncoding)
+            ->create('TS', $this->encodingParameters)
         ;
         $this->datetimeOfTheObservation->setTime($time);
         $this->datetimeOfTheObservation->setDegreeOfPrecision($degreeOfPrecision);
@@ -416,7 +416,7 @@ class ObxSegment extends AbstractSegment
     ) {
         $this->producersReference = $this
             ->dataTypeFactory
-            ->create('CE', $this->characterEncoding)
+            ->create('CE', $this->encodingParameters)
         ;
         $this->producersReference->setIdentifier($identifier);
         $this->producersReference->setText($text);
@@ -498,16 +498,16 @@ class ObxSegment extends AbstractSegment
         $prefix = null,
         $degree = null,
         $sourceTable = null,
-        $assigningAuthorityNamespaceId,
-        $assigningAuthorityUniversalId,
-        $assigningAuthorityUniversalIdType,
+        $assigningAuthorityNamespaceId = null,
+        $assigningAuthorityUniversalId = null,
+        $assigningAuthorityUniversalIdType = null,
         $nameTypeCode = null,
         $identifierCheckDigit = null,
         $checkDigitScheme = null,
         $identifierTypeCode = null,
-        $assigningFacilityNamespaceId,
-        $assigningFacilityUniversalId,
-        $assigningFacilityUniversalIdType,
+        $assigningFacilityNamespaceId = null,
+        $assigningFacilityUniversalId = null,
+        $assigningFacilityUniversalIdType = null,
         $nameRepresentationCode = null,
         $nameContextIdentifier = null,
         $nameContextText = null,
@@ -546,7 +546,7 @@ class ObxSegment extends AbstractSegment
     ) {
         $responsibleObserver = $this
             ->dataTypeFactory
-            ->create('XCN', $this->characterEncoding)
+            ->create('XCN', $this->encodingParameters)
         ;
         $this->responsibleObserver[] = $responsibleObserver;
         $responsibleObserver->setIdNumber($idNumber);
@@ -641,7 +641,7 @@ class ObxSegment extends AbstractSegment
     ) {
         $observationMethod = $this
             ->dataTypeFactory
-            ->create('CE', $this->characterEncoding)
+            ->create('CE', $this->encodingParameters)
         ;
         $this->observationMethod[] = $observationMethod;
         $observationMethod->setIdentifier($identifier);
@@ -666,7 +666,7 @@ class ObxSegment extends AbstractSegment
     ) {
         $equipmentInstanceIdentifier = $this
             ->dataTypeFactory
-            ->create('EI', $this->characterEncoding)
+            ->create('EI', $this->encodingParameters)
         ;
         $this->equipmentInstanceIdentifier[] = $equipmentInstanceIdentifier;
         $equipmentInstanceIdentifier->setEntityIdentifier($entityIdentifier);
@@ -683,7 +683,7 @@ class ObxSegment extends AbstractSegment
     {
         $this->datetimeOfTheAnalysis = $this
             ->dataTypeFactory
-            ->create('TS', $this->characterEncoding)
+            ->create('TS', $this->encodingParameters)
         ;
         $this->datetimeOfTheAnalysis->setTime($time);
         $this->datetimeOfTheAnalysis->setDegreeOfPrecision($degreeOfPrecision);
@@ -711,19 +711,19 @@ class ObxSegment extends AbstractSegment
         $idNumber = null,
         $checkDigit = null,
         $checkDigitScheme = null,
-        $assigningAuthorityNamespaceId,
-        $assigningAuthorityUniversalId,
-        $assigningAuthorityUniversalIdType,
+        $assigningAuthorityNamespaceId = null,
+        $assigningAuthorityUniversalId = null,
+        $assigningAuthorityUniversalIdType = null,
         $identifierTypeCode = null,
-        $assigningFacilityNamespaceId,
-        $assigningFacilityUniversalId,
-        $assigningFacilityUniversalIdType,
+        $assigningFacilityNamespaceId = null,
+        $assigningFacilityUniversalId = null,
+        $assigningFacilityUniversalIdType = null,
         $nameRepresentationCode = null,
         $organisationIdentifier = null
     ) {
         $this->performingOrganizationName = $this
             ->dataTypeFactory
-            ->create('XON', $this->characterEncoding)
+            ->create('XON', $this->encodingParameters)
         ;
         $this->performingOrganizationName->setOrganisationName($organisationName);
         $this->performingOrganizationName->setOrganisationNameTypeCode($organisationNameTypeCode);
@@ -793,7 +793,7 @@ class ObxSegment extends AbstractSegment
     ) {
         $this->performingOrganizationAddress = $this
             ->dataTypeFactory
-            ->create('XAD', $this->characterEncoding)
+            ->create('XAD', $this->encodingParameters)
         ;
         $this->performingOrganizationAddress->setStreetAddress(
             $streetAddressStreetOrMailingAddress,
@@ -902,16 +902,16 @@ class ObxSegment extends AbstractSegment
         $prefix = null,
         $degree = null,
         $sourceTable = null,
-        $assigningAuthorityNamespaceId,
-        $assigningAuthorityUniversalId,
-        $assigningAuthorityUniversalIdType,
+        $assigningAuthorityNamespaceId = null,
+        $assigningAuthorityUniversalId = null,
+        $assigningAuthorityUniversalIdType = null,
         $nameTypeCode = null,
         $identifierCheckDigit = null,
         $checkDigitScheme = null,
         $identifierTypeCode = null,
-        $assigningFacilityNamespaceId,
-        $assigningFacilityUniversalId,
-        $assigningFacilityUniversalIdType,
+        $assigningFacilityNamespaceId = null,
+        $assigningFacilityUniversalId = null,
+        $assigningFacilityUniversalIdType = null,
         $nameRepresentationCode = null,
         $nameContextIdentifier = null,
         $nameContextText = null,
@@ -950,7 +950,7 @@ class ObxSegment extends AbstractSegment
     ) {
         $this->performingOrganizationMedicalDirector = $this
             ->dataTypeFactory
-            ->create('XCN', $this->characterEncoding)
+            ->create('XCN', $this->encodingParameters)
         ;
         $this->performingOrganizationMedicalDirector->setIdNumber($idNumber);
         $this->performingOrganizationMedicalDirector->setFamilyName(
@@ -2005,5 +2005,368 @@ class ObxSegment extends AbstractSegment
             $assigningAgencyAltCodingSystemVersionId,
             $assigningAgencyOriginalText
         );
+    }
+
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+        $s = 'OBX';
+        $emptyFieldsSinceLastField = 0;
+
+        if (!$this->getFieldSetId() || !$this->getFieldSetId()->hasValue()) {
+            ++$emptyFieldsSinceLastField;
+        } else {
+            $s .= str_repeat(
+                $this->encodingParameters->getFieldSep(),
+                1 + $emptyFieldsSinceLastField
+            ) . (string) $this->getFieldSetId()->getValue();
+            $emptyFieldsSinceLastField = 0;
+        }
+
+        if (!$this->getFieldValueType() || !$this->getFieldValueType()->hasValue()) {
+            ++$emptyFieldsSinceLastField;
+        } else {
+            $s .= str_repeat(
+                $this->encodingParameters->getFieldSep(),
+                1 + $emptyFieldsSinceLastField
+            ) . (string) $this->getFieldValueType()->getValue();
+            $emptyFieldsSinceLastField = 0;
+        }
+
+        if (!$this->getFieldObservationIdentifier()) {
+            ++$emptyFieldsSinceLastField;
+        } else {
+            $value = (string) $this->getFieldObservationIdentifier();
+            if ($value === '') {
+                ++$emptyFieldsSinceLastField;
+            } else {
+                $s .= str_repeat(
+                    $this->encodingParameters->getFieldSep(),
+                    1 + $emptyFieldsSinceLastField
+                ) . $value;
+                $emptyFieldsSinceLastField = 0;
+            }
+        }
+
+        if (!$this->getFieldObservationSubid() || !$this->getFieldObservationSubid()->hasValue()) {
+            ++$emptyFieldsSinceLastField;
+        } else {
+            $s .= str_repeat(
+                $this->encodingParameters->getFieldSep(),
+                1 + $emptyFieldsSinceLastField
+            ) . (string) $this->getFieldObservationSubid()->getValue();
+            $emptyFieldsSinceLastField = 0;
+        }
+
+        if (empty($this->getFieldObservationValue())) {
+            ++$emptyFieldsSinceLastField;
+        } else {
+            $nonEmptyReps = 0;
+            foreach ($this->getFieldObservationValue() as $repetition) {
+                if (!$repetition->hasValue()) {
+                    continue;
+                }
+                if ($nonEmptyReps == 0) {
+                    $s .= str_repeat(
+                        $this->encodingParameters->getFieldSep(),
+                        1 + $emptyFieldsSinceLastField
+                    ) . (string) $repetition->getValue();
+                    $emptyFieldsSinceLastField = 0;
+                } else {
+                    $s .= $this->encodingParameters->getRepetitionSep()
+                        . (string) $repetition->getValue()
+                    ;
+                }
+                ++$nonEmptyReps;
+            }
+        }
+
+        if (!$this->getFieldUnits()) {
+            ++$emptyFieldsSinceLastField;
+        } else {
+            $value = (string) $this->getFieldUnits();
+            if ($value === '') {
+                ++$emptyFieldsSinceLastField;
+            } else {
+                $s .= str_repeat(
+                    $this->encodingParameters->getFieldSep(),
+                    1 + $emptyFieldsSinceLastField
+                ) . $value;
+                $emptyFieldsSinceLastField = 0;
+            }
+        }
+
+        if (!$this->getFieldReferencesRange() || !$this->getFieldReferencesRange()->hasValue()) {
+            ++$emptyFieldsSinceLastField;
+        } else {
+            $s .= str_repeat(
+                $this->encodingParameters->getFieldSep(),
+                1 + $emptyFieldsSinceLastField
+            ) . (string) $this->getFieldReferencesRange()->getValue();
+            $emptyFieldsSinceLastField = 0;
+        }
+
+        if (empty($this->getFieldAbnormalFlags())) {
+            ++$emptyFieldsSinceLastField;
+        } else {
+            $nonEmptyReps = 0;
+            foreach ($this->getFieldAbnormalFlags() as $repetition) {
+                if (!$repetition->hasValue()) {
+                    continue;
+                }
+                if ($nonEmptyReps == 0) {
+                    $s .= str_repeat(
+                        $this->encodingParameters->getFieldSep(),
+                        1 + $emptyFieldsSinceLastField
+                    ) . (string) $repetition->getValue();
+                    $emptyFieldsSinceLastField = 0;
+                } else {
+                    $s .= $this->encodingParameters->getRepetitionSep()
+                        . (string) $repetition->getValue()
+                    ;
+                }
+                ++$nonEmptyReps;
+            }
+        }
+
+        if (!$this->getFieldProbability() || !$this->getFieldProbability()->hasValue()) {
+            ++$emptyFieldsSinceLastField;
+        } else {
+            $s .= str_repeat(
+                $this->encodingParameters->getFieldSep(),
+                1 + $emptyFieldsSinceLastField
+            ) . (string) $this->getFieldProbability()->getValue();
+            $emptyFieldsSinceLastField = 0;
+        }
+
+        if (empty($this->getFieldNatureOfAbnormalTest())) {
+            ++$emptyFieldsSinceLastField;
+        } else {
+            $nonEmptyReps = 0;
+            foreach ($this->getFieldNatureOfAbnormalTest() as $repetition) {
+                if (!$repetition->hasValue()) {
+                    continue;
+                }
+                if ($nonEmptyReps == 0) {
+                    $s .= str_repeat(
+                        $this->encodingParameters->getFieldSep(),
+                        1 + $emptyFieldsSinceLastField
+                    ) . (string) $repetition->getValue();
+                    $emptyFieldsSinceLastField = 0;
+                } else {
+                    $s .= $this->encodingParameters->getRepetitionSep()
+                        . (string) $repetition->getValue()
+                    ;
+                }
+                ++$nonEmptyReps;
+            }
+        }
+
+        if (!$this->getFieldObservationResultStatus() || !$this->getFieldObservationResultStatus()->hasValue()) {
+            ++$emptyFieldsSinceLastField;
+        } else {
+            $s .= str_repeat(
+                $this->encodingParameters->getFieldSep(),
+                1 + $emptyFieldsSinceLastField
+            ) . (string) $this->getFieldObservationResultStatus()->getValue();
+            $emptyFieldsSinceLastField = 0;
+        }
+
+        if (!$this->getFieldEffectiveDateOfReferenceRangeValues()) {
+            ++$emptyFieldsSinceLastField;
+        } else {
+            $value = (string) $this->getFieldEffectiveDateOfReferenceRangeValues();
+            if ($value === '') {
+                ++$emptyFieldsSinceLastField;
+            } else {
+                $s .= str_repeat(
+                    $this->encodingParameters->getFieldSep(),
+                    1 + $emptyFieldsSinceLastField
+                ) . $value;
+                $emptyFieldsSinceLastField = 0;
+            }
+        }
+
+        if (!$this->getFieldUserDefinedAccessChecks() || !$this->getFieldUserDefinedAccessChecks()->hasValue()) {
+            ++$emptyFieldsSinceLastField;
+        } else {
+            $s .= str_repeat(
+                $this->encodingParameters->getFieldSep(),
+                1 + $emptyFieldsSinceLastField
+            ) . (string) $this->getFieldUserDefinedAccessChecks()->getValue();
+            $emptyFieldsSinceLastField = 0;
+        }
+
+        if (!$this->getFieldDatetimeOfTheObservation()) {
+            ++$emptyFieldsSinceLastField;
+        } else {
+            $value = (string) $this->getFieldDatetimeOfTheObservation();
+            if ($value === '') {
+                ++$emptyFieldsSinceLastField;
+            } else {
+                $s .= str_repeat(
+                    $this->encodingParameters->getFieldSep(),
+                    1 + $emptyFieldsSinceLastField
+                ) . $value;
+                $emptyFieldsSinceLastField = 0;
+            }
+        }
+
+        if (!$this->getFieldProducersReference()) {
+            ++$emptyFieldsSinceLastField;
+        } else {
+            $value = (string) $this->getFieldProducersReference();
+            if ($value === '') {
+                ++$emptyFieldsSinceLastField;
+            } else {
+                $s .= str_repeat(
+                    $this->encodingParameters->getFieldSep(),
+                    1 + $emptyFieldsSinceLastField
+                ) . $value;
+                $emptyFieldsSinceLastField = 0;
+            }
+        }
+
+        if (empty($this->getFieldResponsibleObserver())) {
+            ++$emptyFieldsSinceLastField;
+        } else {
+            $nonEmptyReps = 0;
+            foreach ($this->getFieldResponsibleObserver() as $repetition) {
+                $value = (string) $repetition;
+                if ($value === '') {
+                    continue;
+                }
+                if ($nonEmptyReps == 0) {
+                    $s .= str_repeat(
+                        $this->encodingParameters->getFieldSep(),
+                        1 + $emptyFieldsSinceLastField
+                    ) . $value;
+                    $emptyFieldsSinceLastField = 0;
+                } else {
+                    $s .= $this->encodingParameters->getRepetitionSep()
+                       . (string) $value
+                    ;
+                }
+                ++$nonEmptyReps;
+            }
+        }
+
+        if (empty($this->getFieldObservationMethod())) {
+            ++$emptyFieldsSinceLastField;
+        } else {
+            $nonEmptyReps = 0;
+            foreach ($this->getFieldObservationMethod() as $repetition) {
+                $value = (string) $repetition;
+                if ($value === '') {
+                    continue;
+                }
+                if ($nonEmptyReps == 0) {
+                    $s .= str_repeat(
+                        $this->encodingParameters->getFieldSep(),
+                        1 + $emptyFieldsSinceLastField
+                    ) . $value;
+                    $emptyFieldsSinceLastField = 0;
+                } else {
+                    $s .= $this->encodingParameters->getRepetitionSep()
+                       . (string) $value
+                    ;
+                }
+                ++$nonEmptyReps;
+            }
+        }
+
+        if (empty($this->getFieldEquipmentInstanceIdentifier())) {
+            ++$emptyFieldsSinceLastField;
+        } else {
+            $nonEmptyReps = 0;
+            foreach ($this->getFieldEquipmentInstanceIdentifier() as $repetition) {
+                $value = (string) $repetition;
+                if ($value === '') {
+                    continue;
+                }
+                if ($nonEmptyReps == 0) {
+                    $s .= str_repeat(
+                        $this->encodingParameters->getFieldSep(),
+                        1 + $emptyFieldsSinceLastField
+                    ) . $value;
+                    $emptyFieldsSinceLastField = 0;
+                } else {
+                    $s .= $this->encodingParameters->getRepetitionSep()
+                       . (string) $value
+                    ;
+                }
+                ++$nonEmptyReps;
+            }
+        }
+
+        if (!$this->getFieldDatetimeOfTheAnalysis()) {
+            ++$emptyFieldsSinceLastField;
+        } else {
+            $value = (string) $this->getFieldDatetimeOfTheAnalysis();
+            if ($value === '') {
+                ++$emptyFieldsSinceLastField;
+            } else {
+                $s .= str_repeat(
+                    $this->encodingParameters->getFieldSep(),
+                    1 + $emptyFieldsSinceLastField
+                ) . $value;
+                $emptyFieldsSinceLastField = 0;
+            }
+        }
+
+        ++$emptyFieldsSinceLastField; // skip OBX.20
+
+        ++$emptyFieldsSinceLastField; // skip OBX.21
+
+        ++$emptyFieldsSinceLastField; // skip OBX.22
+
+        if (!$this->getFieldPerformingOrganizationName()) {
+            ++$emptyFieldsSinceLastField;
+        } else {
+            $value = (string) $this->getFieldPerformingOrganizationName();
+            if ($value === '') {
+                ++$emptyFieldsSinceLastField;
+            } else {
+                $s .= str_repeat(
+                    $this->encodingParameters->getFieldSep(),
+                    1 + $emptyFieldsSinceLastField
+                ) . $value;
+                $emptyFieldsSinceLastField = 0;
+            }
+        }
+
+        if (!$this->getFieldPerformingOrganizationAddress()) {
+            ++$emptyFieldsSinceLastField;
+        } else {
+            $value = (string) $this->getFieldPerformingOrganizationAddress();
+            if ($value === '') {
+                ++$emptyFieldsSinceLastField;
+            } else {
+                $s .= str_repeat(
+                    $this->encodingParameters->getFieldSep(),
+                    1 + $emptyFieldsSinceLastField
+                ) . $value;
+                $emptyFieldsSinceLastField = 0;
+            }
+        }
+
+        if (!$this->getFieldPerformingOrganizationMedicalDirector()) {
+            ++$emptyFieldsSinceLastField;
+        } else {
+            $value = (string) $this->getFieldPerformingOrganizationMedicalDirector();
+            if ($value === '') {
+                ++$emptyFieldsSinceLastField;
+            } else {
+                $s .= str_repeat(
+                    $this->encodingParameters->getFieldSep(),
+                    1 + $emptyFieldsSinceLastField
+                ) . $value;
+                $emptyFieldsSinceLastField = 0;
+            }
+        }
+
+        return $s;
     }
 }

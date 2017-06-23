@@ -37,7 +37,7 @@ class FnDataType extends ComponentDataType
     {
         $this->surname = $this
             ->dataTypeFactory
-            ->create('ST', $this->characterEncoding)
+            ->create('ST', $this->encodingParameters)
         ;
         $this->surname->setValue($surname);
     }
@@ -49,7 +49,7 @@ class FnDataType extends ComponentDataType
     {
         $this->ownSurnamePrefix = $this
             ->dataTypeFactory
-            ->create('ST', $this->characterEncoding)
+            ->create('ST', $this->encodingParameters)
         ;
         $this->ownSurnamePrefix->setValue($ownSurnamePrefix);
     }
@@ -61,7 +61,7 @@ class FnDataType extends ComponentDataType
     {
         $this->ownSurname = $this
             ->dataTypeFactory
-            ->create('ST', $this->characterEncoding)
+            ->create('ST', $this->encodingParameters)
         ;
         $this->ownSurname->setValue($ownSurname);
     }
@@ -73,7 +73,7 @@ class FnDataType extends ComponentDataType
     {
         $this->surnamePrefixFromPartner = $this
             ->dataTypeFactory
-            ->create('ST', $this->characterEncoding)
+            ->create('ST', $this->encodingParameters)
         ;
         $this->surnamePrefixFromPartner->setValue($surnamePrefixFromPartner);
     }
@@ -85,7 +85,7 @@ class FnDataType extends ComponentDataType
     {
         $this->surnameFromPartner = $this
             ->dataTypeFactory
-            ->create('ST', $this->characterEncoding)
+            ->create('ST', $this->encodingParameters)
         ;
         $this->surnameFromPartner->setValue($surnameFromPartner);
     }
@@ -128,5 +128,62 @@ class FnDataType extends ComponentDataType
     public function getSurnameFromPartner()
     {
         return $this->surnameFromPartner;
+    }
+
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+        $s = '';
+
+        $sep = $this->isSubcomponent
+            ? $this->encodingParameters->getSubcomponentSep()
+            : $this->encodingParameters->getComponentSep()
+        ;
+
+        if ($this->getSurname() && $this->getSurname()->hasValue()) {
+            $s .= (string) $this->getSurname()->getValue();
+        }
+
+        $emptyComponentsSinceLastComponent = 0;
+
+        if (!$this->getOwnSurnamePrefix() || !$this->getOwnSurnamePrefix()->hasValue()) {
+            ++$emptyComponentsSinceLastComponent;
+        } else {
+            $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
+                . (string) $this->getOwnSurnamePrefix()->getValue();
+            ;
+            $emptyComponentsSinceLastComponent = 0;
+        }
+
+        if (!$this->getOwnSurname() || !$this->getOwnSurname()->hasValue()) {
+            ++$emptyComponentsSinceLastComponent;
+        } else {
+            $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
+                . (string) $this->getOwnSurname()->getValue();
+            ;
+            $emptyComponentsSinceLastComponent = 0;
+        }
+
+        if (!$this->getSurnamePrefixFromPartner() || !$this->getSurnamePrefixFromPartner()->hasValue()) {
+            ++$emptyComponentsSinceLastComponent;
+        } else {
+            $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
+                . (string) $this->getSurnamePrefixFromPartner()->getValue();
+            ;
+            $emptyComponentsSinceLastComponent = 0;
+        }
+
+        if (!$this->getSurnameFromPartner() || !$this->getSurnameFromPartner()->hasValue()) {
+            ++$emptyComponentsSinceLastComponent;
+        } else {
+            $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
+                . (string) $this->getSurnameFromPartner()->getValue();
+            ;
+            $emptyComponentsSinceLastComponent = 0;
+        }
+
+        return $s;
     }
 }

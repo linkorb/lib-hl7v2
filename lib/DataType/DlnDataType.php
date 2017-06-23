@@ -29,7 +29,7 @@ class DlnDataType extends ComponentDataType
     {
         $this->licenseNumber = $this
             ->dataTypeFactory
-            ->create('ST', $this->characterEncoding)
+            ->create('ST', $this->encodingParameters)
         ;
         $this->licenseNumber->setValue($licenseNumber);
     }
@@ -41,7 +41,7 @@ class DlnDataType extends ComponentDataType
     {
         $this->issuingStateProvinceCountry = $this
             ->dataTypeFactory
-            ->create('IS', $this->characterEncoding)
+            ->create('IS', $this->encodingParameters)
         ;
         $this->issuingStateProvinceCountry->setValue($issuingStateProvinceCountry);
     }
@@ -53,7 +53,7 @@ class DlnDataType extends ComponentDataType
     {
         $this->expirationDate = $this
             ->dataTypeFactory
-            ->create('DT', $this->characterEncoding)
+            ->create('DT', $this->encodingParameters)
         ;
         $this->expirationDate->setValue($expirationDate);
     }
@@ -80,5 +80,44 @@ class DlnDataType extends ComponentDataType
     public function getExpirationDate()
     {
         return $this->expirationDate;
+    }
+
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+        $s = '';
+
+        $sep = $this->isSubcomponent
+            ? $this->encodingParameters->getSubcomponentSep()
+            : $this->encodingParameters->getComponentSep()
+        ;
+
+        if ($this->getLicenseNumber() && $this->getLicenseNumber()->hasValue()) {
+            $s .= (string) $this->getLicenseNumber()->getValue();
+        }
+
+        $emptyComponentsSinceLastComponent = 0;
+
+        if (!$this->getIssuingStateProvinceCountry() || !$this->getIssuingStateProvinceCountry()->hasValue()) {
+            ++$emptyComponentsSinceLastComponent;
+        } else {
+            $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
+                . (string) $this->getIssuingStateProvinceCountry()->getValue();
+            ;
+            $emptyComponentsSinceLastComponent = 0;
+        }
+
+        if (!$this->getExpirationDate() || !$this->getExpirationDate()->hasValue()) {
+            ++$emptyComponentsSinceLastComponent;
+        } else {
+            $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
+                . (string) $this->getExpirationDate()->getValue();
+            ;
+            $emptyComponentsSinceLastComponent = 0;
+        }
+
+        return $s;
     }
 }

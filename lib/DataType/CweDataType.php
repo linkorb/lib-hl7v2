@@ -53,7 +53,7 @@ class CweDataType extends ComponentDataType
     {
         $this->identifier = $this
             ->dataTypeFactory
-            ->create('ST', $this->characterEncoding)
+            ->create('ST', $this->encodingParameters)
         ;
         $this->identifier->setValue($identifier);
     }
@@ -65,7 +65,7 @@ class CweDataType extends ComponentDataType
     {
         $this->text = $this
             ->dataTypeFactory
-            ->create('ST', $this->characterEncoding)
+            ->create('ST', $this->encodingParameters)
         ;
         $this->text->setValue($text);
     }
@@ -77,7 +77,7 @@ class CweDataType extends ComponentDataType
     {
         $this->nameOfCodingSystem = $this
             ->dataTypeFactory
-            ->create('ID', $this->characterEncoding)
+            ->create('ID', $this->encodingParameters)
         ;
         $this->nameOfCodingSystem->setValue($nameOfCodingSystem);
     }
@@ -89,7 +89,7 @@ class CweDataType extends ComponentDataType
     {
         $this->altIdentifier = $this
             ->dataTypeFactory
-            ->create('ST', $this->characterEncoding)
+            ->create('ST', $this->encodingParameters)
         ;
         $this->altIdentifier->setValue($altIdentifier);
     }
@@ -101,7 +101,7 @@ class CweDataType extends ComponentDataType
     {
         $this->altText = $this
             ->dataTypeFactory
-            ->create('ST', $this->characterEncoding)
+            ->create('ST', $this->encodingParameters)
         ;
         $this->altText->setValue($altText);
     }
@@ -113,7 +113,7 @@ class CweDataType extends ComponentDataType
     {
         $this->nameOfAltCodingSystem = $this
             ->dataTypeFactory
-            ->create('ID', $this->characterEncoding)
+            ->create('ID', $this->encodingParameters)
         ;
         $this->nameOfAltCodingSystem->setValue($nameOfAltCodingSystem);
     }
@@ -125,7 +125,7 @@ class CweDataType extends ComponentDataType
     {
         $this->codingSystemVersionId = $this
             ->dataTypeFactory
-            ->create('ST', $this->characterEncoding)
+            ->create('ST', $this->encodingParameters)
         ;
         $this->codingSystemVersionId->setValue($codingSystemVersionId);
     }
@@ -137,7 +137,7 @@ class CweDataType extends ComponentDataType
     {
         $this->altCodingSystemVersionId = $this
             ->dataTypeFactory
-            ->create('ST', $this->characterEncoding)
+            ->create('ST', $this->encodingParameters)
         ;
         $this->altCodingSystemVersionId->setValue($altCodingSystemVersionId);
     }
@@ -149,7 +149,7 @@ class CweDataType extends ComponentDataType
     {
         $this->originalText = $this
             ->dataTypeFactory
-            ->create('ST', $this->characterEncoding)
+            ->create('ST', $this->encodingParameters)
         ;
         $this->originalText->setValue($originalText);
     }
@@ -224,5 +224,98 @@ class CweDataType extends ComponentDataType
     public function getOriginalText()
     {
         return $this->originalText;
+    }
+
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+        $s = '';
+
+        $sep = $this->isSubcomponent
+            ? $this->encodingParameters->getSubcomponentSep()
+            : $this->encodingParameters->getComponentSep()
+        ;
+
+        if ($this->getIdentifier() && $this->getIdentifier()->hasValue()) {
+            $s .= (string) $this->getIdentifier()->getValue();
+        }
+
+        $emptyComponentsSinceLastComponent = 0;
+
+        if (!$this->getText() || !$this->getText()->hasValue()) {
+            ++$emptyComponentsSinceLastComponent;
+        } else {
+            $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
+                . (string) $this->getText()->getValue();
+            ;
+            $emptyComponentsSinceLastComponent = 0;
+        }
+
+        if (!$this->getNameOfCodingSystem() || !$this->getNameOfCodingSystem()->hasValue()) {
+            ++$emptyComponentsSinceLastComponent;
+        } else {
+            $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
+                . (string) $this->getNameOfCodingSystem()->getValue();
+            ;
+            $emptyComponentsSinceLastComponent = 0;
+        }
+
+        if (!$this->getAltIdentifier() || !$this->getAltIdentifier()->hasValue()) {
+            ++$emptyComponentsSinceLastComponent;
+        } else {
+            $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
+                . (string) $this->getAltIdentifier()->getValue();
+            ;
+            $emptyComponentsSinceLastComponent = 0;
+        }
+
+        if (!$this->getAltText() || !$this->getAltText()->hasValue()) {
+            ++$emptyComponentsSinceLastComponent;
+        } else {
+            $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
+                . (string) $this->getAltText()->getValue();
+            ;
+            $emptyComponentsSinceLastComponent = 0;
+        }
+
+        if (!$this->getNameOfAltCodingSystem() || !$this->getNameOfAltCodingSystem()->hasValue()) {
+            ++$emptyComponentsSinceLastComponent;
+        } else {
+            $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
+                . (string) $this->getNameOfAltCodingSystem()->getValue();
+            ;
+            $emptyComponentsSinceLastComponent = 0;
+        }
+
+        if (!$this->getCodingSystemVersionId() || !$this->getCodingSystemVersionId()->hasValue()) {
+            ++$emptyComponentsSinceLastComponent;
+        } else {
+            $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
+                . (string) $this->getCodingSystemVersionId()->getValue();
+            ;
+            $emptyComponentsSinceLastComponent = 0;
+        }
+
+        if (!$this->getAltCodingSystemVersionId() || !$this->getAltCodingSystemVersionId()->hasValue()) {
+            ++$emptyComponentsSinceLastComponent;
+        } else {
+            $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
+                . (string) $this->getAltCodingSystemVersionId()->getValue();
+            ;
+            $emptyComponentsSinceLastComponent = 0;
+        }
+
+        if (!$this->getOriginalText() || !$this->getOriginalText()->hasValue()) {
+            ++$emptyComponentsSinceLastComponent;
+        } else {
+            $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
+                . (string) $this->getOriginalText()->getValue();
+            ;
+            $emptyComponentsSinceLastComponent = 0;
+        }
+
+        return $s;
     }
 }

@@ -65,7 +65,7 @@ class XtnDataType extends ComponentDataType
     {
         $this->telephoneNumber = $this
             ->dataTypeFactory
-            ->create('ST', $this->characterEncoding)
+            ->create('ST', $this->encodingParameters)
         ;
         $this->telephoneNumber->setValue($telephoneNumber);
     }
@@ -77,7 +77,7 @@ class XtnDataType extends ComponentDataType
     {
         $this->telecommunicationUseCode = $this
             ->dataTypeFactory
-            ->create('ID', $this->characterEncoding)
+            ->create('ID', $this->encodingParameters)
         ;
         $this->telecommunicationUseCode->setValue($telecommunicationUseCode);
     }
@@ -89,7 +89,7 @@ class XtnDataType extends ComponentDataType
     {
         $this->telepcommunicationEquipmentType = $this
             ->dataTypeFactory
-            ->create('ID', $this->characterEncoding)
+            ->create('ID', $this->encodingParameters)
         ;
         $this->telepcommunicationEquipmentType->setValue($telepcommunicationEquipmentType);
     }
@@ -101,7 +101,7 @@ class XtnDataType extends ComponentDataType
     {
         $this->emailAddress = $this
             ->dataTypeFactory
-            ->create('ST', $this->characterEncoding)
+            ->create('ST', $this->encodingParameters)
         ;
         $this->emailAddress->setValue($emailAddress);
     }
@@ -113,7 +113,7 @@ class XtnDataType extends ComponentDataType
     {
         $this->countryCode = $this
             ->dataTypeFactory
-            ->create('NM', $this->characterEncoding)
+            ->create('NM', $this->encodingParameters)
         ;
         $this->countryCode->setValue($countryCode);
     }
@@ -125,7 +125,7 @@ class XtnDataType extends ComponentDataType
     {
         $this->areaCityCode = $this
             ->dataTypeFactory
-            ->create('NM', $this->characterEncoding)
+            ->create('NM', $this->encodingParameters)
         ;
         $this->areaCityCode->setValue($areaCityCode);
     }
@@ -137,7 +137,7 @@ class XtnDataType extends ComponentDataType
     {
         $this->localNumber = $this
             ->dataTypeFactory
-            ->create('NM', $this->characterEncoding)
+            ->create('NM', $this->encodingParameters)
         ;
         $this->localNumber->setValue($localNumber);
     }
@@ -149,7 +149,7 @@ class XtnDataType extends ComponentDataType
     {
         $this->extension = $this
             ->dataTypeFactory
-            ->create('NM', $this->characterEncoding)
+            ->create('NM', $this->encodingParameters)
         ;
         $this->extension->setValue($extension);
     }
@@ -161,7 +161,7 @@ class XtnDataType extends ComponentDataType
     {
         $this->anyText = $this
             ->dataTypeFactory
-            ->create('ST', $this->characterEncoding)
+            ->create('ST', $this->encodingParameters)
         ;
         $this->anyText->setValue($anyText);
     }
@@ -173,7 +173,7 @@ class XtnDataType extends ComponentDataType
     {
         $this->extensionPrefix = $this
             ->dataTypeFactory
-            ->create('ST', $this->characterEncoding)
+            ->create('ST', $this->encodingParameters)
         ;
         $this->extensionPrefix->setValue($extensionPrefix);
     }
@@ -185,7 +185,7 @@ class XtnDataType extends ComponentDataType
     {
         $this->speedDialCode = $this
             ->dataTypeFactory
-            ->create('ST', $this->characterEncoding)
+            ->create('ST', $this->encodingParameters)
         ;
         $this->speedDialCode->setValue($speedDialCode);
     }
@@ -197,7 +197,7 @@ class XtnDataType extends ComponentDataType
     {
         $this->unformattedTelephoneNumber = $this
             ->dataTypeFactory
-            ->create('ST', $this->characterEncoding)
+            ->create('ST', $this->encodingParameters)
         ;
         $this->unformattedTelephoneNumber->setValue($unformattedTelephoneNumber);
     }
@@ -296,5 +296,125 @@ class XtnDataType extends ComponentDataType
     public function getUnformattedTelephoneNumber()
     {
         return $this->unformattedTelephoneNumber;
+    }
+
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+        $s = '';
+
+        $sep = $this->isSubcomponent
+            ? $this->encodingParameters->getSubcomponentSep()
+            : $this->encodingParameters->getComponentSep()
+        ;
+
+        if ($this->getTelephoneNumber() && $this->getTelephoneNumber()->hasValue()) {
+            $s .= (string) $this->getTelephoneNumber()->getValue();
+        }
+
+        $emptyComponentsSinceLastComponent = 0;
+
+        if (!$this->getTelecommunicationUseCode() || !$this->getTelecommunicationUseCode()->hasValue()) {
+            ++$emptyComponentsSinceLastComponent;
+        } else {
+            $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
+                . (string) $this->getTelecommunicationUseCode()->getValue();
+            ;
+            $emptyComponentsSinceLastComponent = 0;
+        }
+
+        if (!$this->getTelepcommunicationEquipmentType() || !$this->getTelepcommunicationEquipmentType()->hasValue()) {
+            ++$emptyComponentsSinceLastComponent;
+        } else {
+            $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
+                . (string) $this->getTelepcommunicationEquipmentType()->getValue();
+            ;
+            $emptyComponentsSinceLastComponent = 0;
+        }
+
+        if (!$this->getEmailAddress() || !$this->getEmailAddress()->hasValue()) {
+            ++$emptyComponentsSinceLastComponent;
+        } else {
+            $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
+                . (string) $this->getEmailAddress()->getValue();
+            ;
+            $emptyComponentsSinceLastComponent = 0;
+        }
+
+        if (!$this->getCountryCode() || !$this->getCountryCode()->hasValue()) {
+            ++$emptyComponentsSinceLastComponent;
+        } else {
+            $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
+                . (string) $this->getCountryCode()->getValue();
+            ;
+            $emptyComponentsSinceLastComponent = 0;
+        }
+
+        if (!$this->getAreaCityCode() || !$this->getAreaCityCode()->hasValue()) {
+            ++$emptyComponentsSinceLastComponent;
+        } else {
+            $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
+                . (string) $this->getAreaCityCode()->getValue();
+            ;
+            $emptyComponentsSinceLastComponent = 0;
+        }
+
+        if (!$this->getLocalNumber() || !$this->getLocalNumber()->hasValue()) {
+            ++$emptyComponentsSinceLastComponent;
+        } else {
+            $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
+                . (string) $this->getLocalNumber()->getValue();
+            ;
+            $emptyComponentsSinceLastComponent = 0;
+        }
+
+        if (!$this->getExtension() || !$this->getExtension()->hasValue()) {
+            ++$emptyComponentsSinceLastComponent;
+        } else {
+            $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
+                . (string) $this->getExtension()->getValue();
+            ;
+            $emptyComponentsSinceLastComponent = 0;
+        }
+
+        if (!$this->getAnyText() || !$this->getAnyText()->hasValue()) {
+            ++$emptyComponentsSinceLastComponent;
+        } else {
+            $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
+                . (string) $this->getAnyText()->getValue();
+            ;
+            $emptyComponentsSinceLastComponent = 0;
+        }
+
+        if (!$this->getExtensionPrefix() || !$this->getExtensionPrefix()->hasValue()) {
+            ++$emptyComponentsSinceLastComponent;
+        } else {
+            $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
+                . (string) $this->getExtensionPrefix()->getValue();
+            ;
+            $emptyComponentsSinceLastComponent = 0;
+        }
+
+        if (!$this->getSpeedDialCode() || !$this->getSpeedDialCode()->hasValue()) {
+            ++$emptyComponentsSinceLastComponent;
+        } else {
+            $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
+                . (string) $this->getSpeedDialCode()->getValue();
+            ;
+            $emptyComponentsSinceLastComponent = 0;
+        }
+
+        if (!$this->getUnformattedTelephoneNumber() || !$this->getUnformattedTelephoneNumber()->hasValue()) {
+            ++$emptyComponentsSinceLastComponent;
+        } else {
+            $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
+                . (string) $this->getUnformattedTelephoneNumber()->getValue();
+            ;
+            $emptyComponentsSinceLastComponent = 0;
+        }
+
+        return $s;
     }
 }

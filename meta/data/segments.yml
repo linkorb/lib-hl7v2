@@ -1,3 +1,98 @@
+ERR:
+    name: Error
+    spec: 2.15.5 (p 66)
+    fields:
+        -
+          name: Error Code And Location
+          deprecated: true
+          type: ELD
+          len: 493
+          repeat: true
+        -
+          name: Error Location
+          type: ERL
+          len: 18
+          repeat: true
+        -
+          name: Hl7 Error Code
+          required: true
+          type: CWE
+          len: 705
+        -
+          name: Severity
+          required: true
+          type: ID
+          len: 2
+        -
+          name: Application Error Code
+          type: CWE
+          len: 705
+        -
+          name: Application Error Parameter
+          type: ST
+          len: 80
+          repeat: true
+        -
+          name: Diagnostic Information
+          type: TX
+          len: 2048
+        -
+          name: User Message
+          type: TX
+          len: 250
+        -
+          name: Inform Person Indicator
+          type: IS
+          len: 20
+          repeat: true
+        -
+          name: Override Type
+          type: CWE
+          len: 705
+        -
+          name: Override Reason Code
+          type: CWE
+          len: 705
+          repeat: true
+        -
+          name: Help Desk Contact Point
+          type: XTN
+          len: 652
+          repeat: true
+
+MSA:
+    name: Message Acknowledgement
+    spec: 2.15.8 (p 73)
+    fields:
+        -
+          name: Acknowledgment Code
+          required: true
+          type: ID
+          len: 2
+        -
+          name: Message Control ID
+          required: true
+          type: ST
+          len: 20
+        -
+          name: Text Message
+          deprecated: true
+          type: ST
+          len: 80
+        -
+          name: Expected Sequence Number
+          type: NM
+          len: 15
+        -
+          name: Delayed Acknowledgement Type
+          deprecated: true
+          type: ~
+        -
+          name: Error Condition
+          deprecated: true
+          type: CE
+          len: 250
+
 MSH:
     name: Message Header
     spec: 2.15.9 (p 74)

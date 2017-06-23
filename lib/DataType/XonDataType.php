@@ -57,7 +57,7 @@ class XonDataType extends ComponentDataType
     {
         $this->organisationName = $this
             ->dataTypeFactory
-            ->create('ST', $this->characterEncoding)
+            ->create('ST', $this->encodingParameters)
         ;
         $this->organisationName->setValue($organisationName);
     }
@@ -69,7 +69,7 @@ class XonDataType extends ComponentDataType
     {
         $this->organisationNameTypeCode = $this
             ->dataTypeFactory
-            ->create('IS', $this->characterEncoding)
+            ->create('IS', $this->encodingParameters)
         ;
         $this->organisationNameTypeCode->setValue($organisationNameTypeCode);
     }
@@ -81,7 +81,7 @@ class XonDataType extends ComponentDataType
     {
         $this->idNumber = $this
             ->dataTypeFactory
-            ->create('NM', $this->characterEncoding)
+            ->create('NM', $this->encodingParameters)
         ;
         $this->idNumber->setValue($idNumber);
     }
@@ -93,7 +93,7 @@ class XonDataType extends ComponentDataType
     {
         $this->checkDigit = $this
             ->dataTypeFactory
-            ->create('NM', $this->characterEncoding)
+            ->create('NM', $this->encodingParameters)
         ;
         $this->checkDigit->setValue($checkDigit);
     }
@@ -105,7 +105,7 @@ class XonDataType extends ComponentDataType
     {
         $this->checkDigitScheme = $this
             ->dataTypeFactory
-            ->create('ID', $this->characterEncoding)
+            ->create('ID', $this->encodingParameters)
         ;
         $this->checkDigitScheme->setValue($checkDigitScheme);
     }
@@ -116,19 +116,17 @@ class XonDataType extends ComponentDataType
      * @param string $assigningAuthorityUniversalIdType
      */
     public function setAssigningAuthority(
-        $assigningAuthorityNamespaceId,
-        $assigningAuthorityUniversalId,
-        $assigningAuthorityUniversalIdType
+        $assigningAuthorityNamespaceId = null,
+        $assigningAuthorityUniversalId = null,
+        $assigningAuthorityUniversalIdType = null
     ) {
         $this->assigningAuthority = $this
             ->dataTypeFactory
-            ->create('HD', $this->characterEncoding)
+            ->create('HD', $this->encodingParameters, true)
         ;
         $this->assigningAuthority->setNamespaceId($assigningAuthorityNamespaceId);
-        $this->assigningAuthority->setUniversalId(
-            $assigningAuthorityUniversalId,
-            $assigningAuthorityUniversalIdType
-        );
+        $this->assigningAuthority->setUniversalId($assigningAuthorityUniversalId);
+        $this->assigningAuthority->setUniversalIdType($assigningAuthorityUniversalIdType);
     }
 
     /**
@@ -138,7 +136,7 @@ class XonDataType extends ComponentDataType
     {
         $this->identifierTypeCode = $this
             ->dataTypeFactory
-            ->create('ID', $this->characterEncoding)
+            ->create('ID', $this->encodingParameters)
         ;
         $this->identifierTypeCode->setValue($identifierTypeCode);
     }
@@ -149,19 +147,17 @@ class XonDataType extends ComponentDataType
      * @param string $assigningFacilityUniversalIdType
      */
     public function setAssigningFacility(
-        $assigningFacilityNamespaceId,
-        $assigningFacilityUniversalId,
-        $assigningFacilityUniversalIdType
+        $assigningFacilityNamespaceId = null,
+        $assigningFacilityUniversalId = null,
+        $assigningFacilityUniversalIdType = null
     ) {
         $this->assigningFacility = $this
             ->dataTypeFactory
-            ->create('HD', $this->characterEncoding)
+            ->create('HD', $this->encodingParameters, true)
         ;
         $this->assigningFacility->setNamespaceId($assigningFacilityNamespaceId);
-        $this->assigningFacility->setUniversalId(
-            $assigningFacilityUniversalId,
-            $assigningFacilityUniversalIdType
-        );
+        $this->assigningFacility->setUniversalId($assigningFacilityUniversalId);
+        $this->assigningFacility->setUniversalIdType($assigningFacilityUniversalIdType);
     }
 
     /**
@@ -171,7 +167,7 @@ class XonDataType extends ComponentDataType
     {
         $this->nameRepresentationCode = $this
             ->dataTypeFactory
-            ->create('ID', $this->characterEncoding)
+            ->create('ID', $this->encodingParameters)
         ;
         $this->nameRepresentationCode->setValue($nameRepresentationCode);
     }
@@ -183,7 +179,7 @@ class XonDataType extends ComponentDataType
     {
         $this->organisationIdentifier = $this
             ->dataTypeFactory
-            ->create('ST', $this->characterEncoding)
+            ->create('ST', $this->encodingParameters)
         ;
         $this->organisationIdentifier->setValue($organisationIdentifier);
     }
@@ -266,5 +262,117 @@ class XonDataType extends ComponentDataType
     public function getOrganisationIdentifier()
     {
         return $this->organisationIdentifier;
+    }
+
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+        $s = '';
+
+        $sep = $this->isSubcomponent
+            ? $this->encodingParameters->getSubcomponentSep()
+            : $this->encodingParameters->getComponentSep()
+        ;
+
+        if ($this->getOrganisationName() && $this->getOrganisationName()->hasValue()) {
+            $s .= (string) $this->getOrganisationName()->getValue();
+        }
+
+        $emptyComponentsSinceLastComponent = 0;
+
+        if (!$this->getOrganisationNameTypeCode() || !$this->getOrganisationNameTypeCode()->hasValue()) {
+            ++$emptyComponentsSinceLastComponent;
+        } else {
+            $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
+                . (string) $this->getOrganisationNameTypeCode()->getValue();
+            ;
+            $emptyComponentsSinceLastComponent = 0;
+        }
+
+        if (!$this->getIdNumber() || !$this->getIdNumber()->hasValue()) {
+            ++$emptyComponentsSinceLastComponent;
+        } else {
+            $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
+                . (string) $this->getIdNumber()->getValue();
+            ;
+            $emptyComponentsSinceLastComponent = 0;
+        }
+
+        if (!$this->getCheckDigit() || !$this->getCheckDigit()->hasValue()) {
+            ++$emptyComponentsSinceLastComponent;
+        } else {
+            $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
+                . (string) $this->getCheckDigit()->getValue();
+            ;
+            $emptyComponentsSinceLastComponent = 0;
+        }
+
+        if (!$this->getCheckDigitScheme() || !$this->getCheckDigitScheme()->hasValue()) {
+            ++$emptyComponentsSinceLastComponent;
+        } else {
+            $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
+                . (string) $this->getCheckDigitScheme()->getValue();
+            ;
+            $emptyComponentsSinceLastComponent = 0;
+        }
+
+        if (!$this->getAssigningAuthority()) {
+            ++$emptyComponentsSinceLastComponent;
+        } else {
+            $value = (string) $this->getAssigningAuthority();
+            if ($value === '') {
+                ++$emptyComponentsSinceLastComponent;
+            } else {
+                $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
+                    . $value
+                ;
+                $emptyComponentsSinceLastComponent = 0;
+            }
+        }
+
+        if (!$this->getIdentifierTypeCode() || !$this->getIdentifierTypeCode()->hasValue()) {
+            ++$emptyComponentsSinceLastComponent;
+        } else {
+            $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
+                . (string) $this->getIdentifierTypeCode()->getValue();
+            ;
+            $emptyComponentsSinceLastComponent = 0;
+        }
+
+        if (!$this->getAssigningFacility()) {
+            ++$emptyComponentsSinceLastComponent;
+        } else {
+            $value = (string) $this->getAssigningFacility();
+            if ($value === '') {
+                ++$emptyComponentsSinceLastComponent;
+            } else {
+                $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
+                    . $value
+                ;
+                $emptyComponentsSinceLastComponent = 0;
+            }
+        }
+
+        if (!$this->getNameRepresentationCode() || !$this->getNameRepresentationCode()->hasValue()) {
+            ++$emptyComponentsSinceLastComponent;
+        } else {
+            $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
+                . (string) $this->getNameRepresentationCode()->getValue();
+            ;
+            $emptyComponentsSinceLastComponent = 0;
+        }
+
+        if (!$this->getOrganisationIdentifier() || !$this->getOrganisationIdentifier()->hasValue()) {
+            ++$emptyComponentsSinceLastComponent;
+        } else {
+            $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
+                . (string) $this->getOrganisationIdentifier()->getValue();
+            ;
+            $emptyComponentsSinceLastComponent = 0;
+        }
+
+        return $s;
     }
 }

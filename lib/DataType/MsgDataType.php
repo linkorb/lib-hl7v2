@@ -29,7 +29,7 @@ class MsgDataType extends ComponentDataType
     {
         $this->messageCode = $this
             ->dataTypeFactory
-            ->create('ID', $this->characterEncoding)
+            ->create('ID', $this->encodingParameters)
         ;
         $this->messageCode->setValue($messageCode);
     }
@@ -41,7 +41,7 @@ class MsgDataType extends ComponentDataType
     {
         $this->triggerEvent = $this
             ->dataTypeFactory
-            ->create('ID', $this->characterEncoding)
+            ->create('ID', $this->encodingParameters)
         ;
         $this->triggerEvent->setValue($triggerEvent);
     }
@@ -53,7 +53,7 @@ class MsgDataType extends ComponentDataType
     {
         $this->messageStructure = $this
             ->dataTypeFactory
-            ->create('ID', $this->characterEncoding)
+            ->create('ID', $this->encodingParameters)
         ;
         $this->messageStructure->setValue($messageStructure);
     }
@@ -80,5 +80,44 @@ class MsgDataType extends ComponentDataType
     public function getMessageStructure()
     {
         return $this->messageStructure;
+    }
+
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+        $s = '';
+
+        $sep = $this->isSubcomponent
+            ? $this->encodingParameters->getSubcomponentSep()
+            : $this->encodingParameters->getComponentSep()
+        ;
+
+        if ($this->getMessageCode() && $this->getMessageCode()->hasValue()) {
+            $s .= (string) $this->getMessageCode()->getValue();
+        }
+
+        $emptyComponentsSinceLastComponent = 0;
+
+        if (!$this->getTriggerEvent() || !$this->getTriggerEvent()->hasValue()) {
+            ++$emptyComponentsSinceLastComponent;
+        } else {
+            $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
+                . (string) $this->getTriggerEvent()->getValue();
+            ;
+            $emptyComponentsSinceLastComponent = 0;
+        }
+
+        if (!$this->getMessageStructure() || !$this->getMessageStructure()->hasValue()) {
+            ++$emptyComponentsSinceLastComponent;
+        } else {
+            $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
+                . (string) $this->getMessageStructure()->getValue();
+            ;
+            $emptyComponentsSinceLastComponent = 0;
+        }
+
+        return $s;
     }
 }

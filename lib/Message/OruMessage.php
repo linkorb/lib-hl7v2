@@ -4,6 +4,7 @@ namespace Hl7v2\Message;
 
 use Hl7v2\Encoding\Codec;
 use Hl7v2\Encoding\Datagram;
+use Hl7v2\Exception\DataTypeError;
 use Hl7v2\Exception\MessageError;
 use Hl7v2\Exception\SegmentError;
 use Hl7v2\Segment\ObrSegment;
@@ -30,19 +31,24 @@ class OruMessage extends AbstractMessage
 {
     public function fromDatagram(Datagram $data, Codec $codec)
     {
-        $characterEncoding = $data->getEncodingParameters()->getCharacterEncoding();
-
         $patientGroup = null;
         $obrGroup = null;
 
+        $i = 1;
         while (false !== $codec->advanceToSegment($data)
             && false !== ($segmentId = $codec->extractSegmentId($data))
         ) {
+            ++$i;
             try {
-                $segment = $this->segmentFactory->create($segmentId, $characterEncoding);
+                $segment = $this
+                    ->segmentFactory
+                    ->create($segmentId, $data->getEncodingParameters())
+                ;
                 $segment->fromDatagram($data, $codec);
+            } catch (DataTypeError $e) {
+                throw new MessageError("Unable to decode segment {$i} ({$segmentId}) of ORU message. Error in Field.", null, $e);
             } catch (SegmentError $e) {
-                throw new MessageError('Unable to decode ORU message.', null, $e);
+                throw new MessageError("Unable to decode segment {$i} ({$segmentId}) of ORU message.", null, $e);
             }
 
             $this->segments[] = $segment;

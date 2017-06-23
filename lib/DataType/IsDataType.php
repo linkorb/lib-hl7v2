@@ -8,4 +8,12 @@ namespace Hl7v2\DataType;
 class IsDataType extends StDataType
 {
     const MAX_LEN = 20;
+
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+        return (string) $this->value;
+    }
 }

@@ -25,7 +25,7 @@ class TsDataType extends ComponentDataType
     {
         $this->time = $this
             ->dataTypeFactory
-            ->create('DTM', $this->characterEncoding)
+            ->create('DTM', $this->encodingParameters)
         ;
         $this->time->setValue($time);
     }
@@ -37,7 +37,7 @@ class TsDataType extends ComponentDataType
     {
         $this->degreeOfPrecision = $this
             ->dataTypeFactory
-            ->create('ID', $this->characterEncoding)
+            ->create('ID', $this->encodingParameters)
         ;
         $this->degreeOfPrecision->setValue($degreeOfPrecision);
     }
@@ -56,5 +56,35 @@ class TsDataType extends ComponentDataType
     public function getDegreeOfPrecision()
     {
         return $this->degreeOfPrecision;
+    }
+
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+        $s = '';
+
+        $sep = $this->isSubcomponent
+            ? $this->encodingParameters->getSubcomponentSep()
+            : $this->encodingParameters->getComponentSep()
+        ;
+
+        if ($this->getTime() && $this->getTime()->hasValue()) {
+            $s .= (string) $this->getTime()->getValue();
+        }
+
+        $emptyComponentsSinceLastComponent = 0;
+
+        if (!$this->getDegreeOfPrecision() || !$this->getDegreeOfPrecision()->hasValue()) {
+            ++$emptyComponentsSinceLastComponent;
+        } else {
+            $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
+                . (string) $this->getDegreeOfPrecision()->getValue();
+            ;
+            $emptyComponentsSinceLastComponent = 0;
+        }
+
+        return $s;
     }
 }

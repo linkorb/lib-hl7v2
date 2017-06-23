@@ -2,6 +2,10 @@
 
 namespace Hl7v2\Meta\Generator\DataType;
 
+use Memio\Model\Method;
+use Memio\Model\Phpdoc\MethodPhpdoc;
+use Twig_Environment;
+
 use Hl7v2\Meta\Helper\DataTypeContext;
 
 abstract class AbstractDataTypeGenerator implements DataTypeGeneratorInterface
@@ -9,6 +13,7 @@ abstract class AbstractDataTypeGenerator implements DataTypeGeneratorInterface
     protected $constants = [];
     protected $context;
     protected $maxLen;
+    protected $templating;
     protected $typeId;
     protected $typeName;
 
@@ -27,6 +32,11 @@ abstract class AbstractDataTypeGenerator implements DataTypeGeneratorInterface
         }
     }
 
+    public function setTemplating(Twig_Environment $templating)
+    {
+        $this->templating = $templating;
+    }
+
     public function getConstants()
     {
         return $this->constants;
@@ -43,4 +53,6 @@ abstract class AbstractDataTypeGenerator implements DataTypeGeneratorInterface
     }
 
     abstract public function getInheritanceClass();
+
+    abstract public function getMethodToString(Method $method, MethodPhpdoc $doc);
 }

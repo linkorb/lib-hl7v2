@@ -33,7 +33,7 @@ class EiDataType extends ComponentDataType
     {
         $this->entityIdentifier = $this
             ->dataTypeFactory
-            ->create('ST', $this->characterEncoding)
+            ->create('ST', $this->encodingParameters)
         ;
         $this->entityIdentifier->setValue($entityIdentifier);
     }
@@ -45,7 +45,7 @@ class EiDataType extends ComponentDataType
     {
         $this->namespaceId = $this
             ->dataTypeFactory
-            ->create('IS', $this->characterEncoding)
+            ->create('IS', $this->encodingParameters)
         ;
         $this->namespaceId->setValue($namespaceId);
     }
@@ -57,7 +57,7 @@ class EiDataType extends ComponentDataType
     {
         $this->universalId = $this
             ->dataTypeFactory
-            ->create('ST', $this->characterEncoding)
+            ->create('ST', $this->encodingParameters)
         ;
         $this->universalId->setValue($universalId);
     }
@@ -69,7 +69,7 @@ class EiDataType extends ComponentDataType
     {
         $this->universalIdType = $this
             ->dataTypeFactory
-            ->create('ID', $this->characterEncoding)
+            ->create('ID', $this->encodingParameters)
         ;
         $this->universalIdType->setValue($universalIdType);
     }
@@ -104,5 +104,53 @@ class EiDataType extends ComponentDataType
     public function getUniversalIdType()
     {
         return $this->universalIdType;
+    }
+
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+        $s = '';
+
+        $sep = $this->isSubcomponent
+            ? $this->encodingParameters->getSubcomponentSep()
+            : $this->encodingParameters->getComponentSep()
+        ;
+
+        if ($this->getEntityIdentifier() && $this->getEntityIdentifier()->hasValue()) {
+            $s .= (string) $this->getEntityIdentifier()->getValue();
+        }
+
+        $emptyComponentsSinceLastComponent = 0;
+
+        if (!$this->getNamespaceId() || !$this->getNamespaceId()->hasValue()) {
+            ++$emptyComponentsSinceLastComponent;
+        } else {
+            $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
+                . (string) $this->getNamespaceId()->getValue();
+            ;
+            $emptyComponentsSinceLastComponent = 0;
+        }
+
+        if (!$this->getUniversalId() || !$this->getUniversalId()->hasValue()) {
+            ++$emptyComponentsSinceLastComponent;
+        } else {
+            $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
+                . (string) $this->getUniversalId()->getValue();
+            ;
+            $emptyComponentsSinceLastComponent = 0;
+        }
+
+        if (!$this->getUniversalIdType() || !$this->getUniversalIdType()->hasValue()) {
+            ++$emptyComponentsSinceLastComponent;
+        } else {
+            $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
+                . (string) $this->getUniversalIdType()->getValue();
+            ;
+            $emptyComponentsSinceLastComponent = 0;
+        }
+
+        return $s;
     }
 }

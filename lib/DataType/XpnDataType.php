@@ -82,7 +82,7 @@ class XpnDataType extends ComponentDataType
     ) {
         $this->familyName = $this
             ->dataTypeFactory
-            ->create('FN', $this->characterEncoding)
+            ->create('FN', $this->encodingParameters, true)
         ;
         $this->familyName->setSurname($familyNameSurname);
         $this->familyName->setOwnSurnamePrefix($familyNameOwnSurnamePrefix);
@@ -98,7 +98,7 @@ class XpnDataType extends ComponentDataType
     {
         $this->givenName = $this
             ->dataTypeFactory
-            ->create('ST', $this->characterEncoding)
+            ->create('ST', $this->encodingParameters)
         ;
         $this->givenName->setValue($givenName);
     }
@@ -110,7 +110,7 @@ class XpnDataType extends ComponentDataType
     {
         $this->secondNames = $this
             ->dataTypeFactory
-            ->create('ST', $this->characterEncoding)
+            ->create('ST', $this->encodingParameters)
         ;
         $this->secondNames->setValue($secondNames);
     }
@@ -122,7 +122,7 @@ class XpnDataType extends ComponentDataType
     {
         $this->suffix = $this
             ->dataTypeFactory
-            ->create('ST', $this->characterEncoding)
+            ->create('ST', $this->encodingParameters)
         ;
         $this->suffix->setValue($suffix);
     }
@@ -134,7 +134,7 @@ class XpnDataType extends ComponentDataType
     {
         $this->prefix = $this
             ->dataTypeFactory
-            ->create('ST', $this->characterEncoding)
+            ->create('ST', $this->encodingParameters)
         ;
         $this->prefix->setValue($prefix);
     }
@@ -146,7 +146,7 @@ class XpnDataType extends ComponentDataType
     {
         $this->degree = $this
             ->dataTypeFactory
-            ->create('IS', $this->characterEncoding)
+            ->create('IS', $this->encodingParameters)
         ;
         $this->degree->setValue($degree);
     }
@@ -158,7 +158,7 @@ class XpnDataType extends ComponentDataType
     {
         $this->nameTypeCode = $this
             ->dataTypeFactory
-            ->create('ID', $this->characterEncoding)
+            ->create('ID', $this->encodingParameters)
         ;
         $this->nameTypeCode->setValue($nameTypeCode);
     }
@@ -170,7 +170,7 @@ class XpnDataType extends ComponentDataType
     {
         $this->nameRepresentationCode = $this
             ->dataTypeFactory
-            ->create('ID', $this->characterEncoding)
+            ->create('ID', $this->encodingParameters)
         ;
         $this->nameRepresentationCode->setValue($nameRepresentationCode);
     }
@@ -193,7 +193,7 @@ class XpnDataType extends ComponentDataType
     ) {
         $this->nameContext = $this
             ->dataTypeFactory
-            ->create('CE', $this->characterEncoding)
+            ->create('CE', $this->encodingParameters, true)
         ;
         $this->nameContext->setIdentifier($nameContextIdentifier);
         $this->nameContext->setText($nameContextText);
@@ -217,7 +217,7 @@ class XpnDataType extends ComponentDataType
     ) {
         $this->nameValidityRange = $this
             ->dataTypeFactory
-            ->create('DR', $this->characterEncoding)
+            ->create('DR', $this->encodingParameters, true)
         ;
         $this->nameValidityRange->setRangeStartDateTime(
             $nameValidityRangeRangeStartDateTimeTime,
@@ -236,7 +236,7 @@ class XpnDataType extends ComponentDataType
     {
         $this->nameAssemblyOrder = $this
             ->dataTypeFactory
-            ->create('ID', $this->characterEncoding)
+            ->create('ID', $this->encodingParameters)
         ;
         $this->nameAssemblyOrder->setValue($nameAssemblyOrder);
     }
@@ -249,7 +249,7 @@ class XpnDataType extends ComponentDataType
     {
         $this->effectiveDate = $this
             ->dataTypeFactory
-            ->create('TS', $this->characterEncoding)
+            ->create('TS', $this->encodingParameters, true)
         ;
         $this->effectiveDate->setTime($effectiveDateTime);
         $this->effectiveDate->setDegreeOfPrecision($effectiveDateDegreeOfPrecision);
@@ -263,7 +263,7 @@ class XpnDataType extends ComponentDataType
     {
         $this->expirationDate = $this
             ->dataTypeFactory
-            ->create('TS', $this->characterEncoding)
+            ->create('TS', $this->encodingParameters, true)
         ;
         $this->expirationDate->setTime($expirationDateTime);
         $this->expirationDate->setDegreeOfPrecision($expirationDateDegreeOfPrecision);
@@ -276,7 +276,7 @@ class XpnDataType extends ComponentDataType
     {
         $this->professionalSuffix = $this
             ->dataTypeFactory
-            ->create('ST', $this->characterEncoding)
+            ->create('ST', $this->encodingParameters)
         ;
         $this->professionalSuffix->setValue($professionalSuffix);
     }
@@ -391,5 +391,163 @@ class XpnDataType extends ComponentDataType
     public function getProfessionalSuffix()
     {
         return $this->professionalSuffix;
+    }
+
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+        $s = '';
+
+        $sep = $this->isSubcomponent
+            ? $this->encodingParameters->getSubcomponentSep()
+            : $this->encodingParameters->getComponentSep()
+        ;
+
+        if ($this->getFamilyName()) {
+            $s .= (string) $this->getFamilyName();
+        }
+
+        $emptyComponentsSinceLastComponent = 0;
+
+        if (!$this->getGivenName() || !$this->getGivenName()->hasValue()) {
+            ++$emptyComponentsSinceLastComponent;
+        } else {
+            $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
+                . (string) $this->getGivenName()->getValue();
+            ;
+            $emptyComponentsSinceLastComponent = 0;
+        }
+
+        if (!$this->getSecondNames() || !$this->getSecondNames()->hasValue()) {
+            ++$emptyComponentsSinceLastComponent;
+        } else {
+            $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
+                . (string) $this->getSecondNames()->getValue();
+            ;
+            $emptyComponentsSinceLastComponent = 0;
+        }
+
+        if (!$this->getSuffix() || !$this->getSuffix()->hasValue()) {
+            ++$emptyComponentsSinceLastComponent;
+        } else {
+            $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
+                . (string) $this->getSuffix()->getValue();
+            ;
+            $emptyComponentsSinceLastComponent = 0;
+        }
+
+        if (!$this->getPrefix() || !$this->getPrefix()->hasValue()) {
+            ++$emptyComponentsSinceLastComponent;
+        } else {
+            $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
+                . (string) $this->getPrefix()->getValue();
+            ;
+            $emptyComponentsSinceLastComponent = 0;
+        }
+
+        if (!$this->getDegree() || !$this->getDegree()->hasValue()) {
+            ++$emptyComponentsSinceLastComponent;
+        } else {
+            $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
+                . (string) $this->getDegree()->getValue();
+            ;
+            $emptyComponentsSinceLastComponent = 0;
+        }
+
+        if (!$this->getNameTypeCode() || !$this->getNameTypeCode()->hasValue()) {
+            ++$emptyComponentsSinceLastComponent;
+        } else {
+            $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
+                . (string) $this->getNameTypeCode()->getValue();
+            ;
+            $emptyComponentsSinceLastComponent = 0;
+        }
+
+        if (!$this->getNameRepresentationCode() || !$this->getNameRepresentationCode()->hasValue()) {
+            ++$emptyComponentsSinceLastComponent;
+        } else {
+            $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
+                . (string) $this->getNameRepresentationCode()->getValue();
+            ;
+            $emptyComponentsSinceLastComponent = 0;
+        }
+
+        if (!$this->getNameContext()) {
+            ++$emptyComponentsSinceLastComponent;
+        } else {
+            $value = (string) $this->getNameContext();
+            if ($value === '') {
+                ++$emptyComponentsSinceLastComponent;
+            } else {
+                $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
+                    . $value
+                ;
+                $emptyComponentsSinceLastComponent = 0;
+            }
+        }
+
+        if (!$this->getNameValidityRange()) {
+            ++$emptyComponentsSinceLastComponent;
+        } else {
+            $value = (string) $this->getNameValidityRange();
+            if ($value === '') {
+                ++$emptyComponentsSinceLastComponent;
+            } else {
+                $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
+                    . $value
+                ;
+                $emptyComponentsSinceLastComponent = 0;
+            }
+        }
+
+        if (!$this->getNameAssemblyOrder() || !$this->getNameAssemblyOrder()->hasValue()) {
+            ++$emptyComponentsSinceLastComponent;
+        } else {
+            $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
+                . (string) $this->getNameAssemblyOrder()->getValue();
+            ;
+            $emptyComponentsSinceLastComponent = 0;
+        }
+
+        if (!$this->getEffectiveDate()) {
+            ++$emptyComponentsSinceLastComponent;
+        } else {
+            $value = (string) $this->getEffectiveDate();
+            if ($value === '') {
+                ++$emptyComponentsSinceLastComponent;
+            } else {
+                $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
+                    . $value
+                ;
+                $emptyComponentsSinceLastComponent = 0;
+            }
+        }
+
+        if (!$this->getExpirationDate()) {
+            ++$emptyComponentsSinceLastComponent;
+        } else {
+            $value = (string) $this->getExpirationDate();
+            if ($value === '') {
+                ++$emptyComponentsSinceLastComponent;
+            } else {
+                $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
+                    . $value
+                ;
+                $emptyComponentsSinceLastComponent = 0;
+            }
+        }
+
+        if (!$this->getProfessionalSuffix() || !$this->getProfessionalSuffix()->hasValue()) {
+            ++$emptyComponentsSinceLastComponent;
+        } else {
+            $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
+                . (string) $this->getProfessionalSuffix()->getValue();
+            ;
+            $emptyComponentsSinceLastComponent = 0;
+        }
+
+        return $s;
     }
 }

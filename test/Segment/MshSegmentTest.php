@@ -50,13 +50,37 @@ class MshSegmentTest extends PHPUnit_Framework_TestCase
          */
         $messageHeader = $this
             ->segmentFactory
-            ->create('MSH', $data->getEncodingParameters()->getCharacterEncoding())
+            ->create('MSH', $data->getEncodingParameters())
         ;
         $messageHeader->fromDatagram($data, $this->codec);
 
         $this->assertSame(
             '8859/2',
             $messageHeader->getFieldCharacterSet()[2]->getValue()
+        );
+    }
+
+    public function testToString()
+    {
+        $segmentData = 'MSH|^~\&|ACME|ACME|TEST|TEST|20160719132745||ORU^R01|001|P|2.5.1|||AL|AL||ASCII~8859/1~8859/2';
+        $datagram = $this
+            ->datagramBuilder
+            ->withMessage($segmentData . "\r")
+            ->build()
+        ;
+        $this->codec->bootstrap($datagram, $this->paramBuilder);
+        /**
+         * @var \Hl7v2\Segment\MshSegment
+         */
+        $segment = $this
+            ->segmentFactory
+            ->create('MSH', $datagram->getEncodingParameters())
+        ;
+        $segment->fromDatagram($datagram, $this->codec);
+
+        $this->assertSame(
+            $segmentData,
+            (string) $segment
         );
     }
 }

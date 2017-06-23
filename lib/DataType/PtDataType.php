@@ -25,7 +25,7 @@ class PtDataType extends ComponentDataType
     {
         $this->processingId = $this
             ->dataTypeFactory
-            ->create('ID', $this->characterEncoding)
+            ->create('ID', $this->encodingParameters)
         ;
         $this->processingId->setValue($processingId);
     }
@@ -37,7 +37,7 @@ class PtDataType extends ComponentDataType
     {
         $this->processingMode = $this
             ->dataTypeFactory
-            ->create('ID', $this->characterEncoding)
+            ->create('ID', $this->encodingParameters)
         ;
         $this->processingMode->setValue($processingMode);
     }
@@ -56,5 +56,35 @@ class PtDataType extends ComponentDataType
     public function getProcessingMode()
     {
         return $this->processingMode;
+    }
+
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+        $s = '';
+
+        $sep = $this->isSubcomponent
+            ? $this->encodingParameters->getSubcomponentSep()
+            : $this->encodingParameters->getComponentSep()
+        ;
+
+        if ($this->getProcessingId() && $this->getProcessingId()->hasValue()) {
+            $s .= (string) $this->getProcessingId()->getValue();
+        }
+
+        $emptyComponentsSinceLastComponent = 0;
+
+        if (!$this->getProcessingMode() || !$this->getProcessingMode()->hasValue()) {
+            ++$emptyComponentsSinceLastComponent;
+        } else {
+            $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
+                . (string) $this->getProcessingMode()->getValue();
+            ;
+            $emptyComponentsSinceLastComponent = 0;
+        }
+
+        return $s;
     }
 }

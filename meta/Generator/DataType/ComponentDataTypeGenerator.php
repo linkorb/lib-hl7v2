@@ -2,6 +2,10 @@
 
 namespace Hl7v2\Meta\Generator\DataType;
 
+use Memio\Model\Method;
+use Memio\Model\Phpdoc\MethodPhpdoc;
+use Memio\Model\Phpdoc\ReturnTag;
+
 use Hl7v2\Meta\Helper\DataTypeContext;
 use Hl7v2\Meta\Helper\DataTypeResolver;
 use Hl7v2\Meta\Helper\Util;
@@ -93,7 +97,7 @@ class ComponentDataTypeGenerator extends AbstractDataTypeGenerator
                 $methodBody = [
                     "\$this->{$propertyName} = \$this",
                     "    ->dataTypeFactory",
-                    "    ->create('{$component['type']}', \$this->characterEncoding)",
+                    "    ->create('{$component['type']}', \$this->encodingParameters, true)",
                     ";",
                 ];
                 $componentMutators = $this->resolver->getMutatorsForCalling($component['type']);
@@ -122,7 +126,7 @@ class ComponentDataTypeGenerator extends AbstractDataTypeGenerator
                 $methodBody = [
                     "\$this->{$propertyName} = \$this",
                     "    ->dataTypeFactory",
-                    "    ->create('{$component['type']}', \$this->characterEncoding)",
+                    "    ->create('{$component['type']}', \$this->encodingParameters)",
                     ";",
                     "\$this->{$propertyName}->setValue(\${$propertyName});",
                 ];
@@ -156,6 +160,26 @@ class ComponentDataTypeGenerator extends AbstractDataTypeGenerator
             }
         }
         return [$methodName, $methodArg, $body];
+    }
+
+    public function getMethodToString(Method $method, MethodPhpdoc $doc)
+    {
+        $context = [];
+        foreach ($this->components as $c) {
+            $context['components'][] = array_merge(
+                $c,
+                ['simple' => !$this->resolver->isComponentType($c['type'])]
+            );
+        }
+        return $method
+            ->setPhpdoc($doc->setReturnTag(ReturnTag::make('string')))
+            ->setBody(
+                $this->templating->render(
+                    'tostring_datatype_component.twig',
+                    $context
+                )
+            )
+        ;
     }
 
     private function componentNameToPropertyName($componentName)

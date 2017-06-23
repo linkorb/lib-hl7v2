@@ -8,4 +8,12 @@ namespace Hl7v2\DataType;
 class FtDataType extends StDataType
 {
     const MAX_LEN = null;
+
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+        return (string) $this->value;
+    }
 }

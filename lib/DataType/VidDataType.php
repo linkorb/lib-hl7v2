@@ -29,7 +29,7 @@ class VidDataType extends ComponentDataType
     {
         $this->versionId = $this
             ->dataTypeFactory
-            ->create('ID', $this->characterEncoding)
+            ->create('ID', $this->encodingParameters)
         ;
         $this->versionId->setValue($versionId);
     }
@@ -52,7 +52,7 @@ class VidDataType extends ComponentDataType
     ) {
         $this->internationalisationCode = $this
             ->dataTypeFactory
-            ->create('CE', $this->characterEncoding)
+            ->create('CE', $this->encodingParameters, true)
         ;
         $this->internationalisationCode->setIdentifier($internationalisationCodeIdentifier);
         $this->internationalisationCode->setText($internationalisationCodeText);
@@ -84,7 +84,7 @@ class VidDataType extends ComponentDataType
     ) {
         $this->internationalisationVersionId = $this
             ->dataTypeFactory
-            ->create('CE', $this->characterEncoding)
+            ->create('CE', $this->encodingParameters, true)
         ;
         $this->internationalisationVersionId->setIdentifier(
             $internationalisationVersionIdIdentifier
@@ -124,5 +124,54 @@ class VidDataType extends ComponentDataType
     public function getInternationalisationVersionId()
     {
         return $this->internationalisationVersionId;
+    }
+
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+        $s = '';
+
+        $sep = $this->isSubcomponent
+            ? $this->encodingParameters->getSubcomponentSep()
+            : $this->encodingParameters->getComponentSep()
+        ;
+
+        if ($this->getVersionId() && $this->getVersionId()->hasValue()) {
+            $s .= (string) $this->getVersionId()->getValue();
+        }
+
+        $emptyComponentsSinceLastComponent = 0;
+
+        if (!$this->getInternationalisationCode()) {
+            ++$emptyComponentsSinceLastComponent;
+        } else {
+            $value = (string) $this->getInternationalisationCode();
+            if ($value === '') {
+                ++$emptyComponentsSinceLastComponent;
+            } else {
+                $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
+                    . $value
+                ;
+                $emptyComponentsSinceLastComponent = 0;
+            }
+        }
+
+        if (!$this->getInternationalisationVersionId()) {
+            ++$emptyComponentsSinceLastComponent;
+        } else {
+            $value = (string) $this->getInternationalisationVersionId();
+            if ($value === '') {
+                ++$emptyComponentsSinceLastComponent;
+            } else {
+                $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
+                    . $value
+                ;
+                $emptyComponentsSinceLastComponent = 0;
+            }
+        }
+
+        return $s;
     }
 }

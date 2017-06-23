@@ -32,7 +32,7 @@ class EipDataType extends ComponentDataType
     ) {
         $this->placerAssignedIdentifier = $this
             ->dataTypeFactory
-            ->create('EI', $this->characterEncoding)
+            ->create('EI', $this->encodingParameters, true)
         ;
         $this->placerAssignedIdentifier->setEntityIdentifier(
             $placerAssignedIdentifierEntityIdentifier
@@ -58,7 +58,7 @@ class EipDataType extends ComponentDataType
     ) {
         $this->fillerAssignedIdentifier = $this
             ->dataTypeFactory
-            ->create('EI', $this->characterEncoding)
+            ->create('EI', $this->encodingParameters, true)
         ;
         $this->fillerAssignedIdentifier->setEntityIdentifier(
             $fillerAssignedIdentifierEntityIdentifier
@@ -84,5 +84,40 @@ class EipDataType extends ComponentDataType
     public function getFillerAssignedIdentifier()
     {
         return $this->fillerAssignedIdentifier;
+    }
+
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+        $s = '';
+
+        $sep = $this->isSubcomponent
+            ? $this->encodingParameters->getSubcomponentSep()
+            : $this->encodingParameters->getComponentSep()
+        ;
+
+        if ($this->getPlacerAssignedIdentifier()) {
+            $s .= (string) $this->getPlacerAssignedIdentifier();
+        }
+
+        $emptyComponentsSinceLastComponent = 0;
+
+        if (!$this->getFillerAssignedIdentifier()) {
+            ++$emptyComponentsSinceLastComponent;
+        } else {
+            $value = (string) $this->getFillerAssignedIdentifier();
+            if ($value === '') {
+                ++$emptyComponentsSinceLastComponent;
+            } else {
+                $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
+                    . $value
+                ;
+                $emptyComponentsSinceLastComponent = 0;
+            }
+        }
+
+        return $s;
     }
 }

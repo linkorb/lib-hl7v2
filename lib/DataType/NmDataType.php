@@ -8,4 +8,12 @@ namespace Hl7v2\DataType;
 class NmDataType extends AbstractDataType
 {
     const MAX_LEN = 16;
+
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+        return (string) $this->value;
+    }
 }

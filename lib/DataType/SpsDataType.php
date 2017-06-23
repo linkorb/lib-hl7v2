@@ -62,7 +62,7 @@ class SpsDataType extends ComponentDataType
     ) {
         $this->specimenSourceNameOrCode = $this
             ->dataTypeFactory
-            ->create('CWE', $this->characterEncoding)
+            ->create('CWE', $this->encodingParameters, true)
         ;
         $this->specimenSourceNameOrCode->setIdentifier($specimenSourceNameOrCodeIdentifier);
         $this->specimenSourceNameOrCode->setText($specimenSourceNameOrCodeText);
@@ -107,7 +107,7 @@ class SpsDataType extends ComponentDataType
     ) {
         $this->additives = $this
             ->dataTypeFactory
-            ->create('CWE', $this->characterEncoding)
+            ->create('CWE', $this->encodingParameters, true)
         ;
         $this->additives->setIdentifier($additivesIdentifier);
         $this->additives->setText($additivesText);
@@ -127,7 +127,7 @@ class SpsDataType extends ComponentDataType
     {
         $this->specimenCollectionMethod = $this
             ->dataTypeFactory
-            ->create('TX', $this->characterEncoding)
+            ->create('TX', $this->encodingParameters)
         ;
         $this->specimenCollectionMethod->setValue($specimenCollectionMethod);
     }
@@ -156,7 +156,7 @@ class SpsDataType extends ComponentDataType
     ) {
         $this->bodySite = $this
             ->dataTypeFactory
-            ->create('CWE', $this->characterEncoding)
+            ->create('CWE', $this->encodingParameters, true)
         ;
         $this->bodySite->setIdentifier($bodySiteIdentifier);
         $this->bodySite->setText($bodySiteText);
@@ -193,7 +193,7 @@ class SpsDataType extends ComponentDataType
     ) {
         $this->siteModifier = $this
             ->dataTypeFactory
-            ->create('CWE', $this->characterEncoding)
+            ->create('CWE', $this->encodingParameters, true)
         ;
         $this->siteModifier->setIdentifier($siteModifierIdentifier);
         $this->siteModifier->setText($siteModifierText);
@@ -230,7 +230,7 @@ class SpsDataType extends ComponentDataType
     ) {
         $this->collectionMethodModifierCode = $this
             ->dataTypeFactory
-            ->create('CWE', $this->characterEncoding)
+            ->create('CWE', $this->encodingParameters, true)
         ;
         $this->collectionMethodModifierCode->setIdentifier($collectionMethodModifierCodeIdentifier);
         $this->collectionMethodModifierCode->setText($collectionMethodModifierCodeText);
@@ -279,7 +279,7 @@ class SpsDataType extends ComponentDataType
     ) {
         $this->specimenRole = $this
             ->dataTypeFactory
-            ->create('CWE', $this->characterEncoding)
+            ->create('CWE', $this->encodingParameters, true)
         ;
         $this->specimenRole->setIdentifier($specimenRoleIdentifier);
         $this->specimenRole->setText($specimenRoleText);
@@ -346,5 +346,105 @@ class SpsDataType extends ComponentDataType
     public function getSpecimenRole()
     {
         return $this->specimenRole;
+    }
+
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+        $s = '';
+
+        $sep = $this->isSubcomponent
+            ? $this->encodingParameters->getSubcomponentSep()
+            : $this->encodingParameters->getComponentSep()
+        ;
+
+        if ($this->getSpecimenSourceNameOrCode()) {
+            $s .= (string) $this->getSpecimenSourceNameOrCode();
+        }
+
+        $emptyComponentsSinceLastComponent = 0;
+
+        if (!$this->getAdditives()) {
+            ++$emptyComponentsSinceLastComponent;
+        } else {
+            $value = (string) $this->getAdditives();
+            if ($value === '') {
+                ++$emptyComponentsSinceLastComponent;
+            } else {
+                $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
+                    . $value
+                ;
+                $emptyComponentsSinceLastComponent = 0;
+            }
+        }
+
+        if (!$this->getSpecimenCollectionMethod() || !$this->getSpecimenCollectionMethod()->hasValue()) {
+            ++$emptyComponentsSinceLastComponent;
+        } else {
+            $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
+                . (string) $this->getSpecimenCollectionMethod()->getValue();
+            ;
+            $emptyComponentsSinceLastComponent = 0;
+        }
+
+        if (!$this->getBodySite()) {
+            ++$emptyComponentsSinceLastComponent;
+        } else {
+            $value = (string) $this->getBodySite();
+            if ($value === '') {
+                ++$emptyComponentsSinceLastComponent;
+            } else {
+                $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
+                    . $value
+                ;
+                $emptyComponentsSinceLastComponent = 0;
+            }
+        }
+
+        if (!$this->getSiteModifier()) {
+            ++$emptyComponentsSinceLastComponent;
+        } else {
+            $value = (string) $this->getSiteModifier();
+            if ($value === '') {
+                ++$emptyComponentsSinceLastComponent;
+            } else {
+                $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
+                    . $value
+                ;
+                $emptyComponentsSinceLastComponent = 0;
+            }
+        }
+
+        if (!$this->getCollectionMethodModifierCode()) {
+            ++$emptyComponentsSinceLastComponent;
+        } else {
+            $value = (string) $this->getCollectionMethodModifierCode();
+            if ($value === '') {
+                ++$emptyComponentsSinceLastComponent;
+            } else {
+                $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
+                    . $value
+                ;
+                $emptyComponentsSinceLastComponent = 0;
+            }
+        }
+
+        if (!$this->getSpecimenRole()) {
+            ++$emptyComponentsSinceLastComponent;
+        } else {
+            $value = (string) $this->getSpecimenRole();
+            if ($value === '') {
+                ++$emptyComponentsSinceLastComponent;
+            } else {
+                $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
+                    . $value
+                ;
+                $emptyComponentsSinceLastComponent = 0;
+            }
+        }
+
+        return $s;
     }
 }

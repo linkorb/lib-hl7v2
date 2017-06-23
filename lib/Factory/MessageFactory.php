@@ -2,9 +2,9 @@
 
 namespace Hl7v2\Factory;
 
+use Hl7v2\Exception\CapabilityError;
 use Hl7v2\Factory\SegmentGroupFactory;
 use Hl7v2\Segment\MshSegment;
-use Hl7v2\Exception\MessageError;
 
 class MessageFactory
 {
@@ -19,12 +19,20 @@ class MessageFactory
         $this->segmentGroupFactory = $segmentGroupFactory;
     }
 
+    /**
+     * @param \Hl7v2\Segment\MshSegment $messageHeader
+     * @return \Hl7v2\Message\MessageInterface
+     *
+     * @throws \Hl7v2\Exception\CapabilityError;
+     */
     public function create(MshSegment $messageHeader)
     {
         $messageClass = $this->determineClassname(
             $messageHeader->getFieldMessageType()->getMessageCode()->getValue()
         );
-        return new $messageClass($this->segmentFactory, $this->segmentGroupFactory);
+        $message = new $messageClass($this->segmentFactory, $this->segmentGroupFactory);
+        $message->setMessageHeader($messageHeader);
+        return $message;
     }
 
     private function determineClassname($typeName)
@@ -32,7 +40,7 @@ class MessageFactory
         $name = ucfirst(strtolower($typeName));
         $class = "\\Hl7v2\\Message\\{$name}Message";
         if (!class_exists($class)) {
-            throw new MessageError("Unknown Message Type \"{$typeName}\".");
+            throw new CapabilityError("Unable to create a message of type \"{$typeName}\".");
         }
         return $class;
     }

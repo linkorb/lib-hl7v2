@@ -34,19 +34,17 @@ class EdDataType extends ComponentDataType
      * @param string $sourceApplicationUniversalIdType
      */
     public function setSourceApplication(
-        $sourceApplicationNamespaceId,
-        $sourceApplicationUniversalId,
-        $sourceApplicationUniversalIdType
+        $sourceApplicationNamespaceId = null,
+        $sourceApplicationUniversalId = null,
+        $sourceApplicationUniversalIdType = null
     ) {
         $this->sourceApplication = $this
             ->dataTypeFactory
-            ->create('HD', $this->characterEncoding)
+            ->create('HD', $this->encodingParameters, true)
         ;
         $this->sourceApplication->setNamespaceId($sourceApplicationNamespaceId);
-        $this->sourceApplication->setUniversalId(
-            $sourceApplicationUniversalId,
-            $sourceApplicationUniversalIdType
-        );
+        $this->sourceApplication->setUniversalId($sourceApplicationUniversalId);
+        $this->sourceApplication->setUniversalIdType($sourceApplicationUniversalIdType);
     }
 
     /**
@@ -56,7 +54,7 @@ class EdDataType extends ComponentDataType
     {
         $this->typeOfData = $this
             ->dataTypeFactory
-            ->create('ID', $this->characterEncoding)
+            ->create('ID', $this->encodingParameters)
         ;
         $this->typeOfData->setValue($typeOfData);
     }
@@ -68,7 +66,7 @@ class EdDataType extends ComponentDataType
     {
         $this->dataSubtype = $this
             ->dataTypeFactory
-            ->create('ID', $this->characterEncoding)
+            ->create('ID', $this->encodingParameters)
         ;
         $this->dataSubtype->setValue($dataSubtype);
     }
@@ -80,7 +78,7 @@ class EdDataType extends ComponentDataType
     {
         $this->encoding = $this
             ->dataTypeFactory
-            ->create('ID', $this->characterEncoding)
+            ->create('ID', $this->encodingParameters)
         ;
         $this->encoding->setValue($encoding);
     }
@@ -92,7 +90,7 @@ class EdDataType extends ComponentDataType
     {
         $this->data = $this
             ->dataTypeFactory
-            ->create('TX', $this->characterEncoding)
+            ->create('TX', $this->encodingParameters)
         ;
         $this->data->setValue($data);
     }
@@ -135,5 +133,62 @@ class EdDataType extends ComponentDataType
     public function getData()
     {
         return $this->data;
+    }
+
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+        $s = '';
+
+        $sep = $this->isSubcomponent
+            ? $this->encodingParameters->getSubcomponentSep()
+            : $this->encodingParameters->getComponentSep()
+        ;
+
+        if ($this->getSourceApplication()) {
+            $s .= (string) $this->getSourceApplication();
+        }
+
+        $emptyComponentsSinceLastComponent = 0;
+
+        if (!$this->getTypeOfData() || !$this->getTypeOfData()->hasValue()) {
+            ++$emptyComponentsSinceLastComponent;
+        } else {
+            $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
+                . (string) $this->getTypeOfData()->getValue();
+            ;
+            $emptyComponentsSinceLastComponent = 0;
+        }
+
+        if (!$this->getDataSubtype() || !$this->getDataSubtype()->hasValue()) {
+            ++$emptyComponentsSinceLastComponent;
+        } else {
+            $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
+                . (string) $this->getDataSubtype()->getValue();
+            ;
+            $emptyComponentsSinceLastComponent = 0;
+        }
+
+        if (!$this->getEncoding() || !$this->getEncoding()->hasValue()) {
+            ++$emptyComponentsSinceLastComponent;
+        } else {
+            $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
+                . (string) $this->getEncoding()->getValue();
+            ;
+            $emptyComponentsSinceLastComponent = 0;
+        }
+
+        if (!$this->getData() || !$this->getData()->hasValue()) {
+            ++$emptyComponentsSinceLastComponent;
+        } else {
+            $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
+                . (string) $this->getData()->getValue();
+            ;
+            $emptyComponentsSinceLastComponent = 0;
+        }
+
+        return $s;
     }
 }

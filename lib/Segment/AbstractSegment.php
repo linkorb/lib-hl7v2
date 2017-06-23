@@ -4,6 +4,7 @@ namespace Hl7v2\Segment;
 
 use Hl7v2\Encoding\Codec;
 use Hl7v2\Encoding\Datagram;
+use Hl7v2\Encoding\EncodingParameters;
 use Hl7v2\Factory\DataTypeFactory;
 use Hl7v2\Validation\StringLengthTrait;
 
@@ -24,6 +25,11 @@ abstract class AbstractSegment implements SegmentInterface
     protected $fields = array();
 
     /**
+     * @var \Hl7v2\Encoding\EncodingParameters
+     */
+    protected $encodingParameters;
+
+    /**
      * @param \Hl7v2\Factory\DataTypeFactory $dataTypeFactory
      */
     public function __construct(
@@ -33,6 +39,16 @@ abstract class AbstractSegment implements SegmentInterface
     }
 
     abstract public function fromDatagram(Datagram $datagram, Codec $codec);
+
+    public function setEncodingParameters(EncodingParameters $encodingParameters)
+    {
+        $this->encodingParameters = $encodingParameters;
+    }
+
+    public function getEncodingParameters()
+    {
+        return $this->encodingParameters;
+    }
 
     /**
      * Having advanced in to a Field, this helper extracts the content of

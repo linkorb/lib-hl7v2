@@ -227,7 +227,7 @@ class Pv1Segment extends AbstractSegment
     {
         $this->setId = $this
             ->dataTypeFactory
-            ->create('SI', $this->characterEncoding)
+            ->create('SI', $this->encodingParameters)
         ;
         $this->setId->setValue($value);
     }
@@ -239,7 +239,7 @@ class Pv1Segment extends AbstractSegment
     {
         $this->patientClass = $this
             ->dataTypeFactory
-            ->create('IS', $this->characterEncoding)
+            ->create('IS', $this->encodingParameters)
         ;
         $this->patientClass->setValue($value);
     }
@@ -268,9 +268,9 @@ class Pv1Segment extends AbstractSegment
         $pointOfCare = null,
         $room = null,
         $bed = null,
-        $facilityNamespaceId,
-        $facilityUniversalId,
-        $facilityUniversalIdType,
+        $facilityNamespaceId = null,
+        $facilityUniversalId = null,
+        $facilityUniversalIdType = null,
         $locationStatus = null,
         $personLocationType = null,
         $building = null,
@@ -280,13 +280,13 @@ class Pv1Segment extends AbstractSegment
         $comprehensiveLocationIdentifierNamespaceId = null,
         $comprehensiveLocationIdentifierUniversalId = null,
         $comprehensiveLocationIdentifierUniversalIdType = null,
-        $assigningAuthorityForLocationNamespaceId,
-        $assigningAuthorityForLocationUniversalId,
-        $assigningAuthorityForLocationUniversalIdType
+        $assigningAuthorityForLocationNamespaceId = null,
+        $assigningAuthorityForLocationUniversalId = null,
+        $assigningAuthorityForLocationUniversalIdType = null
     ) {
         $this->assignedPatientLocation = $this
             ->dataTypeFactory
-            ->create('PL', $this->characterEncoding)
+            ->create('PL', $this->encodingParameters)
         ;
         $this->assignedPatientLocation->setPointOfCare($pointOfCare);
         $this->assignedPatientLocation->setRoom($room);
@@ -321,7 +321,7 @@ class Pv1Segment extends AbstractSegment
     {
         $this->admissionType = $this
             ->dataTypeFactory
-            ->create('IS', $this->characterEncoding)
+            ->create('IS', $this->encodingParameters)
         ;
         $this->admissionType->setValue($value);
     }
@@ -362,13 +362,13 @@ class Pv1Segment extends AbstractSegment
         $idNumber,
         $checkDigit = null,
         $checkDigitScheme = null,
-        $assigningAuthorityNamespaceId,
-        $assigningAuthorityUniversalId,
-        $assigningAuthorityUniversalIdType,
+        $assigningAuthorityNamespaceId = null,
+        $assigningAuthorityUniversalId = null,
+        $assigningAuthorityUniversalIdType = null,
         $identifierTypeCode = null,
-        $assigningFacilityNamespaceId,
-        $assigningFacilityUniversalId,
-        $assigningFacilityUniversalIdType,
+        $assigningFacilityNamespaceId = null,
+        $assigningFacilityUniversalId = null,
+        $assigningFacilityUniversalIdType = null,
         $effectiveDate = null,
         $expirationDate = null,
         $assigningJurisdictionIdentifier = null,
@@ -392,7 +392,7 @@ class Pv1Segment extends AbstractSegment
     ) {
         $this->preadmitNumber = $this
             ->dataTypeFactory
-            ->create('CX', $this->characterEncoding)
+            ->create('CX', $this->encodingParameters)
         ;
         $this->preadmitNumber->setIdNumber($idNumber);
         $this->preadmitNumber->setCheckDigit($checkDigit);
@@ -458,9 +458,9 @@ class Pv1Segment extends AbstractSegment
         $pointOfCare = null,
         $room = null,
         $bed = null,
-        $facilityNamespaceId,
-        $facilityUniversalId,
-        $facilityUniversalIdType,
+        $facilityNamespaceId = null,
+        $facilityUniversalId = null,
+        $facilityUniversalIdType = null,
         $locationStatus = null,
         $personLocationType = null,
         $building = null,
@@ -470,13 +470,13 @@ class Pv1Segment extends AbstractSegment
         $comprehensiveLocationIdentifierNamespaceId = null,
         $comprehensiveLocationIdentifierUniversalId = null,
         $comprehensiveLocationIdentifierUniversalIdType = null,
-        $assigningAuthorityForLocationNamespaceId,
-        $assigningAuthorityForLocationUniversalId,
-        $assigningAuthorityForLocationUniversalIdType
+        $assigningAuthorityForLocationNamespaceId = null,
+        $assigningAuthorityForLocationUniversalId = null,
+        $assigningAuthorityForLocationUniversalIdType = null
     ) {
         $this->priorPatientLocation = $this
             ->dataTypeFactory
-            ->create('PL', $this->characterEncoding)
+            ->create('PL', $this->encodingParameters)
         ;
         $this->priorPatientLocation->setPointOfCare($pointOfCare);
         $this->priorPatientLocation->setRoom($room);
@@ -576,16 +576,16 @@ class Pv1Segment extends AbstractSegment
         $prefix = null,
         $degree = null,
         $sourceTable = null,
-        $assigningAuthorityNamespaceId,
-        $assigningAuthorityUniversalId,
-        $assigningAuthorityUniversalIdType,
+        $assigningAuthorityNamespaceId = null,
+        $assigningAuthorityUniversalId = null,
+        $assigningAuthorityUniversalIdType = null,
         $nameTypeCode = null,
         $identifierCheckDigit = null,
         $checkDigitScheme = null,
         $identifierTypeCode = null,
-        $assigningFacilityNamespaceId,
-        $assigningFacilityUniversalId,
-        $assigningFacilityUniversalIdType,
+        $assigningFacilityNamespaceId = null,
+        $assigningFacilityUniversalId = null,
+        $assigningFacilityUniversalIdType = null,
         $nameRepresentationCode = null,
         $nameContextIdentifier = null,
         $nameContextText = null,
@@ -624,7 +624,7 @@ class Pv1Segment extends AbstractSegment
     ) {
         $attendingDoctor = $this
             ->dataTypeFactory
-            ->create('XCN', $this->characterEncoding)
+            ->create('XCN', $this->encodingParameters)
         ;
         $this->attendingDoctor[] = $attendingDoctor;
         $attendingDoctor->setIdNumber($idNumber);
@@ -770,16 +770,16 @@ class Pv1Segment extends AbstractSegment
         $prefix = null,
         $degree = null,
         $sourceTable = null,
-        $assigningAuthorityNamespaceId,
-        $assigningAuthorityUniversalId,
-        $assigningAuthorityUniversalIdType,
+        $assigningAuthorityNamespaceId = null,
+        $assigningAuthorityUniversalId = null,
+        $assigningAuthorityUniversalIdType = null,
         $nameTypeCode = null,
         $identifierCheckDigit = null,
         $checkDigitScheme = null,
         $identifierTypeCode = null,
-        $assigningFacilityNamespaceId,
-        $assigningFacilityUniversalId,
-        $assigningFacilityUniversalIdType,
+        $assigningFacilityNamespaceId = null,
+        $assigningFacilityUniversalId = null,
+        $assigningFacilityUniversalIdType = null,
         $nameRepresentationCode = null,
         $nameContextIdentifier = null,
         $nameContextText = null,
@@ -818,7 +818,7 @@ class Pv1Segment extends AbstractSegment
     ) {
         $referringDoctor = $this
             ->dataTypeFactory
-            ->create('XCN', $this->characterEncoding)
+            ->create('XCN', $this->encodingParameters)
         ;
         $this->referringDoctor[] = $referringDoctor;
         $referringDoctor->setIdNumber($idNumber);
@@ -964,16 +964,16 @@ class Pv1Segment extends AbstractSegment
         $prefix = null,
         $degree = null,
         $sourceTable = null,
-        $assigningAuthorityNamespaceId,
-        $assigningAuthorityUniversalId,
-        $assigningAuthorityUniversalIdType,
+        $assigningAuthorityNamespaceId = null,
+        $assigningAuthorityUniversalId = null,
+        $assigningAuthorityUniversalIdType = null,
         $nameTypeCode = null,
         $identifierCheckDigit = null,
         $checkDigitScheme = null,
         $identifierTypeCode = null,
-        $assigningFacilityNamespaceId,
-        $assigningFacilityUniversalId,
-        $assigningFacilityUniversalIdType,
+        $assigningFacilityNamespaceId = null,
+        $assigningFacilityUniversalId = null,
+        $assigningFacilityUniversalIdType = null,
         $nameRepresentationCode = null,
         $nameContextIdentifier = null,
         $nameContextText = null,
@@ -1012,7 +1012,7 @@ class Pv1Segment extends AbstractSegment
     ) {
         $consultingDoctor = $this
             ->dataTypeFactory
-            ->create('XCN', $this->characterEncoding)
+            ->create('XCN', $this->encodingParameters)
         ;
         $this->consultingDoctor[] = $consultingDoctor;
         $consultingDoctor->setIdNumber($idNumber);
@@ -1093,7 +1093,7 @@ class Pv1Segment extends AbstractSegment
     {
         $this->hospitalService = $this
             ->dataTypeFactory
-            ->create('IS', $this->characterEncoding)
+            ->create('IS', $this->encodingParameters)
         ;
         $this->hospitalService->setValue($value);
     }
@@ -1122,9 +1122,9 @@ class Pv1Segment extends AbstractSegment
         $pointOfCare = null,
         $room = null,
         $bed = null,
-        $facilityNamespaceId,
-        $facilityUniversalId,
-        $facilityUniversalIdType,
+        $facilityNamespaceId = null,
+        $facilityUniversalId = null,
+        $facilityUniversalIdType = null,
         $locationStatus = null,
         $personLocationType = null,
         $building = null,
@@ -1134,13 +1134,13 @@ class Pv1Segment extends AbstractSegment
         $comprehensiveLocationIdentifierNamespaceId = null,
         $comprehensiveLocationIdentifierUniversalId = null,
         $comprehensiveLocationIdentifierUniversalIdType = null,
-        $assigningAuthorityForLocationNamespaceId,
-        $assigningAuthorityForLocationUniversalId,
-        $assigningAuthorityForLocationUniversalIdType
+        $assigningAuthorityForLocationNamespaceId = null,
+        $assigningAuthorityForLocationUniversalId = null,
+        $assigningAuthorityForLocationUniversalIdType = null
     ) {
         $this->temporaryLocation = $this
             ->dataTypeFactory
-            ->create('PL', $this->characterEncoding)
+            ->create('PL', $this->encodingParameters)
         ;
         $this->temporaryLocation->setPointOfCare($pointOfCare);
         $this->temporaryLocation->setRoom($room);
@@ -1175,7 +1175,7 @@ class Pv1Segment extends AbstractSegment
     {
         $this->preadmitTestIndicator = $this
             ->dataTypeFactory
-            ->create('IS', $this->characterEncoding)
+            ->create('IS', $this->encodingParameters)
         ;
         $this->preadmitTestIndicator->setValue($value);
     }
@@ -1187,7 +1187,7 @@ class Pv1Segment extends AbstractSegment
     {
         $this->readmissionIndicator = $this
             ->dataTypeFactory
-            ->create('IS', $this->characterEncoding)
+            ->create('IS', $this->encodingParameters)
         ;
         $this->readmissionIndicator->setValue($value);
     }
@@ -1199,7 +1199,7 @@ class Pv1Segment extends AbstractSegment
     {
         $this->admitSource = $this
             ->dataTypeFactory
-            ->create('IS', $this->characterEncoding)
+            ->create('IS', $this->encodingParameters)
         ;
         $this->admitSource->setValue($value);
     }
@@ -1211,7 +1211,7 @@ class Pv1Segment extends AbstractSegment
     {
         $ambulatoryStatus = $this
             ->dataTypeFactory
-            ->create('IS', $this->characterEncoding)
+            ->create('IS', $this->encodingParameters)
         ;
         $ambulatoryStatus->setValue($value);
         $this->ambulatoryStatus[] = $ambulatoryStatus;
@@ -1224,7 +1224,7 @@ class Pv1Segment extends AbstractSegment
     {
         $this->vipIndicator = $this
             ->dataTypeFactory
-            ->create('IS', $this->characterEncoding)
+            ->create('IS', $this->encodingParameters)
         ;
         $this->vipIndicator->setValue($value);
     }
@@ -1301,16 +1301,16 @@ class Pv1Segment extends AbstractSegment
         $prefix = null,
         $degree = null,
         $sourceTable = null,
-        $assigningAuthorityNamespaceId,
-        $assigningAuthorityUniversalId,
-        $assigningAuthorityUniversalIdType,
+        $assigningAuthorityNamespaceId = null,
+        $assigningAuthorityUniversalId = null,
+        $assigningAuthorityUniversalIdType = null,
         $nameTypeCode = null,
         $identifierCheckDigit = null,
         $checkDigitScheme = null,
         $identifierTypeCode = null,
-        $assigningFacilityNamespaceId,
-        $assigningFacilityUniversalId,
-        $assigningFacilityUniversalIdType,
+        $assigningFacilityNamespaceId = null,
+        $assigningFacilityUniversalId = null,
+        $assigningFacilityUniversalIdType = null,
         $nameRepresentationCode = null,
         $nameContextIdentifier = null,
         $nameContextText = null,
@@ -1349,7 +1349,7 @@ class Pv1Segment extends AbstractSegment
     ) {
         $admittingDoctor = $this
             ->dataTypeFactory
-            ->create('XCN', $this->characterEncoding)
+            ->create('XCN', $this->encodingParameters)
         ;
         $this->admittingDoctor[] = $admittingDoctor;
         $admittingDoctor->setIdNumber($idNumber);
@@ -1430,7 +1430,7 @@ class Pv1Segment extends AbstractSegment
     {
         $this->patientType = $this
             ->dataTypeFactory
-            ->create('IS', $this->characterEncoding)
+            ->create('IS', $this->encodingParameters)
         ;
         $this->patientType->setValue($value);
     }
@@ -1471,13 +1471,13 @@ class Pv1Segment extends AbstractSegment
         $idNumber,
         $checkDigit = null,
         $checkDigitScheme = null,
-        $assigningAuthorityNamespaceId,
-        $assigningAuthorityUniversalId,
-        $assigningAuthorityUniversalIdType,
+        $assigningAuthorityNamespaceId = null,
+        $assigningAuthorityUniversalId = null,
+        $assigningAuthorityUniversalIdType = null,
         $identifierTypeCode = null,
-        $assigningFacilityNamespaceId,
-        $assigningFacilityUniversalId,
-        $assigningFacilityUniversalIdType,
+        $assigningFacilityNamespaceId = null,
+        $assigningFacilityUniversalId = null,
+        $assigningFacilityUniversalIdType = null,
         $effectiveDate = null,
         $expirationDate = null,
         $assigningJurisdictionIdentifier = null,
@@ -1501,7 +1501,7 @@ class Pv1Segment extends AbstractSegment
     ) {
         $this->visitNumber = $this
             ->dataTypeFactory
-            ->create('CX', $this->characterEncoding)
+            ->create('CX', $this->encodingParameters)
         ;
         $this->visitNumber->setIdNumber($idNumber);
         $this->visitNumber->setCheckDigit($checkDigit);
@@ -1555,7 +1555,7 @@ class Pv1Segment extends AbstractSegment
     ) {
         $financialClass = $this
             ->dataTypeFactory
-            ->create('FC', $this->characterEncoding)
+            ->create('FC', $this->encodingParameters)
         ;
         $this->financialClass[] = $financialClass;
         $financialClass->setFinancialClassCode($financialClassCode);
@@ -1569,7 +1569,7 @@ class Pv1Segment extends AbstractSegment
     {
         $this->chargePriceIndicator = $this
             ->dataTypeFactory
-            ->create('IS', $this->characterEncoding)
+            ->create('IS', $this->encodingParameters)
         ;
         $this->chargePriceIndicator->setValue($value);
     }
@@ -1581,7 +1581,7 @@ class Pv1Segment extends AbstractSegment
     {
         $this->courtesyCode = $this
             ->dataTypeFactory
-            ->create('IS', $this->characterEncoding)
+            ->create('IS', $this->encodingParameters)
         ;
         $this->courtesyCode->setValue($value);
     }
@@ -1593,7 +1593,7 @@ class Pv1Segment extends AbstractSegment
     {
         $this->creditRating = $this
             ->dataTypeFactory
-            ->create('IS', $this->characterEncoding)
+            ->create('IS', $this->encodingParameters)
         ;
         $this->creditRating->setValue($value);
     }
@@ -1605,7 +1605,7 @@ class Pv1Segment extends AbstractSegment
     {
         $contractCode = $this
             ->dataTypeFactory
-            ->create('IS', $this->characterEncoding)
+            ->create('IS', $this->encodingParameters)
         ;
         $contractCode->setValue($value);
         $this->contractCode[] = $contractCode;
@@ -1618,7 +1618,7 @@ class Pv1Segment extends AbstractSegment
     {
         $contractEffectiveDate = $this
             ->dataTypeFactory
-            ->create('DT', $this->characterEncoding)
+            ->create('DT', $this->encodingParameters)
         ;
         $contractEffectiveDate->setValue($value);
         $this->contractEffectiveDate[] = $contractEffectiveDate;
@@ -1631,7 +1631,7 @@ class Pv1Segment extends AbstractSegment
     {
         $contractAmount = $this
             ->dataTypeFactory
-            ->create('NM', $this->characterEncoding)
+            ->create('NM', $this->encodingParameters)
         ;
         $contractAmount->setValue($value);
         $this->contractAmount[] = $contractAmount;
@@ -1644,7 +1644,7 @@ class Pv1Segment extends AbstractSegment
     {
         $contractPeriod = $this
             ->dataTypeFactory
-            ->create('NM', $this->characterEncoding)
+            ->create('NM', $this->encodingParameters)
         ;
         $contractPeriod->setValue($value);
         $this->contractPeriod[] = $contractPeriod;
@@ -1657,7 +1657,7 @@ class Pv1Segment extends AbstractSegment
     {
         $this->interestCode = $this
             ->dataTypeFactory
-            ->create('IS', $this->characterEncoding)
+            ->create('IS', $this->encodingParameters)
         ;
         $this->interestCode->setValue($value);
     }
@@ -1669,7 +1669,7 @@ class Pv1Segment extends AbstractSegment
     {
         $this->transferToBadDebtCode = $this
             ->dataTypeFactory
-            ->create('IS', $this->characterEncoding)
+            ->create('IS', $this->encodingParameters)
         ;
         $this->transferToBadDebtCode->setValue($value);
     }
@@ -1681,7 +1681,7 @@ class Pv1Segment extends AbstractSegment
     {
         $this->transferToBadDebtDate = $this
             ->dataTypeFactory
-            ->create('DT', $this->characterEncoding)
+            ->create('DT', $this->encodingParameters)
         ;
         $this->transferToBadDebtDate->setValue($value);
     }
@@ -1693,7 +1693,7 @@ class Pv1Segment extends AbstractSegment
     {
         $this->badDebtAgencyCode = $this
             ->dataTypeFactory
-            ->create('IS', $this->characterEncoding)
+            ->create('IS', $this->encodingParameters)
         ;
         $this->badDebtAgencyCode->setValue($value);
     }
@@ -1705,7 +1705,7 @@ class Pv1Segment extends AbstractSegment
     {
         $this->badDebtTransferAmount = $this
             ->dataTypeFactory
-            ->create('NM', $this->characterEncoding)
+            ->create('NM', $this->encodingParameters)
         ;
         $this->badDebtTransferAmount->setValue($value);
     }
@@ -1717,7 +1717,7 @@ class Pv1Segment extends AbstractSegment
     {
         $this->badDebtRecoveryAmount = $this
             ->dataTypeFactory
-            ->create('NM', $this->characterEncoding)
+            ->create('NM', $this->encodingParameters)
         ;
         $this->badDebtRecoveryAmount->setValue($value);
     }
@@ -1729,7 +1729,7 @@ class Pv1Segment extends AbstractSegment
     {
         $this->deleteAccountIndicator = $this
             ->dataTypeFactory
-            ->create('IS', $this->characterEncoding)
+            ->create('IS', $this->encodingParameters)
         ;
         $this->deleteAccountIndicator->setValue($value);
     }
@@ -1741,7 +1741,7 @@ class Pv1Segment extends AbstractSegment
     {
         $this->deleteAccountDate = $this
             ->dataTypeFactory
-            ->create('DT', $this->characterEncoding)
+            ->create('DT', $this->encodingParameters)
         ;
         $this->deleteAccountDate->setValue($value);
     }
@@ -1753,7 +1753,7 @@ class Pv1Segment extends AbstractSegment
     {
         $this->dischargeDisposition = $this
             ->dataTypeFactory
-            ->create('IS', $this->characterEncoding)
+            ->create('IS', $this->encodingParameters)
         ;
         $this->dischargeDisposition->setValue($value);
     }
@@ -1770,7 +1770,7 @@ class Pv1Segment extends AbstractSegment
     ) {
         $this->dischargedToLocation = $this
             ->dataTypeFactory
-            ->create('DLD', $this->characterEncoding)
+            ->create('DLD', $this->encodingParameters)
         ;
         $this->dischargedToLocation->setDischargeLocation($dischargeLocation);
         $this->dischargedToLocation->setEffectiveDate(
@@ -1797,7 +1797,7 @@ class Pv1Segment extends AbstractSegment
     ) {
         $this->dietType = $this
             ->dataTypeFactory
-            ->create('CE', $this->characterEncoding)
+            ->create('CE', $this->encodingParameters)
         ;
         $this->dietType->setIdentifier($identifier);
         $this->dietType->setText($text);
@@ -1814,7 +1814,7 @@ class Pv1Segment extends AbstractSegment
     {
         $this->servicingFacility = $this
             ->dataTypeFactory
-            ->create('IS', $this->characterEncoding)
+            ->create('IS', $this->encodingParameters)
         ;
         $this->servicingFacility->setValue($value);
     }
@@ -1826,7 +1826,7 @@ class Pv1Segment extends AbstractSegment
     {
         $this->bedStatus = $this
             ->dataTypeFactory
-            ->create('IS', $this->characterEncoding)
+            ->create('IS', $this->encodingParameters)
         ;
         $this->bedStatus->setValue($value);
     }
@@ -1838,7 +1838,7 @@ class Pv1Segment extends AbstractSegment
     {
         $this->accountStatus = $this
             ->dataTypeFactory
-            ->create('IS', $this->characterEncoding)
+            ->create('IS', $this->encodingParameters)
         ;
         $this->accountStatus->setValue($value);
     }
@@ -1867,9 +1867,9 @@ class Pv1Segment extends AbstractSegment
         $pointOfCare = null,
         $room = null,
         $bed = null,
-        $facilityNamespaceId,
-        $facilityUniversalId,
-        $facilityUniversalIdType,
+        $facilityNamespaceId = null,
+        $facilityUniversalId = null,
+        $facilityUniversalIdType = null,
         $locationStatus = null,
         $personLocationType = null,
         $building = null,
@@ -1879,13 +1879,13 @@ class Pv1Segment extends AbstractSegment
         $comprehensiveLocationIdentifierNamespaceId = null,
         $comprehensiveLocationIdentifierUniversalId = null,
         $comprehensiveLocationIdentifierUniversalIdType = null,
-        $assigningAuthorityForLocationNamespaceId,
-        $assigningAuthorityForLocationUniversalId,
-        $assigningAuthorityForLocationUniversalIdType
+        $assigningAuthorityForLocationNamespaceId = null,
+        $assigningAuthorityForLocationUniversalId = null,
+        $assigningAuthorityForLocationUniversalIdType = null
     ) {
         $this->pendingLocation = $this
             ->dataTypeFactory
-            ->create('PL', $this->characterEncoding)
+            ->create('PL', $this->encodingParameters)
         ;
         $this->pendingLocation->setPointOfCare($pointOfCare);
         $this->pendingLocation->setRoom($room);
@@ -1937,9 +1937,9 @@ class Pv1Segment extends AbstractSegment
         $pointOfCare = null,
         $room = null,
         $bed = null,
-        $facilityNamespaceId,
-        $facilityUniversalId,
-        $facilityUniversalIdType,
+        $facilityNamespaceId = null,
+        $facilityUniversalId = null,
+        $facilityUniversalIdType = null,
         $locationStatus = null,
         $personLocationType = null,
         $building = null,
@@ -1949,13 +1949,13 @@ class Pv1Segment extends AbstractSegment
         $comprehensiveLocationIdentifierNamespaceId = null,
         $comprehensiveLocationIdentifierUniversalId = null,
         $comprehensiveLocationIdentifierUniversalIdType = null,
-        $assigningAuthorityForLocationNamespaceId,
-        $assigningAuthorityForLocationUniversalId,
-        $assigningAuthorityForLocationUniversalIdType
+        $assigningAuthorityForLocationNamespaceId = null,
+        $assigningAuthorityForLocationUniversalId = null,
+        $assigningAuthorityForLocationUniversalIdType = null
     ) {
         $this->priorTemporaryLocation = $this
             ->dataTypeFactory
-            ->create('PL', $this->characterEncoding)
+            ->create('PL', $this->encodingParameters)
         ;
         $this->priorTemporaryLocation->setPointOfCare($pointOfCare);
         $this->priorTemporaryLocation->setRoom($room);
@@ -1991,7 +1991,7 @@ class Pv1Segment extends AbstractSegment
     {
         $this->admitDatetime = $this
             ->dataTypeFactory
-            ->create('TS', $this->characterEncoding)
+            ->create('TS', $this->encodingParameters)
         ;
         $this->admitDatetime->setTime($time);
         $this->admitDatetime->setDegreeOfPrecision($degreeOfPrecision);
@@ -2005,7 +2005,7 @@ class Pv1Segment extends AbstractSegment
     {
         $dischargeDatetime = $this
             ->dataTypeFactory
-            ->create('TS', $this->characterEncoding)
+            ->create('TS', $this->encodingParameters)
         ;
         $this->dischargeDatetime[] = $dischargeDatetime;
         $dischargeDatetime->setTime($time);
@@ -2019,7 +2019,7 @@ class Pv1Segment extends AbstractSegment
     {
         $this->currentPatientBalance = $this
             ->dataTypeFactory
-            ->create('NM', $this->characterEncoding)
+            ->create('NM', $this->encodingParameters)
         ;
         $this->currentPatientBalance->setValue($value);
     }
@@ -2031,7 +2031,7 @@ class Pv1Segment extends AbstractSegment
     {
         $this->totalCharges = $this
             ->dataTypeFactory
-            ->create('NM', $this->characterEncoding)
+            ->create('NM', $this->encodingParameters)
         ;
         $this->totalCharges->setValue($value);
     }
@@ -2043,7 +2043,7 @@ class Pv1Segment extends AbstractSegment
     {
         $this->totalAdjustments = $this
             ->dataTypeFactory
-            ->create('NM', $this->characterEncoding)
+            ->create('NM', $this->encodingParameters)
         ;
         $this->totalAdjustments->setValue($value);
     }
@@ -2055,7 +2055,7 @@ class Pv1Segment extends AbstractSegment
     {
         $this->totalPayments = $this
             ->dataTypeFactory
-            ->create('NM', $this->characterEncoding)
+            ->create('NM', $this->encodingParameters)
         ;
         $this->totalPayments->setValue($value);
     }
@@ -2096,13 +2096,13 @@ class Pv1Segment extends AbstractSegment
         $idNumber,
         $checkDigit = null,
         $checkDigitScheme = null,
-        $assigningAuthorityNamespaceId,
-        $assigningAuthorityUniversalId,
-        $assigningAuthorityUniversalIdType,
+        $assigningAuthorityNamespaceId = null,
+        $assigningAuthorityUniversalId = null,
+        $assigningAuthorityUniversalIdType = null,
         $identifierTypeCode = null,
-        $assigningFacilityNamespaceId,
-        $assigningFacilityUniversalId,
-        $assigningFacilityUniversalIdType,
+        $assigningFacilityNamespaceId = null,
+        $assigningFacilityUniversalId = null,
+        $assigningFacilityUniversalIdType = null,
         $effectiveDate = null,
         $expirationDate = null,
         $assigningJurisdictionIdentifier = null,
@@ -2126,7 +2126,7 @@ class Pv1Segment extends AbstractSegment
     ) {
         $this->altVisitId = $this
             ->dataTypeFactory
-            ->create('CX', $this->characterEncoding)
+            ->create('CX', $this->encodingParameters)
         ;
         $this->altVisitId->setIdNumber($idNumber);
         $this->altVisitId->setCheckDigit($checkDigit);
@@ -2175,7 +2175,7 @@ class Pv1Segment extends AbstractSegment
     {
         $this->visitIndicator = $this
             ->dataTypeFactory
-            ->create('IS', $this->characterEncoding)
+            ->create('IS', $this->encodingParameters)
         ;
         $this->visitIndicator->setValue($value);
     }
@@ -2252,16 +2252,16 @@ class Pv1Segment extends AbstractSegment
         $prefix = null,
         $degree = null,
         $sourceTable = null,
-        $assigningAuthorityNamespaceId,
-        $assigningAuthorityUniversalId,
-        $assigningAuthorityUniversalIdType,
+        $assigningAuthorityNamespaceId = null,
+        $assigningAuthorityUniversalId = null,
+        $assigningAuthorityUniversalIdType = null,
         $nameTypeCode = null,
         $identifierCheckDigit = null,
         $checkDigitScheme = null,
         $identifierTypeCode = null,
-        $assigningFacilityNamespaceId,
-        $assigningFacilityUniversalId,
-        $assigningFacilityUniversalIdType,
+        $assigningFacilityNamespaceId = null,
+        $assigningFacilityUniversalId = null,
+        $assigningFacilityUniversalIdType = null,
         $nameRepresentationCode = null,
         $nameContextIdentifier = null,
         $nameContextText = null,
@@ -2300,7 +2300,7 @@ class Pv1Segment extends AbstractSegment
     ) {
         $otherHealthcareProvider = $this
             ->dataTypeFactory
-            ->create('XCN', $this->characterEncoding)
+            ->create('XCN', $this->encodingParameters)
         ;
         $this->otherHealthcareProvider[] = $otherHealthcareProvider;
         $otherHealthcareProvider->setIdNumber($idNumber);
@@ -4463,5 +4463,754 @@ class Pv1Segment extends AbstractSegment
                 $assigningAgencyOriginalText
             );
         }
+    }
+
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+        $s = 'PV1';
+        $emptyFieldsSinceLastField = 0;
+
+        if (!$this->getFieldSetId() || !$this->getFieldSetId()->hasValue()) {
+            ++$emptyFieldsSinceLastField;
+        } else {
+            $s .= str_repeat(
+                $this->encodingParameters->getFieldSep(),
+                1 + $emptyFieldsSinceLastField
+            ) . (string) $this->getFieldSetId()->getValue();
+            $emptyFieldsSinceLastField = 0;
+        }
+
+        if (!$this->getFieldPatientClass() || !$this->getFieldPatientClass()->hasValue()) {
+            ++$emptyFieldsSinceLastField;
+        } else {
+            $s .= str_repeat(
+                $this->encodingParameters->getFieldSep(),
+                1 + $emptyFieldsSinceLastField
+            ) . (string) $this->getFieldPatientClass()->getValue();
+            $emptyFieldsSinceLastField = 0;
+        }
+
+        if (!$this->getFieldAssignedPatientLocation()) {
+            ++$emptyFieldsSinceLastField;
+        } else {
+            $value = (string) $this->getFieldAssignedPatientLocation();
+            if ($value === '') {
+                ++$emptyFieldsSinceLastField;
+            } else {
+                $s .= str_repeat(
+                    $this->encodingParameters->getFieldSep(),
+                    1 + $emptyFieldsSinceLastField
+                ) . $value;
+                $emptyFieldsSinceLastField = 0;
+            }
+        }
+
+        if (!$this->getFieldAdmissionType() || !$this->getFieldAdmissionType()->hasValue()) {
+            ++$emptyFieldsSinceLastField;
+        } else {
+            $s .= str_repeat(
+                $this->encodingParameters->getFieldSep(),
+                1 + $emptyFieldsSinceLastField
+            ) . (string) $this->getFieldAdmissionType()->getValue();
+            $emptyFieldsSinceLastField = 0;
+        }
+
+        if (!$this->getFieldPreadmitNumber()) {
+            ++$emptyFieldsSinceLastField;
+        } else {
+            $value = (string) $this->getFieldPreadmitNumber();
+            if ($value === '') {
+                ++$emptyFieldsSinceLastField;
+            } else {
+                $s .= str_repeat(
+                    $this->encodingParameters->getFieldSep(),
+                    1 + $emptyFieldsSinceLastField
+                ) . $value;
+                $emptyFieldsSinceLastField = 0;
+            }
+        }
+
+        if (!$this->getFieldPriorPatientLocation()) {
+            ++$emptyFieldsSinceLastField;
+        } else {
+            $value = (string) $this->getFieldPriorPatientLocation();
+            if ($value === '') {
+                ++$emptyFieldsSinceLastField;
+            } else {
+                $s .= str_repeat(
+                    $this->encodingParameters->getFieldSep(),
+                    1 + $emptyFieldsSinceLastField
+                ) . $value;
+                $emptyFieldsSinceLastField = 0;
+            }
+        }
+
+        if (empty($this->getFieldAttendingDoctor())) {
+            ++$emptyFieldsSinceLastField;
+        } else {
+            $nonEmptyReps = 0;
+            foreach ($this->getFieldAttendingDoctor() as $repetition) {
+                $value = (string) $repetition;
+                if ($value === '') {
+                    continue;
+                }
+                if ($nonEmptyReps == 0) {
+                    $s .= str_repeat(
+                        $this->encodingParameters->getFieldSep(),
+                        1 + $emptyFieldsSinceLastField
+                    ) . $value;
+                    $emptyFieldsSinceLastField = 0;
+                } else {
+                    $s .= $this->encodingParameters->getRepetitionSep()
+                       . (string) $value
+                    ;
+                }
+                ++$nonEmptyReps;
+            }
+        }
+
+        if (empty($this->getFieldReferringDoctor())) {
+            ++$emptyFieldsSinceLastField;
+        } else {
+            $nonEmptyReps = 0;
+            foreach ($this->getFieldReferringDoctor() as $repetition) {
+                $value = (string) $repetition;
+                if ($value === '') {
+                    continue;
+                }
+                if ($nonEmptyReps == 0) {
+                    $s .= str_repeat(
+                        $this->encodingParameters->getFieldSep(),
+                        1 + $emptyFieldsSinceLastField
+                    ) . $value;
+                    $emptyFieldsSinceLastField = 0;
+                } else {
+                    $s .= $this->encodingParameters->getRepetitionSep()
+                       . (string) $value
+                    ;
+                }
+                ++$nonEmptyReps;
+            }
+        }
+
+        if (empty($this->getFieldConsultingDoctor())) {
+            ++$emptyFieldsSinceLastField;
+        } else {
+            $nonEmptyReps = 0;
+            foreach ($this->getFieldConsultingDoctor() as $repetition) {
+                $value = (string) $repetition;
+                if ($value === '') {
+                    continue;
+                }
+                if ($nonEmptyReps == 0) {
+                    $s .= str_repeat(
+                        $this->encodingParameters->getFieldSep(),
+                        1 + $emptyFieldsSinceLastField
+                    ) . $value;
+                    $emptyFieldsSinceLastField = 0;
+                } else {
+                    $s .= $this->encodingParameters->getRepetitionSep()
+                       . (string) $value
+                    ;
+                }
+                ++$nonEmptyReps;
+            }
+        }
+
+        if (!$this->getFieldHospitalService() || !$this->getFieldHospitalService()->hasValue()) {
+            ++$emptyFieldsSinceLastField;
+        } else {
+            $s .= str_repeat(
+                $this->encodingParameters->getFieldSep(),
+                1 + $emptyFieldsSinceLastField
+            ) . (string) $this->getFieldHospitalService()->getValue();
+            $emptyFieldsSinceLastField = 0;
+        }
+
+        if (!$this->getFieldTemporaryLocation()) {
+            ++$emptyFieldsSinceLastField;
+        } else {
+            $value = (string) $this->getFieldTemporaryLocation();
+            if ($value === '') {
+                ++$emptyFieldsSinceLastField;
+            } else {
+                $s .= str_repeat(
+                    $this->encodingParameters->getFieldSep(),
+                    1 + $emptyFieldsSinceLastField
+                ) . $value;
+                $emptyFieldsSinceLastField = 0;
+            }
+        }
+
+        if (!$this->getFieldPreadmitTestIndicator() || !$this->getFieldPreadmitTestIndicator()->hasValue()) {
+            ++$emptyFieldsSinceLastField;
+        } else {
+            $s .= str_repeat(
+                $this->encodingParameters->getFieldSep(),
+                1 + $emptyFieldsSinceLastField
+            ) . (string) $this->getFieldPreadmitTestIndicator()->getValue();
+            $emptyFieldsSinceLastField = 0;
+        }
+
+        if (!$this->getFieldReadmissionIndicator() || !$this->getFieldReadmissionIndicator()->hasValue()) {
+            ++$emptyFieldsSinceLastField;
+        } else {
+            $s .= str_repeat(
+                $this->encodingParameters->getFieldSep(),
+                1 + $emptyFieldsSinceLastField
+            ) . (string) $this->getFieldReadmissionIndicator()->getValue();
+            $emptyFieldsSinceLastField = 0;
+        }
+
+        if (!$this->getFieldAdmitSource() || !$this->getFieldAdmitSource()->hasValue()) {
+            ++$emptyFieldsSinceLastField;
+        } else {
+            $s .= str_repeat(
+                $this->encodingParameters->getFieldSep(),
+                1 + $emptyFieldsSinceLastField
+            ) . (string) $this->getFieldAdmitSource()->getValue();
+            $emptyFieldsSinceLastField = 0;
+        }
+
+        if (empty($this->getFieldAmbulatoryStatus())) {
+            ++$emptyFieldsSinceLastField;
+        } else {
+            $nonEmptyReps = 0;
+            foreach ($this->getFieldAmbulatoryStatus() as $repetition) {
+                if (!$repetition->hasValue()) {
+                    continue;
+                }
+                if ($nonEmptyReps == 0) {
+                    $s .= str_repeat(
+                        $this->encodingParameters->getFieldSep(),
+                        1 + $emptyFieldsSinceLastField
+                    ) . (string) $repetition->getValue();
+                    $emptyFieldsSinceLastField = 0;
+                } else {
+                    $s .= $this->encodingParameters->getRepetitionSep()
+                        . (string) $repetition->getValue()
+                    ;
+                }
+                ++$nonEmptyReps;
+            }
+        }
+
+        if (!$this->getFieldVipIndicator() || !$this->getFieldVipIndicator()->hasValue()) {
+            ++$emptyFieldsSinceLastField;
+        } else {
+            $s .= str_repeat(
+                $this->encodingParameters->getFieldSep(),
+                1 + $emptyFieldsSinceLastField
+            ) . (string) $this->getFieldVipIndicator()->getValue();
+            $emptyFieldsSinceLastField = 0;
+        }
+
+        if (empty($this->getFieldAdmittingDoctor())) {
+            ++$emptyFieldsSinceLastField;
+        } else {
+            $nonEmptyReps = 0;
+            foreach ($this->getFieldAdmittingDoctor() as $repetition) {
+                $value = (string) $repetition;
+                if ($value === '') {
+                    continue;
+                }
+                if ($nonEmptyReps == 0) {
+                    $s .= str_repeat(
+                        $this->encodingParameters->getFieldSep(),
+                        1 + $emptyFieldsSinceLastField
+                    ) . $value;
+                    $emptyFieldsSinceLastField = 0;
+                } else {
+                    $s .= $this->encodingParameters->getRepetitionSep()
+                       . (string) $value
+                    ;
+                }
+                ++$nonEmptyReps;
+            }
+        }
+
+        if (!$this->getFieldPatientType() || !$this->getFieldPatientType()->hasValue()) {
+            ++$emptyFieldsSinceLastField;
+        } else {
+            $s .= str_repeat(
+                $this->encodingParameters->getFieldSep(),
+                1 + $emptyFieldsSinceLastField
+            ) . (string) $this->getFieldPatientType()->getValue();
+            $emptyFieldsSinceLastField = 0;
+        }
+
+        if (!$this->getFieldVisitNumber()) {
+            ++$emptyFieldsSinceLastField;
+        } else {
+            $value = (string) $this->getFieldVisitNumber();
+            if ($value === '') {
+                ++$emptyFieldsSinceLastField;
+            } else {
+                $s .= str_repeat(
+                    $this->encodingParameters->getFieldSep(),
+                    1 + $emptyFieldsSinceLastField
+                ) . $value;
+                $emptyFieldsSinceLastField = 0;
+            }
+        }
+
+        if (empty($this->getFieldFinancialClass())) {
+            ++$emptyFieldsSinceLastField;
+        } else {
+            $nonEmptyReps = 0;
+            foreach ($this->getFieldFinancialClass() as $repetition) {
+                $value = (string) $repetition;
+                if ($value === '') {
+                    continue;
+                }
+                if ($nonEmptyReps == 0) {
+                    $s .= str_repeat(
+                        $this->encodingParameters->getFieldSep(),
+                        1 + $emptyFieldsSinceLastField
+                    ) . $value;
+                    $emptyFieldsSinceLastField = 0;
+                } else {
+                    $s .= $this->encodingParameters->getRepetitionSep()
+                       . (string) $value
+                    ;
+                }
+                ++$nonEmptyReps;
+            }
+        }
+
+        if (!$this->getFieldChargePriceIndicator() || !$this->getFieldChargePriceIndicator()->hasValue()) {
+            ++$emptyFieldsSinceLastField;
+        } else {
+            $s .= str_repeat(
+                $this->encodingParameters->getFieldSep(),
+                1 + $emptyFieldsSinceLastField
+            ) . (string) $this->getFieldChargePriceIndicator()->getValue();
+            $emptyFieldsSinceLastField = 0;
+        }
+
+        if (!$this->getFieldCourtesyCode() || !$this->getFieldCourtesyCode()->hasValue()) {
+            ++$emptyFieldsSinceLastField;
+        } else {
+            $s .= str_repeat(
+                $this->encodingParameters->getFieldSep(),
+                1 + $emptyFieldsSinceLastField
+            ) . (string) $this->getFieldCourtesyCode()->getValue();
+            $emptyFieldsSinceLastField = 0;
+        }
+
+        if (!$this->getFieldCreditRating() || !$this->getFieldCreditRating()->hasValue()) {
+            ++$emptyFieldsSinceLastField;
+        } else {
+            $s .= str_repeat(
+                $this->encodingParameters->getFieldSep(),
+                1 + $emptyFieldsSinceLastField
+            ) . (string) $this->getFieldCreditRating()->getValue();
+            $emptyFieldsSinceLastField = 0;
+        }
+
+        if (empty($this->getFieldContractCode())) {
+            ++$emptyFieldsSinceLastField;
+        } else {
+            $nonEmptyReps = 0;
+            foreach ($this->getFieldContractCode() as $repetition) {
+                if (!$repetition->hasValue()) {
+                    continue;
+                }
+                if ($nonEmptyReps == 0) {
+                    $s .= str_repeat(
+                        $this->encodingParameters->getFieldSep(),
+                        1 + $emptyFieldsSinceLastField
+                    ) . (string) $repetition->getValue();
+                    $emptyFieldsSinceLastField = 0;
+                } else {
+                    $s .= $this->encodingParameters->getRepetitionSep()
+                        . (string) $repetition->getValue()
+                    ;
+                }
+                ++$nonEmptyReps;
+            }
+        }
+
+        if (empty($this->getFieldContractEffectiveDate())) {
+            ++$emptyFieldsSinceLastField;
+        } else {
+            $nonEmptyReps = 0;
+            foreach ($this->getFieldContractEffectiveDate() as $repetition) {
+                if (!$repetition->hasValue()) {
+                    continue;
+                }
+                if ($nonEmptyReps == 0) {
+                    $s .= str_repeat(
+                        $this->encodingParameters->getFieldSep(),
+                        1 + $emptyFieldsSinceLastField
+                    ) . (string) $repetition->getValue();
+                    $emptyFieldsSinceLastField = 0;
+                } else {
+                    $s .= $this->encodingParameters->getRepetitionSep()
+                        . (string) $repetition->getValue()
+                    ;
+                }
+                ++$nonEmptyReps;
+            }
+        }
+
+        if (empty($this->getFieldContractAmount())) {
+            ++$emptyFieldsSinceLastField;
+        } else {
+            $nonEmptyReps = 0;
+            foreach ($this->getFieldContractAmount() as $repetition) {
+                if (!$repetition->hasValue()) {
+                    continue;
+                }
+                if ($nonEmptyReps == 0) {
+                    $s .= str_repeat(
+                        $this->encodingParameters->getFieldSep(),
+                        1 + $emptyFieldsSinceLastField
+                    ) . (string) $repetition->getValue();
+                    $emptyFieldsSinceLastField = 0;
+                } else {
+                    $s .= $this->encodingParameters->getRepetitionSep()
+                        . (string) $repetition->getValue()
+                    ;
+                }
+                ++$nonEmptyReps;
+            }
+        }
+
+        if (empty($this->getFieldContractPeriod())) {
+            ++$emptyFieldsSinceLastField;
+        } else {
+            $nonEmptyReps = 0;
+            foreach ($this->getFieldContractPeriod() as $repetition) {
+                if (!$repetition->hasValue()) {
+                    continue;
+                }
+                if ($nonEmptyReps == 0) {
+                    $s .= str_repeat(
+                        $this->encodingParameters->getFieldSep(),
+                        1 + $emptyFieldsSinceLastField
+                    ) . (string) $repetition->getValue();
+                    $emptyFieldsSinceLastField = 0;
+                } else {
+                    $s .= $this->encodingParameters->getRepetitionSep()
+                        . (string) $repetition->getValue()
+                    ;
+                }
+                ++$nonEmptyReps;
+            }
+        }
+
+        if (!$this->getFieldInterestCode() || !$this->getFieldInterestCode()->hasValue()) {
+            ++$emptyFieldsSinceLastField;
+        } else {
+            $s .= str_repeat(
+                $this->encodingParameters->getFieldSep(),
+                1 + $emptyFieldsSinceLastField
+            ) . (string) $this->getFieldInterestCode()->getValue();
+            $emptyFieldsSinceLastField = 0;
+        }
+
+        if (!$this->getFieldTransferToBadDebtCode() || !$this->getFieldTransferToBadDebtCode()->hasValue()) {
+            ++$emptyFieldsSinceLastField;
+        } else {
+            $s .= str_repeat(
+                $this->encodingParameters->getFieldSep(),
+                1 + $emptyFieldsSinceLastField
+            ) . (string) $this->getFieldTransferToBadDebtCode()->getValue();
+            $emptyFieldsSinceLastField = 0;
+        }
+
+        if (!$this->getFieldTransferToBadDebtDate() || !$this->getFieldTransferToBadDebtDate()->hasValue()) {
+            ++$emptyFieldsSinceLastField;
+        } else {
+            $s .= str_repeat(
+                $this->encodingParameters->getFieldSep(),
+                1 + $emptyFieldsSinceLastField
+            ) . (string) $this->getFieldTransferToBadDebtDate()->getValue();
+            $emptyFieldsSinceLastField = 0;
+        }
+
+        if (!$this->getFieldBadDebtAgencyCode() || !$this->getFieldBadDebtAgencyCode()->hasValue()) {
+            ++$emptyFieldsSinceLastField;
+        } else {
+            $s .= str_repeat(
+                $this->encodingParameters->getFieldSep(),
+                1 + $emptyFieldsSinceLastField
+            ) . (string) $this->getFieldBadDebtAgencyCode()->getValue();
+            $emptyFieldsSinceLastField = 0;
+        }
+
+        if (!$this->getFieldBadDebtTransferAmount() || !$this->getFieldBadDebtTransferAmount()->hasValue()) {
+            ++$emptyFieldsSinceLastField;
+        } else {
+            $s .= str_repeat(
+                $this->encodingParameters->getFieldSep(),
+                1 + $emptyFieldsSinceLastField
+            ) . (string) $this->getFieldBadDebtTransferAmount()->getValue();
+            $emptyFieldsSinceLastField = 0;
+        }
+
+        if (!$this->getFieldBadDebtRecoveryAmount() || !$this->getFieldBadDebtRecoveryAmount()->hasValue()) {
+            ++$emptyFieldsSinceLastField;
+        } else {
+            $s .= str_repeat(
+                $this->encodingParameters->getFieldSep(),
+                1 + $emptyFieldsSinceLastField
+            ) . (string) $this->getFieldBadDebtRecoveryAmount()->getValue();
+            $emptyFieldsSinceLastField = 0;
+        }
+
+        if (!$this->getFieldDeleteAccountIndicator() || !$this->getFieldDeleteAccountIndicator()->hasValue()) {
+            ++$emptyFieldsSinceLastField;
+        } else {
+            $s .= str_repeat(
+                $this->encodingParameters->getFieldSep(),
+                1 + $emptyFieldsSinceLastField
+            ) . (string) $this->getFieldDeleteAccountIndicator()->getValue();
+            $emptyFieldsSinceLastField = 0;
+        }
+
+        if (!$this->getFieldDeleteAccountDate() || !$this->getFieldDeleteAccountDate()->hasValue()) {
+            ++$emptyFieldsSinceLastField;
+        } else {
+            $s .= str_repeat(
+                $this->encodingParameters->getFieldSep(),
+                1 + $emptyFieldsSinceLastField
+            ) . (string) $this->getFieldDeleteAccountDate()->getValue();
+            $emptyFieldsSinceLastField = 0;
+        }
+
+        if (!$this->getFieldDischargeDisposition() || !$this->getFieldDischargeDisposition()->hasValue()) {
+            ++$emptyFieldsSinceLastField;
+        } else {
+            $s .= str_repeat(
+                $this->encodingParameters->getFieldSep(),
+                1 + $emptyFieldsSinceLastField
+            ) . (string) $this->getFieldDischargeDisposition()->getValue();
+            $emptyFieldsSinceLastField = 0;
+        }
+
+        if (!$this->getFieldDischargedToLocation()) {
+            ++$emptyFieldsSinceLastField;
+        } else {
+            $value = (string) $this->getFieldDischargedToLocation();
+            if ($value === '') {
+                ++$emptyFieldsSinceLastField;
+            } else {
+                $s .= str_repeat(
+                    $this->encodingParameters->getFieldSep(),
+                    1 + $emptyFieldsSinceLastField
+                ) . $value;
+                $emptyFieldsSinceLastField = 0;
+            }
+        }
+
+        if (!$this->getFieldDietType()) {
+            ++$emptyFieldsSinceLastField;
+        } else {
+            $value = (string) $this->getFieldDietType();
+            if ($value === '') {
+                ++$emptyFieldsSinceLastField;
+            } else {
+                $s .= str_repeat(
+                    $this->encodingParameters->getFieldSep(),
+                    1 + $emptyFieldsSinceLastField
+                ) . $value;
+                $emptyFieldsSinceLastField = 0;
+            }
+        }
+
+        if (!$this->getFieldServicingFacility() || !$this->getFieldServicingFacility()->hasValue()) {
+            ++$emptyFieldsSinceLastField;
+        } else {
+            $s .= str_repeat(
+                $this->encodingParameters->getFieldSep(),
+                1 + $emptyFieldsSinceLastField
+            ) . (string) $this->getFieldServicingFacility()->getValue();
+            $emptyFieldsSinceLastField = 0;
+        }
+
+        if (!$this->getFieldBedStatus() || !$this->getFieldBedStatus()->hasValue()) {
+            ++$emptyFieldsSinceLastField;
+        } else {
+            $s .= str_repeat(
+                $this->encodingParameters->getFieldSep(),
+                1 + $emptyFieldsSinceLastField
+            ) . (string) $this->getFieldBedStatus()->getValue();
+            $emptyFieldsSinceLastField = 0;
+        }
+
+        if (!$this->getFieldAccountStatus() || !$this->getFieldAccountStatus()->hasValue()) {
+            ++$emptyFieldsSinceLastField;
+        } else {
+            $s .= str_repeat(
+                $this->encodingParameters->getFieldSep(),
+                1 + $emptyFieldsSinceLastField
+            ) . (string) $this->getFieldAccountStatus()->getValue();
+            $emptyFieldsSinceLastField = 0;
+        }
+
+        if (!$this->getFieldPendingLocation()) {
+            ++$emptyFieldsSinceLastField;
+        } else {
+            $value = (string) $this->getFieldPendingLocation();
+            if ($value === '') {
+                ++$emptyFieldsSinceLastField;
+            } else {
+                $s .= str_repeat(
+                    $this->encodingParameters->getFieldSep(),
+                    1 + $emptyFieldsSinceLastField
+                ) . $value;
+                $emptyFieldsSinceLastField = 0;
+            }
+        }
+
+        if (!$this->getFieldPriorTemporaryLocation()) {
+            ++$emptyFieldsSinceLastField;
+        } else {
+            $value = (string) $this->getFieldPriorTemporaryLocation();
+            if ($value === '') {
+                ++$emptyFieldsSinceLastField;
+            } else {
+                $s .= str_repeat(
+                    $this->encodingParameters->getFieldSep(),
+                    1 + $emptyFieldsSinceLastField
+                ) . $value;
+                $emptyFieldsSinceLastField = 0;
+            }
+        }
+
+        if (!$this->getFieldAdmitDatetime()) {
+            ++$emptyFieldsSinceLastField;
+        } else {
+            $value = (string) $this->getFieldAdmitDatetime();
+            if ($value === '') {
+                ++$emptyFieldsSinceLastField;
+            } else {
+                $s .= str_repeat(
+                    $this->encodingParameters->getFieldSep(),
+                    1 + $emptyFieldsSinceLastField
+                ) . $value;
+                $emptyFieldsSinceLastField = 0;
+            }
+        }
+
+        if (empty($this->getFieldDischargeDatetime())) {
+            ++$emptyFieldsSinceLastField;
+        } else {
+            $nonEmptyReps = 0;
+            foreach ($this->getFieldDischargeDatetime() as $repetition) {
+                $value = (string) $repetition;
+                if ($value === '') {
+                    continue;
+                }
+                if ($nonEmptyReps == 0) {
+                    $s .= str_repeat(
+                        $this->encodingParameters->getFieldSep(),
+                        1 + $emptyFieldsSinceLastField
+                    ) . $value;
+                    $emptyFieldsSinceLastField = 0;
+                } else {
+                    $s .= $this->encodingParameters->getRepetitionSep()
+                       . (string) $value
+                    ;
+                }
+                ++$nonEmptyReps;
+            }
+        }
+
+        if (!$this->getFieldCurrentPatientBalance() || !$this->getFieldCurrentPatientBalance()->hasValue()) {
+            ++$emptyFieldsSinceLastField;
+        } else {
+            $s .= str_repeat(
+                $this->encodingParameters->getFieldSep(),
+                1 + $emptyFieldsSinceLastField
+            ) . (string) $this->getFieldCurrentPatientBalance()->getValue();
+            $emptyFieldsSinceLastField = 0;
+        }
+
+        if (!$this->getFieldTotalCharges() || !$this->getFieldTotalCharges()->hasValue()) {
+            ++$emptyFieldsSinceLastField;
+        } else {
+            $s .= str_repeat(
+                $this->encodingParameters->getFieldSep(),
+                1 + $emptyFieldsSinceLastField
+            ) . (string) $this->getFieldTotalCharges()->getValue();
+            $emptyFieldsSinceLastField = 0;
+        }
+
+        if (!$this->getFieldTotalAdjustments() || !$this->getFieldTotalAdjustments()->hasValue()) {
+            ++$emptyFieldsSinceLastField;
+        } else {
+            $s .= str_repeat(
+                $this->encodingParameters->getFieldSep(),
+                1 + $emptyFieldsSinceLastField
+            ) . (string) $this->getFieldTotalAdjustments()->getValue();
+            $emptyFieldsSinceLastField = 0;
+        }
+
+        if (!$this->getFieldTotalPayments() || !$this->getFieldTotalPayments()->hasValue()) {
+            ++$emptyFieldsSinceLastField;
+        } else {
+            $s .= str_repeat(
+                $this->encodingParameters->getFieldSep(),
+                1 + $emptyFieldsSinceLastField
+            ) . (string) $this->getFieldTotalPayments()->getValue();
+            $emptyFieldsSinceLastField = 0;
+        }
+
+        if (!$this->getFieldAltVisitId()) {
+            ++$emptyFieldsSinceLastField;
+        } else {
+            $value = (string) $this->getFieldAltVisitId();
+            if ($value === '') {
+                ++$emptyFieldsSinceLastField;
+            } else {
+                $s .= str_repeat(
+                    $this->encodingParameters->getFieldSep(),
+                    1 + $emptyFieldsSinceLastField
+                ) . $value;
+                $emptyFieldsSinceLastField = 0;
+            }
+        }
+
+        if (!$this->getFieldVisitIndicator() || !$this->getFieldVisitIndicator()->hasValue()) {
+            ++$emptyFieldsSinceLastField;
+        } else {
+            $s .= str_repeat(
+                $this->encodingParameters->getFieldSep(),
+                1 + $emptyFieldsSinceLastField
+            ) . (string) $this->getFieldVisitIndicator()->getValue();
+            $emptyFieldsSinceLastField = 0;
+        }
+
+        if (empty($this->getFieldOtherHealthcareProvider())) {
+            ++$emptyFieldsSinceLastField;
+        } else {
+            $nonEmptyReps = 0;
+            foreach ($this->getFieldOtherHealthcareProvider() as $repetition) {
+                $value = (string) $repetition;
+                if ($value === '') {
+                    continue;
+                }
+                if ($nonEmptyReps == 0) {
+                    $s .= str_repeat(
+                        $this->encodingParameters->getFieldSep(),
+                        1 + $emptyFieldsSinceLastField
+                    ) . $value;
+                    $emptyFieldsSinceLastField = 0;
+                } else {
+                    $s .= $this->encodingParameters->getRepetitionSep()
+                       . (string) $value
+                    ;
+                }
+                ++$nonEmptyReps;
+            }
+        }
+
+        return $s;
     }
 }

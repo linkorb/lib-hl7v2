@@ -61,7 +61,7 @@ class PlDataType extends ComponentDataType
     {
         $this->pointOfCare = $this
             ->dataTypeFactory
-            ->create('IS', $this->characterEncoding)
+            ->create('IS', $this->encodingParameters)
         ;
         $this->pointOfCare->setValue($pointOfCare);
     }
@@ -73,7 +73,7 @@ class PlDataType extends ComponentDataType
     {
         $this->room = $this
             ->dataTypeFactory
-            ->create('IS', $this->characterEncoding)
+            ->create('IS', $this->encodingParameters)
         ;
         $this->room->setValue($room);
     }
@@ -85,7 +85,7 @@ class PlDataType extends ComponentDataType
     {
         $this->bed = $this
             ->dataTypeFactory
-            ->create('IS', $this->characterEncoding)
+            ->create('IS', $this->encodingParameters)
         ;
         $this->bed->setValue($bed);
     }
@@ -95,14 +95,18 @@ class PlDataType extends ComponentDataType
      * @param string $facilityUniversalId
      * @param string $facilityUniversalIdType
      */
-    public function setFacility($facilityNamespaceId, $facilityUniversalId, $facilityUniversalIdType)
-    {
+    public function setFacility(
+        $facilityNamespaceId = null,
+        $facilityUniversalId = null,
+        $facilityUniversalIdType = null
+    ) {
         $this->facility = $this
             ->dataTypeFactory
-            ->create('HD', $this->characterEncoding)
+            ->create('HD', $this->encodingParameters, true)
         ;
         $this->facility->setNamespaceId($facilityNamespaceId);
-        $this->facility->setUniversalId($facilityUniversalId, $facilityUniversalIdType);
+        $this->facility->setUniversalId($facilityUniversalId);
+        $this->facility->setUniversalIdType($facilityUniversalIdType);
     }
 
     /**
@@ -112,7 +116,7 @@ class PlDataType extends ComponentDataType
     {
         $this->locationStatus = $this
             ->dataTypeFactory
-            ->create('IS', $this->characterEncoding)
+            ->create('IS', $this->encodingParameters)
         ;
         $this->locationStatus->setValue($locationStatus);
     }
@@ -124,7 +128,7 @@ class PlDataType extends ComponentDataType
     {
         $this->personLocationType = $this
             ->dataTypeFactory
-            ->create('IS', $this->characterEncoding)
+            ->create('IS', $this->encodingParameters)
         ;
         $this->personLocationType->setValue($personLocationType);
     }
@@ -136,7 +140,7 @@ class PlDataType extends ComponentDataType
     {
         $this->building = $this
             ->dataTypeFactory
-            ->create('IS', $this->characterEncoding)
+            ->create('IS', $this->encodingParameters)
         ;
         $this->building->setValue($building);
     }
@@ -148,7 +152,7 @@ class PlDataType extends ComponentDataType
     {
         $this->floor = $this
             ->dataTypeFactory
-            ->create('IS', $this->characterEncoding)
+            ->create('IS', $this->encodingParameters)
         ;
         $this->floor->setValue($floor);
     }
@@ -160,7 +164,7 @@ class PlDataType extends ComponentDataType
     {
         $this->locationDescription = $this
             ->dataTypeFactory
-            ->create('ST', $this->characterEncoding)
+            ->create('ST', $this->encodingParameters)
         ;
         $this->locationDescription->setValue($locationDescription);
     }
@@ -179,7 +183,7 @@ class PlDataType extends ComponentDataType
     ) {
         $this->comprehensiveLocationIdentifier = $this
             ->dataTypeFactory
-            ->create('EI', $this->characterEncoding)
+            ->create('EI', $this->encodingParameters, true)
         ;
         $this->comprehensiveLocationIdentifier->setEntityIdentifier(
             $comprehensiveLocationIdentifierEntityIdentifier
@@ -201,19 +205,21 @@ class PlDataType extends ComponentDataType
      * @param string $assigningAuthorityForLocationUniversalIdType
      */
     public function setAssigningAuthorityForLocation(
-        $assigningAuthorityForLocationNamespaceId,
-        $assigningAuthorityForLocationUniversalId,
-        $assigningAuthorityForLocationUniversalIdType
+        $assigningAuthorityForLocationNamespaceId = null,
+        $assigningAuthorityForLocationUniversalId = null,
+        $assigningAuthorityForLocationUniversalIdType = null
     ) {
         $this->assigningAuthorityForLocation = $this
             ->dataTypeFactory
-            ->create('HD', $this->characterEncoding)
+            ->create('HD', $this->encodingParameters, true)
         ;
         $this->assigningAuthorityForLocation->setNamespaceId(
             $assigningAuthorityForLocationNamespaceId
         );
         $this->assigningAuthorityForLocation->setUniversalId(
-            $assigningAuthorityForLocationUniversalId,
+            $assigningAuthorityForLocationUniversalId
+        );
+        $this->assigningAuthorityForLocation->setUniversalIdType(
             $assigningAuthorityForLocationUniversalIdType
         );
     }
@@ -304,5 +310,131 @@ class PlDataType extends ComponentDataType
     public function getAssigningAuthorityForLocation()
     {
         return $this->assigningAuthorityForLocation;
+    }
+
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+        $s = '';
+
+        $sep = $this->isSubcomponent
+            ? $this->encodingParameters->getSubcomponentSep()
+            : $this->encodingParameters->getComponentSep()
+        ;
+
+        if ($this->getPointOfCare() && $this->getPointOfCare()->hasValue()) {
+            $s .= (string) $this->getPointOfCare()->getValue();
+        }
+
+        $emptyComponentsSinceLastComponent = 0;
+
+        if (!$this->getRoom() || !$this->getRoom()->hasValue()) {
+            ++$emptyComponentsSinceLastComponent;
+        } else {
+            $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
+                . (string) $this->getRoom()->getValue();
+            ;
+            $emptyComponentsSinceLastComponent = 0;
+        }
+
+        if (!$this->getBed() || !$this->getBed()->hasValue()) {
+            ++$emptyComponentsSinceLastComponent;
+        } else {
+            $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
+                . (string) $this->getBed()->getValue();
+            ;
+            $emptyComponentsSinceLastComponent = 0;
+        }
+
+        if (!$this->getFacility()) {
+            ++$emptyComponentsSinceLastComponent;
+        } else {
+            $value = (string) $this->getFacility();
+            if ($value === '') {
+                ++$emptyComponentsSinceLastComponent;
+            } else {
+                $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
+                    . $value
+                ;
+                $emptyComponentsSinceLastComponent = 0;
+            }
+        }
+
+        if (!$this->getLocationStatus() || !$this->getLocationStatus()->hasValue()) {
+            ++$emptyComponentsSinceLastComponent;
+        } else {
+            $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
+                . (string) $this->getLocationStatus()->getValue();
+            ;
+            $emptyComponentsSinceLastComponent = 0;
+        }
+
+        if (!$this->getPersonLocationType() || !$this->getPersonLocationType()->hasValue()) {
+            ++$emptyComponentsSinceLastComponent;
+        } else {
+            $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
+                . (string) $this->getPersonLocationType()->getValue();
+            ;
+            $emptyComponentsSinceLastComponent = 0;
+        }
+
+        if (!$this->getBuilding() || !$this->getBuilding()->hasValue()) {
+            ++$emptyComponentsSinceLastComponent;
+        } else {
+            $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
+                . (string) $this->getBuilding()->getValue();
+            ;
+            $emptyComponentsSinceLastComponent = 0;
+        }
+
+        if (!$this->getFloor() || !$this->getFloor()->hasValue()) {
+            ++$emptyComponentsSinceLastComponent;
+        } else {
+            $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
+                . (string) $this->getFloor()->getValue();
+            ;
+            $emptyComponentsSinceLastComponent = 0;
+        }
+
+        if (!$this->getLocationDescription() || !$this->getLocationDescription()->hasValue()) {
+            ++$emptyComponentsSinceLastComponent;
+        } else {
+            $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
+                . (string) $this->getLocationDescription()->getValue();
+            ;
+            $emptyComponentsSinceLastComponent = 0;
+        }
+
+        if (!$this->getComprehensiveLocationIdentifier()) {
+            ++$emptyComponentsSinceLastComponent;
+        } else {
+            $value = (string) $this->getComprehensiveLocationIdentifier();
+            if ($value === '') {
+                ++$emptyComponentsSinceLastComponent;
+            } else {
+                $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
+                    . $value
+                ;
+                $emptyComponentsSinceLastComponent = 0;
+            }
+        }
+
+        if (!$this->getAssigningAuthorityForLocation()) {
+            ++$emptyComponentsSinceLastComponent;
+        } else {
+            $value = (string) $this->getAssigningAuthorityForLocation();
+            if ($value === '') {
+                ++$emptyComponentsSinceLastComponent;
+            } else {
+                $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
+                    . $value
+                ;
+                $emptyComponentsSinceLastComponent = 0;
+            }
+        }
+
+        return $s;
     }
 }
