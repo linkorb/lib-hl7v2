@@ -41,6 +41,10 @@ class CharacterEncodingNames
             return 'UTF-8';
         }
 
+        if (preg_match('@^windows\-125[12]$@i', $hl7Name)) {
+            return ucfirst($hl7Name);
+        }
+
         throw new CodecError("The character encoding \"{$hl7Name}\" is unsupported.");
     }
 
