@@ -941,3 +941,142 @@ OBX:
           name: Performing Organization Medical Director
           type: XCN
           len: 3002
+ORC:
+    name: Common Order
+    spec: 4.5.1 (p27)
+    fields:
+        -
+          name: Order Control
+          required: true
+          type: ID
+          len: 2
+        -
+          name: Placer Order Number
+          type: EI
+          len: 22
+        -
+          name: Filler Order Number
+          type: EI
+          len: 22
+        -
+          name: Placer Group Number
+          type: EI
+          len: 22
+        -
+          name: Order Status
+          type: ID
+          len: 2
+        -
+          name: Response Flag
+          type: ID
+          len: 1
+        -
+          name: Quantity Timing
+          type: TQ
+          len: 200
+          repeat: true
+        -
+          name: Parent
+          type: EIP
+          len: 200
+        -
+          name: Date Time of Transaction
+          type: TS
+          len: 26
+        -
+          name: Entered By
+          type: XCN
+          len: 250
+          repeat: true
+        -
+          name: Verified By
+          type: XCN
+          len: 250
+          repeat: true
+        -
+          name: Ordering Provider
+          type: XCN
+          len: 250
+          repeat: true
+        -
+          name: Enterer Location
+          type: PL
+          len: 80
+        -
+          name: Call Back Phone Number
+          type: XTN
+          len: 250
+          repeat: true # possibly max_repeat: 2
+        -
+          name: Order Effective Date Time
+          type: TS
+          len: 26
+        -
+          name: Order Control Code Reason
+          type: CE
+          len: 250
+        -
+          name: Entering Organization
+          type: CE
+          len: 250
+        -
+          name: Entering Device
+          type: CE
+          len: 250
+        -
+          name: Action By
+          type: XCN
+          len: 250
+          repeat: true
+        -
+          name: Advanced Beneficiary Notice Code
+          type: CE
+          len: 250
+        -
+          name: Ordering Facility Name
+          type: XON
+          len: 250
+          repeat: true
+        -
+          name: Ordering Facility Address
+          type: XAD
+          len: 250
+          repeat: true
+        -
+          name: Ordering Facility Phone Number
+          type: XTN
+          len: 250
+          repeat: true
+        -
+          name: Ordering Provider Address
+          type: XAD
+          len: 250
+          repeat: true
+        -
+          name: Order Status Modifier
+          type: CWE
+          len: 250
+        -
+          name: Advanced Beneficiary Notice Override Reason
+          type: CWE
+          len: 60
+        -
+          name: Filler Expected Availability Date Time
+          type: TS
+          len: 26
+        -
+          name: Confidentiality Code
+          type: CWE
+          len: 250
+        -
+          name: Order Type
+          type: CWE
+          len: 250
+        -
+          name: Enterer Authorization Mode
+          type: CNE
+          len: 250
+        -
+          name: Parent Universal Service Identifier
+          type: CWE
+          len: 250

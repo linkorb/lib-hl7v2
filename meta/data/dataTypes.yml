@@ -27,6 +27,47 @@ CE:
           type: ID
           len: 20
 
+CNE:
+    name: Coded with no exceptions
+    len: 705
+    components:
+        -
+          name: Identifier
+          required: true
+          type: ST
+          len: 20
+        -
+          name: Text
+          type: ST
+          len: 199
+        -
+          name: NameOfCodingSystem
+          type: ID
+          len: 20
+        -
+          name: AltIdentifier
+          type: ST
+          len: 20
+        -
+          name: AltText
+          type: ST
+          len: 199
+        -
+          name: NameOfAltCodingSystem
+          type: ID
+          len: 20
+        -
+          name: CodingSystemVersionId
+          type: ST
+          len: 10
+        -
+          name: AltCodingSystemVersionId
+          type: ST
+          len: 10
+        -
+          name: OriginalText
+          type: ST
+          len: 199
 CNN:
     name: Composite ID Number and Name Simplified
     len: 406
