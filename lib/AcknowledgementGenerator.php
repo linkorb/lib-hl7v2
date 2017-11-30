@@ -14,13 +14,16 @@ class AcknowledgementGenerator
 {
     private $messageFactory;
     private $segmentFactory;
+    private $suppressTxOfSenderIdTypes;
 
     public function __construct(
         MessageFactory $messageFactory,
-        SegmentFactory $segmentFactory
+        SegmentFactory $segmentFactory,
+        array $suppressTxOfSenderIdTypes = ['G']
     ) {
         $this->messageFactory = $messageFactory;
         $this->segmentFactory = $segmentFactory;
+        $this->suppressTxOfSenderIdTypes = $suppressTxOfSenderIdTypes;
     }
 
     public function generate(
@@ -162,18 +165,24 @@ class AcknowledgementGenerator
             $senderConfig['facility']['universalIdType']
         );
         if ($header->getFieldSendingApplication()) {
-            $ackHeader->setFieldReceivingApplication(
-                $this->getValueFromField($header->getFieldSendingApplication()->getNamespaceId()),
-                $this->getValueFromField($header->getFieldSendingApplication()->getUniversalId()),
-                $this->getValueFromField($header->getFieldSendingApplication()->getUniversalIdType())
-            );
+            $ns = $this->getValueFromField($header->getFieldSendingApplication()->getNamespaceId());
+            $uid = $this->getValueFromField($header->getFieldSendingApplication()->getUniversalId());
+            $type = $this->getValueFromField($header->getFieldSendingApplication()->getUniversalIdType());
+            if (!in_array($type, $this->suppressTxOfSenderIdTypes)) {
+                $ackHeader->setFieldReceivingApplication($ns, $uid, $type);
+            } else {
+                $ackHeader->setFieldReceivingApplication($ns);
+            }
         }
         if ($header->getFieldSendingFacility()) {
-            $ackHeader->setFieldReceivingFacility(
-                $this->getValueFromField($header->getFieldSendingFacility()->getNamespaceId()),
-                $this->getValueFromField($header->getFieldSendingFacility()->getUniversalId()),
-                $this->getValueFromField($header->getFieldSendingFacility()->getUniversalIdType())
-            );
+            $ns = $this->getValueFromField($header->getFieldSendingFacility()->getNamespaceId());
+            $uid = $this->getValueFromField($header->getFieldSendingFacility()->getUniversalId());
+            $type = $this->getValueFromField($header->getFieldSendingFacility()->getUniversalIdType());
+            if (!in_array($type, $this->suppressTxOfSenderIdTypes)) {
+                $ackHeader->setFieldReceivingFacility($ns, $uid, $type);
+            } else {
+                $ackHeader->setFieldReceivingFacility($ns);
+            }
         }
         $ackHeader->setFieldDateTimeOfMessage($time->format('YmdHis'));
         $ackHeader->setFieldMessageType('ACK', null, null);
