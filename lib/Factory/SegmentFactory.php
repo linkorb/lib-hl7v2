@@ -7,6 +7,7 @@ use Hl7v2\Exception\CapabilityError;
 
 class SegmentFactory
 {
+    private $classmap = [];
     private $dataTypeFactory;
 
     public function __construct(DataTypeFactory $dataTypeFactory)
@@ -37,11 +38,16 @@ class SegmentFactory
 
     private function determineClassname($typeName)
     {
+        if (array_key_exists($typeName, $this->classmap)) {
+            return $this->classmap[$typeName];
+        }
         $name = ucfirst(strtolower($typeName));
         $class = "\\Hl7v2\\Segment\\{$name}Segment";
         if (!class_exists($class)) {
             throw new CapabilityError("Unable to create a segment of type \"{$typeName}\".");
         }
+        $this->classmap[$typeName] = $class;
+
         return $class;
     }
 }
