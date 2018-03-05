@@ -637,11 +637,10 @@ class Codec
         $pos = $data->getPositionalState();
         $param = $data->getEncodingParameters();
 
-        $nextSep = mb_strpos(
+        $nextSep = strpos(
             $data->value,
             $param->getSegmentSep(),
-            $pos->ptr,
-            $param->getCharacterEncoding()
+            $pos->ptr
         );
 
         if (false === $nextSep) {
@@ -656,11 +655,10 @@ class Codec
             return [$sos, false];
         }
 
-        $eos = mb_strpos(
+        $eos = strpos(
             $data->value,
             $param->getSegmentSep(),
-            $sos,
-            $param->getCharacterEncoding()
+            $sos
         );
 
         return [$sos, $eos];
@@ -674,11 +672,10 @@ class Codec
         $pos = $data->getPositionalState();
         $param = $data->getEncodingParameters();
 
-        $eos = mb_strpos(
+        $eos = strpos(
             $data->value,
             $param->getSegmentSep(),
-            $pos->ptr,
-            $param->getCharacterEncoding()
+            $pos->ptr
         );
         return $eos;
     }
@@ -694,11 +691,10 @@ class Codec
         $pos = $data->getPositionalState();
         $param = $data->getEncodingParameters();
 
-        $nextSep = mb_strpos(
+        $nextSep = strpos(
             $data->value,
             $param->getFieldSep(),
-            $pos->ptr,
-            $param->getCharacterEncoding()
+            $pos->ptr
         );
 
         if (false === $nextSep || false !== $pos->eos && $pos->eos < $nextSep) {
@@ -713,11 +709,10 @@ class Codec
             return [$sof, false];
         }
 
-        $eof = mb_strpos(
+        $eof = strpos(
             $data->value,
             $param->getFieldSep(),
-            $sof,
-            $param->getCharacterEncoding()
+            $sof
         );
 
         if (false === $eof || false !== $pos->eos && $pos->eos < $eof) {
@@ -739,11 +734,10 @@ class Codec
         $pos = $data->getPositionalState();
         $param = $data->getEncodingParameters();
 
-        $nextSep = mb_strpos(
+        $nextSep = strpos(
             $data->value,
             $param->getRepetitionSep(),
-            $pos->ptr,
-            $param->getCharacterEncoding()
+            $pos->ptr
         );
 
         if (false === $nextSep
@@ -761,11 +755,10 @@ class Codec
             return [$sor, false];
         }
 
-        $eor = mb_strpos(
+        $eor = strpos(
             $data->value,
             $param->getRepetitionSep(),
-            $sor,
-            $param->getCharacterEncoding()
+            $sor
         );
 
         if (false === $nextSep
@@ -790,11 +783,10 @@ class Codec
         $pos = $data->getPositionalState();
         $param = $data->getEncodingParameters();
 
-        $nextSep = mb_strpos(
+        $nextSep = strpos(
             $data->value,
             $param->getComponentSep(),
-            $pos->ptr,
-            $param->getCharacterEncoding()
+            $pos->ptr
         );
 
         if (false === $nextSep
@@ -813,11 +805,10 @@ class Codec
             return [$soc, false];
         }
 
-        $eoc = mb_strpos(
+        $eoc = strpos(
             $data->value,
             $param->getComponentSep(),
-            $soc,
-            $param->getCharacterEncoding()
+            $soc
         );
 
         if (false === $eoc
@@ -843,11 +834,10 @@ class Codec
         $pos = $data->getPositionalState();
         $param = $data->getEncodingParameters();
 
-        $nextSep = mb_strpos(
+        $nextSep = strpos(
             $data->value,
             $param->getSubcomponentSep(),
-            $pos->ptr,
-            $param->getCharacterEncoding()
+            $pos->ptr
         );
 
         if (false === $nextSep
@@ -867,11 +857,10 @@ class Codec
             return [$sosc, false];
         }
 
-        $eosc = mb_strpos(
+        $eosc = strpos(
             $data->value,
             $param->getSubcomponentSep(),
-            $sosc,
-            $param->getCharacterEncoding()
+            $sosc
         );
 
         if (false === $eosc
