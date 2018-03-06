@@ -395,11 +395,10 @@ class Codec
      */
     public function extractSegmentId(Datagram $data)
     {
-        $candidate = mb_substr(
+        $candidate = substr(
             $data->value,
             $data->getPositionalState()->ptr,
-            3,
-            $data->getEncodingParameters()->getCharacterEncoding()
+            3
         );
         return preg_match('/^[A-Y]{2,2}[A-Z0-9]$|^Z[A-Z0-9]{2,2}$/', $candidate)
             ? $candidate
@@ -460,7 +459,7 @@ class Codec
             $length = $pos->eoc - $pos->soc;
         }
 
-        return mb_substr($data->value, $pos->soc, $length, $param->getCharacterEncoding());
+        return substr($data->value, $pos->soc, $length);
     }
 
     /**
@@ -522,7 +521,7 @@ class Codec
             $length = $pos->eosc - $pos->sosc;
         }
 
-        return mb_substr($data->value, $pos->sosc, $length, $param->getCharacterEncoding());
+        return substr($data->value, $pos->sosc, $length);
     }
 
     /**
@@ -601,8 +600,8 @@ class Codec
 
         // it is now possible to do a soupçon of sanity checking
         $fieldSep2pos = self::MSH_2_OFFSET + self::MSH_2_LEN;
-        if ($fieldSep2pos + 1 > mb_strlen($data->value, $characterEncoding)
-            || $fieldSep !== mb_substr($data->value, $fieldSep2pos, 1, $characterEncoding)
+        if ($fieldSep2pos + 1 > strlen($data->value)
+            || $fieldSep !== substr($data->value, $fieldSep2pos, 1)
         ) {
             throw new CodecError('Message Header is invalid.');
         }
@@ -611,10 +610,10 @@ class Codec
         // obtain the encoding characters
         $ptr = $pos->ptr + self::MSH_2_OFFSET;
         $param = $paramBuilder
-            ->withComponentSep(mb_substr($data->value, $ptr, 1, $characterEncoding))
-            ->withRepetitionSep(mb_substr($data->value, ++$ptr, 1, $characterEncoding))
-            ->withEscapeChar(mb_substr($data->value, ++$ptr, 1, $characterEncoding))
-            ->withSubcomponentSep(mb_substr($data->value, ++$ptr, 1, $characterEncoding))
+            ->withComponentSep(substr($data->value, $ptr, 1))
+            ->withRepetitionSep(substr($data->value, ++$ptr, 1))
+            ->withEscapeChar(substr($data->value, ++$ptr, 1))
+            ->withSubcomponentSep(substr($data->value, ++$ptr, 1))
             ->withFieldSep($fieldSep)
             ->withSegmentSep(self::SEP_SEGMENT)
             ->withCharacterEncoding($characterEncoding)
@@ -622,7 +621,7 @@ class Codec
         ;
 
         // set the last position and inject the encoding params into the data
-        $pos->eod = mb_strlen($data->value, $characterEncoding) - 1;
+        $pos->eod = strlen($data->value) - 1;
         $data->setEncodingParameters($param);
     }
 

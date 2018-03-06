@@ -158,7 +158,7 @@ class CodecTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @dataProvider delimiters
+     * @dataProvider handledDelimiters
      * @covers \Hl7v2\Encoding\Codec::bootstrap
      */
     public function testBootstrapWithValidMSH18WillDetectDelimiters(
@@ -206,7 +206,7 @@ class CodecTest extends PHPUnit_Framework_TestCase
         );
     }
 
-    public function delimiters()
+    public function handledDelimiters()
     {
         return [
             '7-bit ASCII encoded' => [
@@ -215,9 +215,9 @@ class CodecTest extends PHPUnit_Framework_TestCase
                 'ASCII',
                 '7bit',
             ],
-            'UTF-8 encoded' => [
-                "MSH|✓Å℉⨀|ACME|ACME||||||||||||||UNICODE UTF-8\r",
-                ['✓', 'Å', '℉', '⨀'],
+            'UTF-8 encoded from the 7-bit ASCII range' => [
+                "MSH|^~\&|ACME|ACME||||||||||||||UNICODE UTF-8\r",
+                ['^', '~', '\\', '&'],
                 'UNICODE UTF-8',
                 'UTF-8',
             ],
@@ -226,6 +226,48 @@ class CodecTest extends PHPUnit_Framework_TestCase
                 ["\xA3", "\xA5", "\xB6", "\xBB"],
                 '8859/1',
                 'ISO-8859-1',
+            ],
+        ];
+    }
+
+    /**
+     * @dataProvider unhandledDelimiters
+     * @covers \Hl7v2\Encoding\Codec::bootstrap
+     * @expectedException Hl7v2\Exception\CodecError
+     * @expectedExceptionMessage Message Header is invalid
+     */
+    public function testBootstrapWillNotDetectMultibyteDelimiters(
+        $messageData,
+        $delimiters,
+        $hl7Encoding = null,
+        $nativeEncoding = null
+    ) {
+        if ($hl7Encoding) {
+            $this
+                ->charEncNames
+                ->expects($this->once())
+                ->method('translateToNativeName')
+                ->with($this->equalTo($hl7Encoding))
+                ->willReturn($nativeEncoding)
+            ;
+        }
+
+        $datagram = $this
+            ->datagramBuilder
+            ->withMessage($messageData)
+            ->build()
+        ;
+        $this->codec->bootstrap($datagram, $this->paramBuilder);
+    }
+
+    public function unhandledDelimiters()
+    {
+        return [
+            'UTF-8 encoded multibyte' => [
+                "MSH|✓Å℉⨀|ACME|ACME||||||||||||||UNICODE UTF-8\r",
+                ['✓', 'Å', '℉', '⨀'],
+                'UNICODE UTF-8',
+                'UTF-8',
             ],
         ];
     }
