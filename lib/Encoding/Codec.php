@@ -761,8 +761,8 @@ class Codec
         );
 
         if (false === $nextSep
-            || false !== $pos->eof && $pos->eof < $nextSep
-            || false !== $pos->eos && $pos->eos < $nextSep
+            || false !== $pos->eof && $pos->eof < $eor
+            || false !== $pos->eos && $pos->eos < $eor
         ) {
             // not found, or found beyond eof/eos
             return [$sor, false];

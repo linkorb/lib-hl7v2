@@ -591,6 +591,12 @@ class CodecTest extends PHPUnit_Framework_TestCase
                     'sor' => 11, 'soc' => 11,
                     'eoc' => 15, 'eor' => 20,]
             ],
+            '09 Attempt advance to repetition. Has one repetition. Avoids repetition in next Segment' => [
+                "|ACME~DEAD\r|ACME~BEEF", true,
+                ['ptr' => 6,
+                    'sor' => 6, 'soc' => 6,
+                    'eoc' => 10, 'eor' => 10,]
+            ],
         ];
     }
 
