@@ -9,7 +9,7 @@ use Memio\Model\Argument;
 use Memio\Model\Constant;
 use Memio\Model\File;
 use Memio\Model\Method;
-use Memio\Model\Object;
+use Memio\Model\Objekt;
 use Memio\Model\Phpdoc\Description;
 use Memio\Model\Phpdoc\MethodPhpdoc;
 use Memio\Model\Phpdoc\ParameterTag;
@@ -65,11 +65,11 @@ foreach ($typeResolver->reseolveTypeDependencyGraph() as $typeId) {
     $g->setTemplating($twig);
 
     $classDoc = new StructurePhpdoc();
-    $classDoc->setDescription(Description::make($g->getDescription()));
+    $classDoc->setDescription(new Description($g->getDescription()));
 
-    $structure = Object::make($g->getClass())
+    $structure = (new Objekt($g->getClass()))
         ->setPhpdoc($classDoc)
-        ->extend(new Object($g->getInheritanceClass()))
+        ->extend(new Objekt($g->getInheritanceClass()))
     ;
 
     foreach ($g->getConstants() as $c) {
@@ -79,15 +79,15 @@ foreach ($typeResolver->reseolveTypeDependencyGraph() as $typeId) {
 
     if ($g instanceof ComponentDataTypeGenerator) {
         foreach ($g->getProperties() as list($name, $type)) {
-            $propDoc = PropertyPhpdoc::make()
+            $propDoc = (new PropertyPhpdoc())
                 ->setVariableTag(new VariableTag("\\{$type}"))
             ;
-            $property = Property::make($name)->setPhpdoc($propDoc);
+            $property = (new Property($name))->setPhpdoc($propDoc);
             $structure->addProperty($property);
         }
         foreach ($g->getMutators() as list($methodName, $args, $body)) {
-            $mutator = Method::make($methodName);
-            $mutatorDoc = MethodPhpdoc::make();
+            $mutator = new Method($methodName);
+            $mutatorDoc = new MethodPhpdoc;
             foreach ($args as list($argName, $argType, $argMandatory)) {
                 $argument = new Argument($argType, $argName);
                 if (!$argMandatory) {
@@ -103,9 +103,9 @@ foreach ($typeResolver->reseolveTypeDependencyGraph() as $typeId) {
             $structure->addMethod($mutator);
         }
         foreach ($g->getAccessors() as list($methodName, $returnType, $body)) {
-            $accessor = Method::make($methodName)
+            $accessor = (new Method($methodName))
                 ->setPhpdoc(
-                    MethodPhpdoc::make()->setReturnTag(ReturnTag::make("\\{$returnType}"))
+                    (new MethodPhpdoc)->setReturnTag(new ReturnTag("\\{$returnType}"))
                 )
                 ->setBody($body)
             ;
@@ -114,10 +114,10 @@ foreach ($typeResolver->reseolveTypeDependencyGraph() as $typeId) {
     }
 
     $structure->addMethod(
-        $g->getMethodToString(Method::make('__toString'), MethodPhpdoc::make())
+        $g->getMethodToString(new Method('__toString'), new MethodPhpdoc)
     );
 
-    $file = File::make($outDir . DIRECTORY_SEPARATOR . $context->dataTypeIdToClassName($typeId) . '.php')
+    $file = (new File($outDir . DIRECTORY_SEPARATOR . $context->dataTypeIdToClassName($typeId) . '.php'))
         ->setStructure($structure)
     ;
     $generatedCode = $prettyPrinter->generateCode($file);

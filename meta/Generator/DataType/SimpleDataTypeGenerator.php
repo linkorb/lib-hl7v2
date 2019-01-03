@@ -17,7 +17,7 @@ class SimpleDataTypeGenerator extends AbstractDataTypeGenerator
     public function getMethodToString(Method $method, MethodPhpdoc $doc)
     {
         return $method
-            ->setPhpdoc($doc->setReturnTag(ReturnTag::make('string')))
+            ->setPhpdoc($doc->setReturnTag(new ReturnTag('string')))
             ->setBody($this->templating->render('tostring_datatype_simple.twig'))
         ;
     }

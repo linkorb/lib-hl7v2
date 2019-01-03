@@ -497,7 +497,7 @@ class SegmentGenerator
 
         $context['fields'] = $fields;
         return $method
-            ->setPhpdoc($doc->setReturnTag(ReturnTag::make('string')))
+            ->setPhpdoc($doc->setReturnTag(new ReturnTag('string')))
             ->setBody($this->templating->render($template, $context))
         ;
     }

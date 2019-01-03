@@ -172,7 +172,7 @@ class ComponentDataTypeGenerator extends AbstractDataTypeGenerator
             );
         }
         return $method
-            ->setPhpdoc($doc->setReturnTag(ReturnTag::make('string')))
+            ->setPhpdoc($doc->setReturnTag(new ReturnTag('string')))
             ->setBody(
                 $this->templating->render(
                     'tostring_datatype_component.twig',

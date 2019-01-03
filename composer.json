@@ -38,7 +38,7 @@
     },
     "require-dev": {
         "digilist/dependency-graph": "^0.3.0",
-        "memio/memio": "^1.0",
+        "memio/memio": "^2.0",
         "phpunit/phpunit": "^4.8",
         "symfony/var-dumper": "^3.2",
         "symfony/yaml": "^3.2"

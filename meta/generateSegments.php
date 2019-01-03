@@ -9,7 +9,7 @@ use Memio\Model\Argument;
 use Memio\Model\File;
 use Memio\Model\FullyQualifiedName;
 use Memio\Model\Method;
-use Memio\Model\Object;
+use Memio\Model\Objekt;
 use Memio\Model\Phpdoc\Description;
 use Memio\Model\Phpdoc\MethodPhpdoc;
 use Memio\Model\Phpdoc\ParameterTag;
@@ -101,27 +101,27 @@ foreach ($segments as $segmentId => $segmentAttr) {
     $g->setTemplating($twig);
 
     $classDoc = new StructurePhpdoc();
-    $classDoc->setDescription(Description::make($g->getDescription()));
+    $classDoc->setDescription(new Description($g->getDescription()));
 
-    $structure = Object::make($g->getClass())
+    $structure = (new Objekt($g->getClass()))
         ->setPhpdoc($classDoc)
-        ->extend(new Object($g->getInheritanceClass()))
+        ->extend(new Objekt($g->getInheritanceClass()))
     ;
 
     foreach ($g->getProperties() as list($pname, $ptype, $pdefault)) {
-        $property = Property::make($pname);
+        $property = new Property($pname);
         $structure->addProperty($property);
         if (false === $ptype) {
             continue;
         }
-        $property->setPhpdoc(PropertyPhpdoc::make()->setVariableTag(new VariableTag($ptype)));
+        $property->setPhpdoc((new PropertyPhpdoc)->setVariableTag(new VariableTag($ptype)));
         if ($pdefault) {
             $property->setDefaultValue($pdefault);
         }
     }
     foreach ($g->getMutators() as list($methodName, $args, $body)) {
-        $mutator = Method::make($methodName);
-        $mutatorDoc = MethodPhpdoc::make();
+        $mutator = new Method($methodName);
+        $mutatorDoc = new MethodPhpdoc();
         foreach ($args as list($argType, $argName, $argMandatory)) {
             $argument = new Argument($argType, $argName);
             if (!$argMandatory) {
@@ -137,16 +137,16 @@ foreach ($segments as $segmentId => $segmentAttr) {
         $structure->addMethod($mutator);
     }
     foreach ($g->getAccessors() as list($methodName, $returnType, $body)) {
-        $accessor = Method::make($methodName)
+        $accessor = (new Method($methodName))
             ->setPhpdoc(
-                MethodPhpdoc::make()->setReturnTag(ReturnTag::make("\\{$returnType}"))
+                (new MethodPhpdoc)->setReturnTag(new ReturnTag("\\{$returnType}"))
             )
             ->setBody(implode("\n", Util::indentBodyParts($body)))
         ;
         $structure->addMethod($accessor);
     }
 
-    $fdgMethod = Method::make('fromDatagram')
+    $fdgMethod = (new Method('fromDatagram'))
         ->addArgument(new Argument('\\Hl7v2\\Encoding\\Datagram', 'datagram'))
         ->addArgument(new Argument('\\Hl7v2\\Encoding\\Codec', 'codec'))
         ->setBody(implode("\n", Util::indentBodyParts($g->getFromDatagramBody())))
@@ -155,13 +155,13 @@ foreach ($segments as $segmentId => $segmentAttr) {
 
     $structure->addMethod(
         $g->getMethodToString(
-            Method::make('__toString'),
-            MethodPhpdoc::make(),
+            new Method('__toString'),
+            new MethodPhpdoc(),
             $segmentId
         )
     );
 
-    $file = File::make($outDir . DIRECTORY_SEPARATOR . $segmentContext->segmentIdToClassName($segmentId) . '.php')
+    $file = (new File($outDir . DIRECTORY_SEPARATOR . $segmentContext->segmentIdToClassName($segmentId) . '.php'))
         ->setStructure($structure)
         ->addFullyQualifiedName(new FullyQualifiedName('\\Hl7v2\\Encoding\\Datagram'))
         ->addFullyQualifiedName(new FullyQualifiedName('\\Hl7v2\\Encoding\\Codec'))
