@@ -1,0 +1,7 @@
+#!/bin/bash
+
+docker run -it --rm \
+	--mount type=bind,source=$(pwd),target=/home/devel/proj \
+	--name "lib-hl7v2" \
+	"lib-hl7v2-dev" \
+	"$@"

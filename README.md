@@ -3,7 +3,18 @@ HL7v2 Parsing and Generation library
 
 NOTE: This project is work in progress, the API will change
 
-TODO: Write README
+## Build Docker Image
+
+A docker image is available for ease of development.  The image contains PHP
+7.2 and Composer.
+
+    $ docker build -t lib-hl7v2-dev .
+
+Then you can do, for example:-
+
+    $ ./run php meta/generateSegments.php
+    $ ./run vendor/bin/phpunit
+    $ ./run composer require ...
 
 ## Code generation
 
