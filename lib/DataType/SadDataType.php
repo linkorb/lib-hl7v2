@@ -10,23 +10,24 @@ class SadDataType extends ComponentDataType
     const MAX_LEN = 184;
 
     /**
-     * @var \Hl7v2\DataType\StDataType
+     * @var StDataType
      */
     private $streetOrMailingAddress;
     /**
-     * @var \Hl7v2\DataType\StDataType
+     * @var StDataType
      */
     private $streetName;
     /**
-     * @var \Hl7v2\DataType\StDataType
+     * @var StDataType
      */
     private $dwellingNumber;
 
     /**
      * @param string $streetOrMailingAddress
      */
-    public function setStreetOrMailingAddress($streetOrMailingAddress = null)
-    {
+    public function setStreetOrMailingAddress(
+        string $streetOrMailingAddress = null
+    ) {
         $this->streetOrMailingAddress = $this
             ->dataTypeFactory
             ->create('ST', $this->encodingParameters)
@@ -37,7 +38,7 @@ class SadDataType extends ComponentDataType
     /**
      * @param string $streetName
      */
-    public function setStreetName($streetName = null)
+    public function setStreetName(string $streetName = null)
     {
         $this->streetName = $this
             ->dataTypeFactory
@@ -49,7 +50,7 @@ class SadDataType extends ComponentDataType
     /**
      * @param string $dwellingNumber
      */
-    public function setDwellingNumber($dwellingNumber = null)
+    public function setDwellingNumber(string $dwellingNumber = null)
     {
         $this->dwellingNumber = $this
             ->dataTypeFactory

@@ -10,54 +10,54 @@ class PlDataType extends ComponentDataType
     const MAX_LEN = 1230;
 
     /**
-     * @var \Hl7v2\DataType\IsDataType
+     * @var IsDataType
      */
     private $pointOfCare;
     /**
-     * @var \Hl7v2\DataType\IsDataType
+     * @var IsDataType
      */
     private $room;
     /**
-     * @var \Hl7v2\DataType\IsDataType
+     * @var IsDataType
      */
     private $bed;
     /**
-     * @var \Hl7v2\DataType\HdDataType
+     * @var HdDataType
      */
     private $facility;
     /**
-     * @var \Hl7v2\DataType\IsDataType
+     * @var IsDataType
      */
     private $locationStatus;
     /**
-     * @var \Hl7v2\DataType\IsDataType
+     * @var IsDataType
      */
     private $personLocationType;
     /**
-     * @var \Hl7v2\DataType\IsDataType
+     * @var IsDataType
      */
     private $building;
     /**
-     * @var \Hl7v2\DataType\IsDataType
+     * @var IsDataType
      */
     private $floor;
     /**
-     * @var \Hl7v2\DataType\StDataType
+     * @var StDataType
      */
     private $locationDescription;
     /**
-     * @var \Hl7v2\DataType\EiDataType
+     * @var EiDataType
      */
     private $comprehensiveLocationIdentifier;
     /**
-     * @var \Hl7v2\DataType\HdDataType
+     * @var HdDataType
      */
     private $assigningAuthorityForLocation;
 
     /**
      * @param string $pointOfCare
      */
-    public function setPointOfCare($pointOfCare = null)
+    public function setPointOfCare(string $pointOfCare = null)
     {
         $this->pointOfCare = $this
             ->dataTypeFactory
@@ -69,7 +69,7 @@ class PlDataType extends ComponentDataType
     /**
      * @param string $room
      */
-    public function setRoom($room = null)
+    public function setRoom(string $room = null)
     {
         $this->room = $this
             ->dataTypeFactory
@@ -81,7 +81,7 @@ class PlDataType extends ComponentDataType
     /**
      * @param string $bed
      */
-    public function setBed($bed = null)
+    public function setBed(string $bed = null)
     {
         $this->bed = $this
             ->dataTypeFactory
@@ -96,9 +96,9 @@ class PlDataType extends ComponentDataType
      * @param string $facilityUniversalIdType
      */
     public function setFacility(
-        $facilityNamespaceId = null,
-        $facilityUniversalId = null,
-        $facilityUniversalIdType = null
+        string $facilityNamespaceId = null,
+        string $facilityUniversalId = null,
+        string $facilityUniversalIdType = null
     ) {
         $this->facility = $this
             ->dataTypeFactory
@@ -112,7 +112,7 @@ class PlDataType extends ComponentDataType
     /**
      * @param string $locationStatus
      */
-    public function setLocationStatus($locationStatus = null)
+    public function setLocationStatus(string $locationStatus = null)
     {
         $this->locationStatus = $this
             ->dataTypeFactory
@@ -124,7 +124,7 @@ class PlDataType extends ComponentDataType
     /**
      * @param string $personLocationType
      */
-    public function setPersonLocationType($personLocationType = null)
+    public function setPersonLocationType(string $personLocationType = null)
     {
         $this->personLocationType = $this
             ->dataTypeFactory
@@ -136,7 +136,7 @@ class PlDataType extends ComponentDataType
     /**
      * @param string $building
      */
-    public function setBuilding($building = null)
+    public function setBuilding(string $building = null)
     {
         $this->building = $this
             ->dataTypeFactory
@@ -148,7 +148,7 @@ class PlDataType extends ComponentDataType
     /**
      * @param string $floor
      */
-    public function setFloor($floor = null)
+    public function setFloor(string $floor = null)
     {
         $this->floor = $this
             ->dataTypeFactory
@@ -160,7 +160,7 @@ class PlDataType extends ComponentDataType
     /**
      * @param string $locationDescription
      */
-    public function setLocationDescription($locationDescription = null)
+    public function setLocationDescription(string $locationDescription = null)
     {
         $this->locationDescription = $this
             ->dataTypeFactory
@@ -176,10 +176,10 @@ class PlDataType extends ComponentDataType
      * @param string $comprehensiveLocationIdentifierUniversalIdType
      */
     public function setComprehensiveLocationIdentifier(
-        $comprehensiveLocationIdentifierEntityIdentifier = null,
-        $comprehensiveLocationIdentifierNamespaceId = null,
-        $comprehensiveLocationIdentifierUniversalId = null,
-        $comprehensiveLocationIdentifierUniversalIdType = null
+        string $comprehensiveLocationIdentifierEntityIdentifier = null,
+        string $comprehensiveLocationIdentifierNamespaceId = null,
+        string $comprehensiveLocationIdentifierUniversalId = null,
+        string $comprehensiveLocationIdentifierUniversalIdType = null
     ) {
         $this->comprehensiveLocationIdentifier = $this
             ->dataTypeFactory
@@ -205,9 +205,9 @@ class PlDataType extends ComponentDataType
      * @param string $assigningAuthorityForLocationUniversalIdType
      */
     public function setAssigningAuthorityForLocation(
-        $assigningAuthorityForLocationNamespaceId = null,
-        $assigningAuthorityForLocationUniversalId = null,
-        $assigningAuthorityForLocationUniversalIdType = null
+        string $assigningAuthorityForLocationNamespaceId = null,
+        string $assigningAuthorityForLocationUniversalId = null,
+        string $assigningAuthorityForLocationUniversalIdType = null
     ) {
         $this->assigningAuthorityForLocation = $this
             ->dataTypeFactory

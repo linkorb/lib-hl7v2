@@ -10,18 +10,18 @@ class CqDataType extends ComponentDataType
     const MAX_LEN = 500;
 
     /**
-     * @var \Hl7v2\DataType\NmDataType
+     * @var NmDataType
      */
     private $quantity;
     /**
-     * @var \Hl7v2\DataType\CeDataType
+     * @var CeDataType
      */
     private $units;
 
     /**
      * @param string $quantity
      */
-    public function setQuantity($quantity = null)
+    public function setQuantity(string $quantity = null)
     {
         $this->quantity = $this
             ->dataTypeFactory
@@ -39,12 +39,12 @@ class CqDataType extends ComponentDataType
      * @param string $unitsNameOfAltCodingSystem
      */
     public function setUnits(
-        $unitsIdentifier = null,
-        $unitsText = null,
-        $unitsNameOfCodingSystem = null,
-        $unitsAltIdentifier = null,
-        $unitsAltText = null,
-        $unitsNameOfAltCodingSystem = null
+        string $unitsIdentifier = null,
+        string $unitsText = null,
+        string $unitsNameOfCodingSystem = null,
+        string $unitsAltIdentifier = null,
+        string $unitsAltText = null,
+        string $unitsNameOfAltCodingSystem = null
     ) {
         $this->units = $this
             ->dataTypeFactory

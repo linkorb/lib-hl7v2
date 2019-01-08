@@ -10,47 +10,47 @@ class NdlDataType extends ComponentDataType
     const MAX_LEN = 835;
 
     /**
-     * @var \Hl7v2\DataType\CnnDataType
+     * @var CnnDataType
      */
     private $name;
     /**
-     * @var \Hl7v2\DataType\TsDataType
+     * @var TsDataType
      */
     private $startDateTime;
     /**
-     * @var \Hl7v2\DataType\TsDataType
+     * @var TsDataType
      */
     private $endDateTime;
     /**
-     * @var \Hl7v2\DataType\IsDataType
+     * @var IsDataType
      */
     private $pointOfCare;
     /**
-     * @var \Hl7v2\DataType\IsDataType
+     * @var IsDataType
      */
     private $room;
     /**
-     * @var \Hl7v2\DataType\IsDataType
+     * @var IsDataType
      */
     private $bed;
     /**
-     * @var \Hl7v2\DataType\HdDataType
+     * @var HdDataType
      */
     private $facility;
     /**
-     * @var \Hl7v2\DataType\IsDataType
+     * @var IsDataType
      */
     private $locationStatus;
     /**
-     * @var \Hl7v2\DataType\IsDataType
+     * @var IsDataType
      */
     private $patientLocationType;
     /**
-     * @var \Hl7v2\DataType\IsDataType
+     * @var IsDataType
      */
     private $building;
     /**
-     * @var \Hl7v2\DataType\IsDataType
+     * @var IsDataType
      */
     private $floor;
 
@@ -68,17 +68,17 @@ class NdlDataType extends ComponentDataType
      * @param string $nameAssigningAuthorityUniversalIdType
      */
     public function setName(
-        $nameIdNumber = null,
-        $nameFamilyName = null,
-        $nameGivenName = null,
-        $nameSecondNames = null,
-        $nameSuffix = null,
-        $namePrefix = null,
-        $nameDegree = null,
-        $nameSourceTable = null,
-        $nameAssigningAuthorityNamespaceId = null,
-        $nameAssigningAuthorityUniversalId = null,
-        $nameAssigningAuthorityUniversalIdType = null
+        string $nameIdNumber = null,
+        string $nameFamilyName = null,
+        string $nameGivenName = null,
+        string $nameSecondNames = null,
+        string $nameSuffix = null,
+        string $namePrefix = null,
+        string $nameDegree = null,
+        string $nameSourceTable = null,
+        string $nameAssigningAuthorityNamespaceId = null,
+        string $nameAssigningAuthorityUniversalId = null,
+        string $nameAssigningAuthorityUniversalIdType = null
     ) {
         $this->name = $this
             ->dataTypeFactory
@@ -101,8 +101,10 @@ class NdlDataType extends ComponentDataType
      * @param string $startDateTimeTime
      * @param string $startDateTimeDegreeOfPrecision
      */
-    public function setStartDateTime($startDateTimeTime, $startDateTimeDegreeOfPrecision = null)
-    {
+    public function setStartDateTime(
+        string $startDateTimeTime,
+        string $startDateTimeDegreeOfPrecision = null
+    ) {
         $this->startDateTime = $this
             ->dataTypeFactory
             ->create('TS', $this->encodingParameters, true)
@@ -115,8 +117,10 @@ class NdlDataType extends ComponentDataType
      * @param string $endDateTimeTime
      * @param string $endDateTimeDegreeOfPrecision
      */
-    public function setEndDateTime($endDateTimeTime, $endDateTimeDegreeOfPrecision = null)
-    {
+    public function setEndDateTime(
+        string $endDateTimeTime,
+        string $endDateTimeDegreeOfPrecision = null
+    ) {
         $this->endDateTime = $this
             ->dataTypeFactory
             ->create('TS', $this->encodingParameters, true)
@@ -128,7 +132,7 @@ class NdlDataType extends ComponentDataType
     /**
      * @param string $pointOfCare
      */
-    public function setPointOfCare($pointOfCare = null)
+    public function setPointOfCare(string $pointOfCare = null)
     {
         $this->pointOfCare = $this
             ->dataTypeFactory
@@ -140,7 +144,7 @@ class NdlDataType extends ComponentDataType
     /**
      * @param string $room
      */
-    public function setRoom($room = null)
+    public function setRoom(string $room = null)
     {
         $this->room = $this
             ->dataTypeFactory
@@ -152,7 +156,7 @@ class NdlDataType extends ComponentDataType
     /**
      * @param string $bed
      */
-    public function setBed($bed = null)
+    public function setBed(string $bed = null)
     {
         $this->bed = $this
             ->dataTypeFactory
@@ -167,9 +171,9 @@ class NdlDataType extends ComponentDataType
      * @param string $facilityUniversalIdType
      */
     public function setFacility(
-        $facilityNamespaceId = null,
-        $facilityUniversalId = null,
-        $facilityUniversalIdType = null
+        string $facilityNamespaceId = null,
+        string $facilityUniversalId = null,
+        string $facilityUniversalIdType = null
     ) {
         $this->facility = $this
             ->dataTypeFactory
@@ -183,7 +187,7 @@ class NdlDataType extends ComponentDataType
     /**
      * @param string $locationStatus
      */
-    public function setLocationStatus($locationStatus = null)
+    public function setLocationStatus(string $locationStatus = null)
     {
         $this->locationStatus = $this
             ->dataTypeFactory
@@ -195,7 +199,7 @@ class NdlDataType extends ComponentDataType
     /**
      * @param string $patientLocationType
      */
-    public function setPatientLocationType($patientLocationType = null)
+    public function setPatientLocationType(string $patientLocationType = null)
     {
         $this->patientLocationType = $this
             ->dataTypeFactory
@@ -207,7 +211,7 @@ class NdlDataType extends ComponentDataType
     /**
      * @param string $building
      */
-    public function setBuilding($building = null)
+    public function setBuilding(string $building = null)
     {
         $this->building = $this
             ->dataTypeFactory
@@ -219,7 +223,7 @@ class NdlDataType extends ComponentDataType
     /**
      * @param string $floor
      */
-    public function setFloor($floor = null)
+    public function setFloor(string $floor = null)
     {
         $this->floor = $this
             ->dataTypeFactory

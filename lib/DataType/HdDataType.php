@@ -10,22 +10,22 @@ class HdDataType extends ComponentDataType
     const MAX_LEN = 227;
 
     /**
-     * @var \Hl7v2\DataType\IsDataType
+     * @var IsDataType
      */
     private $namespaceId;
     /**
-     * @var \Hl7v2\DataType\StDataType
+     * @var StDataType
      */
     private $universalId;
     /**
-     * @var \Hl7v2\DataType\IdDataType
+     * @var IdDataType
      */
     private $universalIdType;
 
     /**
      * @param string $namespaceId
      */
-    public function setNamespaceId($namespaceId = null)
+    public function setNamespaceId(string $namespaceId = null)
     {
         $this->namespaceId = $this
             ->dataTypeFactory
@@ -37,7 +37,7 @@ class HdDataType extends ComponentDataType
     /**
      * @param string $universalId
      */
-    public function setUniversalId($universalId = null)
+    public function setUniversalId(string $universalId = null)
     {
         $this->universalId = $this
             ->dataTypeFactory
@@ -49,7 +49,7 @@ class HdDataType extends ComponentDataType
     /**
      * @param string $universalIdType
      */
-    public function setUniversalIdType($universalIdType = null)
+    public function setUniversalIdType(string $universalIdType = null)
     {
         $this->universalIdType = $this
             ->dataTypeFactory

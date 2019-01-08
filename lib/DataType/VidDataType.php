@@ -10,22 +10,22 @@ class VidDataType extends ComponentDataType
     const MAX_LEN = 60;
 
     /**
-     * @var \Hl7v2\DataType\IdDataType
+     * @var IdDataType
      */
     private $versionId;
     /**
-     * @var \Hl7v2\DataType\CeDataType
+     * @var CeDataType
      */
     private $internationalisationCode;
     /**
-     * @var \Hl7v2\DataType\CeDataType
+     * @var CeDataType
      */
     private $internationalisationVersionId;
 
     /**
      * @param string $versionId
      */
-    public function setVersionId($versionId = null)
+    public function setVersionId(string $versionId = null)
     {
         $this->versionId = $this
             ->dataTypeFactory
@@ -43,12 +43,12 @@ class VidDataType extends ComponentDataType
      * @param string $internationalisationCodeNameOfAltCodingSystem
      */
     public function setInternationalisationCode(
-        $internationalisationCodeIdentifier = null,
-        $internationalisationCodeText = null,
-        $internationalisationCodeNameOfCodingSystem = null,
-        $internationalisationCodeAltIdentifier = null,
-        $internationalisationCodeAltText = null,
-        $internationalisationCodeNameOfAltCodingSystem = null
+        string $internationalisationCodeIdentifier = null,
+        string $internationalisationCodeText = null,
+        string $internationalisationCodeNameOfCodingSystem = null,
+        string $internationalisationCodeAltIdentifier = null,
+        string $internationalisationCodeAltText = null,
+        string $internationalisationCodeNameOfAltCodingSystem = null
     ) {
         $this->internationalisationCode = $this
             ->dataTypeFactory
@@ -75,12 +75,12 @@ class VidDataType extends ComponentDataType
      * @param string $internationalisationVersionIdNameOfAltCodingSystem
      */
     public function setInternationalisationVersionId(
-        $internationalisationVersionIdIdentifier = null,
-        $internationalisationVersionIdText = null,
-        $internationalisationVersionIdNameOfCodingSystem = null,
-        $internationalisationVersionIdAltIdentifier = null,
-        $internationalisationVersionIdAltText = null,
-        $internationalisationVersionIdNameOfAltCodingSystem = null
+        string $internationalisationVersionIdIdentifier = null,
+        string $internationalisationVersionIdText = null,
+        string $internationalisationVersionIdNameOfCodingSystem = null,
+        string $internationalisationVersionIdAltIdentifier = null,
+        string $internationalisationVersionIdAltText = null,
+        string $internationalisationVersionIdNameOfAltCodingSystem = null
     ) {
         $this->internationalisationVersionId = $this
             ->dataTypeFactory

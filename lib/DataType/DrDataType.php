@@ -10,11 +10,11 @@ class DrDataType extends ComponentDataType
     const MAX_LEN = 53;
 
     /**
-     * @var \Hl7v2\DataType\TsDataType
+     * @var TsDataType
      */
     private $rangeStartDateTime;
     /**
-     * @var \Hl7v2\DataType\TsDataType
+     * @var TsDataType
      */
     private $rangeEndDateTime;
 
@@ -22,8 +22,10 @@ class DrDataType extends ComponentDataType
      * @param string $rangeStartDateTimeTime
      * @param string $rangeStartDateTimeDegreeOfPrecision
      */
-    public function setRangeStartDateTime($rangeStartDateTimeTime, $rangeStartDateTimeDegreeOfPrecision = null)
-    {
+    public function setRangeStartDateTime(
+        string $rangeStartDateTimeTime,
+        string $rangeStartDateTimeDegreeOfPrecision = null
+    ) {
         $this->rangeStartDateTime = $this
             ->dataTypeFactory
             ->create('TS', $this->encodingParameters, true)
@@ -36,8 +38,10 @@ class DrDataType extends ComponentDataType
      * @param string $rangeEndDateTimeTime
      * @param string $rangeEndDateTimeDegreeOfPrecision
      */
-    public function setRangeEndDateTime($rangeEndDateTimeTime, $rangeEndDateTimeDegreeOfPrecision = null)
-    {
+    public function setRangeEndDateTime(
+        string $rangeEndDateTimeTime,
+        string $rangeEndDateTimeDegreeOfPrecision = null
+    ) {
         $this->rangeEndDateTime = $this
             ->dataTypeFactory
             ->create('TS', $this->encodingParameters, true)

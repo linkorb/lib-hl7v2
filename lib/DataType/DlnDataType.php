@@ -10,22 +10,22 @@ class DlnDataType extends ComponentDataType
     const MAX_LEN = 66;
 
     /**
-     * @var \Hl7v2\DataType\StDataType
+     * @var StDataType
      */
     private $licenseNumber;
     /**
-     * @var \Hl7v2\DataType\IsDataType
+     * @var IsDataType
      */
     private $issuingStateProvinceCountry;
     /**
-     * @var \Hl7v2\DataType\DtDataType
+     * @var DtDataType
      */
     private $expirationDate;
 
     /**
      * @param string $licenseNumber
      */
-    public function setLicenseNumber($licenseNumber)
+    public function setLicenseNumber(string $licenseNumber)
     {
         $this->licenseNumber = $this
             ->dataTypeFactory
@@ -37,8 +37,9 @@ class DlnDataType extends ComponentDataType
     /**
      * @param string $issuingStateProvinceCountry
      */
-    public function setIssuingStateProvinceCountry($issuingStateProvinceCountry = null)
-    {
+    public function setIssuingStateProvinceCountry(
+        string $issuingStateProvinceCountry = null
+    ) {
         $this->issuingStateProvinceCountry = $this
             ->dataTypeFactory
             ->create('IS', $this->encodingParameters)
@@ -49,7 +50,7 @@ class DlnDataType extends ComponentDataType
     /**
      * @param string $expirationDate
      */
-    public function setExpirationDate($expirationDate = null)
+    public function setExpirationDate(string $expirationDate = null)
     {
         $this->expirationDate = $this
             ->dataTypeFactory

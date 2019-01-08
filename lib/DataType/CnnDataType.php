@@ -10,54 +10,54 @@ class CnnDataType extends ComponentDataType
     const MAX_LEN = 406;
 
     /**
-     * @var \Hl7v2\DataType\StDataType
+     * @var StDataType
      */
     private $idNumber;
     /**
-     * @var \Hl7v2\DataType\StDataType
+     * @var StDataType
      */
     private $familyName;
     /**
-     * @var \Hl7v2\DataType\StDataType
+     * @var StDataType
      */
     private $givenName;
     /**
-     * @var \Hl7v2\DataType\StDataType
+     * @var StDataType
      */
     private $secondNames;
     /**
-     * @var \Hl7v2\DataType\StDataType
+     * @var StDataType
      */
     private $suffix;
     /**
-     * @var \Hl7v2\DataType\StDataType
+     * @var StDataType
      */
     private $prefix;
     /**
-     * @var \Hl7v2\DataType\IsDataType
+     * @var IsDataType
      */
     private $degree;
     /**
-     * @var \Hl7v2\DataType\IsDataType
+     * @var IsDataType
      */
     private $sourceTable;
     /**
-     * @var \Hl7v2\DataType\IsDataType
+     * @var IsDataType
      */
     private $assigningAuthorityNamespaceId;
     /**
-     * @var \Hl7v2\DataType\StDataType
+     * @var StDataType
      */
     private $assigningAuthorityUniversalId;
     /**
-     * @var \Hl7v2\DataType\IdDataType
+     * @var IdDataType
      */
     private $assigningAuthorityUniversalIdType;
 
     /**
      * @param string $idNumber
      */
-    public function setIdNumber($idNumber = null)
+    public function setIdNumber(string $idNumber = null)
     {
         $this->idNumber = $this
             ->dataTypeFactory
@@ -69,7 +69,7 @@ class CnnDataType extends ComponentDataType
     /**
      * @param string $familyName
      */
-    public function setFamilyName($familyName = null)
+    public function setFamilyName(string $familyName = null)
     {
         $this->familyName = $this
             ->dataTypeFactory
@@ -81,7 +81,7 @@ class CnnDataType extends ComponentDataType
     /**
      * @param string $givenName
      */
-    public function setGivenName($givenName = null)
+    public function setGivenName(string $givenName = null)
     {
         $this->givenName = $this
             ->dataTypeFactory
@@ -93,7 +93,7 @@ class CnnDataType extends ComponentDataType
     /**
      * @param string $secondNames
      */
-    public function setSecondNames($secondNames = null)
+    public function setSecondNames(string $secondNames = null)
     {
         $this->secondNames = $this
             ->dataTypeFactory
@@ -105,7 +105,7 @@ class CnnDataType extends ComponentDataType
     /**
      * @param string $suffix
      */
-    public function setSuffix($suffix = null)
+    public function setSuffix(string $suffix = null)
     {
         $this->suffix = $this
             ->dataTypeFactory
@@ -117,7 +117,7 @@ class CnnDataType extends ComponentDataType
     /**
      * @param string $prefix
      */
-    public function setPrefix($prefix = null)
+    public function setPrefix(string $prefix = null)
     {
         $this->prefix = $this
             ->dataTypeFactory
@@ -129,7 +129,7 @@ class CnnDataType extends ComponentDataType
     /**
      * @param string $degree
      */
-    public function setDegree($degree = null)
+    public function setDegree(string $degree = null)
     {
         $this->degree = $this
             ->dataTypeFactory
@@ -141,7 +141,7 @@ class CnnDataType extends ComponentDataType
     /**
      * @param string $sourceTable
      */
-    public function setSourceTable($sourceTable = null)
+    public function setSourceTable(string $sourceTable = null)
     {
         $this->sourceTable = $this
             ->dataTypeFactory
@@ -153,8 +153,9 @@ class CnnDataType extends ComponentDataType
     /**
      * @param string $assigningAuthorityNamespaceId
      */
-    public function setAssigningAuthorityNamespaceId($assigningAuthorityNamespaceId = null)
-    {
+    public function setAssigningAuthorityNamespaceId(
+        string $assigningAuthorityNamespaceId = null
+    ) {
         $this->assigningAuthorityNamespaceId = $this
             ->dataTypeFactory
             ->create('IS', $this->encodingParameters)
@@ -165,8 +166,9 @@ class CnnDataType extends ComponentDataType
     /**
      * @param string $assigningAuthorityUniversalId
      */
-    public function setAssigningAuthorityUniversalId($assigningAuthorityUniversalId = null)
-    {
+    public function setAssigningAuthorityUniversalId(
+        string $assigningAuthorityUniversalId = null
+    ) {
         $this->assigningAuthorityUniversalId = $this
             ->dataTypeFactory
             ->create('ST', $this->encodingParameters)
@@ -177,8 +179,9 @@ class CnnDataType extends ComponentDataType
     /**
      * @param string $assigningAuthorityUniversalIdType
      */
-    public function setAssigningAuthorityUniversalIdType($assigningAuthorityUniversalIdType = null)
-    {
+    public function setAssigningAuthorityUniversalIdType(
+        string $assigningAuthorityUniversalIdType = null
+    ) {
         $this->assigningAuthorityUniversalIdType = $this
             ->dataTypeFactory
             ->create('ID', $this->encodingParameters)

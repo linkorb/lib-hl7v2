@@ -10,22 +10,22 @@ class MsgDataType extends ComponentDataType
     const MAX_LEN = 15;
 
     /**
-     * @var \Hl7v2\DataType\IdDataType
+     * @var IdDataType
      */
     private $messageCode;
     /**
-     * @var \Hl7v2\DataType\IdDataType
+     * @var IdDataType
      */
     private $triggerEvent;
     /**
-     * @var \Hl7v2\DataType\IdDataType
+     * @var IdDataType
      */
     private $messageStructure;
 
     /**
      * @param string $messageCode
      */
-    public function setMessageCode($messageCode)
+    public function setMessageCode(string $messageCode)
     {
         $this->messageCode = $this
             ->dataTypeFactory
@@ -37,7 +37,7 @@ class MsgDataType extends ComponentDataType
     /**
      * @param string $triggerEvent
      */
-    public function setTriggerEvent($triggerEvent)
+    public function setTriggerEvent(string $triggerEvent)
     {
         $this->triggerEvent = $this
             ->dataTypeFactory
@@ -49,7 +49,7 @@ class MsgDataType extends ComponentDataType
     /**
      * @param string $messageStructure
      */
-    public function setMessageStructure($messageStructure)
+    public function setMessageStructure(string $messageStructure)
     {
         $this->messageStructure = $this
             ->dataTypeFactory

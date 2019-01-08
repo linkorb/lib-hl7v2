@@ -12,31 +12,31 @@ use Hl7v2\Exception\SegmentError;
 class MsaSegment extends AbstractSegment
 {
     /**
-     * @var \Hl7v2\DataType\IdDataType
+     * @var IdDataType
      */
     private $acknowledgmentCode;
     /**
-     * @var \Hl7v2\DataType\StDataType
+     * @var StDataType
      */
     private $messageControlId;
     /**
-     * @var \Hl7v2\DataType\StDataType
+     * @var StDataType
      */
     private $textMessage = null;
     /**
-     * @var \Hl7v2\DataType\NmDataType
+     * @var NmDataType
      */
     private $expectedSequenceNumber = null;
     private $delayedAcknowledgementType;
     /**
-     * @var \Hl7v2\DataType\CeDataType
+     * @var CeDataType
      */
     private $errorCondition = null;
 
     /**
      * @param string $value
      */
-    public function setFieldAcknowledgmentCode($value)
+    public function setFieldAcknowledgmentCode(string $value)
     {
         $this->acknowledgmentCode = $this
             ->dataTypeFactory
@@ -48,7 +48,7 @@ class MsaSegment extends AbstractSegment
     /**
      * @param string $value
      */
-    public function setFieldMessageControlId($value)
+    public function setFieldMessageControlId(string $value)
     {
         $this->messageControlId = $this
             ->dataTypeFactory
@@ -60,7 +60,7 @@ class MsaSegment extends AbstractSegment
     /**
      * @param string $value
      */
-    public function setFieldTextMessage($value)
+    public function setFieldTextMessage(string $value)
     {
         $this->textMessage = $this
             ->dataTypeFactory
@@ -72,7 +72,7 @@ class MsaSegment extends AbstractSegment
     /**
      * @param string $value
      */
-    public function setFieldExpectedSequenceNumber($value)
+    public function setFieldExpectedSequenceNumber(string $value)
     {
         $this->expectedSequenceNumber = $this
             ->dataTypeFactory
@@ -90,12 +90,12 @@ class MsaSegment extends AbstractSegment
      * @param string $nameOfAltCodingSystem
      */
     public function setFieldErrorCondition(
-        $identifier = null,
-        $text = null,
-        $nameOfCodingSystem = null,
-        $altIdentifier = null,
-        $altText = null,
-        $nameOfAltCodingSystem = null
+        string $identifier = null,
+        string $text = null,
+        string $nameOfCodingSystem = null,
+        string $altIdentifier = null,
+        string $altText = null,
+        string $nameOfAltCodingSystem = null
     ) {
         $this->errorCondition = $this
             ->dataTypeFactory

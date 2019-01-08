@@ -12,94 +12,94 @@ use Hl7v2\Exception\SegmentError;
 class MshSegment extends AbstractSegment
 {
     /**
-     * @var \Hl7v2\DataType\StDataType
+     * @var StDataType
      */
     private $fieldSeparator;
     /**
-     * @var \Hl7v2\DataType\StDataType
+     * @var StDataType
      */
     private $encodingCharacters;
     /**
-     * @var \Hl7v2\DataType\HdDataType
+     * @var HdDataType
      */
     private $sendingApplication = null;
     /**
-     * @var \Hl7v2\DataType\HdDataType
+     * @var HdDataType
      */
     private $sendingFacility = null;
     /**
-     * @var \Hl7v2\DataType\HdDataType
+     * @var HdDataType
      */
     private $receivingApplication = null;
     /**
-     * @var \Hl7v2\DataType\HdDataType
+     * @var HdDataType
      */
     private $receivingFacility = null;
     /**
-     * @var \Hl7v2\DataType\TsDataType
+     * @var TsDataType
      */
     private $dateTimeOfMessage;
     /**
-     * @var \Hl7v2\DataType\StDataType
+     * @var StDataType
      */
     private $security = null;
     /**
-     * @var \Hl7v2\DataType\MsgDataType
+     * @var MsgDataType
      */
     private $messageType;
     /**
-     * @var \Hl7v2\DataType\StDataType
+     * @var StDataType
      */
     private $messageControlId;
     /**
-     * @var \Hl7v2\DataType\PtDataType
+     * @var PtDataType
      */
     private $processingId;
     /**
-     * @var \Hl7v2\DataType\VidDataType
+     * @var VidDataType
      */
     private $versionId;
     /**
-     * @var \Hl7v2\DataType\NmDataType
+     * @var NmDataType
      */
     private $sequenceNumber = null;
     /**
-     * @var \Hl7v2\DataType\StDataType
+     * @var StDataType
      */
     private $continuationPointer = null;
     /**
-     * @var \Hl7v2\DataType\IdDataType
+     * @var IdDataType
      */
     private $acceptAcknowledgmentType = null;
     /**
-     * @var \Hl7v2\DataType\IdDataType
+     * @var IdDataType
      */
     private $applicationAcknowledgmentType = null;
     /**
-     * @var \Hl7v2\DataType\IdDataType
+     * @var IdDataType
      */
     private $countryCode = null;
     /**
-     * @var \Hl7v2\DataType\IdDataType[]
+     * @var IdDataType[]
      */
     private $characterSet = [];
     /**
-     * @var \Hl7v2\DataType\CeDataType
+     * @var CeDataType
      */
     private $principalLanguageOfMessage = null;
     /**
-     * @var \Hl7v2\DataType\IdDataType
+     * @var IdDataType
      */
     private $altCharacterSetHandlingScheme = null;
     /**
-     * @var \Hl7v2\DataType\EiDataType[]
+     * @var EiDataType[]
      */
     private $messageProfileIdentifier = [];
 
     /**
      * @param string $value
      */
-    public function setFieldFieldSeparator($value)
+    public function setFieldFieldSeparator(string $value)
     {
         $this->fieldSeparator = $this
             ->dataTypeFactory
@@ -111,7 +111,7 @@ class MshSegment extends AbstractSegment
     /**
      * @param string $value
      */
-    public function setFieldEncodingCharacters($value)
+    public function setFieldEncodingCharacters(string $value)
     {
         $this->encodingCharacters = $this
             ->dataTypeFactory
@@ -125,8 +125,11 @@ class MshSegment extends AbstractSegment
      * @param string $universalId
      * @param string $universalIdType
      */
-    public function setFieldSendingApplication($namespaceId = null, $universalId = null, $universalIdType = null)
-    {
+    public function setFieldSendingApplication(
+        string $namespaceId = null,
+        string $universalId = null,
+        string $universalIdType = null
+    ) {
         $this->sendingApplication = $this
             ->dataTypeFactory
             ->create('HD', $this->encodingParameters)
@@ -141,8 +144,11 @@ class MshSegment extends AbstractSegment
      * @param string $universalId
      * @param string $universalIdType
      */
-    public function setFieldSendingFacility($namespaceId = null, $universalId = null, $universalIdType = null)
-    {
+    public function setFieldSendingFacility(
+        string $namespaceId = null,
+        string $universalId = null,
+        string $universalIdType = null
+    ) {
         $this->sendingFacility = $this
             ->dataTypeFactory
             ->create('HD', $this->encodingParameters)
@@ -157,8 +163,11 @@ class MshSegment extends AbstractSegment
      * @param string $universalId
      * @param string $universalIdType
      */
-    public function setFieldReceivingApplication($namespaceId = null, $universalId = null, $universalIdType = null)
-    {
+    public function setFieldReceivingApplication(
+        string $namespaceId = null,
+        string $universalId = null,
+        string $universalIdType = null
+    ) {
         $this->receivingApplication = $this
             ->dataTypeFactory
             ->create('HD', $this->encodingParameters)
@@ -173,8 +182,11 @@ class MshSegment extends AbstractSegment
      * @param string $universalId
      * @param string $universalIdType
      */
-    public function setFieldReceivingFacility($namespaceId = null, $universalId = null, $universalIdType = null)
-    {
+    public function setFieldReceivingFacility(
+        string $namespaceId = null,
+        string $universalId = null,
+        string $universalIdType = null
+    ) {
         $this->receivingFacility = $this
             ->dataTypeFactory
             ->create('HD', $this->encodingParameters)
@@ -188,8 +200,10 @@ class MshSegment extends AbstractSegment
      * @param string $time
      * @param string $degreeOfPrecision
      */
-    public function setFieldDateTimeOfMessage($time, $degreeOfPrecision = null)
-    {
+    public function setFieldDateTimeOfMessage(
+        string $time,
+        string $degreeOfPrecision = null
+    ) {
         $this->dateTimeOfMessage = $this
             ->dataTypeFactory
             ->create('TS', $this->encodingParameters)
@@ -201,7 +215,7 @@ class MshSegment extends AbstractSegment
     /**
      * @param string $value
      */
-    public function setFieldSecurity($value)
+    public function setFieldSecurity(string $value)
     {
         $this->security = $this
             ->dataTypeFactory
@@ -215,8 +229,11 @@ class MshSegment extends AbstractSegment
      * @param string $triggerEvent
      * @param string $messageStructure
      */
-    public function setFieldMessageType($messageCode, $triggerEvent, $messageStructure)
-    {
+    public function setFieldMessageType(
+        string $messageCode,
+        string $triggerEvent,
+        string $messageStructure
+    ) {
         $this->messageType = $this
             ->dataTypeFactory
             ->create('MSG', $this->encodingParameters)
@@ -229,7 +246,7 @@ class MshSegment extends AbstractSegment
     /**
      * @param string $value
      */
-    public function setFieldMessageControlId($value)
+    public function setFieldMessageControlId(string $value)
     {
         $this->messageControlId = $this
             ->dataTypeFactory
@@ -242,8 +259,10 @@ class MshSegment extends AbstractSegment
      * @param string $processingId
      * @param string $processingMode
      */
-    public function setFieldProcessingId($processingId = null, $processingMode = null)
-    {
+    public function setFieldProcessingId(
+        string $processingId = null,
+        string $processingMode = null
+    ) {
         $this->processingId = $this
             ->dataTypeFactory
             ->create('PT', $this->encodingParameters)
@@ -268,19 +287,19 @@ class MshSegment extends AbstractSegment
      * @param string $internationalisationVersionIdNameOfAltCodingSystem
      */
     public function setFieldVersionId(
-        $versionId = null,
-        $internationalisationCodeIdentifier = null,
-        $internationalisationCodeText = null,
-        $internationalisationCodeNameOfCodingSystem = null,
-        $internationalisationCodeAltIdentifier = null,
-        $internationalisationCodeAltText = null,
-        $internationalisationCodeNameOfAltCodingSystem = null,
-        $internationalisationVersionIdIdentifier = null,
-        $internationalisationVersionIdText = null,
-        $internationalisationVersionIdNameOfCodingSystem = null,
-        $internationalisationVersionIdAltIdentifier = null,
-        $internationalisationVersionIdAltText = null,
-        $internationalisationVersionIdNameOfAltCodingSystem = null
+        string $versionId = null,
+        string $internationalisationCodeIdentifier = null,
+        string $internationalisationCodeText = null,
+        string $internationalisationCodeNameOfCodingSystem = null,
+        string $internationalisationCodeAltIdentifier = null,
+        string $internationalisationCodeAltText = null,
+        string $internationalisationCodeNameOfAltCodingSystem = null,
+        string $internationalisationVersionIdIdentifier = null,
+        string $internationalisationVersionIdText = null,
+        string $internationalisationVersionIdNameOfCodingSystem = null,
+        string $internationalisationVersionIdAltIdentifier = null,
+        string $internationalisationVersionIdAltText = null,
+        string $internationalisationVersionIdNameOfAltCodingSystem = null
     ) {
         $this->versionId = $this
             ->dataTypeFactory
@@ -308,7 +327,7 @@ class MshSegment extends AbstractSegment
     /**
      * @param string $value
      */
-    public function setFieldSequenceNumber($value)
+    public function setFieldSequenceNumber(string $value)
     {
         $this->sequenceNumber = $this
             ->dataTypeFactory
@@ -320,7 +339,7 @@ class MshSegment extends AbstractSegment
     /**
      * @param string $value
      */
-    public function setFieldContinuationPointer($value)
+    public function setFieldContinuationPointer(string $value)
     {
         $this->continuationPointer = $this
             ->dataTypeFactory
@@ -332,7 +351,7 @@ class MshSegment extends AbstractSegment
     /**
      * @param string $value
      */
-    public function setFieldAcceptAcknowledgmentType($value)
+    public function setFieldAcceptAcknowledgmentType(string $value)
     {
         $this->acceptAcknowledgmentType = $this
             ->dataTypeFactory
@@ -344,7 +363,7 @@ class MshSegment extends AbstractSegment
     /**
      * @param string $value
      */
-    public function setFieldApplicationAcknowledgmentType($value)
+    public function setFieldApplicationAcknowledgmentType(string $value)
     {
         $this->applicationAcknowledgmentType = $this
             ->dataTypeFactory
@@ -356,7 +375,7 @@ class MshSegment extends AbstractSegment
     /**
      * @param string $value
      */
-    public function setFieldCountryCode($value)
+    public function setFieldCountryCode(string $value)
     {
         $this->countryCode = $this
             ->dataTypeFactory
@@ -368,7 +387,7 @@ class MshSegment extends AbstractSegment
     /**
      * @param string $value
      */
-    public function addFieldCharacterSet($value)
+    public function addFieldCharacterSet(string $value)
     {
         $characterSet = $this
             ->dataTypeFactory
@@ -387,12 +406,12 @@ class MshSegment extends AbstractSegment
      * @param string $nameOfAltCodingSystem
      */
     public function setFieldPrincipalLanguageOfMessage(
-        $identifier = null,
-        $text = null,
-        $nameOfCodingSystem = null,
-        $altIdentifier = null,
-        $altText = null,
-        $nameOfAltCodingSystem = null
+        string $identifier = null,
+        string $text = null,
+        string $nameOfCodingSystem = null,
+        string $altIdentifier = null,
+        string $altText = null,
+        string $nameOfAltCodingSystem = null
     ) {
         $this->principalLanguageOfMessage = $this
             ->dataTypeFactory
@@ -409,7 +428,7 @@ class MshSegment extends AbstractSegment
     /**
      * @param string $value
      */
-    public function setFieldAltCharacterSetHandlingScheme($value)
+    public function setFieldAltCharacterSetHandlingScheme(string $value)
     {
         $this->altCharacterSetHandlingScheme = $this
             ->dataTypeFactory
@@ -425,10 +444,10 @@ class MshSegment extends AbstractSegment
      * @param string $universalIdType
      */
     public function addFieldMessageProfileIdentifier(
-        $entityIdentifier = null,
-        $namespaceId = null,
-        $universalId = null,
-        $universalIdType = null
+        string $entityIdentifier = null,
+        string $namespaceId = null,
+        string $universalId = null,
+        string $universalIdType = null
     ) {
         $messageProfileIdentifier = $this
             ->dataTypeFactory

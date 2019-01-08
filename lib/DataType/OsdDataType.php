@@ -10,54 +10,54 @@ class OsdDataType extends ComponentDataType
     const MAX_LEN = 110;
 
     /**
-     * @var \Hl7v2\DataType\IdDataType
+     * @var IdDataType
      */
     private $sequenceResultsFlag;
     /**
-     * @var \Hl7v2\DataType\StDataType
+     * @var StDataType
      */
     private $placerOrderNumberEntityIdentifier;
     /**
-     * @var \Hl7v2\DataType\IsDataType
+     * @var IsDataType
      */
     private $placerOrderNumberNamespaceId;
     /**
-     * @var \Hl7v2\DataType\StDataType
+     * @var StDataType
      */
     private $fillerOrderNumberEntityIdentifier;
     /**
-     * @var \Hl7v2\DataType\IsDataType
+     * @var IsDataType
      */
     private $fillerOrderNumberNamespaceId;
     /**
-     * @var \Hl7v2\DataType\StDataType
+     * @var StDataType
      */
     private $sequenceConditionValue;
     /**
-     * @var \Hl7v2\DataType\NmDataType
+     * @var NmDataType
      */
     private $maximumNumberOfRepeats;
     /**
-     * @var \Hl7v2\DataType\StDataType
+     * @var StDataType
      */
     private $placerOrderNumberUniversalId;
     /**
-     * @var \Hl7v2\DataType\IdDataType
+     * @var IdDataType
      */
     private $placerOrderNumberUniversalIdType;
     /**
-     * @var \Hl7v2\DataType\StDataType
+     * @var StDataType
      */
     private $fillerOrderNumberUniversalId;
     /**
-     * @var \Hl7v2\DataType\IdDataType
+     * @var IdDataType
      */
     private $fillerOrderNumberUniversalIdType;
 
     /**
      * @param string $sequenceResultsFlag
      */
-    public function setSequenceResultsFlag($sequenceResultsFlag)
+    public function setSequenceResultsFlag(string $sequenceResultsFlag)
     {
         $this->sequenceResultsFlag = $this
             ->dataTypeFactory
@@ -69,8 +69,9 @@ class OsdDataType extends ComponentDataType
     /**
      * @param string $placerOrderNumberEntityIdentifier
      */
-    public function setPlacerOrderNumberEntityIdentifier($placerOrderNumberEntityIdentifier)
-    {
+    public function setPlacerOrderNumberEntityIdentifier(
+        string $placerOrderNumberEntityIdentifier
+    ) {
         $this->placerOrderNumberEntityIdentifier = $this
             ->dataTypeFactory
             ->create('ST', $this->encodingParameters)
@@ -81,8 +82,9 @@ class OsdDataType extends ComponentDataType
     /**
      * @param string $placerOrderNumberNamespaceId
      */
-    public function setPlacerOrderNumberNamespaceId($placerOrderNumberNamespaceId = null)
-    {
+    public function setPlacerOrderNumberNamespaceId(
+        string $placerOrderNumberNamespaceId = null
+    ) {
         $this->placerOrderNumberNamespaceId = $this
             ->dataTypeFactory
             ->create('IS', $this->encodingParameters)
@@ -93,8 +95,9 @@ class OsdDataType extends ComponentDataType
     /**
      * @param string $fillerOrderNumberEntityIdentifier
      */
-    public function setFillerOrderNumberEntityIdentifier($fillerOrderNumberEntityIdentifier)
-    {
+    public function setFillerOrderNumberEntityIdentifier(
+        string $fillerOrderNumberEntityIdentifier
+    ) {
         $this->fillerOrderNumberEntityIdentifier = $this
             ->dataTypeFactory
             ->create('ST', $this->encodingParameters)
@@ -105,8 +108,9 @@ class OsdDataType extends ComponentDataType
     /**
      * @param string $fillerOrderNumberNamespaceId
      */
-    public function setFillerOrderNumberNamespaceId($fillerOrderNumberNamespaceId = null)
-    {
+    public function setFillerOrderNumberNamespaceId(
+        string $fillerOrderNumberNamespaceId = null
+    ) {
         $this->fillerOrderNumberNamespaceId = $this
             ->dataTypeFactory
             ->create('IS', $this->encodingParameters)
@@ -117,8 +121,9 @@ class OsdDataType extends ComponentDataType
     /**
      * @param string $sequenceConditionValue
      */
-    public function setSequenceConditionValue($sequenceConditionValue = null)
-    {
+    public function setSequenceConditionValue(
+        string $sequenceConditionValue = null
+    ) {
         $this->sequenceConditionValue = $this
             ->dataTypeFactory
             ->create('ST', $this->encodingParameters)
@@ -129,8 +134,9 @@ class OsdDataType extends ComponentDataType
     /**
      * @param string $maximumNumberOfRepeats
      */
-    public function setMaximumNumberOfRepeats($maximumNumberOfRepeats = null)
-    {
+    public function setMaximumNumberOfRepeats(
+        string $maximumNumberOfRepeats = null
+    ) {
         $this->maximumNumberOfRepeats = $this
             ->dataTypeFactory
             ->create('NM', $this->encodingParameters)
@@ -141,8 +147,9 @@ class OsdDataType extends ComponentDataType
     /**
      * @param string $placerOrderNumberUniversalId
      */
-    public function setPlacerOrderNumberUniversalId($placerOrderNumberUniversalId)
-    {
+    public function setPlacerOrderNumberUniversalId(
+        string $placerOrderNumberUniversalId
+    ) {
         $this->placerOrderNumberUniversalId = $this
             ->dataTypeFactory
             ->create('ST', $this->encodingParameters)
@@ -153,8 +160,9 @@ class OsdDataType extends ComponentDataType
     /**
      * @param string $placerOrderNumberUniversalIdType
      */
-    public function setPlacerOrderNumberUniversalIdType($placerOrderNumberUniversalIdType = null)
-    {
+    public function setPlacerOrderNumberUniversalIdType(
+        string $placerOrderNumberUniversalIdType = null
+    ) {
         $this->placerOrderNumberUniversalIdType = $this
             ->dataTypeFactory
             ->create('ID', $this->encodingParameters)
@@ -165,8 +173,9 @@ class OsdDataType extends ComponentDataType
     /**
      * @param string $fillerOrderNumberUniversalId
      */
-    public function setFillerOrderNumberUniversalId($fillerOrderNumberUniversalId)
-    {
+    public function setFillerOrderNumberUniversalId(
+        string $fillerOrderNumberUniversalId
+    ) {
         $this->fillerOrderNumberUniversalId = $this
             ->dataTypeFactory
             ->create('ST', $this->encodingParameters)
@@ -177,8 +186,9 @@ class OsdDataType extends ComponentDataType
     /**
      * @param string $fillerOrderNumberUniversalIdType
      */
-    public function setFillerOrderNumberUniversalIdType($fillerOrderNumberUniversalIdType = null)
-    {
+    public function setFillerOrderNumberUniversalIdType(
+        string $fillerOrderNumberUniversalIdType = null
+    ) {
         $this->fillerOrderNumberUniversalIdType = $this
             ->dataTypeFactory
             ->create('ID', $this->encodingParameters)

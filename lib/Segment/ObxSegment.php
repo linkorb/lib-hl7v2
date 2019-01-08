@@ -12,101 +12,101 @@ use Hl7v2\Exception\SegmentError;
 class ObxSegment extends AbstractSegment
 {
     /**
-     * @var \Hl7v2\DataType\SiDataType
+     * @var SiDataType
      */
     private $setId = null;
     /**
-     * @var \Hl7v2\DataType\IdDataType
+     * @var IdDataType
      */
     private $valueType = null;
     /**
-     * @var \Hl7v2\DataType\CeDataType
+     * @var CeDataType
      */
     private $observationIdentifier;
     /**
-     * @var \Hl7v2\DataType\StDataType
+     * @var StDataType
      */
     private $observationSubid = null;
     /**
-     * @var \Hl7v2\DataType\DataTypeInterface[]
+     * @var DataTypeInterface[]
      */
     private $observationValue = [];
     /**
-     * @var \Hl7v2\DataType\CeDataType
+     * @var CeDataType
      */
     private $units = null;
     /**
-     * @var \Hl7v2\DataType\StDataType
+     * @var StDataType
      */
     private $referencesRange = null;
     /**
-     * @var \Hl7v2\DataType\IsDataType[]
+     * @var IsDataType[]
      */
     private $abnormalFlags = [];
     /**
-     * @var \Hl7v2\DataType\NmDataType
+     * @var NmDataType
      */
     private $probability = null;
     /**
-     * @var \Hl7v2\DataType\IdDataType[]
+     * @var IdDataType[]
      */
     private $natureOfAbnormalTest = [];
     /**
-     * @var \Hl7v2\DataType\IdDataType
+     * @var IdDataType
      */
     private $observationResultStatus;
     /**
-     * @var \Hl7v2\DataType\TsDataType
+     * @var TsDataType
      */
     private $effectiveDateOfReferenceRangeValues = null;
     /**
-     * @var \Hl7v2\DataType\StDataType
+     * @var StDataType
      */
     private $userDefinedAccessChecks = null;
     /**
-     * @var \Hl7v2\DataType\TsDataType
+     * @var TsDataType
      */
     private $datetimeOfTheObservation = null;
     /**
-     * @var \Hl7v2\DataType\CeDataType
+     * @var CeDataType
      */
     private $producersReference = null;
     /**
-     * @var \Hl7v2\DataType\XcnDataType[]
+     * @var XcnDataType[]
      */
     private $responsibleObserver = [];
     /**
-     * @var \Hl7v2\DataType\CeDataType[]
+     * @var CeDataType[]
      */
     private $observationMethod = [];
     /**
-     * @var \Hl7v2\DataType\EiDataType[]
+     * @var EiDataType[]
      */
     private $equipmentInstanceIdentifier = [];
     /**
-     * @var \Hl7v2\DataType\TsDataType
+     * @var TsDataType
      */
     private $datetimeOfTheAnalysis = null;
     private $unnamed1;
     private $unnamed2;
     private $unnamed3;
     /**
-     * @var \Hl7v2\DataType\XonDataType
+     * @var XonDataType
      */
     private $performingOrganizationName = null;
     /**
-     * @var \Hl7v2\DataType\XadDataType
+     * @var XadDataType
      */
     private $performingOrganizationAddress = null;
     /**
-     * @var \Hl7v2\DataType\XcnDataType
+     * @var XcnDataType
      */
     private $performingOrganizationMedicalDirector = null;
 
     /**
      * @param string $value
      */
-    public function setFieldSetId($value)
+    public function setFieldSetId(string $value)
     {
         $this->setId = $this
             ->dataTypeFactory
@@ -118,7 +118,7 @@ class ObxSegment extends AbstractSegment
     /**
      * @param string $value
      */
-    public function setFieldValueType($value)
+    public function setFieldValueType(string $value)
     {
         $this->valueType = $this
             ->dataTypeFactory
@@ -136,12 +136,12 @@ class ObxSegment extends AbstractSegment
      * @param string $nameOfAltCodingSystem
      */
     public function setFieldObservationIdentifier(
-        $identifier = null,
-        $text = null,
-        $nameOfCodingSystem = null,
-        $altIdentifier = null,
-        $altText = null,
-        $nameOfAltCodingSystem = null
+        string $identifier = null,
+        string $text = null,
+        string $nameOfCodingSystem = null,
+        string $altIdentifier = null,
+        string $altText = null,
+        string $nameOfAltCodingSystem = null
     ) {
         $this->observationIdentifier = $this
             ->dataTypeFactory
@@ -158,7 +158,7 @@ class ObxSegment extends AbstractSegment
     /**
      * @param string $value
      */
-    public function setFieldObservationSubid($value)
+    public function setFieldObservationSubid(string $value)
     {
         $this->observationSubid = $this
             ->dataTypeFactory
@@ -177,13 +177,13 @@ class ObxSegment extends AbstractSegment
      * @param string $data
      */
     public function addFieldObservationValueAsED(
-        $sourceApplicationNamespaceId = null,
-        $sourceApplicationUniversalId = null,
-        $sourceApplicationUniversalIdType = null,
-        $typeOfData,
-        $dataSubtype = null,
-        $encoding,
-        $data
+        string $sourceApplicationNamespaceId = null,
+        string $sourceApplicationUniversalId = null,
+        string $sourceApplicationUniversalIdType = null,
+        string $typeOfData,
+        string $dataSubtype = null,
+        string $encoding,
+        string $data
     ) {
         $observationValue = $this
             ->dataTypeFactory
@@ -204,7 +204,7 @@ class ObxSegment extends AbstractSegment
     /**
      * @param string $value
      */
-    public function addFieldObservationValueAsFT($value)
+    public function addFieldObservationValueAsFT(string $value)
     {
         $observationValue = $this
             ->dataTypeFactory
@@ -217,7 +217,7 @@ class ObxSegment extends AbstractSegment
     /**
      * @param string $value
      */
-    public function addFieldObservationValueAsNM($value)
+    public function addFieldObservationValueAsNM(string $value)
     {
         $observationValue = $this
             ->dataTypeFactory
@@ -230,7 +230,7 @@ class ObxSegment extends AbstractSegment
     /**
      * @param string $value
      */
-    public function addFieldObservationValueAsST($value)
+    public function addFieldObservationValueAsST(string $value)
     {
         $observationValue = $this
             ->dataTypeFactory
@@ -244,8 +244,10 @@ class ObxSegment extends AbstractSegment
      * @param string $time
      * @param string $degreeOfPrecision
      */
-    public function addFieldObservationValueAsTS($time, $degreeOfPrecision = null)
-    {
+    public function addFieldObservationValueAsTS(
+        string $time,
+        string $degreeOfPrecision = null
+    ) {
         $observationValue = $this
             ->dataTypeFactory
             ->create('TS', $this->encodingParameters)
@@ -258,7 +260,7 @@ class ObxSegment extends AbstractSegment
     /**
      * @param string $value
      */
-    public function addFieldObservationValueAsTX($value)
+    public function addFieldObservationValueAsTX(string $value)
     {
         $observationValue = $this
             ->dataTypeFactory
@@ -277,12 +279,12 @@ class ObxSegment extends AbstractSegment
      * @param string $nameOfAltCodingSystem
      */
     public function setFieldUnits(
-        $identifier = null,
-        $text = null,
-        $nameOfCodingSystem = null,
-        $altIdentifier = null,
-        $altText = null,
-        $nameOfAltCodingSystem = null
+        string $identifier = null,
+        string $text = null,
+        string $nameOfCodingSystem = null,
+        string $altIdentifier = null,
+        string $altText = null,
+        string $nameOfAltCodingSystem = null
     ) {
         $this->units = $this
             ->dataTypeFactory
@@ -299,7 +301,7 @@ class ObxSegment extends AbstractSegment
     /**
      * @param string $value
      */
-    public function setFieldReferencesRange($value)
+    public function setFieldReferencesRange(string $value)
     {
         $this->referencesRange = $this
             ->dataTypeFactory
@@ -311,7 +313,7 @@ class ObxSegment extends AbstractSegment
     /**
      * @param string $value
      */
-    public function addFieldAbnormalFlags($value)
+    public function addFieldAbnormalFlags(string $value)
     {
         $abnormalFlags = $this
             ->dataTypeFactory
@@ -324,7 +326,7 @@ class ObxSegment extends AbstractSegment
     /**
      * @param string $value
      */
-    public function setFieldProbability($value)
+    public function setFieldProbability(string $value)
     {
         $this->probability = $this
             ->dataTypeFactory
@@ -336,7 +338,7 @@ class ObxSegment extends AbstractSegment
     /**
      * @param string $value
      */
-    public function addFieldNatureOfAbnormalTest($value)
+    public function addFieldNatureOfAbnormalTest(string $value)
     {
         $natureOfAbnormalTest = $this
             ->dataTypeFactory
@@ -349,7 +351,7 @@ class ObxSegment extends AbstractSegment
     /**
      * @param string $value
      */
-    public function setFieldObservationResultStatus($value)
+    public function setFieldObservationResultStatus(string $value)
     {
         $this->observationResultStatus = $this
             ->dataTypeFactory
@@ -362,8 +364,10 @@ class ObxSegment extends AbstractSegment
      * @param string $time
      * @param string $degreeOfPrecision
      */
-    public function setFieldEffectiveDateOfReferenceRangeValues($time, $degreeOfPrecision = null)
-    {
+    public function setFieldEffectiveDateOfReferenceRangeValues(
+        string $time,
+        string $degreeOfPrecision = null
+    ) {
         $this->effectiveDateOfReferenceRangeValues = $this
             ->dataTypeFactory
             ->create('TS', $this->encodingParameters)
@@ -375,7 +379,7 @@ class ObxSegment extends AbstractSegment
     /**
      * @param string $value
      */
-    public function setFieldUserDefinedAccessChecks($value)
+    public function setFieldUserDefinedAccessChecks(string $value)
     {
         $this->userDefinedAccessChecks = $this
             ->dataTypeFactory
@@ -388,8 +392,10 @@ class ObxSegment extends AbstractSegment
      * @param string $time
      * @param string $degreeOfPrecision
      */
-    public function setFieldDatetimeOfTheObservation($time, $degreeOfPrecision = null)
-    {
+    public function setFieldDatetimeOfTheObservation(
+        string $time,
+        string $degreeOfPrecision = null
+    ) {
         $this->datetimeOfTheObservation = $this
             ->dataTypeFactory
             ->create('TS', $this->encodingParameters)
@@ -407,12 +413,12 @@ class ObxSegment extends AbstractSegment
      * @param string $nameOfAltCodingSystem
      */
     public function setFieldProducersReference(
-        $identifier = null,
-        $text = null,
-        $nameOfCodingSystem = null,
-        $altIdentifier = null,
-        $altText = null,
-        $nameOfAltCodingSystem = null
+        string $identifier = null,
+        string $text = null,
+        string $nameOfCodingSystem = null,
+        string $altIdentifier = null,
+        string $altText = null,
+        string $nameOfAltCodingSystem = null
     ) {
         $this->producersReference = $this
             ->dataTypeFactory
@@ -486,63 +492,63 @@ class ObxSegment extends AbstractSegment
      * @param string $assigningAgencyOriginalText
      */
     public function addFieldResponsibleObserver(
-        $idNumber = null,
-        $familyNameSurname,
-        $familyNameOwnSurnamePrefix = null,
-        $familyNameOwnSurname = null,
-        $familyNameSurnamePrefixFromPartner = null,
-        $familyNameSurnameFromPartner = null,
-        $givenName = null,
-        $secondNames = null,
-        $suffix = null,
-        $prefix = null,
-        $degree = null,
-        $sourceTable = null,
-        $assigningAuthorityNamespaceId = null,
-        $assigningAuthorityUniversalId = null,
-        $assigningAuthorityUniversalIdType = null,
-        $nameTypeCode = null,
-        $identifierCheckDigit = null,
-        $checkDigitScheme = null,
-        $identifierTypeCode = null,
-        $assigningFacilityNamespaceId = null,
-        $assigningFacilityUniversalId = null,
-        $assigningFacilityUniversalIdType = null,
-        $nameRepresentationCode = null,
-        $nameContextIdentifier = null,
-        $nameContextText = null,
-        $nameContextNameOfCodingSystem = null,
-        $nameContextAltIdentifier = null,
-        $nameContextAltText = null,
-        $nameContextNameOfAltCodingSystem = null,
-        $nameValidityRangeRangeStartDateTimeTime,
-        $nameValidityRangeRangeStartDateTimeDegreeOfPrecision = null,
-        $nameValidityRangeRangeEndDateTimeTime,
-        $nameValidityRangeRangeEndDateTimeDegreeOfPrecision = null,
-        $nameAssemblyOrder = null,
-        $effectiveDateTime,
-        $effectiveDateDegreeOfPrecision = null,
-        $expirationDateTime,
-        $expirationDateDegreeOfPrecision = null,
-        $professionalSuffix = null,
-        $assigningJurisdictionIdentifier = null,
-        $assigningJurisdictionText = null,
-        $assigningJurisdictionNameOfCodingSystem = null,
-        $assigningJurisdictionAltIdentifier = null,
-        $assigningJurisdictionAltText = null,
-        $assigningJurisdictionNameOfAltCodingSystem = null,
-        $assigningJurisdictionCodingSystemVersionId = null,
-        $assigningJurisdictionAltCodingSystemVersionId = null,
-        $assigningJurisdictionOriginalText = null,
-        $assigningAgencyIdentifier = null,
-        $assigningAgencyText = null,
-        $assigningAgencyNameOfCodingSystem = null,
-        $assigningAgencyAltIdentifier = null,
-        $assigningAgencyAltText = null,
-        $assigningAgencyNameOfAltCodingSystem = null,
-        $assigningAgencyCodingSystemVersionId = null,
-        $assigningAgencyAltCodingSystemVersionId = null,
-        $assigningAgencyOriginalText = null
+        string $idNumber = null,
+        string $familyNameSurname,
+        string $familyNameOwnSurnamePrefix = null,
+        string $familyNameOwnSurname = null,
+        string $familyNameSurnamePrefixFromPartner = null,
+        string $familyNameSurnameFromPartner = null,
+        string $givenName = null,
+        string $secondNames = null,
+        string $suffix = null,
+        string $prefix = null,
+        string $degree = null,
+        string $sourceTable = null,
+        string $assigningAuthorityNamespaceId = null,
+        string $assigningAuthorityUniversalId = null,
+        string $assigningAuthorityUniversalIdType = null,
+        string $nameTypeCode = null,
+        string $identifierCheckDigit = null,
+        string $checkDigitScheme = null,
+        string $identifierTypeCode = null,
+        string $assigningFacilityNamespaceId = null,
+        string $assigningFacilityUniversalId = null,
+        string $assigningFacilityUniversalIdType = null,
+        string $nameRepresentationCode = null,
+        string $nameContextIdentifier = null,
+        string $nameContextText = null,
+        string $nameContextNameOfCodingSystem = null,
+        string $nameContextAltIdentifier = null,
+        string $nameContextAltText = null,
+        string $nameContextNameOfAltCodingSystem = null,
+        string $nameValidityRangeRangeStartDateTimeTime,
+        string $nameValidityRangeRangeStartDateTimeDegreeOfPrecision = null,
+        string $nameValidityRangeRangeEndDateTimeTime,
+        string $nameValidityRangeRangeEndDateTimeDegreeOfPrecision = null,
+        string $nameAssemblyOrder = null,
+        string $effectiveDateTime,
+        string $effectiveDateDegreeOfPrecision = null,
+        string $expirationDateTime,
+        string $expirationDateDegreeOfPrecision = null,
+        string $professionalSuffix = null,
+        string $assigningJurisdictionIdentifier = null,
+        string $assigningJurisdictionText = null,
+        string $assigningJurisdictionNameOfCodingSystem = null,
+        string $assigningJurisdictionAltIdentifier = null,
+        string $assigningJurisdictionAltText = null,
+        string $assigningJurisdictionNameOfAltCodingSystem = null,
+        string $assigningJurisdictionCodingSystemVersionId = null,
+        string $assigningJurisdictionAltCodingSystemVersionId = null,
+        string $assigningJurisdictionOriginalText = null,
+        string $assigningAgencyIdentifier = null,
+        string $assigningAgencyText = null,
+        string $assigningAgencyNameOfCodingSystem = null,
+        string $assigningAgencyAltIdentifier = null,
+        string $assigningAgencyAltText = null,
+        string $assigningAgencyNameOfAltCodingSystem = null,
+        string $assigningAgencyCodingSystemVersionId = null,
+        string $assigningAgencyAltCodingSystemVersionId = null,
+        string $assigningAgencyOriginalText = null
     ) {
         $responsibleObserver = $this
             ->dataTypeFactory
@@ -632,12 +638,12 @@ class ObxSegment extends AbstractSegment
      * @param string $nameOfAltCodingSystem
      */
     public function addFieldObservationMethod(
-        $identifier = null,
-        $text = null,
-        $nameOfCodingSystem = null,
-        $altIdentifier = null,
-        $altText = null,
-        $nameOfAltCodingSystem = null
+        string $identifier = null,
+        string $text = null,
+        string $nameOfCodingSystem = null,
+        string $altIdentifier = null,
+        string $altText = null,
+        string $nameOfAltCodingSystem = null
     ) {
         $observationMethod = $this
             ->dataTypeFactory
@@ -659,10 +665,10 @@ class ObxSegment extends AbstractSegment
      * @param string $universalIdType
      */
     public function addFieldEquipmentInstanceIdentifier(
-        $entityIdentifier = null,
-        $namespaceId = null,
-        $universalId = null,
-        $universalIdType = null
+        string $entityIdentifier = null,
+        string $namespaceId = null,
+        string $universalId = null,
+        string $universalIdType = null
     ) {
         $equipmentInstanceIdentifier = $this
             ->dataTypeFactory
@@ -679,8 +685,10 @@ class ObxSegment extends AbstractSegment
      * @param string $time
      * @param string $degreeOfPrecision
      */
-    public function setFieldDatetimeOfTheAnalysis($time, $degreeOfPrecision = null)
-    {
+    public function setFieldDatetimeOfTheAnalysis(
+        string $time,
+        string $degreeOfPrecision = null
+    ) {
         $this->datetimeOfTheAnalysis = $this
             ->dataTypeFactory
             ->create('TS', $this->encodingParameters)
@@ -706,20 +714,20 @@ class ObxSegment extends AbstractSegment
      * @param string $organisationIdentifier
      */
     public function setFieldPerformingOrganizationName(
-        $organisationName = null,
-        $organisationNameTypeCode = null,
-        $idNumber = null,
-        $checkDigit = null,
-        $checkDigitScheme = null,
-        $assigningAuthorityNamespaceId = null,
-        $assigningAuthorityUniversalId = null,
-        $assigningAuthorityUniversalIdType = null,
-        $identifierTypeCode = null,
-        $assigningFacilityNamespaceId = null,
-        $assigningFacilityUniversalId = null,
-        $assigningFacilityUniversalIdType = null,
-        $nameRepresentationCode = null,
-        $organisationIdentifier = null
+        string $organisationName = null,
+        string $organisationNameTypeCode = null,
+        string $idNumber = null,
+        string $checkDigit = null,
+        string $checkDigitScheme = null,
+        string $assigningAuthorityNamespaceId = null,
+        string $assigningAuthorityUniversalId = null,
+        string $assigningAuthorityUniversalIdType = null,
+        string $identifierTypeCode = null,
+        string $assigningFacilityNamespaceId = null,
+        string $assigningFacilityUniversalId = null,
+        string $assigningFacilityUniversalIdType = null,
+        string $nameRepresentationCode = null,
+        string $organisationIdentifier = null
     ) {
         $this->performingOrganizationName = $this
             ->dataTypeFactory
@@ -769,27 +777,27 @@ class ObxSegment extends AbstractSegment
      * @param string $expirationDateDegreeOfPrecision
      */
     public function setFieldPerformingOrganizationAddress(
-        $streetAddressStreetOrMailingAddress = null,
-        $streetAddressStreetName = null,
-        $streetAddressDwellingNumber = null,
-        $otherDesignation = null,
-        $city = null,
-        $stateOrProvince = null,
-        $zipOrPostalCode = null,
-        $country = null,
-        $addressType = null,
-        $otherGeographicDesignation = null,
-        $countyParishCode = null,
-        $censusTract = null,
-        $addressRepresentationCode = null,
-        $addressValidityRangeRangeStartDateTimeTime,
-        $addressValidityRangeRangeStartDateTimeDegreeOfPrecision = null,
-        $addressValidityRangeRangeEndDateTimeTime,
-        $addressValidityRangeRangeEndDateTimeDegreeOfPrecision = null,
-        $effectiveDateTime,
-        $effectiveDateDegreeOfPrecision = null,
-        $expirationDateTime,
-        $expirationDateDegreeOfPrecision = null
+        string $streetAddressStreetOrMailingAddress = null,
+        string $streetAddressStreetName = null,
+        string $streetAddressDwellingNumber = null,
+        string $otherDesignation = null,
+        string $city = null,
+        string $stateOrProvince = null,
+        string $zipOrPostalCode = null,
+        string $country = null,
+        string $addressType = null,
+        string $otherGeographicDesignation = null,
+        string $countyParishCode = null,
+        string $censusTract = null,
+        string $addressRepresentationCode = null,
+        string $addressValidityRangeRangeStartDateTimeTime,
+        string $addressValidityRangeRangeStartDateTimeDegreeOfPrecision = null,
+        string $addressValidityRangeRangeEndDateTimeTime,
+        string $addressValidityRangeRangeEndDateTimeDegreeOfPrecision = null,
+        string $effectiveDateTime,
+        string $effectiveDateDegreeOfPrecision = null,
+        string $expirationDateTime,
+        string $expirationDateDegreeOfPrecision = null
     ) {
         $this->performingOrganizationAddress = $this
             ->dataTypeFactory
@@ -890,63 +898,63 @@ class ObxSegment extends AbstractSegment
      * @param string $assigningAgencyOriginalText
      */
     public function setFieldPerformingOrganizationMedicalDirector(
-        $idNumber = null,
-        $familyNameSurname,
-        $familyNameOwnSurnamePrefix = null,
-        $familyNameOwnSurname = null,
-        $familyNameSurnamePrefixFromPartner = null,
-        $familyNameSurnameFromPartner = null,
-        $givenName = null,
-        $secondNames = null,
-        $suffix = null,
-        $prefix = null,
-        $degree = null,
-        $sourceTable = null,
-        $assigningAuthorityNamespaceId = null,
-        $assigningAuthorityUniversalId = null,
-        $assigningAuthorityUniversalIdType = null,
-        $nameTypeCode = null,
-        $identifierCheckDigit = null,
-        $checkDigitScheme = null,
-        $identifierTypeCode = null,
-        $assigningFacilityNamespaceId = null,
-        $assigningFacilityUniversalId = null,
-        $assigningFacilityUniversalIdType = null,
-        $nameRepresentationCode = null,
-        $nameContextIdentifier = null,
-        $nameContextText = null,
-        $nameContextNameOfCodingSystem = null,
-        $nameContextAltIdentifier = null,
-        $nameContextAltText = null,
-        $nameContextNameOfAltCodingSystem = null,
-        $nameValidityRangeRangeStartDateTimeTime,
-        $nameValidityRangeRangeStartDateTimeDegreeOfPrecision = null,
-        $nameValidityRangeRangeEndDateTimeTime,
-        $nameValidityRangeRangeEndDateTimeDegreeOfPrecision = null,
-        $nameAssemblyOrder = null,
-        $effectiveDateTime,
-        $effectiveDateDegreeOfPrecision = null,
-        $expirationDateTime,
-        $expirationDateDegreeOfPrecision = null,
-        $professionalSuffix = null,
-        $assigningJurisdictionIdentifier = null,
-        $assigningJurisdictionText = null,
-        $assigningJurisdictionNameOfCodingSystem = null,
-        $assigningJurisdictionAltIdentifier = null,
-        $assigningJurisdictionAltText = null,
-        $assigningJurisdictionNameOfAltCodingSystem = null,
-        $assigningJurisdictionCodingSystemVersionId = null,
-        $assigningJurisdictionAltCodingSystemVersionId = null,
-        $assigningJurisdictionOriginalText = null,
-        $assigningAgencyIdentifier = null,
-        $assigningAgencyText = null,
-        $assigningAgencyNameOfCodingSystem = null,
-        $assigningAgencyAltIdentifier = null,
-        $assigningAgencyAltText = null,
-        $assigningAgencyNameOfAltCodingSystem = null,
-        $assigningAgencyCodingSystemVersionId = null,
-        $assigningAgencyAltCodingSystemVersionId = null,
-        $assigningAgencyOriginalText = null
+        string $idNumber = null,
+        string $familyNameSurname,
+        string $familyNameOwnSurnamePrefix = null,
+        string $familyNameOwnSurname = null,
+        string $familyNameSurnamePrefixFromPartner = null,
+        string $familyNameSurnameFromPartner = null,
+        string $givenName = null,
+        string $secondNames = null,
+        string $suffix = null,
+        string $prefix = null,
+        string $degree = null,
+        string $sourceTable = null,
+        string $assigningAuthorityNamespaceId = null,
+        string $assigningAuthorityUniversalId = null,
+        string $assigningAuthorityUniversalIdType = null,
+        string $nameTypeCode = null,
+        string $identifierCheckDigit = null,
+        string $checkDigitScheme = null,
+        string $identifierTypeCode = null,
+        string $assigningFacilityNamespaceId = null,
+        string $assigningFacilityUniversalId = null,
+        string $assigningFacilityUniversalIdType = null,
+        string $nameRepresentationCode = null,
+        string $nameContextIdentifier = null,
+        string $nameContextText = null,
+        string $nameContextNameOfCodingSystem = null,
+        string $nameContextAltIdentifier = null,
+        string $nameContextAltText = null,
+        string $nameContextNameOfAltCodingSystem = null,
+        string $nameValidityRangeRangeStartDateTimeTime,
+        string $nameValidityRangeRangeStartDateTimeDegreeOfPrecision = null,
+        string $nameValidityRangeRangeEndDateTimeTime,
+        string $nameValidityRangeRangeEndDateTimeDegreeOfPrecision = null,
+        string $nameAssemblyOrder = null,
+        string $effectiveDateTime,
+        string $effectiveDateDegreeOfPrecision = null,
+        string $expirationDateTime,
+        string $expirationDateDegreeOfPrecision = null,
+        string $professionalSuffix = null,
+        string $assigningJurisdictionIdentifier = null,
+        string $assigningJurisdictionText = null,
+        string $assigningJurisdictionNameOfCodingSystem = null,
+        string $assigningJurisdictionAltIdentifier = null,
+        string $assigningJurisdictionAltText = null,
+        string $assigningJurisdictionNameOfAltCodingSystem = null,
+        string $assigningJurisdictionCodingSystemVersionId = null,
+        string $assigningJurisdictionAltCodingSystemVersionId = null,
+        string $assigningJurisdictionOriginalText = null,
+        string $assigningAgencyIdentifier = null,
+        string $assigningAgencyText = null,
+        string $assigningAgencyNameOfCodingSystem = null,
+        string $assigningAgencyAltIdentifier = null,
+        string $assigningAgencyAltText = null,
+        string $assigningAgencyNameOfAltCodingSystem = null,
+        string $assigningAgencyCodingSystemVersionId = null,
+        string $assigningAgencyAltCodingSystemVersionId = null,
+        string $assigningAgencyOriginalText = null
     ) {
         $this->performingOrganizationMedicalDirector = $this
             ->dataTypeFactory

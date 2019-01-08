@@ -10,11 +10,11 @@ class EipDataType extends ComponentDataType
     const MAX_LEN = 855;
 
     /**
-     * @var \Hl7v2\DataType\EiDataType
+     * @var EiDataType
      */
     private $placerAssignedIdentifier;
     /**
-     * @var \Hl7v2\DataType\EiDataType
+     * @var EiDataType
      */
     private $fillerAssignedIdentifier;
 
@@ -25,10 +25,10 @@ class EipDataType extends ComponentDataType
      * @param string $placerAssignedIdentifierUniversalIdType
      */
     public function setPlacerAssignedIdentifier(
-        $placerAssignedIdentifierEntityIdentifier = null,
-        $placerAssignedIdentifierNamespaceId = null,
-        $placerAssignedIdentifierUniversalId = null,
-        $placerAssignedIdentifierUniversalIdType = null
+        string $placerAssignedIdentifierEntityIdentifier = null,
+        string $placerAssignedIdentifierNamespaceId = null,
+        string $placerAssignedIdentifierUniversalId = null,
+        string $placerAssignedIdentifierUniversalIdType = null
     ) {
         $this->placerAssignedIdentifier = $this
             ->dataTypeFactory
@@ -51,10 +51,10 @@ class EipDataType extends ComponentDataType
      * @param string $fillerAssignedIdentifierUniversalIdType
      */
     public function setFillerAssignedIdentifier(
-        $fillerAssignedIdentifierEntityIdentifier = null,
-        $fillerAssignedIdentifierNamespaceId = null,
-        $fillerAssignedIdentifierUniversalId = null,
-        $fillerAssignedIdentifierUniversalIdType = null
+        string $fillerAssignedIdentifierEntityIdentifier = null,
+        string $fillerAssignedIdentifierNamespaceId = null,
+        string $fillerAssignedIdentifierUniversalId = null,
+        string $fillerAssignedIdentifierUniversalIdType = null
     ) {
         $this->fillerAssignedIdentifier = $this
             ->dataTypeFactory

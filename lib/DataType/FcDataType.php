@@ -10,18 +10,18 @@ class FcDataType extends ComponentDataType
     const MAX_LEN = 47;
 
     /**
-     * @var \Hl7v2\DataType\IsDataType
+     * @var IsDataType
      */
     private $financialClassCode;
     /**
-     * @var \Hl7v2\DataType\TsDataType
+     * @var TsDataType
      */
     private $effectiveDate;
 
     /**
      * @param string $financialClassCode
      */
-    public function setFinancialClassCode($financialClassCode)
+    public function setFinancialClassCode(string $financialClassCode)
     {
         $this->financialClassCode = $this
             ->dataTypeFactory
@@ -34,8 +34,10 @@ class FcDataType extends ComponentDataType
      * @param string $effectiveDateTime
      * @param string $effectiveDateDegreeOfPrecision
      */
-    public function setEffectiveDate($effectiveDateTime, $effectiveDateDegreeOfPrecision = null)
-    {
+    public function setEffectiveDate(
+        string $effectiveDateTime,
+        string $effectiveDateDegreeOfPrecision = null
+    ) {
         $this->effectiveDate = $this
             ->dataTypeFactory
             ->create('TS', $this->encodingParameters, true)

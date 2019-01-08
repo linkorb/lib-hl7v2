@@ -12,218 +12,218 @@ use Hl7v2\Exception\SegmentError;
 class Pv1Segment extends AbstractSegment
 {
     /**
-     * @var \Hl7v2\DataType\SiDataType
+     * @var SiDataType
      */
     private $setId = null;
     /**
-     * @var \Hl7v2\DataType\IsDataType
+     * @var IsDataType
      */
     private $patientClass;
     /**
-     * @var \Hl7v2\DataType\PlDataType
+     * @var PlDataType
      */
     private $assignedPatientLocation = null;
     /**
-     * @var \Hl7v2\DataType\IsDataType
+     * @var IsDataType
      */
     private $admissionType = null;
     /**
-     * @var \Hl7v2\DataType\CxDataType
+     * @var CxDataType
      */
     private $preadmitNumber = null;
     /**
-     * @var \Hl7v2\DataType\PlDataType
+     * @var PlDataType
      */
     private $priorPatientLocation = null;
     /**
-     * @var \Hl7v2\DataType\XcnDataType[]
+     * @var XcnDataType[]
      */
     private $attendingDoctor = [];
     /**
-     * @var \Hl7v2\DataType\XcnDataType[]
+     * @var XcnDataType[]
      */
     private $referringDoctor = [];
     /**
-     * @var \Hl7v2\DataType\XcnDataType[]
+     * @var XcnDataType[]
      */
     private $consultingDoctor = [];
     /**
-     * @var \Hl7v2\DataType\IsDataType
+     * @var IsDataType
      */
     private $hospitalService = null;
     /**
-     * @var \Hl7v2\DataType\PlDataType
+     * @var PlDataType
      */
     private $temporaryLocation = null;
     /**
-     * @var \Hl7v2\DataType\IsDataType
+     * @var IsDataType
      */
     private $preadmitTestIndicator = null;
     /**
-     * @var \Hl7v2\DataType\IsDataType
+     * @var IsDataType
      */
     private $readmissionIndicator = null;
     /**
-     * @var \Hl7v2\DataType\IsDataType
+     * @var IsDataType
      */
     private $admitSource = null;
     /**
-     * @var \Hl7v2\DataType\IsDataType[]
+     * @var IsDataType[]
      */
     private $ambulatoryStatus = [];
     /**
-     * @var \Hl7v2\DataType\IsDataType
+     * @var IsDataType
      */
     private $vipIndicator = null;
     /**
-     * @var \Hl7v2\DataType\XcnDataType[]
+     * @var XcnDataType[]
      */
     private $admittingDoctor = [];
     /**
-     * @var \Hl7v2\DataType\IsDataType
+     * @var IsDataType
      */
     private $patientType = null;
     /**
-     * @var \Hl7v2\DataType\CxDataType
+     * @var CxDataType
      */
     private $visitNumber = null;
     /**
-     * @var \Hl7v2\DataType\FcDataType[]
+     * @var FcDataType[]
      */
     private $financialClass = [];
     /**
-     * @var \Hl7v2\DataType\IsDataType
+     * @var IsDataType
      */
     private $chargePriceIndicator = null;
     /**
-     * @var \Hl7v2\DataType\IsDataType
+     * @var IsDataType
      */
     private $courtesyCode = null;
     /**
-     * @var \Hl7v2\DataType\IsDataType
+     * @var IsDataType
      */
     private $creditRating = null;
     /**
-     * @var \Hl7v2\DataType\IsDataType[]
+     * @var IsDataType[]
      */
     private $contractCode = [];
     /**
-     * @var \Hl7v2\DataType\DtDataType[]
+     * @var DtDataType[]
      */
     private $contractEffectiveDate = [];
     /**
-     * @var \Hl7v2\DataType\NmDataType[]
+     * @var NmDataType[]
      */
     private $contractAmount = [];
     /**
-     * @var \Hl7v2\DataType\NmDataType[]
+     * @var NmDataType[]
      */
     private $contractPeriod = [];
     /**
-     * @var \Hl7v2\DataType\IsDataType
+     * @var IsDataType
      */
     private $interestCode = null;
     /**
-     * @var \Hl7v2\DataType\IsDataType
+     * @var IsDataType
      */
     private $transferToBadDebtCode = null;
     /**
-     * @var \Hl7v2\DataType\DtDataType
+     * @var DtDataType
      */
     private $transferToBadDebtDate = null;
     /**
-     * @var \Hl7v2\DataType\IsDataType
+     * @var IsDataType
      */
     private $badDebtAgencyCode = null;
     /**
-     * @var \Hl7v2\DataType\NmDataType
+     * @var NmDataType
      */
     private $badDebtTransferAmount = null;
     /**
-     * @var \Hl7v2\DataType\NmDataType
+     * @var NmDataType
      */
     private $badDebtRecoveryAmount = null;
     /**
-     * @var \Hl7v2\DataType\IsDataType
+     * @var IsDataType
      */
     private $deleteAccountIndicator = null;
     /**
-     * @var \Hl7v2\DataType\DtDataType
+     * @var DtDataType
      */
     private $deleteAccountDate = null;
     /**
-     * @var \Hl7v2\DataType\IsDataType
+     * @var IsDataType
      */
     private $dischargeDisposition = null;
     /**
-     * @var \Hl7v2\DataType\DldDataType
+     * @var DldDataType
      */
     private $dischargedToLocation = null;
     /**
-     * @var \Hl7v2\DataType\CeDataType
+     * @var CeDataType
      */
     private $dietType = null;
     /**
-     * @var \Hl7v2\DataType\IsDataType
+     * @var IsDataType
      */
     private $servicingFacility = null;
     /**
-     * @var \Hl7v2\DataType\IsDataType
+     * @var IsDataType
      */
     private $bedStatus = null;
     /**
-     * @var \Hl7v2\DataType\IsDataType
+     * @var IsDataType
      */
     private $accountStatus = null;
     /**
-     * @var \Hl7v2\DataType\PlDataType
+     * @var PlDataType
      */
     private $pendingLocation = null;
     /**
-     * @var \Hl7v2\DataType\PlDataType
+     * @var PlDataType
      */
     private $priorTemporaryLocation = null;
     /**
-     * @var \Hl7v2\DataType\TsDataType
+     * @var TsDataType
      */
     private $admitDatetime = null;
     /**
-     * @var \Hl7v2\DataType\TsDataType[]
+     * @var TsDataType[]
      */
     private $dischargeDatetime = [];
     /**
-     * @var \Hl7v2\DataType\NmDataType
+     * @var NmDataType
      */
     private $currentPatientBalance = null;
     /**
-     * @var \Hl7v2\DataType\NmDataType
+     * @var NmDataType
      */
     private $totalCharges = null;
     /**
-     * @var \Hl7v2\DataType\NmDataType
+     * @var NmDataType
      */
     private $totalAdjustments = null;
     /**
-     * @var \Hl7v2\DataType\NmDataType
+     * @var NmDataType
      */
     private $totalPayments = null;
     /**
-     * @var \Hl7v2\DataType\CxDataType
+     * @var CxDataType
      */
     private $altVisitId = null;
     /**
-     * @var \Hl7v2\DataType\IsDataType
+     * @var IsDataType
      */
     private $visitIndicator = null;
     /**
-     * @var \Hl7v2\DataType\XcnDataType[]
+     * @var XcnDataType[]
      */
     private $otherHealthcareProvider = [];
 
     /**
      * @param string $value
      */
-    public function setFieldSetId($value)
+    public function setFieldSetId(string $value)
     {
         $this->setId = $this
             ->dataTypeFactory
@@ -235,7 +235,7 @@ class Pv1Segment extends AbstractSegment
     /**
      * @param string $value
      */
-    public function setFieldPatientClass($value)
+    public function setFieldPatientClass(string $value)
     {
         $this->patientClass = $this
             ->dataTypeFactory
@@ -265,24 +265,24 @@ class Pv1Segment extends AbstractSegment
      * @param string $assigningAuthorityForLocationUniversalIdType
      */
     public function setFieldAssignedPatientLocation(
-        $pointOfCare = null,
-        $room = null,
-        $bed = null,
-        $facilityNamespaceId = null,
-        $facilityUniversalId = null,
-        $facilityUniversalIdType = null,
-        $locationStatus = null,
-        $personLocationType = null,
-        $building = null,
-        $floor = null,
-        $locationDescription = null,
-        $comprehensiveLocationIdentifierEntityIdentifier = null,
-        $comprehensiveLocationIdentifierNamespaceId = null,
-        $comprehensiveLocationIdentifierUniversalId = null,
-        $comprehensiveLocationIdentifierUniversalIdType = null,
-        $assigningAuthorityForLocationNamespaceId = null,
-        $assigningAuthorityForLocationUniversalId = null,
-        $assigningAuthorityForLocationUniversalIdType = null
+        string $pointOfCare = null,
+        string $room = null,
+        string $bed = null,
+        string $facilityNamespaceId = null,
+        string $facilityUniversalId = null,
+        string $facilityUniversalIdType = null,
+        string $locationStatus = null,
+        string $personLocationType = null,
+        string $building = null,
+        string $floor = null,
+        string $locationDescription = null,
+        string $comprehensiveLocationIdentifierEntityIdentifier = null,
+        string $comprehensiveLocationIdentifierNamespaceId = null,
+        string $comprehensiveLocationIdentifierUniversalId = null,
+        string $comprehensiveLocationIdentifierUniversalIdType = null,
+        string $assigningAuthorityForLocationNamespaceId = null,
+        string $assigningAuthorityForLocationUniversalId = null,
+        string $assigningAuthorityForLocationUniversalIdType = null
     ) {
         $this->assignedPatientLocation = $this
             ->dataTypeFactory
@@ -317,7 +317,7 @@ class Pv1Segment extends AbstractSegment
     /**
      * @param string $value
      */
-    public function setFieldAdmissionType($value)
+    public function setFieldAdmissionType(string $value)
     {
         $this->admissionType = $this
             ->dataTypeFactory
@@ -359,36 +359,36 @@ class Pv1Segment extends AbstractSegment
      * @param string $assigningAgencyOriginalText
      */
     public function setFieldPreadmitNumber(
-        $idNumber,
-        $checkDigit = null,
-        $checkDigitScheme = null,
-        $assigningAuthorityNamespaceId = null,
-        $assigningAuthorityUniversalId = null,
-        $assigningAuthorityUniversalIdType = null,
-        $identifierTypeCode = null,
-        $assigningFacilityNamespaceId = null,
-        $assigningFacilityUniversalId = null,
-        $assigningFacilityUniversalIdType = null,
-        $effectiveDate = null,
-        $expirationDate = null,
-        $assigningJurisdictionIdentifier = null,
-        $assigningJurisdictionText = null,
-        $assigningJurisdictionNameOfCodingSystem = null,
-        $assigningJurisdictionAltIdentifier = null,
-        $assigningJurisdictionAltText = null,
-        $assigningJurisdictionNameOfAltCodingSystem = null,
-        $assigningJurisdictionCodingSystemVersionId = null,
-        $assigningJurisdictionAltCodingSystemVersionId = null,
-        $assigningJurisdictionOriginalText = null,
-        $assigningAgencyIdentifier = null,
-        $assigningAgencyText = null,
-        $assigningAgencyNameOfCodingSystem = null,
-        $assigningAgencyAltIdentifier = null,
-        $assigningAgencyAltText = null,
-        $assigningAgencyNameOfAltCodingSystem = null,
-        $assigningAgencyCodingSystemVersionId = null,
-        $assigningAgencyAltCodingSystemVersionId = null,
-        $assigningAgencyOriginalText = null
+        string $idNumber,
+        string $checkDigit = null,
+        string $checkDigitScheme = null,
+        string $assigningAuthorityNamespaceId = null,
+        string $assigningAuthorityUniversalId = null,
+        string $assigningAuthorityUniversalIdType = null,
+        string $identifierTypeCode = null,
+        string $assigningFacilityNamespaceId = null,
+        string $assigningFacilityUniversalId = null,
+        string $assigningFacilityUniversalIdType = null,
+        string $effectiveDate = null,
+        string $expirationDate = null,
+        string $assigningJurisdictionIdentifier = null,
+        string $assigningJurisdictionText = null,
+        string $assigningJurisdictionNameOfCodingSystem = null,
+        string $assigningJurisdictionAltIdentifier = null,
+        string $assigningJurisdictionAltText = null,
+        string $assigningJurisdictionNameOfAltCodingSystem = null,
+        string $assigningJurisdictionCodingSystemVersionId = null,
+        string $assigningJurisdictionAltCodingSystemVersionId = null,
+        string $assigningJurisdictionOriginalText = null,
+        string $assigningAgencyIdentifier = null,
+        string $assigningAgencyText = null,
+        string $assigningAgencyNameOfCodingSystem = null,
+        string $assigningAgencyAltIdentifier = null,
+        string $assigningAgencyAltText = null,
+        string $assigningAgencyNameOfAltCodingSystem = null,
+        string $assigningAgencyCodingSystemVersionId = null,
+        string $assigningAgencyAltCodingSystemVersionId = null,
+        string $assigningAgencyOriginalText = null
     ) {
         $this->preadmitNumber = $this
             ->dataTypeFactory
@@ -455,24 +455,24 @@ class Pv1Segment extends AbstractSegment
      * @param string $assigningAuthorityForLocationUniversalIdType
      */
     public function setFieldPriorPatientLocation(
-        $pointOfCare = null,
-        $room = null,
-        $bed = null,
-        $facilityNamespaceId = null,
-        $facilityUniversalId = null,
-        $facilityUniversalIdType = null,
-        $locationStatus = null,
-        $personLocationType = null,
-        $building = null,
-        $floor = null,
-        $locationDescription = null,
-        $comprehensiveLocationIdentifierEntityIdentifier = null,
-        $comprehensiveLocationIdentifierNamespaceId = null,
-        $comprehensiveLocationIdentifierUniversalId = null,
-        $comprehensiveLocationIdentifierUniversalIdType = null,
-        $assigningAuthorityForLocationNamespaceId = null,
-        $assigningAuthorityForLocationUniversalId = null,
-        $assigningAuthorityForLocationUniversalIdType = null
+        string $pointOfCare = null,
+        string $room = null,
+        string $bed = null,
+        string $facilityNamespaceId = null,
+        string $facilityUniversalId = null,
+        string $facilityUniversalIdType = null,
+        string $locationStatus = null,
+        string $personLocationType = null,
+        string $building = null,
+        string $floor = null,
+        string $locationDescription = null,
+        string $comprehensiveLocationIdentifierEntityIdentifier = null,
+        string $comprehensiveLocationIdentifierNamespaceId = null,
+        string $comprehensiveLocationIdentifierUniversalId = null,
+        string $comprehensiveLocationIdentifierUniversalIdType = null,
+        string $assigningAuthorityForLocationNamespaceId = null,
+        string $assigningAuthorityForLocationUniversalId = null,
+        string $assigningAuthorityForLocationUniversalIdType = null
     ) {
         $this->priorPatientLocation = $this
             ->dataTypeFactory
@@ -564,63 +564,63 @@ class Pv1Segment extends AbstractSegment
      * @param string $assigningAgencyOriginalText
      */
     public function addFieldAttendingDoctor(
-        $idNumber = null,
-        $familyNameSurname,
-        $familyNameOwnSurnamePrefix = null,
-        $familyNameOwnSurname = null,
-        $familyNameSurnamePrefixFromPartner = null,
-        $familyNameSurnameFromPartner = null,
-        $givenName = null,
-        $secondNames = null,
-        $suffix = null,
-        $prefix = null,
-        $degree = null,
-        $sourceTable = null,
-        $assigningAuthorityNamespaceId = null,
-        $assigningAuthorityUniversalId = null,
-        $assigningAuthorityUniversalIdType = null,
-        $nameTypeCode = null,
-        $identifierCheckDigit = null,
-        $checkDigitScheme = null,
-        $identifierTypeCode = null,
-        $assigningFacilityNamespaceId = null,
-        $assigningFacilityUniversalId = null,
-        $assigningFacilityUniversalIdType = null,
-        $nameRepresentationCode = null,
-        $nameContextIdentifier = null,
-        $nameContextText = null,
-        $nameContextNameOfCodingSystem = null,
-        $nameContextAltIdentifier = null,
-        $nameContextAltText = null,
-        $nameContextNameOfAltCodingSystem = null,
-        $nameValidityRangeRangeStartDateTimeTime,
-        $nameValidityRangeRangeStartDateTimeDegreeOfPrecision = null,
-        $nameValidityRangeRangeEndDateTimeTime,
-        $nameValidityRangeRangeEndDateTimeDegreeOfPrecision = null,
-        $nameAssemblyOrder = null,
-        $effectiveDateTime,
-        $effectiveDateDegreeOfPrecision = null,
-        $expirationDateTime,
-        $expirationDateDegreeOfPrecision = null,
-        $professionalSuffix = null,
-        $assigningJurisdictionIdentifier = null,
-        $assigningJurisdictionText = null,
-        $assigningJurisdictionNameOfCodingSystem = null,
-        $assigningJurisdictionAltIdentifier = null,
-        $assigningJurisdictionAltText = null,
-        $assigningJurisdictionNameOfAltCodingSystem = null,
-        $assigningJurisdictionCodingSystemVersionId = null,
-        $assigningJurisdictionAltCodingSystemVersionId = null,
-        $assigningJurisdictionOriginalText = null,
-        $assigningAgencyIdentifier = null,
-        $assigningAgencyText = null,
-        $assigningAgencyNameOfCodingSystem = null,
-        $assigningAgencyAltIdentifier = null,
-        $assigningAgencyAltText = null,
-        $assigningAgencyNameOfAltCodingSystem = null,
-        $assigningAgencyCodingSystemVersionId = null,
-        $assigningAgencyAltCodingSystemVersionId = null,
-        $assigningAgencyOriginalText = null
+        string $idNumber = null,
+        string $familyNameSurname,
+        string $familyNameOwnSurnamePrefix = null,
+        string $familyNameOwnSurname = null,
+        string $familyNameSurnamePrefixFromPartner = null,
+        string $familyNameSurnameFromPartner = null,
+        string $givenName = null,
+        string $secondNames = null,
+        string $suffix = null,
+        string $prefix = null,
+        string $degree = null,
+        string $sourceTable = null,
+        string $assigningAuthorityNamespaceId = null,
+        string $assigningAuthorityUniversalId = null,
+        string $assigningAuthorityUniversalIdType = null,
+        string $nameTypeCode = null,
+        string $identifierCheckDigit = null,
+        string $checkDigitScheme = null,
+        string $identifierTypeCode = null,
+        string $assigningFacilityNamespaceId = null,
+        string $assigningFacilityUniversalId = null,
+        string $assigningFacilityUniversalIdType = null,
+        string $nameRepresentationCode = null,
+        string $nameContextIdentifier = null,
+        string $nameContextText = null,
+        string $nameContextNameOfCodingSystem = null,
+        string $nameContextAltIdentifier = null,
+        string $nameContextAltText = null,
+        string $nameContextNameOfAltCodingSystem = null,
+        string $nameValidityRangeRangeStartDateTimeTime,
+        string $nameValidityRangeRangeStartDateTimeDegreeOfPrecision = null,
+        string $nameValidityRangeRangeEndDateTimeTime,
+        string $nameValidityRangeRangeEndDateTimeDegreeOfPrecision = null,
+        string $nameAssemblyOrder = null,
+        string $effectiveDateTime,
+        string $effectiveDateDegreeOfPrecision = null,
+        string $expirationDateTime,
+        string $expirationDateDegreeOfPrecision = null,
+        string $professionalSuffix = null,
+        string $assigningJurisdictionIdentifier = null,
+        string $assigningJurisdictionText = null,
+        string $assigningJurisdictionNameOfCodingSystem = null,
+        string $assigningJurisdictionAltIdentifier = null,
+        string $assigningJurisdictionAltText = null,
+        string $assigningJurisdictionNameOfAltCodingSystem = null,
+        string $assigningJurisdictionCodingSystemVersionId = null,
+        string $assigningJurisdictionAltCodingSystemVersionId = null,
+        string $assigningJurisdictionOriginalText = null,
+        string $assigningAgencyIdentifier = null,
+        string $assigningAgencyText = null,
+        string $assigningAgencyNameOfCodingSystem = null,
+        string $assigningAgencyAltIdentifier = null,
+        string $assigningAgencyAltText = null,
+        string $assigningAgencyNameOfAltCodingSystem = null,
+        string $assigningAgencyCodingSystemVersionId = null,
+        string $assigningAgencyAltCodingSystemVersionId = null,
+        string $assigningAgencyOriginalText = null
     ) {
         $attendingDoctor = $this
             ->dataTypeFactory
@@ -758,63 +758,63 @@ class Pv1Segment extends AbstractSegment
      * @param string $assigningAgencyOriginalText
      */
     public function addFieldReferringDoctor(
-        $idNumber = null,
-        $familyNameSurname,
-        $familyNameOwnSurnamePrefix = null,
-        $familyNameOwnSurname = null,
-        $familyNameSurnamePrefixFromPartner = null,
-        $familyNameSurnameFromPartner = null,
-        $givenName = null,
-        $secondNames = null,
-        $suffix = null,
-        $prefix = null,
-        $degree = null,
-        $sourceTable = null,
-        $assigningAuthorityNamespaceId = null,
-        $assigningAuthorityUniversalId = null,
-        $assigningAuthorityUniversalIdType = null,
-        $nameTypeCode = null,
-        $identifierCheckDigit = null,
-        $checkDigitScheme = null,
-        $identifierTypeCode = null,
-        $assigningFacilityNamespaceId = null,
-        $assigningFacilityUniversalId = null,
-        $assigningFacilityUniversalIdType = null,
-        $nameRepresentationCode = null,
-        $nameContextIdentifier = null,
-        $nameContextText = null,
-        $nameContextNameOfCodingSystem = null,
-        $nameContextAltIdentifier = null,
-        $nameContextAltText = null,
-        $nameContextNameOfAltCodingSystem = null,
-        $nameValidityRangeRangeStartDateTimeTime,
-        $nameValidityRangeRangeStartDateTimeDegreeOfPrecision = null,
-        $nameValidityRangeRangeEndDateTimeTime,
-        $nameValidityRangeRangeEndDateTimeDegreeOfPrecision = null,
-        $nameAssemblyOrder = null,
-        $effectiveDateTime,
-        $effectiveDateDegreeOfPrecision = null,
-        $expirationDateTime,
-        $expirationDateDegreeOfPrecision = null,
-        $professionalSuffix = null,
-        $assigningJurisdictionIdentifier = null,
-        $assigningJurisdictionText = null,
-        $assigningJurisdictionNameOfCodingSystem = null,
-        $assigningJurisdictionAltIdentifier = null,
-        $assigningJurisdictionAltText = null,
-        $assigningJurisdictionNameOfAltCodingSystem = null,
-        $assigningJurisdictionCodingSystemVersionId = null,
-        $assigningJurisdictionAltCodingSystemVersionId = null,
-        $assigningJurisdictionOriginalText = null,
-        $assigningAgencyIdentifier = null,
-        $assigningAgencyText = null,
-        $assigningAgencyNameOfCodingSystem = null,
-        $assigningAgencyAltIdentifier = null,
-        $assigningAgencyAltText = null,
-        $assigningAgencyNameOfAltCodingSystem = null,
-        $assigningAgencyCodingSystemVersionId = null,
-        $assigningAgencyAltCodingSystemVersionId = null,
-        $assigningAgencyOriginalText = null
+        string $idNumber = null,
+        string $familyNameSurname,
+        string $familyNameOwnSurnamePrefix = null,
+        string $familyNameOwnSurname = null,
+        string $familyNameSurnamePrefixFromPartner = null,
+        string $familyNameSurnameFromPartner = null,
+        string $givenName = null,
+        string $secondNames = null,
+        string $suffix = null,
+        string $prefix = null,
+        string $degree = null,
+        string $sourceTable = null,
+        string $assigningAuthorityNamespaceId = null,
+        string $assigningAuthorityUniversalId = null,
+        string $assigningAuthorityUniversalIdType = null,
+        string $nameTypeCode = null,
+        string $identifierCheckDigit = null,
+        string $checkDigitScheme = null,
+        string $identifierTypeCode = null,
+        string $assigningFacilityNamespaceId = null,
+        string $assigningFacilityUniversalId = null,
+        string $assigningFacilityUniversalIdType = null,
+        string $nameRepresentationCode = null,
+        string $nameContextIdentifier = null,
+        string $nameContextText = null,
+        string $nameContextNameOfCodingSystem = null,
+        string $nameContextAltIdentifier = null,
+        string $nameContextAltText = null,
+        string $nameContextNameOfAltCodingSystem = null,
+        string $nameValidityRangeRangeStartDateTimeTime,
+        string $nameValidityRangeRangeStartDateTimeDegreeOfPrecision = null,
+        string $nameValidityRangeRangeEndDateTimeTime,
+        string $nameValidityRangeRangeEndDateTimeDegreeOfPrecision = null,
+        string $nameAssemblyOrder = null,
+        string $effectiveDateTime,
+        string $effectiveDateDegreeOfPrecision = null,
+        string $expirationDateTime,
+        string $expirationDateDegreeOfPrecision = null,
+        string $professionalSuffix = null,
+        string $assigningJurisdictionIdentifier = null,
+        string $assigningJurisdictionText = null,
+        string $assigningJurisdictionNameOfCodingSystem = null,
+        string $assigningJurisdictionAltIdentifier = null,
+        string $assigningJurisdictionAltText = null,
+        string $assigningJurisdictionNameOfAltCodingSystem = null,
+        string $assigningJurisdictionCodingSystemVersionId = null,
+        string $assigningJurisdictionAltCodingSystemVersionId = null,
+        string $assigningJurisdictionOriginalText = null,
+        string $assigningAgencyIdentifier = null,
+        string $assigningAgencyText = null,
+        string $assigningAgencyNameOfCodingSystem = null,
+        string $assigningAgencyAltIdentifier = null,
+        string $assigningAgencyAltText = null,
+        string $assigningAgencyNameOfAltCodingSystem = null,
+        string $assigningAgencyCodingSystemVersionId = null,
+        string $assigningAgencyAltCodingSystemVersionId = null,
+        string $assigningAgencyOriginalText = null
     ) {
         $referringDoctor = $this
             ->dataTypeFactory
@@ -952,63 +952,63 @@ class Pv1Segment extends AbstractSegment
      * @param string $assigningAgencyOriginalText
      */
     public function addFieldConsultingDoctor(
-        $idNumber = null,
-        $familyNameSurname,
-        $familyNameOwnSurnamePrefix = null,
-        $familyNameOwnSurname = null,
-        $familyNameSurnamePrefixFromPartner = null,
-        $familyNameSurnameFromPartner = null,
-        $givenName = null,
-        $secondNames = null,
-        $suffix = null,
-        $prefix = null,
-        $degree = null,
-        $sourceTable = null,
-        $assigningAuthorityNamespaceId = null,
-        $assigningAuthorityUniversalId = null,
-        $assigningAuthorityUniversalIdType = null,
-        $nameTypeCode = null,
-        $identifierCheckDigit = null,
-        $checkDigitScheme = null,
-        $identifierTypeCode = null,
-        $assigningFacilityNamespaceId = null,
-        $assigningFacilityUniversalId = null,
-        $assigningFacilityUniversalIdType = null,
-        $nameRepresentationCode = null,
-        $nameContextIdentifier = null,
-        $nameContextText = null,
-        $nameContextNameOfCodingSystem = null,
-        $nameContextAltIdentifier = null,
-        $nameContextAltText = null,
-        $nameContextNameOfAltCodingSystem = null,
-        $nameValidityRangeRangeStartDateTimeTime,
-        $nameValidityRangeRangeStartDateTimeDegreeOfPrecision = null,
-        $nameValidityRangeRangeEndDateTimeTime,
-        $nameValidityRangeRangeEndDateTimeDegreeOfPrecision = null,
-        $nameAssemblyOrder = null,
-        $effectiveDateTime,
-        $effectiveDateDegreeOfPrecision = null,
-        $expirationDateTime,
-        $expirationDateDegreeOfPrecision = null,
-        $professionalSuffix = null,
-        $assigningJurisdictionIdentifier = null,
-        $assigningJurisdictionText = null,
-        $assigningJurisdictionNameOfCodingSystem = null,
-        $assigningJurisdictionAltIdentifier = null,
-        $assigningJurisdictionAltText = null,
-        $assigningJurisdictionNameOfAltCodingSystem = null,
-        $assigningJurisdictionCodingSystemVersionId = null,
-        $assigningJurisdictionAltCodingSystemVersionId = null,
-        $assigningJurisdictionOriginalText = null,
-        $assigningAgencyIdentifier = null,
-        $assigningAgencyText = null,
-        $assigningAgencyNameOfCodingSystem = null,
-        $assigningAgencyAltIdentifier = null,
-        $assigningAgencyAltText = null,
-        $assigningAgencyNameOfAltCodingSystem = null,
-        $assigningAgencyCodingSystemVersionId = null,
-        $assigningAgencyAltCodingSystemVersionId = null,
-        $assigningAgencyOriginalText = null
+        string $idNumber = null,
+        string $familyNameSurname,
+        string $familyNameOwnSurnamePrefix = null,
+        string $familyNameOwnSurname = null,
+        string $familyNameSurnamePrefixFromPartner = null,
+        string $familyNameSurnameFromPartner = null,
+        string $givenName = null,
+        string $secondNames = null,
+        string $suffix = null,
+        string $prefix = null,
+        string $degree = null,
+        string $sourceTable = null,
+        string $assigningAuthorityNamespaceId = null,
+        string $assigningAuthorityUniversalId = null,
+        string $assigningAuthorityUniversalIdType = null,
+        string $nameTypeCode = null,
+        string $identifierCheckDigit = null,
+        string $checkDigitScheme = null,
+        string $identifierTypeCode = null,
+        string $assigningFacilityNamespaceId = null,
+        string $assigningFacilityUniversalId = null,
+        string $assigningFacilityUniversalIdType = null,
+        string $nameRepresentationCode = null,
+        string $nameContextIdentifier = null,
+        string $nameContextText = null,
+        string $nameContextNameOfCodingSystem = null,
+        string $nameContextAltIdentifier = null,
+        string $nameContextAltText = null,
+        string $nameContextNameOfAltCodingSystem = null,
+        string $nameValidityRangeRangeStartDateTimeTime,
+        string $nameValidityRangeRangeStartDateTimeDegreeOfPrecision = null,
+        string $nameValidityRangeRangeEndDateTimeTime,
+        string $nameValidityRangeRangeEndDateTimeDegreeOfPrecision = null,
+        string $nameAssemblyOrder = null,
+        string $effectiveDateTime,
+        string $effectiveDateDegreeOfPrecision = null,
+        string $expirationDateTime,
+        string $expirationDateDegreeOfPrecision = null,
+        string $professionalSuffix = null,
+        string $assigningJurisdictionIdentifier = null,
+        string $assigningJurisdictionText = null,
+        string $assigningJurisdictionNameOfCodingSystem = null,
+        string $assigningJurisdictionAltIdentifier = null,
+        string $assigningJurisdictionAltText = null,
+        string $assigningJurisdictionNameOfAltCodingSystem = null,
+        string $assigningJurisdictionCodingSystemVersionId = null,
+        string $assigningJurisdictionAltCodingSystemVersionId = null,
+        string $assigningJurisdictionOriginalText = null,
+        string $assigningAgencyIdentifier = null,
+        string $assigningAgencyText = null,
+        string $assigningAgencyNameOfCodingSystem = null,
+        string $assigningAgencyAltIdentifier = null,
+        string $assigningAgencyAltText = null,
+        string $assigningAgencyNameOfAltCodingSystem = null,
+        string $assigningAgencyCodingSystemVersionId = null,
+        string $assigningAgencyAltCodingSystemVersionId = null,
+        string $assigningAgencyOriginalText = null
     ) {
         $consultingDoctor = $this
             ->dataTypeFactory
@@ -1089,7 +1089,7 @@ class Pv1Segment extends AbstractSegment
     /**
      * @param string $value
      */
-    public function setFieldHospitalService($value)
+    public function setFieldHospitalService(string $value)
     {
         $this->hospitalService = $this
             ->dataTypeFactory
@@ -1119,24 +1119,24 @@ class Pv1Segment extends AbstractSegment
      * @param string $assigningAuthorityForLocationUniversalIdType
      */
     public function setFieldTemporaryLocation(
-        $pointOfCare = null,
-        $room = null,
-        $bed = null,
-        $facilityNamespaceId = null,
-        $facilityUniversalId = null,
-        $facilityUniversalIdType = null,
-        $locationStatus = null,
-        $personLocationType = null,
-        $building = null,
-        $floor = null,
-        $locationDescription = null,
-        $comprehensiveLocationIdentifierEntityIdentifier = null,
-        $comprehensiveLocationIdentifierNamespaceId = null,
-        $comprehensiveLocationIdentifierUniversalId = null,
-        $comprehensiveLocationIdentifierUniversalIdType = null,
-        $assigningAuthorityForLocationNamespaceId = null,
-        $assigningAuthorityForLocationUniversalId = null,
-        $assigningAuthorityForLocationUniversalIdType = null
+        string $pointOfCare = null,
+        string $room = null,
+        string $bed = null,
+        string $facilityNamespaceId = null,
+        string $facilityUniversalId = null,
+        string $facilityUniversalIdType = null,
+        string $locationStatus = null,
+        string $personLocationType = null,
+        string $building = null,
+        string $floor = null,
+        string $locationDescription = null,
+        string $comprehensiveLocationIdentifierEntityIdentifier = null,
+        string $comprehensiveLocationIdentifierNamespaceId = null,
+        string $comprehensiveLocationIdentifierUniversalId = null,
+        string $comprehensiveLocationIdentifierUniversalIdType = null,
+        string $assigningAuthorityForLocationNamespaceId = null,
+        string $assigningAuthorityForLocationUniversalId = null,
+        string $assigningAuthorityForLocationUniversalIdType = null
     ) {
         $this->temporaryLocation = $this
             ->dataTypeFactory
@@ -1171,7 +1171,7 @@ class Pv1Segment extends AbstractSegment
     /**
      * @param string $value
      */
-    public function setFieldPreadmitTestIndicator($value)
+    public function setFieldPreadmitTestIndicator(string $value)
     {
         $this->preadmitTestIndicator = $this
             ->dataTypeFactory
@@ -1183,7 +1183,7 @@ class Pv1Segment extends AbstractSegment
     /**
      * @param string $value
      */
-    public function setFieldReadmissionIndicator($value)
+    public function setFieldReadmissionIndicator(string $value)
     {
         $this->readmissionIndicator = $this
             ->dataTypeFactory
@@ -1195,7 +1195,7 @@ class Pv1Segment extends AbstractSegment
     /**
      * @param string $value
      */
-    public function setFieldAdmitSource($value)
+    public function setFieldAdmitSource(string $value)
     {
         $this->admitSource = $this
             ->dataTypeFactory
@@ -1207,7 +1207,7 @@ class Pv1Segment extends AbstractSegment
     /**
      * @param string $value
      */
-    public function addFieldAmbulatoryStatus($value)
+    public function addFieldAmbulatoryStatus(string $value)
     {
         $ambulatoryStatus = $this
             ->dataTypeFactory
@@ -1220,7 +1220,7 @@ class Pv1Segment extends AbstractSegment
     /**
      * @param string $value
      */
-    public function setFieldVipIndicator($value)
+    public function setFieldVipIndicator(string $value)
     {
         $this->vipIndicator = $this
             ->dataTypeFactory
@@ -1289,63 +1289,63 @@ class Pv1Segment extends AbstractSegment
      * @param string $assigningAgencyOriginalText
      */
     public function addFieldAdmittingDoctor(
-        $idNumber = null,
-        $familyNameSurname,
-        $familyNameOwnSurnamePrefix = null,
-        $familyNameOwnSurname = null,
-        $familyNameSurnamePrefixFromPartner = null,
-        $familyNameSurnameFromPartner = null,
-        $givenName = null,
-        $secondNames = null,
-        $suffix = null,
-        $prefix = null,
-        $degree = null,
-        $sourceTable = null,
-        $assigningAuthorityNamespaceId = null,
-        $assigningAuthorityUniversalId = null,
-        $assigningAuthorityUniversalIdType = null,
-        $nameTypeCode = null,
-        $identifierCheckDigit = null,
-        $checkDigitScheme = null,
-        $identifierTypeCode = null,
-        $assigningFacilityNamespaceId = null,
-        $assigningFacilityUniversalId = null,
-        $assigningFacilityUniversalIdType = null,
-        $nameRepresentationCode = null,
-        $nameContextIdentifier = null,
-        $nameContextText = null,
-        $nameContextNameOfCodingSystem = null,
-        $nameContextAltIdentifier = null,
-        $nameContextAltText = null,
-        $nameContextNameOfAltCodingSystem = null,
-        $nameValidityRangeRangeStartDateTimeTime,
-        $nameValidityRangeRangeStartDateTimeDegreeOfPrecision = null,
-        $nameValidityRangeRangeEndDateTimeTime,
-        $nameValidityRangeRangeEndDateTimeDegreeOfPrecision = null,
-        $nameAssemblyOrder = null,
-        $effectiveDateTime,
-        $effectiveDateDegreeOfPrecision = null,
-        $expirationDateTime,
-        $expirationDateDegreeOfPrecision = null,
-        $professionalSuffix = null,
-        $assigningJurisdictionIdentifier = null,
-        $assigningJurisdictionText = null,
-        $assigningJurisdictionNameOfCodingSystem = null,
-        $assigningJurisdictionAltIdentifier = null,
-        $assigningJurisdictionAltText = null,
-        $assigningJurisdictionNameOfAltCodingSystem = null,
-        $assigningJurisdictionCodingSystemVersionId = null,
-        $assigningJurisdictionAltCodingSystemVersionId = null,
-        $assigningJurisdictionOriginalText = null,
-        $assigningAgencyIdentifier = null,
-        $assigningAgencyText = null,
-        $assigningAgencyNameOfCodingSystem = null,
-        $assigningAgencyAltIdentifier = null,
-        $assigningAgencyAltText = null,
-        $assigningAgencyNameOfAltCodingSystem = null,
-        $assigningAgencyCodingSystemVersionId = null,
-        $assigningAgencyAltCodingSystemVersionId = null,
-        $assigningAgencyOriginalText = null
+        string $idNumber = null,
+        string $familyNameSurname,
+        string $familyNameOwnSurnamePrefix = null,
+        string $familyNameOwnSurname = null,
+        string $familyNameSurnamePrefixFromPartner = null,
+        string $familyNameSurnameFromPartner = null,
+        string $givenName = null,
+        string $secondNames = null,
+        string $suffix = null,
+        string $prefix = null,
+        string $degree = null,
+        string $sourceTable = null,
+        string $assigningAuthorityNamespaceId = null,
+        string $assigningAuthorityUniversalId = null,
+        string $assigningAuthorityUniversalIdType = null,
+        string $nameTypeCode = null,
+        string $identifierCheckDigit = null,
+        string $checkDigitScheme = null,
+        string $identifierTypeCode = null,
+        string $assigningFacilityNamespaceId = null,
+        string $assigningFacilityUniversalId = null,
+        string $assigningFacilityUniversalIdType = null,
+        string $nameRepresentationCode = null,
+        string $nameContextIdentifier = null,
+        string $nameContextText = null,
+        string $nameContextNameOfCodingSystem = null,
+        string $nameContextAltIdentifier = null,
+        string $nameContextAltText = null,
+        string $nameContextNameOfAltCodingSystem = null,
+        string $nameValidityRangeRangeStartDateTimeTime,
+        string $nameValidityRangeRangeStartDateTimeDegreeOfPrecision = null,
+        string $nameValidityRangeRangeEndDateTimeTime,
+        string $nameValidityRangeRangeEndDateTimeDegreeOfPrecision = null,
+        string $nameAssemblyOrder = null,
+        string $effectiveDateTime,
+        string $effectiveDateDegreeOfPrecision = null,
+        string $expirationDateTime,
+        string $expirationDateDegreeOfPrecision = null,
+        string $professionalSuffix = null,
+        string $assigningJurisdictionIdentifier = null,
+        string $assigningJurisdictionText = null,
+        string $assigningJurisdictionNameOfCodingSystem = null,
+        string $assigningJurisdictionAltIdentifier = null,
+        string $assigningJurisdictionAltText = null,
+        string $assigningJurisdictionNameOfAltCodingSystem = null,
+        string $assigningJurisdictionCodingSystemVersionId = null,
+        string $assigningJurisdictionAltCodingSystemVersionId = null,
+        string $assigningJurisdictionOriginalText = null,
+        string $assigningAgencyIdentifier = null,
+        string $assigningAgencyText = null,
+        string $assigningAgencyNameOfCodingSystem = null,
+        string $assigningAgencyAltIdentifier = null,
+        string $assigningAgencyAltText = null,
+        string $assigningAgencyNameOfAltCodingSystem = null,
+        string $assigningAgencyCodingSystemVersionId = null,
+        string $assigningAgencyAltCodingSystemVersionId = null,
+        string $assigningAgencyOriginalText = null
     ) {
         $admittingDoctor = $this
             ->dataTypeFactory
@@ -1426,7 +1426,7 @@ class Pv1Segment extends AbstractSegment
     /**
      * @param string $value
      */
-    public function setFieldPatientType($value)
+    public function setFieldPatientType(string $value)
     {
         $this->patientType = $this
             ->dataTypeFactory
@@ -1468,36 +1468,36 @@ class Pv1Segment extends AbstractSegment
      * @param string $assigningAgencyOriginalText
      */
     public function setFieldVisitNumber(
-        $idNumber,
-        $checkDigit = null,
-        $checkDigitScheme = null,
-        $assigningAuthorityNamespaceId = null,
-        $assigningAuthorityUniversalId = null,
-        $assigningAuthorityUniversalIdType = null,
-        $identifierTypeCode = null,
-        $assigningFacilityNamespaceId = null,
-        $assigningFacilityUniversalId = null,
-        $assigningFacilityUniversalIdType = null,
-        $effectiveDate = null,
-        $expirationDate = null,
-        $assigningJurisdictionIdentifier = null,
-        $assigningJurisdictionText = null,
-        $assigningJurisdictionNameOfCodingSystem = null,
-        $assigningJurisdictionAltIdentifier = null,
-        $assigningJurisdictionAltText = null,
-        $assigningJurisdictionNameOfAltCodingSystem = null,
-        $assigningJurisdictionCodingSystemVersionId = null,
-        $assigningJurisdictionAltCodingSystemVersionId = null,
-        $assigningJurisdictionOriginalText = null,
-        $assigningAgencyIdentifier = null,
-        $assigningAgencyText = null,
-        $assigningAgencyNameOfCodingSystem = null,
-        $assigningAgencyAltIdentifier = null,
-        $assigningAgencyAltText = null,
-        $assigningAgencyNameOfAltCodingSystem = null,
-        $assigningAgencyCodingSystemVersionId = null,
-        $assigningAgencyAltCodingSystemVersionId = null,
-        $assigningAgencyOriginalText = null
+        string $idNumber,
+        string $checkDigit = null,
+        string $checkDigitScheme = null,
+        string $assigningAuthorityNamespaceId = null,
+        string $assigningAuthorityUniversalId = null,
+        string $assigningAuthorityUniversalIdType = null,
+        string $identifierTypeCode = null,
+        string $assigningFacilityNamespaceId = null,
+        string $assigningFacilityUniversalId = null,
+        string $assigningFacilityUniversalIdType = null,
+        string $effectiveDate = null,
+        string $expirationDate = null,
+        string $assigningJurisdictionIdentifier = null,
+        string $assigningJurisdictionText = null,
+        string $assigningJurisdictionNameOfCodingSystem = null,
+        string $assigningJurisdictionAltIdentifier = null,
+        string $assigningJurisdictionAltText = null,
+        string $assigningJurisdictionNameOfAltCodingSystem = null,
+        string $assigningJurisdictionCodingSystemVersionId = null,
+        string $assigningJurisdictionAltCodingSystemVersionId = null,
+        string $assigningJurisdictionOriginalText = null,
+        string $assigningAgencyIdentifier = null,
+        string $assigningAgencyText = null,
+        string $assigningAgencyNameOfCodingSystem = null,
+        string $assigningAgencyAltIdentifier = null,
+        string $assigningAgencyAltText = null,
+        string $assigningAgencyNameOfAltCodingSystem = null,
+        string $assigningAgencyCodingSystemVersionId = null,
+        string $assigningAgencyAltCodingSystemVersionId = null,
+        string $assigningAgencyOriginalText = null
     ) {
         $this->visitNumber = $this
             ->dataTypeFactory
@@ -1549,9 +1549,9 @@ class Pv1Segment extends AbstractSegment
      * @param string $effectiveDateDegreeOfPrecision
      */
     public function addFieldFinancialClass(
-        $financialClassCode,
-        $effectiveDateTime,
-        $effectiveDateDegreeOfPrecision = null
+        string $financialClassCode,
+        string $effectiveDateTime,
+        string $effectiveDateDegreeOfPrecision = null
     ) {
         $financialClass = $this
             ->dataTypeFactory
@@ -1565,7 +1565,7 @@ class Pv1Segment extends AbstractSegment
     /**
      * @param string $value
      */
-    public function setFieldChargePriceIndicator($value)
+    public function setFieldChargePriceIndicator(string $value)
     {
         $this->chargePriceIndicator = $this
             ->dataTypeFactory
@@ -1577,7 +1577,7 @@ class Pv1Segment extends AbstractSegment
     /**
      * @param string $value
      */
-    public function setFieldCourtesyCode($value)
+    public function setFieldCourtesyCode(string $value)
     {
         $this->courtesyCode = $this
             ->dataTypeFactory
@@ -1589,7 +1589,7 @@ class Pv1Segment extends AbstractSegment
     /**
      * @param string $value
      */
-    public function setFieldCreditRating($value)
+    public function setFieldCreditRating(string $value)
     {
         $this->creditRating = $this
             ->dataTypeFactory
@@ -1601,7 +1601,7 @@ class Pv1Segment extends AbstractSegment
     /**
      * @param string $value
      */
-    public function addFieldContractCode($value)
+    public function addFieldContractCode(string $value)
     {
         $contractCode = $this
             ->dataTypeFactory
@@ -1614,7 +1614,7 @@ class Pv1Segment extends AbstractSegment
     /**
      * @param string $value
      */
-    public function addFieldContractEffectiveDate($value)
+    public function addFieldContractEffectiveDate(string $value)
     {
         $contractEffectiveDate = $this
             ->dataTypeFactory
@@ -1627,7 +1627,7 @@ class Pv1Segment extends AbstractSegment
     /**
      * @param string $value
      */
-    public function addFieldContractAmount($value)
+    public function addFieldContractAmount(string $value)
     {
         $contractAmount = $this
             ->dataTypeFactory
@@ -1640,7 +1640,7 @@ class Pv1Segment extends AbstractSegment
     /**
      * @param string $value
      */
-    public function addFieldContractPeriod($value)
+    public function addFieldContractPeriod(string $value)
     {
         $contractPeriod = $this
             ->dataTypeFactory
@@ -1653,7 +1653,7 @@ class Pv1Segment extends AbstractSegment
     /**
      * @param string $value
      */
-    public function setFieldInterestCode($value)
+    public function setFieldInterestCode(string $value)
     {
         $this->interestCode = $this
             ->dataTypeFactory
@@ -1665,7 +1665,7 @@ class Pv1Segment extends AbstractSegment
     /**
      * @param string $value
      */
-    public function setFieldTransferToBadDebtCode($value)
+    public function setFieldTransferToBadDebtCode(string $value)
     {
         $this->transferToBadDebtCode = $this
             ->dataTypeFactory
@@ -1677,7 +1677,7 @@ class Pv1Segment extends AbstractSegment
     /**
      * @param string $value
      */
-    public function setFieldTransferToBadDebtDate($value)
+    public function setFieldTransferToBadDebtDate(string $value)
     {
         $this->transferToBadDebtDate = $this
             ->dataTypeFactory
@@ -1689,7 +1689,7 @@ class Pv1Segment extends AbstractSegment
     /**
      * @param string $value
      */
-    public function setFieldBadDebtAgencyCode($value)
+    public function setFieldBadDebtAgencyCode(string $value)
     {
         $this->badDebtAgencyCode = $this
             ->dataTypeFactory
@@ -1701,7 +1701,7 @@ class Pv1Segment extends AbstractSegment
     /**
      * @param string $value
      */
-    public function setFieldBadDebtTransferAmount($value)
+    public function setFieldBadDebtTransferAmount(string $value)
     {
         $this->badDebtTransferAmount = $this
             ->dataTypeFactory
@@ -1713,7 +1713,7 @@ class Pv1Segment extends AbstractSegment
     /**
      * @param string $value
      */
-    public function setFieldBadDebtRecoveryAmount($value)
+    public function setFieldBadDebtRecoveryAmount(string $value)
     {
         $this->badDebtRecoveryAmount = $this
             ->dataTypeFactory
@@ -1725,7 +1725,7 @@ class Pv1Segment extends AbstractSegment
     /**
      * @param string $value
      */
-    public function setFieldDeleteAccountIndicator($value)
+    public function setFieldDeleteAccountIndicator(string $value)
     {
         $this->deleteAccountIndicator = $this
             ->dataTypeFactory
@@ -1737,7 +1737,7 @@ class Pv1Segment extends AbstractSegment
     /**
      * @param string $value
      */
-    public function setFieldDeleteAccountDate($value)
+    public function setFieldDeleteAccountDate(string $value)
     {
         $this->deleteAccountDate = $this
             ->dataTypeFactory
@@ -1749,7 +1749,7 @@ class Pv1Segment extends AbstractSegment
     /**
      * @param string $value
      */
-    public function setFieldDischargeDisposition($value)
+    public function setFieldDischargeDisposition(string $value)
     {
         $this->dischargeDisposition = $this
             ->dataTypeFactory
@@ -1764,9 +1764,9 @@ class Pv1Segment extends AbstractSegment
      * @param string $effectiveDateDegreeOfPrecision
      */
     public function setFieldDischargedToLocation(
-        $dischargeLocation,
-        $effectiveDateTime,
-        $effectiveDateDegreeOfPrecision = null
+        string $dischargeLocation,
+        string $effectiveDateTime,
+        string $effectiveDateDegreeOfPrecision = null
     ) {
         $this->dischargedToLocation = $this
             ->dataTypeFactory
@@ -1788,12 +1788,12 @@ class Pv1Segment extends AbstractSegment
      * @param string $nameOfAltCodingSystem
      */
     public function setFieldDietType(
-        $identifier = null,
-        $text = null,
-        $nameOfCodingSystem = null,
-        $altIdentifier = null,
-        $altText = null,
-        $nameOfAltCodingSystem = null
+        string $identifier = null,
+        string $text = null,
+        string $nameOfCodingSystem = null,
+        string $altIdentifier = null,
+        string $altText = null,
+        string $nameOfAltCodingSystem = null
     ) {
         $this->dietType = $this
             ->dataTypeFactory
@@ -1810,7 +1810,7 @@ class Pv1Segment extends AbstractSegment
     /**
      * @param string $value
      */
-    public function setFieldServicingFacility($value)
+    public function setFieldServicingFacility(string $value)
     {
         $this->servicingFacility = $this
             ->dataTypeFactory
@@ -1822,7 +1822,7 @@ class Pv1Segment extends AbstractSegment
     /**
      * @param string $value
      */
-    public function setFieldBedStatus($value)
+    public function setFieldBedStatus(string $value)
     {
         $this->bedStatus = $this
             ->dataTypeFactory
@@ -1834,7 +1834,7 @@ class Pv1Segment extends AbstractSegment
     /**
      * @param string $value
      */
-    public function setFieldAccountStatus($value)
+    public function setFieldAccountStatus(string $value)
     {
         $this->accountStatus = $this
             ->dataTypeFactory
@@ -1864,24 +1864,24 @@ class Pv1Segment extends AbstractSegment
      * @param string $assigningAuthorityForLocationUniversalIdType
      */
     public function setFieldPendingLocation(
-        $pointOfCare = null,
-        $room = null,
-        $bed = null,
-        $facilityNamespaceId = null,
-        $facilityUniversalId = null,
-        $facilityUniversalIdType = null,
-        $locationStatus = null,
-        $personLocationType = null,
-        $building = null,
-        $floor = null,
-        $locationDescription = null,
-        $comprehensiveLocationIdentifierEntityIdentifier = null,
-        $comprehensiveLocationIdentifierNamespaceId = null,
-        $comprehensiveLocationIdentifierUniversalId = null,
-        $comprehensiveLocationIdentifierUniversalIdType = null,
-        $assigningAuthorityForLocationNamespaceId = null,
-        $assigningAuthorityForLocationUniversalId = null,
-        $assigningAuthorityForLocationUniversalIdType = null
+        string $pointOfCare = null,
+        string $room = null,
+        string $bed = null,
+        string $facilityNamespaceId = null,
+        string $facilityUniversalId = null,
+        string $facilityUniversalIdType = null,
+        string $locationStatus = null,
+        string $personLocationType = null,
+        string $building = null,
+        string $floor = null,
+        string $locationDescription = null,
+        string $comprehensiveLocationIdentifierEntityIdentifier = null,
+        string $comprehensiveLocationIdentifierNamespaceId = null,
+        string $comprehensiveLocationIdentifierUniversalId = null,
+        string $comprehensiveLocationIdentifierUniversalIdType = null,
+        string $assigningAuthorityForLocationNamespaceId = null,
+        string $assigningAuthorityForLocationUniversalId = null,
+        string $assigningAuthorityForLocationUniversalIdType = null
     ) {
         $this->pendingLocation = $this
             ->dataTypeFactory
@@ -1934,24 +1934,24 @@ class Pv1Segment extends AbstractSegment
      * @param string $assigningAuthorityForLocationUniversalIdType
      */
     public function setFieldPriorTemporaryLocation(
-        $pointOfCare = null,
-        $room = null,
-        $bed = null,
-        $facilityNamespaceId = null,
-        $facilityUniversalId = null,
-        $facilityUniversalIdType = null,
-        $locationStatus = null,
-        $personLocationType = null,
-        $building = null,
-        $floor = null,
-        $locationDescription = null,
-        $comprehensiveLocationIdentifierEntityIdentifier = null,
-        $comprehensiveLocationIdentifierNamespaceId = null,
-        $comprehensiveLocationIdentifierUniversalId = null,
-        $comprehensiveLocationIdentifierUniversalIdType = null,
-        $assigningAuthorityForLocationNamespaceId = null,
-        $assigningAuthorityForLocationUniversalId = null,
-        $assigningAuthorityForLocationUniversalIdType = null
+        string $pointOfCare = null,
+        string $room = null,
+        string $bed = null,
+        string $facilityNamespaceId = null,
+        string $facilityUniversalId = null,
+        string $facilityUniversalIdType = null,
+        string $locationStatus = null,
+        string $personLocationType = null,
+        string $building = null,
+        string $floor = null,
+        string $locationDescription = null,
+        string $comprehensiveLocationIdentifierEntityIdentifier = null,
+        string $comprehensiveLocationIdentifierNamespaceId = null,
+        string $comprehensiveLocationIdentifierUniversalId = null,
+        string $comprehensiveLocationIdentifierUniversalIdType = null,
+        string $assigningAuthorityForLocationNamespaceId = null,
+        string $assigningAuthorityForLocationUniversalId = null,
+        string $assigningAuthorityForLocationUniversalIdType = null
     ) {
         $this->priorTemporaryLocation = $this
             ->dataTypeFactory
@@ -1987,8 +1987,10 @@ class Pv1Segment extends AbstractSegment
      * @param string $time
      * @param string $degreeOfPrecision
      */
-    public function setFieldAdmitDatetime($time, $degreeOfPrecision = null)
-    {
+    public function setFieldAdmitDatetime(
+        string $time,
+        string $degreeOfPrecision = null
+    ) {
         $this->admitDatetime = $this
             ->dataTypeFactory
             ->create('TS', $this->encodingParameters)
@@ -2001,8 +2003,10 @@ class Pv1Segment extends AbstractSegment
      * @param string $time
      * @param string $degreeOfPrecision
      */
-    public function addFieldDischargeDatetime($time, $degreeOfPrecision = null)
-    {
+    public function addFieldDischargeDatetime(
+        string $time,
+        string $degreeOfPrecision = null
+    ) {
         $dischargeDatetime = $this
             ->dataTypeFactory
             ->create('TS', $this->encodingParameters)
@@ -2015,7 +2019,7 @@ class Pv1Segment extends AbstractSegment
     /**
      * @param string $value
      */
-    public function setFieldCurrentPatientBalance($value)
+    public function setFieldCurrentPatientBalance(string $value)
     {
         $this->currentPatientBalance = $this
             ->dataTypeFactory
@@ -2027,7 +2031,7 @@ class Pv1Segment extends AbstractSegment
     /**
      * @param string $value
      */
-    public function setFieldTotalCharges($value)
+    public function setFieldTotalCharges(string $value)
     {
         $this->totalCharges = $this
             ->dataTypeFactory
@@ -2039,7 +2043,7 @@ class Pv1Segment extends AbstractSegment
     /**
      * @param string $value
      */
-    public function setFieldTotalAdjustments($value)
+    public function setFieldTotalAdjustments(string $value)
     {
         $this->totalAdjustments = $this
             ->dataTypeFactory
@@ -2051,7 +2055,7 @@ class Pv1Segment extends AbstractSegment
     /**
      * @param string $value
      */
-    public function setFieldTotalPayments($value)
+    public function setFieldTotalPayments(string $value)
     {
         $this->totalPayments = $this
             ->dataTypeFactory
@@ -2093,36 +2097,36 @@ class Pv1Segment extends AbstractSegment
      * @param string $assigningAgencyOriginalText
      */
     public function setFieldAltVisitId(
-        $idNumber,
-        $checkDigit = null,
-        $checkDigitScheme = null,
-        $assigningAuthorityNamespaceId = null,
-        $assigningAuthorityUniversalId = null,
-        $assigningAuthorityUniversalIdType = null,
-        $identifierTypeCode = null,
-        $assigningFacilityNamespaceId = null,
-        $assigningFacilityUniversalId = null,
-        $assigningFacilityUniversalIdType = null,
-        $effectiveDate = null,
-        $expirationDate = null,
-        $assigningJurisdictionIdentifier = null,
-        $assigningJurisdictionText = null,
-        $assigningJurisdictionNameOfCodingSystem = null,
-        $assigningJurisdictionAltIdentifier = null,
-        $assigningJurisdictionAltText = null,
-        $assigningJurisdictionNameOfAltCodingSystem = null,
-        $assigningJurisdictionCodingSystemVersionId = null,
-        $assigningJurisdictionAltCodingSystemVersionId = null,
-        $assigningJurisdictionOriginalText = null,
-        $assigningAgencyIdentifier = null,
-        $assigningAgencyText = null,
-        $assigningAgencyNameOfCodingSystem = null,
-        $assigningAgencyAltIdentifier = null,
-        $assigningAgencyAltText = null,
-        $assigningAgencyNameOfAltCodingSystem = null,
-        $assigningAgencyCodingSystemVersionId = null,
-        $assigningAgencyAltCodingSystemVersionId = null,
-        $assigningAgencyOriginalText = null
+        string $idNumber,
+        string $checkDigit = null,
+        string $checkDigitScheme = null,
+        string $assigningAuthorityNamespaceId = null,
+        string $assigningAuthorityUniversalId = null,
+        string $assigningAuthorityUniversalIdType = null,
+        string $identifierTypeCode = null,
+        string $assigningFacilityNamespaceId = null,
+        string $assigningFacilityUniversalId = null,
+        string $assigningFacilityUniversalIdType = null,
+        string $effectiveDate = null,
+        string $expirationDate = null,
+        string $assigningJurisdictionIdentifier = null,
+        string $assigningJurisdictionText = null,
+        string $assigningJurisdictionNameOfCodingSystem = null,
+        string $assigningJurisdictionAltIdentifier = null,
+        string $assigningJurisdictionAltText = null,
+        string $assigningJurisdictionNameOfAltCodingSystem = null,
+        string $assigningJurisdictionCodingSystemVersionId = null,
+        string $assigningJurisdictionAltCodingSystemVersionId = null,
+        string $assigningJurisdictionOriginalText = null,
+        string $assigningAgencyIdentifier = null,
+        string $assigningAgencyText = null,
+        string $assigningAgencyNameOfCodingSystem = null,
+        string $assigningAgencyAltIdentifier = null,
+        string $assigningAgencyAltText = null,
+        string $assigningAgencyNameOfAltCodingSystem = null,
+        string $assigningAgencyCodingSystemVersionId = null,
+        string $assigningAgencyAltCodingSystemVersionId = null,
+        string $assigningAgencyOriginalText = null
     ) {
         $this->altVisitId = $this
             ->dataTypeFactory
@@ -2171,7 +2175,7 @@ class Pv1Segment extends AbstractSegment
     /**
      * @param string $value
      */
-    public function setFieldVisitIndicator($value)
+    public function setFieldVisitIndicator(string $value)
     {
         $this->visitIndicator = $this
             ->dataTypeFactory
@@ -2240,63 +2244,63 @@ class Pv1Segment extends AbstractSegment
      * @param string $assigningAgencyOriginalText
      */
     public function addFieldOtherHealthcareProvider(
-        $idNumber = null,
-        $familyNameSurname,
-        $familyNameOwnSurnamePrefix = null,
-        $familyNameOwnSurname = null,
-        $familyNameSurnamePrefixFromPartner = null,
-        $familyNameSurnameFromPartner = null,
-        $givenName = null,
-        $secondNames = null,
-        $suffix = null,
-        $prefix = null,
-        $degree = null,
-        $sourceTable = null,
-        $assigningAuthorityNamespaceId = null,
-        $assigningAuthorityUniversalId = null,
-        $assigningAuthorityUniversalIdType = null,
-        $nameTypeCode = null,
-        $identifierCheckDigit = null,
-        $checkDigitScheme = null,
-        $identifierTypeCode = null,
-        $assigningFacilityNamespaceId = null,
-        $assigningFacilityUniversalId = null,
-        $assigningFacilityUniversalIdType = null,
-        $nameRepresentationCode = null,
-        $nameContextIdentifier = null,
-        $nameContextText = null,
-        $nameContextNameOfCodingSystem = null,
-        $nameContextAltIdentifier = null,
-        $nameContextAltText = null,
-        $nameContextNameOfAltCodingSystem = null,
-        $nameValidityRangeRangeStartDateTimeTime,
-        $nameValidityRangeRangeStartDateTimeDegreeOfPrecision = null,
-        $nameValidityRangeRangeEndDateTimeTime,
-        $nameValidityRangeRangeEndDateTimeDegreeOfPrecision = null,
-        $nameAssemblyOrder = null,
-        $effectiveDateTime,
-        $effectiveDateDegreeOfPrecision = null,
-        $expirationDateTime,
-        $expirationDateDegreeOfPrecision = null,
-        $professionalSuffix = null,
-        $assigningJurisdictionIdentifier = null,
-        $assigningJurisdictionText = null,
-        $assigningJurisdictionNameOfCodingSystem = null,
-        $assigningJurisdictionAltIdentifier = null,
-        $assigningJurisdictionAltText = null,
-        $assigningJurisdictionNameOfAltCodingSystem = null,
-        $assigningJurisdictionCodingSystemVersionId = null,
-        $assigningJurisdictionAltCodingSystemVersionId = null,
-        $assigningJurisdictionOriginalText = null,
-        $assigningAgencyIdentifier = null,
-        $assigningAgencyText = null,
-        $assigningAgencyNameOfCodingSystem = null,
-        $assigningAgencyAltIdentifier = null,
-        $assigningAgencyAltText = null,
-        $assigningAgencyNameOfAltCodingSystem = null,
-        $assigningAgencyCodingSystemVersionId = null,
-        $assigningAgencyAltCodingSystemVersionId = null,
-        $assigningAgencyOriginalText = null
+        string $idNumber = null,
+        string $familyNameSurname,
+        string $familyNameOwnSurnamePrefix = null,
+        string $familyNameOwnSurname = null,
+        string $familyNameSurnamePrefixFromPartner = null,
+        string $familyNameSurnameFromPartner = null,
+        string $givenName = null,
+        string $secondNames = null,
+        string $suffix = null,
+        string $prefix = null,
+        string $degree = null,
+        string $sourceTable = null,
+        string $assigningAuthorityNamespaceId = null,
+        string $assigningAuthorityUniversalId = null,
+        string $assigningAuthorityUniversalIdType = null,
+        string $nameTypeCode = null,
+        string $identifierCheckDigit = null,
+        string $checkDigitScheme = null,
+        string $identifierTypeCode = null,
+        string $assigningFacilityNamespaceId = null,
+        string $assigningFacilityUniversalId = null,
+        string $assigningFacilityUniversalIdType = null,
+        string $nameRepresentationCode = null,
+        string $nameContextIdentifier = null,
+        string $nameContextText = null,
+        string $nameContextNameOfCodingSystem = null,
+        string $nameContextAltIdentifier = null,
+        string $nameContextAltText = null,
+        string $nameContextNameOfAltCodingSystem = null,
+        string $nameValidityRangeRangeStartDateTimeTime,
+        string $nameValidityRangeRangeStartDateTimeDegreeOfPrecision = null,
+        string $nameValidityRangeRangeEndDateTimeTime,
+        string $nameValidityRangeRangeEndDateTimeDegreeOfPrecision = null,
+        string $nameAssemblyOrder = null,
+        string $effectiveDateTime,
+        string $effectiveDateDegreeOfPrecision = null,
+        string $expirationDateTime,
+        string $expirationDateDegreeOfPrecision = null,
+        string $professionalSuffix = null,
+        string $assigningJurisdictionIdentifier = null,
+        string $assigningJurisdictionText = null,
+        string $assigningJurisdictionNameOfCodingSystem = null,
+        string $assigningJurisdictionAltIdentifier = null,
+        string $assigningJurisdictionAltText = null,
+        string $assigningJurisdictionNameOfAltCodingSystem = null,
+        string $assigningJurisdictionCodingSystemVersionId = null,
+        string $assigningJurisdictionAltCodingSystemVersionId = null,
+        string $assigningJurisdictionOriginalText = null,
+        string $assigningAgencyIdentifier = null,
+        string $assigningAgencyText = null,
+        string $assigningAgencyNameOfCodingSystem = null,
+        string $assigningAgencyAltIdentifier = null,
+        string $assigningAgencyAltText = null,
+        string $assigningAgencyNameOfAltCodingSystem = null,
+        string $assigningAgencyCodingSystemVersionId = null,
+        string $assigningAgencyAltCodingSystemVersionId = null,
+        string $assigningAgencyOriginalText = null
     ) {
         $otherHealthcareProvider = $this
             ->dataTypeFactory

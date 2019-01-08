@@ -10,15 +10,15 @@ class PrlDataType extends ComponentDataType
     const MAX_LEN = 755;
 
     /**
-     * @var \Hl7v2\DataType\CeDataType
+     * @var CeDataType
      */
     private $parentObservationIdentifier;
     /**
-     * @var \Hl7v2\DataType\StDataType
+     * @var StDataType
      */
     private $parentObservationSubIdentifier;
     /**
-     * @var \Hl7v2\DataType\TxDataType
+     * @var TxDataType
      */
     private $parentObservationValueDescriptor;
 
@@ -31,12 +31,12 @@ class PrlDataType extends ComponentDataType
      * @param string $parentObservationIdentifierNameOfAltCodingSystem
      */
     public function setParentObservationIdentifier(
-        $parentObservationIdentifierIdentifier = null,
-        $parentObservationIdentifierText = null,
-        $parentObservationIdentifierNameOfCodingSystem = null,
-        $parentObservationIdentifierAltIdentifier = null,
-        $parentObservationIdentifierAltText = null,
-        $parentObservationIdentifierNameOfAltCodingSystem = null
+        string $parentObservationIdentifierIdentifier = null,
+        string $parentObservationIdentifierText = null,
+        string $parentObservationIdentifierNameOfCodingSystem = null,
+        string $parentObservationIdentifierAltIdentifier = null,
+        string $parentObservationIdentifierAltText = null,
+        string $parentObservationIdentifierNameOfAltCodingSystem = null
     ) {
         $this->parentObservationIdentifier = $this
             ->dataTypeFactory
@@ -59,8 +59,9 @@ class PrlDataType extends ComponentDataType
     /**
      * @param string $parentObservationSubIdentifier
      */
-    public function setParentObservationSubIdentifier($parentObservationSubIdentifier = null)
-    {
+    public function setParentObservationSubIdentifier(
+        string $parentObservationSubIdentifier = null
+    ) {
         $this->parentObservationSubIdentifier = $this
             ->dataTypeFactory
             ->create('ST', $this->encodingParameters)
@@ -71,8 +72,9 @@ class PrlDataType extends ComponentDataType
     /**
      * @param string $parentObservationValueDescriptor
      */
-    public function setParentObservationValueDescriptor($parentObservationValueDescriptor = null)
-    {
+    public function setParentObservationValueDescriptor(
+        string $parentObservationValueDescriptor = null
+    ) {
         $this->parentObservationValueDescriptor = $this
             ->dataTypeFactory
             ->create('TX', $this->encodingParameters)

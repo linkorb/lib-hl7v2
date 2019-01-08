@@ -10,59 +10,59 @@ class XadDataType extends ComponentDataType
     const MAX_LEN = 631;
 
     /**
-     * @var \Hl7v2\DataType\SadDataType
+     * @var SadDataType
      */
     private $streetAddress;
     /**
-     * @var \Hl7v2\DataType\StDataType
+     * @var StDataType
      */
     private $otherDesignation;
     /**
-     * @var \Hl7v2\DataType\StDataType
+     * @var StDataType
      */
     private $city;
     /**
-     * @var \Hl7v2\DataType\StDataType
+     * @var StDataType
      */
     private $stateOrProvince;
     /**
-     * @var \Hl7v2\DataType\StDataType
+     * @var StDataType
      */
     private $zipOrPostalCode;
     /**
-     * @var \Hl7v2\DataType\IdDataType
+     * @var IdDataType
      */
     private $country;
     /**
-     * @var \Hl7v2\DataType\IdDataType
+     * @var IdDataType
      */
     private $addressType;
     /**
-     * @var \Hl7v2\DataType\StDataType
+     * @var StDataType
      */
     private $otherGeographicDesignation;
     /**
-     * @var \Hl7v2\DataType\IsDataType
+     * @var IsDataType
      */
     private $countyParishCode;
     /**
-     * @var \Hl7v2\DataType\IsDataType
+     * @var IsDataType
      */
     private $censusTract;
     /**
-     * @var \Hl7v2\DataType\IdDataType
+     * @var IdDataType
      */
     private $addressRepresentationCode;
     /**
-     * @var \Hl7v2\DataType\DrDataType
+     * @var DrDataType
      */
     private $addressValidityRange;
     /**
-     * @var \Hl7v2\DataType\TsDataType
+     * @var TsDataType
      */
     private $effectiveDate;
     /**
-     * @var \Hl7v2\DataType\TsDataType
+     * @var TsDataType
      */
     private $expirationDate;
 
@@ -72,9 +72,9 @@ class XadDataType extends ComponentDataType
      * @param string $streetAddressDwellingNumber
      */
     public function setStreetAddress(
-        $streetAddressStreetOrMailingAddress = null,
-        $streetAddressStreetName = null,
-        $streetAddressDwellingNumber = null
+        string $streetAddressStreetOrMailingAddress = null,
+        string $streetAddressStreetName = null,
+        string $streetAddressDwellingNumber = null
     ) {
         $this->streetAddress = $this
             ->dataTypeFactory
@@ -88,7 +88,7 @@ class XadDataType extends ComponentDataType
     /**
      * @param string $otherDesignation
      */
-    public function setOtherDesignation($otherDesignation = null)
+    public function setOtherDesignation(string $otherDesignation = null)
     {
         $this->otherDesignation = $this
             ->dataTypeFactory
@@ -100,7 +100,7 @@ class XadDataType extends ComponentDataType
     /**
      * @param string $city
      */
-    public function setCity($city = null)
+    public function setCity(string $city = null)
     {
         $this->city = $this
             ->dataTypeFactory
@@ -112,7 +112,7 @@ class XadDataType extends ComponentDataType
     /**
      * @param string $stateOrProvince
      */
-    public function setStateOrProvince($stateOrProvince = null)
+    public function setStateOrProvince(string $stateOrProvince = null)
     {
         $this->stateOrProvince = $this
             ->dataTypeFactory
@@ -124,7 +124,7 @@ class XadDataType extends ComponentDataType
     /**
      * @param string $zipOrPostalCode
      */
-    public function setZipOrPostalCode($zipOrPostalCode = null)
+    public function setZipOrPostalCode(string $zipOrPostalCode = null)
     {
         $this->zipOrPostalCode = $this
             ->dataTypeFactory
@@ -136,7 +136,7 @@ class XadDataType extends ComponentDataType
     /**
      * @param string $country
      */
-    public function setCountry($country = null)
+    public function setCountry(string $country = null)
     {
         $this->country = $this
             ->dataTypeFactory
@@ -148,7 +148,7 @@ class XadDataType extends ComponentDataType
     /**
      * @param string $addressType
      */
-    public function setAddressType($addressType = null)
+    public function setAddressType(string $addressType = null)
     {
         $this->addressType = $this
             ->dataTypeFactory
@@ -160,8 +160,9 @@ class XadDataType extends ComponentDataType
     /**
      * @param string $otherGeographicDesignation
      */
-    public function setOtherGeographicDesignation($otherGeographicDesignation = null)
-    {
+    public function setOtherGeographicDesignation(
+        string $otherGeographicDesignation = null
+    ) {
         $this->otherGeographicDesignation = $this
             ->dataTypeFactory
             ->create('ST', $this->encodingParameters)
@@ -172,7 +173,7 @@ class XadDataType extends ComponentDataType
     /**
      * @param string $countyParishCode
      */
-    public function setCountyParishCode($countyParishCode = null)
+    public function setCountyParishCode(string $countyParishCode = null)
     {
         $this->countyParishCode = $this
             ->dataTypeFactory
@@ -184,7 +185,7 @@ class XadDataType extends ComponentDataType
     /**
      * @param string $censusTract
      */
-    public function setCensusTract($censusTract = null)
+    public function setCensusTract(string $censusTract = null)
     {
         $this->censusTract = $this
             ->dataTypeFactory
@@ -196,8 +197,9 @@ class XadDataType extends ComponentDataType
     /**
      * @param string $addressRepresentationCode
      */
-    public function setAddressRepresentationCode($addressRepresentationCode = null)
-    {
+    public function setAddressRepresentationCode(
+        string $addressRepresentationCode = null
+    ) {
         $this->addressRepresentationCode = $this
             ->dataTypeFactory
             ->create('ID', $this->encodingParameters)
@@ -212,10 +214,10 @@ class XadDataType extends ComponentDataType
      * @param string $addressValidityRangeRangeEndDateTimeDegreeOfPrecision
      */
     public function setAddressValidityRange(
-        $addressValidityRangeRangeStartDateTimeTime,
-        $addressValidityRangeRangeStartDateTimeDegreeOfPrecision = null,
-        $addressValidityRangeRangeEndDateTimeTime,
-        $addressValidityRangeRangeEndDateTimeDegreeOfPrecision = null
+        string $addressValidityRangeRangeStartDateTimeTime,
+        string $addressValidityRangeRangeStartDateTimeDegreeOfPrecision = null,
+        string $addressValidityRangeRangeEndDateTimeTime,
+        string $addressValidityRangeRangeEndDateTimeDegreeOfPrecision = null
     ) {
         $this->addressValidityRange = $this
             ->dataTypeFactory
@@ -235,8 +237,10 @@ class XadDataType extends ComponentDataType
      * @param string $effectiveDateTime
      * @param string $effectiveDateDegreeOfPrecision
      */
-    public function setEffectiveDate($effectiveDateTime, $effectiveDateDegreeOfPrecision = null)
-    {
+    public function setEffectiveDate(
+        string $effectiveDateTime,
+        string $effectiveDateDegreeOfPrecision = null
+    ) {
         $this->effectiveDate = $this
             ->dataTypeFactory
             ->create('TS', $this->encodingParameters, true)
@@ -249,8 +253,10 @@ class XadDataType extends ComponentDataType
      * @param string $expirationDateTime
      * @param string $expirationDateDegreeOfPrecision
      */
-    public function setExpirationDate($expirationDateTime, $expirationDateDegreeOfPrecision = null)
-    {
+    public function setExpirationDate(
+        string $expirationDateTime,
+        string $expirationDateDegreeOfPrecision = null
+    ) {
         $this->expirationDate = $this
             ->dataTypeFactory
             ->create('TS', $this->encodingParameters, true)

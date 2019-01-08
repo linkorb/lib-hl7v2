@@ -10,18 +10,18 @@ class MoDataType extends ComponentDataType
     const MAX_LEN = 20;
 
     /**
-     * @var \Hl7v2\DataType\NmDataType
+     * @var NmDataType
      */
     private $quantity;
     /**
-     * @var \Hl7v2\DataType\IdDataType
+     * @var IdDataType
      */
     private $denomination;
 
     /**
      * @param string $quantity
      */
-    public function setQuantity($quantity = null)
+    public function setQuantity(string $quantity = null)
     {
         $this->quantity = $this
             ->dataTypeFactory
@@ -33,7 +33,7 @@ class MoDataType extends ComponentDataType
     /**
      * @param string $denomination
      */
-    public function setDenomination($denomination = null)
+    public function setDenomination(string $denomination = null)
     {
         $this->denomination = $this
             ->dataTypeFactory

@@ -10,102 +10,102 @@ class XcnDataType extends ComponentDataType
     const MAX_LEN = 3002;
 
     /**
-     * @var \Hl7v2\DataType\StDataType
+     * @var StDataType
      */
     private $idNumber;
     /**
-     * @var \Hl7v2\DataType\FnDataType
+     * @var FnDataType
      */
     private $familyName;
     /**
-     * @var \Hl7v2\DataType\StDataType
+     * @var StDataType
      */
     private $givenName;
     /**
-     * @var \Hl7v2\DataType\StDataType
+     * @var StDataType
      */
     private $secondNames;
     /**
-     * @var \Hl7v2\DataType\StDataType
+     * @var StDataType
      */
     private $suffix;
     /**
-     * @var \Hl7v2\DataType\StDataType
+     * @var StDataType
      */
     private $prefix;
     /**
-     * @var \Hl7v2\DataType\IsDataType
+     * @var IsDataType
      */
     private $degree;
     /**
-     * @var \Hl7v2\DataType\IsDataType
+     * @var IsDataType
      */
     private $sourceTable;
     /**
-     * @var \Hl7v2\DataType\HdDataType
+     * @var HdDataType
      */
     private $assigningAuthority;
     /**
-     * @var \Hl7v2\DataType\IdDataType
+     * @var IdDataType
      */
     private $nameTypeCode;
     /**
-     * @var \Hl7v2\DataType\StDataType
+     * @var StDataType
      */
     private $identifierCheckDigit;
     /**
-     * @var \Hl7v2\DataType\IdDataType
+     * @var IdDataType
      */
     private $checkDigitScheme;
     /**
-     * @var \Hl7v2\DataType\IdDataType
+     * @var IdDataType
      */
     private $identifierTypeCode;
     /**
-     * @var \Hl7v2\DataType\HdDataType
+     * @var HdDataType
      */
     private $assigningFacility;
     /**
-     * @var \Hl7v2\DataType\IdDataType
+     * @var IdDataType
      */
     private $nameRepresentationCode;
     /**
-     * @var \Hl7v2\DataType\CeDataType
+     * @var CeDataType
      */
     private $nameContext;
     /**
-     * @var \Hl7v2\DataType\DrDataType
+     * @var DrDataType
      */
     private $nameValidityRange;
     /**
-     * @var \Hl7v2\DataType\IdDataType
+     * @var IdDataType
      */
     private $nameAssemblyOrder;
     /**
-     * @var \Hl7v2\DataType\TsDataType
+     * @var TsDataType
      */
     private $effectiveDate;
     /**
-     * @var \Hl7v2\DataType\TsDataType
+     * @var TsDataType
      */
     private $expirationDate;
     /**
-     * @var \Hl7v2\DataType\StDataType
+     * @var StDataType
      */
     private $professionalSuffix;
     /**
-     * @var \Hl7v2\DataType\CweDataType
+     * @var CweDataType
      */
     private $assigningJurisdiction;
     /**
-     * @var \Hl7v2\DataType\CweDataType
+     * @var CweDataType
      */
     private $assigningAgency;
 
     /**
      * @param string $idNumber
      */
-    public function setIdNumber($idNumber = null)
+    public function setIdNumber(string $idNumber = null)
     {
         $this->idNumber = $this
             ->dataTypeFactory
@@ -122,11 +122,11 @@ class XcnDataType extends ComponentDataType
      * @param string $familyNameSurnameFromPartner
      */
     public function setFamilyName(
-        $familyNameSurname,
-        $familyNameOwnSurnamePrefix = null,
-        $familyNameOwnSurname = null,
-        $familyNameSurnamePrefixFromPartner = null,
-        $familyNameSurnameFromPartner = null
+        string $familyNameSurname,
+        string $familyNameOwnSurnamePrefix = null,
+        string $familyNameOwnSurname = null,
+        string $familyNameSurnamePrefixFromPartner = null,
+        string $familyNameSurnameFromPartner = null
     ) {
         $this->familyName = $this
             ->dataTypeFactory
@@ -142,7 +142,7 @@ class XcnDataType extends ComponentDataType
     /**
      * @param string $givenName
      */
-    public function setGivenName($givenName = null)
+    public function setGivenName(string $givenName = null)
     {
         $this->givenName = $this
             ->dataTypeFactory
@@ -154,7 +154,7 @@ class XcnDataType extends ComponentDataType
     /**
      * @param string $secondNames
      */
-    public function setSecondNames($secondNames = null)
+    public function setSecondNames(string $secondNames = null)
     {
         $this->secondNames = $this
             ->dataTypeFactory
@@ -166,7 +166,7 @@ class XcnDataType extends ComponentDataType
     /**
      * @param string $suffix
      */
-    public function setSuffix($suffix = null)
+    public function setSuffix(string $suffix = null)
     {
         $this->suffix = $this
             ->dataTypeFactory
@@ -178,7 +178,7 @@ class XcnDataType extends ComponentDataType
     /**
      * @param string $prefix
      */
-    public function setPrefix($prefix = null)
+    public function setPrefix(string $prefix = null)
     {
         $this->prefix = $this
             ->dataTypeFactory
@@ -190,7 +190,7 @@ class XcnDataType extends ComponentDataType
     /**
      * @param string $degree
      */
-    public function setDegree($degree = null)
+    public function setDegree(string $degree = null)
     {
         $this->degree = $this
             ->dataTypeFactory
@@ -202,7 +202,7 @@ class XcnDataType extends ComponentDataType
     /**
      * @param string $sourceTable
      */
-    public function setSourceTable($sourceTable = null)
+    public function setSourceTable(string $sourceTable = null)
     {
         $this->sourceTable = $this
             ->dataTypeFactory
@@ -217,9 +217,9 @@ class XcnDataType extends ComponentDataType
      * @param string $assigningAuthorityUniversalIdType
      */
     public function setAssigningAuthority(
-        $assigningAuthorityNamespaceId = null,
-        $assigningAuthorityUniversalId = null,
-        $assigningAuthorityUniversalIdType = null
+        string $assigningAuthorityNamespaceId = null,
+        string $assigningAuthorityUniversalId = null,
+        string $assigningAuthorityUniversalIdType = null
     ) {
         $this->assigningAuthority = $this
             ->dataTypeFactory
@@ -233,7 +233,7 @@ class XcnDataType extends ComponentDataType
     /**
      * @param string $nameTypeCode
      */
-    public function setNameTypeCode($nameTypeCode = null)
+    public function setNameTypeCode(string $nameTypeCode = null)
     {
         $this->nameTypeCode = $this
             ->dataTypeFactory
@@ -245,7 +245,7 @@ class XcnDataType extends ComponentDataType
     /**
      * @param string $identifierCheckDigit
      */
-    public function setIdentifierCheckDigit($identifierCheckDigit = null)
+    public function setIdentifierCheckDigit(string $identifierCheckDigit = null)
     {
         $this->identifierCheckDigit = $this
             ->dataTypeFactory
@@ -257,7 +257,7 @@ class XcnDataType extends ComponentDataType
     /**
      * @param string $checkDigitScheme
      */
-    public function setCheckDigitScheme($checkDigitScheme = null)
+    public function setCheckDigitScheme(string $checkDigitScheme = null)
     {
         $this->checkDigitScheme = $this
             ->dataTypeFactory
@@ -269,7 +269,7 @@ class XcnDataType extends ComponentDataType
     /**
      * @param string $identifierTypeCode
      */
-    public function setIdentifierTypeCode($identifierTypeCode = null)
+    public function setIdentifierTypeCode(string $identifierTypeCode = null)
     {
         $this->identifierTypeCode = $this
             ->dataTypeFactory
@@ -284,9 +284,9 @@ class XcnDataType extends ComponentDataType
      * @param string $assigningFacilityUniversalIdType
      */
     public function setAssigningFacility(
-        $assigningFacilityNamespaceId = null,
-        $assigningFacilityUniversalId = null,
-        $assigningFacilityUniversalIdType = null
+        string $assigningFacilityNamespaceId = null,
+        string $assigningFacilityUniversalId = null,
+        string $assigningFacilityUniversalIdType = null
     ) {
         $this->assigningFacility = $this
             ->dataTypeFactory
@@ -300,8 +300,9 @@ class XcnDataType extends ComponentDataType
     /**
      * @param string $nameRepresentationCode
      */
-    public function setNameRepresentationCode($nameRepresentationCode = null)
-    {
+    public function setNameRepresentationCode(
+        string $nameRepresentationCode = null
+    ) {
         $this->nameRepresentationCode = $this
             ->dataTypeFactory
             ->create('ID', $this->encodingParameters)
@@ -318,12 +319,12 @@ class XcnDataType extends ComponentDataType
      * @param string $nameContextNameOfAltCodingSystem
      */
     public function setNameContext(
-        $nameContextIdentifier = null,
-        $nameContextText = null,
-        $nameContextNameOfCodingSystem = null,
-        $nameContextAltIdentifier = null,
-        $nameContextAltText = null,
-        $nameContextNameOfAltCodingSystem = null
+        string $nameContextIdentifier = null,
+        string $nameContextText = null,
+        string $nameContextNameOfCodingSystem = null,
+        string $nameContextAltIdentifier = null,
+        string $nameContextAltText = null,
+        string $nameContextNameOfAltCodingSystem = null
     ) {
         $this->nameContext = $this
             ->dataTypeFactory
@@ -344,10 +345,10 @@ class XcnDataType extends ComponentDataType
      * @param string $nameValidityRangeRangeEndDateTimeDegreeOfPrecision
      */
     public function setNameValidityRange(
-        $nameValidityRangeRangeStartDateTimeTime,
-        $nameValidityRangeRangeStartDateTimeDegreeOfPrecision = null,
-        $nameValidityRangeRangeEndDateTimeTime,
-        $nameValidityRangeRangeEndDateTimeDegreeOfPrecision = null
+        string $nameValidityRangeRangeStartDateTimeTime,
+        string $nameValidityRangeRangeStartDateTimeDegreeOfPrecision = null,
+        string $nameValidityRangeRangeEndDateTimeTime,
+        string $nameValidityRangeRangeEndDateTimeDegreeOfPrecision = null
     ) {
         $this->nameValidityRange = $this
             ->dataTypeFactory
@@ -366,7 +367,7 @@ class XcnDataType extends ComponentDataType
     /**
      * @param string $nameAssemblyOrder
      */
-    public function setNameAssemblyOrder($nameAssemblyOrder = null)
+    public function setNameAssemblyOrder(string $nameAssemblyOrder = null)
     {
         $this->nameAssemblyOrder = $this
             ->dataTypeFactory
@@ -379,8 +380,10 @@ class XcnDataType extends ComponentDataType
      * @param string $effectiveDateTime
      * @param string $effectiveDateDegreeOfPrecision
      */
-    public function setEffectiveDate($effectiveDateTime, $effectiveDateDegreeOfPrecision = null)
-    {
+    public function setEffectiveDate(
+        string $effectiveDateTime,
+        string $effectiveDateDegreeOfPrecision = null
+    ) {
         $this->effectiveDate = $this
             ->dataTypeFactory
             ->create('TS', $this->encodingParameters, true)
@@ -393,8 +396,10 @@ class XcnDataType extends ComponentDataType
      * @param string $expirationDateTime
      * @param string $expirationDateDegreeOfPrecision
      */
-    public function setExpirationDate($expirationDateTime, $expirationDateDegreeOfPrecision = null)
-    {
+    public function setExpirationDate(
+        string $expirationDateTime,
+        string $expirationDateDegreeOfPrecision = null
+    ) {
         $this->expirationDate = $this
             ->dataTypeFactory
             ->create('TS', $this->encodingParameters, true)
@@ -406,7 +411,7 @@ class XcnDataType extends ComponentDataType
     /**
      * @param string $professionalSuffix
      */
-    public function setProfessionalSuffix($professionalSuffix = null)
+    public function setProfessionalSuffix(string $professionalSuffix = null)
     {
         $this->professionalSuffix = $this
             ->dataTypeFactory
@@ -427,15 +432,15 @@ class XcnDataType extends ComponentDataType
      * @param string $assigningJurisdictionOriginalText
      */
     public function setAssigningJurisdiction(
-        $assigningJurisdictionIdentifier = null,
-        $assigningJurisdictionText = null,
-        $assigningJurisdictionNameOfCodingSystem = null,
-        $assigningJurisdictionAltIdentifier = null,
-        $assigningJurisdictionAltText = null,
-        $assigningJurisdictionNameOfAltCodingSystem = null,
-        $assigningJurisdictionCodingSystemVersionId = null,
-        $assigningJurisdictionAltCodingSystemVersionId = null,
-        $assigningJurisdictionOriginalText = null
+        string $assigningJurisdictionIdentifier = null,
+        string $assigningJurisdictionText = null,
+        string $assigningJurisdictionNameOfCodingSystem = null,
+        string $assigningJurisdictionAltIdentifier = null,
+        string $assigningJurisdictionAltText = null,
+        string $assigningJurisdictionNameOfAltCodingSystem = null,
+        string $assigningJurisdictionCodingSystemVersionId = null,
+        string $assigningJurisdictionAltCodingSystemVersionId = null,
+        string $assigningJurisdictionOriginalText = null
     ) {
         $this->assigningJurisdiction = $this
             ->dataTypeFactory
@@ -472,15 +477,15 @@ class XcnDataType extends ComponentDataType
      * @param string $assigningAgencyOriginalText
      */
     public function setAssigningAgency(
-        $assigningAgencyIdentifier = null,
-        $assigningAgencyText = null,
-        $assigningAgencyNameOfCodingSystem = null,
-        $assigningAgencyAltIdentifier = null,
-        $assigningAgencyAltText = null,
-        $assigningAgencyNameOfAltCodingSystem = null,
-        $assigningAgencyCodingSystemVersionId = null,
-        $assigningAgencyAltCodingSystemVersionId = null,
-        $assigningAgencyOriginalText = null
+        string $assigningAgencyIdentifier = null,
+        string $assigningAgencyText = null,
+        string $assigningAgencyNameOfCodingSystem = null,
+        string $assigningAgencyAltIdentifier = null,
+        string $assigningAgencyAltText = null,
+        string $assigningAgencyNameOfAltCodingSystem = null,
+        string $assigningAgencyCodingSystemVersionId = null,
+        string $assigningAgencyAltCodingSystemVersionId = null,
+        string $assigningAgencyOriginalText = null
     ) {
         $this->assigningAgency = $this
             ->dataTypeFactory

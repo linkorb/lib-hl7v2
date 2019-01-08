@@ -12,134 +12,134 @@ use Hl7v2\Exception\SegmentError;
 class OrcSegment extends AbstractSegment
 {
     /**
-     * @var \Hl7v2\DataType\IdDataType
+     * @var IdDataType
      */
     private $orderControl;
     /**
-     * @var \Hl7v2\DataType\EiDataType
+     * @var EiDataType
      */
     private $placerOrderNumber = null;
     /**
-     * @var \Hl7v2\DataType\EiDataType
+     * @var EiDataType
      */
     private $fillerOrderNumber = null;
     /**
-     * @var \Hl7v2\DataType\EiDataType
+     * @var EiDataType
      */
     private $placerGroupNumber = null;
     /**
-     * @var \Hl7v2\DataType\IdDataType
+     * @var IdDataType
      */
     private $orderStatus = null;
     /**
-     * @var \Hl7v2\DataType\IdDataType
+     * @var IdDataType
      */
     private $responseFlag = null;
     /**
-     * @var \Hl7v2\DataType\TqDataType[]
+     * @var TqDataType[]
      */
     private $quantityTiming = [];
     /**
-     * @var \Hl7v2\DataType\EipDataType
+     * @var EipDataType
      */
     private $parent = null;
     /**
-     * @var \Hl7v2\DataType\TsDataType
+     * @var TsDataType
      */
     private $dateTimeOfTransaction = null;
     /**
-     * @var \Hl7v2\DataType\XcnDataType[]
+     * @var XcnDataType[]
      */
     private $enteredBy = [];
     /**
-     * @var \Hl7v2\DataType\XcnDataType[]
+     * @var XcnDataType[]
      */
     private $verifiedBy = [];
     /**
-     * @var \Hl7v2\DataType\XcnDataType[]
+     * @var XcnDataType[]
      */
     private $orderingProvider = [];
     /**
-     * @var \Hl7v2\DataType\PlDataType
+     * @var PlDataType
      */
     private $entererLocation = null;
     /**
-     * @var \Hl7v2\DataType\XtnDataType[]
+     * @var XtnDataType[]
      */
     private $callBackPhoneNumber = [];
     /**
-     * @var \Hl7v2\DataType\TsDataType
+     * @var TsDataType
      */
     private $orderEffectiveDateTime = null;
     /**
-     * @var \Hl7v2\DataType\CeDataType
+     * @var CeDataType
      */
     private $orderControlCodeReason = null;
     /**
-     * @var \Hl7v2\DataType\CeDataType
+     * @var CeDataType
      */
     private $enteringOrganization = null;
     /**
-     * @var \Hl7v2\DataType\CeDataType
+     * @var CeDataType
      */
     private $enteringDevice = null;
     /**
-     * @var \Hl7v2\DataType\XcnDataType[]
+     * @var XcnDataType[]
      */
     private $actionBy = [];
     /**
-     * @var \Hl7v2\DataType\CeDataType
+     * @var CeDataType
      */
     private $advancedBeneficiaryNoticeCode = null;
     /**
-     * @var \Hl7v2\DataType\XonDataType[]
+     * @var XonDataType[]
      */
     private $orderingFacilityName = [];
     /**
-     * @var \Hl7v2\DataType\XadDataType[]
+     * @var XadDataType[]
      */
     private $orderingFacilityAddress = [];
     /**
-     * @var \Hl7v2\DataType\XtnDataType[]
+     * @var XtnDataType[]
      */
     private $orderingFacilityPhoneNumber = [];
     /**
-     * @var \Hl7v2\DataType\XadDataType[]
+     * @var XadDataType[]
      */
     private $orderingProviderAddress = [];
     /**
-     * @var \Hl7v2\DataType\CweDataType
+     * @var CweDataType
      */
     private $orderStatusModifier = null;
     /**
-     * @var \Hl7v2\DataType\CweDataType
+     * @var CweDataType
      */
     private $advancedBeneficiaryNoticeOverrideReason = null;
     /**
-     * @var \Hl7v2\DataType\TsDataType
+     * @var TsDataType
      */
     private $fillerExpectedAvailabilityDateTime = null;
     /**
-     * @var \Hl7v2\DataType\CweDataType
+     * @var CweDataType
      */
     private $confidentialityCode = null;
     /**
-     * @var \Hl7v2\DataType\CweDataType
+     * @var CweDataType
      */
     private $orderType = null;
     /**
-     * @var \Hl7v2\DataType\CneDataType
+     * @var CneDataType
      */
     private $entererAuthorizationMode = null;
     /**
-     * @var \Hl7v2\DataType\CweDataType
+     * @var CweDataType
      */
     private $parentUniversalServiceIdentifier = null;
 
     /**
      * @param string $value
      */
-    public function setFieldOrderControl($value)
+    public function setFieldOrderControl(string $value)
     {
         $this->orderControl = $this
             ->dataTypeFactory
@@ -155,10 +155,10 @@ class OrcSegment extends AbstractSegment
      * @param string $universalIdType
      */
     public function setFieldPlacerOrderNumber(
-        $entityIdentifier = null,
-        $namespaceId = null,
-        $universalId = null,
-        $universalIdType = null
+        string $entityIdentifier = null,
+        string $namespaceId = null,
+        string $universalId = null,
+        string $universalIdType = null
     ) {
         $this->placerOrderNumber = $this
             ->dataTypeFactory
@@ -177,10 +177,10 @@ class OrcSegment extends AbstractSegment
      * @param string $universalIdType
      */
     public function setFieldFillerOrderNumber(
-        $entityIdentifier = null,
-        $namespaceId = null,
-        $universalId = null,
-        $universalIdType = null
+        string $entityIdentifier = null,
+        string $namespaceId = null,
+        string $universalId = null,
+        string $universalIdType = null
     ) {
         $this->fillerOrderNumber = $this
             ->dataTypeFactory
@@ -199,10 +199,10 @@ class OrcSegment extends AbstractSegment
      * @param string $universalIdType
      */
     public function setFieldPlacerGroupNumber(
-        $entityIdentifier = null,
-        $namespaceId = null,
-        $universalId = null,
-        $universalIdType = null
+        string $entityIdentifier = null,
+        string $namespaceId = null,
+        string $universalId = null,
+        string $universalIdType = null
     ) {
         $this->placerGroupNumber = $this
             ->dataTypeFactory
@@ -217,7 +217,7 @@ class OrcSegment extends AbstractSegment
     /**
      * @param string $value
      */
-    public function setFieldOrderStatus($value)
+    public function setFieldOrderStatus(string $value)
     {
         $this->orderStatus = $this
             ->dataTypeFactory
@@ -229,7 +229,7 @@ class OrcSegment extends AbstractSegment
     /**
      * @param string $value
      */
-    public function setFieldResponseFlag($value)
+    public function setFieldResponseFlag(string $value)
     {
         $this->responseFlag = $this
             ->dataTypeFactory
@@ -277,42 +277,42 @@ class OrcSegment extends AbstractSegment
      * @param string $totalOccurrences
      */
     public function addFieldQuantityTiming(
-        $quantityQuantity = null,
-        $quantityUnitsIdentifier = null,
-        $quantityUnitsText = null,
-        $quantityUnitsNameOfCodingSystem = null,
-        $quantityUnitsAltIdentifier = null,
-        $quantityUnitsAltText = null,
-        $quantityUnitsNameOfAltCodingSystem = null,
-        $intervalRepeatPattern = null,
-        $intervalExplicitTimeInterval = null,
-        $duration = null,
-        $startDateTimeTime,
-        $startDateTimeDegreeOfPrecision = null,
-        $endDateTimeTime,
-        $endDateTimeDegreeOfPrecision = null,
-        $priority = null,
-        $condition = null,
-        $text = null,
-        $conjunction = null,
-        $orderSequencingSequenceResultsFlag,
-        $orderSequencingPlacerOrderNumberEntityIdentifier,
-        $orderSequencingPlacerOrderNumberNamespaceId = null,
-        $orderSequencingFillerOrderNumberEntityIdentifier,
-        $orderSequencingFillerOrderNumberNamespaceId = null,
-        $orderSequencingSequenceConditionValue = null,
-        $orderSequencingMaximumNumberOfRepeats = null,
-        $orderSequencingPlacerOrderNumberUniversalId,
-        $orderSequencingPlacerOrderNumberUniversalIdType = null,
-        $orderSequencingFillerOrderNumberUniversalId,
-        $orderSequencingFillerOrderNumberUniversalIdType = null,
-        $occurrenceDurationIdentifier = null,
-        $occurrenceDurationText = null,
-        $occurrenceDurationNameOfCodingSystem = null,
-        $occurrenceDurationAltIdentifier = null,
-        $occurrenceDurationAltText = null,
-        $occurrenceDurationNameOfAltCodingSystem = null,
-        $totalOccurrences = null
+        string $quantityQuantity = null,
+        string $quantityUnitsIdentifier = null,
+        string $quantityUnitsText = null,
+        string $quantityUnitsNameOfCodingSystem = null,
+        string $quantityUnitsAltIdentifier = null,
+        string $quantityUnitsAltText = null,
+        string $quantityUnitsNameOfAltCodingSystem = null,
+        string $intervalRepeatPattern = null,
+        string $intervalExplicitTimeInterval = null,
+        string $duration = null,
+        string $startDateTimeTime,
+        string $startDateTimeDegreeOfPrecision = null,
+        string $endDateTimeTime,
+        string $endDateTimeDegreeOfPrecision = null,
+        string $priority = null,
+        string $condition = null,
+        string $text = null,
+        string $conjunction = null,
+        string $orderSequencingSequenceResultsFlag,
+        string $orderSequencingPlacerOrderNumberEntityIdentifier,
+        string $orderSequencingPlacerOrderNumberNamespaceId = null,
+        string $orderSequencingFillerOrderNumberEntityIdentifier,
+        string $orderSequencingFillerOrderNumberNamespaceId = null,
+        string $orderSequencingSequenceConditionValue = null,
+        string $orderSequencingMaximumNumberOfRepeats = null,
+        string $orderSequencingPlacerOrderNumberUniversalId,
+        string $orderSequencingPlacerOrderNumberUniversalIdType = null,
+        string $orderSequencingFillerOrderNumberUniversalId,
+        string $orderSequencingFillerOrderNumberUniversalIdType = null,
+        string $occurrenceDurationIdentifier = null,
+        string $occurrenceDurationText = null,
+        string $occurrenceDurationNameOfCodingSystem = null,
+        string $occurrenceDurationAltIdentifier = null,
+        string $occurrenceDurationAltText = null,
+        string $occurrenceDurationNameOfAltCodingSystem = null,
+        string $totalOccurrences = null
     ) {
         $quantityTiming = $this
             ->dataTypeFactory
@@ -371,14 +371,14 @@ class OrcSegment extends AbstractSegment
      * @param string $fillerAssignedIdentifierUniversalIdType
      */
     public function setFieldParent(
-        $placerAssignedIdentifierEntityIdentifier = null,
-        $placerAssignedIdentifierNamespaceId = null,
-        $placerAssignedIdentifierUniversalId = null,
-        $placerAssignedIdentifierUniversalIdType = null,
-        $fillerAssignedIdentifierEntityIdentifier = null,
-        $fillerAssignedIdentifierNamespaceId = null,
-        $fillerAssignedIdentifierUniversalId = null,
-        $fillerAssignedIdentifierUniversalIdType = null
+        string $placerAssignedIdentifierEntityIdentifier = null,
+        string $placerAssignedIdentifierNamespaceId = null,
+        string $placerAssignedIdentifierUniversalId = null,
+        string $placerAssignedIdentifierUniversalIdType = null,
+        string $fillerAssignedIdentifierEntityIdentifier = null,
+        string $fillerAssignedIdentifierNamespaceId = null,
+        string $fillerAssignedIdentifierUniversalId = null,
+        string $fillerAssignedIdentifierUniversalIdType = null
     ) {
         $this->parent = $this
             ->dataTypeFactory
@@ -402,8 +402,10 @@ class OrcSegment extends AbstractSegment
      * @param string $time
      * @param string $degreeOfPrecision
      */
-    public function setFieldDateTimeOfTransaction($time, $degreeOfPrecision = null)
-    {
+    public function setFieldDateTimeOfTransaction(
+        string $time,
+        string $degreeOfPrecision = null
+    ) {
         $this->dateTimeOfTransaction = $this
             ->dataTypeFactory
             ->create('TS', $this->encodingParameters)
@@ -472,63 +474,63 @@ class OrcSegment extends AbstractSegment
      * @param string $assigningAgencyOriginalText
      */
     public function addFieldEnteredBy(
-        $idNumber = null,
-        $familyNameSurname,
-        $familyNameOwnSurnamePrefix = null,
-        $familyNameOwnSurname = null,
-        $familyNameSurnamePrefixFromPartner = null,
-        $familyNameSurnameFromPartner = null,
-        $givenName = null,
-        $secondNames = null,
-        $suffix = null,
-        $prefix = null,
-        $degree = null,
-        $sourceTable = null,
-        $assigningAuthorityNamespaceId = null,
-        $assigningAuthorityUniversalId = null,
-        $assigningAuthorityUniversalIdType = null,
-        $nameTypeCode = null,
-        $identifierCheckDigit = null,
-        $checkDigitScheme = null,
-        $identifierTypeCode = null,
-        $assigningFacilityNamespaceId = null,
-        $assigningFacilityUniversalId = null,
-        $assigningFacilityUniversalIdType = null,
-        $nameRepresentationCode = null,
-        $nameContextIdentifier = null,
-        $nameContextText = null,
-        $nameContextNameOfCodingSystem = null,
-        $nameContextAltIdentifier = null,
-        $nameContextAltText = null,
-        $nameContextNameOfAltCodingSystem = null,
-        $nameValidityRangeRangeStartDateTimeTime,
-        $nameValidityRangeRangeStartDateTimeDegreeOfPrecision = null,
-        $nameValidityRangeRangeEndDateTimeTime,
-        $nameValidityRangeRangeEndDateTimeDegreeOfPrecision = null,
-        $nameAssemblyOrder = null,
-        $effectiveDateTime,
-        $effectiveDateDegreeOfPrecision = null,
-        $expirationDateTime,
-        $expirationDateDegreeOfPrecision = null,
-        $professionalSuffix = null,
-        $assigningJurisdictionIdentifier = null,
-        $assigningJurisdictionText = null,
-        $assigningJurisdictionNameOfCodingSystem = null,
-        $assigningJurisdictionAltIdentifier = null,
-        $assigningJurisdictionAltText = null,
-        $assigningJurisdictionNameOfAltCodingSystem = null,
-        $assigningJurisdictionCodingSystemVersionId = null,
-        $assigningJurisdictionAltCodingSystemVersionId = null,
-        $assigningJurisdictionOriginalText = null,
-        $assigningAgencyIdentifier = null,
-        $assigningAgencyText = null,
-        $assigningAgencyNameOfCodingSystem = null,
-        $assigningAgencyAltIdentifier = null,
-        $assigningAgencyAltText = null,
-        $assigningAgencyNameOfAltCodingSystem = null,
-        $assigningAgencyCodingSystemVersionId = null,
-        $assigningAgencyAltCodingSystemVersionId = null,
-        $assigningAgencyOriginalText = null
+        string $idNumber = null,
+        string $familyNameSurname,
+        string $familyNameOwnSurnamePrefix = null,
+        string $familyNameOwnSurname = null,
+        string $familyNameSurnamePrefixFromPartner = null,
+        string $familyNameSurnameFromPartner = null,
+        string $givenName = null,
+        string $secondNames = null,
+        string $suffix = null,
+        string $prefix = null,
+        string $degree = null,
+        string $sourceTable = null,
+        string $assigningAuthorityNamespaceId = null,
+        string $assigningAuthorityUniversalId = null,
+        string $assigningAuthorityUniversalIdType = null,
+        string $nameTypeCode = null,
+        string $identifierCheckDigit = null,
+        string $checkDigitScheme = null,
+        string $identifierTypeCode = null,
+        string $assigningFacilityNamespaceId = null,
+        string $assigningFacilityUniversalId = null,
+        string $assigningFacilityUniversalIdType = null,
+        string $nameRepresentationCode = null,
+        string $nameContextIdentifier = null,
+        string $nameContextText = null,
+        string $nameContextNameOfCodingSystem = null,
+        string $nameContextAltIdentifier = null,
+        string $nameContextAltText = null,
+        string $nameContextNameOfAltCodingSystem = null,
+        string $nameValidityRangeRangeStartDateTimeTime,
+        string $nameValidityRangeRangeStartDateTimeDegreeOfPrecision = null,
+        string $nameValidityRangeRangeEndDateTimeTime,
+        string $nameValidityRangeRangeEndDateTimeDegreeOfPrecision = null,
+        string $nameAssemblyOrder = null,
+        string $effectiveDateTime,
+        string $effectiveDateDegreeOfPrecision = null,
+        string $expirationDateTime,
+        string $expirationDateDegreeOfPrecision = null,
+        string $professionalSuffix = null,
+        string $assigningJurisdictionIdentifier = null,
+        string $assigningJurisdictionText = null,
+        string $assigningJurisdictionNameOfCodingSystem = null,
+        string $assigningJurisdictionAltIdentifier = null,
+        string $assigningJurisdictionAltText = null,
+        string $assigningJurisdictionNameOfAltCodingSystem = null,
+        string $assigningJurisdictionCodingSystemVersionId = null,
+        string $assigningJurisdictionAltCodingSystemVersionId = null,
+        string $assigningJurisdictionOriginalText = null,
+        string $assigningAgencyIdentifier = null,
+        string $assigningAgencyText = null,
+        string $assigningAgencyNameOfCodingSystem = null,
+        string $assigningAgencyAltIdentifier = null,
+        string $assigningAgencyAltText = null,
+        string $assigningAgencyNameOfAltCodingSystem = null,
+        string $assigningAgencyCodingSystemVersionId = null,
+        string $assigningAgencyAltCodingSystemVersionId = null,
+        string $assigningAgencyOriginalText = null
     ) {
         $enteredBy = $this
             ->dataTypeFactory
@@ -666,63 +668,63 @@ class OrcSegment extends AbstractSegment
      * @param string $assigningAgencyOriginalText
      */
     public function addFieldVerifiedBy(
-        $idNumber = null,
-        $familyNameSurname,
-        $familyNameOwnSurnamePrefix = null,
-        $familyNameOwnSurname = null,
-        $familyNameSurnamePrefixFromPartner = null,
-        $familyNameSurnameFromPartner = null,
-        $givenName = null,
-        $secondNames = null,
-        $suffix = null,
-        $prefix = null,
-        $degree = null,
-        $sourceTable = null,
-        $assigningAuthorityNamespaceId = null,
-        $assigningAuthorityUniversalId = null,
-        $assigningAuthorityUniversalIdType = null,
-        $nameTypeCode = null,
-        $identifierCheckDigit = null,
-        $checkDigitScheme = null,
-        $identifierTypeCode = null,
-        $assigningFacilityNamespaceId = null,
-        $assigningFacilityUniversalId = null,
-        $assigningFacilityUniversalIdType = null,
-        $nameRepresentationCode = null,
-        $nameContextIdentifier = null,
-        $nameContextText = null,
-        $nameContextNameOfCodingSystem = null,
-        $nameContextAltIdentifier = null,
-        $nameContextAltText = null,
-        $nameContextNameOfAltCodingSystem = null,
-        $nameValidityRangeRangeStartDateTimeTime,
-        $nameValidityRangeRangeStartDateTimeDegreeOfPrecision = null,
-        $nameValidityRangeRangeEndDateTimeTime,
-        $nameValidityRangeRangeEndDateTimeDegreeOfPrecision = null,
-        $nameAssemblyOrder = null,
-        $effectiveDateTime,
-        $effectiveDateDegreeOfPrecision = null,
-        $expirationDateTime,
-        $expirationDateDegreeOfPrecision = null,
-        $professionalSuffix = null,
-        $assigningJurisdictionIdentifier = null,
-        $assigningJurisdictionText = null,
-        $assigningJurisdictionNameOfCodingSystem = null,
-        $assigningJurisdictionAltIdentifier = null,
-        $assigningJurisdictionAltText = null,
-        $assigningJurisdictionNameOfAltCodingSystem = null,
-        $assigningJurisdictionCodingSystemVersionId = null,
-        $assigningJurisdictionAltCodingSystemVersionId = null,
-        $assigningJurisdictionOriginalText = null,
-        $assigningAgencyIdentifier = null,
-        $assigningAgencyText = null,
-        $assigningAgencyNameOfCodingSystem = null,
-        $assigningAgencyAltIdentifier = null,
-        $assigningAgencyAltText = null,
-        $assigningAgencyNameOfAltCodingSystem = null,
-        $assigningAgencyCodingSystemVersionId = null,
-        $assigningAgencyAltCodingSystemVersionId = null,
-        $assigningAgencyOriginalText = null
+        string $idNumber = null,
+        string $familyNameSurname,
+        string $familyNameOwnSurnamePrefix = null,
+        string $familyNameOwnSurname = null,
+        string $familyNameSurnamePrefixFromPartner = null,
+        string $familyNameSurnameFromPartner = null,
+        string $givenName = null,
+        string $secondNames = null,
+        string $suffix = null,
+        string $prefix = null,
+        string $degree = null,
+        string $sourceTable = null,
+        string $assigningAuthorityNamespaceId = null,
+        string $assigningAuthorityUniversalId = null,
+        string $assigningAuthorityUniversalIdType = null,
+        string $nameTypeCode = null,
+        string $identifierCheckDigit = null,
+        string $checkDigitScheme = null,
+        string $identifierTypeCode = null,
+        string $assigningFacilityNamespaceId = null,
+        string $assigningFacilityUniversalId = null,
+        string $assigningFacilityUniversalIdType = null,
+        string $nameRepresentationCode = null,
+        string $nameContextIdentifier = null,
+        string $nameContextText = null,
+        string $nameContextNameOfCodingSystem = null,
+        string $nameContextAltIdentifier = null,
+        string $nameContextAltText = null,
+        string $nameContextNameOfAltCodingSystem = null,
+        string $nameValidityRangeRangeStartDateTimeTime,
+        string $nameValidityRangeRangeStartDateTimeDegreeOfPrecision = null,
+        string $nameValidityRangeRangeEndDateTimeTime,
+        string $nameValidityRangeRangeEndDateTimeDegreeOfPrecision = null,
+        string $nameAssemblyOrder = null,
+        string $effectiveDateTime,
+        string $effectiveDateDegreeOfPrecision = null,
+        string $expirationDateTime,
+        string $expirationDateDegreeOfPrecision = null,
+        string $professionalSuffix = null,
+        string $assigningJurisdictionIdentifier = null,
+        string $assigningJurisdictionText = null,
+        string $assigningJurisdictionNameOfCodingSystem = null,
+        string $assigningJurisdictionAltIdentifier = null,
+        string $assigningJurisdictionAltText = null,
+        string $assigningJurisdictionNameOfAltCodingSystem = null,
+        string $assigningJurisdictionCodingSystemVersionId = null,
+        string $assigningJurisdictionAltCodingSystemVersionId = null,
+        string $assigningJurisdictionOriginalText = null,
+        string $assigningAgencyIdentifier = null,
+        string $assigningAgencyText = null,
+        string $assigningAgencyNameOfCodingSystem = null,
+        string $assigningAgencyAltIdentifier = null,
+        string $assigningAgencyAltText = null,
+        string $assigningAgencyNameOfAltCodingSystem = null,
+        string $assigningAgencyCodingSystemVersionId = null,
+        string $assigningAgencyAltCodingSystemVersionId = null,
+        string $assigningAgencyOriginalText = null
     ) {
         $verifiedBy = $this
             ->dataTypeFactory
@@ -860,63 +862,63 @@ class OrcSegment extends AbstractSegment
      * @param string $assigningAgencyOriginalText
      */
     public function addFieldOrderingProvider(
-        $idNumber = null,
-        $familyNameSurname,
-        $familyNameOwnSurnamePrefix = null,
-        $familyNameOwnSurname = null,
-        $familyNameSurnamePrefixFromPartner = null,
-        $familyNameSurnameFromPartner = null,
-        $givenName = null,
-        $secondNames = null,
-        $suffix = null,
-        $prefix = null,
-        $degree = null,
-        $sourceTable = null,
-        $assigningAuthorityNamespaceId = null,
-        $assigningAuthorityUniversalId = null,
-        $assigningAuthorityUniversalIdType = null,
-        $nameTypeCode = null,
-        $identifierCheckDigit = null,
-        $checkDigitScheme = null,
-        $identifierTypeCode = null,
-        $assigningFacilityNamespaceId = null,
-        $assigningFacilityUniversalId = null,
-        $assigningFacilityUniversalIdType = null,
-        $nameRepresentationCode = null,
-        $nameContextIdentifier = null,
-        $nameContextText = null,
-        $nameContextNameOfCodingSystem = null,
-        $nameContextAltIdentifier = null,
-        $nameContextAltText = null,
-        $nameContextNameOfAltCodingSystem = null,
-        $nameValidityRangeRangeStartDateTimeTime,
-        $nameValidityRangeRangeStartDateTimeDegreeOfPrecision = null,
-        $nameValidityRangeRangeEndDateTimeTime,
-        $nameValidityRangeRangeEndDateTimeDegreeOfPrecision = null,
-        $nameAssemblyOrder = null,
-        $effectiveDateTime,
-        $effectiveDateDegreeOfPrecision = null,
-        $expirationDateTime,
-        $expirationDateDegreeOfPrecision = null,
-        $professionalSuffix = null,
-        $assigningJurisdictionIdentifier = null,
-        $assigningJurisdictionText = null,
-        $assigningJurisdictionNameOfCodingSystem = null,
-        $assigningJurisdictionAltIdentifier = null,
-        $assigningJurisdictionAltText = null,
-        $assigningJurisdictionNameOfAltCodingSystem = null,
-        $assigningJurisdictionCodingSystemVersionId = null,
-        $assigningJurisdictionAltCodingSystemVersionId = null,
-        $assigningJurisdictionOriginalText = null,
-        $assigningAgencyIdentifier = null,
-        $assigningAgencyText = null,
-        $assigningAgencyNameOfCodingSystem = null,
-        $assigningAgencyAltIdentifier = null,
-        $assigningAgencyAltText = null,
-        $assigningAgencyNameOfAltCodingSystem = null,
-        $assigningAgencyCodingSystemVersionId = null,
-        $assigningAgencyAltCodingSystemVersionId = null,
-        $assigningAgencyOriginalText = null
+        string $idNumber = null,
+        string $familyNameSurname,
+        string $familyNameOwnSurnamePrefix = null,
+        string $familyNameOwnSurname = null,
+        string $familyNameSurnamePrefixFromPartner = null,
+        string $familyNameSurnameFromPartner = null,
+        string $givenName = null,
+        string $secondNames = null,
+        string $suffix = null,
+        string $prefix = null,
+        string $degree = null,
+        string $sourceTable = null,
+        string $assigningAuthorityNamespaceId = null,
+        string $assigningAuthorityUniversalId = null,
+        string $assigningAuthorityUniversalIdType = null,
+        string $nameTypeCode = null,
+        string $identifierCheckDigit = null,
+        string $checkDigitScheme = null,
+        string $identifierTypeCode = null,
+        string $assigningFacilityNamespaceId = null,
+        string $assigningFacilityUniversalId = null,
+        string $assigningFacilityUniversalIdType = null,
+        string $nameRepresentationCode = null,
+        string $nameContextIdentifier = null,
+        string $nameContextText = null,
+        string $nameContextNameOfCodingSystem = null,
+        string $nameContextAltIdentifier = null,
+        string $nameContextAltText = null,
+        string $nameContextNameOfAltCodingSystem = null,
+        string $nameValidityRangeRangeStartDateTimeTime,
+        string $nameValidityRangeRangeStartDateTimeDegreeOfPrecision = null,
+        string $nameValidityRangeRangeEndDateTimeTime,
+        string $nameValidityRangeRangeEndDateTimeDegreeOfPrecision = null,
+        string $nameAssemblyOrder = null,
+        string $effectiveDateTime,
+        string $effectiveDateDegreeOfPrecision = null,
+        string $expirationDateTime,
+        string $expirationDateDegreeOfPrecision = null,
+        string $professionalSuffix = null,
+        string $assigningJurisdictionIdentifier = null,
+        string $assigningJurisdictionText = null,
+        string $assigningJurisdictionNameOfCodingSystem = null,
+        string $assigningJurisdictionAltIdentifier = null,
+        string $assigningJurisdictionAltText = null,
+        string $assigningJurisdictionNameOfAltCodingSystem = null,
+        string $assigningJurisdictionCodingSystemVersionId = null,
+        string $assigningJurisdictionAltCodingSystemVersionId = null,
+        string $assigningJurisdictionOriginalText = null,
+        string $assigningAgencyIdentifier = null,
+        string $assigningAgencyText = null,
+        string $assigningAgencyNameOfCodingSystem = null,
+        string $assigningAgencyAltIdentifier = null,
+        string $assigningAgencyAltText = null,
+        string $assigningAgencyNameOfAltCodingSystem = null,
+        string $assigningAgencyCodingSystemVersionId = null,
+        string $assigningAgencyAltCodingSystemVersionId = null,
+        string $assigningAgencyOriginalText = null
     ) {
         $orderingProvider = $this
             ->dataTypeFactory
@@ -1015,24 +1017,24 @@ class OrcSegment extends AbstractSegment
      * @param string $assigningAuthorityForLocationUniversalIdType
      */
     public function setFieldEntererLocation(
-        $pointOfCare = null,
-        $room = null,
-        $bed = null,
-        $facilityNamespaceId = null,
-        $facilityUniversalId = null,
-        $facilityUniversalIdType = null,
-        $locationStatus = null,
-        $personLocationType = null,
-        $building = null,
-        $floor = null,
-        $locationDescription = null,
-        $comprehensiveLocationIdentifierEntityIdentifier = null,
-        $comprehensiveLocationIdentifierNamespaceId = null,
-        $comprehensiveLocationIdentifierUniversalId = null,
-        $comprehensiveLocationIdentifierUniversalIdType = null,
-        $assigningAuthorityForLocationNamespaceId = null,
-        $assigningAuthorityForLocationUniversalId = null,
-        $assigningAuthorityForLocationUniversalIdType = null
+        string $pointOfCare = null,
+        string $room = null,
+        string $bed = null,
+        string $facilityNamespaceId = null,
+        string $facilityUniversalId = null,
+        string $facilityUniversalIdType = null,
+        string $locationStatus = null,
+        string $personLocationType = null,
+        string $building = null,
+        string $floor = null,
+        string $locationDescription = null,
+        string $comprehensiveLocationIdentifierEntityIdentifier = null,
+        string $comprehensiveLocationIdentifierNamespaceId = null,
+        string $comprehensiveLocationIdentifierUniversalId = null,
+        string $comprehensiveLocationIdentifierUniversalIdType = null,
+        string $assigningAuthorityForLocationNamespaceId = null,
+        string $assigningAuthorityForLocationUniversalId = null,
+        string $assigningAuthorityForLocationUniversalIdType = null
     ) {
         $this->entererLocation = $this
             ->dataTypeFactory
@@ -1079,18 +1081,18 @@ class OrcSegment extends AbstractSegment
      * @param string $unformattedTelephoneNumber
      */
     public function addFieldCallBackPhoneNumber(
-        $telephoneNumber = null,
-        $telecommunicationUseCode = null,
-        $telepcommunicationEquipmentType = null,
-        $emailAddress = null,
-        $countryCode = null,
-        $areaCityCode = null,
-        $localNumber = null,
-        $extension = null,
-        $anyText = null,
-        $extensionPrefix = null,
-        $speedDialCode = null,
-        $unformattedTelephoneNumber = null
+        string $telephoneNumber = null,
+        string $telecommunicationUseCode = null,
+        string $telepcommunicationEquipmentType = null,
+        string $emailAddress = null,
+        string $countryCode = null,
+        string $areaCityCode = null,
+        string $localNumber = null,
+        string $extension = null,
+        string $anyText = null,
+        string $extensionPrefix = null,
+        string $speedDialCode = null,
+        string $unformattedTelephoneNumber = null
     ) {
         $callBackPhoneNumber = $this
             ->dataTypeFactory
@@ -1115,8 +1117,10 @@ class OrcSegment extends AbstractSegment
      * @param string $time
      * @param string $degreeOfPrecision
      */
-    public function setFieldOrderEffectiveDateTime($time, $degreeOfPrecision = null)
-    {
+    public function setFieldOrderEffectiveDateTime(
+        string $time,
+        string $degreeOfPrecision = null
+    ) {
         $this->orderEffectiveDateTime = $this
             ->dataTypeFactory
             ->create('TS', $this->encodingParameters)
@@ -1134,12 +1138,12 @@ class OrcSegment extends AbstractSegment
      * @param string $nameOfAltCodingSystem
      */
     public function setFieldOrderControlCodeReason(
-        $identifier = null,
-        $text = null,
-        $nameOfCodingSystem = null,
-        $altIdentifier = null,
-        $altText = null,
-        $nameOfAltCodingSystem = null
+        string $identifier = null,
+        string $text = null,
+        string $nameOfCodingSystem = null,
+        string $altIdentifier = null,
+        string $altText = null,
+        string $nameOfAltCodingSystem = null
     ) {
         $this->orderControlCodeReason = $this
             ->dataTypeFactory
@@ -1162,12 +1166,12 @@ class OrcSegment extends AbstractSegment
      * @param string $nameOfAltCodingSystem
      */
     public function setFieldEnteringOrganization(
-        $identifier = null,
-        $text = null,
-        $nameOfCodingSystem = null,
-        $altIdentifier = null,
-        $altText = null,
-        $nameOfAltCodingSystem = null
+        string $identifier = null,
+        string $text = null,
+        string $nameOfCodingSystem = null,
+        string $altIdentifier = null,
+        string $altText = null,
+        string $nameOfAltCodingSystem = null
     ) {
         $this->enteringOrganization = $this
             ->dataTypeFactory
@@ -1190,12 +1194,12 @@ class OrcSegment extends AbstractSegment
      * @param string $nameOfAltCodingSystem
      */
     public function setFieldEnteringDevice(
-        $identifier = null,
-        $text = null,
-        $nameOfCodingSystem = null,
-        $altIdentifier = null,
-        $altText = null,
-        $nameOfAltCodingSystem = null
+        string $identifier = null,
+        string $text = null,
+        string $nameOfCodingSystem = null,
+        string $altIdentifier = null,
+        string $altText = null,
+        string $nameOfAltCodingSystem = null
     ) {
         $this->enteringDevice = $this
             ->dataTypeFactory
@@ -1269,63 +1273,63 @@ class OrcSegment extends AbstractSegment
      * @param string $assigningAgencyOriginalText
      */
     public function addFieldActionBy(
-        $idNumber = null,
-        $familyNameSurname,
-        $familyNameOwnSurnamePrefix = null,
-        $familyNameOwnSurname = null,
-        $familyNameSurnamePrefixFromPartner = null,
-        $familyNameSurnameFromPartner = null,
-        $givenName = null,
-        $secondNames = null,
-        $suffix = null,
-        $prefix = null,
-        $degree = null,
-        $sourceTable = null,
-        $assigningAuthorityNamespaceId = null,
-        $assigningAuthorityUniversalId = null,
-        $assigningAuthorityUniversalIdType = null,
-        $nameTypeCode = null,
-        $identifierCheckDigit = null,
-        $checkDigitScheme = null,
-        $identifierTypeCode = null,
-        $assigningFacilityNamespaceId = null,
-        $assigningFacilityUniversalId = null,
-        $assigningFacilityUniversalIdType = null,
-        $nameRepresentationCode = null,
-        $nameContextIdentifier = null,
-        $nameContextText = null,
-        $nameContextNameOfCodingSystem = null,
-        $nameContextAltIdentifier = null,
-        $nameContextAltText = null,
-        $nameContextNameOfAltCodingSystem = null,
-        $nameValidityRangeRangeStartDateTimeTime,
-        $nameValidityRangeRangeStartDateTimeDegreeOfPrecision = null,
-        $nameValidityRangeRangeEndDateTimeTime,
-        $nameValidityRangeRangeEndDateTimeDegreeOfPrecision = null,
-        $nameAssemblyOrder = null,
-        $effectiveDateTime,
-        $effectiveDateDegreeOfPrecision = null,
-        $expirationDateTime,
-        $expirationDateDegreeOfPrecision = null,
-        $professionalSuffix = null,
-        $assigningJurisdictionIdentifier = null,
-        $assigningJurisdictionText = null,
-        $assigningJurisdictionNameOfCodingSystem = null,
-        $assigningJurisdictionAltIdentifier = null,
-        $assigningJurisdictionAltText = null,
-        $assigningJurisdictionNameOfAltCodingSystem = null,
-        $assigningJurisdictionCodingSystemVersionId = null,
-        $assigningJurisdictionAltCodingSystemVersionId = null,
-        $assigningJurisdictionOriginalText = null,
-        $assigningAgencyIdentifier = null,
-        $assigningAgencyText = null,
-        $assigningAgencyNameOfCodingSystem = null,
-        $assigningAgencyAltIdentifier = null,
-        $assigningAgencyAltText = null,
-        $assigningAgencyNameOfAltCodingSystem = null,
-        $assigningAgencyCodingSystemVersionId = null,
-        $assigningAgencyAltCodingSystemVersionId = null,
-        $assigningAgencyOriginalText = null
+        string $idNumber = null,
+        string $familyNameSurname,
+        string $familyNameOwnSurnamePrefix = null,
+        string $familyNameOwnSurname = null,
+        string $familyNameSurnamePrefixFromPartner = null,
+        string $familyNameSurnameFromPartner = null,
+        string $givenName = null,
+        string $secondNames = null,
+        string $suffix = null,
+        string $prefix = null,
+        string $degree = null,
+        string $sourceTable = null,
+        string $assigningAuthorityNamespaceId = null,
+        string $assigningAuthorityUniversalId = null,
+        string $assigningAuthorityUniversalIdType = null,
+        string $nameTypeCode = null,
+        string $identifierCheckDigit = null,
+        string $checkDigitScheme = null,
+        string $identifierTypeCode = null,
+        string $assigningFacilityNamespaceId = null,
+        string $assigningFacilityUniversalId = null,
+        string $assigningFacilityUniversalIdType = null,
+        string $nameRepresentationCode = null,
+        string $nameContextIdentifier = null,
+        string $nameContextText = null,
+        string $nameContextNameOfCodingSystem = null,
+        string $nameContextAltIdentifier = null,
+        string $nameContextAltText = null,
+        string $nameContextNameOfAltCodingSystem = null,
+        string $nameValidityRangeRangeStartDateTimeTime,
+        string $nameValidityRangeRangeStartDateTimeDegreeOfPrecision = null,
+        string $nameValidityRangeRangeEndDateTimeTime,
+        string $nameValidityRangeRangeEndDateTimeDegreeOfPrecision = null,
+        string $nameAssemblyOrder = null,
+        string $effectiveDateTime,
+        string $effectiveDateDegreeOfPrecision = null,
+        string $expirationDateTime,
+        string $expirationDateDegreeOfPrecision = null,
+        string $professionalSuffix = null,
+        string $assigningJurisdictionIdentifier = null,
+        string $assigningJurisdictionText = null,
+        string $assigningJurisdictionNameOfCodingSystem = null,
+        string $assigningJurisdictionAltIdentifier = null,
+        string $assigningJurisdictionAltText = null,
+        string $assigningJurisdictionNameOfAltCodingSystem = null,
+        string $assigningJurisdictionCodingSystemVersionId = null,
+        string $assigningJurisdictionAltCodingSystemVersionId = null,
+        string $assigningJurisdictionOriginalText = null,
+        string $assigningAgencyIdentifier = null,
+        string $assigningAgencyText = null,
+        string $assigningAgencyNameOfCodingSystem = null,
+        string $assigningAgencyAltIdentifier = null,
+        string $assigningAgencyAltText = null,
+        string $assigningAgencyNameOfAltCodingSystem = null,
+        string $assigningAgencyCodingSystemVersionId = null,
+        string $assigningAgencyAltCodingSystemVersionId = null,
+        string $assigningAgencyOriginalText = null
     ) {
         $actionBy = $this
             ->dataTypeFactory
@@ -1412,12 +1416,12 @@ class OrcSegment extends AbstractSegment
      * @param string $nameOfAltCodingSystem
      */
     public function setFieldAdvancedBeneficiaryNoticeCode(
-        $identifier = null,
-        $text = null,
-        $nameOfCodingSystem = null,
-        $altIdentifier = null,
-        $altText = null,
-        $nameOfAltCodingSystem = null
+        string $identifier = null,
+        string $text = null,
+        string $nameOfCodingSystem = null,
+        string $altIdentifier = null,
+        string $altText = null,
+        string $nameOfAltCodingSystem = null
     ) {
         $this->advancedBeneficiaryNoticeCode = $this
             ->dataTypeFactory
@@ -1448,20 +1452,20 @@ class OrcSegment extends AbstractSegment
      * @param string $organisationIdentifier
      */
     public function addFieldOrderingFacilityName(
-        $organisationName = null,
-        $organisationNameTypeCode = null,
-        $idNumber = null,
-        $checkDigit = null,
-        $checkDigitScheme = null,
-        $assigningAuthorityNamespaceId = null,
-        $assigningAuthorityUniversalId = null,
-        $assigningAuthorityUniversalIdType = null,
-        $identifierTypeCode = null,
-        $assigningFacilityNamespaceId = null,
-        $assigningFacilityUniversalId = null,
-        $assigningFacilityUniversalIdType = null,
-        $nameRepresentationCode = null,
-        $organisationIdentifier = null
+        string $organisationName = null,
+        string $organisationNameTypeCode = null,
+        string $idNumber = null,
+        string $checkDigit = null,
+        string $checkDigitScheme = null,
+        string $assigningAuthorityNamespaceId = null,
+        string $assigningAuthorityUniversalId = null,
+        string $assigningAuthorityUniversalIdType = null,
+        string $identifierTypeCode = null,
+        string $assigningFacilityNamespaceId = null,
+        string $assigningFacilityUniversalId = null,
+        string $assigningFacilityUniversalIdType = null,
+        string $nameRepresentationCode = null,
+        string $organisationIdentifier = null
     ) {
         $orderingFacilityName = $this
             ->dataTypeFactory
@@ -1512,27 +1516,27 @@ class OrcSegment extends AbstractSegment
      * @param string $expirationDateDegreeOfPrecision
      */
     public function addFieldOrderingFacilityAddress(
-        $streetAddressStreetOrMailingAddress = null,
-        $streetAddressStreetName = null,
-        $streetAddressDwellingNumber = null,
-        $otherDesignation = null,
-        $city = null,
-        $stateOrProvince = null,
-        $zipOrPostalCode = null,
-        $country = null,
-        $addressType = null,
-        $otherGeographicDesignation = null,
-        $countyParishCode = null,
-        $censusTract = null,
-        $addressRepresentationCode = null,
-        $addressValidityRangeRangeStartDateTimeTime,
-        $addressValidityRangeRangeStartDateTimeDegreeOfPrecision = null,
-        $addressValidityRangeRangeEndDateTimeTime,
-        $addressValidityRangeRangeEndDateTimeDegreeOfPrecision = null,
-        $effectiveDateTime,
-        $effectiveDateDegreeOfPrecision = null,
-        $expirationDateTime,
-        $expirationDateDegreeOfPrecision = null
+        string $streetAddressStreetOrMailingAddress = null,
+        string $streetAddressStreetName = null,
+        string $streetAddressDwellingNumber = null,
+        string $otherDesignation = null,
+        string $city = null,
+        string $stateOrProvince = null,
+        string $zipOrPostalCode = null,
+        string $country = null,
+        string $addressType = null,
+        string $otherGeographicDesignation = null,
+        string $countyParishCode = null,
+        string $censusTract = null,
+        string $addressRepresentationCode = null,
+        string $addressValidityRangeRangeStartDateTimeTime,
+        string $addressValidityRangeRangeStartDateTimeDegreeOfPrecision = null,
+        string $addressValidityRangeRangeEndDateTimeTime,
+        string $addressValidityRangeRangeEndDateTimeDegreeOfPrecision = null,
+        string $effectiveDateTime,
+        string $effectiveDateDegreeOfPrecision = null,
+        string $expirationDateTime,
+        string $expirationDateDegreeOfPrecision = null
     ) {
         $orderingFacilityAddress = $this
             ->dataTypeFactory
@@ -1585,18 +1589,18 @@ class OrcSegment extends AbstractSegment
      * @param string $unformattedTelephoneNumber
      */
     public function addFieldOrderingFacilityPhoneNumber(
-        $telephoneNumber = null,
-        $telecommunicationUseCode = null,
-        $telepcommunicationEquipmentType = null,
-        $emailAddress = null,
-        $countryCode = null,
-        $areaCityCode = null,
-        $localNumber = null,
-        $extension = null,
-        $anyText = null,
-        $extensionPrefix = null,
-        $speedDialCode = null,
-        $unformattedTelephoneNumber = null
+        string $telephoneNumber = null,
+        string $telecommunicationUseCode = null,
+        string $telepcommunicationEquipmentType = null,
+        string $emailAddress = null,
+        string $countryCode = null,
+        string $areaCityCode = null,
+        string $localNumber = null,
+        string $extension = null,
+        string $anyText = null,
+        string $extensionPrefix = null,
+        string $speedDialCode = null,
+        string $unformattedTelephoneNumber = null
     ) {
         $orderingFacilityPhoneNumber = $this
             ->dataTypeFactory
@@ -1643,27 +1647,27 @@ class OrcSegment extends AbstractSegment
      * @param string $expirationDateDegreeOfPrecision
      */
     public function addFieldOrderingProviderAddress(
-        $streetAddressStreetOrMailingAddress = null,
-        $streetAddressStreetName = null,
-        $streetAddressDwellingNumber = null,
-        $otherDesignation = null,
-        $city = null,
-        $stateOrProvince = null,
-        $zipOrPostalCode = null,
-        $country = null,
-        $addressType = null,
-        $otherGeographicDesignation = null,
-        $countyParishCode = null,
-        $censusTract = null,
-        $addressRepresentationCode = null,
-        $addressValidityRangeRangeStartDateTimeTime,
-        $addressValidityRangeRangeStartDateTimeDegreeOfPrecision = null,
-        $addressValidityRangeRangeEndDateTimeTime,
-        $addressValidityRangeRangeEndDateTimeDegreeOfPrecision = null,
-        $effectiveDateTime,
-        $effectiveDateDegreeOfPrecision = null,
-        $expirationDateTime,
-        $expirationDateDegreeOfPrecision = null
+        string $streetAddressStreetOrMailingAddress = null,
+        string $streetAddressStreetName = null,
+        string $streetAddressDwellingNumber = null,
+        string $otherDesignation = null,
+        string $city = null,
+        string $stateOrProvince = null,
+        string $zipOrPostalCode = null,
+        string $country = null,
+        string $addressType = null,
+        string $otherGeographicDesignation = null,
+        string $countyParishCode = null,
+        string $censusTract = null,
+        string $addressRepresentationCode = null,
+        string $addressValidityRangeRangeStartDateTimeTime,
+        string $addressValidityRangeRangeStartDateTimeDegreeOfPrecision = null,
+        string $addressValidityRangeRangeEndDateTimeTime,
+        string $addressValidityRangeRangeEndDateTimeDegreeOfPrecision = null,
+        string $effectiveDateTime,
+        string $effectiveDateDegreeOfPrecision = null,
+        string $expirationDateTime,
+        string $expirationDateDegreeOfPrecision = null
     ) {
         $orderingProviderAddress = $this
             ->dataTypeFactory
@@ -1713,15 +1717,15 @@ class OrcSegment extends AbstractSegment
      * @param string $originalText
      */
     public function setFieldOrderStatusModifier(
-        $identifier = null,
-        $text = null,
-        $nameOfCodingSystem = null,
-        $altIdentifier = null,
-        $altText = null,
-        $nameOfAltCodingSystem = null,
-        $codingSystemVersionId = null,
-        $altCodingSystemVersionId = null,
-        $originalText = null
+        string $identifier = null,
+        string $text = null,
+        string $nameOfCodingSystem = null,
+        string $altIdentifier = null,
+        string $altText = null,
+        string $nameOfAltCodingSystem = null,
+        string $codingSystemVersionId = null,
+        string $altCodingSystemVersionId = null,
+        string $originalText = null
     ) {
         $this->orderStatusModifier = $this
             ->dataTypeFactory
@@ -1750,15 +1754,15 @@ class OrcSegment extends AbstractSegment
      * @param string $originalText
      */
     public function setFieldAdvancedBeneficiaryNoticeOverrideReason(
-        $identifier = null,
-        $text = null,
-        $nameOfCodingSystem = null,
-        $altIdentifier = null,
-        $altText = null,
-        $nameOfAltCodingSystem = null,
-        $codingSystemVersionId = null,
-        $altCodingSystemVersionId = null,
-        $originalText = null
+        string $identifier = null,
+        string $text = null,
+        string $nameOfCodingSystem = null,
+        string $altIdentifier = null,
+        string $altText = null,
+        string $nameOfAltCodingSystem = null,
+        string $codingSystemVersionId = null,
+        string $altCodingSystemVersionId = null,
+        string $originalText = null
     ) {
         $this->advancedBeneficiaryNoticeOverrideReason = $this
             ->dataTypeFactory
@@ -1785,8 +1789,10 @@ class OrcSegment extends AbstractSegment
      * @param string $time
      * @param string $degreeOfPrecision
      */
-    public function setFieldFillerExpectedAvailabilityDateTime($time, $degreeOfPrecision = null)
-    {
+    public function setFieldFillerExpectedAvailabilityDateTime(
+        string $time,
+        string $degreeOfPrecision = null
+    ) {
         $this->fillerExpectedAvailabilityDateTime = $this
             ->dataTypeFactory
             ->create('TS', $this->encodingParameters)
@@ -1807,15 +1813,15 @@ class OrcSegment extends AbstractSegment
      * @param string $originalText
      */
     public function setFieldConfidentialityCode(
-        $identifier = null,
-        $text = null,
-        $nameOfCodingSystem = null,
-        $altIdentifier = null,
-        $altText = null,
-        $nameOfAltCodingSystem = null,
-        $codingSystemVersionId = null,
-        $altCodingSystemVersionId = null,
-        $originalText = null
+        string $identifier = null,
+        string $text = null,
+        string $nameOfCodingSystem = null,
+        string $altIdentifier = null,
+        string $altText = null,
+        string $nameOfAltCodingSystem = null,
+        string $codingSystemVersionId = null,
+        string $altCodingSystemVersionId = null,
+        string $originalText = null
     ) {
         $this->confidentialityCode = $this
             ->dataTypeFactory
@@ -1844,15 +1850,15 @@ class OrcSegment extends AbstractSegment
      * @param string $originalText
      */
     public function setFieldOrderType(
-        $identifier = null,
-        $text = null,
-        $nameOfCodingSystem = null,
-        $altIdentifier = null,
-        $altText = null,
-        $nameOfAltCodingSystem = null,
-        $codingSystemVersionId = null,
-        $altCodingSystemVersionId = null,
-        $originalText = null
+        string $identifier = null,
+        string $text = null,
+        string $nameOfCodingSystem = null,
+        string $altIdentifier = null,
+        string $altText = null,
+        string $nameOfAltCodingSystem = null,
+        string $codingSystemVersionId = null,
+        string $altCodingSystemVersionId = null,
+        string $originalText = null
     ) {
         $this->orderType = $this
             ->dataTypeFactory
@@ -1881,15 +1887,15 @@ class OrcSegment extends AbstractSegment
      * @param string $originalText
      */
     public function setFieldEntererAuthorizationMode(
-        $identifier,
-        $text = null,
-        $nameOfCodingSystem = null,
-        $altIdentifier = null,
-        $altText = null,
-        $nameOfAltCodingSystem = null,
-        $codingSystemVersionId = null,
-        $altCodingSystemVersionId = null,
-        $originalText = null
+        string $identifier,
+        string $text = null,
+        string $nameOfCodingSystem = null,
+        string $altIdentifier = null,
+        string $altText = null,
+        string $nameOfAltCodingSystem = null,
+        string $codingSystemVersionId = null,
+        string $altCodingSystemVersionId = null,
+        string $originalText = null
     ) {
         $this->entererAuthorizationMode = $this
             ->dataTypeFactory
@@ -1918,15 +1924,15 @@ class OrcSegment extends AbstractSegment
      * @param string $originalText
      */
     public function setFieldParentUniversalServiceIdentifier(
-        $identifier = null,
-        $text = null,
-        $nameOfCodingSystem = null,
-        $altIdentifier = null,
-        $altText = null,
-        $nameOfAltCodingSystem = null,
-        $codingSystemVersionId = null,
-        $altCodingSystemVersionId = null,
-        $originalText = null
+        string $identifier = null,
+        string $text = null,
+        string $nameOfCodingSystem = null,
+        string $altIdentifier = null,
+        string $altText = null,
+        string $nameOfAltCodingSystem = null,
+        string $codingSystemVersionId = null,
+        string $altCodingSystemVersionId = null,
+        string $originalText = null
     ) {
         $this->parentUniversalServiceIdentifier = $this
             ->dataTypeFactory

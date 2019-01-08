@@ -10,50 +10,50 @@ class XonDataType extends ComponentDataType
     const MAX_LEN = 567;
 
     /**
-     * @var \Hl7v2\DataType\StDataType
+     * @var StDataType
      */
     private $organisationName;
     /**
-     * @var \Hl7v2\DataType\IsDataType
+     * @var IsDataType
      */
     private $organisationNameTypeCode;
     /**
-     * @var \Hl7v2\DataType\NmDataType
+     * @var NmDataType
      */
     private $idNumber;
     /**
-     * @var \Hl7v2\DataType\NmDataType
+     * @var NmDataType
      */
     private $checkDigit;
     /**
-     * @var \Hl7v2\DataType\IdDataType
+     * @var IdDataType
      */
     private $checkDigitScheme;
     /**
-     * @var \Hl7v2\DataType\HdDataType
+     * @var HdDataType
      */
     private $assigningAuthority;
     /**
-     * @var \Hl7v2\DataType\IdDataType
+     * @var IdDataType
      */
     private $identifierTypeCode;
     /**
-     * @var \Hl7v2\DataType\HdDataType
+     * @var HdDataType
      */
     private $assigningFacility;
     /**
-     * @var \Hl7v2\DataType\IdDataType
+     * @var IdDataType
      */
     private $nameRepresentationCode;
     /**
-     * @var \Hl7v2\DataType\StDataType
+     * @var StDataType
      */
     private $organisationIdentifier;
 
     /**
      * @param string $organisationName
      */
-    public function setOrganisationName($organisationName = null)
+    public function setOrganisationName(string $organisationName = null)
     {
         $this->organisationName = $this
             ->dataTypeFactory
@@ -65,8 +65,9 @@ class XonDataType extends ComponentDataType
     /**
      * @param string $organisationNameTypeCode
      */
-    public function setOrganisationNameTypeCode($organisationNameTypeCode = null)
-    {
+    public function setOrganisationNameTypeCode(
+        string $organisationNameTypeCode = null
+    ) {
         $this->organisationNameTypeCode = $this
             ->dataTypeFactory
             ->create('IS', $this->encodingParameters)
@@ -77,7 +78,7 @@ class XonDataType extends ComponentDataType
     /**
      * @param string $idNumber
      */
-    public function setIdNumber($idNumber = null)
+    public function setIdNumber(string $idNumber = null)
     {
         $this->idNumber = $this
             ->dataTypeFactory
@@ -89,7 +90,7 @@ class XonDataType extends ComponentDataType
     /**
      * @param string $checkDigit
      */
-    public function setCheckDigit($checkDigit = null)
+    public function setCheckDigit(string $checkDigit = null)
     {
         $this->checkDigit = $this
             ->dataTypeFactory
@@ -101,7 +102,7 @@ class XonDataType extends ComponentDataType
     /**
      * @param string $checkDigitScheme
      */
-    public function setCheckDigitScheme($checkDigitScheme = null)
+    public function setCheckDigitScheme(string $checkDigitScheme = null)
     {
         $this->checkDigitScheme = $this
             ->dataTypeFactory
@@ -116,9 +117,9 @@ class XonDataType extends ComponentDataType
      * @param string $assigningAuthorityUniversalIdType
      */
     public function setAssigningAuthority(
-        $assigningAuthorityNamespaceId = null,
-        $assigningAuthorityUniversalId = null,
-        $assigningAuthorityUniversalIdType = null
+        string $assigningAuthorityNamespaceId = null,
+        string $assigningAuthorityUniversalId = null,
+        string $assigningAuthorityUniversalIdType = null
     ) {
         $this->assigningAuthority = $this
             ->dataTypeFactory
@@ -132,7 +133,7 @@ class XonDataType extends ComponentDataType
     /**
      * @param string $identifierTypeCode
      */
-    public function setIdentifierTypeCode($identifierTypeCode = null)
+    public function setIdentifierTypeCode(string $identifierTypeCode = null)
     {
         $this->identifierTypeCode = $this
             ->dataTypeFactory
@@ -147,9 +148,9 @@ class XonDataType extends ComponentDataType
      * @param string $assigningFacilityUniversalIdType
      */
     public function setAssigningFacility(
-        $assigningFacilityNamespaceId = null,
-        $assigningFacilityUniversalId = null,
-        $assigningFacilityUniversalIdType = null
+        string $assigningFacilityNamespaceId = null,
+        string $assigningFacilityUniversalId = null,
+        string $assigningFacilityUniversalIdType = null
     ) {
         $this->assigningFacility = $this
             ->dataTypeFactory
@@ -163,8 +164,9 @@ class XonDataType extends ComponentDataType
     /**
      * @param string $nameRepresentationCode
      */
-    public function setNameRepresentationCode($nameRepresentationCode = null)
-    {
+    public function setNameRepresentationCode(
+        string $nameRepresentationCode = null
+    ) {
         $this->nameRepresentationCode = $this
             ->dataTypeFactory
             ->create('ID', $this->encodingParameters)
@@ -175,8 +177,9 @@ class XonDataType extends ComponentDataType
     /**
      * @param string $organisationIdentifier
      */
-    public function setOrganisationIdentifier($organisationIdentifier = null)
-    {
+    public function setOrganisationIdentifier(
+        string $organisationIdentifier = null
+    ) {
         $this->organisationIdentifier = $this
             ->dataTypeFactory
             ->create('ST', $this->encodingParameters)

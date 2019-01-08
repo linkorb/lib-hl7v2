@@ -10,58 +10,58 @@ class XtnDataType extends ComponentDataType
     const MAX_LEN = 850;
 
     /**
-     * @var \Hl7v2\DataType\StDataType
+     * @var StDataType
      */
     private $telephoneNumber;
     /**
-     * @var \Hl7v2\DataType\IdDataType
+     * @var IdDataType
      */
     private $telecommunicationUseCode;
     /**
-     * @var \Hl7v2\DataType\IdDataType
+     * @var IdDataType
      */
     private $telepcommunicationEquipmentType;
     /**
-     * @var \Hl7v2\DataType\StDataType
+     * @var StDataType
      */
     private $emailAddress;
     /**
-     * @var \Hl7v2\DataType\NmDataType
+     * @var NmDataType
      */
     private $countryCode;
     /**
-     * @var \Hl7v2\DataType\NmDataType
+     * @var NmDataType
      */
     private $areaCityCode;
     /**
-     * @var \Hl7v2\DataType\NmDataType
+     * @var NmDataType
      */
     private $localNumber;
     /**
-     * @var \Hl7v2\DataType\NmDataType
+     * @var NmDataType
      */
     private $extension;
     /**
-     * @var \Hl7v2\DataType\StDataType
+     * @var StDataType
      */
     private $anyText;
     /**
-     * @var \Hl7v2\DataType\StDataType
+     * @var StDataType
      */
     private $extensionPrefix;
     /**
-     * @var \Hl7v2\DataType\StDataType
+     * @var StDataType
      */
     private $speedDialCode;
     /**
-     * @var \Hl7v2\DataType\StDataType
+     * @var StDataType
      */
     private $unformattedTelephoneNumber;
 
     /**
      * @param string $telephoneNumber
      */
-    public function setTelephoneNumber($telephoneNumber = null)
+    public function setTelephoneNumber(string $telephoneNumber = null)
     {
         $this->telephoneNumber = $this
             ->dataTypeFactory
@@ -73,8 +73,9 @@ class XtnDataType extends ComponentDataType
     /**
      * @param string $telecommunicationUseCode
      */
-    public function setTelecommunicationUseCode($telecommunicationUseCode = null)
-    {
+    public function setTelecommunicationUseCode(
+        string $telecommunicationUseCode = null
+    ) {
         $this->telecommunicationUseCode = $this
             ->dataTypeFactory
             ->create('ID', $this->encodingParameters)
@@ -85,8 +86,9 @@ class XtnDataType extends ComponentDataType
     /**
      * @param string $telepcommunicationEquipmentType
      */
-    public function setTelepcommunicationEquipmentType($telepcommunicationEquipmentType = null)
-    {
+    public function setTelepcommunicationEquipmentType(
+        string $telepcommunicationEquipmentType = null
+    ) {
         $this->telepcommunicationEquipmentType = $this
             ->dataTypeFactory
             ->create('ID', $this->encodingParameters)
@@ -97,7 +99,7 @@ class XtnDataType extends ComponentDataType
     /**
      * @param string $emailAddress
      */
-    public function setEmailAddress($emailAddress = null)
+    public function setEmailAddress(string $emailAddress = null)
     {
         $this->emailAddress = $this
             ->dataTypeFactory
@@ -109,7 +111,7 @@ class XtnDataType extends ComponentDataType
     /**
      * @param string $countryCode
      */
-    public function setCountryCode($countryCode = null)
+    public function setCountryCode(string $countryCode = null)
     {
         $this->countryCode = $this
             ->dataTypeFactory
@@ -121,7 +123,7 @@ class XtnDataType extends ComponentDataType
     /**
      * @param string $areaCityCode
      */
-    public function setAreaCityCode($areaCityCode = null)
+    public function setAreaCityCode(string $areaCityCode = null)
     {
         $this->areaCityCode = $this
             ->dataTypeFactory
@@ -133,7 +135,7 @@ class XtnDataType extends ComponentDataType
     /**
      * @param string $localNumber
      */
-    public function setLocalNumber($localNumber = null)
+    public function setLocalNumber(string $localNumber = null)
     {
         $this->localNumber = $this
             ->dataTypeFactory
@@ -145,7 +147,7 @@ class XtnDataType extends ComponentDataType
     /**
      * @param string $extension
      */
-    public function setExtension($extension = null)
+    public function setExtension(string $extension = null)
     {
         $this->extension = $this
             ->dataTypeFactory
@@ -157,7 +159,7 @@ class XtnDataType extends ComponentDataType
     /**
      * @param string $anyText
      */
-    public function setAnyText($anyText = null)
+    public function setAnyText(string $anyText = null)
     {
         $this->anyText = $this
             ->dataTypeFactory
@@ -169,7 +171,7 @@ class XtnDataType extends ComponentDataType
     /**
      * @param string $extensionPrefix
      */
-    public function setExtensionPrefix($extensionPrefix = null)
+    public function setExtensionPrefix(string $extensionPrefix = null)
     {
         $this->extensionPrefix = $this
             ->dataTypeFactory
@@ -181,7 +183,7 @@ class XtnDataType extends ComponentDataType
     /**
      * @param string $speedDialCode
      */
-    public function setSpeedDialCode($speedDialCode = null)
+    public function setSpeedDialCode(string $speedDialCode = null)
     {
         $this->speedDialCode = $this
             ->dataTypeFactory
@@ -193,8 +195,9 @@ class XtnDataType extends ComponentDataType
     /**
      * @param string $unformattedTelephoneNumber
      */
-    public function setUnformattedTelephoneNumber($unformattedTelephoneNumber = null)
-    {
+    public function setUnformattedTelephoneNumber(
+        string $unformattedTelephoneNumber = null
+    ) {
         $this->unformattedTelephoneNumber = $this
             ->dataTypeFactory
             ->create('ST', $this->encodingParameters)

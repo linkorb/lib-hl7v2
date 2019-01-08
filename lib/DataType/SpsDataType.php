@@ -10,31 +10,31 @@ class SpsDataType extends ComponentDataType
     const MAX_LEN = 4436;
 
     /**
-     * @var \Hl7v2\DataType\CweDataType
+     * @var CweDataType
      */
     private $specimenSourceNameOrCode;
     /**
-     * @var \Hl7v2\DataType\CweDataType
+     * @var CweDataType
      */
     private $additives;
     /**
-     * @var \Hl7v2\DataType\TxDataType
+     * @var TxDataType
      */
     private $specimenCollectionMethod;
     /**
-     * @var \Hl7v2\DataType\CweDataType
+     * @var CweDataType
      */
     private $bodySite;
     /**
-     * @var \Hl7v2\DataType\CweDataType
+     * @var CweDataType
      */
     private $siteModifier;
     /**
-     * @var \Hl7v2\DataType\CweDataType
+     * @var CweDataType
      */
     private $collectionMethodModifierCode;
     /**
-     * @var \Hl7v2\DataType\CweDataType
+     * @var CweDataType
      */
     private $specimenRole;
 
@@ -50,15 +50,15 @@ class SpsDataType extends ComponentDataType
      * @param string $specimenSourceNameOrCodeOriginalText
      */
     public function setSpecimenSourceNameOrCode(
-        $specimenSourceNameOrCodeIdentifier = null,
-        $specimenSourceNameOrCodeText = null,
-        $specimenSourceNameOrCodeNameOfCodingSystem = null,
-        $specimenSourceNameOrCodeAltIdentifier = null,
-        $specimenSourceNameOrCodeAltText = null,
-        $specimenSourceNameOrCodeNameOfAltCodingSystem = null,
-        $specimenSourceNameOrCodeCodingSystemVersionId = null,
-        $specimenSourceNameOrCodeAltCodingSystemVersionId = null,
-        $specimenSourceNameOrCodeOriginalText = null
+        string $specimenSourceNameOrCodeIdentifier = null,
+        string $specimenSourceNameOrCodeText = null,
+        string $specimenSourceNameOrCodeNameOfCodingSystem = null,
+        string $specimenSourceNameOrCodeAltIdentifier = null,
+        string $specimenSourceNameOrCodeAltText = null,
+        string $specimenSourceNameOrCodeNameOfAltCodingSystem = null,
+        string $specimenSourceNameOrCodeCodingSystemVersionId = null,
+        string $specimenSourceNameOrCodeAltCodingSystemVersionId = null,
+        string $specimenSourceNameOrCodeOriginalText = null
     ) {
         $this->specimenSourceNameOrCode = $this
             ->dataTypeFactory
@@ -95,15 +95,15 @@ class SpsDataType extends ComponentDataType
      * @param string $additivesOriginalText
      */
     public function setAdditives(
-        $additivesIdentifier = null,
-        $additivesText = null,
-        $additivesNameOfCodingSystem = null,
-        $additivesAltIdentifier = null,
-        $additivesAltText = null,
-        $additivesNameOfAltCodingSystem = null,
-        $additivesCodingSystemVersionId = null,
-        $additivesAltCodingSystemVersionId = null,
-        $additivesOriginalText = null
+        string $additivesIdentifier = null,
+        string $additivesText = null,
+        string $additivesNameOfCodingSystem = null,
+        string $additivesAltIdentifier = null,
+        string $additivesAltText = null,
+        string $additivesNameOfAltCodingSystem = null,
+        string $additivesCodingSystemVersionId = null,
+        string $additivesAltCodingSystemVersionId = null,
+        string $additivesOriginalText = null
     ) {
         $this->additives = $this
             ->dataTypeFactory
@@ -123,8 +123,9 @@ class SpsDataType extends ComponentDataType
     /**
      * @param string $specimenCollectionMethod
      */
-    public function setSpecimenCollectionMethod($specimenCollectionMethod = null)
-    {
+    public function setSpecimenCollectionMethod(
+        string $specimenCollectionMethod = null
+    ) {
         $this->specimenCollectionMethod = $this
             ->dataTypeFactory
             ->create('TX', $this->encodingParameters)
@@ -144,15 +145,15 @@ class SpsDataType extends ComponentDataType
      * @param string $bodySiteOriginalText
      */
     public function setBodySite(
-        $bodySiteIdentifier = null,
-        $bodySiteText = null,
-        $bodySiteNameOfCodingSystem = null,
-        $bodySiteAltIdentifier = null,
-        $bodySiteAltText = null,
-        $bodySiteNameOfAltCodingSystem = null,
-        $bodySiteCodingSystemVersionId = null,
-        $bodySiteAltCodingSystemVersionId = null,
-        $bodySiteOriginalText = null
+        string $bodySiteIdentifier = null,
+        string $bodySiteText = null,
+        string $bodySiteNameOfCodingSystem = null,
+        string $bodySiteAltIdentifier = null,
+        string $bodySiteAltText = null,
+        string $bodySiteNameOfAltCodingSystem = null,
+        string $bodySiteCodingSystemVersionId = null,
+        string $bodySiteAltCodingSystemVersionId = null,
+        string $bodySiteOriginalText = null
     ) {
         $this->bodySite = $this
             ->dataTypeFactory
@@ -181,15 +182,15 @@ class SpsDataType extends ComponentDataType
      * @param string $siteModifierOriginalText
      */
     public function setSiteModifier(
-        $siteModifierIdentifier = null,
-        $siteModifierText = null,
-        $siteModifierNameOfCodingSystem = null,
-        $siteModifierAltIdentifier = null,
-        $siteModifierAltText = null,
-        $siteModifierNameOfAltCodingSystem = null,
-        $siteModifierCodingSystemVersionId = null,
-        $siteModifierAltCodingSystemVersionId = null,
-        $siteModifierOriginalText = null
+        string $siteModifierIdentifier = null,
+        string $siteModifierText = null,
+        string $siteModifierNameOfCodingSystem = null,
+        string $siteModifierAltIdentifier = null,
+        string $siteModifierAltText = null,
+        string $siteModifierNameOfAltCodingSystem = null,
+        string $siteModifierCodingSystemVersionId = null,
+        string $siteModifierAltCodingSystemVersionId = null,
+        string $siteModifierOriginalText = null
     ) {
         $this->siteModifier = $this
             ->dataTypeFactory
@@ -218,15 +219,15 @@ class SpsDataType extends ComponentDataType
      * @param string $collectionMethodModifierCodeOriginalText
      */
     public function setCollectionMethodModifierCode(
-        $collectionMethodModifierCodeIdentifier = null,
-        $collectionMethodModifierCodeText = null,
-        $collectionMethodModifierCodeNameOfCodingSystem = null,
-        $collectionMethodModifierCodeAltIdentifier = null,
-        $collectionMethodModifierCodeAltText = null,
-        $collectionMethodModifierCodeNameOfAltCodingSystem = null,
-        $collectionMethodModifierCodeCodingSystemVersionId = null,
-        $collectionMethodModifierCodeAltCodingSystemVersionId = null,
-        $collectionMethodModifierCodeOriginalText = null
+        string $collectionMethodModifierCodeIdentifier = null,
+        string $collectionMethodModifierCodeText = null,
+        string $collectionMethodModifierCodeNameOfCodingSystem = null,
+        string $collectionMethodModifierCodeAltIdentifier = null,
+        string $collectionMethodModifierCodeAltText = null,
+        string $collectionMethodModifierCodeNameOfAltCodingSystem = null,
+        string $collectionMethodModifierCodeCodingSystemVersionId = null,
+        string $collectionMethodModifierCodeAltCodingSystemVersionId = null,
+        string $collectionMethodModifierCodeOriginalText = null
     ) {
         $this->collectionMethodModifierCode = $this
             ->dataTypeFactory
@@ -267,15 +268,15 @@ class SpsDataType extends ComponentDataType
      * @param string $specimenRoleOriginalText
      */
     public function setSpecimenRole(
-        $specimenRoleIdentifier = null,
-        $specimenRoleText = null,
-        $specimenRoleNameOfCodingSystem = null,
-        $specimenRoleAltIdentifier = null,
-        $specimenRoleAltText = null,
-        $specimenRoleNameOfAltCodingSystem = null,
-        $specimenRoleCodingSystemVersionId = null,
-        $specimenRoleAltCodingSystemVersionId = null,
-        $specimenRoleOriginalText = null
+        string $specimenRoleIdentifier = null,
+        string $specimenRoleText = null,
+        string $specimenRoleNameOfCodingSystem = null,
+        string $specimenRoleAltIdentifier = null,
+        string $specimenRoleAltText = null,
+        string $specimenRoleNameOfAltCodingSystem = null,
+        string $specimenRoleCodingSystemVersionId = null,
+        string $specimenRoleAltCodingSystemVersionId = null,
+        string $specimenRoleOriginalText = null
     ) {
         $this->specimenRole = $this
             ->dataTypeFactory

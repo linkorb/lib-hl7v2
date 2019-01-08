@@ -10,50 +10,50 @@ class CxDataType extends ComponentDataType
     const MAX_LEN = 1913;
 
     /**
-     * @var \Hl7v2\DataType\StDataType
+     * @var StDataType
      */
     private $idNumber;
     /**
-     * @var \Hl7v2\DataType\StDataType
+     * @var StDataType
      */
     private $checkDigit;
     /**
-     * @var \Hl7v2\DataType\IdDataType
+     * @var IdDataType
      */
     private $checkDigitScheme;
     /**
-     * @var \Hl7v2\DataType\HdDataType
+     * @var HdDataType
      */
     private $assigningAuthority;
     /**
-     * @var \Hl7v2\DataType\IdDataType
+     * @var IdDataType
      */
     private $identifierTypeCode;
     /**
-     * @var \Hl7v2\DataType\HdDataType
+     * @var HdDataType
      */
     private $assigningFacility;
     /**
-     * @var \Hl7v2\DataType\DtDataType
+     * @var DtDataType
      */
     private $effectiveDate;
     /**
-     * @var \Hl7v2\DataType\DtDataType
+     * @var DtDataType
      */
     private $expirationDate;
     /**
-     * @var \Hl7v2\DataType\CweDataType
+     * @var CweDataType
      */
     private $assigningJurisdiction;
     /**
-     * @var \Hl7v2\DataType\CweDataType
+     * @var CweDataType
      */
     private $assigningAgency;
 
     /**
      * @param string $idNumber
      */
-    public function setIdNumber($idNumber)
+    public function setIdNumber(string $idNumber)
     {
         $this->idNumber = $this
             ->dataTypeFactory
@@ -65,7 +65,7 @@ class CxDataType extends ComponentDataType
     /**
      * @param string $checkDigit
      */
-    public function setCheckDigit($checkDigit = null)
+    public function setCheckDigit(string $checkDigit = null)
     {
         $this->checkDigit = $this
             ->dataTypeFactory
@@ -77,7 +77,7 @@ class CxDataType extends ComponentDataType
     /**
      * @param string $checkDigitScheme
      */
-    public function setCheckDigitScheme($checkDigitScheme = null)
+    public function setCheckDigitScheme(string $checkDigitScheme = null)
     {
         $this->checkDigitScheme = $this
             ->dataTypeFactory
@@ -92,9 +92,9 @@ class CxDataType extends ComponentDataType
      * @param string $assigningAuthorityUniversalIdType
      */
     public function setAssigningAuthority(
-        $assigningAuthorityNamespaceId = null,
-        $assigningAuthorityUniversalId = null,
-        $assigningAuthorityUniversalIdType = null
+        string $assigningAuthorityNamespaceId = null,
+        string $assigningAuthorityUniversalId = null,
+        string $assigningAuthorityUniversalIdType = null
     ) {
         $this->assigningAuthority = $this
             ->dataTypeFactory
@@ -108,7 +108,7 @@ class CxDataType extends ComponentDataType
     /**
      * @param string $identifierTypeCode
      */
-    public function setIdentifierTypeCode($identifierTypeCode = null)
+    public function setIdentifierTypeCode(string $identifierTypeCode = null)
     {
         $this->identifierTypeCode = $this
             ->dataTypeFactory
@@ -123,9 +123,9 @@ class CxDataType extends ComponentDataType
      * @param string $assigningFacilityUniversalIdType
      */
     public function setAssigningFacility(
-        $assigningFacilityNamespaceId = null,
-        $assigningFacilityUniversalId = null,
-        $assigningFacilityUniversalIdType = null
+        string $assigningFacilityNamespaceId = null,
+        string $assigningFacilityUniversalId = null,
+        string $assigningFacilityUniversalIdType = null
     ) {
         $this->assigningFacility = $this
             ->dataTypeFactory
@@ -139,7 +139,7 @@ class CxDataType extends ComponentDataType
     /**
      * @param string $effectiveDate
      */
-    public function setEffectiveDate($effectiveDate = null)
+    public function setEffectiveDate(string $effectiveDate = null)
     {
         $this->effectiveDate = $this
             ->dataTypeFactory
@@ -151,7 +151,7 @@ class CxDataType extends ComponentDataType
     /**
      * @param string $expirationDate
      */
-    public function setExpirationDate($expirationDate = null)
+    public function setExpirationDate(string $expirationDate = null)
     {
         $this->expirationDate = $this
             ->dataTypeFactory
@@ -172,15 +172,15 @@ class CxDataType extends ComponentDataType
      * @param string $assigningJurisdictionOriginalText
      */
     public function setAssigningJurisdiction(
-        $assigningJurisdictionIdentifier = null,
-        $assigningJurisdictionText = null,
-        $assigningJurisdictionNameOfCodingSystem = null,
-        $assigningJurisdictionAltIdentifier = null,
-        $assigningJurisdictionAltText = null,
-        $assigningJurisdictionNameOfAltCodingSystem = null,
-        $assigningJurisdictionCodingSystemVersionId = null,
-        $assigningJurisdictionAltCodingSystemVersionId = null,
-        $assigningJurisdictionOriginalText = null
+        string $assigningJurisdictionIdentifier = null,
+        string $assigningJurisdictionText = null,
+        string $assigningJurisdictionNameOfCodingSystem = null,
+        string $assigningJurisdictionAltIdentifier = null,
+        string $assigningJurisdictionAltText = null,
+        string $assigningJurisdictionNameOfAltCodingSystem = null,
+        string $assigningJurisdictionCodingSystemVersionId = null,
+        string $assigningJurisdictionAltCodingSystemVersionId = null,
+        string $assigningJurisdictionOriginalText = null
     ) {
         $this->assigningJurisdiction = $this
             ->dataTypeFactory
@@ -217,15 +217,15 @@ class CxDataType extends ComponentDataType
      * @param string $assigningAgencyOriginalText
      */
     public function setAssigningAgency(
-        $assigningAgencyIdentifier = null,
-        $assigningAgencyText = null,
-        $assigningAgencyNameOfCodingSystem = null,
-        $assigningAgencyAltIdentifier = null,
-        $assigningAgencyAltText = null,
-        $assigningAgencyNameOfAltCodingSystem = null,
-        $assigningAgencyCodingSystemVersionId = null,
-        $assigningAgencyAltCodingSystemVersionId = null,
-        $assigningAgencyOriginalText = null
+        string $assigningAgencyIdentifier = null,
+        string $assigningAgencyText = null,
+        string $assigningAgencyNameOfCodingSystem = null,
+        string $assigningAgencyAltIdentifier = null,
+        string $assigningAgencyAltText = null,
+        string $assigningAgencyNameOfAltCodingSystem = null,
+        string $assigningAgencyCodingSystemVersionId = null,
+        string $assigningAgencyAltCodingSystemVersionId = null,
+        string $assigningAgencyOriginalText = null
     ) {
         $this->assigningAgency = $this
             ->dataTypeFactory

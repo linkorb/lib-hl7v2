@@ -10,51 +10,51 @@ class TqDataType extends ComponentDataType
     const MAX_LEN = 1545;
 
     /**
-     * @var \Hl7v2\DataType\CqDataType
+     * @var CqDataType
      */
     private $quantity;
     /**
-     * @var \Hl7v2\DataType\RiDataType
+     * @var RiDataType
      */
     private $interval;
     /**
-     * @var \Hl7v2\DataType\StDataType
+     * @var StDataType
      */
     private $duration;
     /**
-     * @var \Hl7v2\DataType\TsDataType
+     * @var TsDataType
      */
     private $startDateTime;
     /**
-     * @var \Hl7v2\DataType\TsDataType
+     * @var TsDataType
      */
     private $endDateTime;
     /**
-     * @var \Hl7v2\DataType\StDataType
+     * @var StDataType
      */
     private $priority;
     /**
-     * @var \Hl7v2\DataType\StDataType
+     * @var StDataType
      */
     private $condition;
     /**
-     * @var \Hl7v2\DataType\TxDataType
+     * @var TxDataType
      */
     private $text;
     /**
-     * @var \Hl7v2\DataType\IdDataType
+     * @var IdDataType
      */
     private $conjunction;
     /**
-     * @var \Hl7v2\DataType\OsdDataType
+     * @var OsdDataType
      */
     private $orderSequencing;
     /**
-     * @var \Hl7v2\DataType\CeDataType
+     * @var CeDataType
      */
     private $occurrenceDuration;
     /**
-     * @var \Hl7v2\DataType\NmDataType
+     * @var NmDataType
      */
     private $totalOccurrences;
 
@@ -68,13 +68,13 @@ class TqDataType extends ComponentDataType
      * @param string $quantityUnitsNameOfAltCodingSystem
      */
     public function setQuantity(
-        $quantityQuantity = null,
-        $quantityUnitsIdentifier = null,
-        $quantityUnitsText = null,
-        $quantityUnitsNameOfCodingSystem = null,
-        $quantityUnitsAltIdentifier = null,
-        $quantityUnitsAltText = null,
-        $quantityUnitsNameOfAltCodingSystem = null
+        string $quantityQuantity = null,
+        string $quantityUnitsIdentifier = null,
+        string $quantityUnitsText = null,
+        string $quantityUnitsNameOfCodingSystem = null,
+        string $quantityUnitsAltIdentifier = null,
+        string $quantityUnitsAltText = null,
+        string $quantityUnitsNameOfAltCodingSystem = null
     ) {
         $this->quantity = $this
             ->dataTypeFactory
@@ -95,8 +95,10 @@ class TqDataType extends ComponentDataType
      * @param string $intervalRepeatPattern
      * @param string $intervalExplicitTimeInterval
      */
-    public function setInterval($intervalRepeatPattern = null, $intervalExplicitTimeInterval = null)
-    {
+    public function setInterval(
+        string $intervalRepeatPattern = null,
+        string $intervalExplicitTimeInterval = null
+    ) {
         $this->interval = $this
             ->dataTypeFactory
             ->create('RI', $this->encodingParameters, true)
@@ -108,7 +110,7 @@ class TqDataType extends ComponentDataType
     /**
      * @param string $duration
      */
-    public function setDuration($duration = null)
+    public function setDuration(string $duration = null)
     {
         $this->duration = $this
             ->dataTypeFactory
@@ -121,8 +123,10 @@ class TqDataType extends ComponentDataType
      * @param string $startDateTimeTime
      * @param string $startDateTimeDegreeOfPrecision
      */
-    public function setStartDateTime($startDateTimeTime, $startDateTimeDegreeOfPrecision = null)
-    {
+    public function setStartDateTime(
+        string $startDateTimeTime,
+        string $startDateTimeDegreeOfPrecision = null
+    ) {
         $this->startDateTime = $this
             ->dataTypeFactory
             ->create('TS', $this->encodingParameters, true)
@@ -135,8 +139,10 @@ class TqDataType extends ComponentDataType
      * @param string $endDateTimeTime
      * @param string $endDateTimeDegreeOfPrecision
      */
-    public function setEndDateTime($endDateTimeTime, $endDateTimeDegreeOfPrecision = null)
-    {
+    public function setEndDateTime(
+        string $endDateTimeTime,
+        string $endDateTimeDegreeOfPrecision = null
+    ) {
         $this->endDateTime = $this
             ->dataTypeFactory
             ->create('TS', $this->encodingParameters, true)
@@ -148,7 +154,7 @@ class TqDataType extends ComponentDataType
     /**
      * @param string $priority
      */
-    public function setPriority($priority = null)
+    public function setPriority(string $priority = null)
     {
         $this->priority = $this
             ->dataTypeFactory
@@ -160,7 +166,7 @@ class TqDataType extends ComponentDataType
     /**
      * @param string $condition
      */
-    public function setCondition($condition = null)
+    public function setCondition(string $condition = null)
     {
         $this->condition = $this
             ->dataTypeFactory
@@ -172,7 +178,7 @@ class TqDataType extends ComponentDataType
     /**
      * @param string $text
      */
-    public function setText($text = null)
+    public function setText(string $text = null)
     {
         $this->text = $this
             ->dataTypeFactory
@@ -184,7 +190,7 @@ class TqDataType extends ComponentDataType
     /**
      * @param string $conjunction
      */
-    public function setConjunction($conjunction = null)
+    public function setConjunction(string $conjunction = null)
     {
         $this->conjunction = $this
             ->dataTypeFactory
@@ -207,17 +213,17 @@ class TqDataType extends ComponentDataType
      * @param string $orderSequencingFillerOrderNumberUniversalIdType
      */
     public function setOrderSequencing(
-        $orderSequencingSequenceResultsFlag,
-        $orderSequencingPlacerOrderNumberEntityIdentifier,
-        $orderSequencingPlacerOrderNumberNamespaceId = null,
-        $orderSequencingFillerOrderNumberEntityIdentifier,
-        $orderSequencingFillerOrderNumberNamespaceId = null,
-        $orderSequencingSequenceConditionValue = null,
-        $orderSequencingMaximumNumberOfRepeats = null,
-        $orderSequencingPlacerOrderNumberUniversalId,
-        $orderSequencingPlacerOrderNumberUniversalIdType = null,
-        $orderSequencingFillerOrderNumberUniversalId,
-        $orderSequencingFillerOrderNumberUniversalIdType = null
+        string $orderSequencingSequenceResultsFlag,
+        string $orderSequencingPlacerOrderNumberEntityIdentifier,
+        string $orderSequencingPlacerOrderNumberNamespaceId = null,
+        string $orderSequencingFillerOrderNumberEntityIdentifier,
+        string $orderSequencingFillerOrderNumberNamespaceId = null,
+        string $orderSequencingSequenceConditionValue = null,
+        string $orderSequencingMaximumNumberOfRepeats = null,
+        string $orderSequencingPlacerOrderNumberUniversalId,
+        string $orderSequencingPlacerOrderNumberUniversalIdType = null,
+        string $orderSequencingFillerOrderNumberUniversalId,
+        string $orderSequencingFillerOrderNumberUniversalIdType = null
     ) {
         $this->orderSequencing = $this
             ->dataTypeFactory
@@ -261,12 +267,12 @@ class TqDataType extends ComponentDataType
      * @param string $occurrenceDurationNameOfAltCodingSystem
      */
     public function setOccurrenceDuration(
-        $occurrenceDurationIdentifier = null,
-        $occurrenceDurationText = null,
-        $occurrenceDurationNameOfCodingSystem = null,
-        $occurrenceDurationAltIdentifier = null,
-        $occurrenceDurationAltText = null,
-        $occurrenceDurationNameOfAltCodingSystem = null
+        string $occurrenceDurationIdentifier = null,
+        string $occurrenceDurationText = null,
+        string $occurrenceDurationNameOfCodingSystem = null,
+        string $occurrenceDurationAltIdentifier = null,
+        string $occurrenceDurationAltText = null,
+        string $occurrenceDurationNameOfAltCodingSystem = null
     ) {
         $this->occurrenceDuration = $this
             ->dataTypeFactory
@@ -285,7 +291,7 @@ class TqDataType extends ComponentDataType
     /**
      * @param string $totalOccurrences
      */
-    public function setTotalOccurrences($totalOccurrences = null)
+    public function setTotalOccurrences(string $totalOccurrences = null)
     {
         $this->totalOccurrences = $this
             ->dataTypeFactory

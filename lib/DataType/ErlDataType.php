@@ -10,34 +10,34 @@ class ErlDataType extends ComponentDataType
     const MAX_LEN = 18;
 
     /**
-     * @var \Hl7v2\DataType\StDataType
+     * @var StDataType
      */
     private $segmentId;
     /**
-     * @var \Hl7v2\DataType\NmDataType
+     * @var NmDataType
      */
     private $segmentSequence;
     /**
-     * @var \Hl7v2\DataType\NmDataType
+     * @var NmDataType
      */
     private $fieldPosition;
     /**
-     * @var \Hl7v2\DataType\NmDataType
+     * @var NmDataType
      */
     private $fieldRepetition;
     /**
-     * @var \Hl7v2\DataType\NmDataType
+     * @var NmDataType
      */
     private $componentNumber;
     /**
-     * @var \Hl7v2\DataType\NmDataType
+     * @var NmDataType
      */
     private $subcomponentNumber;
 
     /**
      * @param string $segmentId
      */
-    public function setSegmentId($segmentId)
+    public function setSegmentId(string $segmentId)
     {
         $this->segmentId = $this
             ->dataTypeFactory
@@ -49,7 +49,7 @@ class ErlDataType extends ComponentDataType
     /**
      * @param string $segmentSequence
      */
-    public function setSegmentSequence($segmentSequence)
+    public function setSegmentSequence(string $segmentSequence)
     {
         $this->segmentSequence = $this
             ->dataTypeFactory
@@ -61,7 +61,7 @@ class ErlDataType extends ComponentDataType
     /**
      * @param string $fieldPosition
      */
-    public function setFieldPosition($fieldPosition = null)
+    public function setFieldPosition(string $fieldPosition = null)
     {
         $this->fieldPosition = $this
             ->dataTypeFactory
@@ -73,7 +73,7 @@ class ErlDataType extends ComponentDataType
     /**
      * @param string $fieldRepetition
      */
-    public function setFieldRepetition($fieldRepetition = null)
+    public function setFieldRepetition(string $fieldRepetition = null)
     {
         $this->fieldRepetition = $this
             ->dataTypeFactory
@@ -85,7 +85,7 @@ class ErlDataType extends ComponentDataType
     /**
      * @param string $componentNumber
      */
-    public function setComponentNumber($componentNumber = null)
+    public function setComponentNumber(string $componentNumber = null)
     {
         $this->componentNumber = $this
             ->dataTypeFactory
@@ -97,7 +97,7 @@ class ErlDataType extends ComponentDataType
     /**
      * @param string $subcomponentNumber
      */
-    public function setSubcomponentNumber($subcomponentNumber = null)
+    public function setSubcomponentNumber(string $subcomponentNumber = null)
     {
         $this->subcomponentNumber = $this
             ->dataTypeFactory

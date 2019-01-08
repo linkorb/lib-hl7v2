@@ -10,18 +10,18 @@ class PtDataType extends ComponentDataType
     const MAX_LEN = 3;
 
     /**
-     * @var \Hl7v2\DataType\IdDataType
+     * @var IdDataType
      */
     private $processingId;
     /**
-     * @var \Hl7v2\DataType\IdDataType
+     * @var IdDataType
      */
     private $processingMode;
 
     /**
      * @param string $processingId
      */
-    public function setProcessingId($processingId = null)
+    public function setProcessingId(string $processingId = null)
     {
         $this->processingId = $this
             ->dataTypeFactory
@@ -33,7 +33,7 @@ class PtDataType extends ComponentDataType
     /**
      * @param string $processingMode
      */
-    public function setProcessingMode($processingMode = null)
+    public function setProcessingMode(string $processingMode = null)
     {
         $this->processingMode = $this
             ->dataTypeFactory

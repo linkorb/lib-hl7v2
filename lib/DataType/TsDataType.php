@@ -10,18 +10,18 @@ class TsDataType extends ComponentDataType
     const MAX_LEN = 26;
 
     /**
-     * @var \Hl7v2\DataType\DtmDataType
+     * @var DtmDataType
      */
     private $time;
     /**
-     * @var \Hl7v2\DataType\IdDataType
+     * @var IdDataType
      */
     private $degreeOfPrecision;
 
     /**
      * @param string $time
      */
-    public function setTime($time)
+    public function setTime(string $time)
     {
         $this->time = $this
             ->dataTypeFactory
@@ -33,7 +33,7 @@ class TsDataType extends ComponentDataType
     /**
      * @param string $degreeOfPrecision
      */
-    public function setDegreeOfPrecision($degreeOfPrecision = null)
+    public function setDegreeOfPrecision(string $degreeOfPrecision = null)
     {
         $this->degreeOfPrecision = $this
             ->dataTypeFactory

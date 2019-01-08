@@ -10,26 +10,26 @@ class EldDataType extends ComponentDataType
     const MAX_LEN = 493;
 
     /**
-     * @var \Hl7v2\DataType\StDataType
+     * @var StDataType
      */
     private $segmentId;
     /**
-     * @var \Hl7v2\DataType\NmDataType
+     * @var NmDataType
      */
     private $segmentSequence;
     /**
-     * @var \Hl7v2\DataType\NmDataType
+     * @var NmDataType
      */
     private $fieldPosition;
     /**
-     * @var \Hl7v2\DataType\CeDataType
+     * @var CeDataType
      */
     private $codeIdentifyingError;
 
     /**
      * @param string $segmentId
      */
-    public function setSegmentId($segmentId = null)
+    public function setSegmentId(string $segmentId = null)
     {
         $this->segmentId = $this
             ->dataTypeFactory
@@ -41,7 +41,7 @@ class EldDataType extends ComponentDataType
     /**
      * @param string $segmentSequence
      */
-    public function setSegmentSequence($segmentSequence = null)
+    public function setSegmentSequence(string $segmentSequence = null)
     {
         $this->segmentSequence = $this
             ->dataTypeFactory
@@ -53,7 +53,7 @@ class EldDataType extends ComponentDataType
     /**
      * @param string $fieldPosition
      */
-    public function setFieldPosition($fieldPosition = null)
+    public function setFieldPosition(string $fieldPosition = null)
     {
         $this->fieldPosition = $this
             ->dataTypeFactory
@@ -71,12 +71,12 @@ class EldDataType extends ComponentDataType
      * @param string $codeIdentifyingErrorNameOfAltCodingSystem
      */
     public function setCodeIdentifyingError(
-        $codeIdentifyingErrorIdentifier = null,
-        $codeIdentifyingErrorText = null,
-        $codeIdentifyingErrorNameOfCodingSystem = null,
-        $codeIdentifyingErrorAltIdentifier = null,
-        $codeIdentifyingErrorAltText = null,
-        $codeIdentifyingErrorNameOfAltCodingSystem = null
+        string $codeIdentifyingErrorIdentifier = null,
+        string $codeIdentifyingErrorText = null,
+        string $codeIdentifyingErrorNameOfCodingSystem = null,
+        string $codeIdentifyingErrorAltIdentifier = null,
+        string $codeIdentifyingErrorAltText = null,
+        string $codeIdentifyingErrorNameOfAltCodingSystem = null
     ) {
         $this->codeIdentifyingError = $this
             ->dataTypeFactory

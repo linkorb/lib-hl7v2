@@ -12,166 +12,166 @@ use Hl7v2\Exception\SegmentError;
 class PidSegment extends AbstractSegment
 {
     /**
-     * @var \Hl7v2\DataType\SiDataType
+     * @var SiDataType
      */
     private $setId = null;
     /**
-     * @var \Hl7v2\DataType\CxDataType
+     * @var CxDataType
      */
     private $patientId = null;
     /**
-     * @var \Hl7v2\DataType\CxDataType[]
+     * @var CxDataType[]
      */
     private $patientIdentifierList;
     /**
-     * @var \Hl7v2\DataType\CxDataType[]
+     * @var CxDataType[]
      */
     private $altPatientId = [];
     /**
-     * @var \Hl7v2\DataType\XpnDataType[]
+     * @var XpnDataType[]
      */
     private $patientName;
     /**
-     * @var \Hl7v2\DataType\XpnDataType[]
+     * @var XpnDataType[]
      */
     private $mothersMaidenName = [];
     /**
-     * @var \Hl7v2\DataType\TsDataType
+     * @var TsDataType
      */
     private $datetimeOfBirth = null;
     /**
-     * @var \Hl7v2\DataType\IsDataType
+     * @var IsDataType
      */
     private $administrativeSex = null;
     /**
-     * @var \Hl7v2\DataType\XpnDataType[]
+     * @var XpnDataType[]
      */
     private $patientAlias = [];
     /**
-     * @var \Hl7v2\DataType\CeDataType[]
+     * @var CeDataType[]
      */
     private $race = [];
     /**
-     * @var \Hl7v2\DataType\XadDataType[]
+     * @var XadDataType[]
      */
     private $patientAddress = [];
     /**
-     * @var \Hl7v2\DataType\IsDataType
+     * @var IsDataType
      */
     private $countyCode = null;
     /**
-     * @var \Hl7v2\DataType\XtnDataType[]
+     * @var XtnDataType[]
      */
     private $phoneNumberHome = [];
     /**
-     * @var \Hl7v2\DataType\XtnDataType[]
+     * @var XtnDataType[]
      */
     private $phoneNumberBusiness = [];
     /**
-     * @var \Hl7v2\DataType\CeDataType
+     * @var CeDataType
      */
     private $primaryLanguage = null;
     /**
-     * @var \Hl7v2\DataType\CeDataType
+     * @var CeDataType
      */
     private $maritalStatus = null;
     /**
-     * @var \Hl7v2\DataType\CeDataType
+     * @var CeDataType
      */
     private $religion = null;
     /**
-     * @var \Hl7v2\DataType\CxDataType
+     * @var CxDataType
      */
     private $patientAccountNumber = null;
     /**
-     * @var \Hl7v2\DataType\StDataType
+     * @var StDataType
      */
     private $ssnNumberPatient = null;
     /**
-     * @var \Hl7v2\DataType\DlnDataType
+     * @var DlnDataType
      */
     private $driversLicenseNumberPatient = null;
     /**
-     * @var \Hl7v2\DataType\CxDataType[]
+     * @var CxDataType[]
      */
     private $mothersIdentifier = [];
     /**
-     * @var \Hl7v2\DataType\CeDataType[]
+     * @var CeDataType[]
      */
     private $ethnicGroup = [];
     /**
-     * @var \Hl7v2\DataType\StDataType
+     * @var StDataType
      */
     private $birthPlace = null;
     /**
-     * @var \Hl7v2\DataType\IdDataType
+     * @var IdDataType
      */
     private $multipleBirthIndicator = null;
     /**
-     * @var \Hl7v2\DataType\NmDataType
+     * @var NmDataType
      */
     private $birthOrder = null;
     /**
-     * @var \Hl7v2\DataType\CeDataType[]
+     * @var CeDataType[]
      */
     private $citizenship = [];
     /**
-     * @var \Hl7v2\DataType\CeDataType
+     * @var CeDataType
      */
     private $veteransMilitaryStatus = null;
     /**
-     * @var \Hl7v2\DataType\CeDataType
+     * @var CeDataType
      */
     private $nationality = null;
     /**
-     * @var \Hl7v2\DataType\TsDataType
+     * @var TsDataType
      */
     private $patientDeathDateAndTime = null;
     /**
-     * @var \Hl7v2\DataType\IdDataType
+     * @var IdDataType
      */
     private $patientDeathIndicator = null;
     /**
-     * @var \Hl7v2\DataType\IdDataType
+     * @var IdDataType
      */
     private $identityUnknownIndicator = null;
     /**
-     * @var \Hl7v2\DataType\IsDataType[]
+     * @var IsDataType[]
      */
     private $identityReliabilityCode = [];
     /**
-     * @var \Hl7v2\DataType\TsDataType
+     * @var TsDataType
      */
     private $lastUpdateDatetime = null;
     /**
-     * @var \Hl7v2\DataType\HdDataType
+     * @var HdDataType
      */
     private $lastUpdateFacility = null;
     /**
-     * @var \Hl7v2\DataType\CeDataType
+     * @var CeDataType
      */
     private $speciesCode = null;
     /**
-     * @var \Hl7v2\DataType\CeDataType
+     * @var CeDataType
      */
     private $breedCode = null;
     /**
-     * @var \Hl7v2\DataType\StDataType
+     * @var StDataType
      */
     private $strain = null;
     /**
-     * @var \Hl7v2\DataType\CeDataType[]
+     * @var CeDataType[]
      */
     private $productionClassCode = [];
     /**
-     * @var \Hl7v2\DataType\CweDataType[]
+     * @var CweDataType[]
      */
     private $tribalCitizenship = [];
 
     /**
      * @param string $value
      */
-    public function setFieldSetId($value)
+    public function setFieldSetId(string $value)
     {
         $this->setId = $this
             ->dataTypeFactory
@@ -213,36 +213,36 @@ class PidSegment extends AbstractSegment
      * @param string $assigningAgencyOriginalText
      */
     public function setFieldPatientId(
-        $idNumber,
-        $checkDigit = null,
-        $checkDigitScheme = null,
-        $assigningAuthorityNamespaceId = null,
-        $assigningAuthorityUniversalId = null,
-        $assigningAuthorityUniversalIdType = null,
-        $identifierTypeCode = null,
-        $assigningFacilityNamespaceId = null,
-        $assigningFacilityUniversalId = null,
-        $assigningFacilityUniversalIdType = null,
-        $effectiveDate = null,
-        $expirationDate = null,
-        $assigningJurisdictionIdentifier = null,
-        $assigningJurisdictionText = null,
-        $assigningJurisdictionNameOfCodingSystem = null,
-        $assigningJurisdictionAltIdentifier = null,
-        $assigningJurisdictionAltText = null,
-        $assigningJurisdictionNameOfAltCodingSystem = null,
-        $assigningJurisdictionCodingSystemVersionId = null,
-        $assigningJurisdictionAltCodingSystemVersionId = null,
-        $assigningJurisdictionOriginalText = null,
-        $assigningAgencyIdentifier = null,
-        $assigningAgencyText = null,
-        $assigningAgencyNameOfCodingSystem = null,
-        $assigningAgencyAltIdentifier = null,
-        $assigningAgencyAltText = null,
-        $assigningAgencyNameOfAltCodingSystem = null,
-        $assigningAgencyCodingSystemVersionId = null,
-        $assigningAgencyAltCodingSystemVersionId = null,
-        $assigningAgencyOriginalText = null
+        string $idNumber,
+        string $checkDigit = null,
+        string $checkDigitScheme = null,
+        string $assigningAuthorityNamespaceId = null,
+        string $assigningAuthorityUniversalId = null,
+        string $assigningAuthorityUniversalIdType = null,
+        string $identifierTypeCode = null,
+        string $assigningFacilityNamespaceId = null,
+        string $assigningFacilityUniversalId = null,
+        string $assigningFacilityUniversalIdType = null,
+        string $effectiveDate = null,
+        string $expirationDate = null,
+        string $assigningJurisdictionIdentifier = null,
+        string $assigningJurisdictionText = null,
+        string $assigningJurisdictionNameOfCodingSystem = null,
+        string $assigningJurisdictionAltIdentifier = null,
+        string $assigningJurisdictionAltText = null,
+        string $assigningJurisdictionNameOfAltCodingSystem = null,
+        string $assigningJurisdictionCodingSystemVersionId = null,
+        string $assigningJurisdictionAltCodingSystemVersionId = null,
+        string $assigningJurisdictionOriginalText = null,
+        string $assigningAgencyIdentifier = null,
+        string $assigningAgencyText = null,
+        string $assigningAgencyNameOfCodingSystem = null,
+        string $assigningAgencyAltIdentifier = null,
+        string $assigningAgencyAltText = null,
+        string $assigningAgencyNameOfAltCodingSystem = null,
+        string $assigningAgencyCodingSystemVersionId = null,
+        string $assigningAgencyAltCodingSystemVersionId = null,
+        string $assigningAgencyOriginalText = null
     ) {
         $this->patientId = $this
             ->dataTypeFactory
@@ -321,36 +321,36 @@ class PidSegment extends AbstractSegment
      * @param string $assigningAgencyOriginalText
      */
     public function addFieldPatientIdentifierList(
-        $idNumber,
-        $checkDigit = null,
-        $checkDigitScheme = null,
-        $assigningAuthorityNamespaceId = null,
-        $assigningAuthorityUniversalId = null,
-        $assigningAuthorityUniversalIdType = null,
-        $identifierTypeCode = null,
-        $assigningFacilityNamespaceId = null,
-        $assigningFacilityUniversalId = null,
-        $assigningFacilityUniversalIdType = null,
-        $effectiveDate = null,
-        $expirationDate = null,
-        $assigningJurisdictionIdentifier = null,
-        $assigningJurisdictionText = null,
-        $assigningJurisdictionNameOfCodingSystem = null,
-        $assigningJurisdictionAltIdentifier = null,
-        $assigningJurisdictionAltText = null,
-        $assigningJurisdictionNameOfAltCodingSystem = null,
-        $assigningJurisdictionCodingSystemVersionId = null,
-        $assigningJurisdictionAltCodingSystemVersionId = null,
-        $assigningJurisdictionOriginalText = null,
-        $assigningAgencyIdentifier = null,
-        $assigningAgencyText = null,
-        $assigningAgencyNameOfCodingSystem = null,
-        $assigningAgencyAltIdentifier = null,
-        $assigningAgencyAltText = null,
-        $assigningAgencyNameOfAltCodingSystem = null,
-        $assigningAgencyCodingSystemVersionId = null,
-        $assigningAgencyAltCodingSystemVersionId = null,
-        $assigningAgencyOriginalText = null
+        string $idNumber,
+        string $checkDigit = null,
+        string $checkDigitScheme = null,
+        string $assigningAuthorityNamespaceId = null,
+        string $assigningAuthorityUniversalId = null,
+        string $assigningAuthorityUniversalIdType = null,
+        string $identifierTypeCode = null,
+        string $assigningFacilityNamespaceId = null,
+        string $assigningFacilityUniversalId = null,
+        string $assigningFacilityUniversalIdType = null,
+        string $effectiveDate = null,
+        string $expirationDate = null,
+        string $assigningJurisdictionIdentifier = null,
+        string $assigningJurisdictionText = null,
+        string $assigningJurisdictionNameOfCodingSystem = null,
+        string $assigningJurisdictionAltIdentifier = null,
+        string $assigningJurisdictionAltText = null,
+        string $assigningJurisdictionNameOfAltCodingSystem = null,
+        string $assigningJurisdictionCodingSystemVersionId = null,
+        string $assigningJurisdictionAltCodingSystemVersionId = null,
+        string $assigningJurisdictionOriginalText = null,
+        string $assigningAgencyIdentifier = null,
+        string $assigningAgencyText = null,
+        string $assigningAgencyNameOfCodingSystem = null,
+        string $assigningAgencyAltIdentifier = null,
+        string $assigningAgencyAltText = null,
+        string $assigningAgencyNameOfAltCodingSystem = null,
+        string $assigningAgencyCodingSystemVersionId = null,
+        string $assigningAgencyAltCodingSystemVersionId = null,
+        string $assigningAgencyOriginalText = null
     ) {
         $patientIdentifierList = $this
             ->dataTypeFactory
@@ -430,36 +430,36 @@ class PidSegment extends AbstractSegment
      * @param string $assigningAgencyOriginalText
      */
     public function addFieldAltPatientId(
-        $idNumber,
-        $checkDigit = null,
-        $checkDigitScheme = null,
-        $assigningAuthorityNamespaceId = null,
-        $assigningAuthorityUniversalId = null,
-        $assigningAuthorityUniversalIdType = null,
-        $identifierTypeCode = null,
-        $assigningFacilityNamespaceId = null,
-        $assigningFacilityUniversalId = null,
-        $assigningFacilityUniversalIdType = null,
-        $effectiveDate = null,
-        $expirationDate = null,
-        $assigningJurisdictionIdentifier = null,
-        $assigningJurisdictionText = null,
-        $assigningJurisdictionNameOfCodingSystem = null,
-        $assigningJurisdictionAltIdentifier = null,
-        $assigningJurisdictionAltText = null,
-        $assigningJurisdictionNameOfAltCodingSystem = null,
-        $assigningJurisdictionCodingSystemVersionId = null,
-        $assigningJurisdictionAltCodingSystemVersionId = null,
-        $assigningJurisdictionOriginalText = null,
-        $assigningAgencyIdentifier = null,
-        $assigningAgencyText = null,
-        $assigningAgencyNameOfCodingSystem = null,
-        $assigningAgencyAltIdentifier = null,
-        $assigningAgencyAltText = null,
-        $assigningAgencyNameOfAltCodingSystem = null,
-        $assigningAgencyCodingSystemVersionId = null,
-        $assigningAgencyAltCodingSystemVersionId = null,
-        $assigningAgencyOriginalText = null
+        string $idNumber,
+        string $checkDigit = null,
+        string $checkDigitScheme = null,
+        string $assigningAuthorityNamespaceId = null,
+        string $assigningAuthorityUniversalId = null,
+        string $assigningAuthorityUniversalIdType = null,
+        string $identifierTypeCode = null,
+        string $assigningFacilityNamespaceId = null,
+        string $assigningFacilityUniversalId = null,
+        string $assigningFacilityUniversalIdType = null,
+        string $effectiveDate = null,
+        string $expirationDate = null,
+        string $assigningJurisdictionIdentifier = null,
+        string $assigningJurisdictionText = null,
+        string $assigningJurisdictionNameOfCodingSystem = null,
+        string $assigningJurisdictionAltIdentifier = null,
+        string $assigningJurisdictionAltText = null,
+        string $assigningJurisdictionNameOfAltCodingSystem = null,
+        string $assigningJurisdictionCodingSystemVersionId = null,
+        string $assigningJurisdictionAltCodingSystemVersionId = null,
+        string $assigningJurisdictionOriginalText = null,
+        string $assigningAgencyIdentifier = null,
+        string $assigningAgencyText = null,
+        string $assigningAgencyNameOfCodingSystem = null,
+        string $assigningAgencyAltIdentifier = null,
+        string $assigningAgencyAltText = null,
+        string $assigningAgencyNameOfAltCodingSystem = null,
+        string $assigningAgencyCodingSystemVersionId = null,
+        string $assigningAgencyAltCodingSystemVersionId = null,
+        string $assigningAgencyOriginalText = null
     ) {
         $altPatientId = $this
             ->dataTypeFactory
@@ -537,34 +537,34 @@ class PidSegment extends AbstractSegment
      * @param string $professionalSuffix
      */
     public function addFieldPatientName(
-        $familyNameSurname,
-        $familyNameOwnSurnamePrefix = null,
-        $familyNameOwnSurname = null,
-        $familyNameSurnamePrefixFromPartner = null,
-        $familyNameSurnameFromPartner = null,
-        $givenName = null,
-        $secondNames = null,
-        $suffix = null,
-        $prefix = null,
-        $degree = null,
-        $nameTypeCode = null,
-        $nameRepresentationCode = null,
-        $nameContextIdentifier = null,
-        $nameContextText = null,
-        $nameContextNameOfCodingSystem = null,
-        $nameContextAltIdentifier = null,
-        $nameContextAltText = null,
-        $nameContextNameOfAltCodingSystem = null,
-        $nameValidityRangeRangeStartDateTimeTime,
-        $nameValidityRangeRangeStartDateTimeDegreeOfPrecision = null,
-        $nameValidityRangeRangeEndDateTimeTime,
-        $nameValidityRangeRangeEndDateTimeDegreeOfPrecision = null,
-        $nameAssemblyOrder = null,
-        $effectiveDateTime,
-        $effectiveDateDegreeOfPrecision = null,
-        $expirationDateTime,
-        $expirationDateDegreeOfPrecision = null,
-        $professionalSuffix = null
+        string $familyNameSurname,
+        string $familyNameOwnSurnamePrefix = null,
+        string $familyNameOwnSurname = null,
+        string $familyNameSurnamePrefixFromPartner = null,
+        string $familyNameSurnameFromPartner = null,
+        string $givenName = null,
+        string $secondNames = null,
+        string $suffix = null,
+        string $prefix = null,
+        string $degree = null,
+        string $nameTypeCode = null,
+        string $nameRepresentationCode = null,
+        string $nameContextIdentifier = null,
+        string $nameContextText = null,
+        string $nameContextNameOfCodingSystem = null,
+        string $nameContextAltIdentifier = null,
+        string $nameContextAltText = null,
+        string $nameContextNameOfAltCodingSystem = null,
+        string $nameValidityRangeRangeStartDateTimeTime,
+        string $nameValidityRangeRangeStartDateTimeDegreeOfPrecision = null,
+        string $nameValidityRangeRangeEndDateTimeTime,
+        string $nameValidityRangeRangeEndDateTimeDegreeOfPrecision = null,
+        string $nameAssemblyOrder = null,
+        string $effectiveDateTime,
+        string $effectiveDateDegreeOfPrecision = null,
+        string $expirationDateTime,
+        string $expirationDateDegreeOfPrecision = null,
+        string $professionalSuffix = null
     ) {
         $patientName = $this
             ->dataTypeFactory
@@ -636,34 +636,34 @@ class PidSegment extends AbstractSegment
      * @param string $professionalSuffix
      */
     public function addFieldMothersMaidenName(
-        $familyNameSurname,
-        $familyNameOwnSurnamePrefix = null,
-        $familyNameOwnSurname = null,
-        $familyNameSurnamePrefixFromPartner = null,
-        $familyNameSurnameFromPartner = null,
-        $givenName = null,
-        $secondNames = null,
-        $suffix = null,
-        $prefix = null,
-        $degree = null,
-        $nameTypeCode = null,
-        $nameRepresentationCode = null,
-        $nameContextIdentifier = null,
-        $nameContextText = null,
-        $nameContextNameOfCodingSystem = null,
-        $nameContextAltIdentifier = null,
-        $nameContextAltText = null,
-        $nameContextNameOfAltCodingSystem = null,
-        $nameValidityRangeRangeStartDateTimeTime,
-        $nameValidityRangeRangeStartDateTimeDegreeOfPrecision = null,
-        $nameValidityRangeRangeEndDateTimeTime,
-        $nameValidityRangeRangeEndDateTimeDegreeOfPrecision = null,
-        $nameAssemblyOrder = null,
-        $effectiveDateTime,
-        $effectiveDateDegreeOfPrecision = null,
-        $expirationDateTime,
-        $expirationDateDegreeOfPrecision = null,
-        $professionalSuffix = null
+        string $familyNameSurname,
+        string $familyNameOwnSurnamePrefix = null,
+        string $familyNameOwnSurname = null,
+        string $familyNameSurnamePrefixFromPartner = null,
+        string $familyNameSurnameFromPartner = null,
+        string $givenName = null,
+        string $secondNames = null,
+        string $suffix = null,
+        string $prefix = null,
+        string $degree = null,
+        string $nameTypeCode = null,
+        string $nameRepresentationCode = null,
+        string $nameContextIdentifier = null,
+        string $nameContextText = null,
+        string $nameContextNameOfCodingSystem = null,
+        string $nameContextAltIdentifier = null,
+        string $nameContextAltText = null,
+        string $nameContextNameOfAltCodingSystem = null,
+        string $nameValidityRangeRangeStartDateTimeTime,
+        string $nameValidityRangeRangeStartDateTimeDegreeOfPrecision = null,
+        string $nameValidityRangeRangeEndDateTimeTime,
+        string $nameValidityRangeRangeEndDateTimeDegreeOfPrecision = null,
+        string $nameAssemblyOrder = null,
+        string $effectiveDateTime,
+        string $effectiveDateDegreeOfPrecision = null,
+        string $expirationDateTime,
+        string $expirationDateDegreeOfPrecision = null,
+        string $professionalSuffix = null
     ) {
         $mothersMaidenName = $this
             ->dataTypeFactory
@@ -711,8 +711,10 @@ class PidSegment extends AbstractSegment
      * @param string $time
      * @param string $degreeOfPrecision
      */
-    public function setFieldDatetimeOfBirth($time, $degreeOfPrecision = null)
-    {
+    public function setFieldDatetimeOfBirth(
+        string $time,
+        string $degreeOfPrecision = null
+    ) {
         $this->datetimeOfBirth = $this
             ->dataTypeFactory
             ->create('TS', $this->encodingParameters)
@@ -724,7 +726,7 @@ class PidSegment extends AbstractSegment
     /**
      * @param string $value
      */
-    public function setFieldAdministrativeSex($value)
+    public function setFieldAdministrativeSex(string $value)
     {
         $this->administrativeSex = $this
             ->dataTypeFactory
@@ -764,34 +766,34 @@ class PidSegment extends AbstractSegment
      * @param string $professionalSuffix
      */
     public function addFieldPatientAlias(
-        $familyNameSurname,
-        $familyNameOwnSurnamePrefix = null,
-        $familyNameOwnSurname = null,
-        $familyNameSurnamePrefixFromPartner = null,
-        $familyNameSurnameFromPartner = null,
-        $givenName = null,
-        $secondNames = null,
-        $suffix = null,
-        $prefix = null,
-        $degree = null,
-        $nameTypeCode = null,
-        $nameRepresentationCode = null,
-        $nameContextIdentifier = null,
-        $nameContextText = null,
-        $nameContextNameOfCodingSystem = null,
-        $nameContextAltIdentifier = null,
-        $nameContextAltText = null,
-        $nameContextNameOfAltCodingSystem = null,
-        $nameValidityRangeRangeStartDateTimeTime,
-        $nameValidityRangeRangeStartDateTimeDegreeOfPrecision = null,
-        $nameValidityRangeRangeEndDateTimeTime,
-        $nameValidityRangeRangeEndDateTimeDegreeOfPrecision = null,
-        $nameAssemblyOrder = null,
-        $effectiveDateTime,
-        $effectiveDateDegreeOfPrecision = null,
-        $expirationDateTime,
-        $expirationDateDegreeOfPrecision = null,
-        $professionalSuffix = null
+        string $familyNameSurname,
+        string $familyNameOwnSurnamePrefix = null,
+        string $familyNameOwnSurname = null,
+        string $familyNameSurnamePrefixFromPartner = null,
+        string $familyNameSurnameFromPartner = null,
+        string $givenName = null,
+        string $secondNames = null,
+        string $suffix = null,
+        string $prefix = null,
+        string $degree = null,
+        string $nameTypeCode = null,
+        string $nameRepresentationCode = null,
+        string $nameContextIdentifier = null,
+        string $nameContextText = null,
+        string $nameContextNameOfCodingSystem = null,
+        string $nameContextAltIdentifier = null,
+        string $nameContextAltText = null,
+        string $nameContextNameOfAltCodingSystem = null,
+        string $nameValidityRangeRangeStartDateTimeTime,
+        string $nameValidityRangeRangeStartDateTimeDegreeOfPrecision = null,
+        string $nameValidityRangeRangeEndDateTimeTime,
+        string $nameValidityRangeRangeEndDateTimeDegreeOfPrecision = null,
+        string $nameAssemblyOrder = null,
+        string $effectiveDateTime,
+        string $effectiveDateDegreeOfPrecision = null,
+        string $expirationDateTime,
+        string $expirationDateDegreeOfPrecision = null,
+        string $professionalSuffix = null
     ) {
         $patientAlias = $this
             ->dataTypeFactory
@@ -841,12 +843,12 @@ class PidSegment extends AbstractSegment
      * @param string $nameOfAltCodingSystem
      */
     public function addFieldRace(
-        $identifier = null,
-        $text = null,
-        $nameOfCodingSystem = null,
-        $altIdentifier = null,
-        $altText = null,
-        $nameOfAltCodingSystem = null
+        string $identifier = null,
+        string $text = null,
+        string $nameOfCodingSystem = null,
+        string $altIdentifier = null,
+        string $altText = null,
+        string $nameOfAltCodingSystem = null
     ) {
         $race = $this
             ->dataTypeFactory
@@ -885,27 +887,27 @@ class PidSegment extends AbstractSegment
      * @param string $expirationDateDegreeOfPrecision
      */
     public function addFieldPatientAddress(
-        $streetAddressStreetOrMailingAddress = null,
-        $streetAddressStreetName = null,
-        $streetAddressDwellingNumber = null,
-        $otherDesignation = null,
-        $city = null,
-        $stateOrProvince = null,
-        $zipOrPostalCode = null,
-        $country = null,
-        $addressType = null,
-        $otherGeographicDesignation = null,
-        $countyParishCode = null,
-        $censusTract = null,
-        $addressRepresentationCode = null,
-        $addressValidityRangeRangeStartDateTimeTime,
-        $addressValidityRangeRangeStartDateTimeDegreeOfPrecision = null,
-        $addressValidityRangeRangeEndDateTimeTime,
-        $addressValidityRangeRangeEndDateTimeDegreeOfPrecision = null,
-        $effectiveDateTime,
-        $effectiveDateDegreeOfPrecision = null,
-        $expirationDateTime,
-        $expirationDateDegreeOfPrecision = null
+        string $streetAddressStreetOrMailingAddress = null,
+        string $streetAddressStreetName = null,
+        string $streetAddressDwellingNumber = null,
+        string $otherDesignation = null,
+        string $city = null,
+        string $stateOrProvince = null,
+        string $zipOrPostalCode = null,
+        string $country = null,
+        string $addressType = null,
+        string $otherGeographicDesignation = null,
+        string $countyParishCode = null,
+        string $censusTract = null,
+        string $addressRepresentationCode = null,
+        string $addressValidityRangeRangeStartDateTimeTime,
+        string $addressValidityRangeRangeStartDateTimeDegreeOfPrecision = null,
+        string $addressValidityRangeRangeEndDateTimeTime,
+        string $addressValidityRangeRangeEndDateTimeDegreeOfPrecision = null,
+        string $effectiveDateTime,
+        string $effectiveDateDegreeOfPrecision = null,
+        string $expirationDateTime,
+        string $expirationDateDegreeOfPrecision = null
     ) {
         $patientAddress = $this
             ->dataTypeFactory
@@ -940,7 +942,7 @@ class PidSegment extends AbstractSegment
     /**
      * @param string $value
      */
-    public function setFieldCountyCode($value)
+    public function setFieldCountyCode(string $value)
     {
         $this->countyCode = $this
             ->dataTypeFactory
@@ -964,18 +966,18 @@ class PidSegment extends AbstractSegment
      * @param string $unformattedTelephoneNumber
      */
     public function addFieldPhoneNumberHome(
-        $telephoneNumber = null,
-        $telecommunicationUseCode = null,
-        $telepcommunicationEquipmentType = null,
-        $emailAddress = null,
-        $countryCode = null,
-        $areaCityCode = null,
-        $localNumber = null,
-        $extension = null,
-        $anyText = null,
-        $extensionPrefix = null,
-        $speedDialCode = null,
-        $unformattedTelephoneNumber = null
+        string $telephoneNumber = null,
+        string $telecommunicationUseCode = null,
+        string $telepcommunicationEquipmentType = null,
+        string $emailAddress = null,
+        string $countryCode = null,
+        string $areaCityCode = null,
+        string $localNumber = null,
+        string $extension = null,
+        string $anyText = null,
+        string $extensionPrefix = null,
+        string $speedDialCode = null,
+        string $unformattedTelephoneNumber = null
     ) {
         $phoneNumberHome = $this
             ->dataTypeFactory
@@ -1011,18 +1013,18 @@ class PidSegment extends AbstractSegment
      * @param string $unformattedTelephoneNumber
      */
     public function addFieldPhoneNumberBusiness(
-        $telephoneNumber = null,
-        $telecommunicationUseCode = null,
-        $telepcommunicationEquipmentType = null,
-        $emailAddress = null,
-        $countryCode = null,
-        $areaCityCode = null,
-        $localNumber = null,
-        $extension = null,
-        $anyText = null,
-        $extensionPrefix = null,
-        $speedDialCode = null,
-        $unformattedTelephoneNumber = null
+        string $telephoneNumber = null,
+        string $telecommunicationUseCode = null,
+        string $telepcommunicationEquipmentType = null,
+        string $emailAddress = null,
+        string $countryCode = null,
+        string $areaCityCode = null,
+        string $localNumber = null,
+        string $extension = null,
+        string $anyText = null,
+        string $extensionPrefix = null,
+        string $speedDialCode = null,
+        string $unformattedTelephoneNumber = null
     ) {
         $phoneNumberBusiness = $this
             ->dataTypeFactory
@@ -1052,12 +1054,12 @@ class PidSegment extends AbstractSegment
      * @param string $nameOfAltCodingSystem
      */
     public function setFieldPrimaryLanguage(
-        $identifier = null,
-        $text = null,
-        $nameOfCodingSystem = null,
-        $altIdentifier = null,
-        $altText = null,
-        $nameOfAltCodingSystem = null
+        string $identifier = null,
+        string $text = null,
+        string $nameOfCodingSystem = null,
+        string $altIdentifier = null,
+        string $altText = null,
+        string $nameOfAltCodingSystem = null
     ) {
         $this->primaryLanguage = $this
             ->dataTypeFactory
@@ -1080,12 +1082,12 @@ class PidSegment extends AbstractSegment
      * @param string $nameOfAltCodingSystem
      */
     public function setFieldMaritalStatus(
-        $identifier = null,
-        $text = null,
-        $nameOfCodingSystem = null,
-        $altIdentifier = null,
-        $altText = null,
-        $nameOfAltCodingSystem = null
+        string $identifier = null,
+        string $text = null,
+        string $nameOfCodingSystem = null,
+        string $altIdentifier = null,
+        string $altText = null,
+        string $nameOfAltCodingSystem = null
     ) {
         $this->maritalStatus = $this
             ->dataTypeFactory
@@ -1108,12 +1110,12 @@ class PidSegment extends AbstractSegment
      * @param string $nameOfAltCodingSystem
      */
     public function setFieldReligion(
-        $identifier = null,
-        $text = null,
-        $nameOfCodingSystem = null,
-        $altIdentifier = null,
-        $altText = null,
-        $nameOfAltCodingSystem = null
+        string $identifier = null,
+        string $text = null,
+        string $nameOfCodingSystem = null,
+        string $altIdentifier = null,
+        string $altText = null,
+        string $nameOfAltCodingSystem = null
     ) {
         $this->religion = $this
             ->dataTypeFactory
@@ -1160,36 +1162,36 @@ class PidSegment extends AbstractSegment
      * @param string $assigningAgencyOriginalText
      */
     public function setFieldPatientAccountNumber(
-        $idNumber,
-        $checkDigit = null,
-        $checkDigitScheme = null,
-        $assigningAuthorityNamespaceId = null,
-        $assigningAuthorityUniversalId = null,
-        $assigningAuthorityUniversalIdType = null,
-        $identifierTypeCode = null,
-        $assigningFacilityNamespaceId = null,
-        $assigningFacilityUniversalId = null,
-        $assigningFacilityUniversalIdType = null,
-        $effectiveDate = null,
-        $expirationDate = null,
-        $assigningJurisdictionIdentifier = null,
-        $assigningJurisdictionText = null,
-        $assigningJurisdictionNameOfCodingSystem = null,
-        $assigningJurisdictionAltIdentifier = null,
-        $assigningJurisdictionAltText = null,
-        $assigningJurisdictionNameOfAltCodingSystem = null,
-        $assigningJurisdictionCodingSystemVersionId = null,
-        $assigningJurisdictionAltCodingSystemVersionId = null,
-        $assigningJurisdictionOriginalText = null,
-        $assigningAgencyIdentifier = null,
-        $assigningAgencyText = null,
-        $assigningAgencyNameOfCodingSystem = null,
-        $assigningAgencyAltIdentifier = null,
-        $assigningAgencyAltText = null,
-        $assigningAgencyNameOfAltCodingSystem = null,
-        $assigningAgencyCodingSystemVersionId = null,
-        $assigningAgencyAltCodingSystemVersionId = null,
-        $assigningAgencyOriginalText = null
+        string $idNumber,
+        string $checkDigit = null,
+        string $checkDigitScheme = null,
+        string $assigningAuthorityNamespaceId = null,
+        string $assigningAuthorityUniversalId = null,
+        string $assigningAuthorityUniversalIdType = null,
+        string $identifierTypeCode = null,
+        string $assigningFacilityNamespaceId = null,
+        string $assigningFacilityUniversalId = null,
+        string $assigningFacilityUniversalIdType = null,
+        string $effectiveDate = null,
+        string $expirationDate = null,
+        string $assigningJurisdictionIdentifier = null,
+        string $assigningJurisdictionText = null,
+        string $assigningJurisdictionNameOfCodingSystem = null,
+        string $assigningJurisdictionAltIdentifier = null,
+        string $assigningJurisdictionAltText = null,
+        string $assigningJurisdictionNameOfAltCodingSystem = null,
+        string $assigningJurisdictionCodingSystemVersionId = null,
+        string $assigningJurisdictionAltCodingSystemVersionId = null,
+        string $assigningJurisdictionOriginalText = null,
+        string $assigningAgencyIdentifier = null,
+        string $assigningAgencyText = null,
+        string $assigningAgencyNameOfCodingSystem = null,
+        string $assigningAgencyAltIdentifier = null,
+        string $assigningAgencyAltText = null,
+        string $assigningAgencyNameOfAltCodingSystem = null,
+        string $assigningAgencyCodingSystemVersionId = null,
+        string $assigningAgencyAltCodingSystemVersionId = null,
+        string $assigningAgencyOriginalText = null
     ) {
         $this->patientAccountNumber = $this
             ->dataTypeFactory
@@ -1238,7 +1240,7 @@ class PidSegment extends AbstractSegment
     /**
      * @param string $value
      */
-    public function setFieldSsnNumberPatient($value)
+    public function setFieldSsnNumberPatient(string $value)
     {
         $this->ssnNumberPatient = $this
             ->dataTypeFactory
@@ -1253,9 +1255,9 @@ class PidSegment extends AbstractSegment
      * @param string $expirationDate
      */
     public function setFieldDriversLicenseNumberPatient(
-        $licenseNumber,
-        $issuingStateProvinceCountry = null,
-        $expirationDate = null
+        string $licenseNumber,
+        string $issuingStateProvinceCountry = null,
+        string $expirationDate = null
     ) {
         $this->driversLicenseNumberPatient = $this
             ->dataTypeFactory
@@ -1301,36 +1303,36 @@ class PidSegment extends AbstractSegment
      * @param string $assigningAgencyOriginalText
      */
     public function addFieldMothersIdentifier(
-        $idNumber,
-        $checkDigit = null,
-        $checkDigitScheme = null,
-        $assigningAuthorityNamespaceId = null,
-        $assigningAuthorityUniversalId = null,
-        $assigningAuthorityUniversalIdType = null,
-        $identifierTypeCode = null,
-        $assigningFacilityNamespaceId = null,
-        $assigningFacilityUniversalId = null,
-        $assigningFacilityUniversalIdType = null,
-        $effectiveDate = null,
-        $expirationDate = null,
-        $assigningJurisdictionIdentifier = null,
-        $assigningJurisdictionText = null,
-        $assigningJurisdictionNameOfCodingSystem = null,
-        $assigningJurisdictionAltIdentifier = null,
-        $assigningJurisdictionAltText = null,
-        $assigningJurisdictionNameOfAltCodingSystem = null,
-        $assigningJurisdictionCodingSystemVersionId = null,
-        $assigningJurisdictionAltCodingSystemVersionId = null,
-        $assigningJurisdictionOriginalText = null,
-        $assigningAgencyIdentifier = null,
-        $assigningAgencyText = null,
-        $assigningAgencyNameOfCodingSystem = null,
-        $assigningAgencyAltIdentifier = null,
-        $assigningAgencyAltText = null,
-        $assigningAgencyNameOfAltCodingSystem = null,
-        $assigningAgencyCodingSystemVersionId = null,
-        $assigningAgencyAltCodingSystemVersionId = null,
-        $assigningAgencyOriginalText = null
+        string $idNumber,
+        string $checkDigit = null,
+        string $checkDigitScheme = null,
+        string $assigningAuthorityNamespaceId = null,
+        string $assigningAuthorityUniversalId = null,
+        string $assigningAuthorityUniversalIdType = null,
+        string $identifierTypeCode = null,
+        string $assigningFacilityNamespaceId = null,
+        string $assigningFacilityUniversalId = null,
+        string $assigningFacilityUniversalIdType = null,
+        string $effectiveDate = null,
+        string $expirationDate = null,
+        string $assigningJurisdictionIdentifier = null,
+        string $assigningJurisdictionText = null,
+        string $assigningJurisdictionNameOfCodingSystem = null,
+        string $assigningJurisdictionAltIdentifier = null,
+        string $assigningJurisdictionAltText = null,
+        string $assigningJurisdictionNameOfAltCodingSystem = null,
+        string $assigningJurisdictionCodingSystemVersionId = null,
+        string $assigningJurisdictionAltCodingSystemVersionId = null,
+        string $assigningJurisdictionOriginalText = null,
+        string $assigningAgencyIdentifier = null,
+        string $assigningAgencyText = null,
+        string $assigningAgencyNameOfCodingSystem = null,
+        string $assigningAgencyAltIdentifier = null,
+        string $assigningAgencyAltText = null,
+        string $assigningAgencyNameOfAltCodingSystem = null,
+        string $assigningAgencyCodingSystemVersionId = null,
+        string $assigningAgencyAltCodingSystemVersionId = null,
+        string $assigningAgencyOriginalText = null
     ) {
         $mothersIdentifier = $this
             ->dataTypeFactory
@@ -1386,12 +1388,12 @@ class PidSegment extends AbstractSegment
      * @param string $nameOfAltCodingSystem
      */
     public function addFieldEthnicGroup(
-        $identifier = null,
-        $text = null,
-        $nameOfCodingSystem = null,
-        $altIdentifier = null,
-        $altText = null,
-        $nameOfAltCodingSystem = null
+        string $identifier = null,
+        string $text = null,
+        string $nameOfCodingSystem = null,
+        string $altIdentifier = null,
+        string $altText = null,
+        string $nameOfAltCodingSystem = null
     ) {
         $ethnicGroup = $this
             ->dataTypeFactory
@@ -1409,7 +1411,7 @@ class PidSegment extends AbstractSegment
     /**
      * @param string $value
      */
-    public function setFieldBirthPlace($value)
+    public function setFieldBirthPlace(string $value)
     {
         $this->birthPlace = $this
             ->dataTypeFactory
@@ -1421,7 +1423,7 @@ class PidSegment extends AbstractSegment
     /**
      * @param string $value
      */
-    public function setFieldMultipleBirthIndicator($value)
+    public function setFieldMultipleBirthIndicator(string $value)
     {
         $this->multipleBirthIndicator = $this
             ->dataTypeFactory
@@ -1433,7 +1435,7 @@ class PidSegment extends AbstractSegment
     /**
      * @param string $value
      */
-    public function setFieldBirthOrder($value)
+    public function setFieldBirthOrder(string $value)
     {
         $this->birthOrder = $this
             ->dataTypeFactory
@@ -1451,12 +1453,12 @@ class PidSegment extends AbstractSegment
      * @param string $nameOfAltCodingSystem
      */
     public function addFieldCitizenship(
-        $identifier = null,
-        $text = null,
-        $nameOfCodingSystem = null,
-        $altIdentifier = null,
-        $altText = null,
-        $nameOfAltCodingSystem = null
+        string $identifier = null,
+        string $text = null,
+        string $nameOfCodingSystem = null,
+        string $altIdentifier = null,
+        string $altText = null,
+        string $nameOfAltCodingSystem = null
     ) {
         $citizenship = $this
             ->dataTypeFactory
@@ -1480,12 +1482,12 @@ class PidSegment extends AbstractSegment
      * @param string $nameOfAltCodingSystem
      */
     public function setFieldVeteransMilitaryStatus(
-        $identifier = null,
-        $text = null,
-        $nameOfCodingSystem = null,
-        $altIdentifier = null,
-        $altText = null,
-        $nameOfAltCodingSystem = null
+        string $identifier = null,
+        string $text = null,
+        string $nameOfCodingSystem = null,
+        string $altIdentifier = null,
+        string $altText = null,
+        string $nameOfAltCodingSystem = null
     ) {
         $this->veteransMilitaryStatus = $this
             ->dataTypeFactory
@@ -1508,12 +1510,12 @@ class PidSegment extends AbstractSegment
      * @param string $nameOfAltCodingSystem
      */
     public function setFieldNationality(
-        $identifier = null,
-        $text = null,
-        $nameOfCodingSystem = null,
-        $altIdentifier = null,
-        $altText = null,
-        $nameOfAltCodingSystem = null
+        string $identifier = null,
+        string $text = null,
+        string $nameOfCodingSystem = null,
+        string $altIdentifier = null,
+        string $altText = null,
+        string $nameOfAltCodingSystem = null
     ) {
         $this->nationality = $this
             ->dataTypeFactory
@@ -1531,8 +1533,10 @@ class PidSegment extends AbstractSegment
      * @param string $time
      * @param string $degreeOfPrecision
      */
-    public function setFieldPatientDeathDateAndTime($time, $degreeOfPrecision = null)
-    {
+    public function setFieldPatientDeathDateAndTime(
+        string $time,
+        string $degreeOfPrecision = null
+    ) {
         $this->patientDeathDateAndTime = $this
             ->dataTypeFactory
             ->create('TS', $this->encodingParameters)
@@ -1544,7 +1548,7 @@ class PidSegment extends AbstractSegment
     /**
      * @param string $value
      */
-    public function setFieldPatientDeathIndicator($value)
+    public function setFieldPatientDeathIndicator(string $value)
     {
         $this->patientDeathIndicator = $this
             ->dataTypeFactory
@@ -1556,7 +1560,7 @@ class PidSegment extends AbstractSegment
     /**
      * @param string $value
      */
-    public function setFieldIdentityUnknownIndicator($value)
+    public function setFieldIdentityUnknownIndicator(string $value)
     {
         $this->identityUnknownIndicator = $this
             ->dataTypeFactory
@@ -1568,7 +1572,7 @@ class PidSegment extends AbstractSegment
     /**
      * @param string $value
      */
-    public function addFieldIdentityReliabilityCode($value)
+    public function addFieldIdentityReliabilityCode(string $value)
     {
         $identityReliabilityCode = $this
             ->dataTypeFactory
@@ -1582,8 +1586,10 @@ class PidSegment extends AbstractSegment
      * @param string $time
      * @param string $degreeOfPrecision
      */
-    public function setFieldLastUpdateDatetime($time, $degreeOfPrecision = null)
-    {
+    public function setFieldLastUpdateDatetime(
+        string $time,
+        string $degreeOfPrecision = null
+    ) {
         $this->lastUpdateDatetime = $this
             ->dataTypeFactory
             ->create('TS', $this->encodingParameters)
@@ -1597,8 +1603,11 @@ class PidSegment extends AbstractSegment
      * @param string $universalId
      * @param string $universalIdType
      */
-    public function setFieldLastUpdateFacility($namespaceId = null, $universalId = null, $universalIdType = null)
-    {
+    public function setFieldLastUpdateFacility(
+        string $namespaceId = null,
+        string $universalId = null,
+        string $universalIdType = null
+    ) {
         $this->lastUpdateFacility = $this
             ->dataTypeFactory
             ->create('HD', $this->encodingParameters)
@@ -1617,12 +1626,12 @@ class PidSegment extends AbstractSegment
      * @param string $nameOfAltCodingSystem
      */
     public function setFieldSpeciesCode(
-        $identifier = null,
-        $text = null,
-        $nameOfCodingSystem = null,
-        $altIdentifier = null,
-        $altText = null,
-        $nameOfAltCodingSystem = null
+        string $identifier = null,
+        string $text = null,
+        string $nameOfCodingSystem = null,
+        string $altIdentifier = null,
+        string $altText = null,
+        string $nameOfAltCodingSystem = null
     ) {
         $this->speciesCode = $this
             ->dataTypeFactory
@@ -1645,12 +1654,12 @@ class PidSegment extends AbstractSegment
      * @param string $nameOfAltCodingSystem
      */
     public function setFieldBreedCode(
-        $identifier = null,
-        $text = null,
-        $nameOfCodingSystem = null,
-        $altIdentifier = null,
-        $altText = null,
-        $nameOfAltCodingSystem = null
+        string $identifier = null,
+        string $text = null,
+        string $nameOfCodingSystem = null,
+        string $altIdentifier = null,
+        string $altText = null,
+        string $nameOfAltCodingSystem = null
     ) {
         $this->breedCode = $this
             ->dataTypeFactory
@@ -1667,7 +1676,7 @@ class PidSegment extends AbstractSegment
     /**
      * @param string $value
      */
-    public function setFieldStrain($value)
+    public function setFieldStrain(string $value)
     {
         $this->strain = $this
             ->dataTypeFactory
@@ -1685,12 +1694,12 @@ class PidSegment extends AbstractSegment
      * @param string $nameOfAltCodingSystem
      */
     public function addFieldProductionClassCode(
-        $identifier = null,
-        $text = null,
-        $nameOfCodingSystem = null,
-        $altIdentifier = null,
-        $altText = null,
-        $nameOfAltCodingSystem = null
+        string $identifier = null,
+        string $text = null,
+        string $nameOfCodingSystem = null,
+        string $altIdentifier = null,
+        string $altText = null,
+        string $nameOfAltCodingSystem = null
     ) {
         if (2 <= sizeof($this->productionClassCode)) {
             throw new SegmentError(
@@ -1722,15 +1731,15 @@ class PidSegment extends AbstractSegment
      * @param string $originalText
      */
     public function addFieldTribalCitizenship(
-        $identifier = null,
-        $text = null,
-        $nameOfCodingSystem = null,
-        $altIdentifier = null,
-        $altText = null,
-        $nameOfAltCodingSystem = null,
-        $codingSystemVersionId = null,
-        $altCodingSystemVersionId = null,
-        $originalText = null
+        string $identifier = null,
+        string $text = null,
+        string $nameOfCodingSystem = null,
+        string $altIdentifier = null,
+        string $altText = null,
+        string $nameOfAltCodingSystem = null,
+        string $codingSystemVersionId = null,
+        string $altCodingSystemVersionId = null,
+        string $originalText = null
     ) {
         $tribalCitizenship = $this
             ->dataTypeFactory

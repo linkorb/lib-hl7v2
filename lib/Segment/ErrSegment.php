@@ -12,51 +12,51 @@ use Hl7v2\Exception\SegmentError;
 class ErrSegment extends AbstractSegment
 {
     /**
-     * @var \Hl7v2\DataType\EldDataType[]
+     * @var EldDataType[]
      */
     private $errorCodeAndLocation = [];
     /**
-     * @var \Hl7v2\DataType\ErlDataType[]
+     * @var ErlDataType[]
      */
     private $errorLocation = [];
     /**
-     * @var \Hl7v2\DataType\CweDataType
+     * @var CweDataType
      */
     private $hl7ErrorCode;
     /**
-     * @var \Hl7v2\DataType\IdDataType
+     * @var IdDataType
      */
     private $severity;
     /**
-     * @var \Hl7v2\DataType\CweDataType
+     * @var CweDataType
      */
     private $applicationErrorCode = null;
     /**
-     * @var \Hl7v2\DataType\StDataType[]
+     * @var StDataType[]
      */
     private $applicationErrorParameter = [];
     /**
-     * @var \Hl7v2\DataType\TxDataType
+     * @var TxDataType
      */
     private $diagnosticInformation = null;
     /**
-     * @var \Hl7v2\DataType\TxDataType
+     * @var TxDataType
      */
     private $userMessage = null;
     /**
-     * @var \Hl7v2\DataType\IsDataType[]
+     * @var IsDataType[]
      */
     private $informPersonIndicator = [];
     /**
-     * @var \Hl7v2\DataType\CweDataType
+     * @var CweDataType
      */
     private $overrideType = null;
     /**
-     * @var \Hl7v2\DataType\CweDataType[]
+     * @var CweDataType[]
      */
     private $overrideReasonCode = [];
     /**
-     * @var \Hl7v2\DataType\XtnDataType[]
+     * @var XtnDataType[]
      */
     private $helpDeskContactPoint = [];
 
@@ -72,15 +72,15 @@ class ErrSegment extends AbstractSegment
      * @param string $codeIdentifyingErrorNameOfAltCodingSystem
      */
     public function addFieldErrorCodeAndLocation(
-        $segmentId = null,
-        $segmentSequence = null,
-        $fieldPosition = null,
-        $codeIdentifyingErrorIdentifier = null,
-        $codeIdentifyingErrorText = null,
-        $codeIdentifyingErrorNameOfCodingSystem = null,
-        $codeIdentifyingErrorAltIdentifier = null,
-        $codeIdentifyingErrorAltText = null,
-        $codeIdentifyingErrorNameOfAltCodingSystem = null
+        string $segmentId = null,
+        string $segmentSequence = null,
+        string $fieldPosition = null,
+        string $codeIdentifyingErrorIdentifier = null,
+        string $codeIdentifyingErrorText = null,
+        string $codeIdentifyingErrorNameOfCodingSystem = null,
+        string $codeIdentifyingErrorAltIdentifier = null,
+        string $codeIdentifyingErrorAltText = null,
+        string $codeIdentifyingErrorNameOfAltCodingSystem = null
     ) {
         $errorCodeAndLocation = $this
             ->dataTypeFactory
@@ -109,12 +109,12 @@ class ErrSegment extends AbstractSegment
      * @param string $subcomponentNumber
      */
     public function addFieldErrorLocation(
-        $segmentId,
-        $segmentSequence,
-        $fieldPosition = null,
-        $fieldRepetition = null,
-        $componentNumber = null,
-        $subcomponentNumber = null
+        string $segmentId,
+        string $segmentSequence,
+        string $fieldPosition = null,
+        string $fieldRepetition = null,
+        string $componentNumber = null,
+        string $subcomponentNumber = null
     ) {
         $errorLocation = $this
             ->dataTypeFactory
@@ -141,15 +141,15 @@ class ErrSegment extends AbstractSegment
      * @param string $originalText
      */
     public function setFieldHl7ErrorCode(
-        $identifier = null,
-        $text = null,
-        $nameOfCodingSystem = null,
-        $altIdentifier = null,
-        $altText = null,
-        $nameOfAltCodingSystem = null,
-        $codingSystemVersionId = null,
-        $altCodingSystemVersionId = null,
-        $originalText = null
+        string $identifier = null,
+        string $text = null,
+        string $nameOfCodingSystem = null,
+        string $altIdentifier = null,
+        string $altText = null,
+        string $nameOfAltCodingSystem = null,
+        string $codingSystemVersionId = null,
+        string $altCodingSystemVersionId = null,
+        string $originalText = null
     ) {
         $this->hl7ErrorCode = $this
             ->dataTypeFactory
@@ -169,7 +169,7 @@ class ErrSegment extends AbstractSegment
     /**
      * @param string $value
      */
-    public function setFieldSeverity($value)
+    public function setFieldSeverity(string $value)
     {
         $this->severity = $this
             ->dataTypeFactory
@@ -190,15 +190,15 @@ class ErrSegment extends AbstractSegment
      * @param string $originalText
      */
     public function setFieldApplicationErrorCode(
-        $identifier = null,
-        $text = null,
-        $nameOfCodingSystem = null,
-        $altIdentifier = null,
-        $altText = null,
-        $nameOfAltCodingSystem = null,
-        $codingSystemVersionId = null,
-        $altCodingSystemVersionId = null,
-        $originalText = null
+        string $identifier = null,
+        string $text = null,
+        string $nameOfCodingSystem = null,
+        string $altIdentifier = null,
+        string $altText = null,
+        string $nameOfAltCodingSystem = null,
+        string $codingSystemVersionId = null,
+        string $altCodingSystemVersionId = null,
+        string $originalText = null
     ) {
         $this->applicationErrorCode = $this
             ->dataTypeFactory
@@ -218,7 +218,7 @@ class ErrSegment extends AbstractSegment
     /**
      * @param string $value
      */
-    public function addFieldApplicationErrorParameter($value)
+    public function addFieldApplicationErrorParameter(string $value)
     {
         $applicationErrorParameter = $this
             ->dataTypeFactory
@@ -231,7 +231,7 @@ class ErrSegment extends AbstractSegment
     /**
      * @param string $value
      */
-    public function setFieldDiagnosticInformation($value)
+    public function setFieldDiagnosticInformation(string $value)
     {
         $this->diagnosticInformation = $this
             ->dataTypeFactory
@@ -243,7 +243,7 @@ class ErrSegment extends AbstractSegment
     /**
      * @param string $value
      */
-    public function setFieldUserMessage($value)
+    public function setFieldUserMessage(string $value)
     {
         $this->userMessage = $this
             ->dataTypeFactory
@@ -255,7 +255,7 @@ class ErrSegment extends AbstractSegment
     /**
      * @param string $value
      */
-    public function addFieldInformPersonIndicator($value)
+    public function addFieldInformPersonIndicator(string $value)
     {
         $informPersonIndicator = $this
             ->dataTypeFactory
@@ -277,15 +277,15 @@ class ErrSegment extends AbstractSegment
      * @param string $originalText
      */
     public function setFieldOverrideType(
-        $identifier = null,
-        $text = null,
-        $nameOfCodingSystem = null,
-        $altIdentifier = null,
-        $altText = null,
-        $nameOfAltCodingSystem = null,
-        $codingSystemVersionId = null,
-        $altCodingSystemVersionId = null,
-        $originalText = null
+        string $identifier = null,
+        string $text = null,
+        string $nameOfCodingSystem = null,
+        string $altIdentifier = null,
+        string $altText = null,
+        string $nameOfAltCodingSystem = null,
+        string $codingSystemVersionId = null,
+        string $altCodingSystemVersionId = null,
+        string $originalText = null
     ) {
         $this->overrideType = $this
             ->dataTypeFactory
@@ -314,15 +314,15 @@ class ErrSegment extends AbstractSegment
      * @param string $originalText
      */
     public function addFieldOverrideReasonCode(
-        $identifier = null,
-        $text = null,
-        $nameOfCodingSystem = null,
-        $altIdentifier = null,
-        $altText = null,
-        $nameOfAltCodingSystem = null,
-        $codingSystemVersionId = null,
-        $altCodingSystemVersionId = null,
-        $originalText = null
+        string $identifier = null,
+        string $text = null,
+        string $nameOfCodingSystem = null,
+        string $altIdentifier = null,
+        string $altText = null,
+        string $nameOfAltCodingSystem = null,
+        string $codingSystemVersionId = null,
+        string $altCodingSystemVersionId = null,
+        string $originalText = null
     ) {
         $overrideReasonCode = $this
             ->dataTypeFactory
@@ -355,18 +355,18 @@ class ErrSegment extends AbstractSegment
      * @param string $unformattedTelephoneNumber
      */
     public function addFieldHelpDeskContactPoint(
-        $telephoneNumber = null,
-        $telecommunicationUseCode = null,
-        $telepcommunicationEquipmentType = null,
-        $emailAddress = null,
-        $countryCode = null,
-        $areaCityCode = null,
-        $localNumber = null,
-        $extension = null,
-        $anyText = null,
-        $extensionPrefix = null,
-        $speedDialCode = null,
-        $unformattedTelephoneNumber = null
+        string $telephoneNumber = null,
+        string $telecommunicationUseCode = null,
+        string $telepcommunicationEquipmentType = null,
+        string $emailAddress = null,
+        string $countryCode = null,
+        string $areaCityCode = null,
+        string $localNumber = null,
+        string $extension = null,
+        string $anyText = null,
+        string $extensionPrefix = null,
+        string $speedDialCode = null,
+        string $unformattedTelephoneNumber = null
     ) {
         $helpDeskContactPoint = $this
             ->dataTypeFactory

@@ -10,30 +10,30 @@ class FnDataType extends ComponentDataType
     const MAX_LEN = 194;
 
     /**
-     * @var \Hl7v2\DataType\StDataType
+     * @var StDataType
      */
     private $surname;
     /**
-     * @var \Hl7v2\DataType\StDataType
+     * @var StDataType
      */
     private $ownSurnamePrefix;
     /**
-     * @var \Hl7v2\DataType\StDataType
+     * @var StDataType
      */
     private $ownSurname;
     /**
-     * @var \Hl7v2\DataType\StDataType
+     * @var StDataType
      */
     private $surnamePrefixFromPartner;
     /**
-     * @var \Hl7v2\DataType\StDataType
+     * @var StDataType
      */
     private $surnameFromPartner;
 
     /**
      * @param string $surname
      */
-    public function setSurname($surname)
+    public function setSurname(string $surname)
     {
         $this->surname = $this
             ->dataTypeFactory
@@ -45,7 +45,7 @@ class FnDataType extends ComponentDataType
     /**
      * @param string $ownSurnamePrefix
      */
-    public function setOwnSurnamePrefix($ownSurnamePrefix = null)
+    public function setOwnSurnamePrefix(string $ownSurnamePrefix = null)
     {
         $this->ownSurnamePrefix = $this
             ->dataTypeFactory
@@ -57,7 +57,7 @@ class FnDataType extends ComponentDataType
     /**
      * @param string $ownSurname
      */
-    public function setOwnSurname($ownSurname = null)
+    public function setOwnSurname(string $ownSurname = null)
     {
         $this->ownSurname = $this
             ->dataTypeFactory
@@ -69,8 +69,9 @@ class FnDataType extends ComponentDataType
     /**
      * @param string $surnamePrefixFromPartner
      */
-    public function setSurnamePrefixFromPartner($surnamePrefixFromPartner = null)
-    {
+    public function setSurnamePrefixFromPartner(
+        string $surnamePrefixFromPartner = null
+    ) {
         $this->surnamePrefixFromPartner = $this
             ->dataTypeFactory
             ->create('ST', $this->encodingParameters)
@@ -81,7 +82,7 @@ class FnDataType extends ComponentDataType
     /**
      * @param string $surnameFromPartner
      */
-    public function setSurnameFromPartner($surnameFromPartner = null)
+    public function setSurnameFromPartner(string $surnameFromPartner = null)
     {
         $this->surnameFromPartner = $this
             ->dataTypeFactory

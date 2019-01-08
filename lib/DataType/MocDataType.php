@@ -10,11 +10,11 @@ class MocDataType extends ComponentDataType
     const MAX_LEN = 504;
 
     /**
-     * @var \Hl7v2\DataType\MoDataType
+     * @var MoDataType
      */
     private $monetaryAmount;
     /**
-     * @var \Hl7v2\DataType\CeDataType
+     * @var CeDataType
      */
     private $chargeCode;
 
@@ -22,8 +22,10 @@ class MocDataType extends ComponentDataType
      * @param string $monetaryAmountQuantity
      * @param string $monetaryAmountDenomination
      */
-    public function setMonetaryAmount($monetaryAmountQuantity = null, $monetaryAmountDenomination = null)
-    {
+    public function setMonetaryAmount(
+        string $monetaryAmountQuantity = null,
+        string $monetaryAmountDenomination = null
+    ) {
         $this->monetaryAmount = $this
             ->dataTypeFactory
             ->create('MO', $this->encodingParameters, true)
@@ -41,12 +43,12 @@ class MocDataType extends ComponentDataType
      * @param string $chargeCodeNameOfAltCodingSystem
      */
     public function setChargeCode(
-        $chargeCodeIdentifier = null,
-        $chargeCodeText = null,
-        $chargeCodeNameOfCodingSystem = null,
-        $chargeCodeAltIdentifier = null,
-        $chargeCodeAltText = null,
-        $chargeCodeNameOfAltCodingSystem = null
+        string $chargeCodeIdentifier = null,
+        string $chargeCodeText = null,
+        string $chargeCodeNameOfCodingSystem = null,
+        string $chargeCodeAltIdentifier = null,
+        string $chargeCodeAltText = null,
+        string $chargeCodeNameOfAltCodingSystem = null
     ) {
         $this->chargeCode = $this
             ->dataTypeFactory

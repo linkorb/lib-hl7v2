@@ -10,34 +10,34 @@ class CeDataType extends ComponentDataType
     const MAX_LEN = 483;
 
     /**
-     * @var \Hl7v2\DataType\StDataType
+     * @var StDataType
      */
     private $identifier;
     /**
-     * @var \Hl7v2\DataType\StDataType
+     * @var StDataType
      */
     private $text;
     /**
-     * @var \Hl7v2\DataType\IdDataType
+     * @var IdDataType
      */
     private $nameOfCodingSystem;
     /**
-     * @var \Hl7v2\DataType\StDataType
+     * @var StDataType
      */
     private $altIdentifier;
     /**
-     * @var \Hl7v2\DataType\StDataType
+     * @var StDataType
      */
     private $altText;
     /**
-     * @var \Hl7v2\DataType\IdDataType
+     * @var IdDataType
      */
     private $nameOfAltCodingSystem;
 
     /**
      * @param string $identifier
      */
-    public function setIdentifier($identifier = null)
+    public function setIdentifier(string $identifier = null)
     {
         $this->identifier = $this
             ->dataTypeFactory
@@ -49,7 +49,7 @@ class CeDataType extends ComponentDataType
     /**
      * @param string $text
      */
-    public function setText($text = null)
+    public function setText(string $text = null)
     {
         $this->text = $this
             ->dataTypeFactory
@@ -61,7 +61,7 @@ class CeDataType extends ComponentDataType
     /**
      * @param string $nameOfCodingSystem
      */
-    public function setNameOfCodingSystem($nameOfCodingSystem = null)
+    public function setNameOfCodingSystem(string $nameOfCodingSystem = null)
     {
         $this->nameOfCodingSystem = $this
             ->dataTypeFactory
@@ -73,7 +73,7 @@ class CeDataType extends ComponentDataType
     /**
      * @param string $altIdentifier
      */
-    public function setAltIdentifier($altIdentifier = null)
+    public function setAltIdentifier(string $altIdentifier = null)
     {
         $this->altIdentifier = $this
             ->dataTypeFactory
@@ -85,7 +85,7 @@ class CeDataType extends ComponentDataType
     /**
      * @param string $altText
      */
-    public function setAltText($altText = null)
+    public function setAltText(string $altText = null)
     {
         $this->altText = $this
             ->dataTypeFactory
@@ -97,8 +97,9 @@ class CeDataType extends ComponentDataType
     /**
      * @param string $nameOfAltCodingSystem
      */
-    public function setNameOfAltCodingSystem($nameOfAltCodingSystem = null)
-    {
+    public function setNameOfAltCodingSystem(
+        string $nameOfAltCodingSystem = null
+    ) {
         $this->nameOfAltCodingSystem = $this
             ->dataTypeFactory
             ->create('ID', $this->encodingParameters)

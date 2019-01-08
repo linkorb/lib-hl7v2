@@ -10,59 +10,59 @@ class XpnDataType extends ComponentDataType
     const MAX_LEN = 1103;
 
     /**
-     * @var \Hl7v2\DataType\FnDataType
+     * @var FnDataType
      */
     private $familyName;
     /**
-     * @var \Hl7v2\DataType\StDataType
+     * @var StDataType
      */
     private $givenName;
     /**
-     * @var \Hl7v2\DataType\StDataType
+     * @var StDataType
      */
     private $secondNames;
     /**
-     * @var \Hl7v2\DataType\StDataType
+     * @var StDataType
      */
     private $suffix;
     /**
-     * @var \Hl7v2\DataType\StDataType
+     * @var StDataType
      */
     private $prefix;
     /**
-     * @var \Hl7v2\DataType\IsDataType
+     * @var IsDataType
      */
     private $degree;
     /**
-     * @var \Hl7v2\DataType\IdDataType
+     * @var IdDataType
      */
     private $nameTypeCode;
     /**
-     * @var \Hl7v2\DataType\IdDataType
+     * @var IdDataType
      */
     private $nameRepresentationCode;
     /**
-     * @var \Hl7v2\DataType\CeDataType
+     * @var CeDataType
      */
     private $nameContext;
     /**
-     * @var \Hl7v2\DataType\DrDataType
+     * @var DrDataType
      */
     private $nameValidityRange;
     /**
-     * @var \Hl7v2\DataType\IdDataType
+     * @var IdDataType
      */
     private $nameAssemblyOrder;
     /**
-     * @var \Hl7v2\DataType\TsDataType
+     * @var TsDataType
      */
     private $effectiveDate;
     /**
-     * @var \Hl7v2\DataType\TsDataType
+     * @var TsDataType
      */
     private $expirationDate;
     /**
-     * @var \Hl7v2\DataType\StDataType
+     * @var StDataType
      */
     private $professionalSuffix;
 
@@ -74,11 +74,11 @@ class XpnDataType extends ComponentDataType
      * @param string $familyNameSurnameFromPartner
      */
     public function setFamilyName(
-        $familyNameSurname,
-        $familyNameOwnSurnamePrefix = null,
-        $familyNameOwnSurname = null,
-        $familyNameSurnamePrefixFromPartner = null,
-        $familyNameSurnameFromPartner = null
+        string $familyNameSurname,
+        string $familyNameOwnSurnamePrefix = null,
+        string $familyNameOwnSurname = null,
+        string $familyNameSurnamePrefixFromPartner = null,
+        string $familyNameSurnameFromPartner = null
     ) {
         $this->familyName = $this
             ->dataTypeFactory
@@ -94,7 +94,7 @@ class XpnDataType extends ComponentDataType
     /**
      * @param string $givenName
      */
-    public function setGivenName($givenName = null)
+    public function setGivenName(string $givenName = null)
     {
         $this->givenName = $this
             ->dataTypeFactory
@@ -106,7 +106,7 @@ class XpnDataType extends ComponentDataType
     /**
      * @param string $secondNames
      */
-    public function setSecondNames($secondNames = null)
+    public function setSecondNames(string $secondNames = null)
     {
         $this->secondNames = $this
             ->dataTypeFactory
@@ -118,7 +118,7 @@ class XpnDataType extends ComponentDataType
     /**
      * @param string $suffix
      */
-    public function setSuffix($suffix = null)
+    public function setSuffix(string $suffix = null)
     {
         $this->suffix = $this
             ->dataTypeFactory
@@ -130,7 +130,7 @@ class XpnDataType extends ComponentDataType
     /**
      * @param string $prefix
      */
-    public function setPrefix($prefix = null)
+    public function setPrefix(string $prefix = null)
     {
         $this->prefix = $this
             ->dataTypeFactory
@@ -142,7 +142,7 @@ class XpnDataType extends ComponentDataType
     /**
      * @param string $degree
      */
-    public function setDegree($degree = null)
+    public function setDegree(string $degree = null)
     {
         $this->degree = $this
             ->dataTypeFactory
@@ -154,7 +154,7 @@ class XpnDataType extends ComponentDataType
     /**
      * @param string $nameTypeCode
      */
-    public function setNameTypeCode($nameTypeCode = null)
+    public function setNameTypeCode(string $nameTypeCode = null)
     {
         $this->nameTypeCode = $this
             ->dataTypeFactory
@@ -166,8 +166,9 @@ class XpnDataType extends ComponentDataType
     /**
      * @param string $nameRepresentationCode
      */
-    public function setNameRepresentationCode($nameRepresentationCode = null)
-    {
+    public function setNameRepresentationCode(
+        string $nameRepresentationCode = null
+    ) {
         $this->nameRepresentationCode = $this
             ->dataTypeFactory
             ->create('ID', $this->encodingParameters)
@@ -184,12 +185,12 @@ class XpnDataType extends ComponentDataType
      * @param string $nameContextNameOfAltCodingSystem
      */
     public function setNameContext(
-        $nameContextIdentifier = null,
-        $nameContextText = null,
-        $nameContextNameOfCodingSystem = null,
-        $nameContextAltIdentifier = null,
-        $nameContextAltText = null,
-        $nameContextNameOfAltCodingSystem = null
+        string $nameContextIdentifier = null,
+        string $nameContextText = null,
+        string $nameContextNameOfCodingSystem = null,
+        string $nameContextAltIdentifier = null,
+        string $nameContextAltText = null,
+        string $nameContextNameOfAltCodingSystem = null
     ) {
         $this->nameContext = $this
             ->dataTypeFactory
@@ -210,10 +211,10 @@ class XpnDataType extends ComponentDataType
      * @param string $nameValidityRangeRangeEndDateTimeDegreeOfPrecision
      */
     public function setNameValidityRange(
-        $nameValidityRangeRangeStartDateTimeTime,
-        $nameValidityRangeRangeStartDateTimeDegreeOfPrecision = null,
-        $nameValidityRangeRangeEndDateTimeTime,
-        $nameValidityRangeRangeEndDateTimeDegreeOfPrecision = null
+        string $nameValidityRangeRangeStartDateTimeTime,
+        string $nameValidityRangeRangeStartDateTimeDegreeOfPrecision = null,
+        string $nameValidityRangeRangeEndDateTimeTime,
+        string $nameValidityRangeRangeEndDateTimeDegreeOfPrecision = null
     ) {
         $this->nameValidityRange = $this
             ->dataTypeFactory
@@ -232,7 +233,7 @@ class XpnDataType extends ComponentDataType
     /**
      * @param string $nameAssemblyOrder
      */
-    public function setNameAssemblyOrder($nameAssemblyOrder = null)
+    public function setNameAssemblyOrder(string $nameAssemblyOrder = null)
     {
         $this->nameAssemblyOrder = $this
             ->dataTypeFactory
@@ -245,8 +246,10 @@ class XpnDataType extends ComponentDataType
      * @param string $effectiveDateTime
      * @param string $effectiveDateDegreeOfPrecision
      */
-    public function setEffectiveDate($effectiveDateTime, $effectiveDateDegreeOfPrecision = null)
-    {
+    public function setEffectiveDate(
+        string $effectiveDateTime,
+        string $effectiveDateDegreeOfPrecision = null
+    ) {
         $this->effectiveDate = $this
             ->dataTypeFactory
             ->create('TS', $this->encodingParameters, true)
@@ -259,8 +262,10 @@ class XpnDataType extends ComponentDataType
      * @param string $expirationDateTime
      * @param string $expirationDateDegreeOfPrecision
      */
-    public function setExpirationDate($expirationDateTime, $expirationDateDegreeOfPrecision = null)
-    {
+    public function setExpirationDate(
+        string $expirationDateTime,
+        string $expirationDateDegreeOfPrecision = null
+    ) {
         $this->expirationDate = $this
             ->dataTypeFactory
             ->create('TS', $this->encodingParameters, true)
@@ -272,7 +277,7 @@ class XpnDataType extends ComponentDataType
     /**
      * @param string $professionalSuffix
      */
-    public function setProfessionalSuffix($professionalSuffix = null)
+    public function setProfessionalSuffix(string $professionalSuffix = null)
     {
         $this->professionalSuffix = $this
             ->dataTypeFactory
