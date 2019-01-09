@@ -7,7 +7,7 @@ use Hl7v2\Encoding\EncodingParametersBuilder;
 class SampleMessages
 {
     const MESSAGE = <<<'EOD'
-MSH|^~\&|ACME|ACMETESTCENTRUM|TEST|TEST|20160719132745||ORU^R01|906|P|2.5.1|||AL|AL||8859/1
+MSH|^~\&|ACME|ACMETESTCENTRUM|TEST|TEST|20160719132745||ORU^R01^ORU_RO1|906|P|2.5.1|||AL|AL||8859/1
 PID|1||123548999^^^^NNNLD||ACMETEST^K||19850317|F|||Dam 1^^Amsterdam^^1000 AA||0619056432^^^acmetest@hotmail.com
 PV1|||||||||||||||||||12344
 OBR|||819^ACME|^OBS|||20160513130300||||||||||||||code  testlocatie||||F|||||||dr. paracelsus&&&&&&&&2147483647
@@ -29,7 +29,7 @@ OBX|15|TX|CONCLUSION||dit is de conclusie~dit is de 2e regel||||||F
 EOD;
 
     const MESSAGE_TWIN = <<<'EOD'
-MSH|^~\&|ACME|ACME|TEST|TEST|20160719130739||ORU^R01|969|P|2.5.1|||AL|AL||8859/1
+MSH|^~\&|ACME|ACME|TEST|TEST|20160719130739||ORU^R01^ORU_RO1|969|P|2.5.1|||AL|AL||8859/1
 PID|1||64654^^^^PI~123548999^^^^NNNLD||ACMETEST^K||19850317|vrouwelijk|||Dam 1^^Amsterdam^^1000 AA||0619056432^^^acmetest@hotmail.com
 OBR|||919^ACME|^OBS|||20160407123100||||||||||||||||||C|||||||admin&&&&&&&&BSK
 OBX|1|TS|DUE_DATE||20160809000000||||||F

@@ -185,7 +185,7 @@ class AcknowledgementGenerator
             }
         }
         $ackHeader->setFieldDateTimeOfMessage($time->format('YmdHis'));
-        $ackHeader->setFieldMessageType('ACK', null, null);
+        $ackHeader->setFieldMessageType('ACK', $header->getFieldMessageType()->getTriggerEvent(), 'ACK');
         list($ft, $t) = explode(' ', microtime(false));
         $ackHeader->setFieldMessageControlId(substr($t . substr($ft, 2), 0, 20));
         if ($header->getFieldProcessingId()) {

@@ -40,7 +40,7 @@ class MshSegmentTest extends PHPUnit_Framework_TestCase
         $data = $this
             ->datagramBuilder
             ->withMessage(
-                "MSH|^~\&|ACME|ACME|TEST|TEST|20160719132745||ORU^R01|001|P|2.5.1|||AL|AL||ASCII~8859/1~8859/2\r"
+                "MSH|^~\&|ACME|ACME|TEST|TEST|20160719132745||ORU^R01^ORU_RO1|001|P|2.5.1|||AL|AL||ASCII~8859/1~8859/2\r"
             )
             ->build()
         ;
@@ -62,7 +62,7 @@ class MshSegmentTest extends PHPUnit_Framework_TestCase
 
     public function testToString()
     {
-        $segmentData = 'MSH|^~\&|ACME|ACME|TEST|TEST|20160719132745||ORU^R01|001|P|2.5.1|||AL|AL||ASCII~8859/1~8859/2';
+        $segmentData = 'MSH|^~\&|ACME|ACME|TEST|TEST|20160719132745||ORU^R01^ORU_RO1|001|P|2.5.1|||AL|AL||ASCII~8859/1~8859/2';
         $datagram = $this
             ->datagramBuilder
             ->withMessage($segmentData . "\r")
