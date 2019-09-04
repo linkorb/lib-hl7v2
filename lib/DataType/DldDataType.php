@@ -21,7 +21,7 @@ class DldDataType extends ComponentDataType
     /**
      * @param string $dischargeLocation
      */
-    public function setDischargeLocation(string $dischargeLocation)
+    public function setDischargeLocation(string $dischargeLocation = null)
     {
         $this->dischargeLocation = $this
             ->dataTypeFactory
@@ -35,7 +35,7 @@ class DldDataType extends ComponentDataType
      * @param string $effectiveDateDegreeOfPrecision
      */
     public function setEffectiveDate(
-        string $effectiveDateTime,
+        string $effectiveDateTime = null,
         string $effectiveDateDegreeOfPrecision = null
     ) {
         $this->effectiveDate = $this

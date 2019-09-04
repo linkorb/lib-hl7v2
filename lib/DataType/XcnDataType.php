@@ -122,7 +122,7 @@ class XcnDataType extends ComponentDataType
      * @param string $familyNameSurnameFromPartner
      */
     public function setFamilyName(
-        string $familyNameSurname,
+        string $familyNameSurname = null,
         string $familyNameOwnSurnamePrefix = null,
         string $familyNameOwnSurname = null,
         string $familyNameSurnamePrefixFromPartner = null,
@@ -345,9 +345,9 @@ class XcnDataType extends ComponentDataType
      * @param string $nameValidityRangeRangeEndDateTimeDegreeOfPrecision
      */
     public function setNameValidityRange(
-        string $nameValidityRangeRangeStartDateTimeTime,
+        string $nameValidityRangeRangeStartDateTimeTime = null,
         string $nameValidityRangeRangeStartDateTimeDegreeOfPrecision = null,
-        string $nameValidityRangeRangeEndDateTimeTime,
+        string $nameValidityRangeRangeEndDateTimeTime = null,
         string $nameValidityRangeRangeEndDateTimeDegreeOfPrecision = null
     ) {
         $this->nameValidityRange = $this
@@ -381,7 +381,7 @@ class XcnDataType extends ComponentDataType
      * @param string $effectiveDateDegreeOfPrecision
      */
     public function setEffectiveDate(
-        string $effectiveDateTime,
+        string $effectiveDateTime = null,
         string $effectiveDateDegreeOfPrecision = null
     ) {
         $this->effectiveDate = $this
@@ -397,7 +397,7 @@ class XcnDataType extends ComponentDataType
      * @param string $expirationDateDegreeOfPrecision
      */
     public function setExpirationDate(
-        string $expirationDateTime,
+        string $expirationDateTime = null,
         string $expirationDateDegreeOfPrecision = null
     ) {
         $this->expirationDate = $this

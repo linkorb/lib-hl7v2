@@ -23,7 +23,7 @@ class DrDataType extends ComponentDataType
      * @param string $rangeStartDateTimeDegreeOfPrecision
      */
     public function setRangeStartDateTime(
-        string $rangeStartDateTimeTime,
+        string $rangeStartDateTimeTime = null,
         string $rangeStartDateTimeDegreeOfPrecision = null
     ) {
         $this->rangeStartDateTime = $this
@@ -39,7 +39,7 @@ class DrDataType extends ComponentDataType
      * @param string $rangeEndDateTimeDegreeOfPrecision
      */
     public function setRangeEndDateTime(
-        string $rangeEndDateTimeTime,
+        string $rangeEndDateTimeTime = null,
         string $rangeEndDateTimeDegreeOfPrecision = null
     ) {
         $this->rangeEndDateTime = $this

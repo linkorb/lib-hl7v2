@@ -102,7 +102,7 @@ class NdlDataType extends ComponentDataType
      * @param string $startDateTimeDegreeOfPrecision
      */
     public function setStartDateTime(
-        string $startDateTimeTime,
+        string $startDateTimeTime = null,
         string $startDateTimeDegreeOfPrecision = null
     ) {
         $this->startDateTime = $this
@@ -118,7 +118,7 @@ class NdlDataType extends ComponentDataType
      * @param string $endDateTimeDegreeOfPrecision
      */
     public function setEndDateTime(
-        string $endDateTimeTime,
+        string $endDateTimeTime = null,
         string $endDateTimeDegreeOfPrecision = null
     ) {
         $this->endDateTime = $this

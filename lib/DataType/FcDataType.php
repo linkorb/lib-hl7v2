@@ -21,7 +21,7 @@ class FcDataType extends ComponentDataType
     /**
      * @param string $financialClassCode
      */
-    public function setFinancialClassCode(string $financialClassCode)
+    public function setFinancialClassCode(string $financialClassCode = null)
     {
         $this->financialClassCode = $this
             ->dataTypeFactory
@@ -35,7 +35,7 @@ class FcDataType extends ComponentDataType
      * @param string $effectiveDateDegreeOfPrecision
      */
     public function setEffectiveDate(
-        string $effectiveDateTime,
+        string $effectiveDateTime = null,
         string $effectiveDateDegreeOfPrecision = null
     ) {
         $this->effectiveDate = $this

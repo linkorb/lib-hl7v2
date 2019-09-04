@@ -214,9 +214,9 @@ class XadDataType extends ComponentDataType
      * @param string $addressValidityRangeRangeEndDateTimeDegreeOfPrecision
      */
     public function setAddressValidityRange(
-        string $addressValidityRangeRangeStartDateTimeTime,
+        string $addressValidityRangeRangeStartDateTimeTime = null,
         string $addressValidityRangeRangeStartDateTimeDegreeOfPrecision = null,
-        string $addressValidityRangeRangeEndDateTimeTime,
+        string $addressValidityRangeRangeEndDateTimeTime = null,
         string $addressValidityRangeRangeEndDateTimeDegreeOfPrecision = null
     ) {
         $this->addressValidityRange = $this
@@ -238,7 +238,7 @@ class XadDataType extends ComponentDataType
      * @param string $effectiveDateDegreeOfPrecision
      */
     public function setEffectiveDate(
-        string $effectiveDateTime,
+        string $effectiveDateTime = null,
         string $effectiveDateDegreeOfPrecision = null
     ) {
         $this->effectiveDate = $this
@@ -254,7 +254,7 @@ class XadDataType extends ComponentDataType
      * @param string $expirationDateDegreeOfPrecision
      */
     public function setExpirationDate(
-        string $expirationDateTime,
+        string $expirationDateTime = null,
         string $expirationDateDegreeOfPrecision = null
     ) {
         $this->expirationDate = $this

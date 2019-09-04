@@ -90,9 +90,7 @@ foreach ($typeResolver->reseolveTypeDependencyGraph() as $typeId) {
             $mutatorDoc = new MethodPhpdoc;
             foreach ($args as list($argName, $argType, $argMandatory)) {
                 $argument = new Argument($argType, $argName);
-                if (!$argMandatory) {
-                    $argument->setDefaultValue('null');
-                }
+                $argument->setDefaultValue('null');
                 $mutator->addArgument($argument);
                 $mutatorDoc->addParameterTag(new ParameterTag($argType, $argName));
             }

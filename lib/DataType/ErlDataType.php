@@ -37,7 +37,7 @@ class ErlDataType extends ComponentDataType
     /**
      * @param string $segmentId
      */
-    public function setSegmentId(string $segmentId)
+    public function setSegmentId(string $segmentId = null)
     {
         $this->segmentId = $this
             ->dataTypeFactory
@@ -49,7 +49,7 @@ class ErlDataType extends ComponentDataType
     /**
      * @param string $segmentSequence
      */
-    public function setSegmentSequence(string $segmentSequence)
+    public function setSegmentSequence(string $segmentSequence = null)
     {
         $this->segmentSequence = $this
             ->dataTypeFactory

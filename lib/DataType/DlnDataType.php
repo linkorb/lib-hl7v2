@@ -25,7 +25,7 @@ class DlnDataType extends ComponentDataType
     /**
      * @param string $licenseNumber
      */
-    public function setLicenseNumber(string $licenseNumber)
+    public function setLicenseNumber(string $licenseNumber = null)
     {
         $this->licenseNumber = $this
             ->dataTypeFactory

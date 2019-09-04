@@ -313,7 +313,7 @@ class ObrSegment extends AbstractSegment
      * @param string $degreeOfPrecision
      */
     public function setFieldRequestedDatetime(
-        string $time,
+        string $time = null,
         string $degreeOfPrecision = null
     ) {
         $this->requestedDatetime = $this
@@ -329,7 +329,7 @@ class ObrSegment extends AbstractSegment
      * @param string $degreeOfPrecision
      */
     public function setFieldObservationDatetime(
-        string $time,
+        string $time = null,
         string $degreeOfPrecision = null
     ) {
         $this->observationDatetime = $this
@@ -345,7 +345,7 @@ class ObrSegment extends AbstractSegment
      * @param string $degreeOfPrecision
      */
     public function setFieldObservationEndDatetime(
-        string $time,
+        string $time = null,
         string $degreeOfPrecision = null
     ) {
         $this->observationEndDatetime = $this
@@ -450,7 +450,7 @@ class ObrSegment extends AbstractSegment
      */
     public function addFieldCollectorIdentifier(
         string $idNumber = null,
-        string $familyNameSurname,
+        string $familyNameSurname = null,
         string $familyNameOwnSurnamePrefix = null,
         string $familyNameOwnSurname = null,
         string $familyNameSurnamePrefixFromPartner = null,
@@ -478,14 +478,14 @@ class ObrSegment extends AbstractSegment
         string $nameContextAltIdentifier = null,
         string $nameContextAltText = null,
         string $nameContextNameOfAltCodingSystem = null,
-        string $nameValidityRangeRangeStartDateTimeTime,
+        string $nameValidityRangeRangeStartDateTimeTime = null,
         string $nameValidityRangeRangeStartDateTimeDegreeOfPrecision = null,
-        string $nameValidityRangeRangeEndDateTimeTime,
+        string $nameValidityRangeRangeEndDateTimeTime = null,
         string $nameValidityRangeRangeEndDateTimeDegreeOfPrecision = null,
         string $nameAssemblyOrder = null,
-        string $effectiveDateTime,
+        string $effectiveDateTime = null,
         string $effectiveDateDegreeOfPrecision = null,
-        string $expirationDateTime,
+        string $expirationDateTime = null,
         string $expirationDateDegreeOfPrecision = null,
         string $professionalSuffix = null,
         string $assigningJurisdictionIdentifier = null,
@@ -643,7 +643,7 @@ class ObrSegment extends AbstractSegment
      * @param string $degreeOfPrecision
      */
     public function setFieldSpecimenReceivedDatetime(
-        string $time,
+        string $time = null,
         string $degreeOfPrecision = null
     ) {
         $this->specimenReceivedDatetime = $this
@@ -727,7 +727,7 @@ class ObrSegment extends AbstractSegment
      */
     public function addFieldOrderingProvider(
         string $idNumber = null,
-        string $familyNameSurname,
+        string $familyNameSurname = null,
         string $familyNameOwnSurnamePrefix = null,
         string $familyNameOwnSurname = null,
         string $familyNameSurnamePrefixFromPartner = null,
@@ -755,14 +755,14 @@ class ObrSegment extends AbstractSegment
         string $nameContextAltIdentifier = null,
         string $nameContextAltText = null,
         string $nameContextNameOfAltCodingSystem = null,
-        string $nameValidityRangeRangeStartDateTimeTime,
+        string $nameValidityRangeRangeStartDateTimeTime = null,
         string $nameValidityRangeRangeStartDateTimeDegreeOfPrecision = null,
-        string $nameValidityRangeRangeEndDateTimeTime,
+        string $nameValidityRangeRangeEndDateTimeTime = null,
         string $nameValidityRangeRangeEndDateTimeDegreeOfPrecision = null,
         string $nameAssemblyOrder = null,
-        string $effectiveDateTime,
+        string $effectiveDateTime = null,
         string $effectiveDateDegreeOfPrecision = null,
-        string $expirationDateTime,
+        string $expirationDateTime = null,
         string $expirationDateDegreeOfPrecision = null,
         string $professionalSuffix = null,
         string $assigningJurisdictionIdentifier = null,
@@ -962,7 +962,7 @@ class ObrSegment extends AbstractSegment
      * @param string $degreeOfPrecision
      */
     public function setFieldResultsRptstatusChngDatetime(
-        string $time,
+        string $time = null,
         string $degreeOfPrecision = null
     ) {
         $this->resultsRptstatusChngDatetime = $this
@@ -1120,24 +1120,24 @@ class ObrSegment extends AbstractSegment
         string $intervalRepeatPattern = null,
         string $intervalExplicitTimeInterval = null,
         string $duration = null,
-        string $startDateTimeTime,
+        string $startDateTimeTime = null,
         string $startDateTimeDegreeOfPrecision = null,
-        string $endDateTimeTime,
+        string $endDateTimeTime = null,
         string $endDateTimeDegreeOfPrecision = null,
         string $priority = null,
         string $condition = null,
         string $text = null,
         string $conjunction = null,
-        string $orderSequencingSequenceResultsFlag,
-        string $orderSequencingPlacerOrderNumberEntityIdentifier,
+        string $orderSequencingSequenceResultsFlag = null,
+        string $orderSequencingPlacerOrderNumberEntityIdentifier = null,
         string $orderSequencingPlacerOrderNumberNamespaceId = null,
-        string $orderSequencingFillerOrderNumberEntityIdentifier,
+        string $orderSequencingFillerOrderNumberEntityIdentifier = null,
         string $orderSequencingFillerOrderNumberNamespaceId = null,
         string $orderSequencingSequenceConditionValue = null,
         string $orderSequencingMaximumNumberOfRepeats = null,
-        string $orderSequencingPlacerOrderNumberUniversalId,
+        string $orderSequencingPlacerOrderNumberUniversalId = null,
         string $orderSequencingPlacerOrderNumberUniversalIdType = null,
-        string $orderSequencingFillerOrderNumberUniversalId,
+        string $orderSequencingFillerOrderNumberUniversalId = null,
         string $orderSequencingFillerOrderNumberUniversalIdType = null,
         string $occurrenceDurationIdentifier = null,
         string $occurrenceDurationText = null,
@@ -1254,7 +1254,7 @@ class ObrSegment extends AbstractSegment
      */
     public function addFieldResultCopiesTo(
         string $idNumber = null,
-        string $familyNameSurname,
+        string $familyNameSurname = null,
         string $familyNameOwnSurnamePrefix = null,
         string $familyNameOwnSurname = null,
         string $familyNameSurnamePrefixFromPartner = null,
@@ -1282,14 +1282,14 @@ class ObrSegment extends AbstractSegment
         string $nameContextAltIdentifier = null,
         string $nameContextAltText = null,
         string $nameContextNameOfAltCodingSystem = null,
-        string $nameValidityRangeRangeStartDateTimeTime,
+        string $nameValidityRangeRangeStartDateTimeTime = null,
         string $nameValidityRangeRangeStartDateTimeDegreeOfPrecision = null,
-        string $nameValidityRangeRangeEndDateTimeTime,
+        string $nameValidityRangeRangeEndDateTimeTime = null,
         string $nameValidityRangeRangeEndDateTimeDegreeOfPrecision = null,
         string $nameAssemblyOrder = null,
-        string $effectiveDateTime,
+        string $effectiveDateTime = null,
         string $effectiveDateDegreeOfPrecision = null,
-        string $expirationDateTime,
+        string $expirationDateTime = null,
         string $expirationDateDegreeOfPrecision = null,
         string $professionalSuffix = null,
         string $assigningJurisdictionIdentifier = null,
@@ -1505,9 +1505,9 @@ class ObrSegment extends AbstractSegment
         string $nameAssigningAuthorityNamespaceId = null,
         string $nameAssigningAuthorityUniversalId = null,
         string $nameAssigningAuthorityUniversalIdType = null,
-        string $startDateTimeTime,
+        string $startDateTimeTime = null,
         string $startDateTimeDegreeOfPrecision = null,
-        string $endDateTimeTime,
+        string $endDateTimeTime = null,
         string $endDateTimeDegreeOfPrecision = null,
         string $pointOfCare = null,
         string $room = null,
@@ -1598,9 +1598,9 @@ class ObrSegment extends AbstractSegment
         string $nameAssigningAuthorityNamespaceId = null,
         string $nameAssigningAuthorityUniversalId = null,
         string $nameAssigningAuthorityUniversalIdType = null,
-        string $startDateTimeTime,
+        string $startDateTimeTime = null,
         string $startDateTimeDegreeOfPrecision = null,
-        string $endDateTimeTime,
+        string $endDateTimeTime = null,
         string $endDateTimeDegreeOfPrecision = null,
         string $pointOfCare = null,
         string $room = null,
@@ -1692,9 +1692,9 @@ class ObrSegment extends AbstractSegment
         string $nameAssigningAuthorityNamespaceId = null,
         string $nameAssigningAuthorityUniversalId = null,
         string $nameAssigningAuthorityUniversalIdType = null,
-        string $startDateTimeTime,
+        string $startDateTimeTime = null,
         string $startDateTimeDegreeOfPrecision = null,
-        string $endDateTimeTime,
+        string $endDateTimeTime = null,
         string $endDateTimeDegreeOfPrecision = null,
         string $pointOfCare = null,
         string $room = null,
@@ -1780,9 +1780,9 @@ class ObrSegment extends AbstractSegment
         string $nameAssigningAuthorityNamespaceId = null,
         string $nameAssigningAuthorityUniversalId = null,
         string $nameAssigningAuthorityUniversalIdType = null,
-        string $startDateTimeTime,
+        string $startDateTimeTime = null,
         string $startDateTimeDegreeOfPrecision = null,
-        string $endDateTimeTime,
+        string $endDateTimeTime = null,
         string $endDateTimeDegreeOfPrecision = null,
         string $pointOfCare = null,
         string $room = null,
@@ -1834,7 +1834,7 @@ class ObrSegment extends AbstractSegment
      * @param string $degreeOfPrecision
      */
     public function setFieldScheduledDatetime(
-        string $time,
+        string $time = null,
         string $degreeOfPrecision = null
     ) {
         $this->scheduledDatetime = $this

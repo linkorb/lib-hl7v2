@@ -287,24 +287,24 @@ class OrcSegment extends AbstractSegment
         string $intervalRepeatPattern = null,
         string $intervalExplicitTimeInterval = null,
         string $duration = null,
-        string $startDateTimeTime,
+        string $startDateTimeTime = null,
         string $startDateTimeDegreeOfPrecision = null,
-        string $endDateTimeTime,
+        string $endDateTimeTime = null,
         string $endDateTimeDegreeOfPrecision = null,
         string $priority = null,
         string $condition = null,
         string $text = null,
         string $conjunction = null,
-        string $orderSequencingSequenceResultsFlag,
-        string $orderSequencingPlacerOrderNumberEntityIdentifier,
+        string $orderSequencingSequenceResultsFlag = null,
+        string $orderSequencingPlacerOrderNumberEntityIdentifier = null,
         string $orderSequencingPlacerOrderNumberNamespaceId = null,
-        string $orderSequencingFillerOrderNumberEntityIdentifier,
+        string $orderSequencingFillerOrderNumberEntityIdentifier = null,
         string $orderSequencingFillerOrderNumberNamespaceId = null,
         string $orderSequencingSequenceConditionValue = null,
         string $orderSequencingMaximumNumberOfRepeats = null,
-        string $orderSequencingPlacerOrderNumberUniversalId,
+        string $orderSequencingPlacerOrderNumberUniversalId = null,
         string $orderSequencingPlacerOrderNumberUniversalIdType = null,
-        string $orderSequencingFillerOrderNumberUniversalId,
+        string $orderSequencingFillerOrderNumberUniversalId = null,
         string $orderSequencingFillerOrderNumberUniversalIdType = null,
         string $occurrenceDurationIdentifier = null,
         string $occurrenceDurationText = null,
@@ -403,7 +403,7 @@ class OrcSegment extends AbstractSegment
      * @param string $degreeOfPrecision
      */
     public function setFieldDateTimeOfTransaction(
-        string $time,
+        string $time = null,
         string $degreeOfPrecision = null
     ) {
         $this->dateTimeOfTransaction = $this
@@ -475,7 +475,7 @@ class OrcSegment extends AbstractSegment
      */
     public function addFieldEnteredBy(
         string $idNumber = null,
-        string $familyNameSurname,
+        string $familyNameSurname = null,
         string $familyNameOwnSurnamePrefix = null,
         string $familyNameOwnSurname = null,
         string $familyNameSurnamePrefixFromPartner = null,
@@ -503,14 +503,14 @@ class OrcSegment extends AbstractSegment
         string $nameContextAltIdentifier = null,
         string $nameContextAltText = null,
         string $nameContextNameOfAltCodingSystem = null,
-        string $nameValidityRangeRangeStartDateTimeTime,
+        string $nameValidityRangeRangeStartDateTimeTime = null,
         string $nameValidityRangeRangeStartDateTimeDegreeOfPrecision = null,
-        string $nameValidityRangeRangeEndDateTimeTime,
+        string $nameValidityRangeRangeEndDateTimeTime = null,
         string $nameValidityRangeRangeEndDateTimeDegreeOfPrecision = null,
         string $nameAssemblyOrder = null,
-        string $effectiveDateTime,
+        string $effectiveDateTime = null,
         string $effectiveDateDegreeOfPrecision = null,
-        string $expirationDateTime,
+        string $expirationDateTime = null,
         string $expirationDateDegreeOfPrecision = null,
         string $professionalSuffix = null,
         string $assigningJurisdictionIdentifier = null,
@@ -669,7 +669,7 @@ class OrcSegment extends AbstractSegment
      */
     public function addFieldVerifiedBy(
         string $idNumber = null,
-        string $familyNameSurname,
+        string $familyNameSurname = null,
         string $familyNameOwnSurnamePrefix = null,
         string $familyNameOwnSurname = null,
         string $familyNameSurnamePrefixFromPartner = null,
@@ -697,14 +697,14 @@ class OrcSegment extends AbstractSegment
         string $nameContextAltIdentifier = null,
         string $nameContextAltText = null,
         string $nameContextNameOfAltCodingSystem = null,
-        string $nameValidityRangeRangeStartDateTimeTime,
+        string $nameValidityRangeRangeStartDateTimeTime = null,
         string $nameValidityRangeRangeStartDateTimeDegreeOfPrecision = null,
-        string $nameValidityRangeRangeEndDateTimeTime,
+        string $nameValidityRangeRangeEndDateTimeTime = null,
         string $nameValidityRangeRangeEndDateTimeDegreeOfPrecision = null,
         string $nameAssemblyOrder = null,
-        string $effectiveDateTime,
+        string $effectiveDateTime = null,
         string $effectiveDateDegreeOfPrecision = null,
-        string $expirationDateTime,
+        string $expirationDateTime = null,
         string $expirationDateDegreeOfPrecision = null,
         string $professionalSuffix = null,
         string $assigningJurisdictionIdentifier = null,
@@ -863,7 +863,7 @@ class OrcSegment extends AbstractSegment
      */
     public function addFieldOrderingProvider(
         string $idNumber = null,
-        string $familyNameSurname,
+        string $familyNameSurname = null,
         string $familyNameOwnSurnamePrefix = null,
         string $familyNameOwnSurname = null,
         string $familyNameSurnamePrefixFromPartner = null,
@@ -891,14 +891,14 @@ class OrcSegment extends AbstractSegment
         string $nameContextAltIdentifier = null,
         string $nameContextAltText = null,
         string $nameContextNameOfAltCodingSystem = null,
-        string $nameValidityRangeRangeStartDateTimeTime,
+        string $nameValidityRangeRangeStartDateTimeTime = null,
         string $nameValidityRangeRangeStartDateTimeDegreeOfPrecision = null,
-        string $nameValidityRangeRangeEndDateTimeTime,
+        string $nameValidityRangeRangeEndDateTimeTime = null,
         string $nameValidityRangeRangeEndDateTimeDegreeOfPrecision = null,
         string $nameAssemblyOrder = null,
-        string $effectiveDateTime,
+        string $effectiveDateTime = null,
         string $effectiveDateDegreeOfPrecision = null,
-        string $expirationDateTime,
+        string $expirationDateTime = null,
         string $expirationDateDegreeOfPrecision = null,
         string $professionalSuffix = null,
         string $assigningJurisdictionIdentifier = null,
@@ -1118,7 +1118,7 @@ class OrcSegment extends AbstractSegment
      * @param string $degreeOfPrecision
      */
     public function setFieldOrderEffectiveDateTime(
-        string $time,
+        string $time = null,
         string $degreeOfPrecision = null
     ) {
         $this->orderEffectiveDateTime = $this
@@ -1274,7 +1274,7 @@ class OrcSegment extends AbstractSegment
      */
     public function addFieldActionBy(
         string $idNumber = null,
-        string $familyNameSurname,
+        string $familyNameSurname = null,
         string $familyNameOwnSurnamePrefix = null,
         string $familyNameOwnSurname = null,
         string $familyNameSurnamePrefixFromPartner = null,
@@ -1302,14 +1302,14 @@ class OrcSegment extends AbstractSegment
         string $nameContextAltIdentifier = null,
         string $nameContextAltText = null,
         string $nameContextNameOfAltCodingSystem = null,
-        string $nameValidityRangeRangeStartDateTimeTime,
+        string $nameValidityRangeRangeStartDateTimeTime = null,
         string $nameValidityRangeRangeStartDateTimeDegreeOfPrecision = null,
-        string $nameValidityRangeRangeEndDateTimeTime,
+        string $nameValidityRangeRangeEndDateTimeTime = null,
         string $nameValidityRangeRangeEndDateTimeDegreeOfPrecision = null,
         string $nameAssemblyOrder = null,
-        string $effectiveDateTime,
+        string $effectiveDateTime = null,
         string $effectiveDateDegreeOfPrecision = null,
-        string $expirationDateTime,
+        string $expirationDateTime = null,
         string $expirationDateDegreeOfPrecision = null,
         string $professionalSuffix = null,
         string $assigningJurisdictionIdentifier = null,
@@ -1529,13 +1529,13 @@ class OrcSegment extends AbstractSegment
         string $countyParishCode = null,
         string $censusTract = null,
         string $addressRepresentationCode = null,
-        string $addressValidityRangeRangeStartDateTimeTime,
+        string $addressValidityRangeRangeStartDateTimeTime = null,
         string $addressValidityRangeRangeStartDateTimeDegreeOfPrecision = null,
-        string $addressValidityRangeRangeEndDateTimeTime,
+        string $addressValidityRangeRangeEndDateTimeTime = null,
         string $addressValidityRangeRangeEndDateTimeDegreeOfPrecision = null,
-        string $effectiveDateTime,
+        string $effectiveDateTime = null,
         string $effectiveDateDegreeOfPrecision = null,
-        string $expirationDateTime,
+        string $expirationDateTime = null,
         string $expirationDateDegreeOfPrecision = null
     ) {
         $orderingFacilityAddress = $this
@@ -1660,13 +1660,13 @@ class OrcSegment extends AbstractSegment
         string $countyParishCode = null,
         string $censusTract = null,
         string $addressRepresentationCode = null,
-        string $addressValidityRangeRangeStartDateTimeTime,
+        string $addressValidityRangeRangeStartDateTimeTime = null,
         string $addressValidityRangeRangeStartDateTimeDegreeOfPrecision = null,
-        string $addressValidityRangeRangeEndDateTimeTime,
+        string $addressValidityRangeRangeEndDateTimeTime = null,
         string $addressValidityRangeRangeEndDateTimeDegreeOfPrecision = null,
-        string $effectiveDateTime,
+        string $effectiveDateTime = null,
         string $effectiveDateDegreeOfPrecision = null,
-        string $expirationDateTime,
+        string $expirationDateTime = null,
         string $expirationDateDegreeOfPrecision = null
     ) {
         $orderingProviderAddress = $this
@@ -1790,7 +1790,7 @@ class OrcSegment extends AbstractSegment
      * @param string $degreeOfPrecision
      */
     public function setFieldFillerExpectedAvailabilityDateTime(
-        string $time,
+        string $time = null,
         string $degreeOfPrecision = null
     ) {
         $this->fillerExpectedAvailabilityDateTime = $this
@@ -1887,7 +1887,7 @@ class OrcSegment extends AbstractSegment
      * @param string $originalText
      */
     public function setFieldEntererAuthorizationMode(
-        string $identifier,
+        string $identifier = null,
         string $text = null,
         string $nameOfCodingSystem = null,
         string $altIdentifier = null,

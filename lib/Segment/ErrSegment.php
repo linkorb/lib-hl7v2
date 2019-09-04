@@ -109,8 +109,8 @@ class ErrSegment extends AbstractSegment
      * @param string $subcomponentNumber
      */
     public function addFieldErrorLocation(
-        string $segmentId,
-        string $segmentSequence,
+        string $segmentId = null,
+        string $segmentSequence = null,
         string $fieldPosition = null,
         string $fieldRepetition = null,
         string $componentNumber = null,

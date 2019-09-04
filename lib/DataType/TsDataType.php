@@ -21,7 +21,7 @@ class TsDataType extends ComponentDataType
     /**
      * @param string $time
      */
-    public function setTime(string $time)
+    public function setTime(string $time = null)
     {
         $this->time = $this
             ->dataTypeFactory

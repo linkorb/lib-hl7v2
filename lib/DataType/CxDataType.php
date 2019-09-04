@@ -53,7 +53,7 @@ class CxDataType extends ComponentDataType
     /**
      * @param string $idNumber
      */
-    public function setIdNumber(string $idNumber)
+    public function setIdNumber(string $idNumber = null)
     {
         $this->idNumber = $this
             ->dataTypeFactory

@@ -50,7 +50,7 @@ class EdDataType extends ComponentDataType
     /**
      * @param string $typeOfData
      */
-    public function setTypeOfData(string $typeOfData)
+    public function setTypeOfData(string $typeOfData = null)
     {
         $this->typeOfData = $this
             ->dataTypeFactory
@@ -74,7 +74,7 @@ class EdDataType extends ComponentDataType
     /**
      * @param string $encoding
      */
-    public function setEncoding(string $encoding)
+    public function setEncoding(string $encoding = null)
     {
         $this->encoding = $this
             ->dataTypeFactory
@@ -86,7 +86,7 @@ class EdDataType extends ComponentDataType
     /**
      * @param string $data
      */
-    public function setData(string $data)
+    public function setData(string $data = null)
     {
         $this->data = $this
             ->dataTypeFactory

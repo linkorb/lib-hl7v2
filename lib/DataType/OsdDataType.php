@@ -57,7 +57,7 @@ class OsdDataType extends ComponentDataType
     /**
      * @param string $sequenceResultsFlag
      */
-    public function setSequenceResultsFlag(string $sequenceResultsFlag)
+    public function setSequenceResultsFlag(string $sequenceResultsFlag = null)
     {
         $this->sequenceResultsFlag = $this
             ->dataTypeFactory
@@ -70,7 +70,7 @@ class OsdDataType extends ComponentDataType
      * @param string $placerOrderNumberEntityIdentifier
      */
     public function setPlacerOrderNumberEntityIdentifier(
-        string $placerOrderNumberEntityIdentifier
+        string $placerOrderNumberEntityIdentifier = null
     ) {
         $this->placerOrderNumberEntityIdentifier = $this
             ->dataTypeFactory
@@ -96,7 +96,7 @@ class OsdDataType extends ComponentDataType
      * @param string $fillerOrderNumberEntityIdentifier
      */
     public function setFillerOrderNumberEntityIdentifier(
-        string $fillerOrderNumberEntityIdentifier
+        string $fillerOrderNumberEntityIdentifier = null
     ) {
         $this->fillerOrderNumberEntityIdentifier = $this
             ->dataTypeFactory
@@ -148,7 +148,7 @@ class OsdDataType extends ComponentDataType
      * @param string $placerOrderNumberUniversalId
      */
     public function setPlacerOrderNumberUniversalId(
-        string $placerOrderNumberUniversalId
+        string $placerOrderNumberUniversalId = null
     ) {
         $this->placerOrderNumberUniversalId = $this
             ->dataTypeFactory
@@ -174,7 +174,7 @@ class OsdDataType extends ComponentDataType
      * @param string $fillerOrderNumberUniversalId
      */
     public function setFillerOrderNumberUniversalId(
-        string $fillerOrderNumberUniversalId
+        string $fillerOrderNumberUniversalId = null
     ) {
         $this->fillerOrderNumberUniversalId = $this
             ->dataTypeFactory

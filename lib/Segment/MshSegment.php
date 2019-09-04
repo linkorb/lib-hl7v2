@@ -201,7 +201,7 @@ class MshSegment extends AbstractSegment
      * @param string $degreeOfPrecision
      */
     public function setFieldDateTimeOfMessage(
-        string $time,
+        string $time = null,
         string $degreeOfPrecision = null
     ) {
         $this->dateTimeOfMessage = $this
@@ -230,9 +230,9 @@ class MshSegment extends AbstractSegment
      * @param string $messageStructure
      */
     public function setFieldMessageType(
-        string $messageCode,
-        string $triggerEvent,
-        string $messageStructure
+        string $messageCode = null,
+        string $triggerEvent = null,
+        string $messageStructure = null
     ) {
         $this->messageType = $this
             ->dataTypeFactory

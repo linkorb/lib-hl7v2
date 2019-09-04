@@ -33,7 +33,7 @@ class FnDataType extends ComponentDataType
     /**
      * @param string $surname
      */
-    public function setSurname(string $surname)
+    public function setSurname(string $surname = null)
     {
         $this->surname = $this
             ->dataTypeFactory

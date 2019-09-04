@@ -180,10 +180,10 @@ class ObxSegment extends AbstractSegment
         string $sourceApplicationNamespaceId = null,
         string $sourceApplicationUniversalId = null,
         string $sourceApplicationUniversalIdType = null,
-        string $typeOfData,
+        string $typeOfData = null,
         string $dataSubtype = null,
-        string $encoding,
-        string $data
+        string $encoding = null,
+        string $data = null
     ) {
         $observationValue = $this
             ->dataTypeFactory
@@ -245,7 +245,7 @@ class ObxSegment extends AbstractSegment
      * @param string $degreeOfPrecision
      */
     public function addFieldObservationValueAsTS(
-        string $time,
+        string $time = null,
         string $degreeOfPrecision = null
     ) {
         $observationValue = $this
@@ -365,7 +365,7 @@ class ObxSegment extends AbstractSegment
      * @param string $degreeOfPrecision
      */
     public function setFieldEffectiveDateOfReferenceRangeValues(
-        string $time,
+        string $time = null,
         string $degreeOfPrecision = null
     ) {
         $this->effectiveDateOfReferenceRangeValues = $this
@@ -393,7 +393,7 @@ class ObxSegment extends AbstractSegment
      * @param string $degreeOfPrecision
      */
     public function setFieldDatetimeOfTheObservation(
-        string $time,
+        string $time = null,
         string $degreeOfPrecision = null
     ) {
         $this->datetimeOfTheObservation = $this
@@ -493,7 +493,7 @@ class ObxSegment extends AbstractSegment
      */
     public function addFieldResponsibleObserver(
         string $idNumber = null,
-        string $familyNameSurname,
+        string $familyNameSurname = null,
         string $familyNameOwnSurnamePrefix = null,
         string $familyNameOwnSurname = null,
         string $familyNameSurnamePrefixFromPartner = null,
@@ -521,14 +521,14 @@ class ObxSegment extends AbstractSegment
         string $nameContextAltIdentifier = null,
         string $nameContextAltText = null,
         string $nameContextNameOfAltCodingSystem = null,
-        string $nameValidityRangeRangeStartDateTimeTime,
+        string $nameValidityRangeRangeStartDateTimeTime = null,
         string $nameValidityRangeRangeStartDateTimeDegreeOfPrecision = null,
-        string $nameValidityRangeRangeEndDateTimeTime,
+        string $nameValidityRangeRangeEndDateTimeTime = null,
         string $nameValidityRangeRangeEndDateTimeDegreeOfPrecision = null,
         string $nameAssemblyOrder = null,
-        string $effectiveDateTime,
+        string $effectiveDateTime = null,
         string $effectiveDateDegreeOfPrecision = null,
-        string $expirationDateTime,
+        string $expirationDateTime = null,
         string $expirationDateDegreeOfPrecision = null,
         string $professionalSuffix = null,
         string $assigningJurisdictionIdentifier = null,
@@ -686,7 +686,7 @@ class ObxSegment extends AbstractSegment
      * @param string $degreeOfPrecision
      */
     public function setFieldDatetimeOfTheAnalysis(
-        string $time,
+        string $time = null,
         string $degreeOfPrecision = null
     ) {
         $this->datetimeOfTheAnalysis = $this
@@ -790,13 +790,13 @@ class ObxSegment extends AbstractSegment
         string $countyParishCode = null,
         string $censusTract = null,
         string $addressRepresentationCode = null,
-        string $addressValidityRangeRangeStartDateTimeTime,
+        string $addressValidityRangeRangeStartDateTimeTime = null,
         string $addressValidityRangeRangeStartDateTimeDegreeOfPrecision = null,
-        string $addressValidityRangeRangeEndDateTimeTime,
+        string $addressValidityRangeRangeEndDateTimeTime = null,
         string $addressValidityRangeRangeEndDateTimeDegreeOfPrecision = null,
-        string $effectiveDateTime,
+        string $effectiveDateTime = null,
         string $effectiveDateDegreeOfPrecision = null,
-        string $expirationDateTime,
+        string $expirationDateTime = null,
         string $expirationDateDegreeOfPrecision = null
     ) {
         $this->performingOrganizationAddress = $this
@@ -899,7 +899,7 @@ class ObxSegment extends AbstractSegment
      */
     public function setFieldPerformingOrganizationMedicalDirector(
         string $idNumber = null,
-        string $familyNameSurname,
+        string $familyNameSurname = null,
         string $familyNameOwnSurnamePrefix = null,
         string $familyNameOwnSurname = null,
         string $familyNameSurnamePrefixFromPartner = null,
@@ -927,14 +927,14 @@ class ObxSegment extends AbstractSegment
         string $nameContextAltIdentifier = null,
         string $nameContextAltText = null,
         string $nameContextNameOfAltCodingSystem = null,
-        string $nameValidityRangeRangeStartDateTimeTime,
+        string $nameValidityRangeRangeStartDateTimeTime = null,
         string $nameValidityRangeRangeStartDateTimeDegreeOfPrecision = null,
-        string $nameValidityRangeRangeEndDateTimeTime,
+        string $nameValidityRangeRangeEndDateTimeTime = null,
         string $nameValidityRangeRangeEndDateTimeDegreeOfPrecision = null,
         string $nameAssemblyOrder = null,
-        string $effectiveDateTime,
+        string $effectiveDateTime = null,
         string $effectiveDateDegreeOfPrecision = null,
-        string $expirationDateTime,
+        string $expirationDateTime = null,
         string $expirationDateDegreeOfPrecision = null,
         string $professionalSuffix = null,
         string $assigningJurisdictionIdentifier = null,

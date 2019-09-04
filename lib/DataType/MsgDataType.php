@@ -25,7 +25,7 @@ class MsgDataType extends ComponentDataType
     /**
      * @param string $messageCode
      */
-    public function setMessageCode(string $messageCode)
+    public function setMessageCode(string $messageCode = null)
     {
         $this->messageCode = $this
             ->dataTypeFactory
@@ -37,7 +37,7 @@ class MsgDataType extends ComponentDataType
     /**
      * @param string $triggerEvent
      */
-    public function setTriggerEvent(string $triggerEvent)
+    public function setTriggerEvent(string $triggerEvent = null)
     {
         $this->triggerEvent = $this
             ->dataTypeFactory
@@ -49,7 +49,7 @@ class MsgDataType extends ComponentDataType
     /**
      * @param string $messageStructure
      */
-    public function setMessageStructure(string $messageStructure)
+    public function setMessageStructure(string $messageStructure = null)
     {
         $this->messageStructure = $this
             ->dataTypeFactory

@@ -213,7 +213,7 @@ class PidSegment extends AbstractSegment
      * @param string $assigningAgencyOriginalText
      */
     public function setFieldPatientId(
-        string $idNumber,
+        string $idNumber = null,
         string $checkDigit = null,
         string $checkDigitScheme = null,
         string $assigningAuthorityNamespaceId = null,
@@ -321,7 +321,7 @@ class PidSegment extends AbstractSegment
      * @param string $assigningAgencyOriginalText
      */
     public function addFieldPatientIdentifierList(
-        string $idNumber,
+        string $idNumber = null,
         string $checkDigit = null,
         string $checkDigitScheme = null,
         string $assigningAuthorityNamespaceId = null,
@@ -430,7 +430,7 @@ class PidSegment extends AbstractSegment
      * @param string $assigningAgencyOriginalText
      */
     public function addFieldAltPatientId(
-        string $idNumber,
+        string $idNumber = null,
         string $checkDigit = null,
         string $checkDigitScheme = null,
         string $assigningAuthorityNamespaceId = null,
@@ -537,7 +537,7 @@ class PidSegment extends AbstractSegment
      * @param string $professionalSuffix
      */
     public function addFieldPatientName(
-        string $familyNameSurname,
+        string $familyNameSurname = null,
         string $familyNameOwnSurnamePrefix = null,
         string $familyNameOwnSurname = null,
         string $familyNameSurnamePrefixFromPartner = null,
@@ -555,14 +555,14 @@ class PidSegment extends AbstractSegment
         string $nameContextAltIdentifier = null,
         string $nameContextAltText = null,
         string $nameContextNameOfAltCodingSystem = null,
-        string $nameValidityRangeRangeStartDateTimeTime,
+        string $nameValidityRangeRangeStartDateTimeTime = null,
         string $nameValidityRangeRangeStartDateTimeDegreeOfPrecision = null,
-        string $nameValidityRangeRangeEndDateTimeTime,
+        string $nameValidityRangeRangeEndDateTimeTime = null,
         string $nameValidityRangeRangeEndDateTimeDegreeOfPrecision = null,
         string $nameAssemblyOrder = null,
-        string $effectiveDateTime,
+        string $effectiveDateTime = null,
         string $effectiveDateDegreeOfPrecision = null,
-        string $expirationDateTime,
+        string $expirationDateTime = null,
         string $expirationDateDegreeOfPrecision = null,
         string $professionalSuffix = null
     ) {
@@ -636,7 +636,7 @@ class PidSegment extends AbstractSegment
      * @param string $professionalSuffix
      */
     public function addFieldMothersMaidenName(
-        string $familyNameSurname,
+        string $familyNameSurname = null,
         string $familyNameOwnSurnamePrefix = null,
         string $familyNameOwnSurname = null,
         string $familyNameSurnamePrefixFromPartner = null,
@@ -654,14 +654,14 @@ class PidSegment extends AbstractSegment
         string $nameContextAltIdentifier = null,
         string $nameContextAltText = null,
         string $nameContextNameOfAltCodingSystem = null,
-        string $nameValidityRangeRangeStartDateTimeTime,
+        string $nameValidityRangeRangeStartDateTimeTime = null,
         string $nameValidityRangeRangeStartDateTimeDegreeOfPrecision = null,
-        string $nameValidityRangeRangeEndDateTimeTime,
+        string $nameValidityRangeRangeEndDateTimeTime = null,
         string $nameValidityRangeRangeEndDateTimeDegreeOfPrecision = null,
         string $nameAssemblyOrder = null,
-        string $effectiveDateTime,
+        string $effectiveDateTime = null,
         string $effectiveDateDegreeOfPrecision = null,
-        string $expirationDateTime,
+        string $expirationDateTime = null,
         string $expirationDateDegreeOfPrecision = null,
         string $professionalSuffix = null
     ) {
@@ -712,7 +712,7 @@ class PidSegment extends AbstractSegment
      * @param string $degreeOfPrecision
      */
     public function setFieldDatetimeOfBirth(
-        string $time,
+        string $time = null,
         string $degreeOfPrecision = null
     ) {
         $this->datetimeOfBirth = $this
@@ -766,7 +766,7 @@ class PidSegment extends AbstractSegment
      * @param string $professionalSuffix
      */
     public function addFieldPatientAlias(
-        string $familyNameSurname,
+        string $familyNameSurname = null,
         string $familyNameOwnSurnamePrefix = null,
         string $familyNameOwnSurname = null,
         string $familyNameSurnamePrefixFromPartner = null,
@@ -784,14 +784,14 @@ class PidSegment extends AbstractSegment
         string $nameContextAltIdentifier = null,
         string $nameContextAltText = null,
         string $nameContextNameOfAltCodingSystem = null,
-        string $nameValidityRangeRangeStartDateTimeTime,
+        string $nameValidityRangeRangeStartDateTimeTime = null,
         string $nameValidityRangeRangeStartDateTimeDegreeOfPrecision = null,
-        string $nameValidityRangeRangeEndDateTimeTime,
+        string $nameValidityRangeRangeEndDateTimeTime = null,
         string $nameValidityRangeRangeEndDateTimeDegreeOfPrecision = null,
         string $nameAssemblyOrder = null,
-        string $effectiveDateTime,
+        string $effectiveDateTime = null,
         string $effectiveDateDegreeOfPrecision = null,
-        string $expirationDateTime,
+        string $expirationDateTime = null,
         string $expirationDateDegreeOfPrecision = null,
         string $professionalSuffix = null
     ) {
@@ -900,13 +900,13 @@ class PidSegment extends AbstractSegment
         string $countyParishCode = null,
         string $censusTract = null,
         string $addressRepresentationCode = null,
-        string $addressValidityRangeRangeStartDateTimeTime,
+        string $addressValidityRangeRangeStartDateTimeTime = null,
         string $addressValidityRangeRangeStartDateTimeDegreeOfPrecision = null,
-        string $addressValidityRangeRangeEndDateTimeTime,
+        string $addressValidityRangeRangeEndDateTimeTime = null,
         string $addressValidityRangeRangeEndDateTimeDegreeOfPrecision = null,
-        string $effectiveDateTime,
+        string $effectiveDateTime = null,
         string $effectiveDateDegreeOfPrecision = null,
-        string $expirationDateTime,
+        string $expirationDateTime = null,
         string $expirationDateDegreeOfPrecision = null
     ) {
         $patientAddress = $this
@@ -1162,7 +1162,7 @@ class PidSegment extends AbstractSegment
      * @param string $assigningAgencyOriginalText
      */
     public function setFieldPatientAccountNumber(
-        string $idNumber,
+        string $idNumber = null,
         string $checkDigit = null,
         string $checkDigitScheme = null,
         string $assigningAuthorityNamespaceId = null,
@@ -1255,7 +1255,7 @@ class PidSegment extends AbstractSegment
      * @param string $expirationDate
      */
     public function setFieldDriversLicenseNumberPatient(
-        string $licenseNumber,
+        string $licenseNumber = null,
         string $issuingStateProvinceCountry = null,
         string $expirationDate = null
     ) {
@@ -1303,7 +1303,7 @@ class PidSegment extends AbstractSegment
      * @param string $assigningAgencyOriginalText
      */
     public function addFieldMothersIdentifier(
-        string $idNumber,
+        string $idNumber = null,
         string $checkDigit = null,
         string $checkDigitScheme = null,
         string $assigningAuthorityNamespaceId = null,
@@ -1534,7 +1534,7 @@ class PidSegment extends AbstractSegment
      * @param string $degreeOfPrecision
      */
     public function setFieldPatientDeathDateAndTime(
-        string $time,
+        string $time = null,
         string $degreeOfPrecision = null
     ) {
         $this->patientDeathDateAndTime = $this
@@ -1587,7 +1587,7 @@ class PidSegment extends AbstractSegment
      * @param string $degreeOfPrecision
      */
     public function setFieldLastUpdateDatetime(
-        string $time,
+        string $time = null,
         string $degreeOfPrecision = null
     ) {
         $this->lastUpdateDatetime = $this

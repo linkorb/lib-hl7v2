@@ -49,7 +49,7 @@ class CneDataType extends ComponentDataType
     /**
      * @param string $identifier
      */
-    public function setIdentifier(string $identifier)
+    public function setIdentifier(string $identifier = null)
     {
         $this->identifier = $this
             ->dataTypeFactory

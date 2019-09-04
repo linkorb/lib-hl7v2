@@ -359,7 +359,7 @@ class Pv1Segment extends AbstractSegment
      * @param string $assigningAgencyOriginalText
      */
     public function setFieldPreadmitNumber(
-        string $idNumber,
+        string $idNumber = null,
         string $checkDigit = null,
         string $checkDigitScheme = null,
         string $assigningAuthorityNamespaceId = null,
@@ -565,7 +565,7 @@ class Pv1Segment extends AbstractSegment
      */
     public function addFieldAttendingDoctor(
         string $idNumber = null,
-        string $familyNameSurname,
+        string $familyNameSurname = null,
         string $familyNameOwnSurnamePrefix = null,
         string $familyNameOwnSurname = null,
         string $familyNameSurnamePrefixFromPartner = null,
@@ -593,14 +593,14 @@ class Pv1Segment extends AbstractSegment
         string $nameContextAltIdentifier = null,
         string $nameContextAltText = null,
         string $nameContextNameOfAltCodingSystem = null,
-        string $nameValidityRangeRangeStartDateTimeTime,
+        string $nameValidityRangeRangeStartDateTimeTime = null,
         string $nameValidityRangeRangeStartDateTimeDegreeOfPrecision = null,
-        string $nameValidityRangeRangeEndDateTimeTime,
+        string $nameValidityRangeRangeEndDateTimeTime = null,
         string $nameValidityRangeRangeEndDateTimeDegreeOfPrecision = null,
         string $nameAssemblyOrder = null,
-        string $effectiveDateTime,
+        string $effectiveDateTime = null,
         string $effectiveDateDegreeOfPrecision = null,
-        string $expirationDateTime,
+        string $expirationDateTime = null,
         string $expirationDateDegreeOfPrecision = null,
         string $professionalSuffix = null,
         string $assigningJurisdictionIdentifier = null,
@@ -759,7 +759,7 @@ class Pv1Segment extends AbstractSegment
      */
     public function addFieldReferringDoctor(
         string $idNumber = null,
-        string $familyNameSurname,
+        string $familyNameSurname = null,
         string $familyNameOwnSurnamePrefix = null,
         string $familyNameOwnSurname = null,
         string $familyNameSurnamePrefixFromPartner = null,
@@ -787,14 +787,14 @@ class Pv1Segment extends AbstractSegment
         string $nameContextAltIdentifier = null,
         string $nameContextAltText = null,
         string $nameContextNameOfAltCodingSystem = null,
-        string $nameValidityRangeRangeStartDateTimeTime,
+        string $nameValidityRangeRangeStartDateTimeTime = null,
         string $nameValidityRangeRangeStartDateTimeDegreeOfPrecision = null,
-        string $nameValidityRangeRangeEndDateTimeTime,
+        string $nameValidityRangeRangeEndDateTimeTime = null,
         string $nameValidityRangeRangeEndDateTimeDegreeOfPrecision = null,
         string $nameAssemblyOrder = null,
-        string $effectiveDateTime,
+        string $effectiveDateTime = null,
         string $effectiveDateDegreeOfPrecision = null,
-        string $expirationDateTime,
+        string $expirationDateTime = null,
         string $expirationDateDegreeOfPrecision = null,
         string $professionalSuffix = null,
         string $assigningJurisdictionIdentifier = null,
@@ -953,7 +953,7 @@ class Pv1Segment extends AbstractSegment
      */
     public function addFieldConsultingDoctor(
         string $idNumber = null,
-        string $familyNameSurname,
+        string $familyNameSurname = null,
         string $familyNameOwnSurnamePrefix = null,
         string $familyNameOwnSurname = null,
         string $familyNameSurnamePrefixFromPartner = null,
@@ -981,14 +981,14 @@ class Pv1Segment extends AbstractSegment
         string $nameContextAltIdentifier = null,
         string $nameContextAltText = null,
         string $nameContextNameOfAltCodingSystem = null,
-        string $nameValidityRangeRangeStartDateTimeTime,
+        string $nameValidityRangeRangeStartDateTimeTime = null,
         string $nameValidityRangeRangeStartDateTimeDegreeOfPrecision = null,
-        string $nameValidityRangeRangeEndDateTimeTime,
+        string $nameValidityRangeRangeEndDateTimeTime = null,
         string $nameValidityRangeRangeEndDateTimeDegreeOfPrecision = null,
         string $nameAssemblyOrder = null,
-        string $effectiveDateTime,
+        string $effectiveDateTime = null,
         string $effectiveDateDegreeOfPrecision = null,
-        string $expirationDateTime,
+        string $expirationDateTime = null,
         string $expirationDateDegreeOfPrecision = null,
         string $professionalSuffix = null,
         string $assigningJurisdictionIdentifier = null,
@@ -1290,7 +1290,7 @@ class Pv1Segment extends AbstractSegment
      */
     public function addFieldAdmittingDoctor(
         string $idNumber = null,
-        string $familyNameSurname,
+        string $familyNameSurname = null,
         string $familyNameOwnSurnamePrefix = null,
         string $familyNameOwnSurname = null,
         string $familyNameSurnamePrefixFromPartner = null,
@@ -1318,14 +1318,14 @@ class Pv1Segment extends AbstractSegment
         string $nameContextAltIdentifier = null,
         string $nameContextAltText = null,
         string $nameContextNameOfAltCodingSystem = null,
-        string $nameValidityRangeRangeStartDateTimeTime,
+        string $nameValidityRangeRangeStartDateTimeTime = null,
         string $nameValidityRangeRangeStartDateTimeDegreeOfPrecision = null,
-        string $nameValidityRangeRangeEndDateTimeTime,
+        string $nameValidityRangeRangeEndDateTimeTime = null,
         string $nameValidityRangeRangeEndDateTimeDegreeOfPrecision = null,
         string $nameAssemblyOrder = null,
-        string $effectiveDateTime,
+        string $effectiveDateTime = null,
         string $effectiveDateDegreeOfPrecision = null,
-        string $expirationDateTime,
+        string $expirationDateTime = null,
         string $expirationDateDegreeOfPrecision = null,
         string $professionalSuffix = null,
         string $assigningJurisdictionIdentifier = null,
@@ -1468,7 +1468,7 @@ class Pv1Segment extends AbstractSegment
      * @param string $assigningAgencyOriginalText
      */
     public function setFieldVisitNumber(
-        string $idNumber,
+        string $idNumber = null,
         string $checkDigit = null,
         string $checkDigitScheme = null,
         string $assigningAuthorityNamespaceId = null,
@@ -1549,8 +1549,8 @@ class Pv1Segment extends AbstractSegment
      * @param string $effectiveDateDegreeOfPrecision
      */
     public function addFieldFinancialClass(
-        string $financialClassCode,
-        string $effectiveDateTime,
+        string $financialClassCode = null,
+        string $effectiveDateTime = null,
         string $effectiveDateDegreeOfPrecision = null
     ) {
         $financialClass = $this
@@ -1764,8 +1764,8 @@ class Pv1Segment extends AbstractSegment
      * @param string $effectiveDateDegreeOfPrecision
      */
     public function setFieldDischargedToLocation(
-        string $dischargeLocation,
-        string $effectiveDateTime,
+        string $dischargeLocation = null,
+        string $effectiveDateTime = null,
         string $effectiveDateDegreeOfPrecision = null
     ) {
         $this->dischargedToLocation = $this
@@ -1988,7 +1988,7 @@ class Pv1Segment extends AbstractSegment
      * @param string $degreeOfPrecision
      */
     public function setFieldAdmitDatetime(
-        string $time,
+        string $time = null,
         string $degreeOfPrecision = null
     ) {
         $this->admitDatetime = $this
@@ -2004,7 +2004,7 @@ class Pv1Segment extends AbstractSegment
      * @param string $degreeOfPrecision
      */
     public function addFieldDischargeDatetime(
-        string $time,
+        string $time = null,
         string $degreeOfPrecision = null
     ) {
         $dischargeDatetime = $this
@@ -2097,7 +2097,7 @@ class Pv1Segment extends AbstractSegment
      * @param string $assigningAgencyOriginalText
      */
     public function setFieldAltVisitId(
-        string $idNumber,
+        string $idNumber = null,
         string $checkDigit = null,
         string $checkDigitScheme = null,
         string $assigningAuthorityNamespaceId = null,
@@ -2245,7 +2245,7 @@ class Pv1Segment extends AbstractSegment
      */
     public function addFieldOtherHealthcareProvider(
         string $idNumber = null,
-        string $familyNameSurname,
+        string $familyNameSurname = null,
         string $familyNameOwnSurnamePrefix = null,
         string $familyNameOwnSurname = null,
         string $familyNameSurnamePrefixFromPartner = null,
@@ -2273,14 +2273,14 @@ class Pv1Segment extends AbstractSegment
         string $nameContextAltIdentifier = null,
         string $nameContextAltText = null,
         string $nameContextNameOfAltCodingSystem = null,
-        string $nameValidityRangeRangeStartDateTimeTime,
+        string $nameValidityRangeRangeStartDateTimeTime = null,
         string $nameValidityRangeRangeStartDateTimeDegreeOfPrecision = null,
-        string $nameValidityRangeRangeEndDateTimeTime,
+        string $nameValidityRangeRangeEndDateTimeTime = null,
         string $nameValidityRangeRangeEndDateTimeDegreeOfPrecision = null,
         string $nameAssemblyOrder = null,
-        string $effectiveDateTime,
+        string $effectiveDateTime = null,
         string $effectiveDateDegreeOfPrecision = null,
-        string $expirationDateTime,
+        string $expirationDateTime = null,
         string $expirationDateDegreeOfPrecision = null,
         string $professionalSuffix = null,
         string $assigningJurisdictionIdentifier = null,

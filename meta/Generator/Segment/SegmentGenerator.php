@@ -369,7 +369,7 @@ class SegmentGenerator
 
         foreach ($f->getComponentInfo() as $componentMethod => $componentProperties) {
             foreach ($componentProperties as $componentName => list($type, $required)) {
-                $args[] = ['string', $componentName, $required];
+                $args[] = ['string', $componentName, false];
             }
             $params = array_map(
                 function ($x) {
@@ -411,7 +411,7 @@ class SegmentGenerator
 
         foreach ($f->getComponentInfo() as $componentMethod => $componentProperties) {
             foreach ($componentProperties as $componentName => list($type, $required)) {
-                $args[] = ['string', $componentName, $required];
+                $args[] = ['string', $componentName, false];
             }
             $params = array_map(
                 function ($x) {

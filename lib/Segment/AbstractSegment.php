@@ -92,7 +92,7 @@ abstract class AbstractSegment implements SegmentInterface
             $first = false;
         }
         while (sizeof($extracted) < sizeof($sequence)) {
-            array_push($extracted, null);
+            $extracted[] = null;
         }
         return $extracted;
     }
@@ -125,7 +125,7 @@ abstract class AbstractSegment implements SegmentInterface
             $first = false;
         }
         while (sizeof($extracted) < sizeof($sequence)) {
-            array_push($extracted, null);
+            $extracted[] = null;
         }
         return $extracted;
     }
