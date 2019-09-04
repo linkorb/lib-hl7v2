@@ -1,3 +1,14 @@
+#
+# Build: docker build -t lib-hl7v2-dev .
+#
+# Run:
+#    docker run -it --rm \
+#    --mount type=bind,source=$(pwd),target=/home/devel/proj \
+#    --name "lib-hl7v2" \
+#    "lib-hl7v2-dev" \
+#    "$@"
+#
+
 FROM php:7-cli-alpine
 
 RUN apk add --no-cache --virtual .persistent-deps \
@@ -11,8 +22,8 @@ RUN set -xe \
 		icu-dev \
 		zlib-dev \
 	&& docker-php-ext-install \
-        bcmath \
-        intl \
+		bcmath \
+		intl \
 		zip \
 	&& docker-php-ext-enable --ini-name 05-opcache.ini opcache \
 	&& apk del .build-deps
