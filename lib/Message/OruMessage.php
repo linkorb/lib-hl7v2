@@ -58,7 +58,7 @@ class OruMessage extends AbstractMessage
                 $this->segmentGroups[] = $patientGroup;
                 $patientGroup->push($segment);
             } elseif ($segment instanceof Pv1Segment
-                || $segment instanceof Pv2Segment
+                // TODO || $segment instanceof Pv2Segment
             ) {
                 $patientGroup->push($segment);
             } elseif ($segment instanceof ObrSegment) {

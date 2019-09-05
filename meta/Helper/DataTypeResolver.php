@@ -68,8 +68,7 @@ class DataTypeResolver
     }
 
     /**
-     *
-     * @param unknown $typeId
+     * @param string $typeId
      * @throws RuntimeException
      * @return \ReflectionClass
      */

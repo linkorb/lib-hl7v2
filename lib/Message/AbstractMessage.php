@@ -24,7 +24,7 @@ abstract class AbstractMessage implements MessageInterface
      */
     protected $segmentGroupFactory;
     /**
-     * @var \Hl7v2\Segment\SegmentGroup[]
+     * @var \Hl7v2\Segment\Group\SegmentGroup[]
      */
     protected $segmentGroups = [];
     /**
@@ -88,7 +88,7 @@ abstract class AbstractMessage implements MessageInterface
     }
 
     /**
-     * @return \Hl7v2\Segment\SegmentGroup[]
+     * @return \Hl7v2\Segment\Group\SegmentGroup[]
      */
     public function getSegmentGroups()
     {

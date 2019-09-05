@@ -25,7 +25,7 @@ class Datagram
     public function __construct($value)
     {
         if (!is_string($value)) {
-            throw new Exception('Invalid message data. Expected a string.');
+            throw new \Exception('Invalid message data. Expected a string.');
         }
 
         $this->value = $value;
