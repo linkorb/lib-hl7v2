@@ -12,203 +12,203 @@ use Hl7v2\Exception\SegmentError;
 class ObrSegment extends AbstractSegment
 {
     /**
-     * @var SiDataType
+     * @var \Hl7v2\DataType\SiDataType
      */
     private $setId = null;
     /**
-     * @var EiDataType
+     * @var \Hl7v2\DataType\EiDataType
      */
     private $placerOrderNumber = null;
     /**
-     * @var EiDataType
+     * @var \Hl7v2\DataType\EiDataType
      */
     private $fillerOrderNumber = null;
     /**
-     * @var CeDataType
+     * @var \Hl7v2\DataType\CeDataType
      */
     private $universalServiceIdentifier;
     /**
-     * @var IdDataType
+     * @var \Hl7v2\DataType\IdDataType
      */
     private $priority = null;
     /**
-     * @var TsDataType
+     * @var \Hl7v2\DataType\TsDataType
      */
     private $requestedDatetime = null;
     /**
-     * @var TsDataType
+     * @var \Hl7v2\DataType\TsDataType
      */
     private $observationDatetime = null;
     /**
-     * @var TsDataType
+     * @var \Hl7v2\DataType\TsDataType
      */
     private $observationEndDatetime = null;
     /**
-     * @var CqDataType
+     * @var \Hl7v2\DataType\CqDataType
      */
     private $collectionVolume = null;
     /**
-     * @var XcnDataType[]
+     * @var \Hl7v2\DataType\XcnDataType[]
      */
     private $collectorIdentifier = [];
     /**
-     * @var IdDataType
+     * @var \Hl7v2\DataType\IdDataType
      */
     private $specimenActionCode = null;
     /**
-     * @var CeDataType
+     * @var \Hl7v2\DataType\CeDataType
      */
     private $dangerCode = null;
     /**
-     * @var StDataType
+     * @var \Hl7v2\DataType\StDataType
      */
     private $relevantClinicalInformation = null;
     /**
-     * @var TsDataType
+     * @var \Hl7v2\DataType\TsDataType
      */
     private $specimenReceivedDatetime = null;
     /**
-     * @var StDataType
+     * @var \Hl7v2\DataType\StDataType
      */
     private $specimenSource = null;
     /**
-     * @var XcnDataType[]
+     * @var \Hl7v2\DataType\XcnDataType[]
      */
     private $orderingProvider = [];
     /**
-     * @var XtnDataType[]
+     * @var \Hl7v2\DataType\XtnDataType[]
      */
     private $orderCallbackPhoneNumber = [];
     /**
-     * @var StDataType
+     * @var \Hl7v2\DataType\StDataType
      */
     private $placerField1 = null;
     /**
-     * @var StDataType
+     * @var \Hl7v2\DataType\StDataType
      */
     private $placerField2 = null;
     /**
-     * @var StDataType
+     * @var \Hl7v2\DataType\StDataType
      */
     private $fillerField1 = null;
     /**
-     * @var StDataType
+     * @var \Hl7v2\DataType\StDataType
      */
     private $fillerField2 = null;
     /**
-     * @var TsDataType
+     * @var \Hl7v2\DataType\TsDataType
      */
     private $resultsRptstatusChngDatetime = null;
     /**
-     * @var MocDataType
+     * @var \Hl7v2\DataType\MocDataType
      */
     private $chargeToPractice = null;
     /**
-     * @var IdDataType
+     * @var \Hl7v2\DataType\IdDataType
      */
     private $diagnosticServSectId = null;
     /**
-     * @var IdDataType
+     * @var \Hl7v2\DataType\IdDataType
      */
     private $resultStatus = null;
     /**
-     * @var PrlDataType
+     * @var \Hl7v2\DataType\PrlDataType
      */
     private $parentResult = null;
     /**
-     * @var TqDataType[]
+     * @var \Hl7v2\DataType\TqDataType[]
      */
     private $quantitytiming = [];
     /**
-     * @var XcnDataType[]
+     * @var \Hl7v2\DataType\XcnDataType[]
      */
     private $resultCopiesTo = [];
     /**
-     * @var EipDataType
+     * @var \Hl7v2\DataType\EipDataType
      */
     private $parent = null;
     /**
-     * @var IdDataType
+     * @var \Hl7v2\DataType\IdDataType
      */
     private $transportationMode = null;
     /**
-     * @var CeDataType[]
+     * @var \Hl7v2\DataType\CeDataType[]
      */
     private $reasonForStudy = [];
     /**
-     * @var NdlDataType
+     * @var \Hl7v2\DataType\NdlDataType
      */
     private $principalResultInterpreter = null;
     /**
-     * @var NdlDataType[]
+     * @var \Hl7v2\DataType\NdlDataType[]
      */
     private $assistantResultInterpreter = [];
     /**
-     * @var NdlDataType[]
+     * @var \Hl7v2\DataType\NdlDataType[]
      */
     private $technician = [];
     /**
-     * @var NdlDataType[]
+     * @var \Hl7v2\DataType\NdlDataType[]
      */
     private $transcriptionist = [];
     /**
-     * @var TsDataType
+     * @var \Hl7v2\DataType\TsDataType
      */
     private $scheduledDatetime = null;
     /**
-     * @var NmDataType
+     * @var \Hl7v2\DataType\NmDataType
      */
     private $numberOfSampleContainers = null;
     /**
-     * @var CeDataType[]
+     * @var \Hl7v2\DataType\CeDataType[]
      */
     private $transportLogisticsOfCollectedSample = [];
     /**
-     * @var CeDataType[]
+     * @var \Hl7v2\DataType\CeDataType[]
      */
     private $collectorsComment = [];
     /**
-     * @var CeDataType
+     * @var \Hl7v2\DataType\CeDataType
      */
     private $transportArrangementResponsibility = null;
     /**
-     * @var IdDataType
+     * @var \Hl7v2\DataType\IdDataType
      */
     private $transportArranged = null;
     /**
-     * @var IdDataType
+     * @var \Hl7v2\DataType\IdDataType
      */
     private $escortRequired = null;
     /**
-     * @var CeDataType[]
+     * @var \Hl7v2\DataType\CeDataType[]
      */
     private $plannedPatientTransportComment = [];
     /**
-     * @var CeDataType
+     * @var \Hl7v2\DataType\CeDataType
      */
     private $procedureCode = null;
     /**
-     * @var CeDataType[]
+     * @var \Hl7v2\DataType\CeDataType[]
      */
     private $procedureCodeModifier = [];
     /**
-     * @var CeDataType[]
+     * @var \Hl7v2\DataType\CeDataType[]
      */
     private $placerSupplementalServiceInformation = [];
     /**
-     * @var CeDataType[]
+     * @var \Hl7v2\DataType\CeDataType[]
      */
     private $fillerSupplementalServiceInformation = [];
     /**
-     * @var CweDataType
+     * @var \Hl7v2\DataType\CweDataType
      */
     private $medicallyNecessaryDuplicateProcedureReason = null;
     /**
-     * @var IsDataType
+     * @var \Hl7v2\DataType\IsDataType
      */
     private $resultHandling = null;
     /**
-     * @var CweDataType
+     * @var \Hl7v2\DataType\CweDataType
      */
     private $parentUniversalServiceIdentifier = null;
 

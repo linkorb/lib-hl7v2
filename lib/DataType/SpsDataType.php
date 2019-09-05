@@ -10,31 +10,31 @@ class SpsDataType extends ComponentDataType
     const MAX_LEN = 4436;
 
     /**
-     * @var CweDataType
+     * @var \Hl7v2\DataType\CweDataType
      */
     private $specimenSourceNameOrCode;
     /**
-     * @var CweDataType
+     * @var \Hl7v2\DataType\CweDataType
      */
     private $additives;
     /**
-     * @var TxDataType
+     * @var \Hl7v2\DataType\TxDataType
      */
     private $specimenCollectionMethod;
     /**
-     * @var CweDataType
+     * @var \Hl7v2\DataType\CweDataType
      */
     private $bodySite;
     /**
-     * @var CweDataType
+     * @var \Hl7v2\DataType\CweDataType
      */
     private $siteModifier;
     /**
-     * @var CweDataType
+     * @var \Hl7v2\DataType\CweDataType
      */
     private $collectionMethodModifierCode;
     /**
-     * @var CweDataType
+     * @var \Hl7v2\DataType\CweDataType
      */
     private $specimenRole;
 

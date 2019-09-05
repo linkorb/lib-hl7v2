@@ -10,51 +10,51 @@ class TqDataType extends ComponentDataType
     const MAX_LEN = 1545;
 
     /**
-     * @var CqDataType
+     * @var \Hl7v2\DataType\CqDataType
      */
     private $quantity;
     /**
-     * @var RiDataType
+     * @var \Hl7v2\DataType\RiDataType
      */
     private $interval;
     /**
-     * @var StDataType
+     * @var \Hl7v2\DataType\StDataType
      */
     private $duration;
     /**
-     * @var TsDataType
+     * @var \Hl7v2\DataType\TsDataType
      */
     private $startDateTime;
     /**
-     * @var TsDataType
+     * @var \Hl7v2\DataType\TsDataType
      */
     private $endDateTime;
     /**
-     * @var StDataType
+     * @var \Hl7v2\DataType\StDataType
      */
     private $priority;
     /**
-     * @var StDataType
+     * @var \Hl7v2\DataType\StDataType
      */
     private $condition;
     /**
-     * @var TxDataType
+     * @var \Hl7v2\DataType\TxDataType
      */
     private $text;
     /**
-     * @var IdDataType
+     * @var \Hl7v2\DataType\IdDataType
      */
     private $conjunction;
     /**
-     * @var OsdDataType
+     * @var \Hl7v2\DataType\OsdDataType
      */
     private $orderSequencing;
     /**
-     * @var CeDataType
+     * @var \Hl7v2\DataType\CeDataType
      */
     private $occurrenceDuration;
     /**
-     * @var NmDataType
+     * @var \Hl7v2\DataType\NmDataType
      */
     private $totalOccurrences;
 

@@ -10,27 +10,27 @@ class CeDataType extends ComponentDataType
     const MAX_LEN = 483;
 
     /**
-     * @var StDataType
+     * @var \Hl7v2\DataType\StDataType
      */
     private $identifier;
     /**
-     * @var StDataType
+     * @var \Hl7v2\DataType\StDataType
      */
     private $text;
     /**
-     * @var IdDataType
+     * @var \Hl7v2\DataType\IdDataType
      */
     private $nameOfCodingSystem;
     /**
-     * @var StDataType
+     * @var \Hl7v2\DataType\StDataType
      */
     private $altIdentifier;
     /**
-     * @var StDataType
+     * @var \Hl7v2\DataType\StDataType
      */
     private $altText;
     /**
-     * @var IdDataType
+     * @var \Hl7v2\DataType\IdDataType
      */
     private $nameOfAltCodingSystem;
 

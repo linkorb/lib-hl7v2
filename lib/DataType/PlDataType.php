@@ -10,47 +10,47 @@ class PlDataType extends ComponentDataType
     const MAX_LEN = 1230;
 
     /**
-     * @var IsDataType
+     * @var \Hl7v2\DataType\IsDataType
      */
     private $pointOfCare;
     /**
-     * @var IsDataType
+     * @var \Hl7v2\DataType\IsDataType
      */
     private $room;
     /**
-     * @var IsDataType
+     * @var \Hl7v2\DataType\IsDataType
      */
     private $bed;
     /**
-     * @var HdDataType
+     * @var \Hl7v2\DataType\HdDataType
      */
     private $facility;
     /**
-     * @var IsDataType
+     * @var \Hl7v2\DataType\IsDataType
      */
     private $locationStatus;
     /**
-     * @var IsDataType
+     * @var \Hl7v2\DataType\IsDataType
      */
     private $personLocationType;
     /**
-     * @var IsDataType
+     * @var \Hl7v2\DataType\IsDataType
      */
     private $building;
     /**
-     * @var IsDataType
+     * @var \Hl7v2\DataType\IsDataType
      */
     private $floor;
     /**
-     * @var StDataType
+     * @var \Hl7v2\DataType\StDataType
      */
     private $locationDescription;
     /**
-     * @var EiDataType
+     * @var \Hl7v2\DataType\EiDataType
      */
     private $comprehensiveLocationIdentifier;
     /**
-     * @var HdDataType
+     * @var \Hl7v2\DataType\HdDataType
      */
     private $assigningAuthorityForLocation;
 

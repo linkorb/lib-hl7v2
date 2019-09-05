@@ -10,15 +10,15 @@ class SadDataType extends ComponentDataType
     const MAX_LEN = 184;
 
     /**
-     * @var StDataType
+     * @var \Hl7v2\DataType\StDataType
      */
     private $streetOrMailingAddress;
     /**
-     * @var StDataType
+     * @var \Hl7v2\DataType\StDataType
      */
     private $streetName;
     /**
-     * @var StDataType
+     * @var \Hl7v2\DataType\StDataType
      */
     private $dwellingNumber;
 

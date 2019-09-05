@@ -10,47 +10,47 @@ class CnnDataType extends ComponentDataType
     const MAX_LEN = 406;
 
     /**
-     * @var StDataType
+     * @var \Hl7v2\DataType\StDataType
      */
     private $idNumber;
     /**
-     * @var StDataType
+     * @var \Hl7v2\DataType\StDataType
      */
     private $familyName;
     /**
-     * @var StDataType
+     * @var \Hl7v2\DataType\StDataType
      */
     private $givenName;
     /**
-     * @var StDataType
+     * @var \Hl7v2\DataType\StDataType
      */
     private $secondNames;
     /**
-     * @var StDataType
+     * @var \Hl7v2\DataType\StDataType
      */
     private $suffix;
     /**
-     * @var StDataType
+     * @var \Hl7v2\DataType\StDataType
      */
     private $prefix;
     /**
-     * @var IsDataType
+     * @var \Hl7v2\DataType\IsDataType
      */
     private $degree;
     /**
-     * @var IsDataType
+     * @var \Hl7v2\DataType\IsDataType
      */
     private $sourceTable;
     /**
-     * @var IsDataType
+     * @var \Hl7v2\DataType\IsDataType
      */
     private $assigningAuthorityNamespaceId;
     /**
-     * @var StDataType
+     * @var \Hl7v2\DataType\StDataType
      */
     private $assigningAuthorityUniversalId;
     /**
-     * @var IdDataType
+     * @var \Hl7v2\DataType\IdDataType
      */
     private $assigningAuthorityUniversalIdType;
 

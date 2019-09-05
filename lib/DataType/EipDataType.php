@@ -10,11 +10,11 @@ class EipDataType extends ComponentDataType
     const MAX_LEN = 855;
 
     /**
-     * @var EiDataType
+     * @var \Hl7v2\DataType\EiDataType
      */
     private $placerAssignedIdentifier;
     /**
-     * @var EiDataType
+     * @var \Hl7v2\DataType\EiDataType
      */
     private $fillerAssignedIdentifier;
 

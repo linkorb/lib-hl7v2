@@ -10,59 +10,59 @@ class XadDataType extends ComponentDataType
     const MAX_LEN = 631;
 
     /**
-     * @var SadDataType
+     * @var \Hl7v2\DataType\SadDataType
      */
     private $streetAddress;
     /**
-     * @var StDataType
+     * @var \Hl7v2\DataType\StDataType
      */
     private $otherDesignation;
     /**
-     * @var StDataType
+     * @var \Hl7v2\DataType\StDataType
      */
     private $city;
     /**
-     * @var StDataType
+     * @var \Hl7v2\DataType\StDataType
      */
     private $stateOrProvince;
     /**
-     * @var StDataType
+     * @var \Hl7v2\DataType\StDataType
      */
     private $zipOrPostalCode;
     /**
-     * @var IdDataType
+     * @var \Hl7v2\DataType\IdDataType
      */
     private $country;
     /**
-     * @var IdDataType
+     * @var \Hl7v2\DataType\IdDataType
      */
     private $addressType;
     /**
-     * @var StDataType
+     * @var \Hl7v2\DataType\StDataType
      */
     private $otherGeographicDesignation;
     /**
-     * @var IsDataType
+     * @var \Hl7v2\DataType\IsDataType
      */
     private $countyParishCode;
     /**
-     * @var IsDataType
+     * @var \Hl7v2\DataType\IsDataType
      */
     private $censusTract;
     /**
-     * @var IdDataType
+     * @var \Hl7v2\DataType\IdDataType
      */
     private $addressRepresentationCode;
     /**
-     * @var DrDataType
+     * @var \Hl7v2\DataType\DrDataType
      */
     private $addressValidityRange;
     /**
-     * @var TsDataType
+     * @var \Hl7v2\DataType\TsDataType
      */
     private $effectiveDate;
     /**
-     * @var TsDataType
+     * @var \Hl7v2\DataType\TsDataType
      */
     private $expirationDate;
 

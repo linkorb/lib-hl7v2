@@ -10,15 +10,15 @@ class PrlDataType extends ComponentDataType
     const MAX_LEN = 755;
 
     /**
-     * @var CeDataType
+     * @var \Hl7v2\DataType\CeDataType
      */
     private $parentObservationIdentifier;
     /**
-     * @var StDataType
+     * @var \Hl7v2\DataType\StDataType
      */
     private $parentObservationSubIdentifier;
     /**
-     * @var TxDataType
+     * @var \Hl7v2\DataType\TxDataType
      */
     private $parentObservationValueDescriptor;
 

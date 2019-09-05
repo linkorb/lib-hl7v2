@@ -12,51 +12,51 @@ use Hl7v2\Exception\SegmentError;
 class ErrSegment extends AbstractSegment
 {
     /**
-     * @var EldDataType[]
+     * @var \Hl7v2\DataType\EldDataType[]
      */
     private $errorCodeAndLocation = [];
     /**
-     * @var ErlDataType[]
+     * @var \Hl7v2\DataType\ErlDataType[]
      */
     private $errorLocation = [];
     /**
-     * @var CweDataType
+     * @var \Hl7v2\DataType\CweDataType
      */
     private $hl7ErrorCode;
     /**
-     * @var IdDataType
+     * @var \Hl7v2\DataType\IdDataType
      */
     private $severity;
     /**
-     * @var CweDataType
+     * @var \Hl7v2\DataType\CweDataType
      */
     private $applicationErrorCode = null;
     /**
-     * @var StDataType[]
+     * @var \Hl7v2\DataType\StDataType[]
      */
     private $applicationErrorParameter = [];
     /**
-     * @var TxDataType
+     * @var \Hl7v2\DataType\TxDataType
      */
     private $diagnosticInformation = null;
     /**
-     * @var TxDataType
+     * @var \Hl7v2\DataType\TxDataType
      */
     private $userMessage = null;
     /**
-     * @var IsDataType[]
+     * @var \Hl7v2\DataType\IsDataType[]
      */
     private $informPersonIndicator = [];
     /**
-     * @var CweDataType
+     * @var \Hl7v2\DataType\CweDataType
      */
     private $overrideType = null;
     /**
-     * @var CweDataType[]
+     * @var \Hl7v2\DataType\CweDataType[]
      */
     private $overrideReasonCode = [];
     /**
-     * @var XtnDataType[]
+     * @var \Hl7v2\DataType\XtnDataType[]
      */
     private $helpDeskContactPoint = [];
 

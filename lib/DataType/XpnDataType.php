@@ -10,59 +10,59 @@ class XpnDataType extends ComponentDataType
     const MAX_LEN = 1103;
 
     /**
-     * @var FnDataType
+     * @var \Hl7v2\DataType\FnDataType
      */
     private $familyName;
     /**
-     * @var StDataType
+     * @var \Hl7v2\DataType\StDataType
      */
     private $givenName;
     /**
-     * @var StDataType
+     * @var \Hl7v2\DataType\StDataType
      */
     private $secondNames;
     /**
-     * @var StDataType
+     * @var \Hl7v2\DataType\StDataType
      */
     private $suffix;
     /**
-     * @var StDataType
+     * @var \Hl7v2\DataType\StDataType
      */
     private $prefix;
     /**
-     * @var IsDataType
+     * @var \Hl7v2\DataType\IsDataType
      */
     private $degree;
     /**
-     * @var IdDataType
+     * @var \Hl7v2\DataType\IdDataType
      */
     private $nameTypeCode;
     /**
-     * @var IdDataType
+     * @var \Hl7v2\DataType\IdDataType
      */
     private $nameRepresentationCode;
     /**
-     * @var CeDataType
+     * @var \Hl7v2\DataType\CeDataType
      */
     private $nameContext;
     /**
-     * @var DrDataType
+     * @var \Hl7v2\DataType\DrDataType
      */
     private $nameValidityRange;
     /**
-     * @var IdDataType
+     * @var \Hl7v2\DataType\IdDataType
      */
     private $nameAssemblyOrder;
     /**
-     * @var TsDataType
+     * @var \Hl7v2\DataType\TsDataType
      */
     private $effectiveDate;
     /**
-     * @var TsDataType
+     * @var \Hl7v2\DataType\TsDataType
      */
     private $expirationDate;
     /**
-     * @var StDataType
+     * @var \Hl7v2\DataType\StDataType
      */
     private $professionalSuffix;
 

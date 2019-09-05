@@ -10,43 +10,43 @@ class CxDataType extends ComponentDataType
     const MAX_LEN = 1913;
 
     /**
-     * @var StDataType
+     * @var \Hl7v2\DataType\StDataType
      */
     private $idNumber;
     /**
-     * @var StDataType
+     * @var \Hl7v2\DataType\StDataType
      */
     private $checkDigit;
     /**
-     * @var IdDataType
+     * @var \Hl7v2\DataType\IdDataType
      */
     private $checkDigitScheme;
     /**
-     * @var HdDataType
+     * @var \Hl7v2\DataType\HdDataType
      */
     private $assigningAuthority;
     /**
-     * @var IdDataType
+     * @var \Hl7v2\DataType\IdDataType
      */
     private $identifierTypeCode;
     /**
-     * @var HdDataType
+     * @var \Hl7v2\DataType\HdDataType
      */
     private $assigningFacility;
     /**
-     * @var DtDataType
+     * @var \Hl7v2\DataType\DtDataType
      */
     private $effectiveDate;
     /**
-     * @var DtDataType
+     * @var \Hl7v2\DataType\DtDataType
      */
     private $expirationDate;
     /**
-     * @var CweDataType
+     * @var \Hl7v2\DataType\CweDataType
      */
     private $assigningJurisdiction;
     /**
-     * @var CweDataType
+     * @var \Hl7v2\DataType\CweDataType
      */
     private $assigningAgency;
 

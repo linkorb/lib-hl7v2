@@ -10,11 +10,11 @@ class CqDataType extends ComponentDataType
     const MAX_LEN = 500;
 
     /**
-     * @var NmDataType
+     * @var \Hl7v2\DataType\NmDataType
      */
     private $quantity;
     /**
-     * @var CeDataType
+     * @var \Hl7v2\DataType\CeDataType
      */
     private $units;
 

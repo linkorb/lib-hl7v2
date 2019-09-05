@@ -10,51 +10,51 @@ class XtnDataType extends ComponentDataType
     const MAX_LEN = 850;
 
     /**
-     * @var StDataType
+     * @var \Hl7v2\DataType\StDataType
      */
     private $telephoneNumber;
     /**
-     * @var IdDataType
+     * @var \Hl7v2\DataType\IdDataType
      */
     private $telecommunicationUseCode;
     /**
-     * @var IdDataType
+     * @var \Hl7v2\DataType\IdDataType
      */
     private $telepcommunicationEquipmentType;
     /**
-     * @var StDataType
+     * @var \Hl7v2\DataType\StDataType
      */
     private $emailAddress;
     /**
-     * @var NmDataType
+     * @var \Hl7v2\DataType\NmDataType
      */
     private $countryCode;
     /**
-     * @var NmDataType
+     * @var \Hl7v2\DataType\NmDataType
      */
     private $areaCityCode;
     /**
-     * @var NmDataType
+     * @var \Hl7v2\DataType\NmDataType
      */
     private $localNumber;
     /**
-     * @var NmDataType
+     * @var \Hl7v2\DataType\NmDataType
      */
     private $extension;
     /**
-     * @var StDataType
+     * @var \Hl7v2\DataType\StDataType
      */
     private $anyText;
     /**
-     * @var StDataType
+     * @var \Hl7v2\DataType\StDataType
      */
     private $extensionPrefix;
     /**
-     * @var StDataType
+     * @var \Hl7v2\DataType\StDataType
      */
     private $speedDialCode;
     /**
-     * @var StDataType
+     * @var \Hl7v2\DataType\StDataType
      */
     private $unformattedTelephoneNumber;
 

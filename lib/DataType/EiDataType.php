@@ -10,19 +10,19 @@ class EiDataType extends ComponentDataType
     const MAX_LEN = 427;
 
     /**
-     * @var StDataType
+     * @var \Hl7v2\DataType\StDataType
      */
     private $entityIdentifier;
     /**
-     * @var IsDataType
+     * @var \Hl7v2\DataType\IsDataType
      */
     private $namespaceId;
     /**
-     * @var StDataType
+     * @var \Hl7v2\DataType\StDataType
      */
     private $universalId;
     /**
-     * @var IdDataType
+     * @var \Hl7v2\DataType\IdDataType
      */
     private $universalIdType;
 

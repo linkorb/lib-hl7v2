@@ -12,127 +12,127 @@ use Hl7v2\Exception\SegmentError;
 class OrcSegment extends AbstractSegment
 {
     /**
-     * @var IdDataType
+     * @var \Hl7v2\DataType\IdDataType
      */
     private $orderControl;
     /**
-     * @var EiDataType
+     * @var \Hl7v2\DataType\EiDataType
      */
     private $placerOrderNumber = null;
     /**
-     * @var EiDataType
+     * @var \Hl7v2\DataType\EiDataType
      */
     private $fillerOrderNumber = null;
     /**
-     * @var EiDataType
+     * @var \Hl7v2\DataType\EiDataType
      */
     private $placerGroupNumber = null;
     /**
-     * @var IdDataType
+     * @var \Hl7v2\DataType\IdDataType
      */
     private $orderStatus = null;
     /**
-     * @var IdDataType
+     * @var \Hl7v2\DataType\IdDataType
      */
     private $responseFlag = null;
     /**
-     * @var TqDataType[]
+     * @var \Hl7v2\DataType\TqDataType[]
      */
     private $quantityTiming = [];
     /**
-     * @var EipDataType
+     * @var \Hl7v2\DataType\EipDataType
      */
     private $parent = null;
     /**
-     * @var TsDataType
+     * @var \Hl7v2\DataType\TsDataType
      */
     private $dateTimeOfTransaction = null;
     /**
-     * @var XcnDataType[]
+     * @var \Hl7v2\DataType\XcnDataType[]
      */
     private $enteredBy = [];
     /**
-     * @var XcnDataType[]
+     * @var \Hl7v2\DataType\XcnDataType[]
      */
     private $verifiedBy = [];
     /**
-     * @var XcnDataType[]
+     * @var \Hl7v2\DataType\XcnDataType[]
      */
     private $orderingProvider = [];
     /**
-     * @var PlDataType
+     * @var \Hl7v2\DataType\PlDataType
      */
     private $entererLocation = null;
     /**
-     * @var XtnDataType[]
+     * @var \Hl7v2\DataType\XtnDataType[]
      */
     private $callBackPhoneNumber = [];
     /**
-     * @var TsDataType
+     * @var \Hl7v2\DataType\TsDataType
      */
     private $orderEffectiveDateTime = null;
     /**
-     * @var CeDataType
+     * @var \Hl7v2\DataType\CeDataType
      */
     private $orderControlCodeReason = null;
     /**
-     * @var CeDataType
+     * @var \Hl7v2\DataType\CeDataType
      */
     private $enteringOrganization = null;
     /**
-     * @var CeDataType
+     * @var \Hl7v2\DataType\CeDataType
      */
     private $enteringDevice = null;
     /**
-     * @var XcnDataType[]
+     * @var \Hl7v2\DataType\XcnDataType[]
      */
     private $actionBy = [];
     /**
-     * @var CeDataType
+     * @var \Hl7v2\DataType\CeDataType
      */
     private $advancedBeneficiaryNoticeCode = null;
     /**
-     * @var XonDataType[]
+     * @var \Hl7v2\DataType\XonDataType[]
      */
     private $orderingFacilityName = [];
     /**
-     * @var XadDataType[]
+     * @var \Hl7v2\DataType\XadDataType[]
      */
     private $orderingFacilityAddress = [];
     /**
-     * @var XtnDataType[]
+     * @var \Hl7v2\DataType\XtnDataType[]
      */
     private $orderingFacilityPhoneNumber = [];
     /**
-     * @var XadDataType[]
+     * @var \Hl7v2\DataType\XadDataType[]
      */
     private $orderingProviderAddress = [];
     /**
-     * @var CweDataType
+     * @var \Hl7v2\DataType\CweDataType
      */
     private $orderStatusModifier = null;
     /**
-     * @var CweDataType
+     * @var \Hl7v2\DataType\CweDataType
      */
     private $advancedBeneficiaryNoticeOverrideReason = null;
     /**
-     * @var TsDataType
+     * @var \Hl7v2\DataType\TsDataType
      */
     private $fillerExpectedAvailabilityDateTime = null;
     /**
-     * @var CweDataType
+     * @var \Hl7v2\DataType\CweDataType
      */
     private $confidentialityCode = null;
     /**
-     * @var CweDataType
+     * @var \Hl7v2\DataType\CweDataType
      */
     private $orderType = null;
     /**
-     * @var CneDataType
+     * @var \Hl7v2\DataType\CneDataType
      */
     private $entererAuthorizationMode = null;
     /**
-     * @var CweDataType
+     * @var \Hl7v2\DataType\CweDataType
      */
     private $parentUniversalServiceIdentifier = null;
 

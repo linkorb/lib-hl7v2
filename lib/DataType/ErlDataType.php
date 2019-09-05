@@ -10,27 +10,27 @@ class ErlDataType extends ComponentDataType
     const MAX_LEN = 18;
 
     /**
-     * @var StDataType
+     * @var \Hl7v2\DataType\StDataType
      */
     private $segmentId;
     /**
-     * @var NmDataType
+     * @var \Hl7v2\DataType\NmDataType
      */
     private $segmentSequence;
     /**
-     * @var NmDataType
+     * @var \Hl7v2\DataType\NmDataType
      */
     private $fieldPosition;
     /**
-     * @var NmDataType
+     * @var \Hl7v2\DataType\NmDataType
      */
     private $fieldRepetition;
     /**
-     * @var NmDataType
+     * @var \Hl7v2\DataType\NmDataType
      */
     private $componentNumber;
     /**
-     * @var NmDataType
+     * @var \Hl7v2\DataType\NmDataType
      */
     private $subcomponentNumber;
 

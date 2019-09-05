@@ -10,23 +10,23 @@ class FnDataType extends ComponentDataType
     const MAX_LEN = 194;
 
     /**
-     * @var StDataType
+     * @var \Hl7v2\DataType\StDataType
      */
     private $surname;
     /**
-     * @var StDataType
+     * @var \Hl7v2\DataType\StDataType
      */
     private $ownSurnamePrefix;
     /**
-     * @var StDataType
+     * @var \Hl7v2\DataType\StDataType
      */
     private $ownSurname;
     /**
-     * @var StDataType
+     * @var \Hl7v2\DataType\StDataType
      */
     private $surnamePrefixFromPartner;
     /**
-     * @var StDataType
+     * @var \Hl7v2\DataType\StDataType
      */
     private $surnameFromPartner;
 

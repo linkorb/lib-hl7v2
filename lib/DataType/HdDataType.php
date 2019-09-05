@@ -10,15 +10,15 @@ class HdDataType extends ComponentDataType
     const MAX_LEN = 227;
 
     /**
-     * @var IsDataType
+     * @var \Hl7v2\DataType\IsDataType
      */
     private $namespaceId;
     /**
-     * @var StDataType
+     * @var \Hl7v2\DataType\StDataType
      */
     private $universalId;
     /**
-     * @var IdDataType
+     * @var \Hl7v2\DataType\IdDataType
      */
     private $universalIdType;
 

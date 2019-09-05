@@ -10,39 +10,39 @@ class CweDataType extends ComponentDataType
     const MAX_LEN = 705;
 
     /**
-     * @var StDataType
+     * @var \Hl7v2\DataType\StDataType
      */
     private $identifier;
     /**
-     * @var StDataType
+     * @var \Hl7v2\DataType\StDataType
      */
     private $text;
     /**
-     * @var IdDataType
+     * @var \Hl7v2\DataType\IdDataType
      */
     private $nameOfCodingSystem;
     /**
-     * @var StDataType
+     * @var \Hl7v2\DataType\StDataType
      */
     private $altIdentifier;
     /**
-     * @var StDataType
+     * @var \Hl7v2\DataType\StDataType
      */
     private $altText;
     /**
-     * @var IdDataType
+     * @var \Hl7v2\DataType\IdDataType
      */
     private $nameOfAltCodingSystem;
     /**
-     * @var StDataType
+     * @var \Hl7v2\DataType\StDataType
      */
     private $codingSystemVersionId;
     /**
-     * @var StDataType
+     * @var \Hl7v2\DataType\StDataType
      */
     private $altCodingSystemVersionId;
     /**
-     * @var StDataType
+     * @var \Hl7v2\DataType\StDataType
      */
     private $originalText;
 

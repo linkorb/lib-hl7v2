@@ -10,11 +10,11 @@ class MoDataType extends ComponentDataType
     const MAX_LEN = 20;
 
     /**
-     * @var NmDataType
+     * @var \Hl7v2\DataType\NmDataType
      */
     private $quantity;
     /**
-     * @var IdDataType
+     * @var \Hl7v2\DataType\IdDataType
      */
     private $denomination;
 

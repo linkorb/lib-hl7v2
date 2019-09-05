@@ -10,11 +10,11 @@ class DrDataType extends ComponentDataType
     const MAX_LEN = 53;
 
     /**
-     * @var TsDataType
+     * @var \Hl7v2\DataType\TsDataType
      */
     private $rangeStartDateTime;
     /**
-     * @var TsDataType
+     * @var \Hl7v2\DataType\TsDataType
      */
     private $rangeEndDateTime;
 

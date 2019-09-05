@@ -10,11 +10,11 @@ class TsDataType extends ComponentDataType
     const MAX_LEN = 26;
 
     /**
-     * @var DtmDataType
+     * @var \Hl7v2\DataType\DtmDataType
      */
     private $time;
     /**
-     * @var IdDataType
+     * @var \Hl7v2\DataType\IdDataType
      */
     private $degreeOfPrecision;
 

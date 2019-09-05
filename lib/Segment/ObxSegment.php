@@ -12,94 +12,94 @@ use Hl7v2\Exception\SegmentError;
 class ObxSegment extends AbstractSegment
 {
     /**
-     * @var SiDataType
+     * @var \Hl7v2\DataType\SiDataType
      */
     private $setId = null;
     /**
-     * @var IdDataType
+     * @var \Hl7v2\DataType\IdDataType
      */
     private $valueType = null;
     /**
-     * @var CeDataType
+     * @var \Hl7v2\DataType\CeDataType
      */
     private $observationIdentifier;
     /**
-     * @var StDataType
+     * @var \Hl7v2\DataType\StDataType
      */
     private $observationSubid = null;
     /**
-     * @var DataTypeInterface[]
+     * @var \Hl7v2\DataType\DataTypeInterface[]
      */
     private $observationValue = [];
     /**
-     * @var CeDataType
+     * @var \Hl7v2\DataType\CeDataType
      */
     private $units = null;
     /**
-     * @var StDataType
+     * @var \Hl7v2\DataType\StDataType
      */
     private $referencesRange = null;
     /**
-     * @var IsDataType[]
+     * @var \Hl7v2\DataType\IsDataType[]
      */
     private $abnormalFlags = [];
     /**
-     * @var NmDataType
+     * @var \Hl7v2\DataType\NmDataType
      */
     private $probability = null;
     /**
-     * @var IdDataType[]
+     * @var \Hl7v2\DataType\IdDataType[]
      */
     private $natureOfAbnormalTest = [];
     /**
-     * @var IdDataType
+     * @var \Hl7v2\DataType\IdDataType
      */
     private $observationResultStatus;
     /**
-     * @var TsDataType
+     * @var \Hl7v2\DataType\TsDataType
      */
     private $effectiveDateOfReferenceRangeValues = null;
     /**
-     * @var StDataType
+     * @var \Hl7v2\DataType\StDataType
      */
     private $userDefinedAccessChecks = null;
     /**
-     * @var TsDataType
+     * @var \Hl7v2\DataType\TsDataType
      */
     private $datetimeOfTheObservation = null;
     /**
-     * @var CeDataType
+     * @var \Hl7v2\DataType\CeDataType
      */
     private $producersReference = null;
     /**
-     * @var XcnDataType[]
+     * @var \Hl7v2\DataType\XcnDataType[]
      */
     private $responsibleObserver = [];
     /**
-     * @var CeDataType[]
+     * @var \Hl7v2\DataType\CeDataType[]
      */
     private $observationMethod = [];
     /**
-     * @var EiDataType[]
+     * @var \Hl7v2\DataType\EiDataType[]
      */
     private $equipmentInstanceIdentifier = [];
     /**
-     * @var TsDataType
+     * @var \Hl7v2\DataType\TsDataType
      */
     private $datetimeOfTheAnalysis = null;
     private $unnamed1;
     private $unnamed2;
     private $unnamed3;
     /**
-     * @var XonDataType
+     * @var \Hl7v2\DataType\XonDataType
      */
     private $performingOrganizationName = null;
     /**
-     * @var XadDataType
+     * @var \Hl7v2\DataType\XadDataType
      */
     private $performingOrganizationAddress = null;
     /**
-     * @var XcnDataType
+     * @var \Hl7v2\DataType\XcnDataType
      */
     private $performingOrganizationMedicalDirector = null;
 

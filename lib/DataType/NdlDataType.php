@@ -10,47 +10,47 @@ class NdlDataType extends ComponentDataType
     const MAX_LEN = 835;
 
     /**
-     * @var CnnDataType
+     * @var \Hl7v2\DataType\CnnDataType
      */
     private $name;
     /**
-     * @var TsDataType
+     * @var \Hl7v2\DataType\TsDataType
      */
     private $startDateTime;
     /**
-     * @var TsDataType
+     * @var \Hl7v2\DataType\TsDataType
      */
     private $endDateTime;
     /**
-     * @var IsDataType
+     * @var \Hl7v2\DataType\IsDataType
      */
     private $pointOfCare;
     /**
-     * @var IsDataType
+     * @var \Hl7v2\DataType\IsDataType
      */
     private $room;
     /**
-     * @var IsDataType
+     * @var \Hl7v2\DataType\IsDataType
      */
     private $bed;
     /**
-     * @var HdDataType
+     * @var \Hl7v2\DataType\HdDataType
      */
     private $facility;
     /**
-     * @var IsDataType
+     * @var \Hl7v2\DataType\IsDataType
      */
     private $locationStatus;
     /**
-     * @var IsDataType
+     * @var \Hl7v2\DataType\IsDataType
      */
     private $patientLocationType;
     /**
-     * @var IsDataType
+     * @var \Hl7v2\DataType\IsDataType
      */
     private $building;
     /**
-     * @var IsDataType
+     * @var \Hl7v2\DataType\IsDataType
      */
     private $floor;
 

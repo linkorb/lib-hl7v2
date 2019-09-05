@@ -10,11 +10,11 @@ class PtDataType extends ComponentDataType
     const MAX_LEN = 3;
 
     /**
-     * @var IdDataType
+     * @var \Hl7v2\DataType\IdDataType
      */
     private $processingId;
     /**
-     * @var IdDataType
+     * @var \Hl7v2\DataType\IdDataType
      */
     private $processingMode;
 

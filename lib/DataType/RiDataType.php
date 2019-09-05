@@ -10,11 +10,11 @@ class RiDataType extends ComponentDataType
     const MAX_LEN = 206;
 
     /**
-     * @var IsDataType
+     * @var \Hl7v2\DataType\IsDataType
      */
     private $repeatPattern;
     /**
-     * @var StDataType
+     * @var \Hl7v2\DataType\StDataType
      */
     private $explicitTimeInterval;
 

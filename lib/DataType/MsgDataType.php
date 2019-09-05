@@ -10,15 +10,15 @@ class MsgDataType extends ComponentDataType
     const MAX_LEN = 15;
 
     /**
-     * @var IdDataType
+     * @var \Hl7v2\DataType\IdDataType
      */
     private $messageCode;
     /**
-     * @var IdDataType
+     * @var \Hl7v2\DataType\IdDataType
      */
     private $triggerEvent;
     /**
-     * @var IdDataType
+     * @var \Hl7v2\DataType\IdDataType
      */
     private $messageStructure;
 

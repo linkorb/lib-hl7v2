@@ -12,87 +12,87 @@ use Hl7v2\Exception\SegmentError;
 class MshSegment extends AbstractSegment
 {
     /**
-     * @var StDataType
+     * @var \Hl7v2\DataType\StDataType
      */
     private $fieldSeparator;
     /**
-     * @var StDataType
+     * @var \Hl7v2\DataType\StDataType
      */
     private $encodingCharacters;
     /**
-     * @var HdDataType
+     * @var \Hl7v2\DataType\HdDataType
      */
     private $sendingApplication = null;
     /**
-     * @var HdDataType
+     * @var \Hl7v2\DataType\HdDataType
      */
     private $sendingFacility = null;
     /**
-     * @var HdDataType
+     * @var \Hl7v2\DataType\HdDataType
      */
     private $receivingApplication = null;
     /**
-     * @var HdDataType
+     * @var \Hl7v2\DataType\HdDataType
      */
     private $receivingFacility = null;
     /**
-     * @var TsDataType
+     * @var \Hl7v2\DataType\TsDataType
      */
     private $dateTimeOfMessage;
     /**
-     * @var StDataType
+     * @var \Hl7v2\DataType\StDataType
      */
     private $security = null;
     /**
-     * @var MsgDataType
+     * @var \Hl7v2\DataType\MsgDataType
      */
     private $messageType;
     /**
-     * @var StDataType
+     * @var \Hl7v2\DataType\StDataType
      */
     private $messageControlId;
     /**
-     * @var PtDataType
+     * @var \Hl7v2\DataType\PtDataType
      */
     private $processingId;
     /**
-     * @var VidDataType
+     * @var \Hl7v2\DataType\VidDataType
      */
     private $versionId;
     /**
-     * @var NmDataType
+     * @var \Hl7v2\DataType\NmDataType
      */
     private $sequenceNumber = null;
     /**
-     * @var StDataType
+     * @var \Hl7v2\DataType\StDataType
      */
     private $continuationPointer = null;
     /**
-     * @var IdDataType
+     * @var \Hl7v2\DataType\IdDataType
      */
     private $acceptAcknowledgmentType = null;
     /**
-     * @var IdDataType
+     * @var \Hl7v2\DataType\IdDataType
      */
     private $applicationAcknowledgmentType = null;
     /**
-     * @var IdDataType
+     * @var \Hl7v2\DataType\IdDataType
      */
     private $countryCode = null;
     /**
-     * @var IdDataType[]
+     * @var \Hl7v2\DataType\IdDataType[]
      */
     private $characterSet = [];
     /**
-     * @var CeDataType
+     * @var \Hl7v2\DataType\CeDataType
      */
     private $principalLanguageOfMessage = null;
     /**
-     * @var IdDataType
+     * @var \Hl7v2\DataType\IdDataType
      */
     private $altCharacterSetHandlingScheme = null;
     /**
-     * @var EiDataType[]
+     * @var \Hl7v2\DataType\EiDataType[]
      */
     private $messageProfileIdentifier = [];
 

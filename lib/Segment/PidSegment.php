@@ -12,159 +12,159 @@ use Hl7v2\Exception\SegmentError;
 class PidSegment extends AbstractSegment
 {
     /**
-     * @var SiDataType
+     * @var \Hl7v2\DataType\SiDataType
      */
     private $setId = null;
     /**
-     * @var CxDataType
+     * @var \Hl7v2\DataType\CxDataType
      */
     private $patientId = null;
     /**
-     * @var CxDataType[]
+     * @var \Hl7v2\DataType\CxDataType[]
      */
     private $patientIdentifierList;
     /**
-     * @var CxDataType[]
+     * @var \Hl7v2\DataType\CxDataType[]
      */
     private $altPatientId = [];
     /**
-     * @var XpnDataType[]
+     * @var \Hl7v2\DataType\XpnDataType[]
      */
     private $patientName;
     /**
-     * @var XpnDataType[]
+     * @var \Hl7v2\DataType\XpnDataType[]
      */
     private $mothersMaidenName = [];
     /**
-     * @var TsDataType
+     * @var \Hl7v2\DataType\TsDataType
      */
     private $datetimeOfBirth = null;
     /**
-     * @var IsDataType
+     * @var \Hl7v2\DataType\IsDataType
      */
     private $administrativeSex = null;
     /**
-     * @var XpnDataType[]
+     * @var \Hl7v2\DataType\XpnDataType[]
      */
     private $patientAlias = [];
     /**
-     * @var CeDataType[]
+     * @var \Hl7v2\DataType\CeDataType[]
      */
     private $race = [];
     /**
-     * @var XadDataType[]
+     * @var \Hl7v2\DataType\XadDataType[]
      */
     private $patientAddress = [];
     /**
-     * @var IsDataType
+     * @var \Hl7v2\DataType\IsDataType
      */
     private $countyCode = null;
     /**
-     * @var XtnDataType[]
+     * @var \Hl7v2\DataType\XtnDataType[]
      */
     private $phoneNumberHome = [];
     /**
-     * @var XtnDataType[]
+     * @var \Hl7v2\DataType\XtnDataType[]
      */
     private $phoneNumberBusiness = [];
     /**
-     * @var CeDataType
+     * @var \Hl7v2\DataType\CeDataType
      */
     private $primaryLanguage = null;
     /**
-     * @var CeDataType
+     * @var \Hl7v2\DataType\CeDataType
      */
     private $maritalStatus = null;
     /**
-     * @var CeDataType
+     * @var \Hl7v2\DataType\CeDataType
      */
     private $religion = null;
     /**
-     * @var CxDataType
+     * @var \Hl7v2\DataType\CxDataType
      */
     private $patientAccountNumber = null;
     /**
-     * @var StDataType
+     * @var \Hl7v2\DataType\StDataType
      */
     private $ssnNumberPatient = null;
     /**
-     * @var DlnDataType
+     * @var \Hl7v2\DataType\DlnDataType
      */
     private $driversLicenseNumberPatient = null;
     /**
-     * @var CxDataType[]
+     * @var \Hl7v2\DataType\CxDataType[]
      */
     private $mothersIdentifier = [];
     /**
-     * @var CeDataType[]
+     * @var \Hl7v2\DataType\CeDataType[]
      */
     private $ethnicGroup = [];
     /**
-     * @var StDataType
+     * @var \Hl7v2\DataType\StDataType
      */
     private $birthPlace = null;
     /**
-     * @var IdDataType
+     * @var \Hl7v2\DataType\IdDataType
      */
     private $multipleBirthIndicator = null;
     /**
-     * @var NmDataType
+     * @var \Hl7v2\DataType\NmDataType
      */
     private $birthOrder = null;
     /**
-     * @var CeDataType[]
+     * @var \Hl7v2\DataType\CeDataType[]
      */
     private $citizenship = [];
     /**
-     * @var CeDataType
+     * @var \Hl7v2\DataType\CeDataType
      */
     private $veteransMilitaryStatus = null;
     /**
-     * @var CeDataType
+     * @var \Hl7v2\DataType\CeDataType
      */
     private $nationality = null;
     /**
-     * @var TsDataType
+     * @var \Hl7v2\DataType\TsDataType
      */
     private $patientDeathDateAndTime = null;
     /**
-     * @var IdDataType
+     * @var \Hl7v2\DataType\IdDataType
      */
     private $patientDeathIndicator = null;
     /**
-     * @var IdDataType
+     * @var \Hl7v2\DataType\IdDataType
      */
     private $identityUnknownIndicator = null;
     /**
-     * @var IsDataType[]
+     * @var \Hl7v2\DataType\IsDataType[]
      */
     private $identityReliabilityCode = [];
     /**
-     * @var TsDataType
+     * @var \Hl7v2\DataType\TsDataType
      */
     private $lastUpdateDatetime = null;
     /**
-     * @var HdDataType
+     * @var \Hl7v2\DataType\HdDataType
      */
     private $lastUpdateFacility = null;
     /**
-     * @var CeDataType
+     * @var \Hl7v2\DataType\CeDataType
      */
     private $speciesCode = null;
     /**
-     * @var CeDataType
+     * @var \Hl7v2\DataType\CeDataType
      */
     private $breedCode = null;
     /**
-     * @var StDataType
+     * @var \Hl7v2\DataType\StDataType
      */
     private $strain = null;
     /**
-     * @var CeDataType[]
+     * @var \Hl7v2\DataType\CeDataType[]
      */
     private $productionClassCode = [];
     /**
-     * @var CweDataType[]
+     * @var \Hl7v2\DataType\CweDataType[]
      */
     private $tribalCitizenship = [];
 

@@ -10,95 +10,95 @@ class XcnDataType extends ComponentDataType
     const MAX_LEN = 3002;
 
     /**
-     * @var StDataType
+     * @var \Hl7v2\DataType\StDataType
      */
     private $idNumber;
     /**
-     * @var FnDataType
+     * @var \Hl7v2\DataType\FnDataType
      */
     private $familyName;
     /**
-     * @var StDataType
+     * @var \Hl7v2\DataType\StDataType
      */
     private $givenName;
     /**
-     * @var StDataType
+     * @var \Hl7v2\DataType\StDataType
      */
     private $secondNames;
     /**
-     * @var StDataType
+     * @var \Hl7v2\DataType\StDataType
      */
     private $suffix;
     /**
-     * @var StDataType
+     * @var \Hl7v2\DataType\StDataType
      */
     private $prefix;
     /**
-     * @var IsDataType
+     * @var \Hl7v2\DataType\IsDataType
      */
     private $degree;
     /**
-     * @var IsDataType
+     * @var \Hl7v2\DataType\IsDataType
      */
     private $sourceTable;
     /**
-     * @var HdDataType
+     * @var \Hl7v2\DataType\HdDataType
      */
     private $assigningAuthority;
     /**
-     * @var IdDataType
+     * @var \Hl7v2\DataType\IdDataType
      */
     private $nameTypeCode;
     /**
-     * @var StDataType
+     * @var \Hl7v2\DataType\StDataType
      */
     private $identifierCheckDigit;
     /**
-     * @var IdDataType
+     * @var \Hl7v2\DataType\IdDataType
      */
     private $checkDigitScheme;
     /**
-     * @var IdDataType
+     * @var \Hl7v2\DataType\IdDataType
      */
     private $identifierTypeCode;
     /**
-     * @var HdDataType
+     * @var \Hl7v2\DataType\HdDataType
      */
     private $assigningFacility;
     /**
-     * @var IdDataType
+     * @var \Hl7v2\DataType\IdDataType
      */
     private $nameRepresentationCode;
     /**
-     * @var CeDataType
+     * @var \Hl7v2\DataType\CeDataType
      */
     private $nameContext;
     /**
-     * @var DrDataType
+     * @var \Hl7v2\DataType\DrDataType
      */
     private $nameValidityRange;
     /**
-     * @var IdDataType
+     * @var \Hl7v2\DataType\IdDataType
      */
     private $nameAssemblyOrder;
     /**
-     * @var TsDataType
+     * @var \Hl7v2\DataType\TsDataType
      */
     private $effectiveDate;
     /**
-     * @var TsDataType
+     * @var \Hl7v2\DataType\TsDataType
      */
     private $expirationDate;
     /**
-     * @var StDataType
+     * @var \Hl7v2\DataType\StDataType
      */
     private $professionalSuffix;
     /**
-     * @var CweDataType
+     * @var \Hl7v2\DataType\CweDataType
      */
     private $assigningJurisdiction;
     /**
-     * @var CweDataType
+     * @var \Hl7v2\DataType\CweDataType
      */
     private $assigningAgency;
 

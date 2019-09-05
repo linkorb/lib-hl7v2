@@ -12,211 +12,211 @@ use Hl7v2\Exception\SegmentError;
 class Pv1Segment extends AbstractSegment
 {
     /**
-     * @var SiDataType
+     * @var \Hl7v2\DataType\SiDataType
      */
     private $setId = null;
     /**
-     * @var IsDataType
+     * @var \Hl7v2\DataType\IsDataType
      */
     private $patientClass;
     /**
-     * @var PlDataType
+     * @var \Hl7v2\DataType\PlDataType
      */
     private $assignedPatientLocation = null;
     /**
-     * @var IsDataType
+     * @var \Hl7v2\DataType\IsDataType
      */
     private $admissionType = null;
     /**
-     * @var CxDataType
+     * @var \Hl7v2\DataType\CxDataType
      */
     private $preadmitNumber = null;
     /**
-     * @var PlDataType
+     * @var \Hl7v2\DataType\PlDataType
      */
     private $priorPatientLocation = null;
     /**
-     * @var XcnDataType[]
+     * @var \Hl7v2\DataType\XcnDataType[]
      */
     private $attendingDoctor = [];
     /**
-     * @var XcnDataType[]
+     * @var \Hl7v2\DataType\XcnDataType[]
      */
     private $referringDoctor = [];
     /**
-     * @var XcnDataType[]
+     * @var \Hl7v2\DataType\XcnDataType[]
      */
     private $consultingDoctor = [];
     /**
-     * @var IsDataType
+     * @var \Hl7v2\DataType\IsDataType
      */
     private $hospitalService = null;
     /**
-     * @var PlDataType
+     * @var \Hl7v2\DataType\PlDataType
      */
     private $temporaryLocation = null;
     /**
-     * @var IsDataType
+     * @var \Hl7v2\DataType\IsDataType
      */
     private $preadmitTestIndicator = null;
     /**
-     * @var IsDataType
+     * @var \Hl7v2\DataType\IsDataType
      */
     private $readmissionIndicator = null;
     /**
-     * @var IsDataType
+     * @var \Hl7v2\DataType\IsDataType
      */
     private $admitSource = null;
     /**
-     * @var IsDataType[]
+     * @var \Hl7v2\DataType\IsDataType[]
      */
     private $ambulatoryStatus = [];
     /**
-     * @var IsDataType
+     * @var \Hl7v2\DataType\IsDataType
      */
     private $vipIndicator = null;
     /**
-     * @var XcnDataType[]
+     * @var \Hl7v2\DataType\XcnDataType[]
      */
     private $admittingDoctor = [];
     /**
-     * @var IsDataType
+     * @var \Hl7v2\DataType\IsDataType
      */
     private $patientType = null;
     /**
-     * @var CxDataType
+     * @var \Hl7v2\DataType\CxDataType
      */
     private $visitNumber = null;
     /**
-     * @var FcDataType[]
+     * @var \Hl7v2\DataType\FcDataType[]
      */
     private $financialClass = [];
     /**
-     * @var IsDataType
+     * @var \Hl7v2\DataType\IsDataType
      */
     private $chargePriceIndicator = null;
     /**
-     * @var IsDataType
+     * @var \Hl7v2\DataType\IsDataType
      */
     private $courtesyCode = null;
     /**
-     * @var IsDataType
+     * @var \Hl7v2\DataType\IsDataType
      */
     private $creditRating = null;
     /**
-     * @var IsDataType[]
+     * @var \Hl7v2\DataType\IsDataType[]
      */
     private $contractCode = [];
     /**
-     * @var DtDataType[]
+     * @var \Hl7v2\DataType\DtDataType[]
      */
     private $contractEffectiveDate = [];
     /**
-     * @var NmDataType[]
+     * @var \Hl7v2\DataType\NmDataType[]
      */
     private $contractAmount = [];
     /**
-     * @var NmDataType[]
+     * @var \Hl7v2\DataType\NmDataType[]
      */
     private $contractPeriod = [];
     /**
-     * @var IsDataType
+     * @var \Hl7v2\DataType\IsDataType
      */
     private $interestCode = null;
     /**
-     * @var IsDataType
+     * @var \Hl7v2\DataType\IsDataType
      */
     private $transferToBadDebtCode = null;
     /**
-     * @var DtDataType
+     * @var \Hl7v2\DataType\DtDataType
      */
     private $transferToBadDebtDate = null;
     /**
-     * @var IsDataType
+     * @var \Hl7v2\DataType\IsDataType
      */
     private $badDebtAgencyCode = null;
     /**
-     * @var NmDataType
+     * @var \Hl7v2\DataType\NmDataType
      */
     private $badDebtTransferAmount = null;
     /**
-     * @var NmDataType
+     * @var \Hl7v2\DataType\NmDataType
      */
     private $badDebtRecoveryAmount = null;
     /**
-     * @var IsDataType
+     * @var \Hl7v2\DataType\IsDataType
      */
     private $deleteAccountIndicator = null;
     /**
-     * @var DtDataType
+     * @var \Hl7v2\DataType\DtDataType
      */
     private $deleteAccountDate = null;
     /**
-     * @var IsDataType
+     * @var \Hl7v2\DataType\IsDataType
      */
     private $dischargeDisposition = null;
     /**
-     * @var DldDataType
+     * @var \Hl7v2\DataType\DldDataType
      */
     private $dischargedToLocation = null;
     /**
-     * @var CeDataType
+     * @var \Hl7v2\DataType\CeDataType
      */
     private $dietType = null;
     /**
-     * @var IsDataType
+     * @var \Hl7v2\DataType\IsDataType
      */
     private $servicingFacility = null;
     /**
-     * @var IsDataType
+     * @var \Hl7v2\DataType\IsDataType
      */
     private $bedStatus = null;
     /**
-     * @var IsDataType
+     * @var \Hl7v2\DataType\IsDataType
      */
     private $accountStatus = null;
     /**
-     * @var PlDataType
+     * @var \Hl7v2\DataType\PlDataType
      */
     private $pendingLocation = null;
     /**
-     * @var PlDataType
+     * @var \Hl7v2\DataType\PlDataType
      */
     private $priorTemporaryLocation = null;
     /**
-     * @var TsDataType
+     * @var \Hl7v2\DataType\TsDataType
      */
     private $admitDatetime = null;
     /**
-     * @var TsDataType[]
+     * @var \Hl7v2\DataType\TsDataType[]
      */
     private $dischargeDatetime = [];
     /**
-     * @var NmDataType
+     * @var \Hl7v2\DataType\NmDataType
      */
     private $currentPatientBalance = null;
     /**
-     * @var NmDataType
+     * @var \Hl7v2\DataType\NmDataType
      */
     private $totalCharges = null;
     /**
-     * @var NmDataType
+     * @var \Hl7v2\DataType\NmDataType
      */
     private $totalAdjustments = null;
     /**
-     * @var NmDataType
+     * @var \Hl7v2\DataType\NmDataType
      */
     private $totalPayments = null;
     /**
-     * @var CxDataType
+     * @var \Hl7v2\DataType\CxDataType
      */
     private $altVisitId = null;
     /**
-     * @var IsDataType
+     * @var \Hl7v2\DataType\IsDataType
      */
     private $visitIndicator = null;
     /**
-     * @var XcnDataType[]
+     * @var \Hl7v2\DataType\XcnDataType[]
      */
     private $otherHealthcareProvider = [];
 

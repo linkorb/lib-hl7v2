@@ -10,15 +10,15 @@ class VidDataType extends ComponentDataType
     const MAX_LEN = 60;
 
     /**
-     * @var IdDataType
+     * @var \Hl7v2\DataType\IdDataType
      */
     private $versionId;
     /**
-     * @var CeDataType
+     * @var \Hl7v2\DataType\CeDataType
      */
     private $internationalisationCode;
     /**
-     * @var CeDataType
+     * @var \Hl7v2\DataType\CeDataType
      */
     private $internationalisationVersionId;
 

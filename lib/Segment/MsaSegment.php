@@ -12,24 +12,24 @@ use Hl7v2\Exception\SegmentError;
 class MsaSegment extends AbstractSegment
 {
     /**
-     * @var IdDataType
+     * @var \Hl7v2\DataType\IdDataType
      */
     private $acknowledgmentCode;
     /**
-     * @var StDataType
+     * @var \Hl7v2\DataType\StDataType
      */
     private $messageControlId;
     /**
-     * @var StDataType
+     * @var \Hl7v2\DataType\StDataType
      */
     private $textMessage = null;
     /**
-     * @var NmDataType
+     * @var \Hl7v2\DataType\NmDataType
      */
     private $expectedSequenceNumber = null;
     private $delayedAcknowledgementType;
     /**
-     * @var CeDataType
+     * @var \Hl7v2\DataType\CeDataType
      */
     private $errorCondition = null;
 

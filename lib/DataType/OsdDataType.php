@@ -10,47 +10,47 @@ class OsdDataType extends ComponentDataType
     const MAX_LEN = 110;
 
     /**
-     * @var IdDataType
+     * @var \Hl7v2\DataType\IdDataType
      */
     private $sequenceResultsFlag;
     /**
-     * @var StDataType
+     * @var \Hl7v2\DataType\StDataType
      */
     private $placerOrderNumberEntityIdentifier;
     /**
-     * @var IsDataType
+     * @var \Hl7v2\DataType\IsDataType
      */
     private $placerOrderNumberNamespaceId;
     /**
-     * @var StDataType
+     * @var \Hl7v2\DataType\StDataType
      */
     private $fillerOrderNumberEntityIdentifier;
     /**
-     * @var IsDataType
+     * @var \Hl7v2\DataType\IsDataType
      */
     private $fillerOrderNumberNamespaceId;
     /**
-     * @var StDataType
+     * @var \Hl7v2\DataType\StDataType
      */
     private $sequenceConditionValue;
     /**
-     * @var NmDataType
+     * @var \Hl7v2\DataType\NmDataType
      */
     private $maximumNumberOfRepeats;
     /**
-     * @var StDataType
+     * @var \Hl7v2\DataType\StDataType
      */
     private $placerOrderNumberUniversalId;
     /**
-     * @var IdDataType
+     * @var \Hl7v2\DataType\IdDataType
      */
     private $placerOrderNumberUniversalIdType;
     /**
-     * @var StDataType
+     * @var \Hl7v2\DataType\StDataType
      */
     private $fillerOrderNumberUniversalId;
     /**
-     * @var IdDataType
+     * @var \Hl7v2\DataType\IdDataType
      */
     private $fillerOrderNumberUniversalIdType;
 

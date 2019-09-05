@@ -10,11 +10,11 @@ class MocDataType extends ComponentDataType
     const MAX_LEN = 504;
 
     /**
-     * @var MoDataType
+     * @var \Hl7v2\DataType\MoDataType
      */
     private $monetaryAmount;
     /**
-     * @var CeDataType
+     * @var \Hl7v2\DataType\CeDataType
      */
     private $chargeCode;
 

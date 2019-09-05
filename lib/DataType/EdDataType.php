@@ -8,23 +8,23 @@ namespace Hl7v2\DataType;
 class EdDataType extends ComponentDataType
 {
     /**
-     * @var HdDataType
+     * @var \Hl7v2\DataType\HdDataType
      */
     private $sourceApplication;
     /**
-     * @var IdDataType
+     * @var \Hl7v2\DataType\IdDataType
      */
     private $typeOfData;
     /**
-     * @var IdDataType
+     * @var \Hl7v2\DataType\IdDataType
      */
     private $dataSubtype;
     /**
-     * @var IdDataType
+     * @var \Hl7v2\DataType\IdDataType
      */
     private $encoding;
     /**
-     * @var TxDataType
+     * @var \Hl7v2\DataType\TxDataType
      */
     private $data;
 

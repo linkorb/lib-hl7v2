@@ -10,11 +10,11 @@ class DldDataType extends ComponentDataType
     const MAX_LEN = 47;
 
     /**
-     * @var IsDataType
+     * @var \Hl7v2\DataType\IsDataType
      */
     private $dischargeLocation;
     /**
-     * @var TsDataType
+     * @var \Hl7v2\DataType\TsDataType
      */
     private $effectiveDate;
 

@@ -10,15 +10,15 @@ class DlnDataType extends ComponentDataType
     const MAX_LEN = 66;
 
     /**
-     * @var StDataType
+     * @var \Hl7v2\DataType\StDataType
      */
     private $licenseNumber;
     /**
-     * @var IsDataType
+     * @var \Hl7v2\DataType\IsDataType
      */
     private $issuingStateProvinceCountry;
     /**
-     * @var DtDataType
+     * @var \Hl7v2\DataType\DtDataType
      */
     private $expirationDate;
 
