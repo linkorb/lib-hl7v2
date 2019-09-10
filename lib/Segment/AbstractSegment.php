@@ -22,7 +22,7 @@ abstract class AbstractSegment implements SegmentInterface
     /**
      * @deprecated
      */
-    protected $fields = array();
+    protected $fields = [];
 
     /**
      * @var \Hl7v2\Encoding\EncodingParameters
@@ -71,6 +71,7 @@ abstract class AbstractSegment implements SegmentInterface
      * @param Datagram $data
      * @param Codec $codec
      * @param array $sequence
+     *
      * @return array
      */
     protected function extractComponents(
@@ -94,6 +95,7 @@ abstract class AbstractSegment implements SegmentInterface
         while (sizeof($extracted) < sizeof($sequence)) {
             $extracted[] = null;
         }
+
         return $extracted;
     }
 
@@ -104,6 +106,7 @@ abstract class AbstractSegment implements SegmentInterface
      * @param Datagram $data
      * @param Codec $codec
      * @param array $sequence
+     *
      * @return array
      */
     protected function extractSubcomponents(
@@ -127,6 +130,7 @@ abstract class AbstractSegment implements SegmentInterface
         while (sizeof($extracted) < sizeof($sequence)) {
             $extracted[] = null;
         }
+
         return $extracted;
     }
 }

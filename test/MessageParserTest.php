@@ -2,11 +2,8 @@
 
 namespace Hl7v2\Test;
 
-use PHPUnit_Framework_TestCase;
-
 use Hl7v2\MessageParserBuilder;
-
-use Hl7v2\Test\SampleMessages;
+use PHPUnit_Framework_TestCase;
 
 class MessageParserTest extends PHPUnit_Framework_TestCase
 {

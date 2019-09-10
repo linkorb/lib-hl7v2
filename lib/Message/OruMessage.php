@@ -25,7 +25,6 @@ use Hl7v2\Segment\Pv1Segment;
  * - PID is optionally followed by PV1 (and optionally PV2)
  * - OBR is followed by Zero or More OBX
  * - There may be One or More OBR (each followed by zero or more OBX)
- *
  */
 class OruMessage extends AbstractMessage
 {

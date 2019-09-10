@@ -8,7 +8,7 @@ namespace Hl7v2\DataType;
 interface SimpleDataTypeInterface extends DataTypeInterface
 {
     /**
-     * @return boolean
+     * @return bool
      */
     public function hasValue();
 

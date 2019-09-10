@@ -13,6 +13,7 @@ interface SegmentInterface
      *
      * @param \Hl7v2\Encoding\Datagram $datagram
      * @param \Hl7v2\Encoding\Codec $codec
+     *
      * @throws \Hl7v2\Exception\SegmentError
      */
     public function fromDatagram(Datagram $datagram, Codec $codec);

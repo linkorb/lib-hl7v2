@@ -2,15 +2,13 @@
 
 namespace Hl7v2\Test\Segment;
 
-use PHPUnit_Framework_TestCase;
-
 use Hl7v2\Encoding\CharacterEncodingNames;
 use Hl7v2\Encoding\Codec;
 use Hl7v2\Encoding\EncodingParametersBuilder;
 use Hl7v2\Factory\SegmentFactory;
 use Hl7v2\Factory\DataTypeFactory;
-
 use Hl7v2\Test\DatagramBuilder;
+use PHPUnit_Framework_TestCase;
 
 class MsaSegmentTest extends PHPUnit_Framework_TestCase
 {

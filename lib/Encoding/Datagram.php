@@ -7,7 +7,6 @@ namespace Hl7v2\Encoding;
  *
  * The pos and param properties hold, respectively, the PositionalState and
  * EncodingParameters for use during decoding of the message.
- *
  */
 class Datagram
 {
@@ -48,7 +47,6 @@ class Datagram
     }
 
     /**
-     *
      * @return \Hl7v2\Encoding\EncodingParameters
      */
     public function getEncodingParameters()

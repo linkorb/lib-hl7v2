@@ -16,7 +16,9 @@ class DataTypeFactory
      * @param string $typeName
      * @param \Hl7v2\Encoding\EncodingParameters $encodingParameters
      * @param bool $isSubcomponent
+     *
      * @return \Hl7v2\DataType\DataTypeInterface
+     *
      * @throws \Hl7v2\Exception\DataTypeError
      */
     public function create(

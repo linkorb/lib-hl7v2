@@ -40,6 +40,7 @@ class MessageParser
     public function parse(Datagram $messageData)
     {
         $messageHeader = $this->parseMessageHeader($messageData);
+
         return $this->parseMessageContent($messageData, $messageHeader);
     }
 
@@ -69,7 +70,6 @@ class MessageParser
                 $e->getMessage()
             );
         }
-
 
         try {
             $messageHeader = $this

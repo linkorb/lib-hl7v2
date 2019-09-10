@@ -14,6 +14,7 @@ interface MessageInterface
      *
      * @param \Hl7v2\Encoding\Datagram $data
      * @param \Hl7v2\Encoding\Codec $codec
+     *
      * @throws \Hl7v2\Exception\MessageError
      */
     public function fromDatagram(Datagram $data, Codec $codec);

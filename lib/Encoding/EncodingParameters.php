@@ -62,6 +62,7 @@ class EncodingParameters
      * @param string $repetitionSep
      * @param string $segmentSep
      * @param string $subcomponentSep
+     *
      * @throws CodecError
      */
     public function __construct(

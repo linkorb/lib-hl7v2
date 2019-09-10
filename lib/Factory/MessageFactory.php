@@ -3,7 +3,6 @@
 namespace Hl7v2\Factory;
 
 use Hl7v2\Exception\CapabilityError;
-use Hl7v2\Factory\SegmentGroupFactory;
 use Hl7v2\Segment\MshSegment;
 
 class MessageFactory
@@ -21,6 +20,7 @@ class MessageFactory
 
     /**
      * @param \Hl7v2\Segment\MshSegment $messageHeader
+     *
      * @return \Hl7v2\Message\MessageInterface
      *
      * @throws \Hl7v2\Exception\CapabilityError;
@@ -32,6 +32,7 @@ class MessageFactory
         );
         $message = new $messageClass($this->segmentFactory, $this->segmentGroupFactory);
         $message->setMessageHeader($messageHeader);
+
         return $message;
     }
 
@@ -42,6 +43,7 @@ class MessageFactory
         if (!class_exists($class)) {
             throw new CapabilityError("Unable to create a message of type \"{$typeName}\".");
         }
+
         return $class;
     }
 }

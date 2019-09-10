@@ -12,6 +12,6 @@ class AckMessage extends AbstractMessage
 {
     public function fromDatagram(Datagram $data, Codec $codec)
     {
-        throw new \RuntimeException('Method is not implemented.');
+        throw new \RuntimeException(__METHOD__ . ' is not implemented.');
     }
 }

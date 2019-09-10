@@ -2,15 +2,12 @@
 
 namespace Hl7v2\Test\Encoding;
 
-use PHPUnit_Framework_TestCase;
-
-use Hl7v2\Encoding\Datagram;
 use Hl7v2\Encoding\CharacterEncodingNames;
 use Hl7v2\Encoding\Codec;
 use Hl7v2\Encoding\EncodingParametersBuilder;
 use Hl7v2\Exception\CodecError;
-
 use Hl7v2\Test\DatagramBuilder;
+use PHPUnit_Framework_TestCase;
 
 class CodecTest extends PHPUnit_Framework_TestCase
 {
@@ -221,7 +218,7 @@ class CodecTest extends PHPUnit_Framework_TestCase
                 'UNICODE UTF-8',
                 'UTF-8',
             ],
-            'ISO-8859-1 encoded' => [ # ['£', '¥', '¶', '»'] (PHP sees this .php file as UTF-8)
+            'ISO-8859-1 encoded' => [ // ['£', '¥', '¶', '»'] (PHP sees this .php file as UTF-8)
                 "MSH|\xA3\xA5\xB6\xBB|ACME|ACME||||||||||||||8859/1\r",
                 ["\xA3", "\xA5", "\xB6", "\xBB"],
                 '8859/1',
@@ -233,7 +230,7 @@ class CodecTest extends PHPUnit_Framework_TestCase
     /**
      * @dataProvider unhandledDelimiters
      * @covers \Hl7v2\Encoding\Codec::bootstrap
-     * @expectedException Hl7v2\Exception\CodecError
+     * @expectedException \Hl7v2\Exception\CodecError
      * @expectedExceptionMessage Message Header is invalid
      */
     public function testBootstrapWillNotDetectMultibyteDelimiters(
@@ -315,7 +312,7 @@ class CodecTest extends PHPUnit_Framework_TestCase
     {
         return [
             '00 No Segment' => [
-                "NOPE",
+                'NOPE',
                 false, ['ptr' => 0, 'sos' => false, 'eos' => false],
             ],
             '01 Has Segment. No end of Segment.' => [
@@ -413,64 +410,94 @@ class CodecTest extends PHPUnit_Framework_TestCase
     {
         return [
             '00 Attempt advance to field. No field. No end of segment.' => [
-                "MSH", false,
-                ['ptr' => 0,
+                'MSH',
+                false,
+                [
+                    'ptr' => 0,
                     'sof' => false, 'sor' => false, 'soc' => false,
-                    'eoc' => false, 'eor' => false, 'eof' => false, 'eos' => false]
+                    'eoc' => false, 'eor' => false, 'eof' => false, 'eos' => false,
+                ],
             ],
             '01 Attempt advance to field. No field.' => [
-                "MSH\r", false,
-                ['ptr' => 0,
+                "MSH\r",
+                false,
+                [
+                    'ptr' => 0,
                     'sof' => false, 'sor' => false, 'soc' => false,
-                    'eoc' => false, 'eor' => false, 'eof' => false, 'eos' => 3]
+                    'eoc' => false, 'eor' => false, 'eof' => false, 'eos' => 3,
+                ],
             ],
             '02 Attempt advance to field. No field (one exists in next segment).' => [
-                "MSH\r\PID|1234\r", false,
-                ['ptr' => 0,
+                "MSH\r\PID|1234\r",
+                false,
+                [
+                    'ptr' => 0,
                     'sof' => false, 'sor' => false, 'soc' => false,
-                    'eoc' => false, 'eor' => false, 'eof' => false, 'eos' => 3]
+                    'eoc' => false, 'eor' => false, 'eof' => false, 'eos' => 3,
+                ],
             ],
             '03 Attempt advance to field. Has one field. No end of segment.' => [
-                "MSH|^~\&", true,
-                ['ptr' => 4,
+                "MSH|^~\&",
+                true,
+                [
+                    'ptr' => 4,
                     'sof' => 4, 'sor' => 4, 'soc' => 4,
-                    'eoc' => 4, 'eor' => 5, 'eof' => false, 'eos' => false]
-            ], #             ^-----------^-- nothing we can do about it.
+                    'eoc' => 4, 'eor' => 5, 'eof' => false, 'eos' => false,
+                ], //        ^-----------^-- nothing we can do about it.
+            ],
             '04 Attempt advance to field. Has one field.' => [
-                "PID|ACME\r", true,
-                ['ptr' => 4,
+                "PID|ACME\r",
+                true,
+                [
+                    'ptr' => 4,
                     'sof' => 4, 'sor' => 4, 'soc' => 4,
-                    'eoc' => 8, 'eor' => 8, 'eof' => 8, 'eos' => 8]
+                    'eoc' => 8, 'eor' => 8, 'eof' => 8, 'eos' => 8,
+                ],
             ],
             '05 Attempt advance to field. Has two fields. No end of segment.' => [
-                "PID|ACME|BEEF", true,
-                ['ptr' => 4,
+                'PID|ACME|BEEF',
+                true,
+                [
+                    'ptr' => 4,
                     'sof' => 4, 'sor' => 4, 'soc' => 4,
-                    'eoc' => 8, 'eor' => 8, 'eof' => 8, 'eos' => false]
+                    'eoc' => 8, 'eor' => 8, 'eof' => 8, 'eos' => false,
+                ],
             ],
             '06 Attempt advance to field. Has two fields.' => [
-                "PID|ACME|BEEF\r", true,
-                ['ptr' => 4,
+                "PID|ACME|BEEF\r",
+                true,
+                [
+                    'ptr' => 4,
                     'sof' => 4, 'sor' => 4, 'soc' => 4,
-                    'eoc' => 8, 'eor' => 8, 'eof' => 8, 'eos' => 13]
+                    'eoc' => 8, 'eor' => 8, 'eof' => 8, 'eos' => 13,
+                ],
             ],
             '07 Attempt advance to field. Has one field with repetition. No end of segment.' => [
-                "MSH|ACME~FOO", true,
-                ['ptr' => 4,
+                'MSH|ACME~FOO',
+                true,
+                [
+                    'ptr' => 4,
                     'sof' => 4, 'sor' => 4, 'soc' => 4,
-                    'eoc' => 8, 'eor' => 8, 'eof' => false, 'eos' => false]
+                    'eoc' => 8, 'eor' => 8, 'eof' => false, 'eos' => false,
+                ],
             ],
             '08 Attempt advance to field. Has one field with repetition.' => [
-                "MSH|ACME~FOO\r", true,
-                ['ptr' => 4,
+                "MSH|ACME~FOO\r",
+                true,
+                [
+                    'ptr' => 4,
                     'sof' => 4, 'sor' => 4, 'soc' => 4,
-                    'eoc' => 8, 'eor' => 8, 'eof' => 12, 'eos' => 12]
+                    'eoc' => 8, 'eor' => 8, 'eof' => 12, 'eos' => 12,
+                ],
             ],
             '09 Attempt advance to field. Has two fields with repetition and components.' => [
-                "MSH|ACME^MAGIC~FOO^MACHINE|A^C~D^C\r", true,
-                ['ptr' => 4,
+                "MSH|ACME^MAGIC~FOO^MACHINE|A^C~D^C\r",
+                true,
+                [
+                    'ptr' => 4,
                     'sof' => 4, 'sor' => 4, 'soc' => 4,
-                    'eoc' => 8, 'eor' => 14, 'eof' => 26, 'eos' => 34]
+                    'eoc' => 8, 'eor' => 14, 'eof' => 26, 'eos' => 34,
+                ],
             ],
         ];
     }
@@ -538,64 +565,94 @@ class CodecTest extends PHPUnit_Framework_TestCase
     {
         return [
             '00 Attempt advance to repetition. No repetition. No end of segment.' => [
-                "|ACME", false,
-                ['ptr' => 1,
+                '|ACME',
+                false,
+                [
+                    'ptr' => 1,
                     'sor' => false, 'soc' => false,
-                    'eoc' => false, 'eor' => false,]
+                    'eoc' => false, 'eor' => false,
+                ],
             ],
             '01 Attempt advance to repetition. No repetition.' => [
-                "|ACME\r", false,
-                ['ptr' => 1,
+                "|ACME\r",
+                false,
+                [
+                    'ptr' => 1,
                     'sor' => false, 'soc' => false,
-                    'eoc' => false, 'eor' => false,]
+                    'eoc' => false, 'eor' => false,
+                ],
             ],
             '02 Attempt advance to repetition. No repetition (one exists in next field).' => [
-                "|ACME|DEAD~1337", false,
-                ['ptr' => 1,
+                '|ACME|DEAD~1337',
+                false,
+                [
+                    'ptr' => 1,
                     'sor' => false, 'soc' => false,
-                    'eoc' => false, 'eor' => false,]
+                    'eoc' => false, 'eor' => false,
+                ],
             ],
             '03 Attempt advance to repetition. Has one repetition. No end of field.' => [
-                "|ACME~DEAD", true,
-                ['ptr' => 6,
+                '|ACME~DEAD',
+                true,
+                [
+                    'ptr' => 6,
                     'sor' => 6, 'soc' => 6,
-                    'eoc' => false, 'eor' => false]
+                    'eoc' => false, 'eor' => false,
+                ],
             ],
             '04 Attempt advance to repetition. Has one repetition.' => [
-                "|ACME~DEAD|", true,
-                ['ptr' => 6,
+                '|ACME~DEAD|',
+                true,
+                [
+                    'ptr' => 6,
                     'sor' => 6, 'soc' => 6,
-                    'eoc' => 10, 'eor' => 10,]
+                    'eoc' => 10, 'eor' => 10,
+                ],
             ],
             '05 Attempt advance to repetition. Has two repetitions. No end of field.' => [
-                "|ACME~DEAD~BEEF", true,
-                ['ptr' => 6,
+                '|ACME~DEAD~BEEF',
+                true,
+                [
+                    'ptr' => 6,
                     'sor' => 6, 'soc' => 6,
-                    'eoc' => 10, 'eor' => 10,]
+                    'eoc' => 10, 'eor' => 10,
+                ],
             ],
             '06 Attempt advance to repetition. Has two repetitions.' => [
-                "|ACME~DEAD~BEEF|FOO", true,
-                ['ptr' => 6,
+                '|ACME~DEAD~BEEF|FOO',
+                true,
+                [
+                    'ptr' => 6,
                     'sor' => 6, 'soc' => 6,
-                    'eoc' => 10, 'eor' => 10,]
+                    'eoc' => 10, 'eor' => 10,
+                ],
             ],
             '07 Attempt advance to repetition. Has one repetition with components. No end of segment.' => [
-                "|ACME^DEAD~BEEF^CAFE", true,
-                ['ptr' => 11,
+                '|ACME^DEAD~BEEF^CAFE',
+                true,
+                [
+                    'ptr' => 11,
                     'sor' => 11, 'soc' => 11,
-                    'eoc' => 15, 'eor' => false,]
+                    'eoc' => 15, 'eor' => false,
+                ],
             ],
             '08 Attempt advance to repetition. Has one repetition with components.' => [
-                "|ACME^DEAD~BEEF^CAFE|FOO", true,
-                ['ptr' => 11,
+                '|ACME^DEAD~BEEF^CAFE|FOO',
+                true,
+                [
+                    'ptr' => 11,
                     'sor' => 11, 'soc' => 11,
-                    'eoc' => 15, 'eor' => 20,]
+                    'eoc' => 15, 'eor' => 20,
+                ],
             ],
             '09 Attempt advance to repetition. Has one repetition. Avoids repetition in next Segment' => [
-                "|ACME~DEAD\r|ACME~BEEF", true,
-                ['ptr' => 6,
+                "|ACME~DEAD\r|ACME~BEEF",
+                true,
+                [
+                    'ptr' => 6,
                     'sor' => 6, 'soc' => 6,
-                    'eoc' => 10, 'eor' => 10,]
+                    'eoc' => 10, 'eor' => 10,
+                ],
             ],
         ];
     }
@@ -650,40 +707,49 @@ class CodecTest extends PHPUnit_Framework_TestCase
     {
         return [
             '00 Attempt advance to next component, but no next component.' => [
-                "|FOO", false,
-                ['ptr' => 1, 'soc' => false, 'eoc' => false]
+                '|FOO',
+                false,
+                ['ptr' => 1, 'soc' => false, 'eoc' => false],
             ],
             '01 Attempt advance to next component, but no component (one exists in next repetition).' => [
-                "|FOO~1234^5678", false,
-                ['ptr' => 1, 'soc' => false, 'eoc' => false]
+                '|FOO~1234^5678',
+                false,
+                ['ptr' => 1, 'soc' => false, 'eoc' => false],
             ],
             '02 Attempt advance to next component, but no component (one exists in next field).' => [
-                "|FOO|1234^5678", false,
-                ['ptr' => 1, 'soc' => false, 'eoc' => false]
+                '|FOO|1234^5678',
+                false,
+                ['ptr' => 1, 'soc' => false, 'eoc' => false],
             ],
             '03 Attempt advance to next component, but no component (one exists in next segment).' => [
-                "|FOO\rBAR|1234^5678", false,
-                ['ptr' => 1, 'soc' => false, 'eoc' => false]
+                "|FOO\rBAR|1234^5678",
+                false,
+                ['ptr' => 1, 'soc' => false, 'eoc' => false],
             ],
             '04 Attempt advance to next component, has next component, but no end of field/segment.' => [
-                "|1234^5678", true,
-                ['ptr' => 6, 'soc' => 6, 'eoc' => false]
+                '|1234^5678',
+                true,
+                ['ptr' => 6, 'soc' => 6, 'eoc' => false],
             ],
             '05 Attempt advance to next component, has next component, but no next field.' => [
-                "|1234^5678\r", true,
-                ['ptr' => 6, 'soc' => 6, 'eoc' => 10]
+                "|1234^5678\r",
+                true,
+                ['ptr' => 6, 'soc' => 6, 'eoc' => 10],
             ],
             '06 Attempt advance to next component, has next component.' => [
-                "|1234^5678~FOO", true,
-                ['ptr' => 6, 'soc' => 6, 'eoc' => 10]
+                '|1234^5678~FOO',
+                true,
+                ['ptr' => 6, 'soc' => 6, 'eoc' => 10],
             ],
             '07 Attempt advance to next component, has next component.' => [
-                "|1234^5678|FOO", true,
-                ['ptr' => 6, 'soc' => 6, 'eoc' => 10]
+                '|1234^5678|FOO',
+                true,
+                ['ptr' => 6, 'soc' => 6, 'eoc' => 10],
             ],
             '08 Attempt advance to next component, has several components.' => [
-                "|1234^5678^1337^DEAD|BEEF", true,
-                ['ptr' => 6, 'soc' => 6, 'eoc' => 10]
+                '|1234^5678^1337^DEAD|BEEF',
+                true,
+                ['ptr' => 6, 'soc' => 6, 'eoc' => 10],
             ],
         ];
     }
@@ -738,48 +804,59 @@ class CodecTest extends PHPUnit_Framework_TestCase
     {
         return [
             '00 Attempt advance to next Subcomponent, but no next Subcomponent.' => [
-                "|FOO", false,
-                ['ptr' => 1, 'sosc' => false, 'eosc' => false]
+                '|FOO',
+                false,
+                ['ptr' => 1, 'sosc' => false, 'eosc' => false],
             ],
             '01 Attempt advance to next Subcomponent, but no Subcomponent (one exists in next component).' => [
-                "|FOO^1234&5678", false,
-                ['ptr' => 1, 'sosc' => false, 'eosc' => false]
+                '|FOO^1234&5678',
+                false,
+                ['ptr' => 1, 'sosc' => false, 'eosc' => false],
             ],
             '02 Attempt advance to next Subcomponent, but no Subcomponent (one exists in next repetition).' => [
-                "|FOO~1234&5678", false,
-                ['ptr' => 1, 'sosc' => false, 'eosc' => false]
+                '|FOO~1234&5678',
+                false,
+                ['ptr' => 1, 'sosc' => false, 'eosc' => false],
             ],
             '03 Attempt advance to next Subcomponent, but no Subcomponent (one exists in next field).' => [
-                "|FOO|1234&5678", false,
-                ['ptr' => 1, 'sosc' => false, 'eosc' => false]
+                '|FOO|1234&5678',
+                false,
+                ['ptr' => 1, 'sosc' => false, 'eosc' => false],
             ],
             '04 Attempt advance to next Subcomponent, but no Subcomponent (one exists in next segment).' => [
-                "|FOO\rBAR|1234&5678", false,
-                ['ptr' => 1, 'sosc' => false, 'eosc' => false]
+                "|FOO\rBAR|1234&5678",
+                false,
+                ['ptr' => 1, 'sosc' => false, 'eosc' => false],
             ],
             '05 Attempt advance to next Subcomponent, has next Subcomponent, but no end of component/field/segment.' => [
-                "|1234&5678", true,
-                ['ptr' => 6, 'sosc' => 6, 'eosc' => false]
+                '|1234&5678',
+                true,
+                ['ptr' => 6, 'sosc' => 6, 'eosc' => false],
             ],
             '06 Attempt advance to next Subcomponent, has next Subcomponent, but no end of field/segment.' => [
-                "|1234&5678^", true,
-                ['ptr' => 6, 'sosc' => 6, 'eosc' => 10]
+                '|1234&5678^',
+                true,
+                ['ptr' => 6, 'sosc' => 6, 'eosc' => 10],
             ],
             '07 Attempt advance to next Subcomponent, has next Subcomponent, but no next field.' => [
-                "|1234&5678\r", true,
-                ['ptr' => 6, 'sosc' => 6, 'eosc' => 10]
+                "|1234&5678\r",
+                true,
+                ['ptr' => 6, 'sosc' => 6, 'eosc' => 10],
             ],
             '08 Attempt advance to next Subcomponent, has next Subcomponent.' => [
-                "|1234&5678^FOO", true,
-                ['ptr' => 6, 'sosc' => 6, 'eosc' => 10]
+                '|1234&5678^FOO',
+                true,
+                ['ptr' => 6, 'sosc' => 6, 'eosc' => 10],
             ],
             '09 Attempt advance to next Subcomponent, has next Subcomponent.' => [
-                "|1234&5678|FOO", true,
-                ['ptr' => 6, 'sosc' => 6, 'eosc' => 10]
+                '|1234&5678|FOO',
+                true,
+                ['ptr' => 6, 'sosc' => 6, 'eosc' => 10],
             ],
             '10 Attempt advance to next Subcomponent, has several Subcomponents.' => [
-                "|1234&5678&1337^DEAD|BEEF", true,
-                ['ptr' => 6, 'sosc' => 6, 'eosc' => 10]
+                '|1234&5678&1337^DEAD|BEEF',
+                true,
+                ['ptr' => 6, 'sosc' => 6, 'eosc' => 10],
             ],
         ];
     }
@@ -807,14 +884,14 @@ class CodecTest extends PHPUnit_Framework_TestCase
     public function extractSegmentIdData()
     {
         return [
-            '00 Empty.' => ["", false],
-            '01 Not Uppercase.' => ["msh", false],
-            '02 Mixed Case.' => ["MSh", false],
-            '03 Not A-Z.' => ["MS.", false],
-            '04 Still not A-Z.' => ["M5H", false],
-            '05 MSH.' => ["MSH", 'MSH'],
-            '06 Not only MSH.' => ["PID", 'PID'],
-            '07 Does not check the Segment ID is defined.' => ["XYZ", 'XYZ'],
+            '00 Empty.' => ['', false],
+            '01 Not Uppercase.' => ['msh', false],
+            '02 Mixed Case.' => ['MSh', false],
+            '03 Not A-Z.' => ['MS.', false],
+            '04 Still not A-Z.' => ['M5H', false],
+            '05 MSH.' => ['MSH', 'MSH'],
+            '06 Not only MSH.' => ['PID', 'PID'],
+            '07 Does not check the Segment ID is defined.' => ['XYZ', 'XYZ'],
         ];
     }
 }

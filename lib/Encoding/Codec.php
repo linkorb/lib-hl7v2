@@ -27,7 +27,7 @@ class Codec
      *
      * MSH.1 is the field separator itself, thus the value 17.
      *
-     * @var integer
+     * @var int
      */
     const SEP_BEFORE_MSH_18 = 17;
 
@@ -50,22 +50,24 @@ class Codec
      * @see Codec::isNullValue
      *
      * @param mixed $value
-     * @return boolean
+     *
+     * @return bool
      */
     public function isEmptyValue($value)
     {
-        return ($this->isNullValue($value) || $value === '');
+        return $this->isNullValue($value) || '' === $value;
     }
 
     /**
      * Determine whether the supplied value is the NULL sequence of characters.
      *
      * @param mixed $value
-     * @return boolean
+     *
+     * @return bool
      */
     public function isNullValue($value)
     {
-        return $value === self::SEQ_NULL;
+        return self::SEQ_NULL === $value;
     }
 
     /**
@@ -78,7 +80,7 @@ class Codec
      *
      * @param \Hl7v2\Encoding\Datagram $data
      *
-     * @return boolean
+     * @return bool
      */
     public function advanceToSegment(Datagram $data)
     {
@@ -131,7 +133,7 @@ class Codec
      * @param \Hl7v2\Encoding\Datagram $data
      * @param number $increments
      *
-     * @return boolean
+     * @return bool
      */
     public function advanceToField(Datagram $data, $increments = 1)
     {
@@ -158,7 +160,7 @@ class Codec
         $pos->eof = (false !== $eof ? $eof : $pos->eos);
         $pos->state = PositionalState::BEGIN_FIELD;
 
-        for ($i = 1; $i < $increments; $i++) {
+        for ($i = 1; $i < $increments; ++$i) {
             $pos->resetFieldBounds();
             $pos->resetRepetitionBounds();
             $pos->resetComponentBounds();
@@ -167,6 +169,7 @@ class Codec
             if (false === $sof) {
                 $pos->ptr = $lkgPtr;
                 $pos->state = $lkgState;
+
                 return false;
             }
             $pos->ptr = $pos->sosc = $pos->soc = $pos->sor = $pos->sof = $sof;
@@ -174,21 +177,21 @@ class Codec
             $pos->state = PositionalState::BEGIN_FIELD;
         }
 
-        list($nextSep,) = $this->locateNextRepetition($data);
+        list($nextSep) = $this->locateNextRepetition($data);
         if (false !== $nextSep) {
             $pos->eor = $nextSep - 1;
         } else {
             $pos->eor = $pos->eof;
         }
 
-        list($nextSep,) = $this->locateNextComponent($data);
+        list($nextSep) = $this->locateNextComponent($data);
         if (false !== $nextSep) {
             $pos->eoc = $nextSep - 1;
         } else {
             $pos->eoc = $pos->eor;
         }
 
-        list($nextSep,) = $this->locateNextSubcomponent($data);
+        list($nextSep) = $this->locateNextSubcomponent($data);
         if (false !== $nextSep) {
             $pos->eosc = $nextSep - 1;
         } else {
@@ -214,7 +217,7 @@ class Codec
      * @param \Hl7v2\Encoding\Datagram $data
      * @param number $increments
      *
-     * @return boolean
+     * @return bool
      */
     public function advanceToRepetition(Datagram $data, $increments = 1)
     {
@@ -242,13 +245,14 @@ class Codec
         }
         $pos->state = PositionalState::BEGIN_REPETITION;
 
-        for ($i = 1; $i < $increments; $i++) {
+        for ($i = 1; $i < $increments; ++$i) {
             $pos->resetRepetitionBounds();
             $pos->resetComponentBounds();
             list($sor, $eor) = $this->locateNextRepetition($data);
             if (false === $sor) {
                 $pos->ptr = $lkgPtr;
                 $pos->state = $lkgState;
+
                 return false;
             }
             $pos->ptr = $pos->soc = $pos->sor = $sor;
@@ -262,7 +266,7 @@ class Codec
             $pos->state = PositionalState::BEGIN_REPETITION;
         }
 
-        list($nextSep,) = $this->locateNextComponent($data);
+        list($nextSep) = $this->locateNextComponent($data);
         if (false !== $nextSep) {
             $pos->eoc = $nextSep - 1;
         } else {
@@ -287,7 +291,7 @@ class Codec
      * @param \Hl7v2\Encoding\Datagram $data
      * @param number $increments
      *
-     * @return boolean
+     * @return bool
      */
     public function advanceToComponent(Datagram $data, $increments = 1)
     {
@@ -316,12 +320,13 @@ class Codec
         }
         $pos->state = PositionalState::BEGIN_COMPONENT;
 
-        for ($i = 1; $i < $increments; $i++) {
+        for ($i = 1; $i < $increments; ++$i) {
             $pos->resetComponentBounds();
             list($soc, $eoc) = $this->locateNextComponent($data);
             if (false === $soc) {
                 $pos->ptr = $lkgPtr;
                 $pos->state = $lkgState;
+
                 return false;
             }
             $pos->ptr = $pos->soc = $soc;
@@ -353,7 +358,7 @@ class Codec
      *
      * @param \Hl7v2\Encoding\Datagram $data
      *
-     * @return boolean
+     * @return bool
      */
     public function advanceToSubcomponent(Datagram $data)
     {
@@ -391,7 +396,8 @@ class Codec
      * Extract the Segment ID from the beginning of a Segment.
      *
      * @param Datagram $data
-     * @return string|bool False if the Segment ID can not be extracted.
+     *
+     * @return string|bool false if the Segment ID can not be extracted
      */
     public function extractSegmentId(Datagram $data)
     {
@@ -400,6 +406,7 @@ class Codec
             $data->getPositionalState()->ptr,
             3
         );
+
         return preg_match('/^[A-Y]{2,2}[A-Z0-9]$|^Z[A-Z0-9]{2,2}$/', $candidate)
             ? $candidate
             : false
@@ -410,7 +417,9 @@ class Codec
      * Extract the content of a Component (or single-component Field).
      *
      * @param \Hl7v2\Encoding\Datagram $data
+     *
      * @return string
+     *
      * @throws CodecError
      */
     public function extractComponent(Datagram $data)
@@ -418,19 +427,19 @@ class Codec
         $pos = $data->getPositionalState();
         $param = $data->getEncodingParameters();
 
-        if ($pos->state !== PositionalState::BEGIN_FIELD
-            && $pos->state !== PositionalState::BEGIN_REPETITION
-            && $pos->state !== PositionalState::BEGIN_COMPONENT
+        if (PositionalState::BEGIN_FIELD !== $pos->state
+            && PositionalState::BEGIN_REPETITION !== $pos->state
+            && PositionalState::BEGIN_COMPONENT !== $pos->state
         ) {
             throw new CodecError(
                 'Cannot extract component when not at the beginning of a field, repetition or component. Did you forget to call "advanceTo{Field,Repetition,Component}"?'
             );
         }
 
-        if ($pos->state === PositionalState::BEGIN_FIELD) {
+        if (PositionalState::BEGIN_FIELD === $pos->state) {
             $pos->resetComponentBounds();
             $pos->soc = $pos->sof;
-        } elseif ($pos->state === PositionalState::BEGIN_REPETITION) {
+        } elseif (PositionalState::BEGIN_REPETITION === $pos->state) {
             $pos->resetComponentBounds();
             $pos->soc = $pos->sor;
         }
@@ -438,7 +447,7 @@ class Codec
         $eoc = $pos->eoc;
 
         if (false === $eoc) {
-            list($nextComponent,) = $this->locateNextComponent($data);
+            list($nextComponent) = $this->locateNextComponent($data);
             if (false !== $nextComponent) {
                 $eoc = $nextComponent - 1;
             }
@@ -466,7 +475,9 @@ class Codec
      * Extract the content of a Subomponent.
      *
      * @param \Hl7v2\Encoding\Datagram $data
+     *
      * @return string
+     *
      * @throws CodecError
      */
     public function extractSubcomponent(Datagram $data)
@@ -474,23 +485,23 @@ class Codec
         $pos = $data->getPositionalState();
         $param = $data->getEncodingParameters();
 
-        if ($pos->state !== PositionalState::BEGIN_FIELD
-            && $pos->state !== PositionalState::BEGIN_REPETITION
-            && $pos->state !== PositionalState::BEGIN_COMPONENT
-            && $pos->state !== PositionalState::BEGIN_SUBCOMPONENT
+        if (PositionalState::BEGIN_FIELD !== $pos->state
+            && PositionalState::BEGIN_REPETITION !== $pos->state
+            && PositionalState::BEGIN_COMPONENT !== $pos->state
+            && PositionalState::BEGIN_SUBCOMPONENT !== $pos->state
         ) {
             throw new CodecError(
                 'Cannot extract component when not at the beginning of segment subdivision. Did you forget to call "advanceTo{Field,Repetition,Component,Subcomponent}"?'
             );
         }
 
-        if ($pos->state === PositionalState::BEGIN_FIELD) {
+        if (PositionalState::BEGIN_FIELD === $pos->state) {
             $pos->resetSubcomponentBounds();
             $pos->sosc = $pos->sof;
-        } elseif ($pos->state === PositionalState::BEGIN_REPETITION) {
+        } elseif (PositionalState::BEGIN_REPETITION === $pos->state) {
             $pos->resetSubcomponentBounds();
             $pos->sosc = $pos->sor;
-        } elseif ($pos->state === PositionalState::BEGIN_COMPONENT) {
+        } elseif (PositionalState::BEGIN_COMPONENT === $pos->state) {
             $pos->resetSubcomponentBounds();
             $pos->sosc = $pos->soc;
         }
@@ -498,7 +509,7 @@ class Codec
         $eosc = $pos->eosc;
 
         if (false === $eosc) {
-            list($nextComponent,) = $this->locateNextSubcomponent($data);
+            list($nextComponent) = $this->locateNextSubcomponent($data);
             if (false !== $nextComponent) {
                 $eosc = $nextComponent - 1;
             }
@@ -558,9 +569,9 @@ class Codec
         $eos = strpos($data->value, self::SEP_SEGMENT, $pos->ptr);
         $hasCharEncField = true;
         $posNextField = $pos->ptr;
-        for ($i = 0; $i < self::SEP_BEFORE_MSH_18; $i++) {
+        for ($i = 0; $i < self::SEP_BEFORE_MSH_18; ++$i) {
             $posNextField = strpos($data->value, $fieldSep, $posNextField + 1);
-            if ($posNextField === false || ($eos && $posNextField > $eos)) {
+            if (false === $posNextField || ($eos && $posNextField > $eos)) {
                 // MSH.18 is absent; assume default encoding.
                 $hasCharEncField = false;
                 $characterEncoding = self::DEFAULT_CHARACTER_ENCODING;
@@ -572,14 +583,14 @@ class Codec
             $length = null;
             $candidate = '';
             $posNextField = strpos($data->value, $fieldSep, $start);
-            if ($eos && ($posNextField === false || $posNextField > $eos)) {
+            if ($eos && (false === $posNextField || $posNextField > $eos)) {
                 // MSH.18 is at the end of segment
                 $length = $eos - $start;
             } elseif ($posNextField) {
                 // MSH.18 is not at the end of segment
                 $length = $posNextField - $start;
             }
-            if ($length === null) {
+            if (null === $length) {
                 $candidate = substr($data->value, $start);
             } else {
                 $candidate = substr($data->value, $start, $length);
@@ -676,6 +687,7 @@ class Codec
             $param->getSegmentSep(),
             $pos->ptr
         );
+
         return $eos;
     }
 

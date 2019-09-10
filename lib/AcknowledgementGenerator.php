@@ -3,7 +3,6 @@
 namespace Hl7v2;
 
 use DateTime;
-
 use Hl7v2\Encoding\EncodingParameters;
 use Hl7v2\Factory\MessageFactory;
 use Hl7v2\Factory\SegmentFactory;
@@ -39,6 +38,7 @@ class AcknowledgementGenerator
                 ->generateEnhancedAcceptAcknowledgment($header, $senderConfig, $success, $reject)
             ;
         }
+
         return $this
             ->generateOriginalAcknowledgment($header, $senderConfig, $success, $reject)
         ;
@@ -87,9 +87,9 @@ class AcknowledgementGenerator
         }
 
         if (!$ackDesirability
-            || $ackDesirability === 'ne'                // never
-            || ($ackDesirability === 'er' && $success)  // only on error
-            || ($ackDesirability === 'su' && !$success) // only on success
+            || 'ne' === $ackDesirability                // never
+            || ('er' === $ackDesirability && $success)  // only on error
+            || ('su' === $ackDesirability && !$success) // only on success
         ) {
             return;
         }
@@ -350,6 +350,7 @@ class AcknowledgementGenerator
         if (!$field || !$field->hasValue()) {
             return;
         }
+
         return $field->getValue();
     }
 

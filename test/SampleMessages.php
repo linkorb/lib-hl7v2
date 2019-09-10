@@ -50,6 +50,7 @@ EOD;
     public static function getDatagramBuilder()
     {
         $b = new DatagramBuilder(new EncodingParametersBuilder());
+
         return $b->withMessage(str_replace("\n", "\r", self::MESSAGE) . "\r");
     }
 }

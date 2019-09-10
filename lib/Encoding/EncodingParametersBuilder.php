@@ -69,71 +69,85 @@ class EncodingParametersBuilder
      * Set the PHP native name of the character encoding.
      *
      * @param string $characterEncoding
+     *
      * @return \Hl7v2\Encoding\EncodingParametersBuilder
      */
     public function withCharacterEncoding($characterEncoding)
     {
         $this->characterEncoding = $characterEncoding;
+
         return $this;
     }
 
     /**
      * @param string $componentSep
+     *
      * @return \Hl7v2\Encoding\EncodingParametersBuilder
      */
     public function withComponentSep($componentSep)
     {
         $this->componentSep = $componentSep;
+
         return $this;
     }
 
     /**
      * @param string $escapeChar
+     *
      * @return \Hl7v2\Encoding\EncodingParametersBuilder
      */
     public function withEscapeChar($escapeChar)
     {
         $this->escapeChar = $escapeChar;
+
         return $this;
     }
 
     /**
      * @param string $fieldSep
+     *
      * @return \Hl7v2\Encoding\EncodingParametersBuilder
      */
     public function withFieldSep($fieldSep)
     {
         $this->fieldSep = $fieldSep;
+
         return $this;
     }
 
     /**
      * @param string $repetitionSep
+     *
      * @return \Hl7v2\Encoding\EncodingParametersBuilder
      */
     public function withRepetitionSep($repetitionSep)
     {
         $this->repetitionSep = $repetitionSep;
+
         return $this;
     }
 
     /**
      * @param string $subcomponentSep
+     *
      * @return \Hl7v2\Encoding\EncodingParametersBuilder
      */
     public function withSubcomponentSep($subcomponentSep)
     {
         $this->subcomponentSep = $subcomponentSep;
+
         return $this;
     }
 
     /**
      * @param string $segmentSep
+     *
      * @return \Hl7v2\Encoding\EncodingParametersBuilder
      */
     public function withSegmentSep($segmentSep)
     {
         $this->segmentSep = $segmentSep;
+
         return $this;
     }
 }

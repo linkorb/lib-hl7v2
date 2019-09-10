@@ -30,12 +30,12 @@ abstract class AbstractDataType implements SimpleDataTypeInterface
      */
     public function hasValue()
     {
-        return $this->value !== null && $this->value !== '';
+        return null !== $this->value && '' !== $this->value;
     }
 
     protected function checkOwnLength($value)
     {
-        if (static::MAX_LEN === null) {
+        if (null === static::MAX_LEN) {
             return;
         }
         $this->checkLength(static::MAX_LEN, $value);

@@ -2,10 +2,9 @@
 
 namespace Hl7v2\Test\Encoding;
 
-use PHPUnit_Framework_TestCase;
-
 use Hl7v2\Encoding\CharacterEncodingNames;
 use Hl7v2\Exception\CodecError;
+use PHPUnit_Framework_TestCase;
 
 class BasicTest extends PHPUnit_Framework_TestCase
 {

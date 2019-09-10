@@ -43,18 +43,21 @@ class DatagramBuilder
                     ->build()
             );
         }
+
         return $d;
     }
 
     public function withMessage($messageData)
     {
         $this->messageData = $messageData;
+
         return $this;
     }
 
     public function withParams()
     {
         $this->withParams = true;
+
         return $this;
     }
 }

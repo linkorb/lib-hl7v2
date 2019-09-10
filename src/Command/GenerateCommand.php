@@ -2,12 +2,11 @@
 
 namespace Hl7v2\Command;
 
-use Symfony\Component\Console\Command\Command;
-use Symfony\Component\Console\Input\InputArgument;
-use Symfony\Component\Console\Input\InputInterface;
-use Symfony\Component\Console\Output\OutputInterface;
 //use Hl7v2\Message;
 //use Hl7v2\Segment\MshSegment;
+use Symfony\Component\Console\Command\Command;
+use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Output\OutputInterface;
 
 class GenerateCommand extends Command
 {

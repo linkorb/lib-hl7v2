@@ -51,6 +51,7 @@ abstract class AbstractMessage implements MessageInterface
      *
      * @param \Hl7v2\Encoding\Datagram $data
      * @param \Hl7v2\Encoding\Codec $codec
+     *
      * @throws \Hl7v2\Exception\MessageError
      */
     abstract public function fromDatagram(Datagram $data, Codec $codec);
@@ -64,7 +65,7 @@ abstract class AbstractMessage implements MessageInterface
     }
 
     /**
-     * $return \Hl7v2\Segment\MshSegment
+     * $return \Hl7v2\Segment\MshSegment.
      */
     public function getMessageHeader()
     {
@@ -101,6 +102,7 @@ abstract class AbstractMessage implements MessageInterface
         foreach ($this->segments as $segment) {
             $s .= "\r" . (string) $segment;
         }
+
         return $s;
     }
 }

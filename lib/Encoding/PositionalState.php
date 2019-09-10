@@ -22,80 +22,80 @@ class PositionalState
     /**
      * The position of the first character of a Segment.
      *
-     * @var integer|boolean
+     * @var int|bool
      */
     public $sos = false;
     /**
      * The position of the first character of a Field.
      *
-     * @var integer|boolean
+     * @var int|bool
      */
     public $sof = false;
     /**
      * The position of the first character of a Repeated Field.
      *
-     * @var integer|boolean
+     * @var int|bool
      */
     public $sor = false;
     /**
      * The position of the first character of a Component.
      *
-     * @var integer|boolean
+     * @var int|bool
      */
     public $soc = false;
     /**
      * The position of the first character of a Subcomponent.
      *
-     * @var integer|boolean
+     * @var int|bool
      */
     public $sosc = false;
     /**
      * The position of the character after the last of a Sucomponent.
      *
-     * @var integer|boolean
+     * @var int|bool
      */
     public $eosc = false;
     /**
      * The position of the character after the last of a Component.
      *
-     * @var integer|boolean
+     * @var int|bool
      */
     public $eoc = false;
     /**
      * The position of the character after the last of a Repeated Field.
      *
-     * @var integer|boolean
+     * @var int|bool
      */
     public $eor = false;
     /**
      * The position of the character after the last of a Field.
      *
-     * @var integer|boolean
+     * @var int|bool
      */
     public $eof = false;
     /**
      * The position of the character after the last of a Segment.
      *
-     * @var integer|boolean
+     * @var int|bool
      */
     public $eos = false;
     /**
      * The position of the _last character_ in a message.
      *
-     * @var integer|boolean
+     * @var int|bool
      */
     public $eod = false;
 
     /**
      * The current decoder position.
      *
-     * @var integer
+     * @var int
      */
     public $ptr = 0;
     /**
      * The decoder state, as per the current decoder position.
      *
-     * @var integer
+     * @var int
      */
     public $state = self::BEGIN_SEGMENT;
 
