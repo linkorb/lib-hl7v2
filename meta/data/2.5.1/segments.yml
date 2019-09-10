@@ -60,6 +60,42 @@ ERR:
           len: 652
           repeat: true
 
+EVN:
+    name: Event Type
+    spec: 3.4.1 (p 70)
+    fields:
+        -
+          name: Event Type Code
+          deprecated: true
+          type: ID
+          len: 3
+        -
+          name: Recorded DateTime
+          required: true
+          type: TS
+          len: 26
+        -
+          name: DateTime Planned Event
+          type: TS
+          len: 26
+        -
+          name: Event Reason Code
+          type: IS
+          len: 3
+        -
+          name: Operator ID
+          type: XCN
+          len: 250
+          repeat: true
+        -
+          name: Event Occurred
+          type: TS
+          len: 26
+        -
+          name: Event Facility
+          type: HD
+          len: 241
+
 MSA:
     name: Message Acknowledgement
     spec: 2.15.8 (p 73)
