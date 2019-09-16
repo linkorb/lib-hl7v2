@@ -151,4 +151,18 @@ class EncodingParameters
     {
         return $this->segmentSep;
     }
+
+    /**
+     * Get the four encoding characters.
+     *
+     * @return string
+     */
+    public function getEncodingCharacters()
+    {
+        return $this->componentSep
+            . $this->repetitionSep
+            . $this->escapeChar
+            . $this->subcomponentSep
+        ;
+    }
 }
