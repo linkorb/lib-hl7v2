@@ -1,0 +1,538 @@
+CE:
+    name: Coded Element
+    components:
+        -
+          name: Identifier
+          type: ST
+        -
+          name: Text
+          type: ST
+        -
+          name: NameOfCodingSystem
+          type: ST
+        -
+          name: AltIdentifier
+          type: ST
+        -
+          name: AltText
+          type: ST
+        -
+          name: NameOfAltCodingSystem
+          type: ST
+
+CM:
+    name: Composite
+
+CNE:
+    name: Coded with no exceptions
+    components:
+        -
+          name: Identifier
+          required: true
+          type: ST
+        -
+          name: Text
+          type: ST
+        -
+          name: NameOfCodingSystem
+          type: ST
+        -
+          name: AltIdentifier
+          type: ST
+        -
+          name: AltText
+          type: ST
+        -
+          name: NameOfAltCodingSystem
+          type: ST
+        -
+          name: CodingSystemVersionId
+          type: ST
+        -
+          name: AltCodingSystemVersionId
+          type: ST
+        -
+          name: OriginalText
+          type: ST
+
+CQ:
+    name: Composite Quantity with Units
+    components:
+        -
+          name: Quantity
+          type: NM
+        -
+          name: Units
+          type: CE
+
+CWE:
+    name: Coded with Exceptions
+    len: 705
+    components:
+        -
+          name: Identifier
+          type: ST
+        -
+          name: Text
+          type: ST
+        -
+          name: NameOfCodingSystem
+          type: ID
+        -
+          name: AltIdentifier
+          type: ST
+        -
+          name: AltText
+          type: ST
+        -
+          name: NameOfAltCodingSystem
+          type: ID
+        -
+          name: CodingSystemVersionId
+          type: ST
+        -
+          name: AltCodingSystemVersionId
+          type: ST
+        -
+          name: OriginalText
+          type: ST
+
+CX:
+    name: Extended Composite ID with Check Digit
+    len: 1913
+    components:
+        -
+          name: Id
+          required: true
+          type: ST
+        -
+          name: CheckDigit
+          type: ST
+        -
+          name: CheckDigitScheme # in v2.3.1 the name is "code identifying the check digit scheme employed", instead we use the v2.5.1 name
+          type: ID
+        -
+          name: AssigningAuthority
+          type: HD
+        -
+          name: IdentifierTypeCode
+          type: IS
+        -
+          name: AssigningFacility
+          type: HD
+
+DLN:
+    name: Driver's License Number
+    components:
+        -
+          name: LicenseNumber
+          required: true
+          type: ST
+        -
+          name: IssuingStateProvinceCountry
+          type: IS
+        -
+          name: ExpirationDate
+          type: DT
+
+DR:
+    name: Date Time Range
+    components:
+        -
+          name: RangeStartDateTime
+          type: TS
+        -
+          name: RangeEndDateTime
+          type: TS
+
+DT:
+    name: Date
+
+ED:
+    name: Encapsulated Data
+    components:
+        -
+          name: SourceApplication
+          type: HD
+        -
+          name: TypeOfData
+          type: ID
+        -
+          name: DataSubtype
+          type: ID
+        -
+          name: Encoding
+          type: ID
+        -
+          name: Data
+          type: ST
+
+EI:
+    name: Entity Identifier
+    components:
+        -
+          name: EntityIdentifier
+          type: ST
+        -
+          name: NamespaceId
+          type: IS
+        -
+          name: UniversalId
+          type: ST
+        -
+          name: UniversalIdType
+          type: ID
+
+FC:
+    name: Financial Class
+    components:
+        -
+          name: FinancialClassCode
+          type: IS
+        -
+          name: EffectiveDate
+          type: TS
+
+FT:
+    name: Formatted Text
+    extends: ST
+
+HD:
+    name: Heirarchical Designator
+    components:
+        -
+          name: NamespaceId
+          type: IS
+        -
+          name: UniversalId
+          type: ST
+        -
+          name: UniversalIdType
+          type: ID
+
+ID:
+    name: Coded value for HL7 tables
+    extends: ST
+
+IS:
+    name: Coded value for user-defined tables
+    extends: ST
+
+MO:
+    name: Money
+    components:
+        -
+          name: Quantity
+          type: NM
+        -
+          name: Denomination
+          type: ID
+
+NM:
+    name: Numeric
+
+PL:
+    name: Person Location
+    components:
+        -
+          name: PointOfCare
+          type: IS
+        -
+          name: Room
+          type: IS
+        -
+          name: Bed
+          type: IS
+        -
+          name: Facility
+          type: HD
+        -
+          name: LocationStatus
+          type: IS
+        -
+          name: PersonLocationType
+          type: IS
+        -
+          name: Building
+          type: IS
+        -
+          name: Floor
+          type: IS
+        -
+          name: LocationDescription
+          type: ST
+
+PT:
+    name: Processing Type
+    components:
+        -
+          name: ProcessingId
+          type: ID
+        -
+          name: ProcessingMode
+          type: ID
+
+RI:
+    name: Repeat Interval
+    components:
+        -
+          name: RepeatPattern
+          type: IS
+        -
+          name: ExplicitTimeInterval
+          type: ST
+
+SI:
+    name: Sequence ID
+    extends: NM
+
+ST:
+    name: String
+
+TN:
+    name: Telephone Number
+
+TQ:
+    name: Timing Quantity
+    components:
+        -
+          name: Quantity
+          type: CQ
+        -
+          name: Interval
+          type: CM
+        -
+          name: Duration
+          type: ST
+        -
+          name: StartDateTime
+          type: TS
+        -
+          name: EndDateTime
+          type: TS
+        -
+          name: Priority
+          type: ST
+        -
+          name: Condition
+          type: ST
+        -
+          name: Text
+          type: TX
+        -
+          name: Conjunction
+          type: ST
+        -
+          name: OrderSequencing
+          type: CM
+        -
+          name: OccurrenceDuration
+          type: CE
+        -
+          name: TotalOccurrences
+          type: NM
+
+TS:
+    name: Time Stamp
+    components:
+        -
+          name: Time
+          required: true
+          type: ST
+          len: 26
+        -
+          name: DegreeOfPrecision
+          type: ST
+          len: 1
+
+TX:
+    name: Text Data
+
+VID:
+    name: Version Identifier
+    components:
+        -
+          name: VersionId
+          type: ID
+        -
+          name: InternationalisationCode
+          type: CE
+        -
+          name: InternationalisationVersionId
+          type: CE
+
+XAD:
+    name: Extended Address
+    components:
+        -
+          name: StreetAddress
+          type: ST
+        -
+          name: OtherDesignation
+          type: ST
+        -
+          name: City
+          type: ST
+        -
+          name: StateOrProvince
+          type: ST
+        -
+          name: ZipOrPostalCode
+          type: ST
+        -
+          name: Country
+          type: ID
+        -
+          name: AddressType
+          type: ID
+        -
+          name: OtherGeographicDesignation
+          type: ST
+        -
+          name: CountyParishCode
+          type: IS
+        -
+          name: CensusTract
+          type: IS
+        -
+          name: AddressRepresentationCode
+          type: ID
+
+XCN:
+    name: Extended Composite ID Number and Name for Persons
+    components:
+        -
+          name: IdNumber
+          type: ST
+        -
+          name: FamilyName
+          type: ST
+        -
+          name: GivenName
+          type: ST
+        -
+          name: MiddleInitialOrName
+          type: ST
+        -
+          name: Suffix    # e.g. Jnr, III
+          type: ST
+        -
+          name: Prefix    # e.g. Dr
+          type: ST
+        -
+          name: Degree
+          type: IS
+        -
+          name: SourceTable
+          type: IS
+        -
+          name: AssigningAuthority
+          type: HD
+        -
+          name: NameTypeCode
+          type: ID
+        -
+          name: IdentifierCheckDigit
+          type: ST
+        -
+          name: CheckDigitScheme
+          type: ID
+        -
+          name: IdentifierTypeCode
+          type: IS
+        -
+          name: AssigningFacility
+          type: HD
+        -
+          name: NameRepresentationCode
+          type: ID
+
+XON:
+    name: Extended Composite Name and Identification Number for Organizations
+    components:
+        -
+          name: OrganisationName
+          type: ST
+        -
+          name: OrganisationNameTypeCode
+          type: IS
+        -
+          name: IdNumber
+          type: NM
+        -
+          name: CheckDigit
+          type: NM
+        -
+          name: CheckDigitScheme
+          type: ID
+        -
+          name: AssigningAuthority
+          type: HD
+        -
+          name: IdentifierTypeCode
+          type: IS
+        -
+          name: AssigningFacility
+          type: HD
+        -
+          name: NameRepresentationCode
+          type: ID
+
+XPN:
+    name: Extended Person Name
+    components:
+        -
+          name: FamilyName
+          type: ST
+        -
+          name: GivenName
+          type: ST
+        -
+          name: MiddleInitialOrName
+          type: ST
+        -
+          name: Suffix    # e.g. Jnr, III
+          type: ST
+        -
+          name: Prefix    # e.g. Dr
+          type: ST
+        -
+          name: Degree
+          type: IS
+        -
+          name: NameTypeCode
+          type: ID
+        -
+          name: NameRepresentationCode
+          type: ID
+
+XTN:
+    name: Extended Telecommunication Number
+    components:
+        -
+          name: TelephoneNumber
+          type: TN
+        -
+          name: TelecommunicationUseCode
+          type: ID
+        -
+          name: TelepcommunicationEquipmentType
+          type: ID
+        -
+          name: EmailAddress
+          type: ST
+        -
+          name: CountryCode
+          type: NM
+        -
+          name: AreaCityCode
+          type: NM
+        -
+          name: PhoneNumber
+          type: NM
+        -
+          name: Extension
+          type: NM
+        -
+          name: AnyText
+          type: ST

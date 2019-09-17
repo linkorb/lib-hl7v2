@@ -1,0 +1,911 @@
+ERR:
+    name: Error
+    spec: 2.24.3 (p 147)
+    fields:
+        -
+          name: Error Code And Location
+          required: true
+          type: CM
+          len: 80
+          repeat: true
+
+MSA:
+    name: Message Acknowledgement
+    spec: 2.24.2 (p 145)
+    fields:
+        -
+          name: Acknowledgment Code
+          required: true
+          type: ID
+          len: 2
+        -
+          name: Message Control ID
+          required: true
+          type: ST
+          len: 20
+        -
+          name: Text Message
+          type: ST
+          len: 80
+        -
+          name: Expected Sequence Number
+          type: NM
+          len: 15
+        -
+          name: Delayed Acknowledgement Type
+          deprecated: true
+          type: ID
+          len: 1
+        -
+          name: Error Condition
+          type: CE
+          len: 100
+
+MSH:
+    name: Message Header
+    spec: 2.24.1 (p 129)
+    fields:
+        -
+          name: Field Separator
+          required: true
+          type: ST
+          len: 1
+        -
+          name: Encoding Characters
+          required: true
+          type: ST
+          len: 4
+        -
+          name: Sending Application
+          type: HD
+          len: 180
+        -
+          name: Sending Facility
+          type: HD
+          len: 180
+        -
+          name: Receiving Application
+          type: HD
+          len: 180
+        -
+          name: Receiving Facility
+          type: HD
+          len: 180
+        -
+          name: Date Time Of Message
+          type: TS
+          len: 26
+        -
+          name: Security
+          type: ST
+          len: 40
+        -
+          name: Message Type
+          required: true
+          type: CM
+          len: 7
+        -
+          name: Message Control ID
+          required: true
+          type: ST
+          len: 20
+        -
+          name: Processing ID
+          required: true
+          type: PT
+          len: 3
+        -
+          name: Version ID
+          required: true
+          type: VID
+          len: 60
+        -
+          name: Sequence Number
+          type: NM
+          len: 15
+        -
+          name: Continuation Pointer
+          type: ST
+          len: 180
+        -
+          name: Accept Acknowledgment Type
+          type: ID
+          len: 2
+        -
+          name: Application Acknowledgment Type
+          type: ID
+          len: 2
+        -
+          name: Country Code
+          type: ID
+          len: 3
+        -
+          name: Character Set
+          type: ID
+          len: 16
+          repeat: true
+        -
+          name: Principal Language Of Message
+          type: CE
+          len: 60
+        -
+          name: Alternate Character Set Handling Scheme
+          type: ID
+          len: 20
+
+PID:
+    name: Patient Identification
+    spec: 3.3.2 (p212)
+    fields:
+        -
+          name: Set ID
+          type: SI
+          len: 4
+        -
+          name: Patient ID
+          deprecated: true
+          type: CX
+          len: 20
+        -
+          name: Patient Identifier List
+          required: true
+          type: CX
+          len: 20
+          repeat: true
+        -
+          name: Alternate Patient ID
+          deprecated: true
+          type: CX
+          len: 20
+          repeat: true
+        -
+          name: Patient Name
+          required: true
+          type: XPN
+          len: 48
+          repeat: true
+        -
+          name: Mothers Maiden Name
+          type: XPN
+          len: 48
+          repeat: true
+        -
+          name: DateTime of Birth
+          type: TS
+          len: 26
+        -
+          name: Sex
+          type: IS
+          len: 1
+        -
+          name: Patient Alias
+          type: XPN
+          len: 48
+          repeat: true
+        -
+          name: Race
+          type: CE
+          len: 80
+          repeat: true
+        -
+          name: Patient Address
+          type: XAD
+          len: 106
+          repeat: true
+        -
+          name: County Code
+          deprecated: true
+          type: IS
+          len: 4
+        -
+          name: Phone Number  Home
+          type: XTN
+          len: 40
+          repeat: true
+        -
+          name: Phone Number  Business
+          type: XTN
+          len: 40
+          repeat: true
+        -
+          name: Primary Language
+          type: CE
+          len: 60
+        -
+          name: Marital Status
+          type: CE
+          len: 80
+        -
+          name: Religion
+          type: CE
+          len: 80
+        -
+          name: Patient Account Number
+          type: CX
+          len: 20
+        -
+          name: SSN Number  Patient
+          deprecated: true
+          type: ST
+          len: 16
+        -
+          name: Drivers License Number  Patient
+          type: DLN
+          len: 25
+        -
+          name: Mothers Identifier
+          type: CX
+          len: 20
+          repeat: true
+        -
+          name: Ethnic Group
+          type: CE
+          len: 80
+          repeat: true
+        -
+          name: Birth Place
+          type: ST
+          len: 60
+        -
+          name: Multiple Birth Indicator
+          type: ID
+          len: 1
+        -
+          name: Birth Order
+          type: NM
+          len: 2
+        -
+          name: Citizenship
+          type: CE
+          len: 80
+          repeat: true
+        -
+          name: Veterans Military Status
+          type: CE
+          len: 60
+        -
+          name: Nationality
+          type: CE
+          len: 80
+        -
+          name: Patient Death Date and Time
+          type: TS
+          len: 26
+        -
+          name: Patient Death Indicator
+          type: ID
+          len: 1
+
+PV1:
+    name: Patient Visit
+    spec: 3.3.3 (p219)
+    fields:
+        -
+          name: Set ID
+          type: SI
+          len: 4
+        -
+          name: Patient Class
+          required: true
+          type: IS
+          len: 1
+        -
+          name: Assigned Patient Location
+          type: PL
+          len: 80
+        -
+          name: Admission Type
+          type: IS
+          len: 2
+        -
+          name: Preadmit Number
+          type: CX
+          len: 20
+        -
+          name: Prior Patient Location
+          type: PL
+          len: 80
+        -
+          name: Attending Doctor
+          type: XCN
+          len: 60
+          repeat: true
+        -
+          name: Referring Doctor
+          type: XCN
+          len: 60
+          repeat: true
+        -
+          name: Consulting Doctor
+          type: XCN
+          len: 60
+          repeat: true
+        -
+          name: Hospital Service
+          type: IS
+          len: 3
+        -
+          name: Temporary Location
+          type: PL
+          len: 80
+        -
+          name: Preadmit Test Indicator
+          type: IS
+          len: 2
+        -
+          name: Readmission Indicator
+          type: IS
+          len: 2
+        -
+          name: Admit Source
+          type: IS
+          len: 3
+        -
+          name: Ambulatory Status
+          type: IS
+          len: 2
+          repeat: true
+        -
+          name: VIP Indicator
+          type: IS
+          len: 2
+        -
+          name: Admitting Doctor
+          type: XCN
+          len: 60
+          repeat: true
+        -
+          name: Patient Type
+          type: IS
+          len: 2
+        -
+          name: Visit Number
+          type: CX
+          len: 20
+        -
+          name: Financial Class
+          type: FC
+          len: 50
+          repeat: true
+        -
+          name: Charge Price Indicator
+          type: IS
+          len: 2
+        -
+          name: Courtesy Code
+          type: IS
+          len: 2
+        -
+          name: Credit Rating
+          type: IS
+          len: 2
+        -
+          name: Contract Code
+          type: IS
+          len: 2
+          repeat: true
+        -
+          name: Contract Effective Date
+          type: DT
+          len: 8
+          repeat: true
+        -
+          name: Contract Amount
+          type: NM
+          len: 12
+          repeat: true
+        -
+          name: Contract Period
+          type: NM
+          len: 3
+          repeat: true
+        -
+          name: Interest Code
+          type: IS
+          len: 2
+        -
+          name: Transfer to Bad Debt Code
+          type: IS
+          len: 1
+        -
+          name: Transfer to Bad Debt Date
+          type: DT
+          len: 8
+        -
+          name: Bad Debt Agency Code
+          type: IS
+          len: 10
+        -
+          name: Bad Debt Transfer Amount
+          type: NM
+          len: 12
+        -
+          name: Bad Debt Recovery Amount
+          type: NM
+          len: 12
+        -
+          name: Delete Account Indicator
+          type: IS
+          len: 1
+        -
+          name: Delete Account Date
+          type: DT
+          len: 8
+        -
+          name: Discharge Disposition
+          type: IS
+          len: 3
+        -
+          name: Discharged to Location
+          type: CM
+          len: 25
+        -
+          name: Diet Type
+          type: CE
+          len: 80
+        -
+          name: Servicing Facility
+          type: IS
+          len: 2
+        -
+          name: Bed Status
+          deprecated: true
+          type: IS
+          len: 1
+        -
+          name: Account Status
+          type: IS
+          len: 2
+        -
+          name: Pending Location
+          type: PL
+          len: 80
+        -
+          name: Prior Temporary Location
+          type: PL
+          len: 80
+        -
+          name: Admit DateTime
+          type: TS
+          len: 26
+        -
+          name: Discharge DateTime
+          type: TS
+          len: 26
+        -
+          name: Current Patient Balance
+          type: NM
+          len: 12
+        -
+          name: Total Charges
+          type: NM
+          len: 12
+        -
+          name: Total Adjustments
+          type: NM
+          len: 12
+        -
+          name: Total Payments
+          type: NM
+          len: 12
+        -
+          name: Alternate Visit ID
+          type: CX
+          len: 20
+        -
+          name: Visit Indicator
+          type: IS
+          len: 1
+        -
+          name: Other Healthcare Provider
+          type: XCN
+          len: 60
+          repeat: true
+
+OBR:
+    name: Observation Request
+    spec: 4.5.1 (p317)
+    fields:
+        -
+          name: Set ID
+          type: SI
+          len: 4
+        -
+          name: Placer Order Number
+          type: EI
+          len: 22
+        -
+          name: Filler Order Number
+          type: EI
+          len: 22
+        -
+          name: Universal Service ID
+          required: true
+          type: CE
+          len: 200
+        -
+          name: Priority
+          deprecated: true
+          type: ID
+          len: 2
+        -
+          name: Requested DateTime
+          deprecated: true
+          type: TS
+          len: 26
+        -
+          name: Observation DateTime
+          type: TS
+          len: 26
+        -
+          name: Observation End DateTime
+          type: TS
+          len: 26
+        -
+          name: Collection Volume
+          type: CQ
+          len: 20
+        -
+          name: Collector Identifier
+          type: XCN
+          len: 60
+          repeat: true
+        -
+          name: Specimen Action Code
+          type: ID
+          len: 1
+        -
+          name: Danger Code
+          type: CE
+          len: 60
+        -
+          name: Relevant Clinical Information
+          type: ST
+          len: 300
+        -
+          name: Specimen Received DateTime
+          type: TS
+          len: 26
+        -
+          name: Specimen Source
+          type: CM
+          len: 300
+        -
+          name: Ordering Provider
+          type: XCN
+          len: 120
+          repeat: true
+        -
+          name: Order Callback Phone Number
+          type: XTN
+          len: 40
+          repeat: true    # possibly "max_repeat: 2", who knows?
+        -
+          name: Placer Field 1
+          type: ST
+          len: 60
+        -
+          name: Placer Field 2
+          type: ST
+          len: 60
+        -
+          name: Filler Field 1
+          type: ST
+          len: 60
+        -
+          name: Filler Field 2
+          type: ST
+          len: 60
+        -
+          name: Results RptStatus Chng  DateTime    # wtf ffs.
+          type: TS
+          len: 26
+        -
+          name: Charge to Practice
+          type: CM
+          len: 40
+        -
+          name: Diagnostic Serv Sect ID
+          type: ID
+          len: 10
+        -
+          name: Result Status
+          type: ID
+          len: 1
+        -
+          name: Parent Result
+          type: CM
+          len: 200
+        -
+          name: QuantityTiming
+          type: TQ
+          len: 200
+          repeat: true
+        -
+          name: Result Copies To
+          type: XCN
+          len: 150
+          repeat: true
+        -
+          name: Parent
+          type: CM
+          len: 200
+        -
+          name: Transportation Mode
+          type: ID
+          len: 20
+        -
+          name: Reason for Study
+          type: CE
+          len: 300
+          repeat: true
+        -
+          name: Principal Result Interpreter
+          type: CM
+          len: 200
+        -
+          name: Assistant Result Interpreter
+          type: CM
+          len: 200
+          repeat: true
+        -
+          name: Technician
+          type: CM
+          len: 200
+          repeat: true
+        -
+          name: Transcriptionist
+          type: CM
+          len: 200
+          repeat: true
+        -
+          name: Scheduled DateTime
+          type: TS
+          len: 26
+        -
+          name: Number of Sample Containers
+          type: NM
+          len: 4
+        -
+          name: Transport Logistics of Collected Sample
+          type: CE
+          len: 60
+          repeat: true
+        -
+          name: Collectors Comment
+          type: CE
+          len: 200
+          repeat: true
+        -
+          name: Transport Arrangement Responsibility
+          type: CE
+          len: 60
+        -
+          name: Transport Arranged
+          type: ID
+          len: 30
+        -
+          name: Escort Required
+          type: ID
+          len: 1
+        -
+          name: Planned Patient Transport Comment
+          type: CE
+          len: 200
+          repeat: true
+        -
+          name: Procedure Code
+          type: CE
+          len: 80
+        -
+          name: Procedure Code Modifier
+          type: CE
+          len: 80
+          repeat: true
+
+OBX:
+    name: Observation/Result
+    spec: 7.3.2 (p506)
+    fields:
+        -
+          name: Set ID
+          type: SI
+          len: 4
+        -
+          name: Value Type
+          type: ID
+          len: 3
+        -
+          name: Observation Identifier
+          required: true
+          type: CE
+          len: 80
+        -
+          name: Observation SubID
+          type: ST
+          len: 20
+        -
+          name: Observation Value
+          type: variable
+          fieldIdentifiesType: 2
+          types:
+              -
+                type: ED
+              -
+                type: FT
+              -
+                type: NM
+                len: 16
+              -
+                type: ST
+                len: 199
+              -
+                type: TS
+                len: 26
+              -
+                type: TX
+          repeat: true
+        -
+          name: Units
+          type: CE
+          len: 60
+        -
+          name: References Range
+          type: ST
+          len: 60
+        -
+          name: Abnormal Flags
+          type: ID
+          len: 5
+          repeat: true
+        -
+          name: Probability
+          type: NM
+          len: 5
+        -
+          name: Nature of Abnormal Test
+          type: ID
+          len: 2
+          repeat: true
+        -
+          name: Observation Result Status
+          required: true
+          type: ID
+          len: 1
+        -
+          name: Date Last Obs Normal Values
+          type: TS
+          len: 26
+        -
+          name: User Defined Access Checks
+          type: ST
+          len: 20
+        -
+          name: DateTime of the Observation
+          type: TS
+          len: 26
+        -
+          name: Producers ID
+          type: CE
+          len: 60
+        -
+          name: Responsible Observer
+          type: XCN
+          len: 80
+          repeat: true
+        -
+          name: Observation Method
+          type: CE
+          len: 60
+          repeat: true
+
+ORC:
+    name: Common Order
+    spec: 4.3.1 (p290)
+    fields:
+        -
+          name: Order Control
+          required: true
+          type: ID
+          len: 2
+        -
+          name: Placer Order Number
+          type: EI
+          len: 22
+        -
+          name: Filler Order Number
+          type: EI
+          len: 22
+        -
+          name: Placer Group Number
+          type: EI
+          len: 22
+        -
+          name: Order Status
+          type: ID
+          len: 2
+        -
+          name: Response Flag
+          type: ID
+          len: 1
+        -
+          name: Quantity Timing
+          type: TQ
+          len: 200
+        -
+          name: Parent
+          type: CM
+          len: 200
+        -
+          name: Date Time of Transaction
+          type: TS
+          len: 26
+        -
+          name: Entered By
+          type: XCN
+          len: 120
+          repeat: true
+        -
+          name: Verified By
+          type: XCN
+          len: 120
+          repeat: true
+        -
+          name: Ordering Provider
+          type: XCN
+          len: 120
+          repeat: true
+        -
+          name: Enterer Location
+          type: PL
+          len: 80
+        -
+          name: Call Back Phone Number
+          type: XTN
+          len: 40
+          repeat: true # possibly max_repeat: 2
+        -
+          name: Order Effective Date Time
+          type: TS
+          len: 26
+        -
+          name: Order Control Code Reason
+          type: CE
+          len: 200
+        -
+          name: Entering Organization
+          type: CE
+          len: 60
+        -
+          name: Entering Device
+          type: CE
+          len: 60
+        -
+          name: Action By
+          type: XCN
+          len: 120
+          repeat: true
+        -
+          name: Advanced Beneficiary Notice Code
+          type: CE
+          len: 40
+        -
+          name: Ordering Facility Name
+          type: XON
+          len: 60
+          repeat: true
+        -
+          name: Ordering Facility Address
+          type: XAD
+          len: 106
+          repeat: true
+        -
+          name: Ordering Facility Phone Number
+          type: XTN
+          len: 48
+          repeat: true
+        -
+          name: Ordering Provider Address
+          type: XAD
+          len: 106
+          repeat: true
