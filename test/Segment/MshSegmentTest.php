@@ -44,7 +44,7 @@ class MshSegmentTest extends PHPUnit_Framework_TestCase
         ;
         $this->codec->bootstrap($data, $this->paramBuilder);
         /**
-         * @var \Hl7v2\Segment\MshSegment
+         * @var \Hl7v2\Segment\V251\MshSegment
          */
         $messageHeader = $this
             ->segmentFactory
@@ -68,7 +68,7 @@ class MshSegmentTest extends PHPUnit_Framework_TestCase
         ;
         $this->codec->bootstrap($datagram, $this->paramBuilder);
         /**
-         * @var \Hl7v2\Segment\MshSegment
+         * @var \Hl7v2\Segment\V251\MshSegment
          */
         $segment = $this
             ->segmentFactory

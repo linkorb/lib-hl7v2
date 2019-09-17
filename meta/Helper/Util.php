@@ -2,6 +2,9 @@
 
 namespace Hl7v2\Meta\Helper;
 
+use Memio\Model\File;
+use Memio\Model\FullyQualifiedName;
+
 class Util
 {
     public static function indentBodyParts(array $parts, $indentLen = 8)
@@ -40,6 +43,21 @@ class Util
             $body[] = str_repeat(' ', $indent) . ');';
         } else {
             $body[] = str_repeat(' ', $indent) . "{$stmt}{$paramString});";
+        }
+    }
+
+    public static function mkOutDir($pathname)
+    {
+        if (is_dir($pathname)) {
+            return;
+        }
+        mkdir($pathname, 0750, true);
+    }
+
+    public static function insertUseStatements(File $file) {
+        $parent = $file->getStructure()->getParent();
+        if (null !== $parent) {
+            $file->addFullyQualifiedName(new FullyQualifiedName($parent->getFullyQualifiedName()));
         }
     }
 }

@@ -6,16 +6,18 @@ class SegmentContext
 {
     const CLASS_SUFFIX = 'Segment';
 
-    protected $namespace;
+    protected $rootNamespace;
+    protected $versionedNamespace;
 
-    public function __construct($namespace)
+    public function __construct($rootNamespace, $versionedSubNamespace)
     {
-        $this->namespace = $namespace;
+        $this->rootNamespace = $rootNamespace;
+        $this->versionedNamespace = $rootNamespace . '\\' . $versionedSubNamespace;
     }
 
-    public function getNamespace()
+    public function getRootNamespace()
     {
-        return $this->namespace;
+        return $this->rootNamespace;
     }
 
     /**
@@ -27,7 +29,7 @@ class SegmentContext
     public function segmentIdToClass($segmentId)
     {
         $className = $this->segmentIdToClassName($segmentId);
-        return "{$this->namespace}\\{$className}";
+        return "{$this->versionedNamespace}\\{$className}";
     }
 
     /**

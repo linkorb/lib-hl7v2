@@ -6,13 +6,13 @@ use Hl7v2\Encoding\Codec;
 use Hl7v2\Encoding\Datagram;
 use Hl7v2\Factory\SegmentFactory;
 use Hl7v2\Factory\SegmentGroupFactory;
-use Hl7v2\Segment\MshSegment;
+use Hl7v2\Segment\HeaderSegmentInterface;
 use Hl7v2\Segment\SegmentInterface;
 
 abstract class AbstractMessage implements MessageInterface
 {
     /**
-     * @var \Hl7v2\Segment\MshSegment
+     * @var \Hl7v2\Segment\HeaderSegmentInterface
      */
     protected $messageHeader;
     /**
@@ -57,15 +57,15 @@ abstract class AbstractMessage implements MessageInterface
     abstract public function fromDatagram(Datagram $data, Codec $codec);
 
     /**
-     * @param \Hl7v2\Segment\MshSegment $messageHeader
+     * @param \Hl7v2\Segment\HeaderSegmentInterface $messageHeader
      */
-    public function setMessageHeader(MshSegment $messageHeader)
+    public function setMessageHeader(HeaderSegmentInterface $messageHeader)
     {
         $this->messageHeader = $messageHeader;
     }
 
     /**
-     * $return \Hl7v2\Segment\MshSegment.
+     * $return \Hl7v2\Segment\HeaderSegmentInterface.
      */
     public function getMessageHeader()
     {

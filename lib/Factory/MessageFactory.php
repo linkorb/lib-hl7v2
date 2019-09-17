@@ -2,8 +2,9 @@
 
 namespace Hl7v2\Factory;
 
+use Hl7v2\DataType\ComponentDataType;
 use Hl7v2\Exception\CapabilityError;
-use Hl7v2\Segment\MshSegment;
+use Hl7v2\Segment\HeaderSegmentInterface;
 
 class MessageFactory
 {
@@ -19,21 +20,32 @@ class MessageFactory
     }
 
     /**
-     * @param \Hl7v2\Segment\MshSegment $messageHeader
+     * @param \Hl7v2\Segment\HeaderSegmentInterface $messageHeader
      *
      * @return \Hl7v2\Message\MessageInterface
      *
      * @throws \Hl7v2\Exception\CapabilityError;
      */
-    public function create(MshSegment $messageHeader)
+    public function create(HeaderSegmentInterface $messageHeader)
     {
         $messageClass = $this->determineClassname(
-            $messageHeader->getFieldMessageType()->getMessageCode()->getValue()
+            $this->getMessageTypeComponentValue($messageHeader->getFieldMessageType())
         );
         $message = new $messageClass($this->segmentFactory, $this->segmentGroupFactory);
         $message->setMessageHeader($messageHeader);
 
         return $message;
+    }
+
+    private function getMessageTypeComponentValue($field)
+    {
+        if ($field instanceof ComponentDataType) {
+            // e.g. when V251
+            return $field->getMessageCode()->getValue();
+        }
+
+        // e.g. when v231
+        return strtok($field->getValue(), '^');
     }
 
     private function determineClassname($typeName)

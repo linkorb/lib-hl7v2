@@ -10,7 +10,7 @@ class SimpleDataTypeGenerator extends AbstractDataTypeGenerator
 {
     public function getInheritanceClass()
     {
-        $namespace = $this->context->getNamespace();
+        $namespace = $this->context->getRootNamespace();
         return "{$namespace}\\AbstractDataType";
     }
 

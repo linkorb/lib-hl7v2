@@ -9,6 +9,16 @@ use Hl7v2\Exception\DataTypeError;
 class DataTypeFactory
 {
     private $classmap = [];
+    private $defaultVersion;
+
+    /**
+     * @param string $defaultVersion The version of DataType to create when a
+     *                               version is not supplied to create().
+     */
+    public function __construct($defaultVersion = 'v251')
+    {
+        $this->defaultVersion = $defaultVersion;
+    }
 
     /**
      * Create a Data Type.
@@ -16,6 +26,7 @@ class DataTypeFactory
      * @param string $typeName
      * @param \Hl7v2\Encoding\EncodingParameters $encodingParameters
      * @param bool $isSubcomponent
+     * @param string $version optional version of a DataType to create
      *
      * @return \Hl7v2\DataType\DataTypeInterface
      *
@@ -24,9 +35,13 @@ class DataTypeFactory
     public function create(
         $typeName,
         EncodingParameters $encodingParameters,
-        $isSubcomponent = false
+        $isSubcomponent = false,
+        $version = null
     ) {
-        $class = $this->determineClassname($typeName);
+        if (null === $version) {
+            $version = $this->defaultVersion;
+        }
+        $class = $this->determineClassname($typeName, $version);
         $type = new $class;
 
         if ($type instanceof ComponentInterface) {
@@ -42,17 +57,19 @@ class DataTypeFactory
         return $type;
     }
 
-    private function determineClassname($typeName)
+    private function determineClassname($typeName, $version)
     {
-        if (array_key_exists($typeName, $this->classmap)) {
-            return $this->classmap[$typeName];
+        $classMapKey = $typeName . $version;
+        if (array_key_exists($classMapKey, $this->classmap)) {
+            return $this->classmap[$classMapKey];
         }
         $name = ucfirst(strtolower($typeName));
-        $class = "\\Hl7v2\\DataType\\{$name}DataType";
+        $versionSubNs = strtoupper($version);
+        $class = "\\Hl7v2\\DataType\\{$versionSubNs}\\{$name}DataType";
         if (!class_exists($class)) {
-            throw new DataTypeError("Unknown DataType \"{$typeName}\".");
+            throw new DataTypeError("Unknown {$version} DataType \"{$typeName}\".");
         }
-        $this->classmap[$typeName] = $class;
+        $this->classmap[$classMapKey] = $class;
 
         return $class;
     }

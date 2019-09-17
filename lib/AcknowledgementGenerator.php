@@ -7,7 +7,7 @@ use Hl7v2\Encoding\EncodingParameters;
 use Hl7v2\Factory\MessageFactory;
 use Hl7v2\Factory\SegmentFactory;
 use Hl7v2\Message\AckMessage;
-use Hl7v2\Segment\MshSegment;
+use Hl7v2\Segment\HeaderSegmentInterface;
 
 class AcknowledgementGenerator
 {
@@ -26,7 +26,7 @@ class AcknowledgementGenerator
     }
 
     public function generate(
-        MshSegment $header,
+        HeaderSegmentInterface $header,
         array $senderConfig,
         $success = true,
         $reject = false
@@ -45,7 +45,7 @@ class AcknowledgementGenerator
     }
 
     public function generateOriginalAcknowledgment(
-        MshSegment $header,
+        HeaderSegmentInterface $header,
         array $senderConfig,
         $success = true,
         $reject = false
@@ -76,7 +76,7 @@ class AcknowledgementGenerator
     }
 
     public function generateEnhancedAcceptAcknowledgment(
-        MshSegment $header,
+        HeaderSegmentInterface $header,
         array $senderConfig,
         $success = true,
         $reject = false
@@ -139,10 +139,10 @@ class AcknowledgementGenerator
         return $message;
     }
 
-    private function buildAckHeader(MshSegment $header, DateTime $time, $senderConfig)
+    private function buildAckHeader(HeaderSegmentInterface $header, DateTime $time, $senderConfig)
     {
         /**
-         * @var \Hl7v2\Segment\MshSegment
+         * @var \Hl7v2\Segment\HeaderSegmentInterface
          */
         $ackHeader = $this
             ->segmentFactory

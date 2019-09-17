@@ -7,21 +7,23 @@ class DataTypeContext
     const CLASS_SUFFIX = 'DataType';
     const INTERFACE_NAME = 'DataTypeInterface';
 
-    protected $namespace;
+    protected $rootNamespace;
+    protected $versionedNamespace;
 
-    public function __construct($namespace)
+    public function __construct($rootNamespace, $versionedSubNamespace)
     {
-        $this->namespace = $namespace;
+        $this->rootNamespace = $rootNamespace;
+        $this->versionedNamespace = $rootNamespace . '\\' . $versionedSubNamespace;
     }
 
-    public function getNamespace()
+    public function getRootNamespace()
     {
-        return $this->namespace;
+        return $this->rootNamespace;
     }
 
     public function interfaceClass()
     {
-        return "{$this->namespace}\\" . self::INTERFACE_NAME;
+        return "{$this->rootNamespace}\\" . self::INTERFACE_NAME;
     }
 
     /**
@@ -33,7 +35,7 @@ class DataTypeContext
     public function dataTypeIdToClass($typeId)
     {
         $className = $this->dataTypeIdToClassName($typeId);
-        return "{$this->namespace}\\{$className}";
+        return "{$this->versionedNamespace}\\{$className}";
     }
 
     /**

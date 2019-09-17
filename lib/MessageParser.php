@@ -14,7 +14,7 @@ use Hl7v2\Exception\MessageParseError;
 use Hl7v2\Exception\SegmentError;
 use Hl7v2\Factory\MessageFactory;
 use Hl7v2\Factory\SegmentFactory;
-use Hl7v2\Segment\MshSegment;
+use Hl7v2\Segment\HeaderSegmentInterface;
 
 class MessageParser
 {
@@ -101,7 +101,7 @@ class MessageParser
         return $messageHeader;
     }
 
-    public function parseMessageContent(Datagram $messageData, MshSegment $messageHeader)
+    public function parseMessageContent(Datagram $messageData, HeaderSegmentInterface $messageHeader)
     {
         // Create the appropriate type of message
         $message = null;

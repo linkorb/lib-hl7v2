@@ -9,10 +9,17 @@ class SegmentFactory
 {
     private $classmap = [];
     private $dataTypeFactory;
+    private $defaultVersion;
 
-    public function __construct(DataTypeFactory $dataTypeFactory)
+    /**
+     * @param DataTypeFactory $dataTypeFactory
+     * @param string $defaultVersion The version of Segment to create when a
+     *                               version is not supplied to create().
+     */
+    public function __construct(DataTypeFactory $dataTypeFactory, $defaultVersion = 'v251')
     {
         $this->dataTypeFactory = $dataTypeFactory;
+        $this->defaultVersion = $defaultVersion;
     }
 
     /**
@@ -25,9 +32,13 @@ class SegmentFactory
      */
     public function create(
         $segmentId,
-        EncodingParameters $encodingParameters
+        EncodingParameters $encodingParameters,
+        $version = null
     ) {
-        $segmentClass = $this->determineClassname($segmentId);
+        if (null === $version) {
+            $version = $this->defaultVersion;
+        }
+        $segmentClass = $this->determineClassname($segmentId, $version);
 
         $segment = new $segmentClass($this->dataTypeFactory);
         $segment->setCharacterEncoding($encodingParameters->getCharacterEncoding());
@@ -36,17 +47,19 @@ class SegmentFactory
         return $segment;
     }
 
-    private function determineClassname($typeName)
+    private function determineClassname($typeName, $version)
     {
-        if (array_key_exists($typeName, $this->classmap)) {
-            return $this->classmap[$typeName];
+        $classMapKey = $typeName . $version;
+        if (array_key_exists($classMapKey, $this->classmap)) {
+            return $this->classmap[$classMapKey];
         }
         $name = ucfirst(strtolower($typeName));
-        $class = "\\Hl7v2\\Segment\\{$name}Segment";
+        $versionSubNs = strtoupper($version);
+        $class = "\\Hl7v2\\Segment\\{$versionSubNs}\\{$name}Segment";
         if (!class_exists($class)) {
-            throw new CapabilityError("Unable to create a segment of type \"{$typeName}\".");
+            throw new CapabilityError("Unable to create a {$version} segment of type \"{$typeName}\".");
         }
-        $this->classmap[$typeName] = $class;
+        $this->classmap[$classMapKey] = $class;
 
         return $class;
     }

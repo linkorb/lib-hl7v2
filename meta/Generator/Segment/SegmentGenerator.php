@@ -74,8 +74,11 @@ class SegmentGenerator
 
     public function getInheritanceClass()
     {
-        $namespace = $this->segmentContext->getNamespace();
-        return "{$namespace}\\AbstractSegment";
+        $namespace = $this->segmentContext->getRootNamespace();
+        return 'MSH' === $this->segmentId
+            ? "{$namespace}\\AbstractHeaderSegment"
+            : "{$namespace}\\AbstractSegment"
+        ;
     }
 
     public function getProperties()

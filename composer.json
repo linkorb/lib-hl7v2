@@ -36,10 +36,14 @@
             "Hl7v2\\Test\\": "test/"
         }
     },
+    "config": {
+        "sort-packages": true
+    },
     "require-dev": {
         "digilist/dependency-graph": "^0.3.0",
         "memio/memio": "^2.0",
         "phpunit/phpunit": "^4.8",
+        "symfony/finder": "^4.3",
         "symfony/var-dumper": "^3.2",
         "symfony/yaml": "^3.2"
     }
