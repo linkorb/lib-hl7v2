@@ -13,8 +13,8 @@ class SegmentFactory
 
     /**
      * @param DataTypeFactory $dataTypeFactory
-     * @param string $defaultVersion The version of Segment to create when a
-     *                               version is not supplied to create().
+     * @param string $defaultVersion the version of Segment to create when a
+     *                               version is not supplied to create()
      */
     public function __construct(DataTypeFactory $dataTypeFactory, $defaultVersion = 'v251')
     {

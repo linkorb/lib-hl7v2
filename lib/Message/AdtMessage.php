@@ -6,10 +6,9 @@ use Hl7v2\Encoding\Codec;
 use Hl7v2\Encoding\Datagram;
 
 /**
- * Patient Administration (ADT)
+ * Patient Administration (ADT).
  *
  *    EVN -> PID -> PV1
- *
  */
 class AdtMessage extends AbstractMessage
 {

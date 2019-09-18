@@ -32,7 +32,7 @@ class AdtMessageToStringTest extends PHPUnit_Framework_TestCase
     {
         $time = new \DateTime('2020-01-01T00:00:00+0000');
         /**
-         * @var \Hl7v2\Segment\MshSegment $msh
+         * @var \Hl7v2\Segment\MshSegment
          */
         $msh = $this->buildMessageHeader($this->encodingParams, $time);
         $msh->setFieldMessageType('ADT^A28^ADT_A01');

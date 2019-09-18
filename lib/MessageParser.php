@@ -50,7 +50,7 @@ class MessageParser
         $pos = $messageData->getPositionalState();
         if (self::SEGID_MSH !== substr($messageData->value, $pos->ptr, 3)) {
             throw new MessageHeaderParseError(
-                "Expected the Datagram to begin with \"{self::SEGID_MSH}\".",
+                'Expected the Datagram to begin with "' . self::SEGID_MSH . '".',
                 DiagnosticInterface::ESEGMENT,
                 null,
                 DiagnosticInterface::ERROR,

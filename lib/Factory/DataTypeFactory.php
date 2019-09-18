@@ -12,8 +12,8 @@ class DataTypeFactory
     private $defaultVersion;
 
     /**
-     * @param string $defaultVersion The version of DataType to create when a
-     *                               version is not supplied to create().
+     * @param string $defaultVersion the version of DataType to create when a
+     *                               version is not supplied to create()
      */
     public function __construct($defaultVersion = 'v251')
     {
