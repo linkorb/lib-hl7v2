@@ -225,7 +225,7 @@ class XpnDataType extends ComponentDataType
             ++$emptyComponentsSinceLastComponent;
         } else {
             $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
-                . (string) $this->getGivenName()->getValue();
+                . (string) $this->getGivenName()->getValue()
             ;
             $emptyComponentsSinceLastComponent = 0;
         }
@@ -234,7 +234,7 @@ class XpnDataType extends ComponentDataType
             ++$emptyComponentsSinceLastComponent;
         } else {
             $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
-                . (string) $this->getMiddleInitialOrName()->getValue();
+                . (string) $this->getMiddleInitialOrName()->getValue()
             ;
             $emptyComponentsSinceLastComponent = 0;
         }
@@ -243,7 +243,7 @@ class XpnDataType extends ComponentDataType
             ++$emptyComponentsSinceLastComponent;
         } else {
             $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
-                . (string) $this->getSuffix()->getValue();
+                . (string) $this->getSuffix()->getValue()
             ;
             $emptyComponentsSinceLastComponent = 0;
         }
@@ -252,7 +252,7 @@ class XpnDataType extends ComponentDataType
             ++$emptyComponentsSinceLastComponent;
         } else {
             $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
-                . (string) $this->getPrefix()->getValue();
+                . (string) $this->getPrefix()->getValue()
             ;
             $emptyComponentsSinceLastComponent = 0;
         }
@@ -261,7 +261,7 @@ class XpnDataType extends ComponentDataType
             ++$emptyComponentsSinceLastComponent;
         } else {
             $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
-                . (string) $this->getDegree()->getValue();
+                . (string) $this->getDegree()->getValue()
             ;
             $emptyComponentsSinceLastComponent = 0;
         }
@@ -270,7 +270,7 @@ class XpnDataType extends ComponentDataType
             ++$emptyComponentsSinceLastComponent;
         } else {
             $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
-                . (string) $this->getNameTypeCode()->getValue();
+                . (string) $this->getNameTypeCode()->getValue()
             ;
             $emptyComponentsSinceLastComponent = 0;
         }
@@ -279,7 +279,7 @@ class XpnDataType extends ComponentDataType
             ++$emptyComponentsSinceLastComponent;
         } else {
             $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
-                . (string) $this->getNameRepresentationCode()->getValue();
+                . (string) $this->getNameRepresentationCode()->getValue()
             ;
             $emptyComponentsSinceLastComponent = 0;
         }

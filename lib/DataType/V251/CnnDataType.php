@@ -301,7 +301,7 @@ class CnnDataType extends ComponentDataType
             ++$emptyComponentsSinceLastComponent;
         } else {
             $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
-                . (string) $this->getFamilyName()->getValue();
+                . (string) $this->getFamilyName()->getValue()
             ;
             $emptyComponentsSinceLastComponent = 0;
         }
@@ -310,7 +310,7 @@ class CnnDataType extends ComponentDataType
             ++$emptyComponentsSinceLastComponent;
         } else {
             $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
-                . (string) $this->getGivenName()->getValue();
+                . (string) $this->getGivenName()->getValue()
             ;
             $emptyComponentsSinceLastComponent = 0;
         }
@@ -319,7 +319,7 @@ class CnnDataType extends ComponentDataType
             ++$emptyComponentsSinceLastComponent;
         } else {
             $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
-                . (string) $this->getSecondNames()->getValue();
+                . (string) $this->getSecondNames()->getValue()
             ;
             $emptyComponentsSinceLastComponent = 0;
         }
@@ -328,7 +328,7 @@ class CnnDataType extends ComponentDataType
             ++$emptyComponentsSinceLastComponent;
         } else {
             $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
-                . (string) $this->getSuffix()->getValue();
+                . (string) $this->getSuffix()->getValue()
             ;
             $emptyComponentsSinceLastComponent = 0;
         }
@@ -337,7 +337,7 @@ class CnnDataType extends ComponentDataType
             ++$emptyComponentsSinceLastComponent;
         } else {
             $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
-                . (string) $this->getPrefix()->getValue();
+                . (string) $this->getPrefix()->getValue()
             ;
             $emptyComponentsSinceLastComponent = 0;
         }
@@ -346,7 +346,7 @@ class CnnDataType extends ComponentDataType
             ++$emptyComponentsSinceLastComponent;
         } else {
             $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
-                . (string) $this->getDegree()->getValue();
+                . (string) $this->getDegree()->getValue()
             ;
             $emptyComponentsSinceLastComponent = 0;
         }
@@ -355,7 +355,7 @@ class CnnDataType extends ComponentDataType
             ++$emptyComponentsSinceLastComponent;
         } else {
             $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
-                . (string) $this->getSourceTable()->getValue();
+                . (string) $this->getSourceTable()->getValue()
             ;
             $emptyComponentsSinceLastComponent = 0;
         }
@@ -364,7 +364,7 @@ class CnnDataType extends ComponentDataType
             ++$emptyComponentsSinceLastComponent;
         } else {
             $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
-                . (string) $this->getAssigningAuthorityNamespaceId()->getValue();
+                . (string) $this->getAssigningAuthorityNamespaceId()->getValue()
             ;
             $emptyComponentsSinceLastComponent = 0;
         }
@@ -373,7 +373,7 @@ class CnnDataType extends ComponentDataType
             ++$emptyComponentsSinceLastComponent;
         } else {
             $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
-                . (string) $this->getAssigningAuthorityUniversalId()->getValue();
+                . (string) $this->getAssigningAuthorityUniversalId()->getValue()
             ;
             $emptyComponentsSinceLastComponent = 0;
         }
@@ -382,7 +382,7 @@ class CnnDataType extends ComponentDataType
             ++$emptyComponentsSinceLastComponent;
         } else {
             $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
-                . (string) $this->getAssigningAuthorityUniversalIdType()->getValue();
+                . (string) $this->getAssigningAuthorityUniversalIdType()->getValue()
             ;
             $emptyComponentsSinceLastComponent = 0;
         }

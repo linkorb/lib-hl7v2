@@ -24,13 +24,13 @@
         {%- if component.simple %}
 
             $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
-                . (string) $this->get{{ component.name }}()->getValue();
+                . (string) $this->get{{ component.name }}()->getValue()
             ;
             $emptyComponentsSinceLastComponent = 0;
         {%- else %}
 
             $value = (string) $this->get{{ component.name }}();
-            if ($value === '') {
+            if ('' === $value) {
                 ++$emptyComponentsSinceLastComponent;
             } else {
                 $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)

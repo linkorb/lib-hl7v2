@@ -3708,7 +3708,7 @@ class OrcSegment extends AbstractSegment
             ++$emptyFieldsSinceLastField;
         } else {
             $value = (string) $this->getFieldPlacerOrderNumber();
-            if ($value === '') {
+            if ('' === $value) {
                 ++$emptyFieldsSinceLastField;
             } else {
                 $s .= str_repeat(
@@ -3723,7 +3723,7 @@ class OrcSegment extends AbstractSegment
             ++$emptyFieldsSinceLastField;
         } else {
             $value = (string) $this->getFieldFillerOrderNumber();
-            if ($value === '') {
+            if ('' === $value) {
                 ++$emptyFieldsSinceLastField;
             } else {
                 $s .= str_repeat(
@@ -3738,7 +3738,7 @@ class OrcSegment extends AbstractSegment
             ++$emptyFieldsSinceLastField;
         } else {
             $value = (string) $this->getFieldPlacerGroupNumber();
-            if ($value === '') {
+            if ('' === $value) {
                 ++$emptyFieldsSinceLastField;
             } else {
                 $s .= str_repeat(
@@ -3775,10 +3775,10 @@ class OrcSegment extends AbstractSegment
             $nonEmptyReps = 0;
             foreach ($this->getFieldQuantityTiming() as $repetition) {
                 $value = (string) $repetition;
-                if ($value === '') {
+                if ('' === $value) {
                     continue;
                 }
-                if ($nonEmptyReps == 0) {
+                if (0 == $nonEmptyReps) {
                     $s .= str_repeat(
                         $this->encodingParameters->getFieldSep(),
                         1 + $emptyFieldsSinceLastField
@@ -3797,7 +3797,7 @@ class OrcSegment extends AbstractSegment
             ++$emptyFieldsSinceLastField;
         } else {
             $value = (string) $this->getFieldParent();
-            if ($value === '') {
+            if ('' === $value) {
                 ++$emptyFieldsSinceLastField;
             } else {
                 $s .= str_repeat(
@@ -3812,7 +3812,7 @@ class OrcSegment extends AbstractSegment
             ++$emptyFieldsSinceLastField;
         } else {
             $value = (string) $this->getFieldDateTimeOfTransaction();
-            if ($value === '') {
+            if ('' === $value) {
                 ++$emptyFieldsSinceLastField;
             } else {
                 $s .= str_repeat(
@@ -3829,10 +3829,10 @@ class OrcSegment extends AbstractSegment
             $nonEmptyReps = 0;
             foreach ($this->getFieldEnteredBy() as $repetition) {
                 $value = (string) $repetition;
-                if ($value === '') {
+                if ('' === $value) {
                     continue;
                 }
-                if ($nonEmptyReps == 0) {
+                if (0 == $nonEmptyReps) {
                     $s .= str_repeat(
                         $this->encodingParameters->getFieldSep(),
                         1 + $emptyFieldsSinceLastField
@@ -3853,10 +3853,10 @@ class OrcSegment extends AbstractSegment
             $nonEmptyReps = 0;
             foreach ($this->getFieldVerifiedBy() as $repetition) {
                 $value = (string) $repetition;
-                if ($value === '') {
+                if ('' === $value) {
                     continue;
                 }
-                if ($nonEmptyReps == 0) {
+                if (0 == $nonEmptyReps) {
                     $s .= str_repeat(
                         $this->encodingParameters->getFieldSep(),
                         1 + $emptyFieldsSinceLastField
@@ -3877,10 +3877,10 @@ class OrcSegment extends AbstractSegment
             $nonEmptyReps = 0;
             foreach ($this->getFieldOrderingProvider() as $repetition) {
                 $value = (string) $repetition;
-                if ($value === '') {
+                if ('' === $value) {
                     continue;
                 }
-                if ($nonEmptyReps == 0) {
+                if (0 == $nonEmptyReps) {
                     $s .= str_repeat(
                         $this->encodingParameters->getFieldSep(),
                         1 + $emptyFieldsSinceLastField
@@ -3899,7 +3899,7 @@ class OrcSegment extends AbstractSegment
             ++$emptyFieldsSinceLastField;
         } else {
             $value = (string) $this->getFieldEntererLocation();
-            if ($value === '') {
+            if ('' === $value) {
                 ++$emptyFieldsSinceLastField;
             } else {
                 $s .= str_repeat(
@@ -3916,10 +3916,10 @@ class OrcSegment extends AbstractSegment
             $nonEmptyReps = 0;
             foreach ($this->getFieldCallBackPhoneNumber() as $repetition) {
                 $value = (string) $repetition;
-                if ($value === '') {
+                if ('' === $value) {
                     continue;
                 }
-                if ($nonEmptyReps == 0) {
+                if (0 == $nonEmptyReps) {
                     $s .= str_repeat(
                         $this->encodingParameters->getFieldSep(),
                         1 + $emptyFieldsSinceLastField
@@ -3938,7 +3938,7 @@ class OrcSegment extends AbstractSegment
             ++$emptyFieldsSinceLastField;
         } else {
             $value = (string) $this->getFieldOrderEffectiveDateTime();
-            if ($value === '') {
+            if ('' === $value) {
                 ++$emptyFieldsSinceLastField;
             } else {
                 $s .= str_repeat(
@@ -3953,7 +3953,7 @@ class OrcSegment extends AbstractSegment
             ++$emptyFieldsSinceLastField;
         } else {
             $value = (string) $this->getFieldOrderControlCodeReason();
-            if ($value === '') {
+            if ('' === $value) {
                 ++$emptyFieldsSinceLastField;
             } else {
                 $s .= str_repeat(
@@ -3968,7 +3968,7 @@ class OrcSegment extends AbstractSegment
             ++$emptyFieldsSinceLastField;
         } else {
             $value = (string) $this->getFieldEnteringOrganization();
-            if ($value === '') {
+            if ('' === $value) {
                 ++$emptyFieldsSinceLastField;
             } else {
                 $s .= str_repeat(
@@ -3983,7 +3983,7 @@ class OrcSegment extends AbstractSegment
             ++$emptyFieldsSinceLastField;
         } else {
             $value = (string) $this->getFieldEnteringDevice();
-            if ($value === '') {
+            if ('' === $value) {
                 ++$emptyFieldsSinceLastField;
             } else {
                 $s .= str_repeat(
@@ -4000,10 +4000,10 @@ class OrcSegment extends AbstractSegment
             $nonEmptyReps = 0;
             foreach ($this->getFieldActionBy() as $repetition) {
                 $value = (string) $repetition;
-                if ($value === '') {
+                if ('' === $value) {
                     continue;
                 }
-                if ($nonEmptyReps == 0) {
+                if (0 == $nonEmptyReps) {
                     $s .= str_repeat(
                         $this->encodingParameters->getFieldSep(),
                         1 + $emptyFieldsSinceLastField
@@ -4022,7 +4022,7 @@ class OrcSegment extends AbstractSegment
             ++$emptyFieldsSinceLastField;
         } else {
             $value = (string) $this->getFieldAdvancedBeneficiaryNoticeCode();
-            if ($value === '') {
+            if ('' === $value) {
                 ++$emptyFieldsSinceLastField;
             } else {
                 $s .= str_repeat(
@@ -4039,10 +4039,10 @@ class OrcSegment extends AbstractSegment
             $nonEmptyReps = 0;
             foreach ($this->getFieldOrderingFacilityName() as $repetition) {
                 $value = (string) $repetition;
-                if ($value === '') {
+                if ('' === $value) {
                     continue;
                 }
-                if ($nonEmptyReps == 0) {
+                if (0 == $nonEmptyReps) {
                     $s .= str_repeat(
                         $this->encodingParameters->getFieldSep(),
                         1 + $emptyFieldsSinceLastField
@@ -4063,10 +4063,10 @@ class OrcSegment extends AbstractSegment
             $nonEmptyReps = 0;
             foreach ($this->getFieldOrderingFacilityAddress() as $repetition) {
                 $value = (string) $repetition;
-                if ($value === '') {
+                if ('' === $value) {
                     continue;
                 }
-                if ($nonEmptyReps == 0) {
+                if (0 == $nonEmptyReps) {
                     $s .= str_repeat(
                         $this->encodingParameters->getFieldSep(),
                         1 + $emptyFieldsSinceLastField
@@ -4087,10 +4087,10 @@ class OrcSegment extends AbstractSegment
             $nonEmptyReps = 0;
             foreach ($this->getFieldOrderingFacilityPhoneNumber() as $repetition) {
                 $value = (string) $repetition;
-                if ($value === '') {
+                if ('' === $value) {
                     continue;
                 }
-                if ($nonEmptyReps == 0) {
+                if (0 == $nonEmptyReps) {
                     $s .= str_repeat(
                         $this->encodingParameters->getFieldSep(),
                         1 + $emptyFieldsSinceLastField
@@ -4111,10 +4111,10 @@ class OrcSegment extends AbstractSegment
             $nonEmptyReps = 0;
             foreach ($this->getFieldOrderingProviderAddress() as $repetition) {
                 $value = (string) $repetition;
-                if ($value === '') {
+                if ('' === $value) {
                     continue;
                 }
-                if ($nonEmptyReps == 0) {
+                if (0 == $nonEmptyReps) {
                     $s .= str_repeat(
                         $this->encodingParameters->getFieldSep(),
                         1 + $emptyFieldsSinceLastField
@@ -4133,7 +4133,7 @@ class OrcSegment extends AbstractSegment
             ++$emptyFieldsSinceLastField;
         } else {
             $value = (string) $this->getFieldOrderStatusModifier();
-            if ($value === '') {
+            if ('' === $value) {
                 ++$emptyFieldsSinceLastField;
             } else {
                 $s .= str_repeat(
@@ -4148,7 +4148,7 @@ class OrcSegment extends AbstractSegment
             ++$emptyFieldsSinceLastField;
         } else {
             $value = (string) $this->getFieldAdvancedBeneficiaryNoticeOverrideReason();
-            if ($value === '') {
+            if ('' === $value) {
                 ++$emptyFieldsSinceLastField;
             } else {
                 $s .= str_repeat(
@@ -4163,7 +4163,7 @@ class OrcSegment extends AbstractSegment
             ++$emptyFieldsSinceLastField;
         } else {
             $value = (string) $this->getFieldFillerExpectedAvailabilityDateTime();
-            if ($value === '') {
+            if ('' === $value) {
                 ++$emptyFieldsSinceLastField;
             } else {
                 $s .= str_repeat(
@@ -4178,7 +4178,7 @@ class OrcSegment extends AbstractSegment
             ++$emptyFieldsSinceLastField;
         } else {
             $value = (string) $this->getFieldConfidentialityCode();
-            if ($value === '') {
+            if ('' === $value) {
                 ++$emptyFieldsSinceLastField;
             } else {
                 $s .= str_repeat(
@@ -4193,7 +4193,7 @@ class OrcSegment extends AbstractSegment
             ++$emptyFieldsSinceLastField;
         } else {
             $value = (string) $this->getFieldOrderType();
-            if ($value === '') {
+            if ('' === $value) {
                 ++$emptyFieldsSinceLastField;
             } else {
                 $s .= str_repeat(
@@ -4208,7 +4208,7 @@ class OrcSegment extends AbstractSegment
             ++$emptyFieldsSinceLastField;
         } else {
             $value = (string) $this->getFieldEntererAuthorizationMode();
-            if ($value === '') {
+            if ('' === $value) {
                 ++$emptyFieldsSinceLastField;
             } else {
                 $s .= str_repeat(
@@ -4223,7 +4223,7 @@ class OrcSegment extends AbstractSegment
             ++$emptyFieldsSinceLastField;
         } else {
             $value = (string) $this->getFieldParentUniversalServiceIdentifier();
-            if ($value === '') {
+            if ('' === $value) {
                 ++$emptyFieldsSinceLastField;
             } else {
                 $s .= str_repeat(

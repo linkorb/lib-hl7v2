@@ -88,7 +88,7 @@ class DrDataType extends ComponentDataType
             ++$emptyComponentsSinceLastComponent;
         } else {
             $value = (string) $this->getRangeEndDateTime();
-            if ($value === '') {
+            if ('' === $value) {
                 ++$emptyComponentsSinceLastComponent;
             } else {
                 $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)

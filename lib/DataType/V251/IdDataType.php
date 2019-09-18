@@ -2,8 +2,6 @@
 
 namespace Hl7v2\DataType\V251;
 
-use Hl7v2\DataType\V251\StDataType;
-
 /**
  * Coded value for HL7 tables (ID).
  */

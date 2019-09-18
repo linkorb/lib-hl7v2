@@ -2,8 +2,6 @@
 
 namespace Hl7v2\DataType\V231;
 
-use Hl7v2\DataType\V231\StDataType;
-
 /**
  * Formatted Text (FT).
  */

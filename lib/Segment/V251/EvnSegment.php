@@ -642,7 +642,7 @@ class EvnSegment extends AbstractSegment
             ++$emptyFieldsSinceLastField;
         } else {
             $value = (string) $this->getFieldRecordedDatetime();
-            if ($value === '') {
+            if ('' === $value) {
                 ++$emptyFieldsSinceLastField;
             } else {
                 $s .= str_repeat(
@@ -657,7 +657,7 @@ class EvnSegment extends AbstractSegment
             ++$emptyFieldsSinceLastField;
         } else {
             $value = (string) $this->getFieldDatetimePlannedEvent();
-            if ($value === '') {
+            if ('' === $value) {
                 ++$emptyFieldsSinceLastField;
             } else {
                 $s .= str_repeat(
@@ -684,10 +684,10 @@ class EvnSegment extends AbstractSegment
             $nonEmptyReps = 0;
             foreach ($this->getFieldOperatorId() as $repetition) {
                 $value = (string) $repetition;
-                if ($value === '') {
+                if ('' === $value) {
                     continue;
                 }
-                if ($nonEmptyReps == 0) {
+                if (0 == $nonEmptyReps) {
                     $s .= str_repeat(
                         $this->encodingParameters->getFieldSep(),
                         1 + $emptyFieldsSinceLastField
@@ -706,7 +706,7 @@ class EvnSegment extends AbstractSegment
             ++$emptyFieldsSinceLastField;
         } else {
             $value = (string) $this->getFieldEventOccurred();
-            if ($value === '') {
+            if ('' === $value) {
                 ++$emptyFieldsSinceLastField;
             } else {
                 $s .= str_repeat(
@@ -721,7 +721,7 @@ class EvnSegment extends AbstractSegment
             ++$emptyFieldsSinceLastField;
         } else {
             $value = (string) $this->getFieldEventFacility();
-            if ($value === '') {
+            if ('' === $value) {
                 ++$emptyFieldsSinceLastField;
             } else {
                 $s .= str_repeat(

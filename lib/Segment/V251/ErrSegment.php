@@ -797,10 +797,10 @@ class ErrSegment extends AbstractSegment
             $nonEmptyReps = 0;
             foreach ($this->getFieldErrorCodeAndLocation() as $repetition) {
                 $value = (string) $repetition;
-                if ($value === '') {
+                if ('' === $value) {
                     continue;
                 }
-                if ($nonEmptyReps == 0) {
+                if (0 == $nonEmptyReps) {
                     $s .= str_repeat(
                         $this->encodingParameters->getFieldSep(),
                         1 + $emptyFieldsSinceLastField
@@ -821,10 +821,10 @@ class ErrSegment extends AbstractSegment
             $nonEmptyReps = 0;
             foreach ($this->getFieldErrorLocation() as $repetition) {
                 $value = (string) $repetition;
-                if ($value === '') {
+                if ('' === $value) {
                     continue;
                 }
-                if ($nonEmptyReps == 0) {
+                if (0 == $nonEmptyReps) {
                     $s .= str_repeat(
                         $this->encodingParameters->getFieldSep(),
                         1 + $emptyFieldsSinceLastField
@@ -843,7 +843,7 @@ class ErrSegment extends AbstractSegment
             ++$emptyFieldsSinceLastField;
         } else {
             $value = (string) $this->getFieldHl7ErrorCode();
-            if ($value === '') {
+            if ('' === $value) {
                 ++$emptyFieldsSinceLastField;
             } else {
                 $s .= str_repeat(
@@ -868,7 +868,7 @@ class ErrSegment extends AbstractSegment
             ++$emptyFieldsSinceLastField;
         } else {
             $value = (string) $this->getFieldApplicationErrorCode();
-            if ($value === '') {
+            if ('' === $value) {
                 ++$emptyFieldsSinceLastField;
             } else {
                 $s .= str_repeat(
@@ -887,7 +887,7 @@ class ErrSegment extends AbstractSegment
                 if (!$repetition->hasValue()) {
                     continue;
                 }
-                if ($nonEmptyReps == 0) {
+                if (0 == $nonEmptyReps) {
                     $s .= str_repeat(
                         $this->encodingParameters->getFieldSep(),
                         1 + $emptyFieldsSinceLastField
@@ -930,7 +930,7 @@ class ErrSegment extends AbstractSegment
                 if (!$repetition->hasValue()) {
                     continue;
                 }
-                if ($nonEmptyReps == 0) {
+                if (0 == $nonEmptyReps) {
                     $s .= str_repeat(
                         $this->encodingParameters->getFieldSep(),
                         1 + $emptyFieldsSinceLastField
@@ -949,7 +949,7 @@ class ErrSegment extends AbstractSegment
             ++$emptyFieldsSinceLastField;
         } else {
             $value = (string) $this->getFieldOverrideType();
-            if ($value === '') {
+            if ('' === $value) {
                 ++$emptyFieldsSinceLastField;
             } else {
                 $s .= str_repeat(
@@ -966,10 +966,10 @@ class ErrSegment extends AbstractSegment
             $nonEmptyReps = 0;
             foreach ($this->getFieldOverrideReasonCode() as $repetition) {
                 $value = (string) $repetition;
-                if ($value === '') {
+                if ('' === $value) {
                     continue;
                 }
-                if ($nonEmptyReps == 0) {
+                if (0 == $nonEmptyReps) {
                     $s .= str_repeat(
                         $this->encodingParameters->getFieldSep(),
                         1 + $emptyFieldsSinceLastField
@@ -990,10 +990,10 @@ class ErrSegment extends AbstractSegment
             $nonEmptyReps = 0;
             foreach ($this->getFieldHelpDeskContactPoint() as $repetition) {
                 $value = (string) $repetition;
-                if ($value === '') {
+                if ('' === $value) {
                     continue;
                 }
-                if ($nonEmptyReps == 0) {
+                if (0 == $nonEmptyReps) {
                     $s .= str_repeat(
                         $this->encodingParameters->getFieldSep(),
                         1 + $emptyFieldsSinceLastField

@@ -80,7 +80,7 @@ class PtDataType extends ComponentDataType
             ++$emptyComponentsSinceLastComponent;
         } else {
             $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
-                . (string) $this->getProcessingMode()->getValue();
+                . (string) $this->getProcessingMode()->getValue()
             ;
             $emptyComponentsSinceLastComponent = 0;
         }

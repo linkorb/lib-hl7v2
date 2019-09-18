@@ -3436,7 +3436,7 @@ class PidSegment extends AbstractSegment
             ++$emptyFieldsSinceLastField;
         } else {
             $value = (string) $this->getFieldPatientId();
-            if ($value === '') {
+            if ('' === $value) {
                 ++$emptyFieldsSinceLastField;
             } else {
                 $s .= str_repeat(
@@ -3453,10 +3453,10 @@ class PidSegment extends AbstractSegment
             $nonEmptyReps = 0;
             foreach ($this->getFieldPatientIdentifierList() as $repetition) {
                 $value = (string) $repetition;
-                if ($value === '') {
+                if ('' === $value) {
                     continue;
                 }
-                if ($nonEmptyReps == 0) {
+                if (0 == $nonEmptyReps) {
                     $s .= str_repeat(
                         $this->encodingParameters->getFieldSep(),
                         1 + $emptyFieldsSinceLastField
@@ -3477,10 +3477,10 @@ class PidSegment extends AbstractSegment
             $nonEmptyReps = 0;
             foreach ($this->getFieldAltPatientId() as $repetition) {
                 $value = (string) $repetition;
-                if ($value === '') {
+                if ('' === $value) {
                     continue;
                 }
-                if ($nonEmptyReps == 0) {
+                if (0 == $nonEmptyReps) {
                     $s .= str_repeat(
                         $this->encodingParameters->getFieldSep(),
                         1 + $emptyFieldsSinceLastField
@@ -3501,10 +3501,10 @@ class PidSegment extends AbstractSegment
             $nonEmptyReps = 0;
             foreach ($this->getFieldPatientName() as $repetition) {
                 $value = (string) $repetition;
-                if ($value === '') {
+                if ('' === $value) {
                     continue;
                 }
-                if ($nonEmptyReps == 0) {
+                if (0 == $nonEmptyReps) {
                     $s .= str_repeat(
                         $this->encodingParameters->getFieldSep(),
                         1 + $emptyFieldsSinceLastField
@@ -3525,10 +3525,10 @@ class PidSegment extends AbstractSegment
             $nonEmptyReps = 0;
             foreach ($this->getFieldMothersMaidenName() as $repetition) {
                 $value = (string) $repetition;
-                if ($value === '') {
+                if ('' === $value) {
                     continue;
                 }
-                if ($nonEmptyReps == 0) {
+                if (0 == $nonEmptyReps) {
                     $s .= str_repeat(
                         $this->encodingParameters->getFieldSep(),
                         1 + $emptyFieldsSinceLastField
@@ -3547,7 +3547,7 @@ class PidSegment extends AbstractSegment
             ++$emptyFieldsSinceLastField;
         } else {
             $value = (string) $this->getFieldDatetimeOfBirth();
-            if ($value === '') {
+            if ('' === $value) {
                 ++$emptyFieldsSinceLastField;
             } else {
                 $s .= str_repeat(
@@ -3574,10 +3574,10 @@ class PidSegment extends AbstractSegment
             $nonEmptyReps = 0;
             foreach ($this->getFieldPatientAlias() as $repetition) {
                 $value = (string) $repetition;
-                if ($value === '') {
+                if ('' === $value) {
                     continue;
                 }
-                if ($nonEmptyReps == 0) {
+                if (0 == $nonEmptyReps) {
                     $s .= str_repeat(
                         $this->encodingParameters->getFieldSep(),
                         1 + $emptyFieldsSinceLastField
@@ -3598,10 +3598,10 @@ class PidSegment extends AbstractSegment
             $nonEmptyReps = 0;
             foreach ($this->getFieldRace() as $repetition) {
                 $value = (string) $repetition;
-                if ($value === '') {
+                if ('' === $value) {
                     continue;
                 }
-                if ($nonEmptyReps == 0) {
+                if (0 == $nonEmptyReps) {
                     $s .= str_repeat(
                         $this->encodingParameters->getFieldSep(),
                         1 + $emptyFieldsSinceLastField
@@ -3622,10 +3622,10 @@ class PidSegment extends AbstractSegment
             $nonEmptyReps = 0;
             foreach ($this->getFieldPatientAddress() as $repetition) {
                 $value = (string) $repetition;
-                if ($value === '') {
+                if ('' === $value) {
                     continue;
                 }
-                if ($nonEmptyReps == 0) {
+                if (0 == $nonEmptyReps) {
                     $s .= str_repeat(
                         $this->encodingParameters->getFieldSep(),
                         1 + $emptyFieldsSinceLastField
@@ -3656,10 +3656,10 @@ class PidSegment extends AbstractSegment
             $nonEmptyReps = 0;
             foreach ($this->getFieldPhoneNumberHome() as $repetition) {
                 $value = (string) $repetition;
-                if ($value === '') {
+                if ('' === $value) {
                     continue;
                 }
-                if ($nonEmptyReps == 0) {
+                if (0 == $nonEmptyReps) {
                     $s .= str_repeat(
                         $this->encodingParameters->getFieldSep(),
                         1 + $emptyFieldsSinceLastField
@@ -3680,10 +3680,10 @@ class PidSegment extends AbstractSegment
             $nonEmptyReps = 0;
             foreach ($this->getFieldPhoneNumberBusiness() as $repetition) {
                 $value = (string) $repetition;
-                if ($value === '') {
+                if ('' === $value) {
                     continue;
                 }
-                if ($nonEmptyReps == 0) {
+                if (0 == $nonEmptyReps) {
                     $s .= str_repeat(
                         $this->encodingParameters->getFieldSep(),
                         1 + $emptyFieldsSinceLastField
@@ -3702,7 +3702,7 @@ class PidSegment extends AbstractSegment
             ++$emptyFieldsSinceLastField;
         } else {
             $value = (string) $this->getFieldPrimaryLanguage();
-            if ($value === '') {
+            if ('' === $value) {
                 ++$emptyFieldsSinceLastField;
             } else {
                 $s .= str_repeat(
@@ -3717,7 +3717,7 @@ class PidSegment extends AbstractSegment
             ++$emptyFieldsSinceLastField;
         } else {
             $value = (string) $this->getFieldMaritalStatus();
-            if ($value === '') {
+            if ('' === $value) {
                 ++$emptyFieldsSinceLastField;
             } else {
                 $s .= str_repeat(
@@ -3732,7 +3732,7 @@ class PidSegment extends AbstractSegment
             ++$emptyFieldsSinceLastField;
         } else {
             $value = (string) $this->getFieldReligion();
-            if ($value === '') {
+            if ('' === $value) {
                 ++$emptyFieldsSinceLastField;
             } else {
                 $s .= str_repeat(
@@ -3747,7 +3747,7 @@ class PidSegment extends AbstractSegment
             ++$emptyFieldsSinceLastField;
         } else {
             $value = (string) $this->getFieldPatientAccountNumber();
-            if ($value === '') {
+            if ('' === $value) {
                 ++$emptyFieldsSinceLastField;
             } else {
                 $s .= str_repeat(
@@ -3772,7 +3772,7 @@ class PidSegment extends AbstractSegment
             ++$emptyFieldsSinceLastField;
         } else {
             $value = (string) $this->getFieldDriversLicenseNumberPatient();
-            if ($value === '') {
+            if ('' === $value) {
                 ++$emptyFieldsSinceLastField;
             } else {
                 $s .= str_repeat(
@@ -3789,10 +3789,10 @@ class PidSegment extends AbstractSegment
             $nonEmptyReps = 0;
             foreach ($this->getFieldMothersIdentifier() as $repetition) {
                 $value = (string) $repetition;
-                if ($value === '') {
+                if ('' === $value) {
                     continue;
                 }
-                if ($nonEmptyReps == 0) {
+                if (0 == $nonEmptyReps) {
                     $s .= str_repeat(
                         $this->encodingParameters->getFieldSep(),
                         1 + $emptyFieldsSinceLastField
@@ -3813,10 +3813,10 @@ class PidSegment extends AbstractSegment
             $nonEmptyReps = 0;
             foreach ($this->getFieldEthnicGroup() as $repetition) {
                 $value = (string) $repetition;
-                if ($value === '') {
+                if ('' === $value) {
                     continue;
                 }
-                if ($nonEmptyReps == 0) {
+                if (0 == $nonEmptyReps) {
                     $s .= str_repeat(
                         $this->encodingParameters->getFieldSep(),
                         1 + $emptyFieldsSinceLastField
@@ -3867,10 +3867,10 @@ class PidSegment extends AbstractSegment
             $nonEmptyReps = 0;
             foreach ($this->getFieldCitizenship() as $repetition) {
                 $value = (string) $repetition;
-                if ($value === '') {
+                if ('' === $value) {
                     continue;
                 }
-                if ($nonEmptyReps == 0) {
+                if (0 == $nonEmptyReps) {
                     $s .= str_repeat(
                         $this->encodingParameters->getFieldSep(),
                         1 + $emptyFieldsSinceLastField
@@ -3889,7 +3889,7 @@ class PidSegment extends AbstractSegment
             ++$emptyFieldsSinceLastField;
         } else {
             $value = (string) $this->getFieldVeteransMilitaryStatus();
-            if ($value === '') {
+            if ('' === $value) {
                 ++$emptyFieldsSinceLastField;
             } else {
                 $s .= str_repeat(
@@ -3904,7 +3904,7 @@ class PidSegment extends AbstractSegment
             ++$emptyFieldsSinceLastField;
         } else {
             $value = (string) $this->getFieldNationality();
-            if ($value === '') {
+            if ('' === $value) {
                 ++$emptyFieldsSinceLastField;
             } else {
                 $s .= str_repeat(
@@ -3919,7 +3919,7 @@ class PidSegment extends AbstractSegment
             ++$emptyFieldsSinceLastField;
         } else {
             $value = (string) $this->getFieldPatientDeathDateAndTime();
-            if ($value === '') {
+            if ('' === $value) {
                 ++$emptyFieldsSinceLastField;
             } else {
                 $s .= str_repeat(
@@ -3958,7 +3958,7 @@ class PidSegment extends AbstractSegment
                 if (!$repetition->hasValue()) {
                     continue;
                 }
-                if ($nonEmptyReps == 0) {
+                if (0 == $nonEmptyReps) {
                     $s .= str_repeat(
                         $this->encodingParameters->getFieldSep(),
                         1 + $emptyFieldsSinceLastField
@@ -3977,7 +3977,7 @@ class PidSegment extends AbstractSegment
             ++$emptyFieldsSinceLastField;
         } else {
             $value = (string) $this->getFieldLastUpdateDatetime();
-            if ($value === '') {
+            if ('' === $value) {
                 ++$emptyFieldsSinceLastField;
             } else {
                 $s .= str_repeat(
@@ -3992,7 +3992,7 @@ class PidSegment extends AbstractSegment
             ++$emptyFieldsSinceLastField;
         } else {
             $value = (string) $this->getFieldLastUpdateFacility();
-            if ($value === '') {
+            if ('' === $value) {
                 ++$emptyFieldsSinceLastField;
             } else {
                 $s .= str_repeat(
@@ -4007,7 +4007,7 @@ class PidSegment extends AbstractSegment
             ++$emptyFieldsSinceLastField;
         } else {
             $value = (string) $this->getFieldSpeciesCode();
-            if ($value === '') {
+            if ('' === $value) {
                 ++$emptyFieldsSinceLastField;
             } else {
                 $s .= str_repeat(
@@ -4022,7 +4022,7 @@ class PidSegment extends AbstractSegment
             ++$emptyFieldsSinceLastField;
         } else {
             $value = (string) $this->getFieldBreedCode();
-            if ($value === '') {
+            if ('' === $value) {
                 ++$emptyFieldsSinceLastField;
             } else {
                 $s .= str_repeat(
@@ -4049,10 +4049,10 @@ class PidSegment extends AbstractSegment
             $nonEmptyReps = 0;
             foreach ($this->getFieldProductionClassCode() as $repetition) {
                 $value = (string) $repetition;
-                if ($value === '') {
+                if ('' === $value) {
                     continue;
                 }
-                if ($nonEmptyReps == 0) {
+                if (0 == $nonEmptyReps) {
                     $s .= str_repeat(
                         $this->encodingParameters->getFieldSep(),
                         1 + $emptyFieldsSinceLastField
@@ -4073,10 +4073,10 @@ class PidSegment extends AbstractSegment
             $nonEmptyReps = 0;
             foreach ($this->getFieldTribalCitizenship() as $repetition) {
                 $value = (string) $repetition;
-                if ($value === '') {
+                if ('' === $value) {
                     continue;
                 }
-                if ($nonEmptyReps == 0) {
+                if (0 == $nonEmptyReps) {
                     $s .= str_repeat(
                         $this->encodingParameters->getFieldSep(),
                         1 + $emptyFieldsSinceLastField

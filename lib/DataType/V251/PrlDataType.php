@@ -130,7 +130,7 @@ class PrlDataType extends ComponentDataType
             ++$emptyComponentsSinceLastComponent;
         } else {
             $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
-                . (string) $this->getParentObservationSubIdentifier()->getValue();
+                . (string) $this->getParentObservationSubIdentifier()->getValue()
             ;
             $emptyComponentsSinceLastComponent = 0;
         }
@@ -139,7 +139,7 @@ class PrlDataType extends ComponentDataType
             ++$emptyComponentsSinceLastComponent;
         } else {
             $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
-                . (string) $this->getParentObservationValueDescriptor()->getValue();
+                . (string) $this->getParentObservationValueDescriptor()->getValue()
             ;
             $emptyComponentsSinceLastComponent = 0;
         }

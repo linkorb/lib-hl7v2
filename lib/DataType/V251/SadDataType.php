@@ -107,7 +107,7 @@ class SadDataType extends ComponentDataType
             ++$emptyComponentsSinceLastComponent;
         } else {
             $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
-                . (string) $this->getStreetName()->getValue();
+                . (string) $this->getStreetName()->getValue()
             ;
             $emptyComponentsSinceLastComponent = 0;
         }
@@ -116,7 +116,7 @@ class SadDataType extends ComponentDataType
             ++$emptyComponentsSinceLastComponent;
         } else {
             $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
-                . (string) $this->getDwellingNumber()->getValue();
+                . (string) $this->getDwellingNumber()->getValue()
             ;
             $emptyComponentsSinceLastComponent = 0;
         }

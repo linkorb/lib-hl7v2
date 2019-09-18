@@ -264,7 +264,7 @@ class XonDataType extends ComponentDataType
             ++$emptyComponentsSinceLastComponent;
         } else {
             $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
-                . (string) $this->getOrganisationNameTypeCode()->getValue();
+                . (string) $this->getOrganisationNameTypeCode()->getValue()
             ;
             $emptyComponentsSinceLastComponent = 0;
         }
@@ -273,7 +273,7 @@ class XonDataType extends ComponentDataType
             ++$emptyComponentsSinceLastComponent;
         } else {
             $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
-                . (string) $this->getIdNumber()->getValue();
+                . (string) $this->getIdNumber()->getValue()
             ;
             $emptyComponentsSinceLastComponent = 0;
         }
@@ -282,7 +282,7 @@ class XonDataType extends ComponentDataType
             ++$emptyComponentsSinceLastComponent;
         } else {
             $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
-                . (string) $this->getCheckDigit()->getValue();
+                . (string) $this->getCheckDigit()->getValue()
             ;
             $emptyComponentsSinceLastComponent = 0;
         }
@@ -291,7 +291,7 @@ class XonDataType extends ComponentDataType
             ++$emptyComponentsSinceLastComponent;
         } else {
             $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
-                . (string) $this->getCheckDigitScheme()->getValue();
+                . (string) $this->getCheckDigitScheme()->getValue()
             ;
             $emptyComponentsSinceLastComponent = 0;
         }
@@ -300,7 +300,7 @@ class XonDataType extends ComponentDataType
             ++$emptyComponentsSinceLastComponent;
         } else {
             $value = (string) $this->getAssigningAuthority();
-            if ($value === '') {
+            if ('' === $value) {
                 ++$emptyComponentsSinceLastComponent;
             } else {
                 $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
@@ -314,7 +314,7 @@ class XonDataType extends ComponentDataType
             ++$emptyComponentsSinceLastComponent;
         } else {
             $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
-                . (string) $this->getIdentifierTypeCode()->getValue();
+                . (string) $this->getIdentifierTypeCode()->getValue()
             ;
             $emptyComponentsSinceLastComponent = 0;
         }
@@ -323,7 +323,7 @@ class XonDataType extends ComponentDataType
             ++$emptyComponentsSinceLastComponent;
         } else {
             $value = (string) $this->getAssigningFacility();
-            if ($value === '') {
+            if ('' === $value) {
                 ++$emptyComponentsSinceLastComponent;
             } else {
                 $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
@@ -337,7 +337,7 @@ class XonDataType extends ComponentDataType
             ++$emptyComponentsSinceLastComponent;
         } else {
             $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
-                . (string) $this->getNameRepresentationCode()->getValue();
+                . (string) $this->getNameRepresentationCode()->getValue()
             ;
             $emptyComponentsSinceLastComponent = 0;
         }

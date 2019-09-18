@@ -373,7 +373,7 @@ class SpsDataType extends ComponentDataType
             ++$emptyComponentsSinceLastComponent;
         } else {
             $value = (string) $this->getAdditives();
-            if ($value === '') {
+            if ('' === $value) {
                 ++$emptyComponentsSinceLastComponent;
             } else {
                 $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
@@ -387,7 +387,7 @@ class SpsDataType extends ComponentDataType
             ++$emptyComponentsSinceLastComponent;
         } else {
             $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
-                . (string) $this->getSpecimenCollectionMethod()->getValue();
+                . (string) $this->getSpecimenCollectionMethod()->getValue()
             ;
             $emptyComponentsSinceLastComponent = 0;
         }
@@ -396,7 +396,7 @@ class SpsDataType extends ComponentDataType
             ++$emptyComponentsSinceLastComponent;
         } else {
             $value = (string) $this->getBodySite();
-            if ($value === '') {
+            if ('' === $value) {
                 ++$emptyComponentsSinceLastComponent;
             } else {
                 $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
@@ -410,7 +410,7 @@ class SpsDataType extends ComponentDataType
             ++$emptyComponentsSinceLastComponent;
         } else {
             $value = (string) $this->getSiteModifier();
-            if ($value === '') {
+            if ('' === $value) {
                 ++$emptyComponentsSinceLastComponent;
             } else {
                 $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
@@ -424,7 +424,7 @@ class SpsDataType extends ComponentDataType
             ++$emptyComponentsSinceLastComponent;
         } else {
             $value = (string) $this->getCollectionMethodModifierCode();
-            if ($value === '') {
+            if ('' === $value) {
                 ++$emptyComponentsSinceLastComponent;
             } else {
                 $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
@@ -438,7 +438,7 @@ class SpsDataType extends ComponentDataType
             ++$emptyComponentsSinceLastComponent;
         } else {
             $value = (string) $this->getSpecimenRole();
-            if ($value === '') {
+            if ('' === $value) {
                 ++$emptyComponentsSinceLastComponent;
             } else {
                 $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)

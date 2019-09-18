@@ -885,7 +885,7 @@ class MshSegment extends AbstractHeaderSegment
             ++$emptyFieldsSinceLastField;
         } else {
             $value = (string) $this->getFieldSendingApplication();
-            if ($value === '') {
+            if ('' === $value) {
                 ++$emptyFieldsSinceLastField;
             } else {
                 $s .= str_repeat(
@@ -900,7 +900,7 @@ class MshSegment extends AbstractHeaderSegment
             ++$emptyFieldsSinceLastField;
         } else {
             $value = (string) $this->getFieldSendingFacility();
-            if ($value === '') {
+            if ('' === $value) {
                 ++$emptyFieldsSinceLastField;
             } else {
                 $s .= str_repeat(
@@ -915,7 +915,7 @@ class MshSegment extends AbstractHeaderSegment
             ++$emptyFieldsSinceLastField;
         } else {
             $value = (string) $this->getFieldReceivingApplication();
-            if ($value === '') {
+            if ('' === $value) {
                 ++$emptyFieldsSinceLastField;
             } else {
                 $s .= str_repeat(
@@ -930,7 +930,7 @@ class MshSegment extends AbstractHeaderSegment
             ++$emptyFieldsSinceLastField;
         } else {
             $value = (string) $this->getFieldReceivingFacility();
-            if ($value === '') {
+            if ('' === $value) {
                 ++$emptyFieldsSinceLastField;
             } else {
                 $s .= str_repeat(
@@ -945,7 +945,7 @@ class MshSegment extends AbstractHeaderSegment
             ++$emptyFieldsSinceLastField;
         } else {
             $value = (string) $this->getFieldDateTimeOfMessage();
-            if ($value === '') {
+            if ('' === $value) {
                 ++$emptyFieldsSinceLastField;
             } else {
                 $s .= str_repeat(
@@ -990,7 +990,7 @@ class MshSegment extends AbstractHeaderSegment
             ++$emptyFieldsSinceLastField;
         } else {
             $value = (string) $this->getFieldProcessingId();
-            if ($value === '') {
+            if ('' === $value) {
                 ++$emptyFieldsSinceLastField;
             } else {
                 $s .= str_repeat(
@@ -1005,7 +1005,7 @@ class MshSegment extends AbstractHeaderSegment
             ++$emptyFieldsSinceLastField;
         } else {
             $value = (string) $this->getFieldVersionId();
-            if ($value === '') {
+            if ('' === $value) {
                 ++$emptyFieldsSinceLastField;
             } else {
                 $s .= str_repeat(
@@ -1074,7 +1074,7 @@ class MshSegment extends AbstractHeaderSegment
                 if (!$repetition->hasValue()) {
                     continue;
                 }
-                if ($nonEmptyReps == 0) {
+                if (0 == $nonEmptyReps) {
                     $s .= str_repeat(
                         $this->encodingParameters->getFieldSep(),
                         1 + $emptyFieldsSinceLastField
@@ -1093,7 +1093,7 @@ class MshSegment extends AbstractHeaderSegment
             ++$emptyFieldsSinceLastField;
         } else {
             $value = (string) $this->getFieldPrincipalLanguageOfMessage();
-            if ($value === '') {
+            if ('' === $value) {
                 ++$emptyFieldsSinceLastField;
             } else {
                 $s .= str_repeat(

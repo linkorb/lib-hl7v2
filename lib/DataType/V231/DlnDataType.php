@@ -105,7 +105,7 @@ class DlnDataType extends ComponentDataType
             ++$emptyComponentsSinceLastComponent;
         } else {
             $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
-                . (string) $this->getIssuingStateProvinceCountry()->getValue();
+                . (string) $this->getIssuingStateProvinceCountry()->getValue()
             ;
             $emptyComponentsSinceLastComponent = 0;
         }
@@ -114,7 +114,7 @@ class DlnDataType extends ComponentDataType
             ++$emptyComponentsSinceLastComponent;
         } else {
             $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
-                . (string) $this->getExpirationDate()->getValue();
+                . (string) $this->getExpirationDate()->getValue()
             ;
             $emptyComponentsSinceLastComponent = 0;
         }

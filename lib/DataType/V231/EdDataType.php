@@ -159,7 +159,7 @@ class EdDataType extends ComponentDataType
             ++$emptyComponentsSinceLastComponent;
         } else {
             $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
-                . (string) $this->getTypeOfData()->getValue();
+                . (string) $this->getTypeOfData()->getValue()
             ;
             $emptyComponentsSinceLastComponent = 0;
         }
@@ -168,7 +168,7 @@ class EdDataType extends ComponentDataType
             ++$emptyComponentsSinceLastComponent;
         } else {
             $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
-                . (string) $this->getDataSubtype()->getValue();
+                . (string) $this->getDataSubtype()->getValue()
             ;
             $emptyComponentsSinceLastComponent = 0;
         }
@@ -177,7 +177,7 @@ class EdDataType extends ComponentDataType
             ++$emptyComponentsSinceLastComponent;
         } else {
             $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
-                . (string) $this->getEncoding()->getValue();
+                . (string) $this->getEncoding()->getValue()
             ;
             $emptyComponentsSinceLastComponent = 0;
         }
@@ -186,7 +186,7 @@ class EdDataType extends ComponentDataType
             ++$emptyComponentsSinceLastComponent;
         } else {
             $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
-                . (string) $this->getData()->getValue();
+                . (string) $this->getData()->getValue()
             ;
             $emptyComponentsSinceLastComponent = 0;
         }

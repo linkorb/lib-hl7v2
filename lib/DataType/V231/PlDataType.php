@@ -255,7 +255,7 @@ class PlDataType extends ComponentDataType
             ++$emptyComponentsSinceLastComponent;
         } else {
             $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
-                . (string) $this->getRoom()->getValue();
+                . (string) $this->getRoom()->getValue()
             ;
             $emptyComponentsSinceLastComponent = 0;
         }
@@ -264,7 +264,7 @@ class PlDataType extends ComponentDataType
             ++$emptyComponentsSinceLastComponent;
         } else {
             $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
-                . (string) $this->getBed()->getValue();
+                . (string) $this->getBed()->getValue()
             ;
             $emptyComponentsSinceLastComponent = 0;
         }
@@ -273,7 +273,7 @@ class PlDataType extends ComponentDataType
             ++$emptyComponentsSinceLastComponent;
         } else {
             $value = (string) $this->getFacility();
-            if ($value === '') {
+            if ('' === $value) {
                 ++$emptyComponentsSinceLastComponent;
             } else {
                 $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
@@ -287,7 +287,7 @@ class PlDataType extends ComponentDataType
             ++$emptyComponentsSinceLastComponent;
         } else {
             $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
-                . (string) $this->getLocationStatus()->getValue();
+                . (string) $this->getLocationStatus()->getValue()
             ;
             $emptyComponentsSinceLastComponent = 0;
         }
@@ -296,7 +296,7 @@ class PlDataType extends ComponentDataType
             ++$emptyComponentsSinceLastComponent;
         } else {
             $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
-                . (string) $this->getPersonLocationType()->getValue();
+                . (string) $this->getPersonLocationType()->getValue()
             ;
             $emptyComponentsSinceLastComponent = 0;
         }
@@ -305,7 +305,7 @@ class PlDataType extends ComponentDataType
             ++$emptyComponentsSinceLastComponent;
         } else {
             $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
-                . (string) $this->getBuilding()->getValue();
+                . (string) $this->getBuilding()->getValue()
             ;
             $emptyComponentsSinceLastComponent = 0;
         }
@@ -314,7 +314,7 @@ class PlDataType extends ComponentDataType
             ++$emptyComponentsSinceLastComponent;
         } else {
             $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
-                . (string) $this->getFloor()->getValue();
+                . (string) $this->getFloor()->getValue()
             ;
             $emptyComponentsSinceLastComponent = 0;
         }
@@ -323,7 +323,7 @@ class PlDataType extends ComponentDataType
             ++$emptyComponentsSinceLastComponent;
         } else {
             $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
-                . (string) $this->getLocationDescription()->getValue();
+                . (string) $this->getLocationDescription()->getValue()
             ;
             $emptyComponentsSinceLastComponent = 0;
         }

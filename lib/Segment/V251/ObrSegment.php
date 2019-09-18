@@ -4279,7 +4279,7 @@ class ObrSegment extends AbstractSegment
             ++$emptyFieldsSinceLastField;
         } else {
             $value = (string) $this->getFieldPlacerOrderNumber();
-            if ($value === '') {
+            if ('' === $value) {
                 ++$emptyFieldsSinceLastField;
             } else {
                 $s .= str_repeat(
@@ -4294,7 +4294,7 @@ class ObrSegment extends AbstractSegment
             ++$emptyFieldsSinceLastField;
         } else {
             $value = (string) $this->getFieldFillerOrderNumber();
-            if ($value === '') {
+            if ('' === $value) {
                 ++$emptyFieldsSinceLastField;
             } else {
                 $s .= str_repeat(
@@ -4309,7 +4309,7 @@ class ObrSegment extends AbstractSegment
             ++$emptyFieldsSinceLastField;
         } else {
             $value = (string) $this->getFieldUniversalServiceIdentifier();
-            if ($value === '') {
+            if ('' === $value) {
                 ++$emptyFieldsSinceLastField;
             } else {
                 $s .= str_repeat(
@@ -4334,7 +4334,7 @@ class ObrSegment extends AbstractSegment
             ++$emptyFieldsSinceLastField;
         } else {
             $value = (string) $this->getFieldRequestedDatetime();
-            if ($value === '') {
+            if ('' === $value) {
                 ++$emptyFieldsSinceLastField;
             } else {
                 $s .= str_repeat(
@@ -4349,7 +4349,7 @@ class ObrSegment extends AbstractSegment
             ++$emptyFieldsSinceLastField;
         } else {
             $value = (string) $this->getFieldObservationDatetime();
-            if ($value === '') {
+            if ('' === $value) {
                 ++$emptyFieldsSinceLastField;
             } else {
                 $s .= str_repeat(
@@ -4364,7 +4364,7 @@ class ObrSegment extends AbstractSegment
             ++$emptyFieldsSinceLastField;
         } else {
             $value = (string) $this->getFieldObservationEndDatetime();
-            if ($value === '') {
+            if ('' === $value) {
                 ++$emptyFieldsSinceLastField;
             } else {
                 $s .= str_repeat(
@@ -4379,7 +4379,7 @@ class ObrSegment extends AbstractSegment
             ++$emptyFieldsSinceLastField;
         } else {
             $value = (string) $this->getFieldCollectionVolume();
-            if ($value === '') {
+            if ('' === $value) {
                 ++$emptyFieldsSinceLastField;
             } else {
                 $s .= str_repeat(
@@ -4396,10 +4396,10 @@ class ObrSegment extends AbstractSegment
             $nonEmptyReps = 0;
             foreach ($this->getFieldCollectorIdentifier() as $repetition) {
                 $value = (string) $repetition;
-                if ($value === '') {
+                if ('' === $value) {
                     continue;
                 }
-                if ($nonEmptyReps == 0) {
+                if (0 == $nonEmptyReps) {
                     $s .= str_repeat(
                         $this->encodingParameters->getFieldSep(),
                         1 + $emptyFieldsSinceLastField
@@ -4428,7 +4428,7 @@ class ObrSegment extends AbstractSegment
             ++$emptyFieldsSinceLastField;
         } else {
             $value = (string) $this->getFieldDangerCode();
-            if ($value === '') {
+            if ('' === $value) {
                 ++$emptyFieldsSinceLastField;
             } else {
                 $s .= str_repeat(
@@ -4453,7 +4453,7 @@ class ObrSegment extends AbstractSegment
             ++$emptyFieldsSinceLastField;
         } else {
             $value = (string) $this->getFieldSpecimenReceivedDatetime();
-            if ($value === '') {
+            if ('' === $value) {
                 ++$emptyFieldsSinceLastField;
             } else {
                 $s .= str_repeat(
@@ -4480,10 +4480,10 @@ class ObrSegment extends AbstractSegment
             $nonEmptyReps = 0;
             foreach ($this->getFieldOrderingProvider() as $repetition) {
                 $value = (string) $repetition;
-                if ($value === '') {
+                if ('' === $value) {
                     continue;
                 }
-                if ($nonEmptyReps == 0) {
+                if (0 == $nonEmptyReps) {
                     $s .= str_repeat(
                         $this->encodingParameters->getFieldSep(),
                         1 + $emptyFieldsSinceLastField
@@ -4504,10 +4504,10 @@ class ObrSegment extends AbstractSegment
             $nonEmptyReps = 0;
             foreach ($this->getFieldOrderCallbackPhoneNumber() as $repetition) {
                 $value = (string) $repetition;
-                if ($value === '') {
+                if ('' === $value) {
                     continue;
                 }
-                if ($nonEmptyReps == 0) {
+                if (0 == $nonEmptyReps) {
                     $s .= str_repeat(
                         $this->encodingParameters->getFieldSep(),
                         1 + $emptyFieldsSinceLastField
@@ -4566,7 +4566,7 @@ class ObrSegment extends AbstractSegment
             ++$emptyFieldsSinceLastField;
         } else {
             $value = (string) $this->getFieldResultsRptstatusChngDatetime();
-            if ($value === '') {
+            if ('' === $value) {
                 ++$emptyFieldsSinceLastField;
             } else {
                 $s .= str_repeat(
@@ -4581,7 +4581,7 @@ class ObrSegment extends AbstractSegment
             ++$emptyFieldsSinceLastField;
         } else {
             $value = (string) $this->getFieldChargeToPractice();
-            if ($value === '') {
+            if ('' === $value) {
                 ++$emptyFieldsSinceLastField;
             } else {
                 $s .= str_repeat(
@@ -4616,7 +4616,7 @@ class ObrSegment extends AbstractSegment
             ++$emptyFieldsSinceLastField;
         } else {
             $value = (string) $this->getFieldParentResult();
-            if ($value === '') {
+            if ('' === $value) {
                 ++$emptyFieldsSinceLastField;
             } else {
                 $s .= str_repeat(
@@ -4633,10 +4633,10 @@ class ObrSegment extends AbstractSegment
             $nonEmptyReps = 0;
             foreach ($this->getFieldQuantitytiming() as $repetition) {
                 $value = (string) $repetition;
-                if ($value === '') {
+                if ('' === $value) {
                     continue;
                 }
-                if ($nonEmptyReps == 0) {
+                if (0 == $nonEmptyReps) {
                     $s .= str_repeat(
                         $this->encodingParameters->getFieldSep(),
                         1 + $emptyFieldsSinceLastField
@@ -4657,10 +4657,10 @@ class ObrSegment extends AbstractSegment
             $nonEmptyReps = 0;
             foreach ($this->getFieldResultCopiesTo() as $repetition) {
                 $value = (string) $repetition;
-                if ($value === '') {
+                if ('' === $value) {
                     continue;
                 }
-                if ($nonEmptyReps == 0) {
+                if (0 == $nonEmptyReps) {
                     $s .= str_repeat(
                         $this->encodingParameters->getFieldSep(),
                         1 + $emptyFieldsSinceLastField
@@ -4679,7 +4679,7 @@ class ObrSegment extends AbstractSegment
             ++$emptyFieldsSinceLastField;
         } else {
             $value = (string) $this->getFieldParent();
-            if ($value === '') {
+            if ('' === $value) {
                 ++$emptyFieldsSinceLastField;
             } else {
                 $s .= str_repeat(
@@ -4706,10 +4706,10 @@ class ObrSegment extends AbstractSegment
             $nonEmptyReps = 0;
             foreach ($this->getFieldReasonForStudy() as $repetition) {
                 $value = (string) $repetition;
-                if ($value === '') {
+                if ('' === $value) {
                     continue;
                 }
-                if ($nonEmptyReps == 0) {
+                if (0 == $nonEmptyReps) {
                     $s .= str_repeat(
                         $this->encodingParameters->getFieldSep(),
                         1 + $emptyFieldsSinceLastField
@@ -4728,7 +4728,7 @@ class ObrSegment extends AbstractSegment
             ++$emptyFieldsSinceLastField;
         } else {
             $value = (string) $this->getFieldPrincipalResultInterpreter();
-            if ($value === '') {
+            if ('' === $value) {
                 ++$emptyFieldsSinceLastField;
             } else {
                 $s .= str_repeat(
@@ -4745,10 +4745,10 @@ class ObrSegment extends AbstractSegment
             $nonEmptyReps = 0;
             foreach ($this->getFieldAssistantResultInterpreter() as $repetition) {
                 $value = (string) $repetition;
-                if ($value === '') {
+                if ('' === $value) {
                     continue;
                 }
-                if ($nonEmptyReps == 0) {
+                if (0 == $nonEmptyReps) {
                     $s .= str_repeat(
                         $this->encodingParameters->getFieldSep(),
                         1 + $emptyFieldsSinceLastField
@@ -4769,10 +4769,10 @@ class ObrSegment extends AbstractSegment
             $nonEmptyReps = 0;
             foreach ($this->getFieldTechnician() as $repetition) {
                 $value = (string) $repetition;
-                if ($value === '') {
+                if ('' === $value) {
                     continue;
                 }
-                if ($nonEmptyReps == 0) {
+                if (0 == $nonEmptyReps) {
                     $s .= str_repeat(
                         $this->encodingParameters->getFieldSep(),
                         1 + $emptyFieldsSinceLastField
@@ -4793,10 +4793,10 @@ class ObrSegment extends AbstractSegment
             $nonEmptyReps = 0;
             foreach ($this->getFieldTranscriptionist() as $repetition) {
                 $value = (string) $repetition;
-                if ($value === '') {
+                if ('' === $value) {
                     continue;
                 }
-                if ($nonEmptyReps == 0) {
+                if (0 == $nonEmptyReps) {
                     $s .= str_repeat(
                         $this->encodingParameters->getFieldSep(),
                         1 + $emptyFieldsSinceLastField
@@ -4815,7 +4815,7 @@ class ObrSegment extends AbstractSegment
             ++$emptyFieldsSinceLastField;
         } else {
             $value = (string) $this->getFieldScheduledDatetime();
-            if ($value === '') {
+            if ('' === $value) {
                 ++$emptyFieldsSinceLastField;
             } else {
                 $s .= str_repeat(
@@ -4842,10 +4842,10 @@ class ObrSegment extends AbstractSegment
             $nonEmptyReps = 0;
             foreach ($this->getFieldTransportLogisticsOfCollectedSample() as $repetition) {
                 $value = (string) $repetition;
-                if ($value === '') {
+                if ('' === $value) {
                     continue;
                 }
-                if ($nonEmptyReps == 0) {
+                if (0 == $nonEmptyReps) {
                     $s .= str_repeat(
                         $this->encodingParameters->getFieldSep(),
                         1 + $emptyFieldsSinceLastField
@@ -4866,10 +4866,10 @@ class ObrSegment extends AbstractSegment
             $nonEmptyReps = 0;
             foreach ($this->getFieldCollectorsComment() as $repetition) {
                 $value = (string) $repetition;
-                if ($value === '') {
+                if ('' === $value) {
                     continue;
                 }
-                if ($nonEmptyReps == 0) {
+                if (0 == $nonEmptyReps) {
                     $s .= str_repeat(
                         $this->encodingParameters->getFieldSep(),
                         1 + $emptyFieldsSinceLastField
@@ -4888,7 +4888,7 @@ class ObrSegment extends AbstractSegment
             ++$emptyFieldsSinceLastField;
         } else {
             $value = (string) $this->getFieldTransportArrangementResponsibility();
-            if ($value === '') {
+            if ('' === $value) {
                 ++$emptyFieldsSinceLastField;
             } else {
                 $s .= str_repeat(
@@ -4925,10 +4925,10 @@ class ObrSegment extends AbstractSegment
             $nonEmptyReps = 0;
             foreach ($this->getFieldPlannedPatientTransportComment() as $repetition) {
                 $value = (string) $repetition;
-                if ($value === '') {
+                if ('' === $value) {
                     continue;
                 }
-                if ($nonEmptyReps == 0) {
+                if (0 == $nonEmptyReps) {
                     $s .= str_repeat(
                         $this->encodingParameters->getFieldSep(),
                         1 + $emptyFieldsSinceLastField
@@ -4947,7 +4947,7 @@ class ObrSegment extends AbstractSegment
             ++$emptyFieldsSinceLastField;
         } else {
             $value = (string) $this->getFieldProcedureCode();
-            if ($value === '') {
+            if ('' === $value) {
                 ++$emptyFieldsSinceLastField;
             } else {
                 $s .= str_repeat(
@@ -4964,10 +4964,10 @@ class ObrSegment extends AbstractSegment
             $nonEmptyReps = 0;
             foreach ($this->getFieldProcedureCodeModifier() as $repetition) {
                 $value = (string) $repetition;
-                if ($value === '') {
+                if ('' === $value) {
                     continue;
                 }
-                if ($nonEmptyReps == 0) {
+                if (0 == $nonEmptyReps) {
                     $s .= str_repeat(
                         $this->encodingParameters->getFieldSep(),
                         1 + $emptyFieldsSinceLastField
@@ -4988,10 +4988,10 @@ class ObrSegment extends AbstractSegment
             $nonEmptyReps = 0;
             foreach ($this->getFieldPlacerSupplementalServiceInformation() as $repetition) {
                 $value = (string) $repetition;
-                if ($value === '') {
+                if ('' === $value) {
                     continue;
                 }
-                if ($nonEmptyReps == 0) {
+                if (0 == $nonEmptyReps) {
                     $s .= str_repeat(
                         $this->encodingParameters->getFieldSep(),
                         1 + $emptyFieldsSinceLastField
@@ -5012,10 +5012,10 @@ class ObrSegment extends AbstractSegment
             $nonEmptyReps = 0;
             foreach ($this->getFieldFillerSupplementalServiceInformation() as $repetition) {
                 $value = (string) $repetition;
-                if ($value === '') {
+                if ('' === $value) {
                     continue;
                 }
-                if ($nonEmptyReps == 0) {
+                if (0 == $nonEmptyReps) {
                     $s .= str_repeat(
                         $this->encodingParameters->getFieldSep(),
                         1 + $emptyFieldsSinceLastField
@@ -5034,7 +5034,7 @@ class ObrSegment extends AbstractSegment
             ++$emptyFieldsSinceLastField;
         } else {
             $value = (string) $this->getFieldMedicallyNecessaryDuplicateProcedureReason();
-            if ($value === '') {
+            if ('' === $value) {
                 ++$emptyFieldsSinceLastField;
             } else {
                 $s .= str_repeat(
@@ -5059,7 +5059,7 @@ class ObrSegment extends AbstractSegment
             ++$emptyFieldsSinceLastField;
         } else {
             $value = (string) $this->getFieldParentUniversalServiceIdentifier();
-            if ($value === '') {
+            if ('' === $value) {
                 ++$emptyFieldsSinceLastField;
             } else {
                 $s .= str_repeat(

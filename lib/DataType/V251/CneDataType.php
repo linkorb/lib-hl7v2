@@ -253,7 +253,7 @@ class CneDataType extends ComponentDataType
             ++$emptyComponentsSinceLastComponent;
         } else {
             $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
-                . (string) $this->getText()->getValue();
+                . (string) $this->getText()->getValue()
             ;
             $emptyComponentsSinceLastComponent = 0;
         }
@@ -262,7 +262,7 @@ class CneDataType extends ComponentDataType
             ++$emptyComponentsSinceLastComponent;
         } else {
             $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
-                . (string) $this->getNameOfCodingSystem()->getValue();
+                . (string) $this->getNameOfCodingSystem()->getValue()
             ;
             $emptyComponentsSinceLastComponent = 0;
         }
@@ -271,7 +271,7 @@ class CneDataType extends ComponentDataType
             ++$emptyComponentsSinceLastComponent;
         } else {
             $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
-                . (string) $this->getAltIdentifier()->getValue();
+                . (string) $this->getAltIdentifier()->getValue()
             ;
             $emptyComponentsSinceLastComponent = 0;
         }
@@ -280,7 +280,7 @@ class CneDataType extends ComponentDataType
             ++$emptyComponentsSinceLastComponent;
         } else {
             $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
-                . (string) $this->getAltText()->getValue();
+                . (string) $this->getAltText()->getValue()
             ;
             $emptyComponentsSinceLastComponent = 0;
         }
@@ -289,7 +289,7 @@ class CneDataType extends ComponentDataType
             ++$emptyComponentsSinceLastComponent;
         } else {
             $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
-                . (string) $this->getNameOfAltCodingSystem()->getValue();
+                . (string) $this->getNameOfAltCodingSystem()->getValue()
             ;
             $emptyComponentsSinceLastComponent = 0;
         }
@@ -298,7 +298,7 @@ class CneDataType extends ComponentDataType
             ++$emptyComponentsSinceLastComponent;
         } else {
             $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
-                . (string) $this->getCodingSystemVersionId()->getValue();
+                . (string) $this->getCodingSystemVersionId()->getValue()
             ;
             $emptyComponentsSinceLastComponent = 0;
         }
@@ -307,7 +307,7 @@ class CneDataType extends ComponentDataType
             ++$emptyComponentsSinceLastComponent;
         } else {
             $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
-                . (string) $this->getAltCodingSystemVersionId()->getValue();
+                . (string) $this->getAltCodingSystemVersionId()->getValue()
             ;
             $emptyComponentsSinceLastComponent = 0;
         }
@@ -316,7 +316,7 @@ class CneDataType extends ComponentDataType
             ++$emptyComponentsSinceLastComponent;
         } else {
             $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
-                . (string) $this->getOriginalText()->getValue();
+                . (string) $this->getOriginalText()->getValue()
             ;
             $emptyComponentsSinceLastComponent = 0;
         }

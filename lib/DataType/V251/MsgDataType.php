@@ -106,7 +106,7 @@ class MsgDataType extends ComponentDataType
             ++$emptyComponentsSinceLastComponent;
         } else {
             $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
-                . (string) $this->getTriggerEvent()->getValue();
+                . (string) $this->getTriggerEvent()->getValue()
             ;
             $emptyComponentsSinceLastComponent = 0;
         }
@@ -115,7 +115,7 @@ class MsgDataType extends ComponentDataType
             ++$emptyComponentsSinceLastComponent;
         } else {
             $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
-                . (string) $this->getMessageStructure()->getValue();
+                . (string) $this->getMessageStructure()->getValue()
             ;
             $emptyComponentsSinceLastComponent = 0;
         }

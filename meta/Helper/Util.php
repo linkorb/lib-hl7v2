@@ -4,6 +4,7 @@ namespace Hl7v2\Meta\Helper;
 
 use Memio\Model\File;
 use Memio\Model\FullyQualifiedName;
+use Memio\Model\Structure;
 
 class Util
 {
@@ -54,10 +55,16 @@ class Util
         mkdir($pathname, 0750, true);
     }
 
-    public static function insertUseStatements(File $file) {
+    public static function insertUseStatements(File $file)
+    {
         $parent = $file->getStructure()->getParent();
-        if (null !== $parent) {
-            $file->addFullyQualifiedName(new FullyQualifiedName($parent->getFullyQualifiedName()));
+
+        if (!$parent instanceof Structure
+            || $file->getNamespace() === $parent->getNamespace()
+        ) {
+            return;
         }
+
+        $file->addFullyQualifiedName(new FullyQualifiedName($parent->getFullyQualifiedName()));
     }
 }

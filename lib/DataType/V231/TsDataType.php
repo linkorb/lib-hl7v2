@@ -80,7 +80,7 @@ class TsDataType extends ComponentDataType
             ++$emptyComponentsSinceLastComponent;
         } else {
             $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
-                . (string) $this->getDegreeOfPrecision()->getValue();
+                . (string) $this->getDegreeOfPrecision()->getValue()
             ;
             $emptyComponentsSinceLastComponent = 0;
         }

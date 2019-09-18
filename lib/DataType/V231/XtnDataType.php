@@ -250,7 +250,7 @@ class XtnDataType extends ComponentDataType
             ++$emptyComponentsSinceLastComponent;
         } else {
             $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
-                . (string) $this->getTelecommunicationUseCode()->getValue();
+                . (string) $this->getTelecommunicationUseCode()->getValue()
             ;
             $emptyComponentsSinceLastComponent = 0;
         }
@@ -259,7 +259,7 @@ class XtnDataType extends ComponentDataType
             ++$emptyComponentsSinceLastComponent;
         } else {
             $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
-                . (string) $this->getTelepcommunicationEquipmentType()->getValue();
+                . (string) $this->getTelepcommunicationEquipmentType()->getValue()
             ;
             $emptyComponentsSinceLastComponent = 0;
         }
@@ -268,7 +268,7 @@ class XtnDataType extends ComponentDataType
             ++$emptyComponentsSinceLastComponent;
         } else {
             $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
-                . (string) $this->getEmailAddress()->getValue();
+                . (string) $this->getEmailAddress()->getValue()
             ;
             $emptyComponentsSinceLastComponent = 0;
         }
@@ -277,7 +277,7 @@ class XtnDataType extends ComponentDataType
             ++$emptyComponentsSinceLastComponent;
         } else {
             $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
-                . (string) $this->getCountryCode()->getValue();
+                . (string) $this->getCountryCode()->getValue()
             ;
             $emptyComponentsSinceLastComponent = 0;
         }
@@ -286,7 +286,7 @@ class XtnDataType extends ComponentDataType
             ++$emptyComponentsSinceLastComponent;
         } else {
             $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
-                . (string) $this->getAreaCityCode()->getValue();
+                . (string) $this->getAreaCityCode()->getValue()
             ;
             $emptyComponentsSinceLastComponent = 0;
         }
@@ -295,7 +295,7 @@ class XtnDataType extends ComponentDataType
             ++$emptyComponentsSinceLastComponent;
         } else {
             $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
-                . (string) $this->getPhoneNumber()->getValue();
+                . (string) $this->getPhoneNumber()->getValue()
             ;
             $emptyComponentsSinceLastComponent = 0;
         }
@@ -304,7 +304,7 @@ class XtnDataType extends ComponentDataType
             ++$emptyComponentsSinceLastComponent;
         } else {
             $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
-                . (string) $this->getExtension()->getValue();
+                . (string) $this->getExtension()->getValue()
             ;
             $emptyComponentsSinceLastComponent = 0;
         }
@@ -313,7 +313,7 @@ class XtnDataType extends ComponentDataType
             ++$emptyComponentsSinceLastComponent;
         } else {
             $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
-                . (string) $this->getAnyText()->getValue();
+                . (string) $this->getAnyText()->getValue()
             ;
             $emptyComponentsSinceLastComponent = 0;
         }

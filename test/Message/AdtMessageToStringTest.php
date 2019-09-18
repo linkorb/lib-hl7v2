@@ -65,7 +65,7 @@ class AdtMessageToStringTest extends PHPUnit_Framework_TestCase
      * @param EncodingParameters $encodingParameters
      * @param \DateTime $time
      *
-     * @return \Hl7v2\Segment\SegmentInterface
+     * @return \Hl7v2\Segment\HeaderSegmentInterface
      */
     private function buildMessageHeader(EncodingParameters $encodingParameters, \DateTime $time)
     {
@@ -98,7 +98,7 @@ class AdtMessageToStringTest extends PHPUnit_Framework_TestCase
      * @param EncodingParameters $encodingParameters
      * @param \DateTime $time
      *
-     * @return \Hl7v2\Segment\EvnSegment
+     * @return \Hl7v2\Segment\SegmentInterface
      */
     private function buildEvnSegment(EncodingParameters $encodingParameters, \DateTime $time)
     {

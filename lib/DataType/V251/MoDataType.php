@@ -82,7 +82,7 @@ class MoDataType extends ComponentDataType
             ++$emptyComponentsSinceLastComponent;
         } else {
             $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
-                . (string) $this->getDenomination()->getValue();
+                . (string) $this->getDenomination()->getValue()
             ;
             $emptyComponentsSinceLastComponent = 0;
         }

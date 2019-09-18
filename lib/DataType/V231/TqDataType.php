@@ -367,7 +367,7 @@ class TqDataType extends ComponentDataType
             ++$emptyComponentsSinceLastComponent;
         } else {
             $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
-                . (string) $this->getInterval()->getValue();
+                . (string) $this->getInterval()->getValue()
             ;
             $emptyComponentsSinceLastComponent = 0;
         }
@@ -376,7 +376,7 @@ class TqDataType extends ComponentDataType
             ++$emptyComponentsSinceLastComponent;
         } else {
             $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
-                . (string) $this->getDuration()->getValue();
+                . (string) $this->getDuration()->getValue()
             ;
             $emptyComponentsSinceLastComponent = 0;
         }
@@ -385,7 +385,7 @@ class TqDataType extends ComponentDataType
             ++$emptyComponentsSinceLastComponent;
         } else {
             $value = (string) $this->getStartDateTime();
-            if ($value === '') {
+            if ('' === $value) {
                 ++$emptyComponentsSinceLastComponent;
             } else {
                 $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
@@ -399,7 +399,7 @@ class TqDataType extends ComponentDataType
             ++$emptyComponentsSinceLastComponent;
         } else {
             $value = (string) $this->getEndDateTime();
-            if ($value === '') {
+            if ('' === $value) {
                 ++$emptyComponentsSinceLastComponent;
             } else {
                 $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
@@ -413,7 +413,7 @@ class TqDataType extends ComponentDataType
             ++$emptyComponentsSinceLastComponent;
         } else {
             $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
-                . (string) $this->getPriority()->getValue();
+                . (string) $this->getPriority()->getValue()
             ;
             $emptyComponentsSinceLastComponent = 0;
         }
@@ -422,7 +422,7 @@ class TqDataType extends ComponentDataType
             ++$emptyComponentsSinceLastComponent;
         } else {
             $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
-                . (string) $this->getCondition()->getValue();
+                . (string) $this->getCondition()->getValue()
             ;
             $emptyComponentsSinceLastComponent = 0;
         }
@@ -431,7 +431,7 @@ class TqDataType extends ComponentDataType
             ++$emptyComponentsSinceLastComponent;
         } else {
             $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
-                . (string) $this->getText()->getValue();
+                . (string) $this->getText()->getValue()
             ;
             $emptyComponentsSinceLastComponent = 0;
         }
@@ -440,7 +440,7 @@ class TqDataType extends ComponentDataType
             ++$emptyComponentsSinceLastComponent;
         } else {
             $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
-                . (string) $this->getConjunction()->getValue();
+                . (string) $this->getConjunction()->getValue()
             ;
             $emptyComponentsSinceLastComponent = 0;
         }
@@ -449,7 +449,7 @@ class TqDataType extends ComponentDataType
             ++$emptyComponentsSinceLastComponent;
         } else {
             $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
-                . (string) $this->getOrderSequencing()->getValue();
+                . (string) $this->getOrderSequencing()->getValue()
             ;
             $emptyComponentsSinceLastComponent = 0;
         }
@@ -458,7 +458,7 @@ class TqDataType extends ComponentDataType
             ++$emptyComponentsSinceLastComponent;
         } else {
             $value = (string) $this->getOccurrenceDuration();
-            if ($value === '') {
+            if ('' === $value) {
                 ++$emptyComponentsSinceLastComponent;
             } else {
                 $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
@@ -472,7 +472,7 @@ class TqDataType extends ComponentDataType
             ++$emptyComponentsSinceLastComponent;
         } else {
             $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
-                . (string) $this->getTotalOccurrences()->getValue();
+                . (string) $this->getTotalOccurrences()->getValue()
             ;
             $emptyComponentsSinceLastComponent = 0;
         }

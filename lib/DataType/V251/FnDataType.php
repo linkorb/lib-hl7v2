@@ -155,7 +155,7 @@ class FnDataType extends ComponentDataType
             ++$emptyComponentsSinceLastComponent;
         } else {
             $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
-                . (string) $this->getOwnSurnamePrefix()->getValue();
+                . (string) $this->getOwnSurnamePrefix()->getValue()
             ;
             $emptyComponentsSinceLastComponent = 0;
         }
@@ -164,7 +164,7 @@ class FnDataType extends ComponentDataType
             ++$emptyComponentsSinceLastComponent;
         } else {
             $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
-                . (string) $this->getOwnSurname()->getValue();
+                . (string) $this->getOwnSurname()->getValue()
             ;
             $emptyComponentsSinceLastComponent = 0;
         }
@@ -173,7 +173,7 @@ class FnDataType extends ComponentDataType
             ++$emptyComponentsSinceLastComponent;
         } else {
             $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
-                . (string) $this->getSurnamePrefixFromPartner()->getValue();
+                . (string) $this->getSurnamePrefixFromPartner()->getValue()
             ;
             $emptyComponentsSinceLastComponent = 0;
         }
@@ -182,7 +182,7 @@ class FnDataType extends ComponentDataType
             ++$emptyComponentsSinceLastComponent;
         } else {
             $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
-                . (string) $this->getSurnameFromPartner()->getValue();
+                . (string) $this->getSurnameFromPartner()->getValue()
             ;
             $emptyComponentsSinceLastComponent = 0;
         }

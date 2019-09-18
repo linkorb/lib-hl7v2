@@ -80,7 +80,7 @@ class RiDataType extends ComponentDataType
             ++$emptyComponentsSinceLastComponent;
         } else {
             $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
-                . (string) $this->getExplicitTimeInterval()->getValue();
+                . (string) $this->getExplicitTimeInterval()->getValue()
             ;
             $emptyComponentsSinceLastComponent = 0;
         }

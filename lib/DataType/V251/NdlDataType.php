@@ -344,7 +344,7 @@ class NdlDataType extends ComponentDataType
             ++$emptyComponentsSinceLastComponent;
         } else {
             $value = (string) $this->getStartDateTime();
-            if ($value === '') {
+            if ('' === $value) {
                 ++$emptyComponentsSinceLastComponent;
             } else {
                 $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
@@ -358,7 +358,7 @@ class NdlDataType extends ComponentDataType
             ++$emptyComponentsSinceLastComponent;
         } else {
             $value = (string) $this->getEndDateTime();
-            if ($value === '') {
+            if ('' === $value) {
                 ++$emptyComponentsSinceLastComponent;
             } else {
                 $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
@@ -372,7 +372,7 @@ class NdlDataType extends ComponentDataType
             ++$emptyComponentsSinceLastComponent;
         } else {
             $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
-                . (string) $this->getPointOfCare()->getValue();
+                . (string) $this->getPointOfCare()->getValue()
             ;
             $emptyComponentsSinceLastComponent = 0;
         }
@@ -381,7 +381,7 @@ class NdlDataType extends ComponentDataType
             ++$emptyComponentsSinceLastComponent;
         } else {
             $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
-                . (string) $this->getRoom()->getValue();
+                . (string) $this->getRoom()->getValue()
             ;
             $emptyComponentsSinceLastComponent = 0;
         }
@@ -390,7 +390,7 @@ class NdlDataType extends ComponentDataType
             ++$emptyComponentsSinceLastComponent;
         } else {
             $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
-                . (string) $this->getBed()->getValue();
+                . (string) $this->getBed()->getValue()
             ;
             $emptyComponentsSinceLastComponent = 0;
         }
@@ -399,7 +399,7 @@ class NdlDataType extends ComponentDataType
             ++$emptyComponentsSinceLastComponent;
         } else {
             $value = (string) $this->getFacility();
-            if ($value === '') {
+            if ('' === $value) {
                 ++$emptyComponentsSinceLastComponent;
             } else {
                 $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
@@ -413,7 +413,7 @@ class NdlDataType extends ComponentDataType
             ++$emptyComponentsSinceLastComponent;
         } else {
             $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
-                . (string) $this->getLocationStatus()->getValue();
+                . (string) $this->getLocationStatus()->getValue()
             ;
             $emptyComponentsSinceLastComponent = 0;
         }
@@ -422,7 +422,7 @@ class NdlDataType extends ComponentDataType
             ++$emptyComponentsSinceLastComponent;
         } else {
             $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
-                . (string) $this->getPatientLocationType()->getValue();
+                . (string) $this->getPatientLocationType()->getValue()
             ;
             $emptyComponentsSinceLastComponent = 0;
         }
@@ -431,7 +431,7 @@ class NdlDataType extends ComponentDataType
             ++$emptyComponentsSinceLastComponent;
         } else {
             $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
-                . (string) $this->getBuilding()->getValue();
+                . (string) $this->getBuilding()->getValue()
             ;
             $emptyComponentsSinceLastComponent = 0;
         }
@@ -440,7 +440,7 @@ class NdlDataType extends ComponentDataType
             ++$emptyComponentsSinceLastComponent;
         } else {
             $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
-                . (string) $this->getFloor()->getValue();
+                . (string) $this->getFloor()->getValue()
             ;
             $emptyComponentsSinceLastComponent = 0;
         }

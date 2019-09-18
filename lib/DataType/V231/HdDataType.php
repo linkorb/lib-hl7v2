@@ -104,7 +104,7 @@ class HdDataType extends ComponentDataType
             ++$emptyComponentsSinceLastComponent;
         } else {
             $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
-                . (string) $this->getUniversalId()->getValue();
+                . (string) $this->getUniversalId()->getValue()
             ;
             $emptyComponentsSinceLastComponent = 0;
         }
@@ -113,7 +113,7 @@ class HdDataType extends ComponentDataType
             ++$emptyComponentsSinceLastComponent;
         } else {
             $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
-                . (string) $this->getUniversalIdType()->getValue();
+                . (string) $this->getUniversalIdType()->getValue()
             ;
             $emptyComponentsSinceLastComponent = 0;
         }

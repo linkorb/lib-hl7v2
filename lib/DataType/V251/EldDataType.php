@@ -148,7 +148,7 @@ class EldDataType extends ComponentDataType
             ++$emptyComponentsSinceLastComponent;
         } else {
             $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
-                . (string) $this->getSegmentSequence()->getValue();
+                . (string) $this->getSegmentSequence()->getValue()
             ;
             $emptyComponentsSinceLastComponent = 0;
         }
@@ -157,7 +157,7 @@ class EldDataType extends ComponentDataType
             ++$emptyComponentsSinceLastComponent;
         } else {
             $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
-                . (string) $this->getFieldPosition()->getValue();
+                . (string) $this->getFieldPosition()->getValue()
             ;
             $emptyComponentsSinceLastComponent = 0;
         }
@@ -166,7 +166,7 @@ class EldDataType extends ComponentDataType
             ++$emptyComponentsSinceLastComponent;
         } else {
             $value = (string) $this->getCodeIdentifyingError();
-            if ($value === '') {
+            if ('' === $value) {
                 ++$emptyComponentsSinceLastComponent;
             } else {
                 $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)

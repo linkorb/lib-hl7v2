@@ -298,7 +298,7 @@ class XadDataType extends ComponentDataType
             ++$emptyComponentsSinceLastComponent;
         } else {
             $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
-                . (string) $this->getOtherDesignation()->getValue();
+                . (string) $this->getOtherDesignation()->getValue()
             ;
             $emptyComponentsSinceLastComponent = 0;
         }
@@ -307,7 +307,7 @@ class XadDataType extends ComponentDataType
             ++$emptyComponentsSinceLastComponent;
         } else {
             $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
-                . (string) $this->getCity()->getValue();
+                . (string) $this->getCity()->getValue()
             ;
             $emptyComponentsSinceLastComponent = 0;
         }
@@ -316,7 +316,7 @@ class XadDataType extends ComponentDataType
             ++$emptyComponentsSinceLastComponent;
         } else {
             $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
-                . (string) $this->getStateOrProvince()->getValue();
+                . (string) $this->getStateOrProvince()->getValue()
             ;
             $emptyComponentsSinceLastComponent = 0;
         }
@@ -325,7 +325,7 @@ class XadDataType extends ComponentDataType
             ++$emptyComponentsSinceLastComponent;
         } else {
             $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
-                . (string) $this->getZipOrPostalCode()->getValue();
+                . (string) $this->getZipOrPostalCode()->getValue()
             ;
             $emptyComponentsSinceLastComponent = 0;
         }
@@ -334,7 +334,7 @@ class XadDataType extends ComponentDataType
             ++$emptyComponentsSinceLastComponent;
         } else {
             $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
-                . (string) $this->getCountry()->getValue();
+                . (string) $this->getCountry()->getValue()
             ;
             $emptyComponentsSinceLastComponent = 0;
         }
@@ -343,7 +343,7 @@ class XadDataType extends ComponentDataType
             ++$emptyComponentsSinceLastComponent;
         } else {
             $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
-                . (string) $this->getAddressType()->getValue();
+                . (string) $this->getAddressType()->getValue()
             ;
             $emptyComponentsSinceLastComponent = 0;
         }
@@ -352,7 +352,7 @@ class XadDataType extends ComponentDataType
             ++$emptyComponentsSinceLastComponent;
         } else {
             $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
-                . (string) $this->getOtherGeographicDesignation()->getValue();
+                . (string) $this->getOtherGeographicDesignation()->getValue()
             ;
             $emptyComponentsSinceLastComponent = 0;
         }
@@ -361,7 +361,7 @@ class XadDataType extends ComponentDataType
             ++$emptyComponentsSinceLastComponent;
         } else {
             $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
-                . (string) $this->getCountyParishCode()->getValue();
+                . (string) $this->getCountyParishCode()->getValue()
             ;
             $emptyComponentsSinceLastComponent = 0;
         }
@@ -370,7 +370,7 @@ class XadDataType extends ComponentDataType
             ++$emptyComponentsSinceLastComponent;
         } else {
             $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
-                . (string) $this->getCensusTract()->getValue();
+                . (string) $this->getCensusTract()->getValue()
             ;
             $emptyComponentsSinceLastComponent = 0;
         }
@@ -379,7 +379,7 @@ class XadDataType extends ComponentDataType
             ++$emptyComponentsSinceLastComponent;
         } else {
             $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
-                . (string) $this->getAddressRepresentationCode()->getValue();
+                . (string) $this->getAddressRepresentationCode()->getValue()
             ;
             $emptyComponentsSinceLastComponent = 0;
         }

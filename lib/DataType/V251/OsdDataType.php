@@ -308,7 +308,7 @@ class OsdDataType extends ComponentDataType
             ++$emptyComponentsSinceLastComponent;
         } else {
             $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
-                . (string) $this->getPlacerOrderNumberEntityIdentifier()->getValue();
+                . (string) $this->getPlacerOrderNumberEntityIdentifier()->getValue()
             ;
             $emptyComponentsSinceLastComponent = 0;
         }
@@ -317,7 +317,7 @@ class OsdDataType extends ComponentDataType
             ++$emptyComponentsSinceLastComponent;
         } else {
             $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
-                . (string) $this->getPlacerOrderNumberNamespaceId()->getValue();
+                . (string) $this->getPlacerOrderNumberNamespaceId()->getValue()
             ;
             $emptyComponentsSinceLastComponent = 0;
         }
@@ -326,7 +326,7 @@ class OsdDataType extends ComponentDataType
             ++$emptyComponentsSinceLastComponent;
         } else {
             $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
-                . (string) $this->getFillerOrderNumberEntityIdentifier()->getValue();
+                . (string) $this->getFillerOrderNumberEntityIdentifier()->getValue()
             ;
             $emptyComponentsSinceLastComponent = 0;
         }
@@ -335,7 +335,7 @@ class OsdDataType extends ComponentDataType
             ++$emptyComponentsSinceLastComponent;
         } else {
             $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
-                . (string) $this->getFillerOrderNumberNamespaceId()->getValue();
+                . (string) $this->getFillerOrderNumberNamespaceId()->getValue()
             ;
             $emptyComponentsSinceLastComponent = 0;
         }
@@ -344,7 +344,7 @@ class OsdDataType extends ComponentDataType
             ++$emptyComponentsSinceLastComponent;
         } else {
             $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
-                . (string) $this->getSequenceConditionValue()->getValue();
+                . (string) $this->getSequenceConditionValue()->getValue()
             ;
             $emptyComponentsSinceLastComponent = 0;
         }
@@ -353,7 +353,7 @@ class OsdDataType extends ComponentDataType
             ++$emptyComponentsSinceLastComponent;
         } else {
             $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
-                . (string) $this->getMaximumNumberOfRepeats()->getValue();
+                . (string) $this->getMaximumNumberOfRepeats()->getValue()
             ;
             $emptyComponentsSinceLastComponent = 0;
         }
@@ -362,7 +362,7 @@ class OsdDataType extends ComponentDataType
             ++$emptyComponentsSinceLastComponent;
         } else {
             $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
-                . (string) $this->getPlacerOrderNumberUniversalId()->getValue();
+                . (string) $this->getPlacerOrderNumberUniversalId()->getValue()
             ;
             $emptyComponentsSinceLastComponent = 0;
         }
@@ -371,7 +371,7 @@ class OsdDataType extends ComponentDataType
             ++$emptyComponentsSinceLastComponent;
         } else {
             $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
-                . (string) $this->getPlacerOrderNumberUniversalIdType()->getValue();
+                . (string) $this->getPlacerOrderNumberUniversalIdType()->getValue()
             ;
             $emptyComponentsSinceLastComponent = 0;
         }
@@ -380,7 +380,7 @@ class OsdDataType extends ComponentDataType
             ++$emptyComponentsSinceLastComponent;
         } else {
             $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
-                . (string) $this->getFillerOrderNumberUniversalId()->getValue();
+                . (string) $this->getFillerOrderNumberUniversalId()->getValue()
             ;
             $emptyComponentsSinceLastComponent = 0;
         }
@@ -389,7 +389,7 @@ class OsdDataType extends ComponentDataType
             ++$emptyComponentsSinceLastComponent;
         } else {
             $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
-                . (string) $this->getFillerOrderNumberUniversalIdType()->getValue();
+                . (string) $this->getFillerOrderNumberUniversalIdType()->getValue()
             ;
             $emptyComponentsSinceLastComponent = 0;
         }

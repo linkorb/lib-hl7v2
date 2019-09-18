@@ -178,7 +178,7 @@ class ErlDataType extends ComponentDataType
             ++$emptyComponentsSinceLastComponent;
         } else {
             $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
-                . (string) $this->getSegmentSequence()->getValue();
+                . (string) $this->getSegmentSequence()->getValue()
             ;
             $emptyComponentsSinceLastComponent = 0;
         }
@@ -187,7 +187,7 @@ class ErlDataType extends ComponentDataType
             ++$emptyComponentsSinceLastComponent;
         } else {
             $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
-                . (string) $this->getFieldPosition()->getValue();
+                . (string) $this->getFieldPosition()->getValue()
             ;
             $emptyComponentsSinceLastComponent = 0;
         }
@@ -196,7 +196,7 @@ class ErlDataType extends ComponentDataType
             ++$emptyComponentsSinceLastComponent;
         } else {
             $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
-                . (string) $this->getFieldRepetition()->getValue();
+                . (string) $this->getFieldRepetition()->getValue()
             ;
             $emptyComponentsSinceLastComponent = 0;
         }
@@ -205,7 +205,7 @@ class ErlDataType extends ComponentDataType
             ++$emptyComponentsSinceLastComponent;
         } else {
             $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
-                . (string) $this->getComponentNumber()->getValue();
+                . (string) $this->getComponentNumber()->getValue()
             ;
             $emptyComponentsSinceLastComponent = 0;
         }
@@ -214,7 +214,7 @@ class ErlDataType extends ComponentDataType
             ++$emptyComponentsSinceLastComponent;
         } else {
             $s .= str_repeat($sep, 1 + $emptyComponentsSinceLastComponent)
-                . (string) $this->getSubcomponentNumber()->getValue();
+                . (string) $this->getSubcomponentNumber()->getValue()
             ;
             $emptyComponentsSinceLastComponent = 0;
         }
