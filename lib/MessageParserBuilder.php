@@ -19,6 +19,7 @@ class MessageParserBuilder
     private $messageFac;
     private $segmentFac;
     private $segmentGroupFac;
+    private $version = 'v251';
 
     /**
      * @return \Hl7v2\MessageParser
@@ -45,7 +46,7 @@ class MessageParserBuilder
     private function buildDataTypeFactory()
     {
         if (!$this->dataTypeFac) {
-            $this->dataTypeFac = new DataTypeFactory();
+            $this->dataTypeFac = new DataTypeFactory($this->version);
         }
 
         return $this;
@@ -54,7 +55,7 @@ class MessageParserBuilder
     private function buildSegmentFactory()
     {
         if (!$this->segmentFac) {
-            $this->segmentFac = new SegmentFactory($this->dataTypeFac);
+            $this->segmentFac = new SegmentFactory($this->dataTypeFac, $this->version);
         }
 
         return $this;
@@ -181,6 +182,18 @@ class MessageParserBuilder
     public function withSegmentGroupFactory(SegmentGroupFactory $segmentGroupFac)
     {
         $this->segmentGroupFac = $segmentGroupFac;
+
+        return $this;
+    }
+
+    /**
+     * @param string $version e.g. v231
+     *
+     * @return \Hl7v2\MessageParserBuilder
+     */
+    public function withVersion($version)
+    {
+        $this->version = $version;
 
         return $this;
     }

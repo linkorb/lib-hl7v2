@@ -15,7 +15,10 @@ class MessageParserTest extends PHPUnit_Framework_TestCase
         $this->datagramBuilder = SampleMessages::getDatagramBuilder();
 
         $messageParserBuilder = new MessageParserBuilder;
-        $this->messageParser = $messageParserBuilder->build();
+        $this->messageParser = $messageParserBuilder
+            ->withVersion('v251')
+            ->build()
+        ;
     }
 
     public function testBasicParserUsage()
