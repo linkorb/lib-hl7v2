@@ -26,7 +26,9 @@ class MessageParserBuilder
     public function build()
     {
         $this
+            ->buildDataTypeFactory()
             ->buildSegmentFactory()
+            ->buildSegmentGroupFactory()
             ->buildMessageFactory()
             ->buildEncodingParametersBuilder()
             ->buildCodec()
@@ -40,12 +42,28 @@ class MessageParserBuilder
         );
     }
 
+    private function buildDataTypeFactory()
+    {
+        if (!$this->dataTypeFac) {
+            $this->dataTypeFac = new DataTypeFactory();
+        }
+
+        return $this;
+    }
+
     private function buildSegmentFactory()
     {
-        if (!$this->segmentFac && !$this->dataTypeFac) {
-            $this->segmentFac = new SegmentFactory(new DataTypeFactory);
-        } elseif (!$this->segmentFac) {
+        if (!$this->segmentFac) {
             $this->segmentFac = new SegmentFactory($this->dataTypeFac);
+        }
+
+        return $this;
+    }
+
+    private function buildSegmentGroupFactory()
+    {
+        if (!$this->segmentGroupFac) {
+            $this->segmentGroupFac = new SegmentGroupFactory();
         }
 
         return $this;
@@ -53,12 +71,7 @@ class MessageParserBuilder
 
     private function buildMessageFactory()
     {
-        if (!$this->messageFac && !$this->segmentGroupFac) {
-            $this->messageFac = new MessageFactory(
-                $this->segmentFac,
-                new SegmentGroupFactory
-            );
-        } elseif (!$this->messageFac) {
+        if (!$this->messageFac) {
             $this->messageFac = new MessageFactory(
                 $this->segmentFac,
                 $this->segmentGroupFac
